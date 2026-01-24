@@ -16,6 +16,36 @@
     <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
 
     <style>
+        /* تنسيق الحاوية */
+.lang-container {
+    position: relative;
+    display: inline-block;
+}
+
+/* تنسيق القائمة نفسها */
+.lang-menu {
+    position: absolute;
+    right: 0; /* عشان تظهر تحت الزرار بالظبط */
+    background-color: white;
+    border: 1px solid #ddd;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    border-radius: 8px;
+    overflow: hidden;
+    z-index: 1000;
+}
+
+/* تنسيق اللغات جوه القائمة */
+.lang-menu a {
+    display: block;
+    padding: 10px 20px;
+    color: #333;
+    text-decoration: none;
+    white-space: nowrap;
+}
+
+.lang-menu a:hover {
+    background-color: #f5f5f5;
+}
         /* =================================================================
            1. ROOT & DARK MODE (From File 1)
            ================================================================= */
@@ -211,7 +241,17 @@
             <div class="nav-actions">
                 <button class="control-btn" id="theme-toggle" title="Toggle Theme"><i class="fas fa-moon"></i></button>
                 <div class="lang-switch">
-                    <button class="control-btn" id="lang-btn"><i class="fas fa-globe"></i></button>
+                   <div class="lang-container">
+    <button class="control-btn" id="lang-btn">
+        <i class="fas fa-globe"></i>
+    </button>
+    
+    <div id="lang-menu" class="lang-menu" style="display: none;">
+        <a href="home-ar.html">العربية</a>
+        <a href="#" style="pointer-events: none; color: gray;">English (Soon)</a>
+        <a href="#" style="pointer-events: none; color: gray;">Français (Soon)</a>
+    </div>
+</div>
                 </div>
                 <button class="btn-login open-auth">Log In</button>
             </div>
@@ -466,6 +506,20 @@
     </div>
 
     <!-- Scripting (Logic from File 1 + 2) -->
+    <script>
+    const btn = document.getElementById('lang-btn');
+    const menu = document.getElementById('lang-menu');
+
+    btn.onclick = function(e) {
+        e.stopPropagation(); // عشان المنيو متقفلش أول ما تفتح
+        menu.style.display = menu.style.display === 'none' ? 'block' : 'none';
+    };
+
+    // لو ضغطت في أي حتة فاضية في الشاشة القائمة تقفل
+    document.onclick = function() {
+        menu.style.display = 'none';
+    };
+</script>
     <script>
         // Theme Toggle
         const themeBtn = document.getElementById('theme-toggle');
