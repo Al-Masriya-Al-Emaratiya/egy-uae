@@ -1,8 +1,8 @@
 /* =================================================================
-   1. ROOT VARIABLES & THEMES
+   1. المتغيرات والخطوط (Variables & Themes)
    ================================================================= */
 :root {
-    /* Light Mode Colors */
+    /* ألوان الوضع الفاتح */
     --primary-color: #0d47a1;
     --primary-color-light: #1976d2;
     --accent-color: #e3f2fd;
@@ -15,8 +15,6 @@
     --shadow-color-light: rgba(13, 71, 161, 0.07);
     --shadow-color-heavy: rgba(13, 71, 161, 0.15);
     --border-color: #dee2e6;
-    
-    /* Global Settings */
     --radius-md: 12px;
     --radius-lg: 16px;
     --maxw: 1200px;
@@ -24,7 +22,7 @@
 }
 
 [data-theme="dark"] {
-    /* Dark Mode Colors */
+    /* ألوان الوضع الليلي */
     --primary-color: #90caf9;
     --primary-color-light: #bbdefb;
     --accent-color: #1e293b;
@@ -34,13 +32,13 @@
     --text-color: #e2e8f0;
     --muted-text-color: #94a3b8;
     --heading-color: #f8f9fa;
-    --shadow-color-light: rgba(0, 0, 0, 0.15);
-    --shadow-color-heavy: rgba(0, 0, 0, 0.25);
+    --shadow-color-light: rgba(0, 0, 0, 0.2);
+    --shadow-color-heavy: rgba(0, 0, 0, 0.4);
     --border-color: #334155;
 }
 
 /* =================================================================
-   2. MODERN RESET & BASE STYLES
+   2. الإعدادات العامة (General Reset)
    ================================================================= */
 *, *::before, *::after {
     box-sizing: border-box;
@@ -56,15 +54,20 @@ body {
     font-family: "Tajawal", sans-serif;
     color: var(--text-color);
     background-color: var(--background-color);
-    -webkit-font-smoothing: antialiased;
     line-height: 1.7;
     transition: background-color var(--transition-speed), color var(--transition-speed);
     overflow-x: hidden;
 }
 
-/* RTL Adjustments */
-[dir="rtl"] {
-    font-family: "Cairo", sans-serif;
+body.no-scroll {
+    overflow: hidden;
+}
+
+.container {
+    width: 90%;
+    max-width: var(--maxw);
+    margin: 0 auto;
+    padding: 80px 0;
 }
 
 h1, h2, h3, h4 {
@@ -76,466 +79,290 @@ h1, h2, h3, h4 {
 a {
     color: inherit;
     text-decoration: none;
-    transition: var(--transition-speed);
-}
-
-.container {
-    width: 90%;
-    max-width: var(--maxw);
-    margin: 0 auto;
-}
-
-img {
-    max-width: 100%;
-    display: block;
+    transition: 0.3s;
 }
 
 /* =================================================================
-   3. REUSABLE COMPONENTS
+   3. شريط التنقل (Header & Nav)
    ================================================================= */
-.btn {
-    padding: 12px 28px;
-    border-radius: var(--radius-md);
-    font-weight: 700;
-    display: inline-block;
-    cursor: pointer;
-    transition: var(--transition-speed);
-    border: none;
-    text-align: center;
-}
-
-.btn-primary {
-    background-color: var(--primary-color-light);
-    color: #fff;
-}
-
-.btn-outline {
-    background-color: transparent;
-    border: 2px solid #fff;
-    color: #fff;
-}
-
-.btn:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 10px 20px rgba(0,0,0,0.15);
-}
-
-.section-header {
-    text-align: center;
-    padding: 80px 0 40px;
-}
-
-.section-header h2 {
-    font-size: clamp(1.8rem, 4vw, 2.5rem);
-}
-
-.section-header p {
-    color: var(--muted-text-color);
-    max-width: 600px;
-    margin: 0 auto;
-}
-
-/* =================================================================
-   4. HEADER & NAVIGATION
-   ================================================================= */
-header {
-    background: linear-gradient(90deg, #1976d2, #0d47a1);
-    padding: 0.8rem 0;
-    color: #fff;
+.site-header {
     position: fixed;
     top: 0;
     width: 100%;
     z-index: 1000;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-}
-
-[data-theme="dark"] header {
-    background: #1e293b;
-    border-bottom: 1px solid var(--border-color);
-}
-
-.navbar {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.logo a {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    font-size: 1.1rem;
-    font-weight: 800;
-}
-
-.logo img {
-    height: 40px;
-    border-radius: 50%;
-    background: #fff;
-    padding: 2px;
-}
-
-.nav-links {
-    display: flex;
-    gap: 1.5rem;
-    list-style: none;
-}
-
-.nav-links a {
-    color: rgba(255,255,255,0.9);
-    font-weight: 500;
-    font-size: 0.95rem;
-    padding-bottom: 4px;
-    border-bottom: 2px solid transparent;
-}
-
-.nav-links a:hover, .nav-links a.active {
-    color: #fff;
-    border-bottom-color: #fff;
-}
-
-.nav-actions {
-    display: flex;
-    align-items: center;
-    gap: 15px;
-}
-
-.control-btn {
-    background: rgba(255,255,255,0.15);
-    border: none;
-    color: #fff;
-    width: 38px;
-    height: 38px;
-    border-radius: 50%;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 1.1rem;
+    background: transparent;
+    padding: 1rem 0;
     transition: 0.3s;
 }
 
-.control-btn:hover {
-    background: rgba(255,255,255,0.3);
+.site-header.scrolled {
+    background-color: var(--surface-color);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    padding: 0.6rem 0;
 }
 
-/* =================================================================
-   5. HERO SECTION
-   ================================================================= */
-.hero {
-    position: relative;
-    height: 80vh;
-    margin-top: 60px;
+.nav {
     display: flex;
     align-items: center;
-    background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), 
-                url('https://images.unsplash.com/photo-1529070538774-1843cb3265df?auto=format&fit=crop&w=1600&q=80') no-repeat center/cover;
-    color: #fff;
-    text-align: center;
+    justify-content: space-between;
 }
 
-.hero-content h1 {
-    font-size: clamp(2.2rem, 6vw, 3.8rem);
-    color: #fff;
-    margin-bottom: 20px;
+.brand {
+    display: flex;
+    align-items: center;
+    gap: 12px;
 }
 
-.hero-content h1 span {
+.logo-symbol {
+    font-size: 1.5rem;
+    color: #fff;
+    background: var(--primary-color);
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.scrolled .logo-symbol {
+    background: var(--primary-color-light);
+}
+
+.main-nav {
+    display: flex;
+    gap: 20px;
+    list-style: none;
+}
+
+.main-nav a {
+    font-weight: 600;
+    padding: 8px 12px;
+}
+
+.main-nav a:hover {
     color: var(--primary-color-light);
 }
 
-.hero-content p {
-    font-size: 1.2rem;
-    max-width: 800px;
-    margin: 0 auto 35px;
-    opacity: 0.9;
-}
-
-.hero-btns {
+.nav-right {
     display: flex;
+    align-items: center;
     gap: 15px;
-    justify-content: center;
 }
 
 /* =================================================================
-   6. SERVICES TABS
+   4. الأزرار (Buttons)
    ================================================================= */
-.services-nav {
-    background: var(--surface-color);
-    padding: 20px 0;
-    display: flex;
-    justify-content: center;
-    gap: 10px;
-    flex-wrap: wrap;
-    border-bottom: 1px solid var(--border-color);
-    position: sticky;
-    top: 60px;
-    z-index: 100;
+.btn {
+    padding: 12px 24px;
+    border-radius: var(--radius-md);
+    font-weight: 700;
+    cursor: pointer;
+    border: none;
+    display: inline-block;
+    transition: 0.3s;
 }
 
-.service-tab {
-    padding: 15px 20px;
+.btn-primary {
+    background-color: var(--primary-color);
+    color: #fff !important;
+}
+
+.btn-ghost {
+    background-color: transparent;
+    border: 2px solid var(--primary-color);
+    color: var(--primary-color);
+}
+
+.btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px var(--shadow-color-heavy);
+}
+
+.control-btn {
+    background: var(--accent-color);
+    border: none;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    color: var(--primary-color);
     cursor: pointer;
-    border-radius: var(--radius-md);
+}
+
+/* =================================================================
+   5. قسم الهيرو (Hero Section)
+   ================================================================= */
+.hero {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 48px;
+    align-items: center;
+    min-height: 90vh;
+    padding-top: 120px;
+}
+
+.kicker {
+    display: inline-block;
+    background: var(--accent-color);
+    color: var(--primary-color);
+    padding: 8px 16px;
+    border-radius: 50px;
+    font-weight: 700;
+    margin-bottom: 20px;
+}
+
+.hero h1 {
+    font-size: clamp(2.5rem, 5vw, 3.5rem);
+    line-height: 1.2;
+}
+
+.hero h1 span {
+    color: var(--primary-color);
+}
+
+.hero-ctas {
+    display: flex;
+    gap: 15px;
+    margin-top: 30px;
+}
+
+.hero-video {
+    width: 100%;
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    box-shadow: 0 20px 40px var(--shadow-color-heavy);
+    aspect-ratio: 16/9;
+}
+
+.hero-video video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* =================================================================
+   6. الخدمات (Services Grid)
+   ================================================================= */
+.section-subtitle {
+    text-align: center;
+    max-width: 700px;
+    margin: 0 auto 50px;
+    color: var(--muted-text-color);
+}
+
+.services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 25px;
+}
+
+.service-card {
+    background: var(--surface-color);
+    padding: 40px 30px;
+    border-radius: var(--radius-lg);
+    box-shadow: 0 10px 30px var(--shadow-color-light);
     text-align: center;
     transition: 0.3s;
-    border: 1px solid transparent;
-    flex: 1 1 150px;
-    max-width: 180px;
+    border: 1px solid var(--border-color);
 }
 
-.service-tab i {
-    font-size: 26px;
-    color: var(--primary-color);
-    display: block;
-    margin-bottom: 8px;
-}
-
-.service-tab span {
-    font-size: 0.9rem;
-    font-weight: 700;
-}
-
-.service-tab:hover, .service-tab.active {
-    background: var(--accent-color);
+.service-card:hover {
+    transform: translateY(-10px);
     border-color: var(--primary-color);
 }
 
-.services-content {
-    padding: 60px 0;
-}
-
-.service-panel {
-    display: none;
-    grid-template-columns: 1fr 1fr;
-    gap: 50px;
-    align-items: center;
-    animation: fadeIn 0.6s ease;
-}
-
-.service-panel.active {
-    display: grid;
-}
-
-.service-panel img {
-    border-radius: var(--radius-lg);
-    box-shadow: 0 15px 40px var(--shadow-color-heavy);
-}
-
-.panel-info h3 {
-    font-size: 2rem;
+.service-card .icon {
+    font-size: 2.5rem;
     color: var(--primary-color);
     margin-bottom: 20px;
 }
 
-.panel-info ul {
-    list-style: none;
-    margin-top: 20px;
-}
-
-.panel-info li {
-    margin-bottom: 12px;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-}
-
-.panel-info li i {
-    color: #4caf50;
-    font-size: 1.2rem;
-}
-
 /* =================================================================
-   7. STATS & PARTNERS
+   7. الإحصائيات (Stats Section with Video BG)
    ================================================================= */
 .stats-section {
+    position: relative;
     padding: 100px 0;
     color: #fff;
-    text-align: center;
-    background: linear-gradient(rgba(13, 71, 161, 0.85), rgba(13, 71, 161, 0.85)), 
-                url('https://images.unsplash.com/photo-1578575437130-527eed3abbec?auto=format&fit=crop&w=1280&q=80') center/cover fixed;
+    overflow: hidden;
+}
+
+.stats-video-bg {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    min-width: 100%;
+    min-height: 100%;
+    z-index: -1;
+    filter: brightness(0.4);
 }
 
 .stats-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 40px;
-}
-
-.stat-item h3 {
-    font-size: 3.5rem;
-    color: #fff;
-    margin-bottom: 5px;
-}
-
-.stat-item p {
-    font-size: 1.1rem;
-    font-weight: 600;
-    opacity: 0.9;
-}
-
-/* Partners Slider */
-.partners-track {
-    padding: 50px 0;
-    background: var(--surface-color);
-    overflow: hidden;
-    white-space: nowrap;
-    border-top: 1px solid var(--border-color);
-}
-
-.partners-slider {
-    display: flex;
-    gap: 80px;
-    animation: scroll 25s linear infinite;
-    width: max-content;
-}
-
-.partners-slider img {
-    height: 45px;
-    filter: grayscale(1);
-    opacity: 0.5;
-    transition: 0.3s;
-}
-
-.partners-slider img:hover {
-    filter: grayscale(0);
-    opacity: 1;
-}
-
-/* =================================================================
-   8. PROCESS & TESTIMONIALS
-   ================================================================= */
-.process-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     gap: 30px;
-}
-
-.process-card {
-    background: var(--surface-color);
-    padding: 40px 30px;
-    border-radius: var(--radius-lg);
     text-align: center;
-    box-shadow: 0 10px 30px var(--shadow-color-light);
-    border: 1px solid var(--border-color);
 }
 
-.step-num {
-    width: 60px;
-    height: 60px;
-    background: var(--primary-color);
-    color: #fff;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 1.5rem;
+.stat-number {
+    display: block;
+    font-size: 3.5rem;
     font-weight: 800;
-    margin: 0 auto 25px;
+    margin-bottom: 10px;
 }
 
-/* Testimonials */
-.test-slider {
-    max-width: 850px;
-    margin: 40px auto;
-    overflow: hidden;
-    position: relative;
-}
-
-.test-track {
-    display: flex;
-    transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.test-card {
-    min-width: 100%;
-    padding: 50px;
-    background: var(--surface-color);
-    border-radius: var(--radius-lg);
-    text-align: center;
-    box-shadow: 0 15px 40px var(--shadow-color-heavy);
-}
-
-.test-card img {
-    width: 90px;
-    height: 90px;
-    border-radius: 50%;
-    margin: 0 auto 20px;
-    border: 4px solid var(--accent-color-dark);
-}
-
-.test-card p {
-    font-style: italic;
-    font-size: 1.15rem;
-    color: var(--text-color);
-    margin-bottom: 20px;
-}
-
-.test-controls {
-    display: flex;
-    justify-content: center;
-    gap: 15px;
-    margin-top: 30px;
+.stat-label {
+    font-size: 1.1rem;
+    font-weight: 500;
 }
 
 /* =================================================================
-   9. FOOTER & MODALS
+   8. التقييمات (Testimonials)
    ================================================================= */
-footer {
-    background: #020617;
-    color: #fff;
-    padding: 80px 0 30px;
+.testimonials-container {
+    max-width: 900px;
+    margin: 0 auto;
+    overflow: hidden;
 }
 
-.footer-grid {
-    display: grid;
-    grid-template-columns: 1.5fr 1fr 1.2fr;
-    gap: 60px;
-    margin-bottom: 50px;
+.test-cards {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
 }
 
-.footer-col h4 {
-    color: #fff;
-    margin-bottom: 25px;
-    font-size: 1.2rem;
-}
-
-.footer-col ul {
-    list-style: none;
-}
-
-.footer-col li {
-    margin-bottom: 15px;
-    opacity: 0.8;
-}
-
-.footer-col li i {
-    margin-right: 10px;
-    color: var(--primary-color-light);
-}
-
-.footer-bottom {
-    border-top: 1px solid rgba(255,255,255,0.1);
-    padding-top: 30px;
+.test {
+    min-width: 100%;
+    padding: 40px;
     text-align: center;
-    font-size: 0.9rem;
-    opacity: 0.6;
+    background: var(--surface-color);
+    border-radius: var(--radius-lg);
 }
 
-/* Auth Modal */
+.test-avatar {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    margin-bottom: 20px;
+    border: 3px solid var(--primary-color);
+}
+
+/* =================================================================
+   9. النوافذ المنبثقة (Modals)
+   ================================================================= */
 .modal-overlay {
     position: fixed;
     top: 0; left: 0;
     width: 100%; height: 100%;
-    background: rgba(0,0,0,0.8);
+    background: rgba(0,0,0,0.6);
     backdrop-filter: blur(5px);
-    z-index: 2000;
     display: flex;
     align-items: center;
     justify-content: center;
+    z-index: 2000;
     opacity: 0;
     visibility: hidden;
-    transition: 0.4s;
+    transition: 0.3s;
 }
 
 .modal-overlay.visible {
@@ -545,25 +372,11 @@ footer {
 
 .modal-content {
     background: var(--surface-color);
-    padding: 45px;
+    padding: 40px;
     border-radius: var(--radius-lg);
     width: 90%;
     max-width: 450px;
     position: relative;
-    transform: scale(0.8);
-    transition: 0.4s;
-}
-
-.modal-overlay.visible .modal-content {
-    transform: scale(1);
-}
-
-.close-modal {
-    position: absolute;
-    top: 20px; right: 20px;
-    font-size: 1.8rem;
-    cursor: pointer;
-    color: var(--muted-text-color);
 }
 
 .form-group {
@@ -572,32 +385,33 @@ footer {
 
 .form-input {
     width: 100%;
-    padding: 14px;
-    border: 1px solid var(--border-color);
+    padding: 12px;
     border-radius: 8px;
+    border: 1px solid var(--border-color);
     background: var(--background-color);
     color: var(--text-color);
-    font-family: inherit;
-    font-size: 1rem;
 }
+
+.form-btn {
+    width: 100%;
+    padding: 14px;
+    background: var(--primary-color);
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.hidden { display: none; }
 
 /* =================================================================
-   10. ANIMATIONS & RESPONSIVENESS
+   10. الحركات (Animations)
    ================================================================= */
-@keyframes fadeIn {
-    from { opacity: 0; transform: translateY(20px); }
-    to { opacity: 1; transform: translateY(0); }
-}
-
-@keyframes scroll {
-    0% { transform: translateX(0); }
-    100% { transform: translateX(-50%); }
-}
-
 .animated-item {
     opacity: 0;
     transform: translateY(30px);
-    transition: 0.8s ease-out;
+    transition: 0.6s ease-out;
 }
 
 .animated-item.is-visible {
@@ -605,41 +419,19 @@ footer {
     transform: translateY(0);
 }
 
-/* Mobile Responsive */
+/* =================================================================
+   11. التوافق مع الجوال (Responsive)
+   ================================================================= */
 @media (max-width: 992px) {
-    .nav-links, .nav-actions .btn-login {
-        display: none;
-    }
-    
-    .service-panel {
+    .hero {
         grid-template-columns: 1fr;
         text-align: center;
     }
-    
-    .service-panel img {
-        order: -1;
-    }
-
-    .footer-grid {
-        grid-template-columns: 1fr;
-        text-align: center;
-    }
+    .nav-center { display: none; }
+    .hero-ctas { justify-content: center; }
 }
 
 @media (max-width: 768px) {
-    .hero {
-        height: 70vh;
-    }
-    
-    .hero-content h1 {
-        font-size: 2.2rem;
-    }
-    
-    .hero-btns {
-        flex-direction: column;
-    }
-
-    .why-grid {
-        grid-template-columns: 1fr;
-    }
+    .container { padding: 40px 0; }
+    .footer-grid { grid-template-columns: 1fr; text-align: center; }
 }
