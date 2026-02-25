@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl" id="mainHtml">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>تتبع الشحنات | المصرية الإماراتية</title>
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    
+    <style>
+        :root { --primary: #003366; --gold: #cda434; --bg: #f8f9fa; }
+        body { font-family: 'Segoe UI', Tahoma, sans-serif; background: var(--bg); margin: 0; padding: 20px; }
+        [lang="en"] { direction: ltr; text-align: left; }
+        .container { max-width: 900px; margin: 0 auto; background: #fff; padding: 25px; border-radius: 15px; box-shadow: 0 5px 20px rgba(0,0,0,0.1); }
+        
+        .header { display: flex; justify-content: space-between; align-items: center; border-bottom: 3px solid var(--primary); margin-bottom: 20px; padding-bottom: 10px; }
+        .btn-lang { background: var(--gold); color: #fff; border: none; padding: 8px 15px; cursor: pointer; border-radius: 5px; font-weight: bold; }
+        
+        .search-section { display: flex; gap: 10px; margin-bottom: 25px; }
+        input { flex: 1; padding: 12px; border: 1px solid #ddd; border-radius: 8px; }
+        #searchBtn { background: var(--primary); color: white; border: none; padding: 12px 25px; border-radius: 8px; cursor: pointer; }
+
+        #map { height: 350px; width: 100%; border-radius: 10px; margin: 20px 0; border: 1px solid #ddd; display: none; }
+        
+        .shipment-info { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; background: #fefefe; padding: 20px; border: 1px solid #eee; border-radius: 10px; display: none; }
+        
+        /* Timeline Style */
+        .timeline { list-style: none; padding: 20px 0; position: relative; }
+        .timeline::before { content: ''; position: absolute; top: 0; bottom: 0; width: 2px; background: #ddd; right: 20px; }
+        [lang="en"] .timeline::before { right: auto; left: 20px; }
+        .t-item { position: relative; margin-bottom: 25px; padding-right: 45px; }
+        [lang="en"] .t-item { padding-right: 0; padding-left: 45px; }
+        .t-item::after { content: '\f48b'; font-family: "Font Awesome 6 Free"; font-weight: 900; position: absolute; top: 0; right: 10px; background: #fff; border: 2px solid var(--primary); width: 22px; height: 22px; border-radius: 50%; font-size: 12px; display: flex; align-items: center; justify-content: center; }
+        [lang="en"] .t-item::after { right: auto; left: 10px; }
+        .completed::after { background: var(--gold); border-color: var(--gold); color: white; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="header">
+        <h2 id="ui-title">نظام تتبع الشحنات</h2>
+        <button class="btn-lang" onclick="toggleLang()" id="langBtn">English</button>
+    </div>
+
+    <div class="search-section">
+        <input type="text" id="trackInput" placeholder="أدخل رقم الحاوية (مثال: MEE-2024-001)">
+        <button id="searchBtn" onclick="performTracking()">تتبع</button>
+    </div>
+
+    <div id="shipmentCard" class="shipment-info">
+        <div>
+            <h3 id="ui-vessel">---</h3>
+            <p><strong>الحالة:</strong> <span id="ui-status">---</span></p>
+            <p><strong>آخر تحديث:</strong> <span id="ui-time">---</span></p>
+        </div>
+        <div>
+            <p><i class="fa-solid fa-ship"></i> المصدر: <span id="ui-origin">---</span></p>
+            <p><i class="fa-solid fa-location-dot"></i> الوجهة: <span id="ui-dest">---</span></p>
+        </div>
+    </div>
+
+    <div id="map"></div>
+
+    <ul class="timeline" id="ui-timeline"></ul>
+</div>
+
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script>
+    let currentLang = 'ar';
+    let map;
+
+    const texts = {
+        ar: { title: "نظام تتبع الشحنات", btn: "تتبع", placeholder: "رقم الحاوية...", error: "خطأ في الرقم" },
+        en: { title: "Shipment Tracking System", btn: "Track", placeholder: "Container ID...", error: "Invalid ID" }
+    };
+
+    function toggleLang() {
+        currentLang = currentLang === 'ar' ? 'en' : 'ar';
+        document.getElementById('mainHtml').setAttribute('lang', currentLang);
+        document.getElementById('mainHtml').setAttribute('dir', currentLang === 'ar' ? 'rtl' : 'ltr');
+        document.getElementById('langBtn').innerText = currentLang === 'ar' ? 'English' : 'عربي';
+        document.getElementById('ui-title').innerText = texts[currentLang].title;
+        document.getElementById('trackInput').placeholder = texts[currentLang].placeholder;
+        document.getElementById('searchBtn').innerText = texts[currentLang].btn;
+    }
+
+    async function performTracking() {
+        const id = document.getElementById('trackInput').value;
+        const file = currentLang === 'ar' ? 'shipments-ar.json' : 'shipments.json';
+        
+        try {
+            const res = await fetch(file);
+            const data = await res.json();
+            const ship = data.find(s => s.tracking_id === id);
+
+            if (ship) {
+                showData(ship);
+                showMap(ship.current_location);
+            } else { alert(texts[currentLang].error); }
+        } catch (e) { console.error(e); }
+    }
+
+    function showData(ship) {
+        document.getElementById('shipmentCard').style.display = 'grid';
+        document.getElementById('ui-vessel').innerText = ship.vessel_name;
+        document.getElementById('ui-status').innerText = ship.current_status;
+        document.getElementById('ui-time').innerText = ship.last_update;
+        document.getElementById('ui-origin').innerText = ship.origin.port;
+        document.getElementById('ui-dest').innerText = ship.destination.port;
+
+        const tl = document.getElementById('ui-timeline');
+        tl.innerHTML = "";
+        ship.milestones.forEach(m => {
+            const li = document.createElement('li');
+            li.className = `t-item ${m.completed ? 'completed' : ''}`;
+            li.innerHTML = `<strong>${m.stage}</strong><br><small>${m.location} | ${m.date}</small>`;
+            tl.appendChild(li);
+        });
+    }
+
+    function showMap(loc) {
+        document.getElementById('map').style.display = 'block';
+        if (map) map.remove();
+        map = L.map('map').setView([loc.lat, loc.lng], 7);
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png').addTo(map);
+        L.marker([loc.lat, loc.lng]).addTo(map).bindPopup(loc.name).openPopup();
+    }
+</script>
+</body>
+</html>
