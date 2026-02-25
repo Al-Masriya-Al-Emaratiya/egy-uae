@@ -1,0 +1,22 @@
+[
+  {
+    "tracking_id": "MEE-2024-001",
+    "container_number": "MSCU1234567",
+    "vessel_name": "MSC AMELIA",
+    "current_status": "In Transit (Near Suez Canal)",
+    "last_update": "2024-05-24 10:00 AM",
+    "current_location": {
+      "lat": 29.9602,
+      "lng": 32.5532,
+      "name": "Suez Canal Entrance"
+    },
+    "origin": { "port": "Jebel Ali Port", "date": "2024-05-15" },
+    "destination": { "port": "Alexandria Port", "estimated_arrival": "2024-05-28" },
+    "milestones": [
+      { "stage": "Container Loaded", "location": "Dubai", "date": "2024-05-14", "completed": true },
+      { "stage": "Vessel Departed", "location": "Jebel Ali", "date": "2024-05-15", "completed": true },
+      { "stage": "Suez Canal Entry", "location": "Suez", "date": "2024-05-24", "completed": true },
+      { "stage": "Final Destination", "location": "Alexandria", "date": "2024-05-28", "completed": false }
+    ]
+  }
+]
