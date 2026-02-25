@@ -1,0 +1,22 @@
+[
+  {
+    "tracking_id": "MEE-2024-001",
+    "container_number": "MSCU1234567",
+    "vessel_name": "إم إس سي أميليا",
+    "current_status": "قيد الانتقال (بالقرب من قناة السويس)",
+    "last_update": "24-05-2024 10:00 صباحاً",
+    "current_location": {
+      "lat": 29.9602,
+      "lng": 32.5532,
+      "name": "مدخل قناة السويس"
+    },
+    "origin": { "port": "ميناء جبل علي", "date": "15-05-2024" },
+    "destination": { "port": "ميناء الإسكندرية", "estimated_arrival": "28-05-2024" },
+    "milestones": [
+      { "stage": "تحميل الحاوية", "location": "دبي", "date": "14-05-2024", "completed": true },
+      { "stage": "مغادرة السفينة", "location": "جبل علي", "date": "15-05-2024", "completed": true },
+      { "stage": "دخول قناة السويس", "location": "السويس", "date": "24-05-2024", "completed": true },
+      { "stage": "الوصول النهائي", "location": "الإسكندرية", "date": "28-05-2024", "completed": false }
+    ]
+  }
+]
