@@ -183,7 +183,6 @@
             if(!id) return;
 
             try {
-                // ملاحظة: تأكد من أن ملف JSON يدعم العربية أو قم بتبديل المفاتيح هنا
                 const response = await fetch('shipments-ar.json');
                 const data = await response.json();
                 const ship = data.find(s => s.tracking_id === id);
