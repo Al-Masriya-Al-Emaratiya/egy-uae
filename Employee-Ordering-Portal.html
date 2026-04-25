@@ -3,80 +3,151 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AL MASRIYA AL EMARATIYA</title>
+    <title>المصرية الإماراتية للتوكيلات التجارية</title>
+    <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Tajawal:wght@300;500;700&display=swap" rel="stylesheet">
     <style>
+        :root {
+            --primary-color: #0d1b2a; /* كحلي ملكي */
+            --accent-color: #c5a059;  /* ذهبي كلاسيكي */
+            --bg-color: #f8f9fa;
+            --text-dark: #1b263b;
+        }
+
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Tajawal', sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #f4f4f9;
-            color: #333;
-            text-align: center;
+            background-color: var(--bg-color);
+            color: var(--text-dark);
+            line-height: 1.6;
         }
+
+        /* شريط علوي صغير للترجمة */
+        .top-bar {
+            background: #fff;
+            padding: 10px 5%;
+            display: flex;
+            justify-content: flex-end;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .translate-btn {
+            text-decoration: none;
+            color: var(--primary-color);
+            border: 1px solid var(--primary-color);
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            transition: 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .translate-btn:hover {
+            background: var(--primary-color);
+            color: #fff;
+        }
+
         header {
-            background-color: #1a2a6c;
+            background-color: var(--primary-color);
             color: white;
-            padding: 2rem 1rem;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            padding: 60px 20px;
+            text-align: center;
+            border-bottom: 5px solid var(--accent-color);
         }
+
         header h1 {
+            font-family: 'Amiri', serif;
             margin: 0;
-            font-size: 1.8rem;
+            font-size: 2.5rem;
             letter-spacing: 1px;
         }
+
         header p {
-            margin: 10px 0 0;
-            font-size: 1rem;
-            opacity: 0.9;
+            margin: 15px 0 0;
+            font-size: 1.2rem;
+            color: var(--accent-color);
+            text-transform: uppercase;
+            font-weight: 300;
+            letter-spacing: 2px;
         }
+
         .container {
-            max-width: 800px;
-            margin: 20px auto;
-            padding: 10px;
+            max-width: 900px;
+            margin: -40px auto 40px; /* تداخل بسيط مع الهيدر لإعطاء لمسة عصرية */
+            padding: 20px;
             background: white;
-            border-radius: 8px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
         }
-        .iframe-container {
+
+        .form-wrapper {
             position: relative;
-            overflow: hidden;
             width: 100%;
-            /* لجعل النموذج يتناسب مع الشاشات */
+            overflow: hidden;
+            border-radius: 8px;
         }
+
         iframe {
             width: 100%;
             border: none;
+            /* نصيحة: قلل الـ 3760 إذا وجدت فراغاً كبيراً أسفل النموذج */
         }
+
         footer {
-            margin-top: 20px;
-            padding: 20px;
-            font-size: 0.9rem;
-            color: #777;
+            text-align: center;
+            padding: 40px 20px;
+            background: #e9ecef;
+            color: var(--text-dark);
+            font-size: 0.95rem;
+        }
+
+        .footer-line {
+            width: 50px;
+            height: 2px;
+            background: var(--accent-color);
+            margin: 10px auto;
+        }
+
+        /* تحسينات للشاشات الصغيرة */
+        @media (max-width: 600px) {
+            header h1 { font-size: 1.8rem; }
+            header p { font-size: 0.9rem; }
+            .container { margin-top: 20px; width: 90%; }
         }
     </style>
 </head>
 <body>
 
+    <div class="top-bar">
+        <a href="" class="translate-btn">
+            🌐 English Version
+        </a>
+    </div>
+
     <header>
-        <h1>AL MASRIYA AL EMARATIYA</h1>
-        <p>FOR COMMERCIAL AGENCIES, IMPORT & EXPORT</p>
+        <h1>المصرية الإماراتية</h1>
+        <p>AL MASRIYA AL EMARATIYA<br>FOR COMMERCIAL AGENCIES, IMPORT & EXPORT</p>
     </header>
 
     <div class="container">
-        <div class="iframe-container">
+        <div class="form-wrapper">
             <iframe 
                 src="https://docs.google.com/forms/d/e/1FAIpQLSeHLD9ggpW1RG8a8E5NqJfFg8AycnbrQaKtP1HuqKOQVtimwA/viewform?embedded=true" 
                 height="3760" 
                 frameborder="0" 
                 marginheight="0" 
                 marginwidth="0">
-                Loading…
+                جاري التحميل…
             </iframe>
         </div>
     </div>
 
     <footer>
-        &copy; 2026 AL MASRIYA AL EMARATIYA - All Rights Reserved
+        <div class="footer-line"></div>
+        <p>&copy; 2026 المصرية الإماراتية للتوكيلات التجارية والاستيراد والتصدير</p>
+        <p style="font-size: 0.8rem; opacity: 0.7;">جميع الحقوق محفوظة</p>
     </footer>
 
 </body>
