@@ -1,153 +1,173 @@
 <!DOCTYPE html>
-<html lang="ar" dir="rtl">
+<html lang="ar" dir="rtl" data-theme="light">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>المصرية الإماراتية للتوكيلات التجارية</title>
-    <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Tajawal:wght@300;500;700&display=swap" rel="stylesheet">
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>المصرية الإماراتية — منصة التجارة الدولية</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800&family=Cairo:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
     <style>
         :root {
-            --primary-color: #0d1b2a; /* كحلي ملكي */
-            --accent-color: #c5a059;  /* ذهبي كلاسيكي */
-            --bg-color: #f8f9fa;
-            --text-dark: #1b263b;
+            /* استخراج درجات الأزرق من كود شركتك الأصلي */
+            --primary-color: #0d47a1; 
+            --primary-color-light: #1976d2;
+            --accent-color: #e3f2fd; 
+            --background-color: #f8f9fa; 
+            --surface-color: #ffffff;
+            --text-color: #212529; 
+            --heading-color: #0d47a1;
+            --radius-lg: 16px;
         }
 
         body {
-            font-family: 'Tajawal', sans-serif;
+            font-family: "Cairo", sans-serif;
             margin: 0;
             padding: 0;
-            background-color: var(--bg-color);
-            color: var(--text-dark);
-            line-height: 1.6;
+            background-color: var(--background-color);
+            color: var(--text-color);
+            line-height: 1.7;
         }
 
-        /* شريط علوي صغير للترجمة */
-        .top-bar {
-            background: #fff;
-            padding: 10px 5%;
+        /* Header */
+        header {
+            background: linear-gradient(90deg, #1976d2, #0d47a1);
+            padding: 1rem 5%;
+            color: #fff;
             display: flex;
-            justify-content: flex-end;
-            border-bottom: 1px solid #ddd;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
         }
 
-        .translate-btn {
-            text-decoration: none;
-            color: var(--primary-color);
-            border: 1px solid var(--primary-color);
-            padding: 5px 15px;
-            border-radius: 20px;
-            font-size: 0.9rem;
-            transition: 0.3s;
+        .logo {
             display: flex;
             align-items: center;
-            gap: 5px;
-        }
-
-        .translate-btn:hover {
-            background: var(--primary-color);
-            color: #fff;
-        }
-
-        header {
-            background-color: var(--primary-color);
-            color: white;
-            padding: 60px 20px;
-            text-align: center;
-            border-bottom: 5px solid var(--accent-color);
-        }
-
-        header h1 {
-            font-family: 'Amiri', serif;
-            margin: 0;
-            font-size: 2.5rem;
-            letter-spacing: 1px;
-        }
-
-        header p {
-            margin: 15px 0 0;
+            gap: 12px;
+            font-weight: 700;
             font-size: 1.2rem;
-            color: var(--accent-color);
-            text-transform: uppercase;
-            font-weight: 300;
-            letter-spacing: 2px;
         }
 
-        .container {
-            max-width: 900px;
-            margin: -40px auto 40px; /* تداخل بسيط مع الهيدر لإعطاء لمسة عصرية */
-            padding: 20px;
-            background: white;
-            border-radius: 12px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-        }
-
-        .form-wrapper {
-            position: relative;
-            width: 100%;
-            overflow: hidden;
+        .translate-container a {
+            text-decoration: none;
+            color: #fff;
+            background: rgba(255,255,255,0.2);
+            padding: 8px 15px;
             border-radius: 8px;
+            font-size: 0.9rem;
+            transition: 0.3s;
+            border: 1px solid rgba(255,255,255,0.4);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .translate-container a:hover {
+            background: #fff;
+            color: var(--primary-color);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(13, 71, 161, 0.9), rgba(13, 71, 161, 0.8)), 
+                        url('https://images.unsplash.com/photo-1529070538774-1843cb3265df?auto=format&fit=crop&w=1600&q=80');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            text-align: center;
+            padding: 60px 20px;
+        }
+
+        .hero h1 {
+            color: white;
+            font-size: 2.2rem;
+            margin-bottom: 10px;
+        }
+
+        .hero p {
+            opacity: 0.9;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        /* Main Container */
+        .main-container {
+            max-width: 1000px;
+            margin: -30px auto 40px;
+            padding: 20px;
+            background: var(--surface-color);
+            border-radius: var(--radius-lg);
+            box-shadow: 0 15px 35px rgba(13, 71, 161, 0.1);
+        }
+
+        .form-frame {
+            width: 100%;
+            border-radius: 8px;
+            overflow: hidden;
+            border: 1px solid #eee;
         }
 
         iframe {
             width: 100%;
-            border: none;
-            /* نصيحة: قلل الـ 3760 إذا وجدت فراغاً كبيراً أسفل النموذج */
+            display: block;
         }
 
         footer {
+            background: #020617;
+            color: #fff;
             text-align: center;
-            padding: 40px 20px;
-            background: #e9ecef;
-            color: var(--text-dark);
-            font-size: 0.95rem;
+            padding: 30px;
+            font-size: 0.9rem;
         }
 
-        .footer-line {
-            width: 50px;
-            height: 2px;
-            background: var(--accent-color);
-            margin: 10px auto;
-        }
-
-        /* تحسينات للشاشات الصغيرة */
-        @media (max-width: 600px) {
-            header h1 { font-size: 1.8rem; }
-            header p { font-size: 0.9rem; }
-            .container { margin-top: 20px; width: 90%; }
+        /* Responsive */
+        @media (max-width: 768px) {
+            header { flex-direction: column; gap: 15px; text-align: center; }
+            .hero h1 { font-size: 1.6rem; }
+            .main-container { width: 95%; margin-top: 20px; }
         }
     </style>
 </head>
 <body>
 
-    <div class="top-bar">
-        <a href="" class="translate-btn">
-            🌐 English Version
-        </a>
-    </div>
-
     <header>
-        <h1>المصرية الإماراتية</h1>
-        <p>AL MASRIYA AL EMARATIYA<br>FOR COMMERCIAL AGENCIES, IMPORT & EXPORT</p>
+        <div class="logo">
+            <i class="fas fa-ship"></i>
+            <span>المصرية الإماراتية للتوكيلات التجارية</span>
+        </div>
+        <div class="translate-container">
+            <a href="">
+                <i class="fas fa-globe"></i> English Version
+            </a>
+        </div>
     </header>
 
-    <div class="container">
-        <div class="form-wrapper">
+    <section class="hero">
+        <h1>AL MASRIYA AL EMARATIYA</h1>
+        <p>للشركة المصرية الإماراتية للتوكيلات التجارية والاستيراد والتصدير - حلول لوجستية متكاملة</p>
+    </section>
+
+    <div class="main-container">
+        <div class="form-frame">
             <iframe 
                 src="https://docs.google.com/forms/d/e/1FAIpQLSeHLD9ggpW1RG8a8E5NqJfFg8AycnbrQaKtP1HuqKOQVtimwA/viewform?embedded=true" 
+                width="100%" 
                 height="3760" 
                 frameborder="0" 
                 marginheight="0" 
                 marginwidth="0">
-                جاري التحميل…
+                جاري التحميل...
             </iframe>
         </div>
     </div>
 
     <footer>
-        <div class="footer-line"></div>
-        <p>&copy; 2026 المصرية الإماراتية للتوكيلات التجارية والاستيراد والتصدير</p>
-        <p style="font-size: 0.8rem; opacity: 0.7;">جميع الحقوق محفوظة</p>
+        <p>&copy; 2026 Al Masriya Al Emaratia. All Rights Reserved.</p>
+        <p style="opacity: 0.5; font-size: 0.8rem; margin-top: 5px;">IMPORT & EXPORT - COMMERCIAL AGENCIES</p>
     </footer>
 
 </body>
