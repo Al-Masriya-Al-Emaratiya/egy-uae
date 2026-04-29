@@ -1,0 +1,28 @@
+{
+  "products": [
+    {
+      "id": 1,
+      "name": "Industrial Power Generator",
+      "category": "Machinery",
+      "description": "High-capacity diesel generator for industrial use.",
+      "image": "https://placehold.co/600x400/07090f/00d2ff?text=Machinery+Unit",
+      "tilt_intensity": "20"
+    },
+    {
+      "id": 2,
+      "name": "Luxury Solar Solutions",
+      "category": "Energy",
+      "description": "Advanced photovoltaic panels for sustainable power.",
+      "image": "https://placehold.co/600x400/07090f/00d2ff?text=Solar+Energy",
+      "tilt_intensity": "15"
+    },
+    {
+      "id": 3,
+      "name": "Global Cargo Logistics",
+      "category": "Logistics",
+      "description": "Comprehensive import/export shipping services.",
+      "image": "https://placehold.co/600x400/07090f/00d2ff?text=Shipping+Logistics",
+      "tilt_intensity": "25"
+    }
+  ]
+}
