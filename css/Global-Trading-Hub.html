@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AL MASSRIYA AL EMARATIYA | Global Trade</title>
+    <!-- Fonts & Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Montserrat:wght@300;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="market-style.css">
+</head>
+<body>
+
+    <!-- VIDEO BACKGROUND SECTION -->
+    <div class="video-background-container">
+        <!-- تأكد من وضع اسم ملف الفيديو الخاص بك هنا -->
+        <video autoplay muted loop playsinline id="bgVideo">
+            <source src="sky_background.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+        <div class="video-overlay"></div>
+    </div>
+
+    <!-- Background Animated Lines -->
+    <div class="animated-lines-container" id="linesContainer"></div>
+
+    <header>
+        <div class="logo">
+            <h2>EGY UAE</h2>
+        </div>
+        <nav>
+            <ul class="nav-links">
+                <li><a href="#" class="active">Home</a></li>
+                <li><a href="#catalog">Agencies</a></li>
+                <li><a href="#contact">RFQ Portal</a></li>
+            </ul>
+        </nav>
+        <div class="contact-info-head">
+            <span>Global Trading Hub</span>
+        </div>
+    </header>
+
+    <main class="section-padding">
+        <div class="hero-section">
+            <h1>AL MASSRIYA AL EMARATIYA</h1>
+            <p>IMPORT • EXPORT • COMMERCIAL AGENCIES</p>
+        </div>
+
+        <!-- SEARCH & CATEGORY FILTER -->
+        <div class="catalog-controls">
+            <div class="search-bar">
+                <i class="fas fa-search"></i>
+                <input type="text" id="productSearch" placeholder="Search by name, category, or agency...">
+            </div>
+            <div class="filter-tabs" id="filterTabs">
+                <button class="tab-btn active" data-filter="all">All Sectors</button>
+                <!-- Categories will be generated here -->
+            </div>
+        </div>
+
+        <!-- PRODUCTS GRID -->
+        <div class="products-container" id="productsGrid">
+            <!-- Products loaded from JSON will appear here -->
+        </div>
+
+        <div id="noData" class="empty-state" style="display:none;">
+            <i class="fas fa-search-minus"></i>
+            <p>No results match your search criteria.</p>
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-brand">
+                <h3>AL MASSRIYA AL EMARATIYA</h3>
+                <p>Connecting Global Markets with Quality & Reliability.</p>
+            </div>
+            <div class="footer-links">
+                <a href="#">Privacy Policy</a>
+                <a href="#">Terms of Service</a>
+                <a href="#">Partner With Us</a>
+            </div>
+        </div>
+        <div class="copyright">
+            © 2024 AL MASSRIYA AL EMARATIYA. All Rights Reserved.
+        </div>
+    </footer>
+
+    <!-- Scripts for 3D Tilt and Data Loading -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.8.0/vanilla-tilt.min.js"></script>
+    <script>
+        // 1. Fetch and Display Data
+        async function loadStore() {
+            // ملاحظة: في بيئة العمل الحقيقية استخدم fetch('products.json')
+            // هنا وضعت بيانات تجريبية لمحاكاة ملف الـ JSON
+            const data = {
+                "products": [
+                    { "name": "Heavy Duty Excavator", "cat": "Machinery", "img": "https://placehold.co/600x400/07090f/00d2ff?text=Excavator", "tilt": "20" },
+                    { "name": "Petrochemical Solutions", "cat": "Chemicals", "img": "https://placehold.co/600x400/07090f/00d2ff?text=Chemicals", "tilt": "15" },
+                    { "name": "Textile Import Line", "cat": "Textiles", "img": "https://placehold.co/600x400/07090f/00d2ff?text=Textiles", "tilt": "25" },
+                    { "name": "Automotive Parts", "cat": "Agencies", "img": "https://placehold.co/600x400/07090f/00d2ff?text=Automotive", "tilt": "10" },
+                    { "name": "Smart Energy Grid", "cat": "Energy", "img": "https://placehold.co/600x400/07090f/00d2ff?text=Energy", "tilt": "20" }
+                ]
+            };
+
+            const grid = document.getElementById('productsGrid');
+            const search = document.getElementById('productSearch');
+            const filterTabs = document.getElementById('filterTabs');
+
+            // Generate Products
+            function render(items) {
+                grid.innerHTML = items.map(item => `
+                    <div class="product-card" data-tilt data-tilt-max="${item.tilt}">
+                        <div class="card-tag">${item.cat}</div>
+                        <div class="card-img">
+                            <img src="${item.img}" alt="${item.name}">
+                        </div>
+                        <div class="card-body">
+                            <h3>${item.name}</h3>
+                            <p>Global Trading Standards</p>
+                            <a href="mailto:sales@al-massriya.com?subject=RFQ for ${item.name}" class="rfq-button">
+                                <i class="fas fa-file-contract"></i> REQUEST A QUOTE
+                            </a>
+                        </div>
+                    </div>
+                `).join('');
+
+                // تفعيل تأثير الـ 3D Tilt بعد إضافة العناصر
+                VanillaTilt.init(document.querySelectorAll(".product-card"), {
+                    max: 15,
+                    speed: 400,
+                    glare: true,
+                    "max-glare": 0.2,
+                });
+            }
+
+            render(data.products);
+
+            // Search Logic
+            search.addEventListener('input', (e) => {
+                const term = e.target.value.toLowerCase();
+                const filtered = data.products.filter(p => 
+                    p.name.toLowerCase().includes(term) || p.cat.toLowerCase().includes(term)
+                );
+                render(filtered);
+                document.getElementById('noData').style.display = filtered.length ? 'none' : 'block';
+            });
+
+            // Dynamic Category Tabs
+            const categories = ['all', ...new Set(data.products.map(p => p.cat))];
+            filterTabs.innerHTML = categories.map(c => 
+                `<button class="tab-btn ${c==='all'?'active':''}" onclick="filterCat('${c}', this)">${c.toUpperCase()}</button>`
+            ).join('');
+
+            window.filterCat = (cat, btn) => {
+                const filtered = cat === 'all' ? data.products : data.products.filter(p => p.cat === cat);
+                render(filtered);
+                document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+            }
+        }
+
+        loadStore();
+
+        // Background lines animation
+        const linesContainer = document.getElementById('linesContainer');
+        for (let i = 0; i < 15; i++) {
+            const line = document.createElement('div');
+            line.className = 'animated-line';
+            line.style.top = Math.random() * 100 + 'vh';
+            line.style.animationDelay = Math.random() * 8 + 's';
+            linesContainer.appendChild(line);
+        }
+    </script>
+</body>
+</html>
