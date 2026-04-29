@@ -2,8 +2,8 @@ document.addEventListener('DOMContentLoaded', () => {
     
     // بيانات التجربة - تأكد من كتابتها بدقة
     const clientsDB = {
-        "admin": "123", // يوزر: admin | باسور: 123
-        "ame_user": "ame2025" // يوزر: ame_user | باسور: ame2025
+        "info@egy-uae.com": "123", // يوزر: admin | باسور: 123
+        "digital@egy-uae.com": "ame2025" // يوزر: ame_user | باسور: ame2025
     };
 
     const loginForm = document.getElementById('login-form');
