@@ -4,15 +4,15 @@ document.addEventListener('DOMContentLoaded', () => {
     const userMapping = {
         "30604041304577": { 
             "pass": "123456", 
-            "target": "eg-30604041304577/dasbhboard.html" 
+            "target": "eg-30604041304577-dasbhboard.html" 
         },
         "20501012233445": { 
             "pass": "ame77", 
-            "target": "eg-20501012233445/dashboard.html" 
+            "target": "eg-20501012233445-dashboard.html" 
         },
         "10020030040050": { 
             "pass": "pass2025", 
-            "target": "eg-10020030040050/dashboard.html" 
+            "target": "eg-10020030040050-dashboard.html" 
         }
     };
 
