@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="zh-CN" dir="ltr">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Al Masriya Al Emaratiya | 贸易的未来 - 连接埃及与阿联酋</title>
+    <meta name="description" content="Al Masriya Al Emaratiya 是您实现无缝贸易和物流解决方案的战略合作伙伴，致力于连接埃及与阿拉伯联合酋长国之间的市场并促进增长。" />
+    <meta name="keywords" content="Al Masriya Al Emaratiya, 埃及阿联酋贸易, 物流, 供应链, 货运代理, 清关, 贸易便利化, 埃及, 阿联酋, 国际贸易" />
+    <meta name="author" content="Al Masriya Al Emaratiya Team" />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="YOUR_WEBSITE_URL" /> 
+    <meta property="og:title" content="Al Masriya Al Emaratiya | 贸易的未来 - 连接埃及与阿联酋" />
+    <meta property="og:description" content="连接埃及与阿联酋市场的战略贸易与物流合作伙伴。" />
+    <meta property="og:image" content="YOUR_OG_IMAGE_URL" /> 
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content="YOUR_WEBSITE_URL" /> 
+    <meta property="twitter:title" content="Al Masriya Al Emaratiya | 贸易的未来" />
+    <meta property="twitter:description" content="连接埃及与阿联酋，打造高效贸易桥梁。" />
+    <meta property="twitter:image" content="YOUR_OG_IMAGE_URL" /> 
+    
+    <!-- Google Fonts: Noto Sans SC for Chinese -->
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;700;900&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    
+    <!-- Swiper CSS & AOS -->
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/style.css">
+
+    <style>
+        /* تحسينات الخطوط للغة الصينية */
+        body {
+            font-family: 'Noto Sans SC', sans-serif;
+            line-height: 1.6;
+        }
+        h1, h2, h3, h4, .hero-title {
+            font-weight: 700;
+        }
+        .hero-title {
+            letter-spacing: 2px;
+        }
+    </style>
+</head>
+<body class="dark-theme">
+
+    <!-- Custom 3D Cursor -->
+    <div id="cursor"></div>
+
+    <!-- Reading Progress Bar -->
+    <div id="progress-bar" aria-label="阅读进度条"></div>
+
+    <!-- Animated Lines Background -->
+    <div class="animated-lines-container"></div>
+
+    <!-- Video Background -->
+    <div class="video-container">
+        <video autoplay muted loop playsinline id="background-video">
+            <source src="c:\Users\User\Downloads\0f167bbfeb31d83e0805823a0b9a3c8c.mp4" type="video/mp4">
+            您的浏览器不支持视频标签。
+        </video>
+        <div class="overlay-gradient"></div>
+    </div>
+
+    <!-- Header & Navigation -->
+    <header>
+        <div class="logo">
+            <h2 aria-label="Al Masriya Al Emaratiya 首页">AL MASRIYA AL EMARATIYA<span style="color: var(--primary);">.</span></h2>
+        </div>
+        <ul class="nav-links">
+            <li><a href="#home">首页</a></li>
+            <li><a href="#services">核心服务</a></li>
+            <li><a href="#about">关于我们</a></li>
+            <li><a href="#team">专家团队</a></li>
+            <li><a href="#contact">联系我们</a></li>
+        </ul>
+        <!-- Mobile Navigation Toggle -->
+        <div class="hamburger" aria-label="切换导航菜单">
+            <div class="bar"></div>
+            <div class="bar"></div>
+            <div class="bar"></div>
+        </div>
+    </header>
+
+    <!-- Mobile Navigation Menu -->
+    <nav class="mobile-nav" aria-label="移动端导航">
+        <ul>
+            <li><a href="#home">首页</a></li>
+            <li><a href="#services">核心服务</a></li>
+            <li><a href="#about">关于我们</a></li>
+            <li><a href="#team">专家团队</a></li>
+            <li><a href="#contact">联系我们</a></li>
+        </ul>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-3d-card" id="tilt-card">
+            <h2 class="hero-subtitle" data-z="20">连接埃及与阿联酋</h2>
+            <h1 class="hero-title" data-z="60"><span style="color: var(--primary);">贸易</span>的未来</h1>
+            <p data-z="40">
+                Al Masriya Al Emaratia 是您实现无缝贸易和物流解决方案的战略合作伙伴，致力于连接市场并促进埃及与阿拉伯联合酋长国之间的增长。
+            </p>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="services-grid section-padding">
+        <h2>我们的综合服务</h2>
+        <div class="grid-container">
+            <div class="service-box" data-aos="fade-up" data-aos-delay="100">
+                <i class="fas fa-boxes-stacked" aria-hidden="true"></i>
+                <h3>物流与供应链</h3>
+                <p>提供高效货物移动、仓储和分销的端到端解决方案，确保准时交付。</p>
+            </div>
+            <div class="service-box" data-aos="fade-up" data-aos-delay="200">
+                <i class="fas fa-plane-up" aria-hidden="true"></i>
+                <h3>货运代理</h3>
+                <p>专业处理海空运费、报关和单据，确保业务顺利运作。</p>
+            </div>
+            <div class="service-box" data-aos="fade-up" data-aos-delay="300">
+                <i class="fas fa-handshake" aria-hidden="true"></i>
+                <h3>贸易便利化</h3>
+                <p>为市场准入、合规性和业务发展提供战略咨询与支持。</p>
+            </div>
+            <div class="service-box" data-aos="fade-up" data-aos-delay="400">
+                <i class="fas fa-file-invoice" aria-hidden="true"></i>
+                <h3>清关服务</h3>
+                <p>加快海关手续，细致准备单据，以最大限度减少延迟。</p>
+            </div>
+            <div class="service-box" data-aos="fade-up" data-aos-delay="500">
+                <i class="fas fa-truck-fast" aria-hidden="true"></i>
+                <h3>运输服务</h3>
+                <p>覆盖埃及和阿联酋的可靠陆路运输网络，配备先进的追踪系统。</p>
+            </div>
+            <div class="service-box" data-aos="fade-up" data-aos-delay="600">
+                <i class="fas fa-warehouse" aria-hidden="true"></i>
+                <h3>仓储解决方案</h3>
+                <p>现代化且安全的存储设施，拥有根据您需求定制的库存管理系统。</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Philosophy Section -->
+    <section id="about" class="philosophy-section section-padding">
+        <h2>我们的核心价值观</h2>
+        <div class="philosophy-content">
+            <div class="philosophy-item" data-aos="fade-up" data-aos-delay="100">
+                <i class="fas fa-lightbulb" aria-hidden="true"></i>
+                <div>
+                    <h3>创新与效率</h3>
+                    <p>利用尖端技术和创新战略，提供高效的贸易解决方案。</p>
+                </div>
+            </div>
+            <div class="philosophy-item" data-aos="fade-up" data-aos-delay="200">
+                <i class="fas fa-handshake-angle" aria-hidden="true"></i>
+                <div>
+                    <h3>以客户为中心</h3>
+                    <p>您的成功是我们的首要任务。我们致力于提供个性化服务并建立信任。</p>
+                </div>
+            </div>
+            <div class="philosophy-item" data-aos="fade-up" data-aos-delay="300">
+                <i class="fas fa-earth-africa" aria-hidden="true"></i>
+                <div>
+                    <h3>无缝连接</h3>
+                    <p>创造无缝的贸易环境，连接中东和北非地区及其他地区的业务。</p>
+                </div>
+            </div>
+            <div class="philosophy-item" data-aos="fade-up" data-aos-delay="400">
+                <i class="fas fa-shield-halved" aria-hidden="true"></i>
+                <div>
+                    <h3>诚信与透明</h3>
+                    <p>以最高职业道德标准运营，确保所有交易完全透明。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Team Section -->
+    <section id="team" class="team-section section-padding">
+        <h2>遇见我们的团队</h2>
+        <div class="team-grid">
+            <div class="team-member" data-aos="zoom-in" data-aos-delay="100">
+                <img src="https://media.licdn.com/dms/image/v2/C4D03AQGqUvPUL1hhSw/profile-displayphoto-shrink_400_400/profile-displayphoto-shrink_400_400/0/1524686640651?e=1779321600&v=beta&t=N27dpMDZMNibfwU59E_8I5oCshz7shbIM2ts7zQD-w4" alt="Ismail El-Menshawy, 创始人兼首席执行官">
+                <h3>Ismail El-Menshawy</h3>
+                <p>创始人兼首席执行官</p>
+                <div class="social-links">
+                    <a href="https://www.linkedin.com/in/ismail-el-menshawy-338b9b148/" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+            </div>
+            <div class="team-member" data-aos="zoom-in" data-aos-delay="200">
+                <img src="https://via.placeholder.com/150/3a7bd5/FFFFFF?text=Ahmed+Badrawi" alt="Ahmed Badrawi">
+                <h3>Ahmed Badrawi</h3>
+                <p>数字化运营经理</p>
+                <div class="social-links">
+                    <a href="https://www.linkedin.com/in/ahmed-badrawi/" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+            </div>
+            <div class="team-member" data-aos="zoom-in" data-aos-delay="300">
+                <img src="https://via.placeholder.com/150/00d2ff/FFFFFF?text=Khaled+Mansour" alt="Khaled Mansour">
+                <h3>Khaled Mansour</h3>
+                <p>物流主管</p>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+            </div>
+            <div class="team-member" data-aos="zoom-in" data-aos-delay="400">
+                <img src="https://via.placeholder.com/150/3a7bd5/FFFFFF?text=Nada+Ismail" alt="Nada Ismail">
+                <h3>Nada Ismail</h3>
+                <p>业务发展</p>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="testimonials-section section-padding">
+        <h2>客户证言</h2>
+        <div class="swiper testimonial-slider" data-aos="fade-up" data-aos-delay="200">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide testimonial-item">
+                    <p>"Al Masriya Al Emaratia 在优化我们开罗和迪拜之间的贸易路线方面发挥了重要作用。他们的专业精神令人赞叹！"</p>
+                    <h4>- Omar Al Fares</h4>
+                    <span>供应链总监</span>
+                </div>
+                <div class="swiper-slide testimonial-item">
+                    <p>"我们体验到了无缝的清关和无与伦比的物流支持。对于在该地区运营的任何企业来说，他们都是可靠的合作伙伴。"</p>
+                    <h4>- Latifa Hassan</h4>
+                    <span>运营经理</span>
+                </div>
+            </div>
+            <div class="swiper-pagination"></div>
+            <div class="swiper-button-next"></div>
+            <div class="swiper-button-prev"></div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="faq-section section-padding">
+        <h2>常见问题</h2>
+        <div class="faq-container">
+            <div class="faq-item" data-aos="fade-up" data-aos-delay="100">
+                <div class="faq-question">
+                    <h3>你们处理哪些类型的贸易货物？</h3>
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="faq-answer">
+                    <p>我们处理工业产品、消费品、原材料和特殊货物，确保合规与细心照料。</p>
+                </div>
+            </div>
+            <div class="faq-item" data-aos="fade-up" data-aos-delay="200">
+                <div class="faq-question">
+                    <h3>你们提供货物的实时追踪吗？</h3>
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="faq-answer">
+                    <p>是的，我们先进的物流系统通过专用门户为所有货件提供实时追踪。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact-section section-padding">
+        <h2>联系我们</h2>
+        <div class="contact-form-container" data-aos="zoom-in" data-aos-delay="200">
+            <p>无论您需要报价还是希望与我们合作，我们的团队随时为您提供帮助。</p>
+            <form class="contact-form" aria-label="联系表单">
+                <input type="text" placeholder="您的姓名" required>
+                <input type="email" placeholder="商务电子邮箱" required>
+                <input type="tel" placeholder="联系电话">
+                <input type="text" placeholder="主题">
+                <textarea rows="6" placeholder="请告诉我们您的具体需求..." required></textarea>
+                <button type="submit">发送信息</button>
+            </form>
+            <div class="contact-info">
+                <div><i class="fas fa-map-marker-alt"></i><span>开罗，埃及 & 迪拜，阿联酋</span></div>
+                <div><i class="fas fa-phone-alt"></i><span>+20 101 337 8572</span></div>
+                <div><i class="fas fa-envelope"></i><span>info@egy-uae.com</span></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-wrapper">
+            <div class="footer-logo">
+                <h3>AL MASRIYA AL EMARATIYA<span style="color: var(--primary);">.</span></h3>
+                <p>您通往埃及与阿联酋增长的门户。</p>
+            </div>
+            <div class="footer-links">
+                <h4>探索</h4>
+                <ul>
+                    <li><a href="#home">首页</a></li>
+                    <li><a href="#services">核心服务</a></li>
+                    <li><a href="#about">关于我们</a></li>
+                    <li><a href="#contact">联系我们</a></li>
+                    <li><a href="tracking.html">货物追踪</a></li>
+                    <li><a href="careers.html">加入我们</a></li>
+                </ul>
+            </div>
+
+            <!-- Language Dropdown -->
+            <div class="footer-language custom-dropdown">
+                <h4>语言</h4>
+                <div class="dropdown-trigger" id="lang-trigger" tabindex="0">
+                    <span><i class="fas fa-globe"></i> 中文</span>
+                    <i class="fas fa-chevron-down arrow-icon"></i>
+                </div>
+                <ul class="dropdown-menu" id="lang-menu">
+                    <li><a href="home-cn.html" class="active-lang">中文</a></li>
+                    <li><a href="index.html">English</a></li>
+                    <li><a href="home-ar.html">العربية</a></li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <p>© <span id="current-year"></span> Al Masriya Al Emaratiya. 版权所有。</p>
+            <div class="footer-bottom-social">
+                <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Chat Widget -->
+    <div id="chat-widget" class="chat-widget">
+        <button class="chat-btn" aria-label="打开聊天">
+            <i class="fas fa-comment-dots"></i>
+        </button>
+        <div class="chat-container">
+            <div class="chat-header">
+                <h3>在线咨询</h3>
+                <button class="chat-close" aria-label="关闭聊天">&times;</button>
+            </div>
+            <div class="chat-body" tabindex="0">
+                <div class="message incoming">
+                    <p>您好！请问有什么可以帮到您的吗？</p>
+                </div>
+            </div>
+            <div class="chat-footer">
+                <input type="text" placeholder="在此输入您的消息..." id="chat-input">
+                <button id="chat-send" aria-label="发送消息"><i class="fas fa-paper-plane"></i></button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>
