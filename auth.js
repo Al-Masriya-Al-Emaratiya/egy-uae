@@ -1,38 +1,48 @@
 document.addEventListener('DOMContentLoaded', () => {
     
-    // بيانات التجربة - تأكد من كتابتها بدقة
-    const clientsDB = {
-        "info@egy-uae.com": "123", // يوزر: admin | باسور: 123
-        "digital@egy-uae.com": "ame2025" // يوزر: ame_user | باسور: ame2025
+    // هذا هو ملف الـ JSON الخاص بك (يمكنك إضافة أي عدد من العملاء هنا)
+    const userMapping = {
+        "30604041304577": { 
+            "pass": "123456", 
+            "target": "eg-30604041304577/dashboard.html" 
+        },
+        "20501012233445": { 
+            "pass": "ame77", 
+            "target": "eg-20501012233445/dashboard.html" 
+        },
+        "10020030040050": { 
+            "pass": "pass2025", 
+            "target": "eg-10020030040050/dashboard.html" 
+        }
     };
 
     const loginForm = document.getElementById('login-form');
     const errorMsg = document.getElementById('error-message');
 
     if (loginForm) {
-        loginForm.addEventListener('submit', (event) => {
-            // منع التحديث التلقائي للمتصفح
-            event.preventDefault();
+        loginForm.addEventListener('submit', (e) => {
+            e.preventDefault();
 
-            const user = document.getElementById('username').value.trim();
-            const pass = document.getElementById('password').value.trim();
+            const userInp = document.getElementById('username').value.trim();
+            const passInp = document.getElementById('password').value.trim();
 
-            console.log("Login Attempt:", user); // للمراقبة
+            console.log("Checking credentials for ID:", userInp);
 
-            // التحقق من صحة البيانات
-            if (clientsDB[user] && clientsDB[user] === pass) {
-                console.log("Success! Redirecting...");
-                
-                // حفظ اسم العميل ليعرفه الداش بورد
+            // 1. البحث عن المستخدم في الـ JSON
+            const userAccount = userMapping[userInp];
+
+            if (userAccount && userAccount.pass === passInp) {
+                // 2. إذا كانت البيانات صحيحة، حفظ جلسة الدخول
                 localStorage.setItem('isLoggedIn', 'true');
-                localStorage.setItem('clientUsername', user);
+                localStorage.setItem('currentUserPath', userAccount.target);
+                
+                console.log("Success! Redirecting to:", userAccount.target);
 
-                // الانتقال لصفحة الداش بورد
-                window.location.href = "dashboard.html";
+                // 3. التوجيه الفوري للمجلد الخاص به
+                window.location.href = userAccount.target;
             } else {
-                console.log("Failed Login");
+                // بيانات خاطئة
                 errorMsg.style.display = 'block';
-                // إخفاء رسالة الخطأ بعد 3 ثواني
                 setTimeout(() => { errorMsg.style.display = 'none'; }, 3000);
             }
         });
