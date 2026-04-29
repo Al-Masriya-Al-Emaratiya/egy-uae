@@ -1,7 +1,6 @@
-// تأكد أن هذا الملف مربوط في أسفل صفحة index.html
 document.addEventListener('DOMContentLoaded', () => {
     
-    // قاعدة بيانات العملاء
+    // بيانات العملاء
     const clientsDB = {
         "client_emirates": {
             pass: "ame2025",
@@ -29,37 +28,22 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (loginForm) {
         loginForm.addEventListener('submit', (e) => {
-            // منع الصفحة من التحديث التلقائي
-            e.preventDefault();
+            e.preventDefault(); // منع تحديث الصفحة
 
             const userField = document.getElementById('username').value.trim();
             const passField = document.getElementById('password').value.trim();
 
-            console.log("Attempting login for:", userField); // للتأكد من البيانات في Console المتصفح
-
-            if (clientsDB[userField]) {
-                if (clientsDB[userField].pass === passField) {
-                    console.log("Login Successful!");
-                    
-                    // حفظ بيانات العميل في ذاكرة المتصفح
-                    localStorage.setItem('activeClient', JSON.stringify(clientsDB[userField]));
-                    
-                    // الانتقال لصفحة الداش بورد
-                    window.location.href = 'dashboard.html';
-                } else {
-                    console.error("Wrong Password");
-                    showError();
-                }
+            // التحقق من قاعدة البيانات
+            if (clientsDB[userField] && clientsDB[userField].pass === passField) {
+                // حفظ الجلسة
+                localStorage.setItem('activeClient', JSON.stringify(clientsDB[userField]));
+                // الانتقال للداش بورد
+                window.location.href = 'dashboard.html';
             } else {
-                console.error("User Not Found");
-                showError();
+                // إظهار خطأ
+                errorMsg.style.display = 'block';
+                setTimeout(() => { errorMsg.style.display = 'none'; }, 3000);
             }
         });
-    }
-
-    function showError() {
-        errorMsg.style.display = 'block';
-        // إخفاء رسالة الخطأ بعد 3 ثواني تلقائياً
-        setTimeout(() => { errorMsg.style.display = 'none'; }, 3000);
     }
 });
