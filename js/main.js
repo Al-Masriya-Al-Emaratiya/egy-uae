@@ -12,23 +12,23 @@ document.addEventListener('DOMContentLoaded', () => {
             cursor.style.top = e.clientY + 'px';
         });
 
-        const hoverElements = select('a, button, .service-box, .philosophy-item, .team-member, .testimonial-item, .faq-item, input, textarea, .swiper-button-prev, .swiper-button-next, .chat-btn, .dropdown-trigger', true);
-        if(hoverElements.length > 0) {
-            hoverElements.forEach(item => { 
-                item.addEventListener('mouseenter', () => {
-                    cursor.style.width = '80px';
-                    cursor.style.height = '80px';
-                    cursor.style.background = 'rgba(0, 210, 255, 0.1)';
-                    cursor.style.borderColor = 'transparent';
-                });
-                item.addEventListener('mouseleave', () => {
-                    cursor.style.width = '40px';
-                    cursor.style.height = '40px';
-                    cursor.style.background = 'transparent';
-                    cursor.style.borderColor = 'var(--primary)';
-                });
-            });
-        }
+        document.addEventListener('mouseover', (e) => {
+            const target = e.target.closest('a, button, input, textarea, .service-box, .philosophy-item, .team-member, .testimonial-item, .faq-item, .swiper-button-prev, .swiper-button-next, .dropdown-trigger, [role="button"]');
+            if (target) {
+                cursor.style.width = '60px';
+                cursor.style.height = '60px';
+                cursor.style.borderColor = 'var(--secondary)';
+            }
+        });
+
+        document.addEventListener('mouseout', (e) => {
+            const target = e.target.closest('a, button, input, textarea, .service-box, .philosophy-item, .team-member, .testimonial-item, .faq-item, .swiper-button-prev, .swiper-button-next, .dropdown-trigger, [role="button"]');
+            if (target) {
+                cursor.style.width = '40px';
+                cursor.style.height = '40px';
+                cursor.style.borderColor = 'var(--primary)';
+            }
+        });
     }
 
     // 2. Reading Progress Bar
