@@ -8,7 +8,7 @@
     --text-dark: #888; /* Gray */
     --glass-bg: rgba(255, 255, 255, 0.05);
     --glass-hover-bg: rgba(255, 255, 255, 0.1);
-    --header-scrolled-bg: rgba(10, 15, 24, 0.95);
+    --header-bg-transparent: rgba(10, 15, 24, 0.5); /* Slightly darker for better readability over video */
     --footer-bg: rgba(0,0,0,0.4);
     --card-shadow: 0 10px 30px rgba(0,0,0,0.1);
     --card-hover-shadow: 0 25px 50px rgba(0,210,255,0.25);
@@ -109,10 +109,32 @@ section h2 {
     z-index: 999;
 }
 
-/* Theme Toggle Button - REMOVED */
+/* 3. Animated Lines Background (New) */
+.animated-lines-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    z-index: -1; /* Above video, below content */
+    pointer-events: none;
+}
+.animated-line {
+    position: absolute;
+    background: linear-gradient(to right, rgba(var(--primary-rgb), 0), rgba(var(--primary-rgb), 0.3));
+    height: 1px;
+    width: 100%;
+    animation: moveLine 15s linear infinite; /* Adjust duration for speed */
+}
+@keyframes moveLine {
+    0% { transform: translateX(-100%) scaleX(0.5); opacity: 0; }
+    50% { opacity: 0.8; }
+    100% { transform: translateX(100%) scaleX(1); opacity: 0; }
+}
 
 
-/* 3. Video Background with Overlay */
+/* 4. Video Background with Overlay */
 .video-container {
     position: fixed;
     top: 0; left: 0; width: 100%; height: 100%;
@@ -132,13 +154,13 @@ section h2 {
     transition: background 0.5s ease;
 }
 
-/* 4. Header & Navigation */
+/* 5. Header & Navigation (Fixed, no expansion) */
 header {
     position: fixed;
     top: 20px; left: 50%; transform: translateX(-50%);
     width: 90%; max-width: 1200px;
     padding: 15px 30px;
-    background: var(--glass-bg);
+    background: var(--glass-bg); /* Use glass-bg for transparency */
     backdrop-filter: blur(15px);
     border: 1px solid var(--border-color);
     border-radius: 50px;
@@ -146,15 +168,17 @@ header {
     z-index: 1000;
     transition: var(--transition);
 }
-header.scrolled {
+
+/* No 'scrolled' class to prevent expansion/change on scroll */
+/* header.scrolled {
     top: 0;
     width: 100%;
     max-width: none;
     border-radius: 0;
-    background: var(--header-scrolled-bg);
+    background: var(--header-bg-transparent); 
     box-shadow: 0 5px 20px rgba(0,0,0,0.3);
     border-color: transparent;
-}
+} */
 
 .logo h2 { 
     font-weight: 900; 
@@ -217,7 +241,7 @@ header.scrolled {
     left: 0;
     width: 100%;
     height: 100%;
-    background: var(--header-scrolled-bg);
+    background: var(--header-bg-transparent); /* Use transparent background */
     backdrop-filter: blur(10px);
     z-index: 999;
     display: flex;
@@ -260,7 +284,7 @@ header.scrolled {
 }
 
 
-/* 5. 3D Hero Section */
+/* 6. 3D Hero Section */
 .hero {
     height: 100vh;
     display: flex; align-items: center; justify-content: center;
@@ -272,11 +296,11 @@ header.scrolled {
 .hero-3d-card {
     transform-style: preserve-3d;
     transition: transform 0.1s ease-out;
-    max-width: 1000px; /* Increased max-width for larger effect */
+    max-width: 1000px;
 }
 
 .hero-title {
-    font-size: clamp(4rem, 12vw, 8rem); /* Larger font size */
+    font-size: clamp(4rem, 12vw, 8rem);
     font-weight: 900;
     line-height: 1;
     background: linear-gradient(to bottom, var(--text-light) 30%, var(--primary));
@@ -287,15 +311,15 @@ header.scrolled {
 }
 
 .hero-subtitle {
-    font-size: clamp(1.5rem, 4vw, 2.5rem); /* Larger font size */
+    font-size: clamp(1.5rem, 4vw, 2.5rem);
     opacity: 0.8;
-    letter-spacing: 5px; /* Increased letter spacing */
+    letter-spacing: 5px;
     text-transform: uppercase;
     color: var(--text-light);
     transition: color 0.5s ease;
 }
 .hero-3d-card p {
-    font-size: clamp(1.1rem, 2.5vw, 1.4rem); /* Larger font size */
+    font-size: clamp(1.1rem, 2.5vw, 1.4rem);
     opacity: 0.9;
     margin-top: 25px;
     max-width: 800px;
@@ -303,7 +327,7 @@ header.scrolled {
     margin-right: auto;
 }
 
-/* 6. Services Section (Floating Interactive Grid) */
+/* 7. Services Section (Floating Interactive Grid) */
 .services-grid .grid-container {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -351,7 +375,7 @@ header.scrolled {
     line-height: 1.7;
 }
 
-/* 7. Philosophy Section */
+/* 8. Philosophy Section */
 .philosophy-content {
     display: flex;
     flex-direction: column;
@@ -408,7 +432,7 @@ header.scrolled {
     opacity: 0.9;
 }
 
-/* 8. Team Section */
+/* 9. Team Section */
 .team-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -464,7 +488,7 @@ header.scrolled {
     color: var(--primary);
 }
 
-/* 9. Testimonials Section (Swiper.js Integration) */
+/* 10. Testimonials Section (Swiper.js Integration) */
 .testimonial-slider {
     max-width: 900px;
     margin: 0 auto;
@@ -526,7 +550,7 @@ header.scrolled {
     transform: scale(1.1);
 }
 
-/* 10. FAQ Section */
+/* 11. FAQ Section */
 .faq-container {
     max-width: 900px;
     margin: 0 auto;
@@ -585,7 +609,7 @@ header.scrolled {
     padding-top: 15px;
 }
 
-/* 11. Contact Section */
+/* 12. Contact Section */
 .contact-form-container {
     background: var(--glass-bg);
     padding: 50px;
@@ -666,7 +690,7 @@ header.scrolled {
     color: var(--primary);
 }
 
-/* 12. Footer */
+/* 13. Footer */
 footer {
     background: var(--footer-bg);
     padding: 80px 5%;
@@ -731,7 +755,7 @@ footer {
 }
 
 
-/* 13. In-page WhatsApp Chat Widget */
+/* 14. In-page WhatsApp Chat Widget */
 .whatsapp-widget {
     position: fixed;
     bottom: 40px;
@@ -890,15 +914,17 @@ footer {
     header {
         max-width: 95%;
         padding: 15px 25px;
+        top: 15px; /* Slightly reduce top offset */
     }
     .nav-links {
         gap: 20px;
     }
     .section-padding {
-        padding: 80px 5%;
+        padding: 80px 4%; /* Slightly more padding for smaller screens */
     }
     section h2 {
         margin-bottom: 50px;
+        font-size: clamp(2.2rem, 4.5vw, 3.5rem);
     }
     .philosophy-item {
         flex-direction: column;
@@ -929,12 +955,12 @@ footer {
         display: none;
     }
     header {
-        top: 0;
-        width: 100%;
-        max-width: none;
-        border-radius: 0;
-        background: var(--header-scrolled-bg);
-        box-shadow: 0 5px 20px rgba(0,0,0,0.3);
+        top: 20px; /* Keep consistent with desktop fixed state */
+        width: 90%; /* Keep consistent with desktop fixed state */
+        max-width: 1200px; /* Keep consistent with desktop fixed state */
+        border-radius: 50px; /* Keep consistent with desktop fixed state */
+        background: var(--glass-bg); /* Still transparent */
+        box-shadow: var(--card-shadow);
         padding: 15px 20px;
     }
     .nav-links { 
@@ -945,12 +971,13 @@ footer {
     }
     .hero {
         height: 80vh;
+        padding-top: 80px; /* Account for fixed header */
     }
     .hero-title {
-        font-size: clamp(3.5rem, 15vw, 6rem); /* Adjusted for mobile */
+        font-size: clamp(3.5rem, 15vw, 6rem);
     }
     .hero-subtitle {
-        font-size: clamp(1.2rem, 5vw, 2rem); /* Adjusted for mobile */
+        font-size: clamp(1.2rem, 5vw, 2rem);
         letter-spacing: 3px;
     }
     .hero-3d-card p {
