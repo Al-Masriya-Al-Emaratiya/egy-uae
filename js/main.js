@@ -12,7 +12,7 @@ document.addEventListener('DOMContentLoaded', () => {
             cursor.style.top = e.clientY + 'px';
         });
 
-        select('a, button, .service-box, .philosophy-item, .team-member, .testimonial-item, .faq-item, input, textarea, .swiper-button-prev, .swiper-button-next, .wa-btn', true).forEach(item => {
+        select('a, button, .service-box, .philosophy-item, .team-member, .testimonial-item, .faq-item, input, textarea, .swiper-button-prev, .swiper-button-next, .chat-btn', true).forEach(item => { // Updated selector
             item.addEventListener('mouseenter', () => {
                 cursor.style.width = '80px';
                 cursor.style.height = '80px';
@@ -33,8 +33,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (progressBar) {
         window.addEventListener('scroll', () => {
             const totalHeight = document.body.scrollHeight - window.innerHeight;
-            // Prevent division by zero if content is too short
-            if (totalHeight <= 0) { // Changed to <= 0 to handle very short pages
+            if (totalHeight <= 0) { 
                 progressBar.style.width = '100%';
                 return;
             }
@@ -43,40 +42,33 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // 3. Animated Lines Background (New)
+    // 3. Animated Lines Background
     const animatedLinesContainer = select('.animated-lines-container');
     if (animatedLinesContainer) {
         const createLine = () => {
             const line = document.createElement('div');
             line.classList.add('animated-line');
             line.style.top = Math.random() * 100 + '%';
-            line.style.animationDelay = Math.random() * 10 + 's'; // Random start time
+            line.style.animationDelay = Math.random() * 10 + 's';
+            line.style.animationDuration = (10 + Math.random() * 10) + 's'; // Random duration for varied speed
             animatedLinesContainer.appendChild(line);
 
-            // Remove line after it finishes animation to prevent DOM clutter
             line.addEventListener('animationend', () => {
                 line.remove();
             });
         };
 
-        // Create initial lines
-        for (let i = 0; i < 15; i++) { // Adjust number of lines
+        for (let i = 0; i < 15; i++) {
             createLine();
         }
 
-        // Periodically create new lines
-        setInterval(createLine, 1000); // Create a new line every 1 second
+        setInterval(createLine, 1000);
     }
 
-    // Ensure body always has 'dark-theme'
     document.body.classList.add('dark-theme');
-    localStorage.setItem('theme', 'dark'); // Force dark theme in local storage
+    localStorage.setItem('theme', 'dark'); 
 
-    // 4. Header Scroll Effect (Removed expansion logic)
-    // The header CSS has been modified to keep it fixed and consistent.
-    // So, no JS needed to change header styles on scroll anymore.
-
-    // 5. Mobile Navigation Toggle (Hamburger)
+    // 4. Mobile Navigation Toggle (Hamburger)
     const hamburger = select('.hamburger');
     const mobileNav = select('.mobile-nav');
     const navLinks = select('.mobile-nav a', true);
@@ -97,12 +89,11 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // 6. 3D Tilt Effect for Hero Section
+    // 5. 3D Tilt Effect for Hero Section
     const card = select('#tilt-card');
     if (card) {
-        // Reduced sensitivity for less extreme tilting
-        const tiltIntensityX = 20; 
-        const tiltIntensityY = 20;
+        const tiltIntensityX = 15; // Slightly less intense
+        const tiltIntensityY = 15;
 
         document.addEventListener('mousemove', (e) => {
             let xAxis = (window.innerWidth / 2 - e.clientX) / tiltIntensityX;
@@ -111,9 +102,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
             select('.hero-3d-card > *', true).forEach(child => {
                 const baseZ = parseFloat(child.getAttribute('data-z')) || 0;
-                // Stronger parallax effect, but controlled
-                const parallaxX = xAxis * 0.4 * (baseZ / 50); 
-                const parallaxY = yAxis * 0.4 * (baseZ / 50);
+                const parallaxX = xAxis * 0.3 * (baseZ / 50); // Adjusted parallax
+                const parallaxY = yAxis * 0.3 * (baseZ / 50);
                 child.style.transform = `translateZ(${baseZ}px) translateX(${parallaxX}px) translateY(${parallaxY}px)`;
             });
         });
@@ -135,46 +125,47 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // 7. Smooth Scroll for Navigation Links
+    // 6. Smooth Scroll for Navigation Links
     select('header .nav-links a, .mobile-nav a, .footer-links a', true).forEach(anchor => {
         anchor.addEventListener('click', function (e) {
-            e.preventDefault();
+            // Check if it's an internal anchor link (starts with #)
+            if (this.getAttribute('href').startsWith('#')) {
+                e.preventDefault();
 
-            const targetId = this.getAttribute('href').substring(1);
-            const targetElement = select(`#${targetId}`);
+                const targetId = this.getAttribute('href').substring(1);
+                const targetElement = select(`#${targetId}`);
 
-            if (targetElement) {
-                // Header is now fixed and does not change height significantly, so a fixed offset works
-                const headerOffset = select('header').offsetHeight; 
-                const elementPosition = targetElement.getBoundingClientRect().top + window.scrollY;
-                const offsetPosition = elementPosition - headerOffset - 20; // Add some extra margin
+                if (targetElement) {
+                    const headerOffset = select('header').offsetHeight; 
+                    const elementPosition = targetElement.getBoundingClientRect().top + window.scrollY;
+                    const offsetPosition = elementPosition - headerOffset - 20;
 
-                window.scrollTo({
-                    top: offsetPosition,
-                    behavior: 'smooth'
-                });
+                    window.scrollTo({
+                        top: offsetPosition,
+                        behavior: 'smooth'
+                    });
+                }
             }
+            // For external language links, allow default behavior
         });
     });
 
-    // 8. Active Navigation Link on Scroll
+    // 7. Active Navigation Link on Scroll
     const sections = select('section', true);
     const mainNavLinks = select('.nav-links li a', true);
     const mobileNavLinks = select('.mobile-nav li a', true);
 
     const setActiveNav = () => {
         let current = '';
+        const headerHeight = select('header') ? select('header').offsetHeight : 0;
+        
         sections.forEach(section => {
             const sectionTop = section.offsetTop;
-            const headerHeight = select('header') ? select('header').offsetHeight : 0; // Get header height if it exists
-            
-            // Adjust offset for better timing, considering fixed header height
             if (scrollY >= (sectionTop - headerHeight - 100)) { 
                 current = section.getAttribute('id');
             }
         });
 
-        // Update main navigation
         mainNavLinks.forEach(a => {
             a.classList.remove('active');
             if (a.getAttribute('href').includes(current)) {
@@ -182,7 +173,6 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
 
-        // Update mobile navigation
         mobileNavLinks.forEach(a => {
             a.classList.remove('active');
             if (a.getAttribute('href').includes(current)) {
@@ -191,15 +181,14 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     };
     window.addEventListener('scroll', setActiveNav);
-    setActiveNav(); // Set active on initial load
+    setActiveNav();
 
-    // 9. FAQ Accordion
+    // 8. FAQ Accordion
     select('.faq-question', true).forEach(question => {
         question.addEventListener('click', () => {
             const faqItem = question.closest('.faq-item');
             const answer = faqItem.querySelector('.faq-answer');
 
-            // Close other open FAQ items (optional, but good UX)
             select('.faq-item.active', true).forEach(item => {
                 if (item !== faqItem) {
                     item.classList.remove('active');
@@ -219,15 +208,15 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // 10. Initialize AOS
+    // 9. Initialize AOS
     AOS.init({
         duration: 1000,
         easing: 'ease-in-out',
-        once: true, // Only animate once
-        mirror: false, // Do not repeat animation on scroll back up
+        once: true, 
+        mirror: false,
     });
 
-    // 11. Testimonial Slider (Swiper.js)
+    // 10. Testimonial Slider (Swiper.js)
     const swiper = new Swiper('.testimonial-slider', {
         loop: true,
         grabCursor: true,
@@ -257,18 +246,17 @@ document.addEventListener('DOMContentLoaded', () => {
         },
     });
 
-    // 12. In-page WhatsApp Chat Widget Logic
-    const waBtn = select('.whatsapp-widget .wa-btn');
-    const chatContainer = select('.whatsapp-widget .chat-container');
+    // 11. In-page Chat Widget Logic (Renamed from WhatsApp)
+    const chatBtn = select('.chat-widget .chat-btn'); // Updated selector
+    const chatContainer = select('.chat-widget .chat-container');
     const chatClose = select('.chat-close');
-    const chatInput = select('#wa-chat-input');
-    const chatSend = select('#wa-chat-send');
+    const chatInput = select('#chat-input'); // Updated ID
+    const chatSend = select('#chat-send');   // Updated ID
     const chatBody = select('.chat-body');
 
-    if (waBtn && chatContainer && chatClose && chatInput && chatSend && chatBody) {
-        waBtn.addEventListener('click', () => {
+    if (chatBtn && chatContainer && chatClose && chatInput && chatSend && chatBody) {
+        chatBtn.addEventListener('click', () => {
             chatContainer.classList.toggle('active');
-            // Prevent body scroll when chat is open on mobile
             if (window.innerWidth <= 768) { 
                 document.body.classList.toggle('no-scroll', chatContainer.classList.contains('active'));
             }
@@ -290,9 +278,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 messageDiv.innerHTML = `<p>${messageText}</p>`;
                 chatBody.appendChild(messageDiv);
                 chatInput.value = '';
-                chatBody.scrollTop = chatBody.scrollHeight; // Scroll to bottom
+                chatBody.scrollTop = chatBody.scrollHeight;
 
-                // Simulate a reply (optional)
                 setTimeout(() => {
                     const replyDiv = document.createElement('div');
                     replyDiv.classList.add('message', 'incoming');
