@@ -1,1 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard | AL MASRIYA AL EMARATIYA</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@700;900&family=Tajawal:wght@300;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="css/dashboard.css">
+</head>
+<body>
+    <div id="progress-bar"></div>
+    <div class="animated-lines-container" id="lines-container"></div>
 
+    <div class="dashboard-wrapper">
+        <!-- Sidebar -->
+        <aside class="sidebar-menu">
+            <div class="logo"><h2>A.M.E</h2></div>
+            <nav>
+                <a href="#" class="active"><i class="fas fa-chart-pie"></i> Overview</a>
+                <a href="#"><i class="fas fa-ship"></i> My Shipments</a>
+                <a href="#"><i class="fas fa-file-invoice-dollar"></i> Documents</a>
+                <a href="#"><i class="fas fa-headset"></i> Support</a>
+                <a href="#" id="logout-btn" class="logout"><i class="fas fa-sign-out-alt"></i> Logout</a>
+            </nav>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-dash">
+            <header class="dash-nav">
+                <div>
+                    <h2 id="client-name-title" style="margin:0; font-size: 1.8rem; text-align: left;">Welcome</h2>
+                    <p id="client-id-label">Loading Account Data...</p>
+                </div>
+                <div class="user-info">
+                    <span id="user-name">Client User</span>
+                    <div class="avatar">AME</div>
+                </div>
+            </header>
+
+            <!-- Cards Grid (3D Effect) -->
+            <div class="dash-grid">
+                <div class="stat-card-3d">
+                    <div class="card-inner">
+                        <i class="fas fa-box-open"></i>
+                        <h3>Total Orders</h3>
+                        <p id="stat-total">0</p>
+                    </div>
+                </div>
+                <div class="stat-card-3d">
+                    <div class="card-inner">
+                        <i class="fas fa-route"></i>
+                        <h3>In Transit</h3>
+                        <p id="stat-transit">0</p>
+                    </div>
+                </div>
+                <div class="stat-card-3d">
+                    <div class="card-inner">
+                        <i class="fas fa-check-circle"></i>
+                        <h3>Delivered</h3>
+                        <p id="stat-delivered">0</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Table Section -->
+            <div class="table-section glass-bg">
+                <h3 style="margin-bottom: 20px;"><i class="fas fa-list"></i> Recent Transactions</h3>
+                <div style="overflow-x: auto;">
+                    <table class="custom-table">
+                        <thead>
+                            <tr>
+                                <th>Tracking ID</th>
+                                <th>Goods Description</th>
+                                <th>Origin/Dest.</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+                        <tbody id="shipment-data">
+                            <!-- Data injected by JS -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="dashboard.js"></script>
+</body>
+</html>
