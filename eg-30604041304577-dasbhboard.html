@@ -4,72 +4,136 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>My Dashboard | EGY UAE</title>
-    <!-- الرجوع خطوة للخلف للوصول للملفات الأساسية -->
     
-    <link rel="stylesheet" href="css/dashboard.css">
+    <!-- Fonts & Icons -->
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;900&family=Tajawal:wght@300;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- CSS Files -->
+    <link rel="stylesheet" href="../style.css"> <!-- الملف الأساسي -->
+    <link rel="stylesheet" href="../css/dashboard.css"> <!-- ملف الداش بورد المطور -->
+
     <style>
-        .video-bg { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -2; overflow: hidden; }
-        .video-bg video { width: 100%; height: 100%; object-fit: cover; filter: brightness(0.2); }
+        /* ستايل سريع للفيديو لضمان التغطية الكاملة */
+        .video-bg { 
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%; 
+            z-index: -2; overflow: hidden; 
+            background-color: #07090f; 
+        }
+        .video-bg video { 
+            width: 100%; height: 100%; object-fit: cover; 
+            filter: brightness(0.25) contrast(1.1) blur(2px); 
+        }
+        .overlay-mask {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: radial-gradient(circle at center, transparent 0%, rgba(7, 9, 15, 0.8) 100%);
+            z-index: -1;
+        }
     </style>
 </head>
 <body>
     <div class="video-bg">
-        <video autoplay muted loop playsinline><source src="sky_background.mp4" type="video/mp4"></video>
+        <video autoplay muted loop playsinline>
+            <source src="../sky_background.mp4" type="video/mp4">
+        </video>
     </div>
+    <div class="overlay-mask"></div>
 
     <div class="dash-container">
+        <!-- Sidebar -->
         <aside class="sidebar">
-            <div class="logo"><h2>EGY UAE</h2></div>
-            <nav style="margin-top: 50px; display: flex; flex-direction: column; gap: 20px;">
-                <a href="#" style="color: var(--primary);"><i class="fas fa-home"></i> Overview</a>
-                <a href="#"><i class="fas fa-ship"></i> Shipments</a>
-                <a href="#"><i class="fas fa-file-pdf"></i> Documents</a>
-                <a href="portal.html" style="margin-top: 100px; color: #ff4d4d;"><i class="fas fa-sign-out-alt"></i> Logout</a>
+            <div class="sidebar-header">
+                <div class="logo"><h2>EGY <span>UAE</span></h2></div>
+            </div>
+            
+            <nav class="side-nav">
+                <a href="#" class="nav-item active"><i class="fas fa-th-large"></i> <span>Overview</span></a>
+                <a href="#" class="nav-item"><i class="fas fa-ship"></i> <span>My Shipments</span></a>
+                <a href="#" class="nav-item"><i class="fas fa-file-invoice"></i> <span>Documents</span></a>
+                <a href="#" class="nav-item"><i class="fas fa-wallet"></i> <span>Payments</span></a>
+                
+                <div class="nav-divider"></div>
+                
+                <a href="../portal.html" class="nav-item logout"><i class="fas fa-sign-out-alt"></i> <span>Logout</span></a>
             </nav>
         </aside>
 
+        <!-- Main Content -->
         <main class="main-content">
-            <header style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 50px;">
-                <h1>National ID: <span style="color: var(--primary);">30604041304577</span></h1>
-                <div class="status-badge">Active Account</div>
+            <header class="top-bar">
+                <div class="user-welcome">
+                    <p>Welcome back,</p>
+                    <h1>National ID: <span class="highlight">30604041304577</span></h1>
+                </div>
+                <div class="header-actions">
+                    <div class="status-badge pulse">
+                        <span class="dot"></span> Active Account
+                    </div>
+                </div>
             </header>
 
+            <!-- Stats Grid -->
             <div class="stat-grid">
-                <div class="card">
-                    <i class="fas fa-box" style="font-size: 2rem; color: var(--primary);"></i>
-                    <h3>Total Shipments</h3>
-                    <p style="font-size: 2rem; font-weight: 900;">2</p>
+                <div class="stat-card">
+                    <div class="card-icon"><i class="fas fa-box"></i></div>
+                    <div class="card-info">
+                        <h3>Total Shipments</h3>
+                        <p class="counter">12</p>
+                    </div>
+                    <div class="card-progress"><div class="bar" style="width: 100%"></div></div>
                 </div>
-                <div class="card">
-                    <i class="fas fa-truck-loading" style="font-size: 2rem; color: var(--secondary);"></i>
-                    <h3>In Customs</h3>
-                    <p style="font-size: 2rem; font-weight: 900;">1</p>
+
+                <div class="stat-card">
+                    <div class="card-icon secondary"><i class="fas fa-truck-loading"></i></div>
+                    <div class="card-info">
+                        <h3>In Customs</h3>
+                        <p class="counter">02</p>
+                    </div>
+                    <div class="card-progress"><div class="bar secondary" style="width: 25%"></div></div>
                 </div>
-                <div class="card">
-                    <i class="fas fa-check-circle" style="font-size: 2rem; color: #00ff88;"></i>
-                    <h3>Delivered</h3>
-                    <p style="font-size: 2rem; font-weight: 900;">1</p>
+
+                <div class="stat-card">
+                    <div class="card-icon success"><i class="fas fa-check-circle"></i></div>
+                    <div class="card-info">
+                        <h3>Delivered</h3>
+                        <p class="counter">10</p>
+                    </div>
+                    <div class="card-progress"><div class="bar success" style="width: 85%"></div></div>
                 </div>
             </div>
 
-            <div class="card" style="background: rgba(255,255,255,0.02);">
-                <h3>Live Tracking</h3>
-                <table style="width: 100%; margin-top: 20px; border-collapse: collapse;">
-                    <thead>
-                        <tr style="text-align: left; color: var(--primary); border-bottom: 1px solid var(--border-color);">
-                            <th style="padding: 15px;">AWB Number</th>
-                            <th>Origin</th>
-                            <th>Status</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr style="border-bottom: 1px solid var(--border-color);">
-                            <td style="padding: 15px;">#AME-99082</td>
-                            <td>Jebel Ali, UAE</td>
-                            <td><span class="status-badge">On Customs</span></td>
-                        </tr>
-                    </tbody>
-                </table>
+            <!-- Table Section -->
+            <div class="data-section glass-card">
+                <div class="section-header">
+                    <h3><i class="fas fa-location-dot"></i> Live Tracking</h3>
+                    <button class="btn-small">View All</button>
+                </div>
+                <div class="table-responsive">
+                    <table class="modern-table">
+                        <thead>
+                            <tr>
+                                <th>AWB Number</th>
+                                <th>Origin</th>
+                                <th>Destination</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><span class="awb">#AME-99082</span></td>
+                                <td>Jebel Ali, UAE</td>
+                                <td>Cairo, Egypt</td>
+                                <td><span class="badge status-customs">On Customs</span></td>
+                            </tr>
+                            <tr>
+                                <td><span class="awb">#AME-99105</span></td>
+                                <td>Dubai, UAE</td>
+                                <td>Alexandria, Egypt</td>
+                                <td><span class="badge status-transit">In Transit</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </main>
     </div>
