@@ -35,7 +35,7 @@
     <!-- Custom CSS -->
     <link rel="stylesheet" href="css/style.css">
     <!-- ربط ملف المانيفست -->
-    <link rel="manifest" href="/manifest.json">
+    <link rel="manifest" href="Root/manifest.json">
     <!-- لون الشريط العلوي في الموبايل -->
     <meta name="theme-color" content="#007bff">
 
@@ -43,7 +43,7 @@
   // تسجيل السيرفس وركر
   if ('serviceWorker' in navigator) {
     window.addEventListener('load', () => {
-      navigator.serviceWorker.register('/sw.js')
+      navigator.serviceWorker.register('Root/sw.js')
         .then(reg => console.log('Service Worker Registered'))
         .catch(err => console.log('Service Worker Failed', err));
     });
