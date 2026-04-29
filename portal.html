@@ -21,9 +21,10 @@
     </style>
 </head>
 <body class="no-scroll">
-    <!-- الفيديو الخلفي -->
+   <audio id="SKY" loop>
+       <source src="sky_background.mp3">
+   </audio>
     <div class="video-bg">
-        <!-- استبدل your-video.mp4 باسم ملف الفيديو عندك -->
         <video autoplay muted loop playsinline id="myVideo">
             <source src="sky_background.mp4" type="video/mp4">
         </video>
@@ -47,5 +48,6 @@
     </div>
 
     <script src="auth.js"></script>
+    <script src="js/audio.js"></script>
 </body>
 </html>
