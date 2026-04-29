@@ -34,7 +34,7 @@ document.addEventListener('DOMContentLoaded', () => {
         window.addEventListener('scroll', () => {
             const totalHeight = document.body.scrollHeight - window.innerHeight;
             // Prevent division by zero if content is too short
-            if (totalHeight === 0) {
+            if (totalHeight <= 0) { // Changed to <= 0 to handle very short pages
                 progressBar.style.width = '100%';
                 return;
             }
@@ -43,28 +43,38 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // 3. Theme Toggle (Light/Dark Mode) - REMOVED, now always dark theme
-    // const themeToggle = select('#theme-toggle'); // This button is removed from HTML
-    // if (themeToggle) {
-    //     themeToggle.addEventListener('click', () => {
-    //         // This logic is no longer needed as there's only one theme
-    //     });
-    // }
+    // 3. Animated Lines Background (New)
+    const animatedLinesContainer = select('.animated-lines-container');
+    if (animatedLinesContainer) {
+        const createLine = () => {
+            const line = document.createElement('div');
+            line.classList.add('animated-line');
+            line.style.top = Math.random() * 100 + '%';
+            line.style.animationDelay = Math.random() * 10 + 's'; // Random start time
+            animatedLinesContainer.appendChild(line);
+
+            // Remove line after it finishes animation to prevent DOM clutter
+            line.addEventListener('animationend', () => {
+                line.remove();
+            });
+        };
+
+        // Create initial lines
+        for (let i = 0; i < 15; i++) { // Adjust number of lines
+            createLine();
+        }
+
+        // Periodically create new lines
+        setInterval(createLine, 1000); // Create a new line every 1 second
+    }
+
     // Ensure body always has 'dark-theme'
     document.body.classList.add('dark-theme');
     localStorage.setItem('theme', 'dark'); // Force dark theme in local storage
 
-    // 4. Header Scroll Effect
-    const header = select('header');
-    if (header) {
-        window.addEventListener('scroll', () => {
-            if (window.scrollY > 50) {
-                header.classList.add('scrolled');
-            } else {
-                header.classList.remove('scrolled');
-            }
-        });
-    }
+    // 4. Header Scroll Effect (Removed expansion logic)
+    // The header CSS has been modified to keep it fixed and consistent.
+    // So, no JS needed to change header styles on scroll anymore.
 
     // 5. Mobile Navigation Toggle (Hamburger)
     const hamburger = select('.hamburger');
@@ -90,16 +100,20 @@ document.addEventListener('DOMContentLoaded', () => {
     // 6. 3D Tilt Effect for Hero Section
     const card = select('#tilt-card');
     if (card) {
+        // Reduced sensitivity for less extreme tilting
+        const tiltIntensityX = 20; 
+        const tiltIntensityY = 20;
+
         document.addEventListener('mousemove', (e) => {
-            let xAxis = (window.innerWidth / 2 - e.clientX) / 15; // Increased sensitivity
-            let yAxis = (window.innerHeight / 2 - e.clientY) / 15; // Increased sensitivity
+            let xAxis = (window.innerWidth / 2 - e.clientX) / tiltIntensityX;
+            let yAxis = (window.innerHeight / 2 - e.clientY) / tiltIntensityY;
             card.style.transform = `rotateY(${xAxis}deg) rotateX(${yAxis}deg)`;
 
             select('.hero-3d-card > *', true).forEach(child => {
                 const baseZ = parseFloat(child.getAttribute('data-z')) || 0;
-                // Stronger parallax effect
-                const parallaxX = xAxis * 0.7 * (baseZ / 50); 
-                const parallaxY = yAxis * 0.7 * (baseZ / 50);
+                // Stronger parallax effect, but controlled
+                const parallaxX = xAxis * 0.4 * (baseZ / 50); 
+                const parallaxY = yAxis * 0.4 * (baseZ / 50);
                 child.style.transform = `translateZ(${baseZ}px) translateX(${parallaxX}px) translateY(${parallaxY}px)`;
             });
         });
@@ -130,7 +144,13 @@ document.addEventListener('DOMContentLoaded', () => {
             const targetElement = select(`#${targetId}`);
 
             if (targetElement) {
-                targetElement.scrollIntoView({
+                // Header is now fixed and does not change height significantly, so a fixed offset works
+                const headerOffset = select('header').offsetHeight; 
+                const elementPosition = targetElement.getBoundingClientRect().top + window.scrollY;
+                const offsetPosition = elementPosition - headerOffset - 20; // Add some extra margin
+
+                window.scrollTo({
+                    top: offsetPosition,
                     behavior: 'smooth'
                 });
             }
@@ -139,20 +159,31 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // 8. Active Navigation Link on Scroll
     const sections = select('section', true);
-    const navLi = select('.nav-links li a, .mobile-nav li a', true);
+    const mainNavLinks = select('.nav-links li a', true);
+    const mobileNavLinks = select('.mobile-nav li a', true);
 
     const setActiveNav = () => {
         let current = '';
         sections.forEach(section => {
             const sectionTop = section.offsetTop;
-            const sectionHeight = section.clientHeight;
-            // Adjust offset for better timing, considering header height
-            if (scrollY >= (sectionTop - header.offsetHeight - 50)) {
+            const headerHeight = select('header') ? select('header').offsetHeight : 0; // Get header height if it exists
+            
+            // Adjust offset for better timing, considering fixed header height
+            if (scrollY >= (sectionTop - headerHeight - 100)) { 
                 current = section.getAttribute('id');
             }
         });
 
-        navLi.forEach(a => {
+        // Update main navigation
+        mainNavLinks.forEach(a => {
+            a.classList.remove('active');
+            if (a.getAttribute('href').includes(current)) {
+                a.classList.add('active');
+            }
+        });
+
+        // Update mobile navigation
+        mobileNavLinks.forEach(a => {
             a.classList.remove('active');
             if (a.getAttribute('href').includes(current)) {
                 a.classList.add('active');
@@ -192,8 +223,8 @@ document.addEventListener('DOMContentLoaded', () => {
     AOS.init({
         duration: 1000,
         easing: 'ease-in-out',
-        once: true,
-        mirror: false,
+        once: true, // Only animate once
+        mirror: false, // Do not repeat animation on scroll back up
     });
 
     // 11. Testimonial Slider (Swiper.js)
@@ -278,5 +309,11 @@ document.addEventListener('DOMContentLoaded', () => {
                 sendMessage();
             }
         });
+    }
+
+    // Set current year in footer
+    const currentYearSpan = select('#current-year');
+    if (currentYearSpan) {
+        currentYearSpan.textContent = new Date().getFullYear();
     }
 });
