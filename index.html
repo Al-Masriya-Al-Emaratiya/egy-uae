@@ -3,12 +3,29 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1" />
-    <title>Al Masriya Al Emaratia | Future of Trade</title>
+    <title>Al Masriya Al Emaratiya | Future of Trade - Connecting Egypt & UAE</title>
+    <meta name="description" content="Al Masriya Al Emaratiya is your strategic partner for seamless trade and logistics solutions, bridging markets and fostering growth between Egypt and the United Arab Emirates. Discover our services including freight forwarding, customs clearance, and supply chain management." />
+    <meta name="keywords" content="Al Masriya Al Emaratiya, Egypt UAE trade, logistics, supply chain, freight forwarding, customs clearance, trade facilitation, Egypt, UAE, international trade, Middle East logistics" />
+    <meta name="author" content="Al Masriya Al Emaratiya Team" />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="YOUR_WEBSITE_URL" /> <!-- REPLACE WITH YOUR ACTUAL URL -->
+    <meta property="og:title" content="Al Masriya Al Emaratiya | Future of Trade - Connecting Egypt & UAE" />
+    <meta property="og:description" content="Al Masriya Al Emaratiya is your strategic partner for seamless trade and logistics solutions, bridging markets and fostering growth between Egypt and the United Arab Emirates." />
+    <meta property="og:image" content="YOUR_OG_IMAGE_URL" /> <!-- OPTIONAL: URL to an image for social sharing -->
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content="YOUR_WEBSITE_URL" /> <!-- REPLACE WITH YOUR ACTUAL URL -->
+    <meta property="twitter:title" content="Al Masriya Al Emaratiya | Future of Trade - Connecting Egypt & UAE" />
+    <meta property="twitter:description" content="Al Masriya Al Emaratiya is your strategic partner for seamless trade and logistics solutions, bridging markets and fostering growth between Egypt and the United Arab Emirates." />
+    <meta property="twitter:image" content="YOUR_OG_IMAGE_URL" /> <!-- OPTIONAL: URL to an image for social sharing -->
     
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700;900&family=Cairo:wght@400;700;900&display=swap" rel="stylesheet">
     <!-- Font Awesome for Icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <!-- Swiper CSS for Testimonial Slider -->
     <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
     <!-- AOS Animate On Scroll Library -->
@@ -17,18 +34,21 @@
     <!-- Custom CSS -->
     <link rel="stylesheet" href="css/style.css">
 </head>
-<body class="dark-theme"> <!-- Set dark-theme as default and only theme -->
+<body class="dark-theme">
 
     <!-- Custom 3D Cursor -->
     <div id="cursor"></div>
 
     <!-- Reading Progress Bar -->
-    <div id="progress-bar"></div>
+    <div id="progress-bar" aria-label="Reading progress bar"></div>
+
+    <!-- Animated Lines Background -->
+    <div class="animated-lines-container"></div>
 
     <!-- Video Background -->
     <div class="video-container">
         <video autoplay muted loop playsinline id="background-video">
-            <source src="ee7c2f163498b8013bb50e8105bff92a.mp4" type="video/mp4">
+            <source src="videos/background.mp4" type="video/mp4">
             Your browser does not support the video tag.
         </video>
         <div class="overlay-gradient"></div>
@@ -37,7 +57,7 @@
     <!-- Header & Navigation -->
     <header>
         <div class="logo">
-            <h2 data-aos="fade-right" data-aos-delay="200">AL MASRIYA AL EMARATIYA<span style="color: var(--primary);">.</span></h2>
+            <h2 data-aos="fade-right" data-aos-delay="200" aria-label="Al Masriya Al Emaratiya Home">AL MASRIYA AL EMARATIYA<span style="color: var(--primary);">.</span></h2>
         </div>
         <ul class="nav-links">
             <li><a href="#home" data-aos="fade-down" data-aos-delay="300">Home</a></li>
@@ -47,7 +67,7 @@
             <li><a href="#contact" data-aos="fade-down" data-aos-delay="700">Contact Us</a></li>
         </ul>
         <!-- Mobile Navigation Toggle (Hamburger) -->
-        <div class="hamburger">
+        <div class="hamburger" aria-label="Toggle navigation menu">
             <div class="bar"></div>
             <div class="bar"></div>
             <div class="bar"></div>
@@ -55,7 +75,7 @@
     </header>
 
     <!-- Mobile Navigation Menu -->
-    <nav class="mobile-nav">
+    <nav class="mobile-nav" aria-label="Mobile navigation">
         <ul>
             <li><a href="#home">Home</a></li>
             <li><a href="#services">Services</a></li>
@@ -81,32 +101,32 @@
         <h2 data-aos="fade-up">Our Comprehensive Services</h2>
         <div class="grid-container">
             <div class="service-box" data-aos="fade-up" data-aos-delay="100">
-                <i class="fas fa-boxes"></i>
+                <i class="fas fa-boxes-stacked" aria-hidden="true"></i>
                 <h3>Logistics & Supply Chain Management</h3>
                 <p>End-to-end solutions for efficient cargo movement, warehousing, and distribution, ensuring timely delivery and cost-effectiveness.</p>
             </div>
             <div class="service-box" data-aos="fade-up" data-aos-delay="200">
-                <i class="fas fa-plane-departure"></i>
+                <i class="fas fa-plane-up" aria-hidden="true"></i>
                 <h3>International Freight Forwarding</h3>
                 <p>Expert handling of air and sea freight, customs brokerage, and documentation for smooth cross-border trade operations.</p>
             </div>
             <div class="service-box" data-aos="fade-up" data-aos-delay="300">
-                <i class="fas fa-handshake-alt"></i>
+                <i class="fas fa-handshake" aria-hidden="true"></i>
                 <h3>Trade Facilitation & Consultancy</h3>
                 <p>Strategic advisory and support for market entry, regulatory compliance, and business development in Egypt and UAE.</p>
             </div>
             <div class="service-box" data-aos="fade-up" data-aos-delay="400">
-                <i class="fas fa-file-contract"></i>
+                <i class="fas fa-file-invoice" aria-hidden="true"></i>
                 <h3>Customs Clearance & Documentation</h3>
                 <p>Expedited customs procedures and meticulous document preparation to minimize delays and ensure compliance with local and international regulations.</p>
             </div>
             <div class="service-box" data-aos="fade-up" data-aos-delay="500">
-                <i class="fas fa-truck-container"></i>
+                <i class="fas fa-truck-fast" aria-hidden="true"></i>
                 <h3>Transportation & Distribution</h3>
                 <p>Reliable inland transportation network covering Egypt and UAE, equipped with advanced tracking for secure and efficient delivery.</p>
             </div>
             <div class="service-box" data-aos="fade-up" data-aos-delay="600">
-                <i class="fas fa-store"></i>
+                <i class="fas fa-warehouse" aria-hidden="true"></i>
                 <h3>Warehousing & Storage Solutions</h3>
                 <p>Modern and secure storage facilities with inventory management systems tailored to your specific product needs.</p>
             </div>
@@ -118,28 +138,28 @@
         <h2 data-aos="fade-up">Our Core Values & Mission</h2>
         <div class="philosophy-content">
             <div class="philosophy-item" data-aos="fade-left" data-aos-delay="100">
-                <i class="fas fa-lightbulb"></i>
+                <i class="fas fa-lightbulb" aria-hidden="true"></i>
                 <div>
                     <h3>Innovation & Efficiency</h3>
                     <p>We leverage cutting-edge technology and innovative strategies to deliver efficient, reliable, and future-ready trade solutions.</p>
                 </div>
             </div>
             <div class="philosophy-item" data-aos="fade-right" data-aos-delay="200">
-                <i class="fas fa-users-cog"></i>
+                <i class="fas fa-handshake-angle" aria-hidden="true"></i>
                 <div>
                     <h3>Client-Centric Excellence</h3>
                     <p>Your success is our priority. We are dedicated to providing personalized service and building lasting partnerships based on trust and mutual growth.</p>
                 </div>
             </div>
             <div class="philosophy-item" data-aos="fade-left" data-aos-delay="300">
-                <i class="fas fa-globe-asia"></i>
+                <i class="fas fa-earth-africa" aria-hidden="true"></i>
                 <div>
                     <h3>Seamless Connectivity</h3>
                     <p>We strive to create a seamless trade environment, connecting businesses to new opportunities across the MENA region and beyond.</p>
                 </div>
             </div>
             <div class="philosophy-item" data-aos="fade-right" data-aos-delay="400">
-                <i class="fas fa-shield-alt"></i>
+                <i class="fas fa-shield-halved" aria-hidden="true"></i>
                 <div>
                     <h3>Integrity & Transparency</h3>
                     <p>Operating with the highest ethical standards, we ensure complete transparency and honesty in all our dealings.</p>
@@ -153,39 +173,39 @@
         <h2 data-aos="fade-up">Meet Our Dedicated Team</h2>
         <div class="team-grid">
             <div class="team-member" data-aos="zoom-in" data-aos-delay="100">
-                <img src="https://via.placeholder.com/150/00d2ff/FFFFFF?text=Ahmed+El+Masry" alt="Ahmed El Masry">
+                <img src="https://via.placeholder.com/150/00d2ff/FFFFFF?text=Ismail+El-Menshawy" alt="Ismail El-Menshawy, Founder & CEO">
                 <h3>Ismail El-Menshawy</h3>
                 <p>Founder & CEO</p>
                 <div class="social-links">
-                    <a href="#" aria-label="LinkedIn profile"><i class="fab fa-linkedin"></i></a>
-                    <a href="#" aria-label="Twitter profile"><i class="fab fa-twitter"></i></a>
+                    <a href="#" aria-label="Ismail El-Menshawy's LinkedIn profile"><i class="fab fa-linkedin" aria-hidden="true"></i></a>
+                    <a href="#" aria-label="Ismail El-Menshawy's Twitter profile"><i class="fab fa-twitter" aria-hidden="true"></i></a>
                 </div>
             </div>
             <div class="team-member" data-aos="zoom-in" data-aos-delay="200">
-                <img src="https://via.placeholder.com/150/3a7bd5/FFFFFF?text=Ahmed+Badrawi" alt="Ahmed Badrawi">
+                <img src="https://via.placeholder.com/150/3a7bd5/FFFFFF?text=Ahmed+Badrawi" alt="Ahmed Badrawi, Digital Operations Manager">
                 <h3>Ahmed Badrawi</h3>
                 <p>Digital Operations Manager</p>
                 <div class="social-links">
-                    <a href="#" aria-label="LinkedIn profile"><i class="fab fa-linkedin"></i></a>
-                    <a href="#" aria-label="Twitter profile"><i class="fab fa-twitter"></i></a>
+                    <a href="#" aria-label="Ahmed Badrawi's LinkedIn profile"><i class="fab fa-linkedin" aria-hidden="true"></i></a>
+                    <a href="#" aria-label="Ahmed Badrawi's Twitter profile"><i class="fab fa-twitter" aria-hidden="true"></i></a>
                 </div>
             </div>
             <div class="team-member" data-aos="zoom-in" data-aos-delay="300">
-                <img src="https://via.placeholder.com/150/00d2ff/FFFFFF?text=Khaled+Mansour" alt="Khaled Mansour">
+                <img src="https://via.placeholder.com/150/00d2ff/FFFFFF?text=Khaled+Mansour" alt="Khaled Mansour, Head of Logistics">
                 <h3>Khaled Mansour</h3>
                 <p>Head of Logistics</p>
                 <div class="social-links">
-                    <a href="#" aria-label="LinkedIn profile"><i class="fab fa-linkedin"></i></a>
-                    <a href="#" aria-label="Twitter profile"><i class="fab fa-twitter"></i></a>
+                    <a href="#" aria-label="Khaled Mansour's LinkedIn profile"><i class="fab fa-linkedin" aria-hidden="true"></i></a>
+                    <a href="#" aria-label="Khaled Mansour's Twitter profile"><i class="fab fa-twitter" aria-hidden="true"></i></a>
                 </div>
             </div>
             <div class="team-member" data-aos="zoom-in" data-aos-delay="400">
-                <img src="https://via.placeholder.com/150/3a7bd5/FFFFFF?text=Nada+Ismail" alt="Nada Ismail">
+                <img src="https://via.placeholder.com/150/3a7bd5/FFFFFF?text=Nada+Ismail" alt="Nada Ismail, Business Development Manager">
                 <h3>Nada Ismail</h3>
                 <p>Business Development Manager</p>
                 <div class="social-links">
-                    <a href="#" aria-label="LinkedIn profile"><i class="fab fa-linkedin"></i></a>
-                    <a href="#" aria-label="Twitter profile"><i class="fab fa-twitter"></i></a>
+                    <a href="#" aria-label="Nada Ismail's LinkedIn profile"><i class="fab fa-linkedin" aria-hidden="true"></i></a>
+                    <a href="#" aria-label="Nada Ismail's Twitter profile"><i class="fab fa-twitter" aria-hidden="true"></i></a>
                 </div>
             </div>
         </div>
@@ -215,8 +235,8 @@
             <!-- Add Pagination -->
             <div class="swiper-pagination"></div>
             <!-- Add Navigation -->
-            <div class="swiper-button-next"></div>
-            <div class="swiper-button-prev"></div>
+            <div class="swiper-button-next" aria-label="Next testimonial"></div>
+            <div class="swiper-button-prev" aria-label="Previous testimonial"></div>
         </div>
     </section>
 
@@ -227,7 +247,7 @@
             <div class="faq-item" data-aos="fade-up" data-aos-delay="100">
                 <div class="faq-question">
                     <h3>What types of goods do you handle for trade?</h3>
-                    <i class="fas fa-chevron-down"></i>
+                    <i class="fas fa-chevron-down" aria-hidden="true"></i>
                 </div>
                 <div class="faq-answer">
                     <p>We handle a wide range of goods including industrial products, consumer goods, raw materials, and specialized cargo. Our team ensures all products are transported with the utmost care and compliance.</p>
@@ -236,7 +256,7 @@
             <div class="faq-item" data-aos="fade-up" data-aos-delay="200">
                 <div class="faq-question">
                     <h3>How do you ensure data security and privacy?</h3>
-                    <i class="fas fa-chevron-down"></i>
+                    <i class="fas fa-chevron-down" aria-hidden="true"></i>
                 </div>
                 <div class="faq-answer">
                     <p>We prioritize data security through encrypted communication channels, secure server infrastructure, and strict privacy policies. All client information and trade data are handled with the highest level of confidentiality.</p>
@@ -245,7 +265,7 @@
             <div class="faq-item" data-aos="fade-up" data-aos-delay="300">
                 <div class="faq-question">
                     <h3>What is your approach to sustainability in logistics?</h3>
-                    <i class="fas fa-chevron-down"></i>
+                    <i class="fas fa-chevron-down" aria-hidden="true"></i>
                 </div>
                 <div class="faq-answer">
                     <p>Al Masriya Al Emaratiya is committed to sustainable practices. We optimize routes to reduce carbon footprint, utilize eco-friendly warehousing solutions, and continuously seek ways to minimize environmental impact in our operations.</p>
@@ -254,7 +274,7 @@
             <div class="faq-item" data-aos="fade-up" data-aos-delay="400">
                 <div class="faq-question">
                     <h3>Do you offer real-time tracking for shipments?</h3>
-                    <i class="fas fa-chevron-down"></i>
+                    <i class="fas fa-chevron-down" aria-hidden="true"></i>
                 </div>
                 <div class="faq-answer">
                     <p>Yes, our advanced logistics system provides real-time tracking for all shipments. Clients receive dedicated portals or notifications to monitor their cargo's journey from origin to final destination.</p>
@@ -268,7 +288,7 @@
         <h2 data-aos="fade-up">Get in Touch With Us</h2>
         <div class="contact-form-container" data-aos="zoom-in" data-aos-delay="200">
             <p>Whether you have a question about our services, need a quote, or want to partner with us, our team is ready to assist you.</p>
-            <form class="contact-form">
+            <form class="contact-form" aria-label="Contact Form">
                 <input type="text" placeholder="Your Full Name" required aria-label="Your Name">
                 <input type="email" placeholder="Your Business Email" required aria-label="Your Email">
                 <input type="tel" placeholder="Your Phone Number (Optional)" aria-label="Your Phone Number">
@@ -277,9 +297,9 @@
                 <button type="submit">Send Message</button>
             </form>
             <div class="contact-info">
-                <div data-aos="fade-right" data-aos-delay="300"><i class="fas fa-map-marker-alt"></i><span>Cairo, Egypt & Dubai, UAE - Main Offices</span></div>
-                <div data-aos="fade-up" data-aos-delay="400"><i class="fas fa-phone"></i><span>+20 101 337 8572</span></div>
-                <div data-aos="fade-left" data-aos-delay="500"><i class="fas fa-envelope"></i><span>info@egy-uae.com</span></div>
+                <div data-aos="fade-right" data-aos-delay="300"><i class="fas fa-map-marker-alt" aria-hidden="true"></i><span>Cairo, Egypt & Dubai, UAE - Main Offices</span></div>
+                <div data-aos="fade-up" data-aos-delay="400"><i class="fas fa-phone-alt" aria-hidden="true"></i><span>+20 101 337 8572</span></div>
+                <div data-aos="fade-left" data-aos-delay="500"><i class="fas fa-envelope" aria-hidden="true"></i><span>info@egy-uae.com</span></div>
             </div>
         </div>
     </section>
@@ -302,36 +322,35 @@
             </div>
             <div class="footer-social" data-aos="fade-up" data-aos-delay="200">
                 <h4>Stay Connected</h4>
-                <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
-                <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
-                <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
-                <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                <a href="#" aria-label="Visit us on Facebook"><i class="fab fa-facebook-f" aria-hidden="true"></i></a>
+                <a href="#" aria-label="Visit us on Twitter"><i class="fab fa-twitter" aria-hidden="true"></i></a>
+                <a href="#" aria-label="Visit us on LinkedIn"><i class="fab fa-linkedin-in" aria-hidden="true"></i></a>
+                <a href="#" aria-label="Visit us on Instagram"><i class="fab fa-instagram" aria-hidden="true"></i></a>
             </div>
         </div>
         <div class="footer-bottom" data-aos="fade-up" data-aos-delay="300">
-            <p>&copy; 2024 Al Masriya Al Emaratiya. All rights reserved.</p>
+            <p>&copy; <span id="current-year"></span> Al Masriya Al Emaratiya. All rights reserved.</p>
         </div>
     </footer>
 
     <!-- In-page WhatsApp Chat Widget -->
     <div id="whatsapp-widget" class="whatsapp-widget">
         <button class="wa-btn" aria-label="Open WhatsApp Chat">
-            <i class="fab fa-whatsapp"></i>
+            <i class="fab fa-whatsapp" aria-hidden="true"></i>
         </button>
-        <div class="chat-container">
+        <div class="chat-container" role="dialog" aria-modal="true" aria-labelledby="chat-header-title">
             <div class="chat-header">
-                <h3>Chat with us on WhatsApp</h3>
+                <h3 id="chat-header-title">Chat with us on WhatsApp</h3>
                 <button class="chat-close" aria-label="Close Chat">&times;</button>
             </div>
-            <div class="chat-body">
+            <div class="chat-body" tabindex="0">
                 <div class="message incoming">
                     <p>Hi there! How can we help you today?</p>
                 </div>
-                <!-- User input message will go here -->
             </div>
             <div class="chat-footer">
-                <input type="text" placeholder="Type your message..." id="wa-chat-input">
-                <button id="wa-chat-send"><i class="fas fa-paper-plane"></i></button>
+                <input type="text" placeholder="Type your message..." id="wa-chat-input" aria-label="Type your message">
+                <button id="wa-chat-send" aria-label="Send message"><i class="fas fa-paper-plane" aria-hidden="true"></i></button>
             </div>
         </div>
     </div>
