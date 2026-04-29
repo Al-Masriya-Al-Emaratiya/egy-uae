@@ -371,6 +371,7 @@ header {
 .service-box i {
     font-size: 3.5rem;
     margin-bottom: 25px;
+    display: inline-block; /* ADDED FIX FOR ICON VISIBILITY */
     background: -webkit-linear-gradient(45deg, var(--primary), var(--secondary));
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -421,13 +422,11 @@ header {
     background: var(--glass-hover-bg);
     border-color: var(--secondary);
 }
-/* Remove specific flex-direction for even/odd to keep consistent */
-/* .philosophy-item:nth-child(even) { flex-direction: column; } */
-/* .philosophy-item:nth-child(even):hover { transform: translateY(-10px); } */
 
 .philosophy-item i {
     font-size: 3.5rem; /* Slightly smaller icon */
     flex-shrink: 0;
+    display: inline-block; /* ADDED FIX FOR ICON VISIBILITY */
     background: -webkit-linear-gradient(45deg, var(--primary), var(--secondary));
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
