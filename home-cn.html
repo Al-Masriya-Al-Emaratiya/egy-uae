@@ -60,7 +60,10 @@
     <!-- Animated Lines Background -->
     <div class="animated-lines-container"></div>
 
-    <!-- Video Background -->
+    <!-- Video and Audio Background -->
+    <audio id="myAudio" loop>
+  <source src="your-audio-file.mp3" type="audio/mpeg">
+    </audio>
     <div class="video-container">
         <video autoplay muted loop playsinline id="background-video">
             <source src="sky_background.mp4" type="video/mp4">
@@ -357,6 +360,7 @@
     </div>
 
     <!-- Scripts -->
+    <script src="js/audio.js"></script>
     <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script src="js/main.js"></script>
