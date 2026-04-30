@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width,initial-scale=1" />
     <title>Shipment Tracking — Al Masriya Al Emaratia</title>
     
-    <!-- خطوط التصميم -->
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;900&family=Tajawal:wght@300;400;500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
@@ -39,26 +38,24 @@
 
         h1, h2, h3, h4, h5 { font-family: 'Cairo', sans-serif; line-height: 1.2; }
 
-        /* --- إعدادات فيديو الخلفية --- */
         .video-bg {
             position: fixed;
             top: 0; left: 0;
             width: 100vw; height: 100vh;
-            object-fit: cover; /* يغطي الشاشة بالكامل */
-            z-index: -2; /* خلف كل شيء */
+            object-fit: cover; 
+            z-index: -2; 
         }
         
-        /* طبقة تظليل فوق الفيديو للحفاظ على وضوح التصميم الزجاجي */
+
         .video-overlay {
             position: fixed;
             top: 0; left: 0;
             width: 100vw; height: 100vh;
-            background: rgba(7, 9, 15, 0.75); /* درجة الشفافية والظلام */
-            backdrop-filter: blur(3px); /* تمويه خفيف للفيديو */
+            background: rgba(7, 9, 15, 0.75);
+            backdrop-filter: blur(3px);
             z-index: -1;
         }
 
-        /* --- زر التحكم بالصوت 3D --- */
         .sound-toggle-btn {
             position: fixed;
             bottom: 30px; left: 30px;
