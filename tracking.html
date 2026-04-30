@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width,initial-scale=1" />
     <title>Shipment Tracking — Al Masriya Al Emaratia</title>
     
+    <!-- خطوط التصميم -->
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;900&family=Tajawal:wght@300;400;500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
@@ -16,7 +17,6 @@
             --background-dark: #07090f; 
             --text-light: #e0e0e0; 
             --text-medium: #a0a0a0; 
-            --text-dark: #606060; 
             --glass-bg: rgba(255, 255, 255, 0.03); 
             --glass-hover-bg: rgba(255, 255, 255, 0.08); 
             --card-shadow: 0 5px 20px rgba(0,0,0,0.4); 
@@ -31,14 +31,56 @@
         
         body { 
             font-family: 'Tajawal', sans-serif; 
-            background: radial-gradient(circle at top, #111a2e 0%, var(--background-dark) 80%);
-            background-attachment: fixed;
             color: var(--text-light);
             min-height: 100vh;
             overflow-x: hidden;
+            background-color: var(--background-dark); /* احتياطي في حال تأخر الفيديو */
         }
 
         h1, h2, h3, h4, h5 { font-family: 'Cairo', sans-serif; line-height: 1.2; }
+
+        /* --- إعدادات فيديو الخلفية --- */
+        .video-bg {
+            position: fixed;
+            top: 0; left: 0;
+            width: 100vw; height: 100vh;
+            object-fit: cover; /* يغطي الشاشة بالكامل */
+            z-index: -2; /* خلف كل شيء */
+        }
+        
+        /* طبقة تظليل فوق الفيديو للحفاظ على وضوح التصميم الزجاجي */
+        .video-overlay {
+            position: fixed;
+            top: 0; left: 0;
+            width: 100vw; height: 100vh;
+            background: rgba(7, 9, 15, 0.75); /* درجة الشفافية والظلام */
+            backdrop-filter: blur(3px); /* تمويه خفيف للفيديو */
+            z-index: -1;
+        }
+
+        /* --- زر التحكم بالصوت 3D --- */
+        .sound-toggle-btn {
+            position: fixed;
+            bottom: 30px; left: 30px;
+            width: 55px; height: 55px;
+            border-radius: 50%;
+            background: var(--glass-bg);
+            border: 1px solid var(--border-color);
+            color: var(--text-light);
+            font-size: 1.3rem;
+            cursor: pointer;
+            z-index: 1000;
+            backdrop-filter: blur(10px);
+            transition: var(--transition);
+            box-shadow: var(--card-shadow);
+            display: flex; align-items: center; justify-content: center;
+        }
+        .sound-toggle-btn:hover {
+            border-color: var(--primary);
+            color: var(--primary);
+            transform: scale(1.1) translateY(-5px);
+            box-shadow: var(--card-hover-shadow);
+        }
 
         /* --- Header (Glassmorphism) --- */
         header {
@@ -64,10 +106,8 @@
         }
         .lang-btn:hover { border-color: var(--primary); color: var(--primary); box-shadow: 0 0 15px rgba(0,210,255,0.3); }
 
-        /* --- Hero Section (3D & Glowing) --- */
-        .hero-section {
-            padding: 150px 20px 80px; text-align: center; perspective: 1000px;
-        }
+        /* --- Hero Section (3D) --- */
+        .hero-section { padding: 150px 20px 80px; text-align: center; perspective: 1000px; position: relative; z-index: 1; }
         .hero-section h2 { 
             font-size: clamp(2.5rem, 5vw, 4rem); font-weight: 900; margin-bottom: 20px;
             background: linear-gradient(to right, var(--primary), var(--secondary));
@@ -77,7 +117,7 @@
         .search-container {
             max-width: 700px; margin: 0 auto; display: flex; gap: 15px;
             background: var(--glass-bg); padding: 15px; border-radius: 20px;
-            border: 1px solid var(--border-color); backdrop-filter: blur(10px);
+            border: 1px solid var(--border-color); backdrop-filter: blur(15px);
             box-shadow: var(--card-shadow); transform-style: preserve-3d;
             transition: var(--transition);
         }
@@ -86,7 +126,7 @@
         .search-container input {
             flex: 1; padding: 15px 25px; border: 1px solid var(--input-border);
             background: var(--input-bg); border-radius: 12px; color: var(--text-light);
-            font-size: 1.1rem; font-family: 'Tajawal', sans-serif; outline: none; transition: var(--transition);
+            font-size: 1.1rem; outline: none; transition: var(--transition);
         }
         .search-container input:focus { border-color: var(--primary); box-shadow: inset 0 0 10px rgba(0,210,255,0.2); }
         
@@ -94,19 +134,17 @@
             background: linear-gradient(to right, var(--primary), var(--secondary));
             color: #fff; border: none; padding: 0 40px; border-radius: 12px; 
             font-size: 1.1rem; font-weight: 700; cursor: pointer; transition: var(--transition);
-            font-family: 'Cairo'; letter-spacing: 1px;
         }
         .btn-track:hover { transform: scale(1.05); box-shadow: 0 10px 20px rgba(0,210,255,0.4); }
 
         /* --- Results Content --- */
-        .main-content { width: 90%; max-width: 1200px; margin: 0 auto 80px; perspective: 1000px; }
+        .main-content { width: 90%; max-width: 1200px; margin: 0 auto 80px; perspective: 1000px; position: relative; z-index: 1; }
         #result-section { display: none; animation: popIn 0.6s cubic-bezier(0.23, 1, 0.32, 1) forwards; opacity: 0; transform: translateY(50px) scale(0.95); }
 
-        /* --- 3D Data Cards --- */
         .data-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 25px; margin-bottom: 40px; transform-style: preserve-3d; }
         .info-card { 
             background: var(--glass-bg); padding: 30px; border-radius: 20px; 
-            border: 1px solid var(--border-color); backdrop-filter: blur(10px);
+            border: 1px solid var(--border-color); backdrop-filter: blur(15px);
             box-shadow: var(--card-shadow); transition: var(--transition);
             text-align: center; position: relative; overflow: hidden;
         }
@@ -115,39 +153,29 @@
         .info-card:hover::before { opacity: 1; }
         
         .info-card h4 { color: var(--text-medium); margin-bottom: 10px; font-size: 1rem; text-transform: uppercase; letter-spacing: 2px; }
-        .info-card p { font-size: 1.5rem; font-weight: 700; color: var(--text-light); font-family: 'Cairo'; }
+        .info-card p { font-size: 1.5rem; font-weight: 700; color: var(--text-light); }
         #status { color: var(--primary); text-shadow: 0 0 10px rgba(0,210,255,0.5); }
 
-        /* --- Map Styling (Dark Mode) --- */
         .map-container {
             background: var(--glass-bg); padding: 15px; border-radius: 25px;
             border: 1px solid var(--border-color); box-shadow: var(--card-shadow);
-            margin-bottom: 40px; transition: var(--transition);
+            margin-bottom: 40px; backdrop-filter: blur(15px); transition: var(--transition);
         }
         .map-container:hover { border-color: var(--primary); box-shadow: var(--card-hover-shadow); }
         #map { height: 450px; border-radius: 15px; z-index: 1; }
         
-        .leaflet-layer,
-        .leaflet-control-zoom-in,
-        .leaflet-control-zoom-out,
-        .leaflet-control-attribution {
-            filter: invert(100%) hue-rotate(180deg) brightness(85%) contrast(90%);
-        }
+        .leaflet-layer, .leaflet-control-zoom-in, .leaflet-control-zoom-out, .leaflet-control-attribution { filter: invert(100%) hue-rotate(180deg) brightness(85%) contrast(90%); }
 
-        /* --- 3D Glowing Timeline --- */
+        /* --- 3D Timeline --- */
         .timeline-card { 
             background: var(--glass-bg); padding: 40px; border-radius: 25px; 
-            border: 1px solid var(--border-color); backdrop-filter: blur(10px);
+            border: 1px solid var(--border-color); backdrop-filter: blur(15px);
             box-shadow: var(--card-shadow); transition: var(--transition);
         }
-        .timeline-card:hover { border-color: var(--border-color); box-shadow: 0 10px 40px rgba(0,0,0,0.5); }
         .timeline-card h3 { color: var(--text-light); margin-bottom: 30px; font-size: 1.8rem; text-align: center; }
         
         .t-item { position: relative; padding-left: 60px; padding-bottom: 40px; transition: var(--transition); }
-        .t-item::before {
-            content: ''; position: absolute; left: 24px; top: 0; width: 2px; height: 100%;
-            background: rgba(255,255,255,0.1); transition: var(--transition);
-        }
+        .t-item::before { content: ''; position: absolute; left: 24px; top: 0; width: 2px; height: 100%; background: rgba(255,255,255,0.1); }
         .t-item:last-child::before { display: none; }
         
         .t-icon {
@@ -155,46 +183,38 @@
             background: var(--background-dark); border: 2px solid var(--border-color); border-radius: 50%;
             display: flex; align-items: center; justify-content: center; z-index: 2;
             color: var(--text-medium); transition: var(--transition); font-size: 1.2rem;
-            box-shadow: 0 0 10px rgba(0,0,0,0.5);
         }
         
         .t-item.completed::before { background: linear-gradient(to bottom, var(--primary), transparent); }
-        .t-item.completed .t-icon { border-color: var(--primary); color: var(--primary); text-shadow: 0 0 10px var(--primary); box-shadow: inset 0 0 10px rgba(0,210,255,0.2), 0 0 15px rgba(0,210,255,0.4); }
+        .t-item.completed .t-icon { border-color: var(--primary); color: var(--primary); box-shadow: inset 0 0 10px rgba(0,210,255,0.2), 0 0 15px rgba(0,210,255,0.4); }
         .t-item.active .t-icon { background: var(--primary); color: #fff; border-color: var(--primary); box-shadow: 0 0 25px rgba(0,210,255,0.6); transform: scale(1.1); }
         
         .t-content { background: var(--glass-bg); padding: 15px 25px; border-radius: 15px; border: 1px solid transparent; transition: var(--transition); }
         .t-item:hover .t-content { background: var(--glass-hover-bg); border-color: rgba(255,255,255,0.1); transform: translateX(10px); }
-        .t-content h5 { margin: 0 0 5px; font-size: 1.3rem; color: var(--text-light); }
+        .t-content h5 { margin: 0 0 5px; font-size: 1.3rem; }
         .t-content p { margin: 0; font-size: 1rem; color: var(--text-medium); }
         .t-content span { color: var(--primary); font-weight: 700; }
 
-        @keyframes popIn { 
-            to { opacity: 1; transform: translateY(0) scale(1); } 
-        }
-
-        /* --- Responsive Design --- */
+        @keyframes popIn { to { opacity: 1; transform: translateY(0) scale(1); } }
+        
         @media (max-width: 768px) {
-            header { width: 95%; padding: 10px 20px; border-radius: 20px; }
-            .logo-area span { font-size: 0.9rem; }
-            .hero-section { padding-top: 120px; }
-            .search-container { flex-direction: column; background: transparent; border: none; box-shadow: none; }
+            header { width: 95%; padding: 10px 20px; }
+            .search-container { flex-direction: column; background: transparent; border: none; box-shadow: none; backdrop-filter: none;}
             .search-container input { border-radius: 12px; background: var(--glass-bg); border: 1px solid var(--border-color); }
-            .btn-track { padding: 15px; border-radius: 12px; width: 100%; }
-            .t-item:hover .t-content { transform: none; }
+            .btn-track { padding: 15px; width: 100%; }
         }
     </style>
-     <audio id="myAudio" loop>
-  <source src="sky_background.mp3" type="audio/mpeg">
-    </audio>
-    <div class="video-container">
-        <video autoplay muted loop playsinline id="background-video">
-            <source src="sky_background.mp4" type="video/mp4">
-            Your browser does not support the video tag.
-        </video>
-        <div class="overlay-gradient"></div>
-    </div>
 </head>
 <body>
+
+    <video id="bg-video" class="video-bg" autoplay loop muted playsinline>
+        <source src="sky_background.mp4" type="video/mp4">
+    </video>
+    <div class="video-overlay"></div>
+
+    <button id="sound-toggle" class="sound-toggle-btn" title="Toggle Sound">
+        <i class="fas fa-volume-mute"></i>
+    </button>
 
     <header>
         <div class="logo-area">
@@ -242,6 +262,27 @@
 
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
     <script>
+        // --- كود التحكم في صوت الفيديو ---
+        const video = document.getElementById('bg-video');
+        const soundBtn = document.getElementById('sound-toggle');
+
+        soundBtn.addEventListener('click', () => {
+            if (video.muted) {
+                video.muted = false; // تشغيل الصوت
+                soundBtn.innerHTML = '<i class="fas fa-volume-up"></i>';
+                soundBtn.style.color = 'var(--primary)';
+                soundBtn.style.borderColor = 'var(--primary)';
+                soundBtn.style.boxShadow = 'var(--card-hover-shadow)';
+            } else {
+                video.muted = true; // كتم الصوت
+                soundBtn.innerHTML = '<i class="fas fa-volume-mute"></i>';
+                soundBtn.style.color = 'var(--text-light)';
+                soundBtn.style.borderColor = 'var(--border-color)';
+                soundBtn.style.boxShadow = 'var(--card-shadow)';
+            }
+        });
+
+        // --- كود التتبع والخريطة ---
         let map;
 
         async function startTracking() {
