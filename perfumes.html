@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Al Masriya Al Emaratiya | Luxury Perfumes</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;900&family=Tajawal:wght@400;700&display=swap" rel="stylesheet">
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/perfumes-style.css">
+</head>
+<body>
+
+    <!-- Custom Cursor & Progress Bar -->
+    <div id="cursor"></div>
+    <div id="progress-bar"></div>
+
+    <!-- Animated Lines Background -->
+    <div class="animated-lines-container">
+        <div class="animated-line" style="top: 20%; animation-delay: 0s;"></div>
+        <div class="animated-line" style="top: 50%; animation-delay: 5s;"></div>
+        <div class="animated-line" style="top: 80%; animation-delay: 10s;"></div>
+    </div>
+
+    <!-- ==========================================
+         BACKGROUND VIDEO (فيديو الخلفية من جهازك)
+         ========================================== -->
+    <div class="video-container">
+        <!-- ضع اسم الفيديو الخاص بك هنا (مثل background.mp4) -->
+        <video autoplay loop muted playsinline>
+            <source src="sky_background.mp4" type="video/mp4">
+        </video>
+        <div class="overlay-gradient"></div>
+    </div>
+
+    <!-- Header -->
+    <header>
+        <div class="logo">
+            <h2>Al Masriya Al Emaratiya</h2>
+        </div>
+        <ul class="nav-links">
+            <li><a href="#home" class="active">Home</a></li>
+            <li><a href="#products">Collection</a></li>
+            <li><a href="#about">About Us</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+        <div class="header-actions">
+            <div class="hamburger">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </div>
+    </header>
+
+    <!-- Mobile Nav -->
+    <div class="mobile-nav">
+        <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#products">Collection</a></li>
+            <li><a href="#about">About Us</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </div>
+
+    <!-- Hero Section (3D) -->
+    <section id="home" class="hero">
+        <div class="hero-3d-card" id="hero-card">
+            <!-- ضع هنا صورة عطر رئيسي بدون خلفية PNG -->
+            <img src="placeholder-hero-perfume.png" alt="Signature Perfume" class="hero-image-3d">
+            <h1 class="hero-title">Exclusive Essence</h1>
+            <p class="hero-subtitle">Luxury Perfumes Collection</p>
+            <p>Discover the finest aromatic blends brought to you by Al Masriya Al Emaratiya.</p>
+            <a href="#products" class="btn-primary" style="margin-top: 30px; display: inline-block;">Explore Collection</a>
+        </div>
+    </section>
+
+    <!-- Products Section (3D Cards) -->
+    <section id="products" class="section-padding">
+        <h2>Our Exclusive Perfumes</h2>
+        <div class="products-grid">
+            
+            <!-- Product Card 1 -->
+            <div class="product-card">
+                <div class="card-glow"></div>
+                <div class="product-image">
+                    <!-- ضع هنا صورة العطر بدون خلفية PNG -->
+                    <img src="perfume-1.png" alt="Oud Royal">
+                </div>
+                <div class="product-info">
+                    <h3>Oud Royal</h3>
+                    <p class="brand">Al Masriya Al Emaratiya</p>
+                    <div class="price-row">
+                        <button class="quote-btn" data-product="Oud Royal">
+                            Request Quote <i class="fab fa-whatsapp"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Product Card 2 -->
+            <div class="product-card">
+                <div class="card-glow"></div>
+                <div class="product-image">
+                    <!-- ضع هنا صورة العطر بدون خلفية PNG -->
+                    <img src="perfume-2.png" alt="Musk Blanc">
+                </div>
+                <div class="product-info">
+                    <h3>Musk Blanc</h3>
+                    <p class="brand">Al Masriya Al Emaratiya</p>
+                    <div class="price-row">
+                        <button class="quote-btn" data-product="Musk Blanc">
+                            Request Quote <i class="fab fa-whatsapp"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Product Card 3 -->
+            <div class="product-card">
+                <div class="card-glow"></div>
+                <div class="product-image">
+                    <!-- ضع هنا صورة العطر بدون خلفية PNG -->
+                    <img src="perfume-3.png" alt="Rose Velvet">
+                </div>
+                <div class="product-info">
+                    <h3>Rose Velvet</h3>
+                    <p class="brand">Al Masriya Al Emaratiya</p>
+                    <div class="price-row">
+                        <button class="quote-btn" data-product="Rose Velvet">
+                            Request Quote <i class="fab fa-whatsapp"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="section-padding">
+        <div class="philosophy-content">
+            <div class="philosophy-item">
+                <i class="fas fa-globe"></i>
+                <div>
+                    <h3>Commercial Excellence</h3>
+                    <p>As a leading import & export agency, Al Masriya Al Emaratiya selects only the finest global ingredients for our exclusive perfume lines.</p>
+                </div>
+            </div>
+            <div class="philosophy-item">
+                <i class="fas fa-gem"></i>
+                <div>
+                    <h3>Premium Quality</h3>
+                    <p>Every bottle is a masterpiece, crafted with precision to deliver a long-lasting and unforgettable scent profile.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="section-padding">
+        <h2>Contact Us</h2>
+        <div class="contact-form-container">
+            <div class="contact-info" style="margin-top: 0; margin-bottom: 30px;">
+                <div><i class="fas fa-phone"></i> +20 101 337 8572</div>
+                <div><i class="fas fa-envelope"></i> info@almasriya-alemaratiya.com</div>
+            </div>
+            <form class="contact-form">
+                <input type="text" placeholder="Your Name" required>
+                <input type="email" placeholder="Your Email" required>
+                <textarea rows="5" placeholder="Your Message" required></textarea>
+                <button type="submit">Send Message</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-wrapper">
+            <div class="footer-logo">
+                <h3>Al Masriya Al Emaratiya</h3>
+                <p style="color: var(--text-medium); font-size: 0.9rem; margin-top: 10px;">Commercial Agencies, Import & Export. Bringing the world's finest scents to you.</p>
+            </div>
+            <div class="footer-links">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#products">Collection</a></li>
+                    <li><a href="#about">About Us</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 Al Masriya Al Emaratiya. All Rights Reserved.</p>
+            <div class="footer-bottom-social">
+                <a href="#"><i class="fab fa-facebook"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
