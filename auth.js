@@ -2,7 +2,7 @@ document.addEventListener('DOMContentLoaded', () => {
     
     // هذا هو ملف الـ JSON الخاص بك (يمكنك إضافة أي عدد من العملاء هنا)
     const userMapping = {
-        "30604041304577": { 
+        "306040987577": { 
             "pass": "123456", 
             "target": "eg-30604041304577-dasbhboard.html" 
         },
