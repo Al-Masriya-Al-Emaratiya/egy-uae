@@ -4,26 +4,28 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1" />
     <title>المصرية الإماراتية | مستقبل التجارة - نربط بين مصر والإمارات</title>
-    <meta name="description" content="المصرية الإماراتية هي شريكك الاستراتيجي لحلول التجارة والخدمات اللوجستية السلسة، نربط الأسواق ونعزز النمو بين جمهورية مصر العربية ودولة الإمارات العربية المتحدة." />
-    <meta name="keywords" content="المصرية الإماراتية, التجارة بين مصر والإمارات, لوجستيات, سلاسل الإمداد, شحن دولي, تخليص جمركي, تسهيل التجارة, مصر, الإمارات" />
-    <meta name="author" content="فريق المصرية الإماراتية" />
-
+    <meta name="description" content="المصرية الإماراتية هي شريكك الاستراتيجي لحلول التجارة والخدمات اللوجستية السلسة، نسد الفجوات بين الأسواق ونعزز النمو بين مصر والإمارات العربية المتحدة." />
+    <meta name="keywords" content="المصرية الإماراتية, التجارة بين مصر والإمارات, اللوجستيات, سلسلة الإمداد, الشحن الدولي, التخليص الجمركي, تيسير التجارة, مصر, الإمارات, التجارة الدولية" />
+    <meta name="author" content="المصرية الإماراتية" />
+   
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website" />
-    <meta property="og:url" content="YOUR_WEBSITE_URL" /> 
+    <meta property="og:url" content="wwww.egy-uae.com" /> 
     <meta property="og:title" content="المصرية الإماراتية | مستقبل التجارة - نربط بين مصر والإمارات" />
-    <meta property="og:description" content="شريكك الاستراتيجي للخدمات اللوجستية والتجارة بين مصر والإمارات." />
+    <meta property="og:description" content="المصرية الإماراتية هي شريكك الاستراتيجي لحلول التجارة والخدمات اللوجستية السلسة، نسد الفجوات بين الأسواق ونعزز النمو بين مصر والإمارات العربية المتحدة." />
     <meta property="og:image" content="YOUR_OG_IMAGE_URL" /> 
 
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image" />
     <meta property="twitter:url" content="YOUR_WEBSITE_URL" /> 
-    <meta property="twitter:title" content="المصرية الإماراتية | مستقبل التجارة" />
-    <meta property="twitter:description" content="نربط الأسواق ونعزز النمو بين مصر والإمارات العربية المتحدة." />
+    <meta property="twitter:title" content="المصرية الإماراتية | مستقبل التجارة - نربط بين مصر والإمارات" />
+    <meta property="twitter:description" content="المصرية الإماراتية هي شريكك الاستراتيجي لحلول التجارة والخدمات اللوجستية السلسة، نسد الفجوات بين الأسواق ونعزز النمو بين مصر والإمارات العربية المتحدة." />
     <meta property="twitter:image" content="YOUR_OG_IMAGE_URL" /> 
     
-    <!-- Google Fonts: Tajawal & IBM Plex Sans Arabic -->
-    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@300;400;600;700&family=Tajawal:wght@400;500;700;900&display=swap" rel="stylesheet">
+    <!-- Google Fonts (خطوط عربية احترافية) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&family=Tajawal:wght@400;500;700;900&display=swap" rel="stylesheet">
     
     <!-- Font Awesome for Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -32,34 +34,72 @@
     <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     
-    <!-- Custom CSS -->
     <link rel="stylesheet" href="css/style.css">
+    <link rel="manifest" href="Root/manifest.json">
+    <!-- Mobile bar color -->
+    <meta name="theme-color" content="#007bff">
 
+    <!-- تنسيقات الخطوط والاتجاه العربي -->
     <style>
-        body {
-            font-family: 'IBM Plex Sans Arabic', 'Tajawal', sans-serif;
+        :root {
+            --font-headings: 'Cairo', sans-serif;
+            --font-body: 'Tajawal', sans-serif;
         }
-        h1, h2, h3, h4, .hero-title {
-            font-family: 'Tajawal', sans-serif;
+        
+        body, p, a, span, li, input, textarea, button {
+            font-family: var(--font-body) !important;
+            text-align: right;
+        }
+
+        h1, h2, h3, h4, h5, h6, .logo h2 {
+            font-family: var(--font-headings) !important;
             font-weight: 700;
         }
-        .service-box i {
-            margin-bottom: 15px;
+
+        /* تعديلات مخصصة للغة العربية لتناسب التصميم من اليمين لليسار */
+        .nav-links, .mobile-nav ul, .footer-links ul {
+            padding-right: 0;
         }
-        .contact-info div i {
-            margin-left: 10px;
+        
+        .header-actions .login-btn i {
+            margin-left: 8px;
             margin-right: 0;
         }
-        .nav-links li {
-            margin-left: 20px;
+
+        .system-link i, .chat-footer button i {
+            transform: scaleX(-1); /* عكس الأسهم لتناسب الاتجاه العربي */
+        }
+
+        .contact-info i {
+            margin-left: 15px;
             margin-right: 0;
         }
-        /* تأكد من أن أيقونة السهم في القائمة المنسدلة والـ FAQ تنظر للطرف الصحيح */
-        .fa-chevron-down {
+
+        .dropdown-trigger i.arrow-icon {
             margin-right: 10px;
             margin-left: 0;
         }
+
+        /* لضمان توسيط النصوص في الهيرو أو الأماكن المطلوبة */
+        .hero-3d-card, .hero-title, .hero-subtitle, .hero-3d-card p {
+            text-align: center !important;
+        }
+        
+        .section-padding h2 {
+            text-align: center;
+        }
     </style>
+
+<script>
+  // Server 
+  if ('serviceWorker' in navigator) {
+    window.addEventListener('load', () => {
+      navigator.serviceWorker.register('Root/sw.js')
+        .then(reg => console.log('Service Worker Registered'))
+        .catch(err => console.log('Service Worker Failed', err));
+    });
+  }
+</script>
 </head>
 <body class="dark-theme">
 
@@ -72,13 +112,13 @@
     <!-- Animated Lines Background -->
     <div class="animated-lines-container"></div>
 
-    <!-- Video and Audio Background -->
+    <!-- Video & Audio Background -->
     <audio id="myAudio" loop>
-  <source src="sky_background.mp3" type="audio/mpeg">
+        <source src="sky_background.mp3" type="audio/mpeg">
     </audio>
     <div class="video-container">
         <video autoplay muted loop playsinline id="background-video">
-            <source src="sky_background.mp4" type="video/mp4">
+            <source src="background_egy-uae_video.mp4" type="video/mp4">
             متصفحك لا يدعم تشغيل الفيديو.
         </video>
         <div class="overlay-gradient"></div>
@@ -87,31 +127,40 @@
     <!-- Header & Navigation -->
     <header>
         <div class="logo">
-            <h2 aria-label="المصرية الإماراتية - الرئيسية">المصرية الإماراتية<span style="color: var(--primary);">.</span></h2>
+            <h2 aria-label="الصفحة الرئيسية للمصرية الإماراتية">المصرية الإماراتية<span style="color: var(--primary);">.</span></h2>
         </div>
         <ul class="nav-links">
             <li><a href="#home">الرئيسية</a></li>
             <li><a href="#services">خدماتنا</a></li>
             <li><a href="#about">من نحن</a></li>
-            <li><a href="#team">فريقنا</a></li>
+            <li><a href="#systems">أنظمتنا</a></li>
             <li><a href="#contact">اتصل بنا</a></li>
         </ul>
-        <!-- Mobile Navigation Toggle -->
-        <div class="hamburger" aria-label="فتح قائمة التنقل">
-            <div class="bar"></div>
-            <div class="bar"></div>
-            <div class="bar"></div>
+        
+        <!-- Header Actions (Login + Mobile Toggle) -->
+        <div class="header-actions">
+            <a href="login.html" class="login-btn" aria-label="تسجيل الدخول للبوابة">
+                <i class="fas fa-user-circle"></i>
+                <span class="login-text">دخول</span>
+            </a>
+            <!-- Mobile Navigation Toggle -->
+            <div class="hamburger" aria-label="تبديل قائمة التنقل">
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+            </div>
         </div>
     </header>
 
     <!-- Mobile Navigation Menu -->
-    <nav class="mobile-nav" aria-label="قائمة الهاتف">
+    <nav class="mobile-nav" aria-label="التنقل عبر الجوال">
         <ul>
             <li><a href="#home">الرئيسية</a></li>
             <li><a href="#services">خدماتنا</a></li>
             <li><a href="#about">من نحن</a></li>
-            <li><a href="#team">فريقنا</a></li>
+            <li><a href="#systems">أنظمتنا</a></li>
             <li><a href="#contact">اتصل بنا</a></li>
+            <li class="mobile-login-item"><a href="login.html" class="mobile-login-btn"><i class="fas fa-sign-in-alt"></i> الدخول للبوابة</a></li>
         </ul>
     </nav>
 
@@ -121,7 +170,7 @@
             <h2 class="hero-subtitle" data-z="20">نربط بين مصر والإمارات</h2>
             <h1 class="hero-title" data-z="60">مستقبل <span style="color: var(--primary);">التجارة</span></h1>
             <p data-z="40">
-                المصرية الإماراتية هي شريكك الاستراتيجي لحلول التجارة والخدمات اللوجستية المتكاملة، نسعى لربط الأسواق وتعزيز فرص النمو والتبادل التجاري بين مصر والإمارات.
+                المصرية الإماراتية هي شريكك الاستراتيجي لحلول التجارة والخدمات اللوجستية السلسة، نسد الفجوات بين الأسواق ونعزز النمو بين جمهورية مصر العربية ودولة الإمارات العربية المتحدة.
             </p>
         </div>
     </section>
@@ -133,98 +182,103 @@
             <div class="service-box" data-aos="fade-up" data-aos-delay="100">
                 <i class="fas fa-boxes-stacked" aria-hidden="true"></i>
                 <h3>اللوجستيات وسلاسل الإمداد</h3>
-                <p>حلول متكاملة لنقل البضائع، التخزين، والتوزيع بكفاءة عالية تضمن وصول شحناتك في موعدها.</p>
+                <p>حلول متكاملة لضمان حركة البضائع بكفاءة، بالإضافة لخدمات التخزين والتوزيع لضمان التسليم في الوقت المحدد.</p>
             </div>
             <div class="service-box" data-aos="fade-up" data-aos-delay="200">
                 <i class="fas fa-plane-up" aria-hidden="true"></i>
                 <h3>الشحن الدولي</h3>
-                <p>إدارة احترافية للشحن الجوي والبحري، مع التعامل الكامل مع المستندات لضمان سلاسة العمليات.</p>
+                <p>تعامل احترافي مع الشحن الجوي والبحري، والوساطة الجمركية، والوثائق لضمان سير العمليات بسلاسة تامة.</p>
             </div>
             <div class="service-box" data-aos="fade-up" data-aos-delay="300">
                 <i class="fas fa-handshake" aria-hidden="true"></i>
-                <h3>تسهيل التجارة</h3>
-                <p>استشارات استراتيجية ودعم لدخول الأسواق، والامتثال للوائح التنظيمية وتطوير الأعمال.</p>
+                <h3>تيسير التجارة</h3>
+                <p>استشارات استراتيجية ودعم لدخول الأسواق، والامتثال للقوانين التنظيمية، وتطوير وتوسيع نطاق الأعمال.</p>
             </div>
             <div class="service-box" data-aos="fade-up" data-aos-delay="400">
                 <i class="fas fa-file-invoice" aria-hidden="true"></i>
                 <h3>التخليص الجمركي</h3>
-                <p>تسريع الإجراءات الجمركية وإعداد دقيق للمستندات لتقليل التأخير وتجنب الغرامات.</p>
+                <p>تسريع الإجراءات الجمركية وإعداد دقيق للوثائق والمستندات لتقليل وقت الانتظار وتجنب أي تأخير.</p>
             </div>
             <div class="service-box" data-aos="fade-up" data-aos-delay="500">
                 <i class="fas fa-truck-fast" aria-hidden="true"></i>
                 <h3>النقل البري</h3>
-                <p>شبكة نقل بري موثوقة تغطي كافة أنحاء مصر والإمارات، مزودة بأحدث أنظمة التتبع.</p>
+                <p>شبكة نقل بري موثوقة تغطي جميع أنحاء مصر والإمارات، مزودة بأحدث تقنيات التتبع الحديثة.</p>
             </div>
             <div class="service-box" data-aos="fade-up" data-aos-delay="600">
                 <i class="fas fa-warehouse" aria-hidden="true"></i>
                 <h3>حلول التخزين</h3>
-                <p>مرافق تخزين حديثة وآمنة مع أنظمة إدارة مخزون متطورة مصممة خصيصاً لتلبية احتياجاتك.</p>
+                <p>مرافق تخزين حديثة وآمنة ومجهزة بأنظمة إدارة مخزون متطورة ومصممة خصيصاً لتلبية احتياجاتك.</p>
             </div>
         </div>
     </section>
 
     <!-- Philosophy Section -->
     <section id="about" class="philosophy-section section-padding">
-        <h2>قيمنا الجوهرية</h2>
+        <h2>قيمنا الأساسية</h2>
         <div class="philosophy-content">
             <div class="philosophy-item" data-aos="fade-up" data-aos-delay="100">
                 <i class="fas fa-lightbulb" aria-hidden="true"></i>
                 <div>
                     <h3>الابتكار والكفاءة</h3>
-                    <p>نعتمد على أحدث التقنيات والاستراتيجيات المبتكرة لتقديم حلول تجارية فائقة السرعة.</p>
+                    <p>نعتمد على أحدث التقنيات والاستراتيجيات المبتكرة لتقديم حلول تجارية فعالة وسريعة.</p>
                 </div>
             </div>
             <div class="philosophy-item" data-aos="fade-up" data-aos-delay="200">
                 <i class="fas fa-handshake-angle" aria-hidden="true"></i>
                 <div>
-                    <h3>التميز في خدمة العميل</h3>
-                    <p>نجاحكم هو أولويتنا القصوى. نحن ملتزمون بتقديم خدمة شخصية وبناء جسور الثقة.</p>
+                    <h3>التميز المتمحور حول العميل</h3>
+                    <p>نجاحك هو أولويتنا القصوى. نحن مكرسون لتقديم خدمات مخصصة وبناء ثقة متبادلة طويلة الأمد.</p>
                 </div>
             </div>
             <div class="philosophy-item" data-aos="fade-up" data-aos-delay="300">
                 <i class="fas fa-earth-africa" aria-hidden="true"></i>
                 <div>
-                    <h3>اتصال سلس وبلا حدود</h3>
-                    <p>خلق بيئة تجارية متناغمة، تربط الشركات عبر منطقة الشرق الأوسط وشمال أفريقيا وما وراءها.</p>
+                    <h3>الترابط السلس</h3>
+                    <p>خلق بيئة تجارية سلسة ومتصلة، تربط الشركات عبر منطقة الشرق الأوسط وشمال أفريقيا وما وراءها.</p>
                 </div>
             </div>
             <div class="philosophy-item" data-aos="fade-up" data-aos-delay="400">
                 <i class="fas fa-shield-halved" aria-hidden="true"></i>
                 <div>
                     <h3>النزاهة والشفافية</h3>
-                    <p>نعمل وفق أعلى المعايير الأخلاقية، مع ضمان الشفافية الكاملة في جميع تعاملاتنا.</p>
+                    <p>نعمل بأعلى المعايير الأخلاقية، ونضمن لك الشفافية المطلقة في جميع تعاملاتنا وعملياتنا.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Team Section -->
-    <section id="team" class="team-section section-padding">
-        <h2>فريق العمل</h2>
-        <div class="team-grid">
-            <div class="team-member" data-aos="zoom-in" data-aos-delay="100">
-                <img src="https://media.licdn.com/dms/image/v2/C4D03AQGqUvPUL1hhSw/profile-displayphoto-shrink_400_400/profile-displayphoto-shrink_400_400/0/1524686640651?e=1779321600&v=beta&t=N27dpMDZMNibfwU59E_8I5oCshz7shbIM2ts7zQD-w4" alt="إسماعيل المنشاوي">
-                <h3>إسماعيل المنشاوي</h3>
-                <p>المؤسس والمدير التنفيذي</p>
-                <div class="social-links">
-                    <a href="https://www.linkedin.com/in/ismail-el-menshawy-338b9b148/" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+    <!-- Systems & Platforms Section -->
+    <section id="systems" class="systems-section section-padding">
+        <h2>أنظمتنا الرقمية</h2>
+        <div class="systems-grid">
+            <!-- System 1: Tracking -->
+            <div class="system-card" data-aos="zoom-in" data-aos-delay="100">
+                <div class="system-icon">
+                    <i class="fas fa-map-location-dot"></i>
                 </div>
+                <h3>التتبع الذكي</h3>
+                <p>رؤية فورية ولحظية لشحناتك. راقب المواقع الدقيقة، أوقات العبور، ومواعيد الوصول المتوقعة بكل سهولة.</p>
+                <a href="tracking.html" class="system-link">استكشف التتبع <i class="fas fa-arrow-left"></i></a>
             </div>
-            <div class="team-member" data-aos="zoom-in" data-aos-delay="200">
-                <img src="person-image.jpg" alt="أحمد بدراوي">
-                <h3>أحمد بدراوي</h3>
-                <p>مدير العمليات الرقمية</p>
-                <div class="social-links">
-                    <a href="https://www.linkedin.com/in/ahmed-badrawi/" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+            
+            <!-- System 2: Dashboard -->
+            <div class="system-card" data-aos="zoom-in" data-aos-delay="200">
+                <div class="system-icon">
+                    <i class="fas fa-chart-pie"></i>
                 </div>
+                <h3>لوحة تحكم التحليلات</h3>
+                <p>عرض شامل للبيانات. قم بتحليل مقاييس سلسلة الإمداد، والتقارير المالية، ومؤشرات الأداء بكل وضوح.</p>
+                <a href="dashboard.html" class="system-link">عرض اللوحة <i class="fas fa-arrow-left"></i></a>
             </div>
-            <div class="team-member" data-aos="zoom-in" data-aos-delay="300">
-                <img src="person-image.jpg" alt="خالد منصور">
-                <h3>خالد منصور</h3>
-                <p>رئيس قسم اللوجستيات</p>
-                <div class="social-links">
-                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+            
+            <!-- System 3: Client Portal -->
+            <div class="system-card" data-aos="zoom-in" data-aos-delay="300">
+                <div class="system-icon">
+                    <i class="fas fa-laptop-file"></i>
                 </div>
+                <h3>بوابة العملاء</h3>
+                <p>مركز موحد لجميع احتياجاتك اللوجستية. إدارة الفواتير، تقديم الطلبات، والوصول الآمن لوثائق الشحن الخاصة بك.</p>
+                <a href="portal.html" class="system-link">دخول البوابة <i class="fas fa-arrow-left"></i></a>
             </div>
         </div>
     </section>
@@ -235,12 +289,12 @@
         <div class="swiper testimonial-slider" data-aos="fade-up" data-aos-delay="200">
             <div class="swiper-wrapper">
                 <div class="swiper-slide testimonial-item">
-                    <p>"كانت المصرية الإماراتية سبباً رئيسياً في تحسين مساراتنا التجارية بين القاهرة ودبي. احترافيتهم تستحق كل التقدير!"</p>
+                    <p>"كان للمصرية الإماراتية دور فعال في تحسين مسارات التجارة لدينا بين القاهرة ودبي. احترافيتهم تستحق الثناء حقاً!"</p>
                     <h4>- عمر الفارس</h4>
-                    <span>مدير سلاسل الإمداد</span>
+                    <span>مدير سلسلة الإمداد</span>
                 </div>
                 <div class="swiper-slide testimonial-item">
-                    <p>"شهدنا تخليصاً جمركياً سلساً ودعماً لوجستياً لا مثيل له. إنهم شريك موثوق لأي عمل تجاري في المنطقة."</p>
+                    <p>"لقد جربنا التخليص الجمركي السلس ودعم لوجستي لا مثيل له. إنهم شريك موثوق لأي شركة تعمل في المنطقة."</p>
                     <h4>- لطيفة حسن</h4>
                     <span>مديرة العمليات</span>
                 </div>
@@ -257,20 +311,20 @@
         <div class="faq-container">
             <div class="faq-item" data-aos="fade-up" data-aos-delay="100">
                 <div class="faq-question">
-                    <h3>ما هي أنواع البضائع التي تتعاملون معها؟</h3>
+                    <h3>ما أنواع البضائع التي تتعاملون معها في التجارة؟</h3>
                     <i class="fas fa-chevron-down"></i>
                 </div>
                 <div class="faq-answer">
-                    <p>نتعامل مع المنتجات الصناعية، السلع الاستهلاكية، المواد الخام، والشحنات المتخصصة مع ضمان الامتثال الكامل للمعايير.</p>
+                    <p>نتعامل مع المنتجات الصناعية، السلع الاستهلاكية، المواد الخام، والشحنات المتخصصة مع ضمان الامتثال والعناية الفائقة.</p>
                 </div>
             </div>
             <div class="faq-item" data-aos="fade-up" data-aos-delay="200">
                 <div class="faq-question">
-                    <h3>هل توفرون خدمة تتبع الشحنات في الوقت الفعلي؟</h3>
+                    <h3>هل تقدمون ميزة التتبع اللحظي للشحنات؟</h3>
                     <i class="fas fa-chevron-down"></i>
                 </div>
                 <div class="faq-answer">
-                    <p>نعم، يوفر نظامنا اللوجستي المتطور تتبعاً حياً لكافة الشحنات عبر بوابة مخصصة لعملائنا.</p>
+                    <p>نعم، يوفر نظامنا اللوجستي المتقدم تتبعاً لحظياً لجميع الشحنات عبر بوابة مخصصة للعملاء.</p>
                 </div>
             </div>
         </div>
@@ -280,7 +334,7 @@
     <section id="contact" class="contact-section section-padding">
         <h2>تواصل معنا</h2>
         <div class="contact-form-container" data-aos="zoom-in" data-aos-delay="200">
-            <p>سواء كنت بحاجة إلى عرض سعر أو ترغب في الشراكة معنا، فريقنا مستعد لمساعدتك.</p>
+            <p>سواء كنت بحاجة إلى عرض سعر أو ترغب في بناء شراكة معنا، فريقنا مستعد دائماً لمساعدتك.</p>
             <form class="contact-form" aria-label="نموذج الاتصال">
                 <input type="text" placeholder="الاسم الكامل" required>
                 <input type="email" placeholder="البريد الإلكتروني للعمل" required>
@@ -290,8 +344,8 @@
                 <button type="submit">إرسال الرسالة</button>
             </form>
             <div class="contact-info">
-                <div><i class="fas fa-map-marker-alt"></i><span>العاشر من رمضان، مصر & الشارقة، الإمارات</span></div>
-                <div><i class="fas fa-phone-alt"></i><span>+20 101 176 6232</span></div>
+                <div><i class="fas fa-map-marker-alt"></i><span>العاشر من رمضان، مصر | الشارقة، الإمارات</span></div>
+                <div><i class="fas fa-phone-alt"></i><span dir="ltr">+20 101 176 6232</span></div>
                 <div><i class="fas fa-envelope"></i><span>info@egy-uae.com</span></div>
             </div>
         </div>
@@ -311,8 +365,10 @@
                     <li><a href="#services">خدماتنا</a></li>
                     <li><a href="#about">من نحن</a></li>
                     <li><a href="#contact">اتصل بنا</a></li>
-                    <li><a href="tracking.html">التتبع</a></li>
+                    <li><a href="tracking.html">تتبع الشحنات</a></li>
                     <li><a href="careers.html">الوظائف</a></li>
+                    <li><a href="global-trading-hub.html">السوق العالمي</a></li>
+                    <li><a href="portal.html">بوابة العملاء</a></li>
                 </ul>
             </div>
 
@@ -324,8 +380,8 @@
                     <i class="fas fa-chevron-down arrow-icon"></i>
                 </div>
                 <ul class="dropdown-menu" id="lang-menu">
-                    <li><a href="home-ar.html" class="active-lang">العربية</a></li>
                     <li><a href="index.html">English</a></li>
+                    <li><a href="home-ar.html" class="active-lang">العربية</a></li>
                     <li><a href="home-cn.html">中文</a></li>
                 </ul>
             </div>
@@ -334,9 +390,9 @@
         <div class="footer-bottom">
             <p>© <span id="current-year"></span> المصرية الإماراتية. جميع الحقوق محفوظة.</p>
             <div class="footer-bottom-social">
-                <a href="https://www.facebook.com/AlMasriyaAlEmaratiya" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
-                <a href="https://www.linkedin.com/company/egy-uae" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
-                <a href="https://www.youtube.com/@egy-uae.channel" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                <a href="https://www.facebook.com/AlMasriyaAlEmaratiya" aria-label="فيسبوك"><i class="fab fa-facebook-f"></i></a>
+                <a href="https://www.linkedin.com/company/egy-uae" aria-label="لينكد إن"><i class="fab fa-linkedin-in"></i></a>
+                <a href="https://www.youtube.com/@egy-uae.channel" aria-label="يوتيوب"><i class="fab fa-youtube"></i></a>
             </div>
         </div>
     </footer>
@@ -353,7 +409,7 @@
             </div>
             <div class="chat-body" tabindex="0">
                 <div class="message incoming">
-                    <p>مرحباً! كيف يمكننا مساعدتك اليوم؟</p>
+                    <p>مرحباً بك! كيف يمكننا مساعدتك اليوم؟</p>
                 </div>
             </div>
             <div class="chat-footer">
@@ -363,7 +419,6 @@
         </div>
     </div>
 
-    <!-- Scripts -->
     <script src="js/audio.js"></script>
     <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
