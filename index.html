@@ -6,7 +6,7 @@
     <title>Al Masriya Al Emaratiya | Future of Trade - Connecting Egypt & UAE</title>
     <meta name="description" content="Al Masriya Al Emaratiya is your strategic partner for seamless trade and logistics solutions, bridging markets and fostering growth between Egypt and the United Arab Emirates." />
     <meta name="keywords" content="Al Masriya Al Emaratiya, Egypt UAE trade, logistics, supply chain, freight forwarding, customs clearance, trade facilitation, Egypt, UAE, international trade" />
-    <meta name="author" content="Al Masriya Al Emaratiya Team" />
+    <meta name="author" content="Al Masriya Al Emaratiya" />
    
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website" />
@@ -80,14 +80,22 @@
             <li><a href="#home">Home</a></li>
             <li><a href="#services">Services</a></li>
             <li><a href="#about">About Us</a></li>
-            <li><a href="#team">Our Team</a></li>
+            <li><a href="#systems">Our Systems</a></li>
             <li><a href="#contact">Contact Us</a></li>
         </ul>
-        <!-- Mobile Navigation Toggle -->
-        <div class="hamburger" aria-label="Toggle navigation menu">
-            <div class="bar"></div>
-            <div class="bar"></div>
-            <div class="bar"></div>
+        
+        <!-- Header Actions (Login + Mobile Toggle) -->
+        <div class="header-actions">
+            <a href="login.html" class="login-btn" aria-label="Login to Portal">
+                <i class="fas fa-user-circle"></i>
+                <span class="login-text">Login</span>
+            </a>
+            <!-- Mobile Navigation Toggle -->
+            <div class="hamburger" aria-label="Toggle navigation menu">
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+            </div>
         </div>
     </header>
 
@@ -97,8 +105,10 @@
             <li><a href="#home">Home</a></li>
             <li><a href="#services">Services</a></li>
             <li><a href="#about">About Us</a></li>
-            <li><a href="#team">Our Team</a></li>
+            <li><a href="#systems">Our Systems</a></li>
             <li><a href="#contact">Contact Us</a></li>
+            <!-- زر تسجيل دخول إضافي للقائمة الجانبية في الموبايل -->
+            <li class="mobile-login-item"><a href="login.html" class="mobile-login-btn"><i class="fas fa-sign-in-alt"></i> Login to Portal</a></li>
         </ul>
     </nav>
 
@@ -108,7 +118,7 @@
             <h2 class="hero-subtitle" data-z="20">Connecting Egypt & UAE</h2>
             <h1 class="hero-title" data-z="60">Future of <span style="color: var(--primary);">Trade</span></h1>
             <p data-z="40">
-                Al Masriya Al Emaratia is your strategic partner for seamless trade and logistics solutions, bridging markets and fostering growth between Egypt and the United Arab Emirates.
+                Al Masriya Al Emaratiya is your strategic partner for seamless trade and logistics solutions, bridging markets and fostering growth between Egypt and the United Arab Emirates.
             </p>
         </div>
     </section>
@@ -185,33 +195,38 @@
         </div>
     </section>
 
-    <!-- Team Section -->
-    <section id="team" class="team-section section-padding">
-        <h2>Meet Our Team</h2>
-        <div class="team-grid">
-            <div class="team-member" data-aos="zoom-in" data-aos-delay="100">
-                <img src="https://media.licdn.com/dms/image/v2/C4D03AQGqUvPUL1hhSw/profile-displayphoto-shrink_400_400/profile-displayphoto-shrink_400_400/0/1524686640651?e=1779321600&v=beta&t=N27dpMDZMNibfwU59E_8I5oCshz7shbIM2ts7zQD-w4" alt="Ismail El-Menshawy, Founder & CEO">
-                <h3>Ismail El-Menshawy</h3>
-                <p>Founder & CEO</p>
-                <div class="social-links">
-                    <a href="https://www.linkedin.com/in/ismail-el-menshawy-338b9b148/" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+    <!-- Systems & Platforms Section -->
+    <section id="systems" class="systems-section section-padding">
+        <h2>Our Digital Systems</h2>
+        <div class="systems-grid">
+            <!-- System 1: Tracking -->
+            <div class="system-card" data-aos="zoom-in" data-aos-delay="100">
+                <div class="system-icon">
+                    <i class="fas fa-map-location-dot"></i>
                 </div>
+                <h3>Smart Tracking</h3>
+                <p>Real-time visibility of your shipments. Monitor exact locations, transit times, and estimated arrivals instantly.</p>
+                <a href="tracking.html" class="system-link">Explore Tracking <i class="fas fa-arrow-right"></i></a>
             </div>
-            <div class="team-member" data-aos="zoom-in" data-aos-delay="200">
-                <img src="person-image.jpg" alt="Ahmed Badrawi">
-                <h3>Ahmed Badrawi</h3>
-                <p>Digital Operations Manager</p>
-                <div class="social-links">
-                    <a href="https://www.linkedin.com/in/ahmed-badrawi/" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+            
+            <!-- System 2: Dashboard -->
+            <div class="system-card" data-aos="zoom-in" data-aos-delay="200">
+                <div class="system-icon">
+                    <i class="fas fa-chart-pie"></i>
                 </div>
+                <h3>Analytics Dashboard</h3>
+                <p>Comprehensive data visualization. Analyze supply chain metrics, financial reports, and performance indicators.</p>
+                <a href="dashboard.html" class="system-link">View Dashboard <i class="fas fa-arrow-right"></i></a>
             </div>
-            <div class="team-member" data-aos="zoom-in" data-aos-delay="300">
-                <img src="person-image.jpg" alt="Khaled Mansour">
-                <h3>Khaled Mansour</h3>
-                <p>Head of Logistics</p>
-                <div class="social-links">
-                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+            
+            <!-- System 3: Client Portal -->
+            <div class="system-card" data-aos="zoom-in" data-aos-delay="300">
+                <div class="system-icon">
+                    <i class="fas fa-laptop-file"></i>
                 </div>
+                <h3>Client Portal</h3>
+                <p>A unified hub for all your logistics needs. Manage invoices, submit requests, and securely access shipping documents.</p>
+                <a href="portal.html" class="system-link">Access Portal <i class="fas fa-arrow-right"></i></a>
             </div>
         </div>
     </section>
@@ -222,7 +237,7 @@
         <div class="swiper testimonial-slider" data-aos="fade-up" data-aos-delay="200">
             <div class="swiper-wrapper">
                 <div class="swiper-slide testimonial-item">
-                    <p>"Al Masriya Al Emaratia has been instrumental in optimizing our trade routes between Cairo and Dubai. Their professionalism is truly commendable!"</p>
+                    <p>"Al Masriya Al Emaratiya has been instrumental in optimizing our trade routes between Cairo and Dubai. Their professionalism is truly commendable!"</p>
                     <h4>- Omar Al Fares</h4>
                     <span>Supply Chain Director</span>
                 </div>
