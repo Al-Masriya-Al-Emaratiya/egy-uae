@@ -23,7 +23,8 @@ document.addEventListener('DOMContentLoaded', () => {
         });
 
         document.addEventListener('mouseover', (e) => {
-            const target = e.target.closest('a, button, input, textarea, .service-box, .philosophy-item, .team-member, .testimonial-item, .faq-item, .swiper-button-prev, .swiper-button-next, .dropdown-trigger');
+            // إضافة .system-card و .login-btn ليتفاعل معهم الماوس
+            const target = e.target.closest('a, button, input, textarea, .service-box, .philosophy-item, .system-card, .login-btn, .testimonial-item, .faq-item, .swiper-button-prev, .swiper-button-next, .dropdown-trigger');
             if (target) {
                 cursor.style.width = '60px';
                 cursor.style.height = '60px';
@@ -32,7 +33,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
 
         document.addEventListener('mouseout', (e) => {
-            const target = e.target.closest('a, button, input, textarea, .service-box, .philosophy-item, .team-member, .testimonial-item, .faq-item, .swiper-button-prev, .swiper-button-next, .dropdown-trigger');
+            const target = e.target.closest('a, button, input, textarea, .service-box, .philosophy-item, .system-card, .login-btn, .testimonial-item, .faq-item, .swiper-button-prev, .swiper-button-next, .dropdown-trigger');
             if (target) {
                 cursor.style.width = '40px';
                 cursor.style.height = '40px';
@@ -235,27 +236,24 @@ document.addEventListener('DOMContentLoaded', () => {
         chatInput.addEventListener('keypress', (e) => { if (e.key === 'Enter') sendMessage(); });
     }
 
-    // 12. --- اصلاح جذري لقائمة اللغات (Language Dropdown) ---
+    // 12. Language Dropdown
     const langDropdown = document.querySelector('.custom-dropdown');
     const langTrigger = document.getElementById('lang-trigger');
     const langMenu = document.getElementById('lang-menu');
 
     if (langTrigger && langDropdown) {
-        // عند النقر على الزر الرئيسي
         langTrigger.addEventListener('click', function(e) {
             e.preventDefault();
-            e.stopPropagation(); // منع انتقال النقرة للـ document
+            e.stopPropagation(); 
             langDropdown.classList.toggle('open');
         });
 
-        // منع إغلاق القائمة عند النقر داخلها
         if (langMenu) {
             langMenu.addEventListener('click', function(e) {
                 e.stopPropagation(); 
             });
         }
 
-        // إغلاق القائمة عند النقر في أي مكان آخر بالصفحة
         document.addEventListener('click', function(e) {
             if (langDropdown.classList.contains('open')) {
                 langDropdown.classList.remove('open');
