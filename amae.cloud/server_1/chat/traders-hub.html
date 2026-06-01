@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>B2B Trader Chat Room | Al Masriya Al Emaratiya</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
+    
+    <style>
+        :root {
+            --bg-color: #121212;
+            --card-bg: #1e1e1e;
+            --primary: #007bff;
+            --text-color: #ffffff;
+            --border-color: #333333;
+        }
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            font-family: 'Poppins', sans-serif;
+            display: flex;
+            flex-direction: column;
+            height: 100vh;
+            overflow: hidden;
+        }
+        .chat-header {
+            background-color: var(--card-bg);
+            padding: 15px 25px;
+            border-bottom: 1px solid var(--border-color);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 70px;
+            box-sizing: border-box;
+        }
+        .chat-header h2 {
+            margin: 0;
+            font-size: 18px;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .chat-header h2 i {
+            color: #5865F2;
+        }
+        .chat-header p {
+            margin: 3px 0 0 0;
+            font-size: 12px;
+            color: #aaa;
+        }
+        .back-btn {
+            background: transparent;
+            border: 1px solid var(--border-color);
+            color: white;
+            padding: 8px 16px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: 600;
+            text-decoration: none;
+            font-size: 13px;
+            transition: 0.3s;
+        }
+        .back-btn:hover {
+            background: #fff;
+            color: #000;
+        }
+        .chat-container {
+            flex-grow: 1;
+            width: 100%;
+            height: calc(100vh - 70px);
+            border: none;
+        }
+    </style>
+</head>
+<body>
+
+    <header class="chat-header">
+        <div>
+            <h2><i class="fab fa-discord"></i> AL MASRIYA AL EMARATIYA | Global Trade Hub</h2>
+            <p>Secure peer-to-peer business chat. Share files, negotiate deals, and request prices in real-time.</p>
+        </div>
+        <a href="dashboard.html" class="back-btn"><i class="fas fa-arrow-left"></i> Back to Dashboard</a>
+    </header>
+
+    <!-- الرابط المعدل والمحمي للعرض المباشر -->
+    <iframe 
+        src="https://e.widgetbot.io/channels/1511056749447352482" 
+        class="chat-container"
+        allow="clipboard-write; camera; microphone; geolocation">
+    </iframe>
+
+</body>
+</html>
