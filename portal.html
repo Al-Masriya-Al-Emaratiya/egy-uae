@@ -1,53 +1,448 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" dir="ltr">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AL MASRIYA AL EMARATIYA | Portal</title>
-    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@700;900&family=Tajawal:wght@400;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="css/style.css">
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Portal | Al Masriya Al Emaratiya</title>
+    
+    <!-- Fonts from the requested design -->
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;900&family=Tajawal:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
+    
+    <!-- Supabase SDK -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    
+    <!-- Cloudflare Turnstile -->
+    <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
+
     <style>
-        /* كود خاص بالفيديو كخلفية */
-        .video-bg {
-            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            z-index: -2; overflow: hidden;
+        /* --- Root Variables from your New Design --- */
+        :root {
+            --primary: #00d2ff; 
+            --secondary: #3a7bd5; 
+            --background-dark: #07090f; 
+            --text-light: #e0e0e0; 
+            --text-medium: #a0a0a0; 
+            --text-dark: #606060; 
+            --glass-bg: rgba(255, 255, 255, 0.03); 
+            --glass-hover-bg: rgba(255, 255, 255, 0.08); 
+            --card-shadow: 0 5px 20px rgba(0,0,0,0.5); 
+            --card-hover-shadow: 0 15px 40px rgba(0,210,255,0.2); 
+            --border-color: rgba(255,255,255,0.08); 
+            --input-bg: rgba(255,255,255,0.03);
+            --input-border: rgba(255,255,255,0.1);
+            --input-placeholder: rgba(255,255,255,0.4);
+            --primary-rgb: 0, 210, 255; 
+            --transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1); 
+            --success: #00ff88;
+            --error: #ff4d4d;
         }
-        .video-bg video {
-            width: 100%; height: 100%; object-fit: cover;
-            filter: brightness(0.4) contrast(1.1); /* تغميق الفيديو لظهور الكلام */
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body { 
+            background: var(--background-dark); 
+            color: var(--text-light); 
+            font-family: 'Tajawal', sans-serif; 
+            overflow-x: hidden;
+            line-height: 1.6;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+            position: relative;
         }
-        .hero { background: transparent !important; } /* إزالة أي خلفية تعارض الفيديو */
+
+        h1, h2, h3, h4, h5, h6 { font-family: 'Cairo', sans-serif; }
+
+        /* Animated Background Lines */
+        .animated-lines-container { 
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%; 
+            overflow: hidden; z-index: -1; pointer-events: none; 
+        }
+        .animated-line { 
+            position: absolute; 
+            background: linear-gradient(to right, rgba(var(--primary-rgb), 0), rgba(var(--primary-rgb), 0.3)); 
+            height: 1px; width: 100%; 
+            animation: moveLine 15s linear infinite; pointer-events: none; 
+        }
+        .line-1 { top: 20%; animation-duration: 12s; }
+        .line-2 { top: 50%; animation-duration: 18s; animation-delay: 2s; }
+        .line-3 { top: 80%; animation-duration: 15s; animation-delay: 5s; }
+
+        @keyframes moveLine {
+            0% { transform: translateX(-100%) scaleX(0.5); opacity: 0; }
+            50% { opacity: 0.8; }
+            100% { transform: translateX(100%) scaleX(1); opacity: 0; }
+        }
+
+        /* Glassmorphism Login Card */
+        .login-card {
+            background: var(--glass-bg); 
+            backdrop-filter: blur(15px); -webkit-backdrop-filter: blur(15px);
+            padding: 40px;
+            border-radius: 20px;
+            border: 1px solid var(--border-color);
+            box-shadow: var(--card-shadow);
+            width: 100%;
+            max-width: 550px;
+            text-align: center;
+            transition: var(--transition);
+            position: relative;
+            z-index: 10;
+        }
+        .login-card:hover {
+            box-shadow: var(--card-hover-shadow);
+            border-color: rgba(var(--primary-rgb), 0.3);
+        }
+
+        .portal-title {
+            font-weight: 900; 
+            font-size: 28px; 
+            margin: 0 0 5px 0; 
+            background: linear-gradient(to right, var(--text-light), var(--primary)); 
+            -webkit-background-clip: text; 
+            -webkit-text-fill-color: transparent;
+            letter-spacing: 1px;
+        }
+        .portal-subtitle { color: var(--text-medium); font-size: 14px; margin: 0 0 30px 0; font-family: 'Tajawal', sans-serif;}
+
+        .input-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+        .full-width { grid-column: span 2; }
+        
+        .input-group { position: relative; text-align: left; margin-bottom: 20px; }
+        .input-grid .input-group { margin-bottom: 0; }
+        
+        .input-group i {
+            position: absolute; left: 18px; top: 50%; transform: translateY(-50%);
+            color: var(--primary); font-size: 1.1rem; transition: var(--transition);
+        }
+        
+        .input-group input, .input-group select {
+            width: 100%; padding: 15px 20px 15px 50px; border: 1px solid var(--input-border); 
+            background: var(--input-bg); border-radius: 12px; color: var(--text-light); 
+            font-size: 1rem; font-family: 'Tajawal', sans-serif; transition: all 0.3s ease;
+            box-sizing: border-box; appearance: none;
+        }
+        
+        .input-group input:focus, .input-group select:focus { 
+            outline: none; border-color: var(--primary); 
+            box-shadow: 0 0 15px rgba(0,210,255,0.2); background: var(--glass-hover-bg); 
+        }
+
+        .input-group select option { background-color: #0f172a; color: var(--text-light); }
+
+        .account-type-selector { display: flex; gap: 15px; margin-bottom: 30px; }
+        .type-btn {
+            flex: 1; padding: 12px; background: rgba(255,255,255,0.02); border: 1px solid var(--border-color);
+            color: var(--text-medium); cursor: pointer; border-radius: 10px; font-weight: 700;
+            font-family: 'Cairo', sans-serif; transition: var(--transition);
+        }
+        .type-btn.active {
+            background: rgba(var(--primary-rgb), 0.1); border-color: var(--primary);
+            color: var(--primary); box-shadow: 0 5px 15px rgba(0,210,255,0.2);
+        }
+
+        .btn-submit {
+            width: 100%; padding: 15px; background: linear-gradient(to right, var(--primary), var(--secondary)); 
+            color: #fff; border: none; border-radius: 12px; font-size: 1.1rem; 
+            font-weight: 700; font-family: 'Cairo', sans-serif; cursor: pointer; 
+            transition: var(--transition); margin-top: 10px;
+        }
+        .btn-submit:hover { opacity: 0.9; transform: translateY(-3px); box-shadow: 0 10px 25px rgba(0,210,255,0.4); }
+
+        .toggle-form { margin-top: 25px; font-size: 14px; color: var(--text-medium); }
+        .toggle-form a { color: var(--primary); text-decoration: none; cursor: pointer; font-weight: 700; transition: var(--transition); }
+        .toggle-form a:hover { color: var(--secondary); text-shadow: 0 0 10px rgba(var(--primary-rgb), 0.5); }
+        
+        .msg { margin-top: 20px; display: none; padding: 15px; border-radius: 10px; font-size: 14px; line-height: 1.5; font-weight: 500; }
+        .msg.error { background: rgba(255,77,77,0.1); color: var(--error); border: 1px solid var(--error); box-shadow: 0 0 15px rgba(255,77,77,0.2); }
+        .msg.success { background: rgba(0,255,136,0.1); color: var(--success); border: 1px solid var(--success); box-shadow: 0 0 15px rgba(0,255,136,0.2); }
+        
+        /* Cloudflare Turnstile Container Styling */
+        .turnstile-container {
+            display: flex;
+            justify-content: center;
+            margin: 15px 0;
+            width: 100%;
+        }
+
+        .hidden { display: none !important; }
+
+        @media (max-width: 600px) {
+            .input-grid { grid-template-columns: 1fr; gap: 20px;}
+            .full-width { grid-column: span 1; }
+            .login-card { padding: 30px 20px; }
+        }
     </style>
 </head>
-<body class="no-scroll">
-   <audio id="SKY" loop>
-       <source src="sky_background.mp3">
-   </audio>
-    <div class="video-bg">
-        <video autoplay muted loop playsinline id="myVideo">
-            <source src="sky_background.mp4" type="video/mp4">
-        </video>
+<body>
+
+    <!-- Animated Background -->
+    <div class="animated-lines-container">
+        <div class="animated-line line-1"></div>
+        <div class="animated-line line-2"></div>
+        <div class="animated-line line-3"></div>
     </div>
 
-    <div class="overlay-gradient"></div>
+    <div class="login-card">
+        <h2 class="portal-title">AL MASRIYA AL EMARATIYA</h2>
+        <p class="portal-subtitle">Commercial Agencies, Import & Export Global Portal</p>
+        
+        <!-- Sign In Section -->
+        <div id="loginSection">
+            <form id="loginForm">
+                <div class="input-group">
+                    <i class="fas fa-envelope"></i>
+                    <input type="email" id="loginEmail" placeholder="Email Address" required>
+                </div>
+                <div class="input-group">
+                    <i class="fas fa-lock"></i>
+                    <input type="password" id="loginPassword" placeholder="Password" required>
+                </div>
+                
+                <!-- Cloudflare Turnstile (Login) -->
+                <div class="cf-turnstile turnstile-container" data-sitekey="0x4AAAAAADc5YsoI3mSefPp2" data-theme="dark"></div>
 
-    <div class="hero">
-        <div class="contact-form-container" style="max-width: 450px; background: rgba(7, 9, 15, 0.7); backdrop-filter: blur(15px);">
-            <div class="logo"><h2>EGY UAE</h2></div>
-            <h2 style="font-size: 1.8rem; margin-bottom: 5px;">Client Access</h2>
-            <p style="margin-bottom: 25px; color: var(--text-medium);">AL MASRIYA AL EMARATIYA Portal</p>
-            
-            <form id="login-form" class="contact-form">
-                <input type="text" id="username" placeholder="Client ID / Username" required>
-                <input type="password" id="password" placeholder="Secure Password" required>
-                <button type="submit" id="login-btn">Login to Dashboard</button>
-                <p id="error-message" style="color: #ff4d4d; display: none; margin-top: 15px; font-weight: bold;">Incorrect Username or Password!</p>
+                <button type="submit" class="btn-submit">Sign In to Portal</button>
             </form>
+            <div class="toggle-form">
+                Don't have an account? <a onclick="switchForm('register')">Apply for Trader Account</a>
+            </div>
         </div>
+
+        <!-- Registration Section -->
+        <div id="registerSection" class="hidden">
+            <div class="account-type-selector">
+                <button type="button" class="type-btn active" id="btnIndividual" onclick="setAccountType('individual')">Individual Trader</button>
+                <button type="button" class="type-btn" id="btnCompany" onclick="setAccountType('company')">Company / Enterprise</button>
+            </div>
+
+            <form id="registerForm" class="input-grid">
+                <div class="input-group full-width">
+                    <i class="fas fa-user"></i>
+                    <input type="text" id="regName" placeholder="Full Name (Account Manager)" required>
+                </div>
+                <div class="input-group">
+                    <i class="fas fa-envelope"></i>
+                    <input type="email" id="regEmail" placeholder="Business Email" required>
+                </div>
+                <div class="input-group">
+                    <i class="fas fa-phone"></i>
+                    <input type="tel" id="regPhone" placeholder="Phone (WhatsApp)" required>
+                </div>
+                
+                <div class="input-group full-width">
+                    <i class="fas fa-tags"></i>
+                    <select id="regBusinessCategory" onchange="checkCategory(this.value)" required>
+                        <option value="" disabled selected>Select Business Sector...</option>
+                        <option value="General Trading">General Trading</option>
+                        <option value="Import & Export">Import & Export</option>
+                        <option value="Logistics & Shipping">Logistics & Shipping</option>
+                        <option value="Agriculture & Food">Agriculture & Food Industry</option>
+                        <option value="Textiles & Garments">Textiles & Garments</option>
+                        <option value="Electronics & Tech">Electronics & Technology</option>
+                        <option value="Chemicals & Plastics">Chemicals & Plastics</option>
+                        <option value="Building Materials">Construction & Building</option>
+                        <option value="Automotive & Parts">Automotive & Spare Parts</option>
+                        <option value="Other">Other Sector...</option>
+                    </select>
+                </div>
+
+                <div class="input-group full-width hidden" id="customCategoryGroup">
+                    <i class="fas fa-pen"></i>
+                    <input type="text" id="regCustomCategory" placeholder="Please specify your business sector">
+                </div>
+
+                <div class="input-group company-field hidden full-width">
+                    <i class="fas fa-building"></i>
+                    <input type="text" id="regCompanyName" placeholder="Official Company Name">
+                </div>
+                <div class="input-group company-field hidden full-width">
+                    <i class="fas fa-file-contract"></i>
+                    <input type="text" id="regSerial" placeholder="Commercial Registration No. (CR)">
+                </div>
+
+                <div class="input-group full-width">
+                    <i class="fas fa-lock"></i>
+                    <input type="password" id="regPassword" placeholder="Password (Min 6 characters)" required>
+                </div>
+
+                <!-- Cloudflare Turnstile (Registration) -->
+                <div class="cf-turnstile turnstile-container full-width" data-sitekey="0x4AAAAAADc5YsoI3mSefPp2" data-theme="dark"></div>
+
+                <button type="submit" class="btn-submit full-width">Submit Membership Request</button>
+            </form>
+            <div class="toggle-form">
+                Already have an account? <a onclick="switchForm('login')">Sign In</a>
+            </div>
+        </div>
+
+        <div id="responseMsg" class="msg"></div>
     </div>
 
-    <script src="auth.js"></script>
-    <script src="js/audio.js"></script>
+    <!-- Scripts -->
+    <script>
+        const SUPABASE_URL = "https://covjkdevidieohlqwqwt.supabase.co";
+        const SUPABASE_ANON_KEY = "sb_publishable_CGzcIbX9idzzqKURAPOAGg_nri9g4iS";
+        const _supabase = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+
+        let currentAccountType = 'individual';
+        const msgDiv = document.getElementById('responseMsg');
+
+        function switchForm(type) {
+            msgDiv.style.display = 'none';
+            if(type === 'register') {
+                document.getElementById('loginSection').classList.add('hidden');
+                document.getElementById('registerSection').classList.remove('hidden');
+            } else {
+                document.getElementById('registerSection').classList.add('hidden');
+                document.getElementById('loginSection').classList.remove('hidden');
+            }
+        }
+
+        function setAccountType(type) {
+            currentAccountType = type;
+            const compFields = document.querySelectorAll('.company-field');
+            if(type === 'company') {
+                document.getElementById('btnCompany').classList.add('active');
+                document.getElementById('btnIndividual').classList.remove('active');
+                compFields.forEach(f => f.classList.remove('hidden'));
+                document.getElementById('regCompanyName').required = true;
+                document.getElementById('regSerial').required = true;
+            } else {
+                document.getElementById('btnIndividual').classList.add('active');
+                document.getElementById('btnCompany').classList.remove('active');
+                compFields.forEach(f => f.classList.add('hidden'));
+                document.getElementById('regCompanyName').required = false;
+                document.getElementById('regSerial').required = false;
+            }
+        }
+
+        function checkCategory(value) {
+            const customGroup = document.getElementById('customCategoryGroup');
+            const customInput = document.getElementById('regCustomCategory');
+            if(value === 'Other') {
+                customGroup.classList.remove('hidden');
+                customInput.required = true;
+            } else {
+                customGroup.classList.add('hidden');
+                customInput.required = false;
+            }
+        }
+
+        function showMessage(text, type) {
+            msgDiv.innerText = text;
+            msgDiv.className = `msg ${type}`;
+            msgDiv.style.display = 'block';
+        }
+
+        // Registration Handle
+        document.getElementById('registerForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            // 1. Cloudflare Turnstile Check
+            const formData = new FormData(this);
+            const turnstileToken = formData.get('cf-turnstile-response');
+            
+            if (!turnstileToken) {
+                showMessage("Please complete the Cloudflare security check.", 'error');
+                return;
+            }
+
+            const name = document.getElementById('regName').value;
+            const email = document.getElementById('regEmail').value;
+            const phone = document.getElementById('regPhone').value;
+            const password = document.getElementById('regPassword').value;
+            
+            let finalCategory = document.getElementById('regBusinessCategory').value;
+            if(finalCategory === 'Other') {
+                finalCategory = document.getElementById('regCustomCategory').value;
+            }
+
+            const companyName = document.getElementById('regCompanyName').value;
+            const serialNo = document.getElementById('regSerial').value;
+
+            const btn = this.querySelector('button[type="submit"]');
+            const originalText = btn.innerHTML;
+            btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Processing...';
+            btn.disabled = true;
+
+            const { data, error } = await _supabase.auth.signUp({
+                email: email,
+                password: password,
+                options: {
+                    data: {
+                        full_name: name,
+                        phone_number: phone,
+                        account_type: currentAccountType,
+                        business_sector: finalCategory,
+                        company_name: currentAccountType === 'company' ? companyName : 'N/A',
+                        commercial_registration: currentAccountType === 'company' ? serialNo : 'N/A',
+                        is_approved: false 
+                    }
+                }
+            });
+
+            btn.innerHTML = originalText;
+            btn.disabled = false;
+            turnstile.reset(); // Reset turnstile widget
+
+            if (error) {
+                showMessage(error.message, 'error');
+            } else {
+                showMessage("Your application has been submitted successfully! Our verification team is reviewing your credentials.", 'success');
+                document.getElementById('registerForm').reset();
+                document.getElementById('customCategoryGroup').classList.add('hidden');
+                setTimeout(() => switchForm('login'), 4000);
+            }
+        });
+
+        // Login Handle
+        document.getElementById('loginForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+
+            // 1. Cloudflare Turnstile Check
+            const formData = new FormData(this);
+            const turnstileToken = formData.get('cf-turnstile-response');
+            
+            if (!turnstileToken) {
+                showMessage("Please complete the Cloudflare security check.", 'error');
+                return;
+            }
+
+            const email = document.getElementById('loginEmail').value;
+            const password = document.getElementById('loginPassword').value;
+
+            const btn = this.querySelector('button[type="submit"]');
+            const originalText = btn.innerHTML;
+            btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Authenticating...';
+            btn.disabled = true;
+
+            const { data, error } = await _supabase.auth.signInWithPassword({ email, password });
+
+            btn.innerHTML = originalText;
+            btn.disabled = false;
+            turnstile.reset(); // Reset turnstile widget so user can try again if failed
+
+            if (error) { showMessage(error.message, 'error'); return; }
+
+            const metadata = data.user.user_metadata;
+            if (metadata && metadata.is_approved === true) {
+                sessionStorage.setItem('isLoggedIn', 'true');
+                sessionStorage.setItem('username', email);
+                sessionStorage.setItem('userData', JSON.stringify({
+                    name: metadata.full_name,
+                    role: metadata.account_type === 'company' ? `Corporate: ${metadata.company_name}` : "Individual Trader",
+                    sector: metadata.business_sector
+                }));
+                window.location.href = 'dashboard.html';
+            } else {
+                await _supabase.auth.signOut();
+                showMessage("Access Denied. Your commercial account request is still pending admin approval.", 'error');
+            }
+        });
+    </script>
 </body>
 </html>
