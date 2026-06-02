@@ -272,7 +272,7 @@
                 <!-- Cloudflare Turnstile (Registration) -->
                 <div class="cf-turnstile turnstile-container full-width" data-sitekey="0x4AAAAAADc5YsoI3mSefPp2" data-theme="dark"></div>
 
-                <button type="submit" class="btn-submit full-width">Submit Membership Request</button>
+                <button type="submit" class="btn-submit">Submit Membership Request</button>
             </form>
             <div class="toggle-form">
                 Already have an account? <a onclick="switchForm('login')">Sign In</a>
@@ -342,15 +342,6 @@
         document.getElementById('registerForm').addEventListener('submit', async function(e) {
             e.preventDefault();
             
-            // 1. Cloudflare Turnstile Check
-            const formData = new FormData(this);
-            const turnstileToken = formData.get('cf-turnstile-response');
-            
-            if (!turnstileToken) {
-                showMessage("Please complete the Cloudflare security check.", 'error');
-                return;
-            }
-
             const name = document.getElementById('regName').value;
             const email = document.getElementById('regEmail').value;
             const phone = document.getElementById('regPhone').value;
@@ -380,37 +371,28 @@
                         business_sector: finalCategory,
                         company_name: currentAccountType === 'company' ? companyName : 'N/A',
                         commercial_registration: currentAccountType === 'company' ? serialNo : 'N/A',
-                        is_approved: false 
+                        is_approved: true  
                     }
                 }
             });
 
             btn.innerHTML = originalText;
             btn.disabled = false;
-            turnstile.reset(); // Reset turnstile widget
+            if (typeof turnstile !== 'undefined') turnstile.reset();
 
             if (error) {
                 showMessage(error.message, 'error');
             } else {
-                showMessage("Your application has been submitted successfully! Our verification team is reviewing your credentials.", 'success');
+                showMessage("Your application has been submitted successfully! Redirecting...", 'success');
                 document.getElementById('registerForm').reset();
                 document.getElementById('customCategoryGroup').classList.add('hidden');
-                setTimeout(() => switchForm('login'), 4000);
+                setTimeout(() => switchForm('login'), 2000);
             }
         });
 
         // Login Handle
         document.getElementById('loginForm').addEventListener('submit', async function(e) {
             e.preventDefault();
-
-            // 1. Cloudflare Turnstile Check
-            const formData = new FormData(this);
-            const turnstileToken = formData.get('cf-turnstile-response');
-            
-            if (!turnstileToken) {
-                showMessage("Please complete the Cloudflare security check.", 'error');
-                return;
-            }
 
             const email = document.getElementById('loginEmail').value;
             const password = document.getElementById('loginPassword').value;
@@ -424,32 +406,26 @@
 
             btn.innerHTML = originalText;
             btn.disabled = false;
-            turnstile.reset(); // Reset turnstile widget so user can try again if failed
+            if (typeof turnstile !== 'undefined') turnstile.reset();
 
-            if (error) { showMessage(error.message, 'error'); return; }
+            if (error) { 
+                showMessage(error.message, 'error'); 
+                return; 
+            }
 
-            const metadata = data.user.user_metadata;
-if (metadata && metadata.is_approved === true) {
-    sessionStorage.setItem('isLoggedIn', 'true');
-    sessionStorage.setItem('username', email);
-    sessionStorage.setItem('userData', JSON.stringify({
-        name: metadata.full_name,
-        role: metadata.account_type === 'company' ? `Corporate: ${metadata.company_name}` : "Individual Trader",
-        sector: metadata.business_sector
-    }));
-    window.location.href = 'dashboard.html';
-} else {
-    await _supabase.auth.signOut();
-    showMessage("Access Denied. Your commercial account request is still pending admin approval.", 'error');
-}const metadata = data.user.user_metadata || {};
-sessionStorage.setItem('isLoggedIn', 'true');
-sessionStorage.setItem('username', email);
-sessionStorage.setItem('userData', JSON.stringify({
-    name: metadata.full_name || 'Trader',
-    role: metadata.account_type === 'company' ? `Corporate: ${metadata.company_name}` : "Individual Trader",
-    sector: metadata.business_sector || 'General'
-}));
-window.location.href = 'dashboard.html';
+            const metadata = data.user.user_metadata || {};
+            sessionStorage.setItem('isLoggedIn', 'true');
+            sessionStorage.setItem('username', email);
+            sessionStorage.setItem('userData', JSON.stringify({
+                name: metadata.full_name || 'Trader',
+                role: metadata.account_type === 'company' ? `Corporate: ${metadata.company_name}` : "Individual Trader",
+                sector: metadata.business_sector || 'General'
+            }));
+            
+            showMessage("Login successful! Redirecting to dashboard...", 'success');
+            setTimeout(() => {
+                window.location.href = 'dashboard.html';
+            }, 1000);
         });
     </script>
 </body>
