@@ -5,18 +5,13 @@
     <meta name="viewport" content="width=device-width,initial-scale=1" />
     <title>Portal | Al Masriya Al Emaratiya</title>
     
-    <!-- Fonts from the requested design -->
-    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;900&family=Tajawal:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght=400;700;900&family=Tajawal:wght=300;400;500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
     
-    <!-- Supabase SDK -->
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-    
-    <!-- Cloudflare Turnstile -->
-    <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
 
     <style>
-        /* --- Root Variables from your New Design --- */
+        /* --- المظهر وتنسيق الألوان الفخم --- */
         :root {
             --primary: #00d2ff; 
             --secondary: #3a7bd5; 
@@ -56,7 +51,7 @@
 
         h1, h2, h3, h4, h5, h6 { font-family: 'Cairo', sans-serif; }
 
-        /* Animated Background Lines */
+        /* الخلفية المتحركة */
         .animated-lines-container { 
             position: fixed; top: 0; left: 0; width: 100%; height: 100%; 
             overflow: hidden; z-index: -1; pointer-events: none; 
@@ -77,7 +72,7 @@
             100% { transform: translateX(100%) scaleX(1); opacity: 0; }
         }
 
-        /* Glassmorphism Login Card */
+        /* كارت تسجيل الدخول الزجاجي */
         .login-card {
             background: var(--glass-bg); 
             backdrop-filter: blur(15px); -webkit-backdrop-filter: blur(15px);
@@ -106,7 +101,7 @@
             -webkit-text-fill-color: transparent;
             letter-spacing: 1px;
         }
-        .portal-subtitle { color: var(--text-medium); font-size: 14px; margin: 0 0 30px 0; font-family: 'Tajawal', sans-serif;}
+        .portal-subtitle { color: var(--text-medium); font-size: 14px; margin: 0 0 30px 0;}
 
         .input-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
         .full-width { grid-column: span 2; }
@@ -122,7 +117,7 @@
         .input-group input, .input-group select {
             width: 100%; padding: 15px 20px 15px 50px; border: 1px solid var(--input-border); 
             background: var(--input-bg); border-radius: 12px; color: var(--text-light); 
-            font-size: 1rem; font-family: 'Tajawal', sans-serif; transition: all 0.3s ease;
+            font-size: 1rem; transition: all 0.3s ease;
             box-sizing: border-box; appearance: none;
         }
         
@@ -160,14 +155,6 @@
         .msg.error { background: rgba(255,77,77,0.1); color: var(--error); border: 1px solid var(--error); box-shadow: 0 0 15px rgba(255,77,77,0.2); }
         .msg.success { background: rgba(0,255,136,0.1); color: var(--success); border: 1px solid var(--success); box-shadow: 0 0 15px rgba(0,255,136,0.2); }
         
-        /* Cloudflare Turnstile Container Styling */
-        .turnstile-container {
-            display: flex;
-            justify-content: center;
-            margin: 15px 0;
-            width: 100%;
-        }
-
         .hidden { display: none !important; }
 
         @media (max-width: 600px) {
@@ -179,7 +166,6 @@
 </head>
 <body>
 
-    <!-- Animated Background -->
     <div class="animated-lines-container">
         <div class="animated-line line-1"></div>
         <div class="animated-line line-2"></div>
@@ -190,7 +176,6 @@
         <h2 class="portal-title">AL MASRIYA AL EMARATIYA</h2>
         <p class="portal-subtitle">Commercial Agencies, Import & Export Global Portal</p>
         
-        <!-- Sign In Section -->
         <div id="loginSection">
             <form id="loginForm">
                 <div class="input-group">
@@ -201,9 +186,6 @@
                     <i class="fas fa-lock"></i>
                     <input type="password" id="loginPassword" placeholder="Password" required>
                 </div>
-                
-                <!-- Cloudflare Turnstile (Login) -->
-                <div class="cf-turnstile turnstile-container" data-sitekey="0x4AAAAAADc5YsoI3mSefPp2" data-theme="dark"></div>
 
                 <button type="submit" class="btn-submit">Sign In to Portal</button>
             </form>
@@ -212,7 +194,6 @@
             </div>
         </div>
 
-        <!-- Registration Section -->
         <div id="registerSection" class="hidden">
             <div class="account-type-selector">
                 <button type="button" class="type-btn active" id="btnIndividual" onclick="setAccountType('individual')">Individual Trader</button>
@@ -269,9 +250,6 @@
                     <input type="password" id="regPassword" placeholder="Password (Min 6 characters)" required>
                 </div>
 
-                <!-- Cloudflare Turnstile (Registration) -->
-                <div class="cf-turnstile turnstile-container full-width" data-sitekey="0x4AAAAAADc5YsoI3mSefPp2" data-theme="dark"></div>
-
                 <button type="submit" class="btn-submit full-width">Submit Membership Request</button>
             </form>
             <div class="toggle-form">
@@ -282,7 +260,6 @@
         <div id="responseMsg" class="msg"></div>
     </div>
 
-    <!-- Scripts -->
     <script>
         const SUPABASE_URL = "https://covjkdevidieohlqwqwt.supabase.co";
         const SUPABASE_ANON_KEY = "sb_publishable_CGzcIbX9idzzqKURAPOAGg_nri9g4iS";
@@ -338,19 +315,9 @@
             msgDiv.style.display = 'block';
         }
 
-        // Registration Handle
         document.getElementById('registerForm').addEventListener('submit', async function(e) {
             e.preventDefault();
             
-            // 1. Cloudflare Turnstile Check
-            const formData = new FormData(this);
-            const turnstileToken = formData.get('cf-turnstile-response');
-            
-            if (!turnstileToken) {
-                showMessage("Please complete the Cloudflare security check.", 'error');
-                return;
-            }
-
             const name = document.getElementById('regName').value;
             const email = document.getElementById('regEmail').value;
             const phone = document.getElementById('regPhone').value;
@@ -365,7 +332,6 @@
             const serialNo = document.getElementById('regSerial').value;
 
             const btn = this.querySelector('button[type="submit"]');
-            const originalText = btn.innerHTML;
             btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Processing...';
             btn.disabled = true;
 
@@ -380,68 +346,58 @@
                         business_sector: finalCategory,
                         company_name: currentAccountType === 'company' ? companyName : 'N/A',
                         commercial_registration: currentAccountType === 'company' ? serialNo : 'N/A',
-                        is_approved: false 
+                        is_approved: true 
                     }
                 }
             });
 
-            btn.innerHTML = originalText;
+            btn.innerHTML = 'Submit Membership Request';
             btn.disabled = false;
-            turnstile.reset(); // Reset turnstile widget
 
             if (error) {
                 showMessage(error.message, 'error');
             } else {
-                showMessage("Your application has been submitted successfully! Our verification team is reviewing your credentials.", 'success');
+                showMessage("Your application has been submitted successfully! Redirecting...", 'success');
                 document.getElementById('registerForm').reset();
                 document.getElementById('customCategoryGroup').classList.add('hidden');
-                setTimeout(() => switchForm('login'), 4000);
+                setTimeout(() => switchForm('login'), 2000);
             }
         });
 
-        // Login Handle
+        // كود تسجيل الدخول الصاروخي بدون شروط معقدة
         document.getElementById('loginForm').addEventListener('submit', async function(e) {
             e.preventDefault();
-
-            // 1. Cloudflare Turnstile Check
-            const formData = new FormData(this);
-            const turnstileToken = formData.get('cf-turnstile-response');
-            
-            if (!turnstileToken) {
-                showMessage("Please complete the Cloudflare security check.", 'error');
-                return;
-            }
 
             const email = document.getElementById('loginEmail').value;
             const password = document.getElementById('loginPassword').value;
 
             const btn = this.querySelector('button[type="submit"]');
-            const originalText = btn.innerHTML;
             btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Authenticating...';
             btn.disabled = true;
 
             const { data, error } = await _supabase.auth.signInWithPassword({ email, password });
 
-            btn.innerHTML = originalText;
+            btn.innerHTML = 'Sign In to Portal';
             btn.disabled = false;
-            turnstile.reset(); // Reset turnstile widget so user can try again if failed
 
-            if (error) { showMessage(error.message, 'error'); return; }
-
-            const metadata = data.user.user_metadata;
-            if (metadata && metadata.is_approved === true) {
-                sessionStorage.setItem('isLoggedIn', 'true');
-                sessionStorage.setItem('username', email);
-                sessionStorage.setItem('userData', JSON.stringify({
-                    name: metadata.full_name,
-                    role: metadata.account_type === 'company' ? `Corporate: ${metadata.company_name}` : "Individual Trader",
-                    sector: metadata.business_sector
-                }));
-                window.location.href = 'dashboard.html';
-            } else {
-                await _supabase.auth.signOut();
-                showMessage("Access Denied. Your commercial account request is still pending admin approval.", 'error');
+            if (error) { 
+                showMessage(error.message, 'error'); 
+                return; 
             }
+
+            const metadata = data.user.user_metadata || {};
+            sessionStorage.setItem('isLoggedIn', 'true');
+            sessionStorage.setItem('username', email);
+            sessionStorage.setItem('userData', JSON.stringify({
+                name: metadata.full_name || 'Trader',
+                role: metadata.account_type === 'company' ? `Corporate: ${metadata.company_name}` : "Individual Trader",
+                sector: metadata.business_sector || 'General'
+            }));
+            
+            showMessage("Login successful! Redirecting to dashboard...", 'success');
+            setTimeout(() => {
+                window.location.href = 'dashboard.html'; 
+            }, 1000);
         });
     </script>
 </body>
