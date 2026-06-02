@@ -429,19 +429,19 @@
             if (error) { showMessage(error.message, 'error'); return; }
 
             const metadata = data.user.user_metadata;
-            if (metadata && metadata.is_approved === true) {
-                sessionStorage.setItem('isLoggedIn', 'true');
-                sessionStorage.setItem('username', email);
-                sessionStorage.setItem('userData', JSON.stringify({
-                    name: metadata.full_name,
-                    role: metadata.account_type === 'company' ? `Corporate: ${metadata.company_name}` : "Individual Trader",
-                    sector: metadata.business_sector
-                }));
-                window.location.href = 'dashboard.html';
-            } else {
-                await _supabase.auth.signOut();
-                showMessage("Access Denied. Your commercial account request is still pending admin approval.", 'error');
-            }
+if (metadata && metadata.is_approved === true) {
+    sessionStorage.setItem('isLoggedIn', 'true');
+    sessionStorage.setItem('username', email);
+    sessionStorage.setItem('userData', JSON.stringify({
+        name: metadata.full_name,
+        role: metadata.account_type === 'company' ? `Corporate: ${metadata.company_name}` : "Individual Trader",
+        sector: metadata.business_sector
+    }));
+    window.location.href = 'dashboard.html';
+} else {
+    await _supabase.auth.signOut();
+    showMessage("Access Denied. Your commercial account request is still pending admin approval.", 'error');
+}
         });
     </script>
 </body>
