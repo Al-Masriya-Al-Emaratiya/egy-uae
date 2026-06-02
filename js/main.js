@@ -2,6 +2,79 @@ document.addEventListener('DOMContentLoaded', () => {
     // Helper function
     const select = (selector, all = false) => {
         return all ? document.querySelectorAll(selector) : document.querySelector(selector);
+        // ==========================================
+    // 13. User Authentication State Management
+    // ==========================================
+    
+    const desktopLoginBtn = select('#desktop-login-btn');
+    const desktopUserProfile = select('#desktop-user-profile');
+    const mobileLoginItem = select('#mobile-login-item');
+    const mobileProfileItem = select('#mobile-profile-item');
+    const profileTrigger = select('#profile-trigger');
+    const logoutBtn = select('#logout-btn');
+    const mobileLogoutBtn = select('#mobile-logout-btn');
+
+    // دالة لفحص حالة تسجيل الدخول
+    function checkLoginState() {
+        const isLoggedIn = localStorage.getItem('isLoggedIn');
+
+        if (isLoggedIn === 'true') {
+            // إخفاء أزرار الدخول وإظهار الحساب
+            if (desktopLoginBtn) desktopLoginBtn.classList.add('hidden');
+            if (mobileLoginItem) mobileLoginItem.classList.add('hidden');
+            
+            if (desktopUserProfile) desktopUserProfile.classList.remove('hidden');
+            if (mobileProfileItem) mobileProfileItem.classList.remove('hidden');
+        } else {
+            // إظهار أزرار الدخول وإخفاء الحساب
+            if (desktopLoginBtn) desktopLoginBtn.classList.remove('hidden');
+            if (mobileLoginItem) mobileLoginItem.classList.remove('hidden');
+            
+            if (desktopUserProfile) desktopUserProfile.classList.add('hidden');
+            if (mobileProfileItem) mobileProfileItem.classList.add('hidden');
+        }
+    }
+
+    // تشغيل الدالة عند تحميل الصفحة
+    checkLoginState();
+
+    // فتح وإغلاق قائمة المستخدم (Dropdown)
+    if (profileTrigger && desktopUserProfile) {
+        profileTrigger.addEventListener('click', (e) => {
+            e.stopPropagation();
+            desktopUserProfile.classList.toggle('open');
+            // إغلاق قائمة اللغات إذا كانت مفتوحة
+            select('.custom-dropdown').classList.remove('open'); 
+        });
+
+        // إغلاق القائمة عند النقر خارجها
+        document.addEventListener('click', (e) => {
+            if (desktopUserProfile.classList.contains('open') && !desktopUserProfile.contains(e.target)) {
+                desktopUserProfile.classList.remove('open');
+            }
+        });
+    }
+
+    // دالة تسجيل الخروج
+    function handleLogout(e) {
+        e.preventDefault();
+        localStorage.removeItem('isLoggedIn'); // حذف حالة تسجيل الدخول
+        checkLoginState(); // تحديث الواجهة فوراً
+        window.location.href = 'index.html'; // توجيه المستخدم للصفحة الرئيسية
+    }
+
+    if (logoutBtn) logoutBtn.addEventListener('click', handleLogout);
+    if (mobileLogoutBtn) mobileLogoutBtn.addEventListener('click', handleLogout);
+
+    // ==========================================
+    // كود وهمي للتجربة (قم بحذفه لاحقاً)
+    // ==========================================
+    // يمكنك تجربة تسجيل الدخول عن طريق كتابة login() في الـ Console الخاص بالمتصفح
+    window.login = function() {
+        localStorage.setItem('isLoggedIn', 'true');
+        checkLoginState();
+        console.log("تم تسجيل الدخول بنجاح!");
+    };
     };
 
     // 1. Dynamic Year for Footer
