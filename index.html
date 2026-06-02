@@ -84,12 +84,26 @@
             <li><a href="#contact">Contact Us</a></li>
         </ul>
         
-        <!-- Header Actions (Login + Mobile Toggle) -->
+<!-- Header Actions (Login + Mobile Toggle) -->
         <div class="header-actions">
-            <a href="login.html" class="login-btn" aria-label="Login to Portal">
+            <a href="login.html" class="login-btn" id="desktop-login-btn" aria-label="Login to Portal">
                 <i class="fas fa-user-circle"></i>
                 <span class="login-text">Login</span>
             </a>
+
+            <div class="user-profile hidden" id="desktop-user-profile">
+                <div class="profile-trigger" id="profile-trigger">
+                    <i class="fas fa-user-circle user-avatar"></i>
+                    <span class="user-name">My Account</span>
+                    <i class="fas fa-chevron-down arrow-icon"></i>
+                </div>
+                <ul class="profile-dropdown">
+                    <li><a href="portal.html"><i class="fas fa-laptop-file"></i> Portal</a></li>
+                    <li><a href="settings.html"><i class="fas fa-cog"></i> Settings</a></li>
+                    <li><a href="#" id="logout-btn"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
+                </ul>
+            </div>
+
             <!-- Mobile Navigation Toggle -->
             <div class="hamburger" aria-label="Toggle navigation menu">
                 <div class="bar"></div>
@@ -107,8 +121,16 @@
             <li><a href="#about">About Us</a></li>
             <li><a href="#systems">Our Systems</a></li>
             <li><a href="#contact">Contact Us</a></li>
-            <!-- زر تسجيل دخول إضافي للقائمة الجانبية في الموبايل -->
-            <li class="mobile-login-item"><a href="login.html" class="mobile-login-btn"><i class="fas fa-sign-in-alt"></i> Login to Portal</a></li>
+            
+            <li class="mobile-login-item" id="mobile-login-item">
+                <a href="login.html" class="mobile-login-btn"><i class="fas fa-sign-in-alt"></i> Login</a>
+            </li>
+            
+            <li class="mobile-profile-item hidden" id="mobile-profile-item">
+                <a href="portal.html"><i class="fas fa-user-circle"></i> My Portal</a>
+                <br><br>
+                <a href="#" id="mobile-logout-btn" style="color: #ff4757; font-size: 1.2rem;"><i class="fas fa-sign-out-alt"></i> Logout</a>
+            </li>
         </ul>
     </nav>
 
