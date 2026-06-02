@@ -285,3 +285,98 @@ footer {
     .chat-widget { bottom: 15px; right: 15px; }
     .chat-widget .chat-container { width: calc(100vw - 30px); max-width: 320px; height: 400px; }
 }
+/* --- User Profile & Authentication Styles --- */
+.hidden {
+    display: none !important;
+}
+
+.user-profile {
+    position: relative;
+    z-index: 1005;
+}
+
+.profile-trigger {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+    color: var(--text-light);
+    padding: 8px 15px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid var(--border-color);
+    border-radius: 50px;
+    transition: var(--transition);
+}
+
+.profile-trigger:hover {
+    border-color: var(--primary);
+    background: rgba(0, 210, 255, 0.1);
+}
+
+.profile-trigger .user-avatar {
+    font-size: 1.5rem;
+    color: var(--primary);
+}
+
+.profile-trigger .user-name {
+    font-size: 0.95rem;
+    font-weight: 700;
+}
+
+.profile-trigger .arrow-icon {
+    font-size: 0.8rem;
+    transition: transform 0.3s;
+}
+
+.user-profile.open .profile-trigger .arrow-icon {
+    transform: rotate(180deg);
+}
+
+.profile-dropdown {
+    position: absolute;
+    top: calc(100% + 15px);
+    right: 0;
+    background: #0f172a;
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    list-style: none;
+    padding: 10px;
+    min-width: 180px;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(10px);
+    transition: all 0.3s ease;
+}
+
+.user-profile.open .profile-dropdown {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.profile-dropdown li a {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 15px;
+    color: var(--text-light);
+    border-radius: 8px;
+    transition: 0.3s;
+    font-size: 0.95rem;
+}
+
+.profile-dropdown li a:hover {
+    background: rgba(0, 210, 255, 0.1);
+    color: var(--primary);
+}
+
+.profile-dropdown li a#logout-btn:hover {
+    background: rgba(255, 71, 87, 0.1);
+    color: #ff4757;
+}
+
+@media (max-width: 768px) {
+    .profile-trigger .user-name, .profile-trigger .arrow-icon { display: none; }
+    .profile-trigger { padding: 8px 10px; }
+}
