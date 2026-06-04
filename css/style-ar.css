@@ -236,15 +236,16 @@ footer {
 .footer-bottom-social a { font-size: 1.3rem; color: var(--text-medium); transition: color 0.3s; padding: 10px; display: inline-block; }
 .footer-bottom-social a:hover { color: var(--primary); }
 
+/* --- Chat Widget - تم نقله هنا إلى أقصى اليمين بالكامل وتعديل الأنميشن --- */
 .chat-widget { 
     position: fixed; 
     bottom: 40px; 
-    left: 40px; 
-    right: auto; 
+    right: 40px; /* تحديد المسافة من جهة اليمين */
+    left: auto; 
     z-index: 100; 
     display: flex; 
     flex-direction: column-reverse; 
-    align-items: flex-start; 
+    align-items: flex-end; /* لضمان محاذاة الصندوق والزر جهة اليمين */
     pointer-events: none; 
 }
 .chat-widget .chat-btn { 
@@ -279,7 +280,7 @@ footer {
     visibility: hidden; 
     transform: translateY(20px) scale(0.95); 
     transition: all 0.3s ease; 
-    transform-origin: bottom left; 
+    transform-origin: bottom right; /* جعل صندوق الشات يفتح بمرونة من جهة اليمين */
     box-shadow: 0 10px 30px rgba(0,0,0,0.1); 
 }
 .chat-widget .chat-container.active { opacity: 1; visibility: visible; transform: translateY(0) scale(1); }
@@ -325,7 +326,8 @@ footer {
     .dropdown-trigger { justify-content: center; }
     
     .footer-bottom { flex-direction: column; align-items: center; padding-bottom: 80px; }
-    .chat-widget { bottom: 15px; left: 15px; right: auto; }
+    
+    .chat-widget { bottom: 15px; right: 15px; left: auto; }
     .chat-widget .chat-container { width: calc(100vw - 30px); max-width: 320px; height: 400px; }
 }
 
