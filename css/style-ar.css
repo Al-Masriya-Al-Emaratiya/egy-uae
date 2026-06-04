@@ -236,16 +236,17 @@ footer {
 .footer-bottom-social a { font-size: 1.3rem; color: var(--text-medium); transition: color 0.3s; padding: 10px; display: inline-block; }
 .footer-bottom-social a:hover { color: var(--primary); }
 
-/* --- Chat Widget - تم نقله هنا إلى أقصى اليمين بالكامل وتعديل الأنميشن --- */
+/* --- Chat Widget - الأيقونة في أقصى الشمال والشات يفتح جهة اليمين --- */
 .chat-widget { 
     position: fixed; 
     bottom: 40px; 
-    right: 40px; /* تحديد المسافة من جهة اليمين */
-    left: auto; 
+    left: 40px; /* الأيقونة مثبتة في الشمال بالكامل */
+    right: auto; 
     z-index: 100; 
     display: flex; 
-    flex-direction: column-reverse; 
-    align-items: flex-end; /* لضمان محاذاة الصندوق والزر جهة اليمين */
+    flex-direction: row-reverse; /* ترتيب أفقي: الأيقونة على اليسار والشات على يمينها */
+    align-items: flex-end; 
+    gap: 20px; /* مسافة بين زر الشات وصندوق المحادثة عند الفتح */
     pointer-events: none; 
 }
 .chat-widget .chat-btn { 
@@ -263,6 +264,7 @@ footer {
     cursor: pointer; 
     border: none; 
     transition: transform 0.3s ease; 
+    flex-shrink: 0;
 }
 .chat-widget .chat-btn:hover { transform: scale(1.1); background: var(--secondary); }
 .chat-widget .chat-container { 
@@ -275,15 +277,18 @@ footer {
     display: flex; 
     flex-direction: column; 
     overflow: hidden; 
-    margin-bottom: 20px; 
     opacity: 0; 
     visibility: hidden; 
-    transform: translateY(20px) scale(0.95); 
+    transform: translateX(-20px) scale(0.95); /* تأثير الحركة يبدأ من اليسار ويتمدد لليمين */
     transition: all 0.3s ease; 
-    transform-origin: bottom right; /* جعل صندوق الشات يفتح بمرونة من جهة اليمين */
+    transform-origin: bottom left; /* نقطة الانطلاق هي أسفل اليسار */
     box-shadow: 0 10px 30px rgba(0,0,0,0.1); 
 }
-.chat-widget .chat-container.active { opacity: 1; visibility: visible; transform: translateY(0) scale(1); }
+.chat-widget .chat-container.active { 
+    opacity: 1; 
+    visibility: visible; 
+    transform: translateX(0) scale(1); 
+}
 .chat-header { background: var(--primary); color: white; padding: 15px 20px; display: flex; justify-content: space-between; align-items: center; }
 .chat-close { background: none; border: none; color: white; font-size: 1.8rem; cursor: pointer; }
 .chat-body { flex-grow: 1; padding: 15px; overflow-y: auto; color: var(--text-light); text-align: right; }
@@ -314,7 +319,6 @@ footer {
     .hamburger { display: flex; }
     .hero { min-height: 80vh; padding-top: 120px; }
     
-    /* جعل الفيديو تحت النص في الموبايل */
     .hero-3d-card { flex-direction: column; text-align: center; gap: 30px;}
     .hero-title { font-size: clamp(3rem, 10vw, 4.5rem); }
     
@@ -327,8 +331,24 @@ footer {
     
     .footer-bottom { flex-direction: column; align-items: center; padding-bottom: 80px; }
     
-    .chat-widget { bottom: 15px; right: 15px; left: auto; }
-    .chat-widget .chat-container { width: calc(100vw - 30px); max-width: 320px; height: 400px; }
+    /* في الشاشات الصغيرة يتحول الترتيب لعمودي لتفادي خروج الصندوق عن الشاشة */
+    .chat-widget { 
+        bottom: 15px; 
+        left: 15px; 
+        right: auto; 
+        flex-direction: column-reverse; 
+        align-items: flex-start;
+        gap: 10px;
+    }
+    .chat-widget .chat-container { 
+        width: calc(100vw - 30px); 
+        max-width: 320px; 
+        height: 400px; 
+        transform: translateY(20px) scale(0.95);
+    }
+    .chat-widget .chat-container.active {
+        transform: translateY(0) scale(1);
+    }
 }
 
 /* --- User Profile --- */
