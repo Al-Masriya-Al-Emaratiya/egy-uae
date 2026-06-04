@@ -5,24 +5,31 @@
     <meta name="viewport" content="width=device-width,initial-scale=1" />
     <title>Shipment Tracking — Al Masriya Al Emaratia</title>
     
+    <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;900&family=Tajawal:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <!-- Leaflet Map CSS -->
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
 
     <style>
+        /* المتغيرات اللونية المستوحاة من الهوية البصرية الجديدة للموقع */
         :root {
             --primary: #00d2ff; 
             --secondary: #3a7bd5; 
-            --background-dark: #07090f; 
-            --text-light: #e0e0e0; 
-            --text-medium: #a0a0a0; 
-            --glass-bg: rgba(255, 255, 255, 0.03); 
-            --glass-hover-bg: rgba(255, 255, 255, 0.08); 
-            --card-shadow: 0 5px 20px rgba(0,0,0,0.4); 
-            --card-hover-shadow: 0 15px 40px rgba(0,210,255,0.2); 
-            --border-color: rgba(255,255,255,0.08); 
-            --input-bg: rgba(255,255,255,0.03);
-            --input-border: rgba(255,255,255,0.1);
+            --background-dark: #ffffff; 
+            --text-light: #1a1d24; 
+            --text-medium: #4a5568; 
+            --text-dark: #718096; 
+            --glass-bg: rgba(0, 0, 0, 0.02); 
+            --glass-hover-bg: rgba(0, 0, 0, 0.05); 
+            --header-bg-transparent: rgba(255, 255, 255, 0.9); 
+            --card-shadow: 0 5px 20px rgba(0,0,0,0.05); 
+            --card-hover-shadow: 0 15px 40px rgba(0,210,255,0.15); 
+            --border-color: rgba(0, 0, 0, 0.08); 
+            --input-bg: rgba(0, 0, 0, 0.02);
+            --input-border: rgba(0, 0, 0, 0.1);
+            --primary-rgb: 0, 210, 255; 
             --transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1); 
         }
 
@@ -31,40 +38,40 @@
         body { 
             font-family: 'Tajawal', sans-serif; 
             color: var(--text-light);
+            background-color: var(--background-dark);
             min-height: 100vh;
             overflow-x: hidden;
-            background-color: var(--background-dark); /* احتياطي في حال تأخر الفيديو */
+            line-height: 1.6;
         }
 
         h1, h2, h3, h4, h5 { font-family: 'Cairo', sans-serif; line-height: 1.2; }
 
-        .video-bg {
-            position: fixed;
-            top: 0; left: 0;
-            width: 100vw; height: 100vh;
-            object-fit: cover; 
-            z-index: -2; 
+        /* تزيين الخلفية بالخطوط المتحركة التجريدية */
+        .animated-lines-container { 
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%; 
+            overflow: hidden; z-index: -1; pointer-events: none; 
         }
-        
-
-        .video-overlay {
-            position: fixed;
-            top: 0; left: 0;
-            width: 100vw; height: 100vh;
-            background: rgba(7, 9, 15, 0.75);
-            backdrop-filter: blur(3px);
-            z-index: -1;
+        .animated-line { 
+            position: absolute; 
+            background: linear-gradient(to right, rgba(var(--primary-rgb), 0), rgba(var(--primary-rgb), 0.3)); 
+            height: 2px; width: 100%; animation: moveLine 15s linear infinite; pointer-events: none; 
+        }
+        @keyframes moveLine {
+            0% { transform: translateX(-100%) scaleX(0.5); opacity: 0; }
+            50% { opacity: 0.6; }
+            100% { transform: translateX(100%) scaleX(1); opacity: 0; }
         }
 
+        /* عنصر تشغيل صوت الخلفية التجريدي بحواف مستقيمة */
         .sound-toggle-btn {
             position: fixed;
             bottom: 30px; left: 30px;
-            width: 55px; height: 55px;
-            border-radius: 50%;
-            background: var(--glass-bg);
+            width: 50px; height: 50px;
+            border-radius: 0; /* الحواف الحادة */
+            background: var(--header-bg-transparent);
             border: 1px solid var(--border-color);
             color: var(--text-light);
-            font-size: 1.3rem;
+            font-size: 1.1rem;
             cursor: pointer;
             z-index: 1000;
             backdrop-filter: blur(10px);
@@ -75,152 +82,172 @@
         .sound-toggle-btn:hover {
             border-color: var(--primary);
             color: var(--primary);
-            transform: scale(1.1) translateY(-5px);
+            transform: translateY(-5px);
             box-shadow: var(--card-hover-shadow);
         }
 
-        /* --- Header (Glassmorphism) --- */
+        /* --- Header (التصميم الإنسيابي والمستقيم) --- */
         header {
             position: fixed; top: 20px; left: 50%; transform: translateX(-50%); 
-            width: 90%; max-width: 1200px; padding: 15px 30px;
-            background: var(--glass-bg); 
+            width: 95%; max-width: 1300px; padding: 12px 25px;
+            background: var(--header-bg-transparent); 
             backdrop-filter: blur(15px); -webkit-backdrop-filter: blur(15px);
-            border: 1px solid var(--border-color); border-radius: 50px;
+            border: 1px solid var(--border-color); border-radius: 0; /* الحواف الحادة */
             display: flex; justify-content: space-between; align-items: center; 
             z-index: 1000; box-shadow: var(--card-shadow);
         }
         .logo-area { display: flex; align-items: center; gap: 15px; }
         .logo-area span { 
-            font-weight: 900; font-family: 'Cairo'; font-size: 1.2rem;
+            font-weight: 900; font-family: 'Cairo'; font-size: 1.3rem; letter-spacing: -0.5px;
             background: linear-gradient(to right, var(--text-light), var(--primary)); 
             -webkit-background-clip: text; -webkit-text-fill-color: transparent; 
         }
         .lang-btn {
             text-decoration: none; color: var(--text-light); font-weight: 700;
             border: 1px solid var(--border-color); padding: 8px 20px; 
-            border-radius: 20px; font-size: 0.9rem; transition: var(--transition);
-            background: var(--glass-bg);
+            border-radius: 0; font-size: 0.9rem; transition: var(--transition);
+            background: rgba(0,0,0,0.02);
         }
-        .lang-btn:hover { border-color: var(--primary); color: var(--primary); box-shadow: 0 0 15px rgba(0,210,255,0.3); }
+        .lang-btn:hover { border-color: var(--primary); color: var(--primary); box-shadow: 0 5px 15px rgba(0,210,255,0.15); }
 
-        /* --- Hero Section (3D) --- */
-        .hero-section { padding: 150px 20px 80px; text-align: center; perspective: 1000px; position: relative; z-index: 1; }
+        /* --- Hero Section (صندوق البحث الرئيسي) --- */
+        .hero-section { padding: 160px 20px 60px; text-align: center; position: relative; z-index: 1; }
         .hero-section h2 { 
-            font-size: clamp(2.5rem, 5vw, 4rem); font-weight: 900; margin-bottom: 20px;
+            font-size: clamp(2.5rem, 5vw, 4rem); font-weight: 900; margin-bottom: 30px;
             background: linear-gradient(to right, var(--primary), var(--secondary));
             -webkit-background-clip: text; -webkit-text-fill-color: transparent;
         }
 
         .search-container {
-            max-width: 700px; margin: 0 auto; display: flex; gap: 15px;
-            background: var(--glass-bg); padding: 15px; border-radius: 20px;
-            border: 1px solid var(--border-color); backdrop-filter: blur(15px);
-            box-shadow: var(--card-shadow); transform-style: preserve-3d;
+            max-width: 700px; margin: 0 auto; display: flex; gap: 0; /* دمج المدخل مع الزرار بشكل حاد */
+            background: var(--background-dark); padding: 0; border-radius: 0;
+            border: 1px solid var(--border-color);
+            box-shadow: var(--card-shadow);
             transition: var(--transition);
         }
-        .search-container:hover { transform: translateY(-5px); border-color: var(--primary); box-shadow: var(--card-hover-shadow); }
+        .search-container:hover { border-color: var(--primary); box-shadow: var(--card-hover-shadow); }
         
         .search-container input {
-            flex: 1; padding: 15px 25px; border: 1px solid var(--input-border);
-            background: var(--input-bg); border-radius: 12px; color: var(--text-light);
-            font-size: 1.1rem; outline: none; transition: var(--transition);
+            flex: 1; padding: 18px 25px; border: none;
+            background: var(--input-bg); border-radius: 0; color: var(--text-light);
+            font-size: 1.05rem; outline: none; transition: var(--transition);
+            font-family: 'Tajawal', sans-serif;
         }
-        .search-container input:focus { border-color: var(--primary); box-shadow: inset 0 0 10px rgba(0,210,255,0.2); }
+        .search-container input:focus { background: #fff; }
         
         .btn-track {
             background: linear-gradient(to right, var(--primary), var(--secondary));
-            color: #fff; border: none; padding: 0 40px; border-radius: 12px; 
-            font-size: 1.1rem; font-weight: 700; cursor: pointer; transition: var(--transition);
+            color: #fff; border: none; padding: 0 35px; border-radius: 0; 
+            font-size: 1rem; font-weight: 700; cursor: pointer; transition: var(--transition);
+            font-family: 'Cairo', sans-serif;
         }
-        .btn-track:hover { transform: scale(1.05); box-shadow: 0 10px 20px rgba(0,210,255,0.4); }
+        .btn-track:hover { opacity: 0.95; }
 
         /* --- Results Content --- */
-        .main-content { width: 90%; max-width: 1200px; margin: 0 auto 80px; perspective: 1000px; position: relative; z-index: 1; }
-        #result-section { display: none; animation: popIn 0.6s cubic-bezier(0.23, 1, 0.32, 1) forwards; opacity: 0; transform: translateY(50px) scale(0.95); }
+        .main-content { width: 95%; max-width: 1300px; margin: 0 auto 80px; position: relative; z-index: 1; }
+        #result-section { display: none; animation: popIn 0.5s cubic-bezier(0.23, 1, 0.32, 1) forwards; opacity: 0; transform: translateY(30px); }
 
-        .data-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 25px; margin-bottom: 40px; transform-style: preserve-3d; }
+        /* كروت معلومات الشحنة */
+        .data-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 25px; margin-bottom: 40px; }
         .info-card { 
-            background: var(--glass-bg); padding: 30px; border-radius: 20px; 
-            border: 1px solid var(--border-color); backdrop-filter: blur(15px);
+            background: var(--glass-bg); padding: 35px 30px; border-radius: 0; 
+            border: 1px solid var(--border-color);
             box-shadow: var(--card-shadow); transition: var(--transition);
-            text-align: center; position: relative; overflow: hidden;
+            text-align: center; position: relative;
         }
-        .info-card::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 3px; background: linear-gradient(to right, var(--primary), var(--secondary)); opacity: 0; transition: var(--transition); }
-        .info-card:hover { transform: translateY(-10px) rotateX(5deg); background: var(--glass-hover-bg); border-color: rgba(0,210,255,0.3); box-shadow: var(--card-hover-shadow); }
+        .info-card::before { 
+            content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 3px; 
+            background: linear-gradient(to right, var(--primary), var(--secondary)); opacity: 0; transition: var(--transition); 
+        }
+        .info-card:hover { transform: translateY(-5px); background: var(--glass-hover-bg); border-color: var(--primary); box-shadow: var(--card-hover-shadow); }
         .info-card:hover::before { opacity: 1; }
         
-        .info-card h4 { color: var(--text-medium); margin-bottom: 10px; font-size: 1rem; text-transform: uppercase; letter-spacing: 2px; }
-        .info-card p { font-size: 1.5rem; font-weight: 700; color: var(--text-light); }
-        #status { color: var(--primary); text-shadow: 0 0 10px rgba(0,210,255,0.5); }
+        .info-card h4 { color: var(--text-dark); margin-bottom: 12px; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 1.5px; font-weight: 700; }
+        .info-card p { font-size: 1.4rem; font-weight: 700; color: var(--text-light); }
+        .info-card p i { margin-right: 8px; color: var(--text-medium); }
+        #status { color: var(--secondary); }
 
+        /* حاوية الخريطة المتناسقة */
         .map-container {
-            background: var(--glass-bg); padding: 15px; border-radius: 25px;
+            background: #fff; padding: 10px; border-radius: 0;
             border: 1px solid var(--border-color); box-shadow: var(--card-shadow);
-            margin-bottom: 40px; backdrop-filter: blur(15px); transition: var(--transition);
+            margin-bottom: 40px; transition: var(--transition);
         }
         .map-container:hover { border-color: var(--primary); box-shadow: var(--card-hover-shadow); }
-        #map { height: 450px; border-radius: 15px; z-index: 1; }
+        #map { height: 480px; border-radius: 0; z-index: 1; }
         
-        .leaflet-layer, .leaflet-control-zoom-in, .leaflet-control-zoom-out, .leaflet-control-attribution { filter: invert(100%) hue-rotate(180deg) brightness(85%) contrast(90%); }
+        /* تلوين الخريطة بستايل فاتح ونظيف ليتناسب مع التصميم الأبيض الجديد */
+        .leaflet-container { background: #f4f6f9; }
 
-        /* --- 3D Timeline --- */
+        /* --- خط السير الزمني الحاد (Timeline) --- */
         .timeline-card { 
-            background: var(--glass-bg); padding: 40px; border-radius: 25px; 
-            border: 1px solid var(--border-color); backdrop-filter: blur(15px);
-            box-shadow: var(--card-shadow); transition: var(--transition);
+            background: var(--glass-bg); padding: 45px 40px; border-radius: 0; 
+            border: 1px solid var(--border-color); box-shadow: var(--card-shadow);
         }
-        .timeline-card h3 { color: var(--text-light); margin-bottom: 30px; font-size: 1.8rem; text-align: center; }
+        .timeline-card h3 { color: var(--text-light); margin-bottom: 35px; font-size: 1.6rem; text-align: center; font-weight: 900; }
         
-        .t-item { position: relative; padding-left: 60px; padding-bottom: 40px; transition: var(--transition); }
-        .t-item::before { content: ''; position: absolute; left: 24px; top: 0; width: 2px; height: 100%; background: rgba(255,255,255,0.1); }
+        .t-item { position: relative; padding-left: 50px; padding-bottom: 35px; }
+        .t-item::before { content: ''; position: absolute; left: 19px; top: 0; width: 2px; height: 100%; background: var(--border-color); }
         .t-item:last-child::before { display: none; }
         
         .t-icon {
-            position: absolute; left: 0; top: 0; width: 50px; height: 50px;
-            background: var(--background-dark); border: 2px solid var(--border-color); border-radius: 50%;
+            position: absolute; left: 0; top: 0; width: 40px; height: 40px;
+            background: #fff; border: 2px solid var(--border-color); border-radius: 0; /* مربعات حادة */
             display: flex; align-items: center; justify-content: center; z-index: 2;
-            color: var(--text-medium); transition: var(--transition); font-size: 1.2rem;
+            color: var(--text-dark); transition: var(--transition); font-size: 1rem;
         }
         
-        .t-item.completed::before { background: linear-gradient(to bottom, var(--primary), transparent); }
-        .t-item.completed .t-icon { border-color: var(--primary); color: var(--primary); box-shadow: inset 0 0 10px rgba(0,210,255,0.2), 0 0 15px rgba(0,210,255,0.4); }
-        .t-item.active .t-icon { background: var(--primary); color: #fff; border-color: var(--primary); box-shadow: 0 0 25px rgba(0,210,255,0.6); transform: scale(1.1); }
+        .t-item.completed::before { background: var(--primary); }
+        .t-item.completed .t-icon { border-color: var(--primary); color: var(--primary); box-shadow: 0 0 10px rgba(0,210,255,0.2); }
+        .t-item.active .t-icon { background: var(--primary); color: #fff; border-color: var(--primary); box-shadow: 0 5px 15px rgba(0,210,255,0.3); }
         
-        .t-content { background: var(--glass-bg); padding: 15px 25px; border-radius: 15px; border: 1px solid transparent; transition: var(--transition); }
-        .t-item:hover .t-content { background: var(--glass-hover-bg); border-color: rgba(255,255,255,0.1); transform: translateX(10px); }
-        .t-content h5 { margin: 0 0 5px; font-size: 1.3rem; }
-        .t-content p { margin: 0; font-size: 1rem; color: var(--text-medium); }
-        .t-content span { color: var(--primary); font-weight: 700; }
+        .t-content { background: #fff; padding: 20px 25px; border-radius: 0; border: 1px solid var(--border-color); transition: var(--transition); box-shadow: 0 2px 10px rgba(0,0,0,0.02); }
+        .t-item:hover .t-content { border-color: var(--primary); transform: translateX(5px); box-shadow: var(--card-shadow); }
+        .t-content h5 { margin: 0 0 8px; font-size: 1.15rem; font-weight: 700; color: var(--text-light); }
+        .t-content p { margin: 0; font-size: 0.95rem; color: var(--text-medium); }
+        .t-content span { color: var(--primary); font-weight: 700; margin-left: 5px; }
 
-        @keyframes popIn { to { opacity: 1; transform: translateY(0) scale(1); } }
+        @keyframes popIn { to { opacity: 1; transform: translateY(0); } }
         
+        /* التوافق مع الشاشات الصغيرة */
         @media (max-width: 768px) {
-            header { width: 95%; padding: 10px 20px; }
-            .search-container { flex-direction: column; background: transparent; border: none; box-shadow: none; backdrop-filter: none;}
-            .search-container input { border-radius: 12px; background: var(--glass-bg); border: 1px solid var(--border-color); }
-            .btn-track { padding: 15px; width: 100%; }
+            header { width: 90%; padding: 10px 15px; }
+            .hero-section { padding-top: 130px; }
+            .search-container { flex-direction: column; border: none; box-shadow: none; background: transparent; gap: 15px; }
+            .search-container input { border: 1px solid var(--border-color); height: 55px; }
+            .search-container input:focus { border-color: var(--primary); }
+            .btn-track { padding: 15px; width: 100%; height: 55px; }
+            .timeline-card { padding: 30px 20px; }
+            .t-item { padding-left: 40px; }
+            .t-icon { width: 34px; height: 34px; }
+            .t-item::before { left: 16px; }
         }
     </style>
 </head>
 <body>
 
-    <video id="bg-video" class="video-bg" autoplay loop muted playsinline>
-        <source src="sky_background.mp4" type="video/mp4">
-    </video>
-    <div class="video-overlay"></div>
+    <!-- الخلفية التجريدية المتحركة (بديل ذكي وأنيق للفيديو المعتم) -->
+    <div class="animated-lines-container" id="lines-container"></div>
 
-    <button id="sound-toggle" class="sound-toggle-btn" title="Toggle Sound">
+    <!-- ملف الصوت التجريدي (اختياري) -->
+    <audio id="bg-video" loop>
+        <source src="sky_background.mp3" type="audio/mpeg">
+    </audio>
+
+    <button id="sound-toggle" class="sound-toggle-btn" title="Toggle Background Sound">
         <i class="fas fa-volume-mute"></i>
     </button>
 
+    <!-- Header الموحد -->
     <header>
         <div class="logo-area">
-            <img src="Al_Masriya_Al_Emaratiya_icon.png" height="40" alt="Logo">
+            <img src="Al_Masriya_Al_Emaratiya_icon.png" height="35" alt="Logo">
             <span>AL MASRIYA AL EMARATIA</span>
         </div>
         <a href="tracking-ar.html" class="lang-btn"><i class="fas fa-globe"></i> العربية</a>
     </header>
 
+    <!-- Hero Section -->
     <section class="hero-section">
         <h2>Global Shipment Tracking</h2>
         <div class="search-container">
@@ -229,6 +256,7 @@
         </div>
     </section>
 
+    <!-- النتائج لوحة التحكم بالشحنة -->
     <main class="main-content">
         <div id="result-section">
             <div class="data-grid">
@@ -246,12 +274,14 @@
                 </div>
             </div>
 
+            <!-- حاوية الخريطة -->
             <div class="map-container">
                 <div id="map"></div>
             </div>
 
+            <!-- خط سير الشحنة الزمني -->
             <div class="timeline-card">
-                <h3><i class="fas fa-route" style="color: var(--primary);"></i> Shipment Milestones</h3>
+                <h3><i class="fas fa-route" style="color: var(--primary); margin-right: 10px;"></i> Shipment Milestones</h3>
                 <div id="timeline-list"></div>
             </div>
         </div>
@@ -259,27 +289,39 @@
 
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
     <script>
-        // --- كود التحكم في صوت الفيديو ---
-        const video = document.getElementById('bg-video');
+        document.addEventListener('DOMContentLoaded', () => {
+            const container = document.getElementById('lines-container');
+            const createLine = () => {
+                if (document.querySelectorAll('.animated-line').length > 15) return;
+                const line = document.createElement('div');
+                line.classList.add('animated-line');
+                line.style.top = Math.random() * 100 + '%';
+                line.style.animationDelay = Math.random() * 4 + 's';
+                line.style.animationDuration = (10 + Math.random() * 8) + 's';
+                container.appendChild(line);
+                line.addEventListener('animationend', () => line.remove());
+            };
+            for (let i = 0; i < 8; i++) createLine();
+            setInterval(createLine, 2500);
+        });
+
+        const audio = document.getElementById('bg-video');
         const soundBtn = document.getElementById('sound-toggle');
 
         soundBtn.addEventListener('click', () => {
-            if (video.muted) {
-                video.muted = false; // تشغيل الصوت
+            if (audio.paused) {
+                audio.play().catch(e => console.log("Audio play prevented by browser policy"));
                 soundBtn.innerHTML = '<i class="fas fa-volume-up"></i>';
                 soundBtn.style.color = 'var(--primary)';
                 soundBtn.style.borderColor = 'var(--primary)';
-                soundBtn.style.boxShadow = 'var(--card-hover-shadow)';
             } else {
-                video.muted = true; // كتم الصوت
+                audio.pause();
                 soundBtn.innerHTML = '<i class="fas fa-volume-mute"></i>';
                 soundBtn.style.color = 'var(--text-light)';
                 soundBtn.style.borderColor = 'var(--border-color)';
-                soundBtn.style.boxShadow = 'var(--card-shadow)';
             }
         });
 
-        // --- كود التتبع والخريطة ---
         let map;
 
         async function startTracking() {
@@ -298,7 +340,7 @@
                     
                     setTimeout(() => {
                         document.getElementById('result-section').scrollIntoView({ behavior: 'smooth', block: 'start' });
-                    }, 100);
+                    }, 180);
                 } else {
                     alert("ID not found. Please check and try again.");
                 }
@@ -309,9 +351,9 @@
         }
 
         function renderData(ship) {
-            document.getElementById('vessel-name').innerHTML = ship.vessel_name;
-            document.getElementById('status').innerHTML = ship.current_status;
-            document.getElementById('destination').innerHTML = ship.destination.port;
+            document.getElementById('vessel-name').innerHTML = `<i class="fas fa-ship"></i> ${ship.vessel_name}`;
+            document.getElementById('status').innerHTML = `<i class="fas fa-satellite-dish"></i> ${ship.current_status}`;
+            document.getElementById('destination').innerHTML = `<i class="fas fa-map-marker-alt"></i> ${ship.destination.port}`;
 
             const list = document.getElementById('timeline-list');
             list.innerHTML = "";
@@ -340,6 +382,7 @@
         function initMap(loc) {
             if (map) map.remove();
             map = L.map('map', { zoomControl: true }).setView([loc.lat, loc.lng], 5);
+            
             L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
                 attribution: '&copy; OpenStreetMap contributors'
             }).addTo(map);
@@ -348,20 +391,20 @@
                 className: 'ship-marker',
                 html: `<div style="
                     background: linear-gradient(135deg, var(--primary), var(--secondary)); 
-                    color:white; width:45px; height:45px; border-radius:50%; 
+                    color:white; width:42px; height:42px; border-radius:0; 
                     display:flex; align-items:center; justify-content:center; 
-                    border: 3px solid var(--background-dark); 
-                    box-shadow: 0 0 20px var(--primary);
-                    font-size: 1.2rem; transform: rotate(-15deg);
+                    border: 2px solid #fff; 
+                    box-shadow: 0 4px 15px rgba(0,210,255,0.4);
+                    font-size: 1.1rem;
                 "><i class="fas fa-ship"></i></div>`,
-                iconSize: [45, 45],
-                iconAnchor: [22, 22]
+                iconSize: [42, 42],
+                iconAnchor: [21, 21]
             });
 
             L.marker([loc.lat, loc.lng], {icon: shipIcon}).addTo(map)
                 .bindPopup(`
-                    <div style="background:var(--background-dark); color:white; padding:5px; border-radius:5px; font-family:'Tajawal', sans-serif;">
-                        <b style="color:var(--primary);">Current Location:</b><br>${loc.name}
+                    <div style="color:var(--text-light); padding:3px; font-family:'Tajawal', sans-serif;">
+                        <b style="color:var(--secondary); font-size:1rem;">Current Location:</b><br>${loc.name}
                     </div>
                 `).openPopup();
         }
