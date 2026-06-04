@@ -1,1 +1,394 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>عملائنا | المصرية الإماراتية</title>
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;900&family=Tajawal:wght@400;500;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Link to your existing style.css -->
+    <link rel="stylesheet" href="css/style_our-clients.css">
 
+    <style>
+        /* Specific adjustments for the inner page */
+        body {
+            font-family: 'Tajawal', sans-serif;
+        }
+        
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Cairo', sans-serif;
+        }
+
+        .page-header {
+            padding-top: 150px;
+            text-align: center;
+            margin-bottom: 70px;
+        }
+        .page-header p {
+            max-width: 800px;
+            margin: 20px auto 0;
+            font-size: 1.2rem;
+            line-height: 1.8;
+        }
+
+        /* Category Titles */
+        .category-title {
+            font-size: 2rem;
+            color: var(--text-light);
+            margin-bottom: 30px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--primary);
+            display: inline-block;
+            font-weight: 700;
+        }
+        .category-section {
+            margin-bottom: 80px;
+        }
+
+        /* Responsive Grid for Clients */
+        .systems-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 30px;
+        }
+
+        /* Client Cards with Geometric Design */
+        .client-card {
+            background: var(--glass-bg);
+            padding: 25px;
+            border-radius: var(--border-radius-geom, 8px); 
+            border: 1px solid var(--border-color);
+            text-align: center;
+            transition: var(--transition);
+            box-shadow: var(--card-shadow);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .client-card:hover {
+            transform: translateY(-8px);
+            background: var(--glass-hover-bg);
+            border-color: var(--primary);
+            box-shadow: 0 15px 30px rgba(0,210,255,0.15);
+        }
+
+        /* Image Wrapper */
+        .client-logo-wrapper {
+            width: 100%;
+            height: 150px;
+            background: #fff; 
+            border-radius: 4px; 
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 20px;
+            border: 1px solid var(--border-color);
+            transition: all 0.4s ease;
+            padding: 15px;
+            overflow: hidden;
+        }
+        .client-card:hover .client-logo-wrapper {
+            border-color: var(--primary);
+        }
+
+        .client-logo-wrapper img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+            transition: transform 0.4s ease;
+        }
+        .client-card:hover .client-logo-wrapper img {
+            transform: scale(1.08); 
+        }
+
+        .client-card h3 {
+            font-size: 1.3rem;
+            color: var(--text-light);
+            margin-bottom: 5px;
+        }
+        .client-card p {
+            font-size: 0.95rem;
+            color: var(--primary);
+            opacity: 0.9;
+            margin-bottom: 0;
+            font-weight: 500;
+        }
+
+        @media (max-width: 768px) {
+            .page-header { padding-top: 120px; }
+            .category-title { font-size: 1.6rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Background Animations -->
+    <div class="video-container">
+        <div class="overlay-gradient"></div>
+    </div>
+    <div class="animated-lines-container">
+        <div class="animated-line" style="top: 20%; animation-delay: 0s;"></div>
+        <div class="animated-line" style="top: 50%; animation-delay: 5s;"></div>
+        <div class="animated-line" style="top: 80%; animation-delay: 10s;"></div>
+    </div>
+
+    <!-- Header -->
+    <header>
+        <div class="logo">
+            <h2>المصرية الإماراتية</h2>
+        </div>
+        <ul class="nav-links">
+            <li><a href="index-ar.html">الرئيسية</a></li>
+            <li><a href="about-ar.html">من نحن</a></li>
+            <li><a href="services-ar.html">خدماتنا</a></li>
+            <li><a href="our-clients-ar.html" class="active">عملائنا</a></li>
+            <li><a href="contact-ar.html">اتصل بنا</a></li>
+        </ul>
+        <div class="header-actions">
+            <a href="#" class="login-btn">
+                <span class="login-text">احصل على عرض سعر</span>
+            </a>
+            <div class="hamburger">
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Mobile Navigation Menu -->
+    <div class="mobile-nav">
+        <ul>
+            <li><a href="index-ar.html">الرئيسية</a></li>
+            <li><a href="about-ar.html">من نحن</a></li>
+            <li><a href="services-ar.html">خدماتنا</a></li>
+            <li><a href="our-clients-ar.html" class="active">عملائنا</a></li>
+            <li><a href="contact-ar.html">اتصل بنا</a></li>
+            <li class="mobile-login-item"><a href="#" class="mobile-login-btn">احصل على عرض سعر</a></li>
+        </ul>
+    </div>
+
+    <!-- Main Content -->
+    <main class="section-padding">
+        
+        <!-- Page Title -->
+        <div class="page-header hero-3d-card">
+            <h2>عملاؤنا الكرام</h2>
+            <p>نفخر بتقديم خدماتنا وتوريد منتجاتنا المتميزة لنخبة من كبرى الفنادق والجامعات والشركات في جميع أنحاء الشرق الأوسط ومصر والخليج.</p>
+        </div>
+
+        <!-- CATEGORY 1: Hospitality & Leisure -->
+        <div class="category-section">
+            <h3 class="category-title">الضيافة والترفيه</h3>
+            <div class="systems-grid">
+                
+                <div class="client-card">
+                    <div class="client-logo-wrapper">
+                        <img src="images/Al Maha Hotel - logo .jpg" alt="شعار فندق المها">
+                    </div>
+                    <h3>فندق المها</h3>
+                    <p>الإمارات العربية المتحدة</p>
+                </div>
+
+                <div class="client-card">
+                    <div class="client-logo-wrapper">
+                        <img src="images/Radisson Blu - logo.jpg" alt="شعار راديسون بلو">
+                    </div>
+                    <h3>فنادق راديسون بلو</h3>
+                    <p>شريك عالمي</p>
+                </div>
+
+                <div class="client-card">
+                    <div class="client-logo-wrapper">
+                        <img src="images/Rotana Hotel - logo.png" alt="شعار فندق روتانا">
+                    </div>
+                    <h3>فندق روتانا</h3>
+                    <p>الشرق الأوسط</p>
+                </div>
+
+                <div class="client-card">
+                    <div class="client-logo-wrapper">
+                        <img src="images/Oceanic Hotel - logo.png" alt="شعار فندق أوشيانيك">
+                    </div>
+                    <h3>فندق أوشيانيك</h3>
+                    <p>شريك ضيافة</p>
+                </div>
+                
+                <div class="client-card">
+                    <div class="client-logo-wrapper">
+                        <img src="images/Holiday International - logo.png" alt="شعار هوليداي إنترناشيونال">
+                    </div>
+                    <h3>هوليداي إنترناشيونال</h3>
+                    <p>الشارقة</p>
+                </div>
+                
+                <div class="client-card">
+                    <div class="client-logo-wrapper">
+                        <img src="images/Al Haiat Hotel Group - logo.png" alt="شعار مجموعة فنادق الحياة">
+                    </div>
+                    <h3>مجموعة فنادق الحياة</h3>
+                    <p>شريك ضيافة</p>
+                </div>
+                
+                <div class="client-card">
+                    <div class="client-logo-wrapper">
+                        <img src="images/Lords Hotel - logo.jpg" alt="شعار فندق لوردز">
+                    </div>
+                    <h3>فندق لوردز</h3>
+                    <p>شريك ضيافة</p>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- CATEGORY 2: General Trading & Hotel Supplies -->
+        <div class="category-section">
+            <h3 class="category-title">التجارة العامة وتجهيزات الفنادق</h3>
+            <div class="systems-grid">
+
+                <div class="client-card">
+                    <div class="client-logo-wrapper">
+                        <img src="images/company - logo.png" alt="شعار العبور للتجارة">
+                    </div>
+                    <h3>العبور للتجارة العامة</h3>
+                    <p>الإمارات العربية المتحدة</p>
+                </div>
+
+                <div class="client-card">
+                    <div class="client-logo-wrapper">
+                        <img src="images/company - logo.png" alt="شعار أرزاق للتجارة">
+                    </div>
+                    <h3>أرزاق للتجارة العامة</h3>
+                    <p>شريك تجاري</p>
+                </div>
+                
+                <div class="client-card">
+                    <div class="client-logo-wrapper">
+                        <img src="images/company - logo.png" alt="شعار إكسلانس لتجهيزات الفنادق">
+                    </div>
+                    <h3>إكسلانس لتجهيزات الفنادق</h3>
+                    <p>سلسلة التوريد</p>
+                </div>
+                
+                <div class="client-card">
+                    <div class="client-logo-wrapper">
+                        <img src="images/company - logo.png" alt="شعار لوكشريوس للتجارة">
+                    </div>
+                    <h3>لوكشريوس للتجارة العامة</h3>
+                    <p>شريك تجاري</p>
+                </div>
+
+                <div class="client-card">
+                    <div class="client-logo-wrapper">
+                        <img src="images/company - logo.png" alt="شعار بليسينج للتجارة">
+                    </div>
+                    <h3>بليسينج للتجارة العامة</h3>
+                    <p>شريك تجاري</p>
+                </div>
+
+                <div class="client-card">
+                    <div class="client-logo-wrapper">
+                        <img src="images/company - logo.png" alt="شعار ميدل إيست لتجهيزات الفنادق">
+                    </div>
+                    <h3>ميدل إيست لتجهيزات الفنادق</h3>
+                    <p>سلسلة التوريد</p>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- CATEGORY 3: Education & Recreation -->
+        <div class="category-section">
+            <h3 class="category-title">التعليم والترفيه</h3>
+            <div class="systems-grid">
+
+                <div class="client-card">
+                    <div class="client-logo-wrapper">
+                        <img src="images/Sharjah University - logo.jpg" alt="شعار جامعة الشارقة">
+                    </div>
+                    <h3>جامعة الشارقة</h3>
+                    <p>قطاع التعليم</p>
+                </div>
+                
+                <div class="client-card">
+                    <div class="client-logo-wrapper">
+                        <img src="images/Skydive Dubai - logo.jpg" alt="شعار سكاي دايف دبي">
+                    </div>
+                    <h3>سكاي دايف دبي</h3>
+                    <p>الرياضة والترفيه</p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- CATEGORY 4: Chemical Supplies -->
+        <div class="category-section">
+            <h3 class="category-title">التوريدات الكيميائية</h3>
+            <div class="systems-grid">
+
+                <div class="client-card">
+                    <div class="client-logo-wrapper">
+                        <img src="images/company - logo.png" alt="شعار المصرية الخليجية">
+                    </div>
+                    <h3>المصرية الخليجية</h3>
+                    <p>توريدات كيميائية</p>
+                </div>
+
+                <div class="client-card">
+                    <div class="client-logo-wrapper">
+                        <img src="images/company - logo.png" alt="شعار الخير للتوريدات الكيميائية">
+                    </div>
+                    <h3>الخير للتوريدات الكيميائية</h3>
+                    <p>توريدات كيميائية</p>
+                </div>
+
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-wrapper">
+            <div class="footer-logo">
+                <h3>المصرية الإماراتية<span style="color: var(--primary);">.</span></h3>
+                <p>بوابتك للنمو والتوسع في مصر والإمارات.</p>
+            </div>
+            <div class="footer-links">
+                <h4>استكشف</h4>
+                <ul>
+                    <li><a href="index-ar.html">الرئيسية</a></li>
+                    <li><a href="services-ar.html">خدماتنا</a></li>
+                    <li><a href="about-ar.html">من نحن</a></li>
+                    <li><a href="contact-ar.html">اتصل بنا</a></li>
+                </ul>
+            </div>
+
+            <!-- Language Dropdown -->
+            <div class="footer-language custom-dropdown">
+                <h4>اللغة</h4>
+                <div class="dropdown-trigger" id="lang-trigger" tabindex="0">
+                    <span><i class="fas fa-globe"></i> العربية</span>
+                    <i class="fas fa-chevron-down arrow-icon"></i>
+                </div>
+                <ul class="dropdown-menu" id="lang-menu">
+                    <li><a href="our-clients.html">English</a></li>
+                    <li><a href="our-clients-ar.html" class="active-lang">العربية</a></li>
+                    <li><a href="our-clients-cn.html">中文</a></li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <p>© <span id="current-year"></span> المصرية الإماراتية. جميع الحقوق محفوظة.</p>
+            <div class="footer-bottom-social">
+                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                <a href="#"><i class="fab fa-linkedin-in"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/script_our-clients.js"></script>
+</body>
+</html>
