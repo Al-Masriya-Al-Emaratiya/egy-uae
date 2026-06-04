@@ -1,1 +1,509 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Food Division | Al Masriya Al Emaratiya</title>
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;900&family=Cairo:wght@400;700;900&display=swap" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
+    <!-- Swiper CSS & AOS -->
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    
+    <!-- Link to your main stylesheet -->
+    <link rel="stylesheet" href="css/style.css">
 
+    <style>
+        /* Custom styles for the food division page - 100% sharp corners */
+        .division-hero {
+            padding: 150px 20px 80px 20px;
+            background: linear-gradient(135deg, rgba(0,210,255,0.03) 0%, rgba(58,123,213,0.03) 100%);
+            text-align: center;
+            border-bottom: 1px solid var(--border-color);
+        }
+        .division-hero h1 {
+            font-size: 3.5rem;
+            font-weight: 900;
+            margin-bottom: 15px;
+            background: linear-gradient(to right, var(--text-light), var(--secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .division-hero p {
+            max-width: 800px;
+            margin: 0 auto;
+            color: var(--text-medium);
+            font-size: 1.1rem;
+            line-height: 1.6;
+        }
+
+        /* Styling for the Google Translate Custom Container */
+        .google-translate-wrapper {
+            position: relative;
+            display: inline-block;
+            margin-right: 15px;
+        }
+        
+        /* Hide the default ugly Google Translate Top Bar Banner */
+        .skiptranslate iframe, .goog-te-banner-frame {
+            display: none !important;
+            visibility: hidden !important;
+        }
+        body {
+            top: 0 !important;
+        }
+        
+        /* Custom styling for Google Dropdown Elements to force 0px Radius and Downward appearance */
+        .goog-te-gadget-simple {
+            background-color: transparent !important;
+            border: 1px solid var(--border-color) !important;
+            padding: 6px 12px !important;
+            border-radius: 0 !important;
+            cursor: pointer;
+            font-family: 'Tajawal', sans-serif !important;
+            display: flex !important;
+            align-items: center !important;
+            gap: 5px;
+            transition: var(--transition);
+        }
+        .goog-te-gadget-simple:hover {
+            border-color: var(--primary) !important;
+            background-color: rgba(0, 210, 255, 0.02) !important;
+        }
+        .goog-te-gadget-simple img {
+            display: none !important; /* Hides the Google icon for cleaner corporate look */
+        }
+        .goog-te-gadget-simple span {
+            color: var(--text-light) !important;
+            font-weight: 500 !important;
+            font-size: 0.9rem !important;
+        }
+        
+        /* Force Google Translate Menu Box to open downward with Sharp Corners */
+        .goog-te-menu-frame {
+            border-radius: 0 !important;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15) !important;
+            top: 100% !important;
+            margin-top: 5px !important;
+        }
+
+        /* Trade Operations Section */
+        .trade-section {
+            padding: 80px 20px;
+        }
+        .trade-tabs-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .trade-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+        .product-card {
+            background: var(--glass-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 0 !important; /* Zero border radius */
+            padding: 35px 30px;
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+        }
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--card-hover-shadow);
+            border-color: var(--primary);
+        }
+        .product-badge {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            font-weight: 700;
+            padding: 5px 12px;
+            border-radius: 0 !important;
+            letter-spacing: 1px;
+        }
+        .badge-export { background: rgba(0, 210, 255, 0.1); color: var(--primary); border: 1px solid var(--primary); }
+        .badge-import { background: rgba(58, 123, 213, 0.1); color: var(--secondary); border: 1px solid var(--secondary); }
+        
+        .product-card i {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 20px;
+            display: inline-block;
+        }
+        .product-card h3 {
+            font-size: 1.35rem;
+            margin-bottom: 12px;
+            color: var(--text-light);
+            font-weight: 700;
+        }
+        .product-list {
+            list-style: none;
+            padding: 0;
+            margin-top: 20px;
+            border-top: 1px solid var(--border-color);
+            padding-top: 15px;
+        }
+        .product-list li {
+            padding: 6px 0;
+            color: var(--text-medium);
+            font-size: 0.95rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .product-list li::before {
+            content: "■";
+            color: var(--primary);
+            font-size: 0.65rem;
+        }
+
+        /* Commercial Agencies Section */
+        .agencies-section {
+            background: rgba(0, 0, 0, 0.01);
+            border-top: 1px solid var(--border-color);
+            border-bottom: 1px solid var(--border-color);
+            padding: 80px 20px;
+        }
+        .section-title {
+            text-align: center;
+            font-weight: 900;
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            color: var(--text-light);
+            letter-spacing: -0.5px;
+        }
+        .section-subtitle {
+            text-align: center;
+            color: var(--text-dark);
+            margin-bottom: 50px;
+            font-size: 1.05rem;
+        }
+        .agencies-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+            gap: 25px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .agency-box {
+            background: #ffffff;
+            border: 1px solid var(--border-color);
+            padding: 35px 25px;
+            text-align: center;
+            border-radius: 0 !important;
+            transition: var(--transition);
+        }
+        .agency-box:hover {
+            border-color: var(--secondary);
+            box-shadow: var(--card-shadow);
+            transform: scale(1.02);
+        }
+        .agency-box h3 {
+            font-size: 1.15rem;
+            font-weight: 700;
+            color: var(--text-light);
+            margin-bottom: 10px;
+        }
+        .agency-logo-placeholder {
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(0,0,0,0.02);
+            margin-bottom: 20px;
+            font-weight: 700;
+            font-size: 0.85rem;
+            letter-spacing: 1px;
+            color: var(--text-dark);
+            border: 1px dashed var(--border-color);
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Custom 3D Cursor -->
+    <div id="cursor"></div>
+    <!-- Reading Progress Bar -->
+    <div id="progress-bar"></div>
+    <!-- Animated Lines Background -->
+    <div class="animated-lines-container"></div>
+
+    <!-- Header & Navigation -->
+    <header>
+        <div class="logo">
+            <h2><a href="index.html" style="color: inherit;">AL MASRIYA AL EMARATIYA<span style="color: var(--primary);">.</span></a></h2>
+        </div>
+        <ul class="nav-links">
+            <li><a href="index.html#home">Home</a></li>
+            <li><a href="index.html#services">Services</a></li>
+            <li><a href="index.html#sectors" class="active">Our Sectors</a></li>
+            <li><a href="index.html#systems">Our Systems</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+        <div class="header-actions">
+            
+            <!-- Official Google Translate Integrated Dynamic Button -->
+            <div class="google-translate-wrapper">
+                <div id="google_translate_element"></div>
+            </div>
+
+            <a href="login.html" class="login-btn" id="desktop-login-btn">
+                <i class="fas fa-user-circle"></i> <span class="login-text">Login</span>
+            </a>
+            <div class="user-profile hidden" id="desktop-user-profile">
+                <div class="profile-trigger" id="profile-trigger">
+                    <i class="fas fa-user-circle user-avatar"></i>
+                    <span class="user-name">Account</span>
+                    <i class="fas fa-chevron-down arrow-icon"></i>
+                </div>
+                <ul class="profile-dropdown" style="border-radius: 0 !important;">
+                    <li><a href="portal.html"><i class="fas fa-laptop-file"></i> Portal</a></li>
+                    <li><a href="#" id="logout-btn"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
+                </ul>
+            </div>
+            <div class="hamburger"><div class="bar"></div><div class="bar"></div><div class="bar"></div></div>
+        </div>
+    </header>
+
+    <!-- Mobile Menu -->
+    <nav class="mobile-nav">
+        <ul>
+            <li><a href="index.html#home">Home</a></li>
+            <li><a href="index.html#services">Services</a></li>
+            <li><a href="index.html#sectors">Our Sectors</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <!-- Sector Hero Section -->
+    <section class="division-hero">
+        <div data-aos="fade-up">
+            <h1>Food Division</h1>
+            <p>Strategic supply chain hub for importing, exporting, and distributing essential food commodities and premium agricultural products between Egypt, the UAE, and global markets.</p>
+        </div>
+    </section>
+
+    <!-- Import & Export Operations Section -->
+    <section class="trade-section">
+        <div class="trade-tabs-container">
+            <h2 class="section-title">Import & Export Operations</h2>
+            <p class="section-subtitle">Securing global B2B supply lines for fresh, chilled, and packaged food commodities.</p>
+            
+            <div class="trade-grid">
+                
+                <!-- Product 1: Export -->
+                <div class="product-card" data-aos="fade-up" data-aos-delay="100">
+                    <span class="product-badge badge-export">Export</span>
+                    <i class="fas fa-apple-whole"></i>
+                    <h3>Fresh Fruits & Vegetables</h3>
+                    <p>Exporting Egypt's premium agricultural harvests straight to Gulf and European retail chains.</p>
+                    <ul class="product-list">
+                        <li>Citrus fruits (Valencias, Navel Oranges, Lemons)</li>
+                        <li>Fresh Pomegranates and Superior Grapes</li>
+                        <li>Fresh Onions, Garlic, and Premium Potatoes</li>
+                    </ul>
+                </div>
+
+                <!-- Product 2: Export -->
+                <div class="product-card" data-aos="fade-up" data-aos-delay="200">
+                    <span class="product-badge badge-export">Export</span>
+                    <i class="fas fa-seedling"></i>
+                    <h3>Herbs & Organic Spices</h3>
+                    <p>Processing and exporting certified organic dried herbs and processing-grade botanical materials.</p>
+                    <ul class="product-list">
+                        <li>Marjoram, Peppermint, and Dried Chamomile</li>
+                        <li>Premium Cumin, Coriander, and Anise Seeds</li>
+                        <li>Raw botanical ingredients for pharmaceutical extraction</li>
+                    </ul>
+                </div>
+
+                <!-- Product 3: Import -->
+                <div class="product-card" data-aos="fade-up" data-aos-delay="300">
+                    <span class="product-badge badge-import">Import</span>
+                    <i class="fas fa-wheat-awn"></i>
+                    <h3>Strategic Grains & Commodities</h3>
+                    <p>Bulk importation and wholesale distribution of critical food security commodities.</p>
+                    <ul class="product-list">
+                        <li>Premium White and Basmati Rice</li>
+                        <li>Milling Wheat and Yellow Corn for animal feed</li>
+                        <li>Refined and Raw Cane Sugar</li>
+                    </ul>
+                </div>
+
+                <!-- Product 4: Import -->
+                <div class="product-card" data-aos="fade-up" data-aos-delay="400">
+                    <span class="product-badge badge-import">Import</span>
+                    <i class="fas fa-box"></i>
+                    <h3>FMCG & Packaged Goods</h3>
+                    <p>Importing and distributing high-demand fast-moving consumer packaged foods.</p>
+                    <ul class="product-list">
+                        <li>Vegetable Oils (Pure Sunflower and Corn Oil)</li>
+                        <li>Canned Fish (Premium Shredded and Solid Tuna)</li>
+                        <li>Full Cream Milk Powder and dairy compounds</li>
+                    </ul>
+                </div>
+
+                <!-- Product 5: Export -->
+                <div class="product-card" data-aos="fade-up" data-aos-delay="500">
+                    <span class="product-badge badge-export">Export</span>
+                    <i class="fas fa-snowflake"></i>
+                    <h3>IQF Frozen Fruits & Veg</h3>
+                    <p>Exporting high-quality Individually Quick Frozen (IQF) food products preserving peak freshness.</p>
+                    <ul class="product-list">
+                        <li>Frozen Strawberries and Mango pulps</li>
+                        <li>Mixed Vegetables (Peas, Green Beans, Okra)</li>
+                        <li>Pre-fried French Fries and Potato wedges</li>
+                    </ul>
+                </div>
+
+                <!-- Product 6: Import -->
+                <div class="product-card" data-aos="fade-up" data-aos-delay="600">
+                    <span class="product-badge badge-import">Import</span>
+                    <i class="fas fa-cheese"></i>
+                    <h3>HORECA & Catering Supplies</h3>
+                    <p>Sourcing luxury ingredients and specialized food supplies for hotels, culinary sectors, and resorts.</p>
+                    <ul class="product-list">
+                        <li>Gourmet European Cheeses and New Zealand Butter</li>
+                        <li>Authentic Italian Pastas and Asian Culinary Sauces</li>
+                        <li>Premium Raw & Roasted Nuts and Dried Fruits</li>
+                    </ul>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Commercial Agencies & Brands Section -->
+    <section class="agencies-section">
+        <h2 class="section-title">Commercial Agencies & Brands</h2>
+        <p class="section-subtitle">Exclusive commercial partnerships and international brands represented across our network.</p>
+        
+        <div class="agencies-grid">
+            
+            <!-- Agency 1 -->
+            <div class="agency-box" data-aos="zoom-in" data-aos-delay="100">
+                <div class="agency-logo-placeholder">BRAND LOGO 1</div>
+                <h3>Gulf Food Alliance</h3>
+                <p style="color: var(--text-dark); font-size: 0.9rem; margin-top: 10px;">Exclusive regional distributor for premium vegetable fats, bakery ingredients, and shortenings.</p>
+            </div>
+
+            <!-- Agency 2 -->
+            <div class="agency-box" data-aos="zoom-in" data-aos-delay="200">
+                <div class="agency-logo-placeholder">BRAND LOGO 2</div>
+                <h3>Natural Green Co. (Africa)</h3>
+                <p style="color: var(--text-dark); font-size: 0.9rem; margin-top: 10px;">Authorized trade representative for pure Tanzanian tea leaves and agricultural raw materials.</p>
+            </div>
+
+            <!-- Agency 3 -->
+            <div class="agency-box" data-aos="zoom-in" data-aos-delay="300">
+                <div class="agency-logo-placeholder">BRAND LOGO 3</div>
+                <h3>EuroFoods Certified</h3>
+                <p style="color: var(--text-dark); font-size: 0.9rem; margin-top: 10px;">B2B distribution partner handling premium Dutch dairy, whey powder, and gourmet cheeses.</p>
+            </div>
+
+            <!-- Agency 4 -->
+            <div class="agency-box" data-aos="zoom-in" data-aos-delay="400">
+                <div class="agency-logo-placeholder">BRAND LOGO 4</div>
+                <h3>Al Wadi Agri Group</h3>
+                <p style="color: var(--text-dark); font-size: 0.9rem; margin-top: 10px;">Lead logistics and trade channel manager for South Asian tropical fruits and exotic produce.</p>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Contact & RFQ Section -->
+    <section id="contact" class="contact-section section-padding">
+        <h2>Inquire About Food Supplies</h2>
+        <div class="contact-form-container" data-aos="zoom-in">
+            <p>Connect directly with our Food Division trade managers to request samples, compliance certificates, or customized Container Load (FCL) wholesale pricing.</p>
+            
+            <form class="contact-form" action="https://formspree.io/f/maqkrwoe" method="POST">
+                <input type="text" name="Name" placeholder="Your Full Name / Company" required style="border-radius:0 !important;">
+                <input type="email" name="Email" placeholder="Business Email" required style="border-radius:0 !important;">
+                <input type="tel" name="Phone" placeholder="WhatsApp / Phone Number" style="border-radius:0 !important;">
+                
+                <select name="Order-Type" style="width:100%; padding:15px; border:1px solid var(--input-border); background:var(--input-bg); color:var(--text-light); border-radius:0 !important; margin-bottom:20px; font-family:'Tajawal', sans-serif; -webkit-appearance: none;">
+                    <option value="Export Inquiry">Sourcing from Egypt (Export Request)</option>
+                    <option value="Import Inquiry">Supplying to Egypt / UAE (Import Offer)</option>
+                    <option value="Agency / Partnership">Commercial Agency / Brand Partnership</option>
+                </select>
+                
+                <textarea name="Message" rows="5" placeholder="Please clarify the product specification, required volume in metric tons, packaging preferences, and target destination port..." required style="border-radius:0 !important;"></textarea>
+                
+                <button type="submit" style="border-radius:0 !important;">Submit Trade Request</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-wrapper">
+            <div class="footer-logo">
+                <h3>AL MASRIYA AL EMARATIYA<span style="color: var(--primary);">.</span></h3>
+                <p>Your Gateway to Growth in Egypt & UAE.</p>
+            </div>
+            <div class="footer-links">
+                <h4>Explore</h4>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="food-division.html">Food Division</a></li>
+                    <li><a href="portal.html">B2B Portal</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2026 Al Masriya Al Emaratiya. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Chat Widget -->
+    <div id="chat-widget" class="chat-widget" style="border-radius:0 !important;">
+        <button class="chat-btn" aria-label="Open Chat" style="border-radius:0 !important;"><i class="fas fa-comment-dots"></i></button>
+        <div class="chat-container" style="border-radius:0 !important;">
+            <div class="chat-header">
+                <h3>Food Trading Desk</h3>
+                <button class="chat-close">&times;</button>
+            </div>
+            <div class="chat-body">
+                <div class="message incoming">
+                    <p>Welcome to our Food Trading Desk! How can we support your import/export operations today?</p>
+                </div>
+            </div>
+            <div class="chat-footer">
+                <input type="text" placeholder="Type your message..." id="chat-input" style="border-radius:0 !important;">
+                <button id="chat-send" style="border-radius:0 !important;"><i class="fas fa-paper-plane"></i></button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="js/main.js"></script>
+    
+    <!-- Google Translate Initialization Scripts -->
+    <script>
+        function googleTranslateElementInit() {
+            new google.translate.TranslateElement({
+                pageLanguage: 'en',
+                includedLanguages: 'en,ar', // Limits choices directly to English and Arabic
+                layout: google.translate.TranslateElement.InlineLayout.SIMPLE,
+                autoDisplay: false
+            }, 'google_translate_element');
+        }
+    </script>
+    <script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
+    <script>
+        AOS.init({ duration: 800, once: true });
+    </script>
+</body>
+</html>
