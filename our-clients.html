@@ -330,21 +330,45 @@
     <footer>
         <div class="footer-wrapper">
             <div class="footer-logo">
-                <h3>AL MASRIYA AL EMARATIYA</h3>
-                <p>Commercial Agencies, Import & Export.<br>Delivering excellence across the Middle East.</p>
+                <h3>AL MASRIYA AL EMARATIYA<span style="color: var(--primary);">.</span></h3>
+                <p>Your Gateway to Growth in Egypt & UAE.</p>
             </div>
             <div class="footer-links">
-                <h4>Quick Links</h4>
+                <h4>Explore</h4>
                 <ul>
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="about.html">About Us</a></li>
-                    <li><a href="services.html">Services</a></li>
-                    <li><a href="clients.html">Our Clients</a></li>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="#about">About Us</a></li>
+                    <li><a href="#contact">Contact Us</a></li>
+                    <li><a href="tracking.html">Tracking</a></li>
+                    <li><a href="careers.html">Careers</a></li>
+                    <li><a href="our-clients.html">Our Client</a></li>
+                    <li><a href="portal.html">Portal</a></li>
+                </ul>
+            </div>
+
+            <!-- Language Dropdown -->
+            <div class="footer-language custom-dropdown">
+                <h4>Language</h4>
+                <div class="dropdown-trigger" id="lang-trigger" tabindex="0">
+                    <span><i class="fas fa-globe"></i> English</span>
+                    <i class="fas fa-chevron-down arrow-icon"></i>
+                </div>
+                <ul class="dropdown-menu" id="lang-menu">
+                    <li><a href="our-clients.html" class="active-lang">English</a></li>
+                    <li><a href="our-clients-ar.html">العربية</a></li>
+                    <li><a href="our-clients-cn.html">中文</a></li>
                 </ul>
             </div>
         </div>
+        
         <div class="footer-bottom">
-            <p>&copy; 2024 AL MASRIYA AL EMARATIYA. All rights reserved.</p>
+            <p>© <span id="current-year"></span> Al Masriya Al Emaratiya. All rights reserved.</p>
+            <div class="footer-bottom-social">
+                <a href="https://www.facebook.com/AlMasriyaAlEmaratiya" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                <a href="https://www.linkedin.com/company/egy-uae" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                <a href="https://www.youtube.com/@egy-uae.channel" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+            </div>
         </div>
     </footer>
 
@@ -359,5 +383,6 @@
             });
         }
     </script>
+    <script src="js/main.js"></script>
 </body>
 </html>
