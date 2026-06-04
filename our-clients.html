@@ -1,31 +1,24 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" dir="ltr">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Our Clients | AL MASRIYA AL EMARATIYA</title>
+    <meta name="description" content="Meet our esteemed clients and business partners across Egypt, the UAE, and the Middle East." />
     
     <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;900&family=Tajawal:wght@400;500;700;900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700;900&family=Cairo:wght@400;700;900&display=swap" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" crossorigin="anonymous" />
+    <!-- Swiper CSS & AOS -->
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     
-    <!-- Link to your existing style.css -->
-    <link rel="stylesheet" href="css/style_our-clients.css">
-
+    <!-- Link to Main CSS File -->
+    <link rel="stylesheet" href="css/style.css">
+    
     <style>
-        /* Specific adjustments for the inner page */
-        .page-header {
-            padding-top: 150px;
-            text-align: center;
-            margin-bottom: 70px;
-        }
-        .page-header p {
-            max-width: 800px;
-            margin: 20px auto 0;
-            font-size: 1.2rem;
-        }
-
-        /* Category Titles */
+        /* إضافات مخصصة لصفحة العملاء لتتوافق مع التصميم المربع بدون حواف دائرية */
         .category-title {
             font-size: 2rem;
             color: var(--text-light);
@@ -34,23 +27,15 @@
             border-bottom: 2px solid var(--primary);
             display: inline-block;
             font-weight: 700;
+            font-family: 'Cairo', sans-serif;
         }
         .category-section {
             margin-bottom: 80px;
         }
-
-        /* Responsive Grid for Clients */
-        .systems-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-            gap: 30px;
-        }
-
-        /* Client Cards with Geometric Design */
         .client-card {
             background: var(--glass-bg);
             padding: 25px;
-            border-radius: var(--border-radius-geom, 8px); 
+            border-radius: 0 !important; /* تصميم مربع متوافق مع المبدأ العام */
             border: 1px solid var(--border-color);
             text-align: center;
             transition: var(--transition);
@@ -63,28 +48,25 @@
             transform: translateY(-8px);
             background: var(--glass-hover-bg);
             border-color: var(--primary);
-            box-shadow: 0 15px 30px rgba(0,210,255,0.15);
+            box-shadow: var(--card-hover-shadow);
         }
-
-        /* Image Wrapper */
         .client-logo-wrapper {
             width: 100%;
             height: 150px;
             background: #fff; 
-            border-radius: 4px; 
+            border-radius: 0 !important; 
             display: flex;
             justify-content: center;
             align-items: center;
             margin-bottom: 20px;
             border: 1px solid var(--border-color);
-            transition: all 0.4s ease;
+            transition: var(--transition);
             padding: 15px;
             overflow: hidden;
         }
         .client-card:hover .client-logo-wrapper {
             border-color: var(--primary);
         }
-
         .client-logo-wrapper img {
             max-width: 100%;
             max-height: 100%;
@@ -94,7 +76,6 @@
         .client-card:hover .client-logo-wrapper img {
             transform: scale(1.08); 
         }
-
         .client-card h3 {
             font-size: 1.3rem;
             color: var(--text-light);
@@ -107,72 +88,93 @@
             margin-bottom: 0;
             font-weight: 500;
         }
-
-        @media (max-width: 768px) {
-            .page-header { padding-top: 120px; }
-            .category-title { font-size: 1.6rem; }
-        }
     </style>
 </head>
 <body>
 
-    <!-- Background Animations -->
-    <div class="video-container">
-        <div class="overlay-gradient"></div>
-    </div>
-    <div class="animated-lines-container">
-        <div class="animated-line" style="top: 20%; animation-delay: 0s;"></div>
-        <div class="animated-line" style="top: 50%; animation-delay: 5s;"></div>
-        <div class="animated-line" style="top: 80%; animation-delay: 10s;"></div>
-    </div>
+    <!-- Custom 3D Cursor -->
+    <div id="cursor"></div>
 
-    <!-- Header -->
+    <!-- Reading Progress Bar -->
+    <div id="progress-bar"></div>
+
+    <!-- Animated Lines Background -->
+    <div class="animated-lines-container"></div>
+
+    <!-- Header & Navigation -->
     <header>
         <div class="logo">
-            <h2>AL MASRIYA AL EMARATIYA</h2>
+            <h2>AL MASRIYA AL EMARATIYA<span style="color: var(--primary);">.</span></h2>
         </div>
         <ul class="nav-links">
             <li><a href="index.html">Home</a></li>
-            <li><a href="about.html">About</a></li>
+            <li><a href="about.html">About Us</a></li>
             <li><a href="services.html">Services</a></li>
             <li><a href="clients.html" class="active">Clients</a></li>
-            <li><a href="contact.html">Contact</a></li>
+            <li><a href="contact.html">Contact Us</a></li>
         </ul>
+        
         <div class="header-actions">
-            <a href="#" class="login-btn">
+            <a href="#" class="login-btn" id="desktop-login-btn">
+                <i class="fas fa-file-invoice-dollar"></i>
                 <span class="login-text">Get a Quote</span>
             </a>
+
+            <div class="user-profile hidden" id="desktop-user-profile">
+                <div class="profile-trigger" id="profile-trigger">
+                    <i class="fas fa-user-circle user-avatar"></i>
+                    <span class="user-name">My Account</span>
+                    <i class="fas fa-chevron-down arrow-icon"></i>
+                </div>
+                <ul class="profile-dropdown">
+                    <li><a href="portal.html"><i class="fas fa-laptop-file"></i> Portal</a></li>
+                    <li><a href="settings.html"><i class="fas fa-cog"></i> Settings</a></li>
+                    <li><a href="#" id="logout-btn"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
+                </ul>
+            </div>
+
             <div class="hamburger">
-                <div class="bar"></div>
-                <div class="bar"></div>
-                <div class="bar"></div>
+                <div class="bar"></div><div class="bar"></div><div class="bar"></div>
             </div>
         </div>
     </header>
 
     <!-- Mobile Navigation Menu -->
-    <div class="mobile-nav">
+    <nav class="mobile-nav">
         <ul>
             <li><a href="index.html">Home</a></li>
-            <li><a href="about.html">About</a></li>
+            <li><a href="about.html">About Us</a></li>
             <li><a href="services.html">Services</a></li>
             <li><a href="clients.html" class="active">Clients</a></li>
-            <li><a href="contact.html">Contact</a></li>
-            <li class="mobile-login-item"><a href="#" class="mobile-login-btn">Get a Quote</a></li>
+            <li><a href="contact.html">Contact Us</a></li>
+            <li class="mobile-login-item" id="mobile-login-item">
+                <a href="#" class="mobile-login-btn"><i class="fas fa-file-invoice-dollar"></i> Get a Quote</a>
+            </li>
+            <li class="mobile-profile-item hidden" id="mobile-profile-item">
+                <a href="portal.html"><i class="fas fa-user-circle"></i> My Portal</a><br><br>
+                <a href="#" id="mobile-logout-btn" style="color: #ff4757; font-size: 1.2rem;"><i class="fas fa-sign-out-alt"></i> Logout</a>
+            </li>
         </ul>
-    </div>
+    </nav>
 
-    <!-- Main Content -->
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-3d-card" id="tilt-card">
+            <div class="hero-content" data-z="40">
+                <h2 class="hero-subtitle" data-z="20">Trusted Worldwide</h2>
+                <h1 class="hero-title" data-z="60">Our Esteemed <span style="color: var(--primary);">Clients</span></h1>
+                <p data-z="30">
+                    We take pride in serving and supplying our premium products to an elite group of major hotels, universities, and corporations across the Middle East, Egypt, and the Gulf.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Content Section -->
     <main class="section-padding">
         
-        <!-- Page Title -->
-        <div class="page-header hero-3d-card">
-            <h2>Our Esteemed Clients</h2>
-            <p>We take pride in serving and supplying our premium products to an elite group of major hotels, universities, and corporations across the Middle East, Egypt, and the Gulf.</p>
-        </div>
-
         <!-- CATEGORY 1: Hospitality & Leisure -->
-        <div class="category-section">
+        <div class="category-section" data-aos="fade-up">
             <h3 class="category-title">Hospitality & Leisure</h3>
             <div class="systems-grid">
                 
@@ -207,6 +209,7 @@
                     <h3>Oceanic Hotel</h3>
                     <p>Hospitality Partner</p>
                 </div>
+
                 <div class="client-card">
                     <div class="client-logo-wrapper">
                         <img src="images/Holiday International - logo.png" alt="Holiday International Logo">
@@ -214,6 +217,7 @@
                     <h3>Holiday International</h3>
                     <p>Sharjah</p>
                 </div>
+
                 <div class="client-card">
                     <div class="client-logo-wrapper">
                         <img src="images/Al Haiat Hotel Group - logo.png" alt="Al Haiat Group Logo">
@@ -221,6 +225,7 @@
                     <h3>Al Haiat Hotel Group</h3>
                     <p>Hospitality Partner</p>
                 </div>
+
                 <div class="client-card">
                     <div class="client-logo-wrapper">
                         <img src="images/Lords Hotel - logo.jpg" alt="Lords Hotel Logo">
@@ -229,12 +234,11 @@
                     <p>Hospitality Partner</p>
                 </div>
 
-
             </div>
         </div>
 
         <!-- CATEGORY 2: General Trading & Hotel Supplies -->
-        <div class="category-section">
+        <div class="category-section" data-aos="fade-up">
             <h3 class="category-title">General Trading & Hotel Supplies</h3>
             <div class="systems-grid">
 
@@ -253,6 +257,7 @@
                     <h3>Arzaq General Trading</h3>
                     <p>Commercial Partner</p>
                 </div>
+
                 <div class="client-card">
                     <div class="client-logo-wrapper">
                         <img src="images/company - logo.png" alt="Excellence Hotel Supply Logo">
@@ -260,6 +265,7 @@
                     <h3>Excellence Hotel Supply</h3>
                     <p>Supply Chain</p>
                 </div>
+
                 <div class="client-card">
                     <div class="client-logo-wrapper">
                         <img src="images/company - logo.png" alt="Luxurious General Trading Logo">
@@ -284,12 +290,11 @@
                     <p>Supply Chain</p>
                 </div>
 
-
             </div>
         </div>
 
         <!-- CATEGORY 3: Education & Recreation -->
-        <div class="category-section">
+        <div class="category-section" data-aos="fade-up">
             <h3 class="category-title">Education & Recreation</h3>
             <div class="systems-grid">
 
@@ -300,6 +305,7 @@
                     <h3>Sharjah University</h3>
                     <p>Educational Sector</p>
                 </div>
+
                 <div class="client-card">
                     <div class="client-logo-wrapper">
                         <img src="images/Skydive Dubai - logo.jpg" alt="Sky Dive Dubai Logo">
@@ -307,10 +313,12 @@
                     <h3>Sky Dive Dubai</h3>
                     <p>Sports & Recreation</p>
                 </div>
+
             </div>
         </div>
-<!-- CATEGORY 4: Chemical Supplies -->
-        <div class="category-section">
+
+        <!-- CATEGORY 4: Chemical Supplies -->
+        <div class="category-section" data-aos="fade-up">
             <h3 class="category-title">Chemical Supplies</h3>
             <div class="systems-grid">
 
@@ -332,6 +340,7 @@
 
             </div>
         </div>
+
     </main>
 
     <!-- Footer -->
@@ -348,6 +357,15 @@
                     <li><a href="services.html">Services</a></li>
                     <li><a href="about.html">About Us</a></li>
                     <li><a href="contact.html">Contact Us</a></li>
+                    <li><a href="tracking.html">Tracking</a></li>
+                    <li><a href="careers.html">Careers</a></li>
+                    <li><a href="clients.html">Our Clients</a></li>
+                    <li><a href="sectors.html">Our Sectors</a></li>
+                    <li><a href="export-services.html">Export Services & Products</a></li>
+                    <li><a href="hotel-supplies.html">Import & Hotel Supplies</a></li>
+                    <li><a href="food-division.html">Food Division</a></li>
+                    <li><a href="chemicals-cosmetics.html">Chemicals & Cosmetics</a></li>
+                    <li><a href="portal.html">Portal</a></li>
                 </ul>
             </div>
 
@@ -359,9 +377,9 @@
                     <i class="fas fa-chevron-down arrow-icon"></i>
                 </div>
                 <ul class="dropdown-menu" id="lang-menu">
-                    <li><a href="our-clients.html" class="active-lang">English</a></li>
-                    <li><a href="our-clients-ar.html">العربية</a></li>
-                    <li><a href="our-clients-cn.html">中文</a></li>
+                    <li><a href="clients.html" class="active-lang">English</a></li>
+                    <li><a href="clients-ar.html">العربية</a></li>
+                    <li><a href="clients-cn.html">中文</a></li>
                 </ul>
             </div>
         </div>
@@ -376,6 +394,32 @@
         </div>
     </footer>
 
-    <script src="js/script_our-clients.js"></script>
+    <!-- Chat Widget -->
+    <div id="chat-widget" class="chat-widget">
+        <button class="chat-btn" aria-label="Open Chat">
+            <i class="fas fa-comment-dots"></i>
+        </button>
+        <div class="chat-container">
+            <div class="chat-header">
+                <h3>Chat with us</h3>
+                <button class="chat-close" aria-label="Close Chat">&times;</button>
+            </div>
+            <div class="chat-body" tabindex="0">
+                <div class="message incoming">
+                    <p>Hi there! How can we help you today?</p>
+                </div>
+            </div>
+            <div class="chat-footer">
+                <input type="text" placeholder="Type your message..." id="chat-input">
+                <button id="chat-send" aria-label="Send message"><i class="fas fa-paper-plane"></i></button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts Extra Bundle (Required for AOS and Animations) -->
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <!-- Link to Main JS File -->
+    <script src="js/main.js"></script>
 </body>
 </html>
