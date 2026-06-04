@@ -21,60 +21,38 @@
     <meta property="twitter:title" content="Al Masriya Al Emaratiya | Future of Trade - Connecting Egypt & UAE" />
     <meta property="twitter:description" content="Al Masriya Al Emaratiya is your strategic partner for seamless trade and logistics solutions, bridging markets and fostering growth between Egypt and the United Arab Emirates." />
     <meta property="twitter:image" content="YOUR_OG_IMAGE_URL" /> 
-    
+        
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700;900&family=Cairo:wght@400;700;900&display=swap" rel="stylesheet">
-    
-    <!-- Font Awesome for Icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" crossorigin="anonymous" />
     <!-- Swiper CSS & AOS -->
     <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-    
     <link rel="stylesheet" href="css/style.css">
-    <link rel="manifest" href="Root/manifest.json">
-    <!-- Mobile bar color -->
-    <meta name="theme-color" content="#007bff">
-
-<script>
-  // Server 
-  if ('serviceWorker' in navigator) {
-    window.addEventListener('load', () => {
-      navigator.serviceWorker.register('Root/sw.js')
-        .then(reg => console.log('Service Worker Registered'))
-        .catch(err => console.log('Service Worker Failed', err));
-    });
-  }
-</script>
+    
+    <meta name="theme-color" content="#ffffff">
 </head>
-<body class="dark-theme">
+<body>
 
     <!-- Custom 3D Cursor -->
     <div id="cursor"></div>
 
     <!-- Reading Progress Bar -->
-    <div id="progress-bar" aria-label="Reading progress bar"></div>
+    <div id="progress-bar"></div>
 
     <!-- Animated Lines Background -->
     <div class="animated-lines-container"></div>
 
-    <!-- Video & Audio Background -->
+    <!-- Audio Background (اختياري) -->
     <audio id="myAudio" loop>
-  <source src="sky_background.mp3" type="audio/mpeg">
+        <source src="sky_background.mp3" type="audio/mpeg">
     </audio>
-    <div class="video-container">
-        <video autoplay muted loop playsinline id="background-video">
-            <source src="background_egy-uae_video.mp4" type="video/mp4">
-            Your browser does not support the video tag.
-        </video>
-        <div class="overlay-gradient"></div>
-    </div>
 
     <!-- Header & Navigation -->
     <header>
         <div class="logo">
-            <h2 aria-label="Al Masriya Al Emaratiya Home">AL MASRIYA AL EMARATIYA<span style="color: var(--primary);">.</span></h2>
+            <h2>AL MASRIYA AL EMARATIYA<span style="color: var(--primary);">.</span></h2>
         </div>
         <ul class="nav-links">
             <li><a href="#home">Home</a></li>
@@ -84,9 +62,8 @@
             <li><a href="#contact">Contact Us</a></li>
         </ul>
         
-<!-- Header Actions (Login + Mobile Toggle) -->
         <div class="header-actions">
-            <a href="login.html" class="login-btn" id="desktop-login-btn" aria-label="Login to Portal">
+            <a href="login.html" class="login-btn" id="desktop-login-btn">
                 <i class="fas fa-user-circle"></i>
                 <span class="login-text">Login</span>
             </a>
@@ -104,31 +81,25 @@
                 </ul>
             </div>
 
-            <!-- Mobile Navigation Toggle -->
-            <div class="hamburger" aria-label="Toggle navigation menu">
-                <div class="bar"></div>
-                <div class="bar"></div>
-                <div class="bar"></div>
+            <div class="hamburger">
+                <div class="bar"></div><div class="bar"></div><div class="bar"></div>
             </div>
         </div>
     </header>
 
     <!-- Mobile Navigation Menu -->
-    <nav class="mobile-nav" aria-label="Mobile navigation">
+    <nav class="mobile-nav">
         <ul>
             <li><a href="#home">Home</a></li>
             <li><a href="#services">Services</a></li>
             <li><a href="#about">About Us</a></li>
             <li><a href="#systems">Our Systems</a></li>
             <li><a href="#contact">Contact Us</a></li>
-            
             <li class="mobile-login-item" id="mobile-login-item">
                 <a href="login.html" class="mobile-login-btn"><i class="fas fa-sign-in-alt"></i> Login</a>
             </li>
-            
             <li class="mobile-profile-item hidden" id="mobile-profile-item">
-                <a href="portal.html"><i class="fas fa-user-circle"></i> My Portal</a>
-                <br><br>
+                <a href="portal.html"><i class="fas fa-user-circle"></i> My Portal</a><br><br>
                 <a href="#" id="mobile-logout-btn" style="color: #ff4757; font-size: 1.2rem;"><i class="fas fa-sign-out-alt"></i> Logout</a>
             </li>
         </ul>
@@ -137,11 +108,22 @@
     <!-- Hero Section -->
     <section class="hero" id="home">
         <div class="hero-3d-card" id="tilt-card">
-            <h2 class="hero-subtitle" data-z="20">Connecting Egypt & UAE</h2>
-            <h1 class="hero-title" data-z="60">Future of <span style="color: var(--primary);">Trade</span></h1>
-            <p data-z="40">
-                Al Masriya Al Emaratiya is your strategic partner for seamless trade and logistics solutions, bridging markets and fostering growth between Egypt and the United Arab Emirates.
-            </p>
+            <!-- النص في جانب -->
+            <div class="hero-content" data-z="40">
+                <h2 class="hero-subtitle" data-z="20">Connecting Egypt & UAE</h2>
+                <h1 class="hero-title" data-z="60">Future of <span style="color: var(--primary);">Trade</span></h1>
+                <p data-z="30">
+                    Al Masriya Al Emaratiya is your strategic partner for seamless trade and logistics solutions, bridging markets and fostering growth between Egypt and the United Arab Emirates.
+                </p>
+            </div>
+            
+            <!-- الفيديو الجديد في الجانب الآخر (أسفل النص في الموبايل) -->
+            <div class="hero-video-box" data-z="50">
+                <video autoplay muted loop playsinline>
+                    <!-- ضع هنا اسم فيديو العرض الخاص بك -->
+                    <source src="background_egy-uae_video.mp4" type="video/mp4">
+                </video>
+            </div>
         </div>
     </section>
 
