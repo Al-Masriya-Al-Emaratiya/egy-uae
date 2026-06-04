@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Clients | AL MASRIYA AL EMARATIYA</title>
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;900&family=Tajawal:wght@400;500;700;900&display=swap" rel="stylesheet">
+    
+    <!-- Link to your existing style.css -->
+    <link rel="stylesheet" href="style.css">
+
+    <style>
+        /* Specific adjustments for the inner page */
+        .page-header {
+            padding-top: 150px;
+            text-align: center;
+            margin-bottom: 70px;
+        }
+        .page-header p {
+            max-width: 800px;
+            margin: 20px auto 0;
+            font-size: 1.2rem;
+        }
+
+        /* Category Titles */
+        .category-title {
+            font-size: 2rem;
+            color: var(--text-light);
+            margin-bottom: 30px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid var(--border-color);
+            display: inline-block;
+        }
+        .category-section {
+            margin-bottom: 80px;
+        }
+
+        /* Client Cards with Images */
+        .client-card {
+            background: var(--glass-bg);
+            padding: 30px;
+            border-radius: 20px;
+            border: 1px solid var(--border-color);
+            text-align: center;
+            transition: var(--transition);
+            box-shadow: var(--card-shadow);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .client-card:hover {
+            transform: translateY(-10px);
+            background: var(--glass-hover-bg);
+            border-color: var(--primary);
+            box-shadow: 0 15px 30px rgba(0,210,255,0.15);
+        }
+
+        /* Image Wrapper for Logos */
+        .client-logo-wrapper {
+            width: 100%;
+            height: 140px; /* Fixed height to keep cards equal */
+            background: rgba(255, 255, 255, 0.02);
+            border-radius: 15px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 20px;
+            border: 1px solid var(--border-color);
+            transition: all 0.4s ease;
+            padding: 20px;
+        }
+        .client-card:hover .client-logo-wrapper {
+            border-color: var(--primary);
+            background: rgba(0, 210, 255, 0.05);
+        }
+
+        /* Image Styling */
+        .client-logo-wrapper img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+            filter: grayscale(100%) opacity(0.8); /* Elegant gray look initially */
+            transition: all 0.4s ease;
+        }
+        .client-card:hover .client-logo-wrapper img {
+            filter: grayscale(0%) opacity(1); /* Full color on hover */
+            transform: scale(1.08); /* Slight zoom on hover */
+        }
+
+        .client-card h3 {
+            font-size: 1.4rem;
+            color: var(--text-light);
+            margin-bottom: 5px;
+        }
+        .client-card p {
+            font-size: 0.95rem;
+            color: var(--primary);
+            opacity: 0.8;
+            margin-bottom: 0;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Background Animations (From your CSS) -->
+    <div class="video-container">
+        <div class="overlay-gradient"></div>
+    </div>
+    <div class="animated-lines-container">
+        <div class="animated-line" style="top: 20%; animation-delay: 0s;"></div>
+        <div class="animated-line" style="top: 50%; animation-delay: 5s;"></div>
+        <div class="animated-line" style="top: 80%; animation-delay: 10s;"></div>
+    </div>
+
+    <!-- Header -->
+    <header>
+        <div class="logo">
+            <h2>AL MASRIYA AL EMARATIYA</h2>
+        </div>
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="services.html">Services</a></li>
+            <li><a href="clients.html" class="active">Clients</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+        <div class="header-actions">
+            <a href="#" class="login-btn">
+                <span class="login-text">Get a Quote</span>
+            </a>
+            <div class="hamburger">
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="section-padding">
+        
+        <!-- Page Title -->
+        <div class="page-header hero-3d-card">
+            <h2>Our Esteemed Clients</h2>
+            <p>We take pride in serving and supplying our premium products to an elite group of major hotels, universities, and corporations across the Middle East, Egypt, and the Gulf.</p>
+        </div>
+
+        <!-- CATEGORY 1: Hospitality & Leisure -->
+        <div class="category-section">
+            <h3 class="category-title">Hospitality & Leisure</h3>
+            <div class="systems-grid">
+                
+                <div class="client-card">
+                    <div class="client-logo-wrapper">
+                        <!-- غير الرابط هنا لمسار صورتك الحقيقية -->
+                        <img src="https://via.placeholder.com/300x150/07090f/00d2ff?text=Al+Maha+Logo" alt="Al Maha Hotel Logo">
+                    </div>
+                    <h3>Al Maha Hotel</h3>
+                    <p>UAE</p>
+                </div>
+
+                <div class="client-card">
+                    <div class="client-logo-wrapper">
+                        <img src="https://via.placeholder.com/300x150/07090f/00d2ff?text=Radisson+Blu+Logo" alt="Radisson Blu Logo">
+                    </div>
+                    <h3>Radisson Blu Hotels</h3>
+                    <p>Global Partner</p>
+                </div>
+
+                <div class="client-card">
+                    <div class="client-logo-wrapper">
+                        <img src="https://via.placeholder.com/300x150/07090f/00d2ff?text=Rotana+Logo" alt="Rotana Hotel Logo">
+                    </div>
+                    <h3>Rotana Hotel</h3>
+                    <p>Middle East</p>
+                </div>
+
+                <div class="client-card">
+                    <div class="client-logo-wrapper">
+                        <img src="https://via.placeholder.com/300x150/07090f/00d2ff?text=Oceanic+Logo" alt="Oceanic Hotel Logo">
+                    </div>
+                    <h3>Oceanic Hotel</h3>
+                    <p>Hospitality Partner</p>
+                </div>
+
+                <div class="client-card">
+                    <div class="client-logo-wrapper">
+                        <img src="https://via.placeholder.com/300x150/07090f/00d2ff?text=Holiday+Int+Logo" alt="Holiday International Logo">
+                    </div>
+                    <h3>Holiday International</h3>
+                    <p>Sharjah</p>
+                </div>
+
+                <div class="client-card">
+                    <div class="client-logo-wrapper">
+                        <img src="https://via.placeholder.com/300x150/07090f/00d2ff?text=Al+Haiat+Logo" alt="Al Haiat Group Logo">
+                    </div>
+                    <h3>Al Haiat Hotel Group</h3>
+                    <p>Hospitality Partner</p>
+                </div>
+
+                <div class="client-card">
+                    <div class="client-logo-wrapper">
+                        <img src="https://via.placeholder.com/300x150/07090f/00d2ff?text=Lords+Hotel+Logo" alt="Lords Hotel Logo">
+                    </div>
+                    <h3>Lords Hotel</h3>
+                    <p>Hospitality Partner</p>
+                </div>
+
+                <div class="client-card">
+                    <div class="client-logo-wrapper">
+                        <img src="https://via.placeholder.com/300x150/07090f/00d2ff?text=Al+Ahly+Club+Logo" alt="Al Ahly Club Hotel Logo">
+                    </div>
+                    <h3>Al Ahly Club Hotel</h3>
+                    <p>Sports & Hospitality</p>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- CATEGORY 2: General Trading & Hotel Supplies -->
+        <div class="category-section">
+            <h3 class="category-title">General Trading & Hotel Supplies</h3>
+            <div class="systems-grid">
+
+                <div class="client-card">
+                    <div class="client-logo-wrapper">
+                        <img src="https://via.placeholder.com/300x150/07090f/00d2ff?text=Al+Obour+Logo" alt="Al Obour Trading Logo">
+                    </div>
+                    <h3>AL OBOUR General Trading</h3>
+                    <p>UAE</p>
+                </div>
+
+                <div class="client-card">
+                    <div class="client-logo-wrapper">
+                        <img src="https://via.placeholder.com/300x150/07090f/00d2ff?text=Arzaq+Logo" alt="Arzaq General Trading Logo">
+                    </div>
+                    <h3>Arzaq General Trading</h3>
+                    <p>Commercial Partner</p>
+                </div>
+
+                <div class="client-card">
+                    <div class="client-logo-wrapper">
+                        <img src="https://via.placeholder.com/300x150/07090f/00d2ff?text=Excellence+Logo" alt="Excellence Hotel Supply Logo">
+                    </div>
+                    <h3>Excellence Hotel Supply</h3>
+                    <p>Supply Chain</p>
+                </div>
+
+                <div class="client-card">
+                    <div class="client-logo-wrapper">
+                        <img src="https://via.placeholder.com/300x150/07090f/00d2ff?text=Luxurious+Logo" alt="Luxurious General Trading Logo">
+                    </div>
+                    <h3>Luxurious General Trading</h3>
+                    <p>Commercial Partner</p>
+                </div>
+
+                <div class="client-card">
+                    <div class="client-logo-wrapper">
+                        <img src="https://via.placeholder.com/300x150/07090f/00d2ff?text=Blessing+Logo" alt="Blessing General Trading Logo">
+                    </div>
+                    <h3>Blessing General Trading</h3>
+                    <p>Commercial Partner</p>
+                </div>
+
+                <div class="client-card">
+                    <div class="client-logo-wrapper">
+                        <img src="https://via.placeholder.com/300x150/07090f/00d2ff?text=Middle+East+Logo" alt="Middle East Hotel Supplies Logo">
+                    </div>
+                    <h3>Middle East Hotel Supplies</h3>
+                    <p>Supply Chain</p>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- CATEGORY 3: Education & Recreation -->
+        <div class="category-section">
+            <h3 class="category-title">Education & Recreation</h3>
+            <div class="systems-grid">
+
+                <div class="client-card">
+                    <div class="client-logo-wrapper">
+                        <img src="https://via.placeholder.com/300x150/07090f/00d2ff?text=Sharjah+Uni+Logo" alt="Sharjah University Logo">
+                    </div>
+                    <h3>Sharjah University</h3>
+                    <p>Educational Sector</p>
+                </div>
+
+                <div class="client-card">
+                    <div class="client-logo-wrapper">
+                        <img src="https://via.placeholder.com/300x150/07090f/00d2ff?text=Sky+Dive+Logo" alt="Sky Dive Dubai Logo">
+                    </div>
+                    <h3>Sky Dive Dubai</h3>
+                    <p>Sports & Recreation</p>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- CATEGORY 4: Chemical Supplies -->
+        <div class="category-section">
+            <h3 class="category-title">Chemical Supplies</h3>
+            <div class="systems-grid">
+
+                <div class="client-card">
+                    <div class="client-logo-wrapper">
+                        <img src="https://via.placeholder.com/300x150/07090f/00d2ff?text=El+Massriya+Logo" alt="El Massriya El Khaligiah Logo">
+                    </div>
+                    <h3>El Massriya El Khaligiah</h3>
+                    <p>Chemical Supply</p>
+                </div>
+
+                <div class="client-card">
+                    <div class="client-logo-wrapper">
+                        <img src="https://via.placeholder.com/300x150/07090f/00d2ff?text=Al+Kaier+Logo" alt="Al Kaier Chemical Supply Logo">
+                    </div>
+                    <h3>Al Kaier Chemical Supply</h3>
+                    <p>Chemical Supply</p>
+                </div>
+
+            </div>
+        </div>
+
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-wrapper">
+            <div class="footer-logo">
+                <h3>AL MASRIYA AL EMARATIYA</h3>
+                <p>Commercial Agencies, Import & Export.<br>Delivering excellence across the Middle East.</p>
+            </div>
+            <div class="footer-links">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="services.html">Services</a></li>
+                    <li><a href="clients.html">Our Clients</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 AL MASRIYA AL EMARATIYA. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        const hamburger = document.querySelector('.hamburger');
+        const navLinks = document.querySelector('.nav-links');
+        
+        if(hamburger) {
+            hamburger.addEventListener('click', () => {
+                navLinks.classList.toggle('active');
+                hamburger.classList.toggle('active');
+            });
+        }
+    </script>
+</body>
+</html>
