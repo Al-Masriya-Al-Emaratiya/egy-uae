@@ -236,11 +236,52 @@ footer {
 .footer-bottom-social a { font-size: 1.3rem; color: var(--text-medium); transition: color 0.3s; padding: 10px; display: inline-block; }
 .footer-bottom-social a:hover { color: var(--primary); }
 
-/* Chat Widget - Square */
-.chat-widget { position: fixed; bottom: 40px; left: 40px; right: auto; z-index: 100; display: flex; flex-direction: column-reverse; align-items: flex-start; pointer-events: none; }
-.chat-widget .chat-btn { pointer-events: auto; width: 60px; height: 60px; background: var(--primary); border-radius: 0; display: flex; align-items: center; justify-content: center; font-size: 2rem; color: white; box-shadow: 0 0 20px rgba(var(--primary-rgb), 0.4); cursor: pointer; border: none; transition: transform 0.3s ease; }
+.chat-widget { 
+    position: fixed; 
+    bottom: 40px; 
+    left: 40px; 
+    right: auto; 
+    z-index: 100; 
+    display: flex; 
+    flex-direction: column-reverse; 
+    align-items: flex-start; 
+    pointer-events: none; 
+}
+.chat-widget .chat-btn { 
+    pointer-events: auto; 
+    width: 60px; 
+    height: 60px; 
+    background: var(--primary); 
+    border-radius: 0; 
+    display: flex; 
+    align-items: center; 
+    justify-content: center; 
+    font-size: 2rem; 
+    color: white; 
+    box-shadow: 0 0 20px rgba(var(--primary-rgb), 0.4); 
+    cursor: pointer; 
+    border: none; 
+    transition: transform 0.3s ease; 
+}
 .chat-widget .chat-btn:hover { transform: scale(1.1); background: var(--secondary); }
-.chat-widget .chat-container { pointer-events: auto; background: var(--background-dark); border: 1px solid var(--border-color); border-radius: 0; width: 350px; height: 450px; display: flex; flex-direction: column; overflow: hidden; margin-bottom: 20px; opacity: 0; visibility: hidden; transform: translateY(20px) scale(0.95); transition: all 0.3s ease; transform-origin: bottom left; box-shadow: 0 10px 30px rgba(0,0,0,0.1); }
+.chat-widget .chat-container { 
+    pointer-events: auto; 
+    background: var(--background-dark); 
+    border: 1px solid var(--border-color); 
+    border-radius: 0; 
+    width: 350px; 
+    height: 450px; 
+    display: flex; 
+    flex-direction: column; 
+    overflow: hidden; 
+    margin-bottom: 20px; 
+    opacity: 0; 
+    visibility: hidden; 
+    transform: translateY(20px) scale(0.95); 
+    transition: all 0.3s ease; 
+    transform-origin: bottom left; 
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1); 
+}
 .chat-widget .chat-container.active { opacity: 1; visibility: visible; transform: translateY(0) scale(1); }
 .chat-header { background: var(--primary); color: white; padding: 15px 20px; display: flex; justify-content: space-between; align-items: center; }
 .chat-close { background: none; border: none; color: white; font-size: 1.8rem; cursor: pointer; }
@@ -249,7 +290,6 @@ footer {
 .chat-body .message.incoming { background: rgba(0,0,0,0.05); margin-left: auto; margin-right: auto; }
 .chat-body .message.outgoing { background: var(--secondary); color: white; margin-right: auto; margin-left: 0; }
 .chat-footer { display: flex; padding: 10px; border-top: 1px solid var(--border-color); }
-/* تم تعديل الهوامش والاتجاه في صندوق إرسال الرسائل */
 .chat-footer input { flex-grow: 1; padding: 10px; border: 1px solid var(--border-color); border-radius: 0; background: var(--input-bg); color: var(--text-light); outline: none; margin-left: 10px; margin-right: 0; text-align: right; }
 .chat-footer button { background: var(--primary); border: none; border-radius: 0; width: 40px; height: 40px; color: white; cursor: pointer; transform: scaleX(-1); }
 
