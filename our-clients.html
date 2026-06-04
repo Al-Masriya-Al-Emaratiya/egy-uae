@@ -5,8 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Our Clients | AL MASRIYA AL EMARATIYA</title>
     
+    <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;900&family=Tajawal:wght@400;500;700;900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Link to your existing style.css -->
+    <link rel="stylesheet" href="css/style_our-clients.css">
 
     <style>
         /* Specific adjustments for the inner page */
@@ -27,18 +31,26 @@
             color: var(--text-light);
             margin-bottom: 30px;
             padding-bottom: 10px;
-            border-bottom: 1px solid var(--border-color);
+            border-bottom: 2px solid var(--primary);
             display: inline-block;
+            font-weight: 700;
         }
         .category-section {
             margin-bottom: 80px;
         }
 
-        /* Client Cards with Images */
+        /* Responsive Grid for Clients */
+        .systems-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 30px;
+        }
+
+        /* Client Cards with Geometric Design */
         .client-card {
             background: var(--glass-bg);
-            padding: 30px;
-            border-radius: 20px;
+            padding: 25px;
+            border-radius: var(--border-radius-geom, 8px); 
             border: 1px solid var(--border-color);
             text-align: center;
             transition: var(--transition);
@@ -48,60 +60,63 @@
             align-items: center;
         }
         .client-card:hover {
-            transform: translateY(-10px);
+            transform: translateY(-8px);
             background: var(--glass-hover-bg);
             border-color: var(--primary);
             box-shadow: 0 15px 30px rgba(0,210,255,0.15);
         }
 
-        /* Image Wrapper for Logos */
+        /* Image Wrapper */
         .client-logo-wrapper {
             width: 100%;
-            height: 140px; /* Fixed height to keep cards equal */
-            background: rgba(255, 255, 255, 0.02);
-            border-radius: 15px;
+            height: 150px;
+            background: #fff; 
+            border-radius: 4px; 
             display: flex;
             justify-content: center;
             align-items: center;
             margin-bottom: 20px;
             border: 1px solid var(--border-color);
             transition: all 0.4s ease;
-            padding: 20px;
+            padding: 15px;
+            overflow: hidden;
         }
         .client-card:hover .client-logo-wrapper {
             border-color: var(--primary);
-            background: rgba(0, 210, 255, 0.05);
         }
 
-        /* Image Styling */
         .client-logo-wrapper img {
             max-width: 100%;
             max-height: 100%;
             object-fit: contain;
-            filter: grayscale(100%) opacity(0.8); /* Elegant gray look initially */
-            transition: all 0.4s ease;
+            transition: transform 0.4s ease;
         }
         .client-card:hover .client-logo-wrapper img {
-            filter: grayscale(0%) opacity(1); /* Full color on hover */
-            transform: scale(1.08); /* Slight zoom on hover */
+            transform: scale(1.08); 
         }
 
         .client-card h3 {
-            font-size: 1.4rem;
+            font-size: 1.3rem;
             color: var(--text-light);
             margin-bottom: 5px;
         }
         .client-card p {
             font-size: 0.95rem;
             color: var(--primary);
-            opacity: 0.8;
+            opacity: 0.9;
             margin-bottom: 0;
+            font-weight: 500;
+        }
+
+        @media (max-width: 768px) {
+            .page-header { padding-top: 120px; }
+            .category-title { font-size: 1.6rem; }
         }
     </style>
 </head>
 <body>
 
-    <!-- Background Animations (From your CSS) -->
+    <!-- Background Animations -->
     <div class="video-container">
         <div class="overlay-gradient"></div>
     </div>
@@ -135,6 +150,18 @@
         </div>
     </header>
 
+    <!-- Mobile Navigation Menu -->
+    <div class="mobile-nav">
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="services.html">Services</a></li>
+            <li><a href="clients.html" class="active">Clients</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            <li class="mobile-login-item"><a href="#" class="mobile-login-btn">Get a Quote</a></li>
+        </ul>
+    </div>
+
     <!-- Main Content -->
     <main class="section-padding">
         
@@ -151,7 +178,6 @@
                 
                 <div class="client-card">
                     <div class="client-logo-wrapper">
-                       
                         <img src="images/Al Maha Hotel - logo .jpg" alt="Al Maha Hotel Logo">
                     </div>
                     <h3>Al Maha Hotel</h3>
@@ -181,7 +207,6 @@
                     <h3>Oceanic Hotel</h3>
                     <p>Hospitality Partner</p>
                 </div>
-
                 <div class="client-card">
                     <div class="client-logo-wrapper">
                         <img src="images/Holiday International - logo.png" alt="Holiday International Logo">
@@ -189,7 +214,6 @@
                     <h3>Holiday International</h3>
                     <p>Sharjah</p>
                 </div>
-
                 <div class="client-card">
                     <div class="client-logo-wrapper">
                         <img src="images/Al Haiat Hotel Group - logo.png" alt="Al Haiat Group Logo">
@@ -197,7 +221,6 @@
                     <h3>Al Haiat Hotel Group</h3>
                     <p>Hospitality Partner</p>
                 </div>
-
                 <div class="client-card">
                     <div class="client-logo-wrapper">
                         <img src="images/Lords Hotel - logo.jpg" alt="Lords Hotel Logo">
@@ -206,13 +229,6 @@
                     <p>Hospitality Partner</p>
                 </div>
 
-                <div class="client-card">
-                    <div class="client-logo-wrapper">
-                        <img src="images/Al Ahly Club - logo.png" alt="Al Ahly Club Logo">
-                    </div>
-                    <h3>Al Ahly Club </h3>
-                    <p>Sports & Hospitality</p>
-                </div>
 
             </div>
         </div>
@@ -237,7 +253,6 @@
                     <h3>Arzaq General Trading</h3>
                     <p>Commercial Partner</p>
                 </div>
-
                 <div class="client-card">
                     <div class="client-logo-wrapper">
                         <img src="images/company - logo.png" alt="Excellence Hotel Supply Logo">
@@ -245,7 +260,6 @@
                     <h3>Excellence Hotel Supply</h3>
                     <p>Supply Chain</p>
                 </div>
-
                 <div class="client-card">
                     <div class="client-logo-wrapper">
                         <img src="images/company - logo.png" alt="Luxurious General Trading Logo">
@@ -270,6 +284,7 @@
                     <p>Supply Chain</p>
                 </div>
 
+
             </div>
         </div>
 
@@ -285,7 +300,6 @@
                     <h3>Sharjah University</h3>
                     <p>Educational Sector</p>
                 </div>
-
                 <div class="client-card">
                     <div class="client-logo-wrapper">
                         <img src="images/Skydive Dubai - logo.jpg" alt="Sky Dive Dubai Logo">
@@ -293,11 +307,9 @@
                     <h3>Sky Dive Dubai</h3>
                     <p>Sports & Recreation</p>
                 </div>
-
             </div>
         </div>
-
-        <!-- CATEGORY 4: Chemical Supplies -->
+<!-- CATEGORY 4: Chemical Supplies -->
         <div class="category-section">
             <h3 class="category-title">Chemical Supplies</h3>
             <div class="systems-grid">
@@ -320,7 +332,6 @@
 
             </div>
         </div>
-
     </main>
 
     <!-- Footer -->
@@ -333,14 +344,10 @@
             <div class="footer-links">
                 <h4>Explore</h4>
                 <ul>
-                    <li><a href="#home">Home</a></li>
-                    <li><a href="#services">Services</a></li>
-                    <li><a href="#about">About Us</a></li>
-                    <li><a href="#contact">Contact Us</a></li>
-                    <li><a href="tracking.html">Tracking</a></li>
-                    <li><a href="careers.html">Careers</a></li>
-                    <li><a href="our-clients.html">Our Client</a></li>
-                    <li><a href="portal.html">Portal</a></li>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="services.html">Services</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="contact.html">Contact Us</a></li>
                 </ul>
             </div>
 
@@ -362,26 +369,12 @@
         <div class="footer-bottom">
             <p>© <span id="current-year"></span> Al Masriya Al Emaratiya. All rights reserved.</p>
             <div class="footer-bottom-social">
-                <a href="https://www.facebook.com/AlMasriyaAlEmaratiya" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
-                <a href="https://www.linkedin.com/company/egy-uae" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
-                <a href="https://www.youtube.com/@egy-uae.channel" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                <a href="#"><i class="fab fa-linkedin-in"></i></a>
             </div>
         </div>
     </footer>
 
-    <script>
-        const hamburger = document.querySelector('.hamburger');
-        const navLinks = document.querySelector('.nav-links');
-        
-        if(hamburger) {
-            hamburger.addEventListener('click', () => {
-                navLinks.classList.toggle('active');
-                hamburger.classList.toggle('active');
-            });
-        }
-    </script>
-    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    <script src="js/main.js"></script>
+    <script src="js/script_our-clients.js"></script>
 </body>
 </html>
