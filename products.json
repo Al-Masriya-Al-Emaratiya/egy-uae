@@ -36,16 +36,15 @@
   },
   {
     "id": 4,
-    "name": "Oriental Oud Extract",
-    "category": "Perfumes & Cosmetics",
-    "short_desc": "Pure, concentrated Agarwood extract for luxury perfumes.",
-    "long_desc": "A highly sought-after aromatic ingredient, our Oud extract provides a deep, complex, and long-lasting woody base note. Essential for premium cosmetic and perfumery houses globally.",
+    "name": "Cocoa Mass",
+    "category": "Cocoa Mass",
+    "short_desc": "Cocoa mass the combination of cocoa butter with cocoa solids to form our standard ECM cocoa mass.",
+    "long_desc": "Cocoa mass the combination of cocoa butter with cocoa solids to form our standard ECM cocoa mass.",
     "image": "https://images.unsplash.com/photo-1594035910387-fea47794261f?w=600&q=80",
     "specs": {
-      "Purity": "100% Undiluted Extract",
-      "Origin": "Southeast Asia / Middle East Distilled",
-      "Solubility": "Alcohol & Oil Soluble",
-      "Packaging": "Aluminum Canisters / Glass Flasks"
+      "Types": "Natural Cocoa Mass. | Alkalized Cocoa Mass.",
+      "Applications": "Real & compound Chocolate, Confectionery, Spreads, Ice cream, Cookies and Pastries.",
+      "Packaging": "Available in cartons of 25 kg (Blocks and Flakes)."
     }
   },
   {
