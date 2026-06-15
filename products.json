@@ -1,28 +1,86 @@
-{
-  "products": [
-    {
-      "id": 1,
-      "name": "Industrial Power Generator",
-      "category": "Machinery",
-      "description": "High-capacity diesel generator for industrial use.",
-      "image": "https://files.easy-orders.net/1767975753156389194.jpg",
-      "tilt_intensity": "20"
-    },
-    {
-      "id": 2,
-      "name": "Luxury Solar Solutions",
-      "category": "Energy",
-      "description": "Advanced photovoltaic panels for sustainable power.",
-      "image": "https://files.easy-orders.net/1767975753156389194.jpg",
-      "tilt_intensity": "15"
-    },
-    {
-      "id": 3,
-      "name": "Global Cargo Logistics",
-      "category": "Logistics",
-      "description": "Comprehensive import/export shipping services.",
-      "image": "https://files.easy-orders.net/1767975753156389194.jpg",
-      "tilt_intensity": "25"
+[
+  {
+    "id": 1,
+    "name": "Quantum Server X1",
+    "category": "Hardware",
+    "short_desc": "High-performance enterprise server for intensive workloads.",
+    "long_desc": "The Quantum Server X1 delivers unparalleled processing power for large-scale enterprise applications, featuring multi-layered security, automated thermal management, and ultra-fast NVMe storage arrays. Perfect for data centers.",
+    "image": "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=600&q=80",
+    "specs": {
+      "Processor": "Dual 64-Core Quantum",
+      "Memory": "1TB DDR5 ECC",
+      "Storage": "20TB NVMe SSD",
+      "Form Factor": "2U Rackmount"
     }
-  ]
-}
+  },
+  {
+    "id": 2,
+    "name": "CloudSync Pro Software",
+    "category": "Software",
+    "short_desc": "Automated multi-cloud synchronization platform.",
+    "long_desc": "Seamlessly manage and sync your business data across AWS, Azure, and Google Cloud with military-grade encryption, zero downtime, and AI-driven conflict resolution.",
+    "image": "https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=600&q=80",
+    "specs": {
+      "License": "Enterprise Volume",
+      "Updates": "Lifetime Included",
+      "Support": "24/7 Priority SLA",
+      "Deployment": "Cloud / On-Premise"
+    }
+  },
+  {
+    "id": 3,
+    "name": "CyberShield Firewall",
+    "category": "Security",
+    "short_desc": "Next-gen hardware firewall with AI threat detection.",
+    "long_desc": "Protect your internal network with our AI-driven threat detection firewall. It blocks zero-day exploits, phishing attempts, and DDoS attacks instantly before they reach your core network.",
+    "image": "https://images.unsplash.com/photo-1563206767-5b18f218e8de?w=600&q=80",
+    "specs": {
+      "Throughput": "100 Gbps",
+      "Ports": "8x 10G SFP+",
+      "Management": "Cloud Dashboard",
+      "Redundancy": "Active-Active"
+    }
+  },
+  {
+    "id": 4,
+    "name": "Nexus Core Switch",
+    "category": "Networking",
+    "short_desc": "48-Port 10G Managed Switch for Enterprise.",
+    "long_desc": "High-density switching solution designed for modern data centers. Features advanced Layer 3 routing protocols, extremely low latency, and hot-swappable redundant power supplies.",
+    "image": "https://images.unsplash.com/photo-1544197150-b99a580bb7a8?w=600&q=80",
+    "specs": {
+      "Ports": "48x 10GbE",
+      "Uplink": "4x 40GbE QSFP+",
+      "Layer": "L2 / L3 Routing",
+      "Power": "Dual Redundant AC"
+    }
+  },
+  {
+    "id": 5,
+    "name": "OpticFiber Link Station",
+    "category": "Infrastructure",
+    "short_desc": "Long-range fiber optic transmission terminal.",
+    "long_desc": "Ensure maximum bandwidth across long distances. This terminal handles multiplexing of up to 40 channels over a single fiber pair, guaranteeing unthrottled communication between campuses.",
+    "image": "https://images.unsplash.com/photo-1620286891040-5e368625e1a1?w=600&q=80",
+    "specs": {
+      "Range": "Up to 120km",
+      "Capacity": "400 Gbps Total",
+      "Wavelength": "C-Band Tunable",
+      "Diagnostic": "Built-in OTDR"
+    }
+  },
+  {
+    "id": 6,
+    "name": "Aegis Data Vault",
+    "category": "Storage",
+    "short_desc": "Immutable backup appliance for ransomware protection.",
+    "long_desc": "Safeguard your most critical data with an air-gapped, immutable storage vault. Once data is written, it cannot be altered or deleted by malware, ensuring 100% recovery rates.",
+    "image": "https://images.unsplash.com/photo-1601597111158-2fceff292cdc?w=600&q=80",
+    "specs": {
+      "Raw Capacity": "500TB",
+      "Effective Capacity": "Up to 2PB (Dedupe)",
+      "Network": "4x 25GbE",
+      "Compliance": "SEC 17a-4(f)"
+    }
+  }
+]
