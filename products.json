@@ -1,86 +1,86 @@
 [
   {
     "id": 1,
-    "name": "Quantum Server X1",
-    "category": "Hardware",
-    "short_desc": "High-performance enterprise server for intensive workloads.",
-    "long_desc": "The Quantum Server X1 delivers unparalleled processing power for large-scale enterprise applications, featuring multi-layered security, automated thermal management, and ultra-fast NVMe storage arrays. Perfect for data centers.",
-    "image": "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=600&q=80",
+    "name": "Premium Egyptian Cotton (Giza 86)",
+    "category": "Textiles & Clothing",
+    "short_desc": "High-quality, long-staple cotton fibers for luxury garment manufacturing.",
+    "long_desc": "Renowned globally for its exceptional softness, strength, and breathability. Our Giza 86 cotton is hand-picked and processed under strict quality controls, perfect for producing luxury linens and high-end apparel.",
+    "image": "https://images.unsplash.com/photo-1589933011718-2041db862ad3?w=600&q=80",
     "specs": {
-      "Processor": "Dual 64-Core Quantum",
-      "Memory": "1TB DDR5 ECC",
-      "Storage": "20TB NVMe SSD",
-      "Form Factor": "2U Rackmount"
+      "Staple Length": "33mm - 35mm",
+      "Micronaire": "3.8 - 4.2",
+      "Strength": "40+ g/tex",
+      "Packaging": "Standard Bales (200kg)"
     }
   },
   {
     "id": 2,
-    "name": "CloudSync Pro Software",
-    "category": "Software",
-    "short_desc": "Automated multi-cloud synchronization platform.",
-    "long_desc": "Seamlessly manage and sync your business data across AWS, Azure, and Google Cloud with military-grade encryption, zero downtime, and AI-driven conflict resolution.",
-    "image": "https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=600&q=80",
+    "name": "Industrial Grade Urea 46%",
+    "category": "Chemicals & Raw Materials",
+    "short_desc": "High-nitrogen fertilizer and industrial raw material.",
+    "long_desc": "Top-tier granular Urea with 46% nitrogen content. Suitable for both massive agricultural fertilizing operations and industrial manufacturing processes like resins and plastics.",
+    "image": "https://images.unsplash.com/photo-1616423640778-28d1b53229bd?w=600&q=80",
     "specs": {
-      "License": "Enterprise Volume",
-      "Updates": "Lifetime Included",
-      "Support": "24/7 Priority SLA",
-      "Deployment": "Cloud / On-Premise"
+      "Nitrogen Content": "46% Min",
+      "Moisture": "0.5% Max",
+      "Biuret": "1.0% Max",
+      "Form": "Prilled / Granular"
     }
   },
   {
     "id": 3,
-    "name": "CyberShield Firewall",
-    "category": "Security",
-    "short_desc": "Next-gen hardware firewall with AI threat detection.",
-    "long_desc": "Protect your internal network with our AI-driven threat detection firewall. It blocks zero-day exploits, phishing attempts, and DDoS attacks instantly before they reach your core network.",
-    "image": "https://images.unsplash.com/photo-1563206767-5b18f218e8de?w=600&q=80",
+    "name": "Organic Hass Avocados",
+    "category": "Agricultural Products",
+    "short_desc": "Fresh, export-grade organic Hass avocados.",
+    "long_desc": "Carefully cultivated in premium soil, our Hass Avocados offer a rich, creamy texture and high oil content. Harvested and packed in climate-controlled facilities to ensure maximum shelf life upon arrival.",
+    "image": "https://images.unsplash.com/photo-1523049673857-eb18f1d7b578?w=600&q=80",
     "specs": {
-      "Throughput": "100 Gbps",
-      "Ports": "8x 10G SFP+",
-      "Management": "Cloud Dashboard",
-      "Redundancy": "Active-Active"
+      "Grade": "Class 1 Export",
+      "Size Range": "12 to 24 (per 4kg carton)",
+      "Certifications": "GlobalGAP, Organic",
+      "Storage Temp": "5°C - 7°C"
     }
   },
   {
     "id": 4,
-    "name": "Nexus Core Switch",
-    "category": "Networking",
-    "short_desc": "48-Port 10G Managed Switch for Enterprise.",
-    "long_desc": "High-density switching solution designed for modern data centers. Features advanced Layer 3 routing protocols, extremely low latency, and hot-swappable redundant power supplies.",
-    "image": "https://images.unsplash.com/photo-1544197150-b99a580bb7a8?w=600&q=80",
+    "name": "Oriental Oud Extract",
+    "category": "Perfumes & Cosmetics",
+    "short_desc": "Pure, concentrated Agarwood extract for luxury perfumes.",
+    "long_desc": "A highly sought-after aromatic ingredient, our Oud extract provides a deep, complex, and long-lasting woody base note. Essential for premium cosmetic and perfumery houses globally.",
+    "image": "https://images.unsplash.com/photo-1594035910387-fea47794261f?w=600&q=80",
     "specs": {
-      "Ports": "48x 10GbE",
-      "Uplink": "4x 40GbE QSFP+",
-      "Layer": "L2 / L3 Routing",
-      "Power": "Dual Redundant AC"
+      "Purity": "100% Undiluted Extract",
+      "Origin": "Southeast Asia / Middle East Distilled",
+      "Solubility": "Alcohol & Oil Soluble",
+      "Packaging": "Aluminum Canisters / Glass Flasks"
     }
   },
   {
     "id": 5,
-    "name": "OpticFiber Link Station",
-    "category": "Infrastructure",
-    "short_desc": "Long-range fiber optic transmission terminal.",
-    "long_desc": "Ensure maximum bandwidth across long distances. This terminal handles multiplexing of up to 40 channels over a single fiber pair, guaranteeing unthrottled communication between campuses.",
-    "image": "https://images.unsplash.com/photo-1620286891040-5e368625e1a1?w=600&q=80",
+    "name": "Smart LED Panel Series",
+    "category": "Electronics & Appliances",
+    "short_desc": "Energy-efficient commercial LED lighting systems.",
+    "long_desc": "Ultra-thin, highly efficient LED panels designed for corporate offices and commercial spaces. Features adjustable color temperatures, low glare (UGR<19), and a lifespan exceeding 50,000 hours.",
+    "image": "https://images.unsplash.com/photo-1565814329452-e1efa11c5b89?w=600&q=80",
     "specs": {
-      "Range": "Up to 120km",
-      "Capacity": "400 Gbps Total",
-      "Wavelength": "C-Band Tunable",
-      "Diagnostic": "Built-in OTDR"
+      "Dimensions": "600x600mm / 1200x300mm",
+      "Power": "40W / 48W",
+      "Luminous Flux": "4000lm - 4800lm",
+      "Warranty": "5 Years"
     }
   },
   {
     "id": 6,
-    "name": "Aegis Data Vault",
-    "category": "Storage",
-    "short_desc": "Immutable backup appliance for ransomware protection.",
-    "long_desc": "Safeguard your most critical data with an air-gapped, immutable storage vault. Once data is written, it cannot be altered or deleted by malware, ensuring 100% recovery rates.",
-    "image": "https://images.unsplash.com/photo-1601597111158-2fceff292cdc?w=600&q=80",
+    "name": "Premium Robusta Coffee Beans",
+    "category": "Food & Beverages",
+    "short_desc": "Unroasted green coffee beans for commercial roasters.",
+    "long_desc": "High-caffeine, full-bodied Robusta beans perfect for espresso blends and instant coffee manufacturing. Sourced directly from certified sustainable farms.",
+    "image": "https://images.unsplash.com/photo-1559525839-b184a4d698c7?w=600&q=80",
     "specs": {
-      "Raw Capacity": "500TB",
-      "Effective Capacity": "Up to 2PB (Dedupe)",
-      "Network": "4x 25GbE",
-      "Compliance": "SEC 17a-4(f)"
+      "Screen Size": "16 / 18",
+      "Moisture": "12% Max",
+      "Defects": "Less than 2%",
+      "Packaging": "60kg Jute Bags"
     }
   }
 ]
