@@ -2,15 +2,15 @@
   {
     "id": 1,
     "name": "Natural Cocoa Powder",
-    "category": "Textiles & Clothing",
-    "short_desc": "High-quality, long-staple cotton fibers for luxury garment manufacturing.",
-    "long_desc": "Renowned globally for its exceptional softness, strength, and breathability. Our Giza 86 cotton is hand-picked and processed under strict quality controls, perfect for producing luxury linens and high-end apparel.",
+    "category": "Cocoa Products",
+    "short_desc": "Real & Compound Chocolate, Cocoa Drinks, Coatings,Cream Fillings, Spreads, Sauces, Ice cream and Syrups.",
+    "long_desc": "Types : 10-12% Fat Content. | 20-22% Fat Content. | 22-24% Fat Content.",
     "image": "https://images.unsplash.com/photo-1589933011718-2041db862ad3?w=600&q=80",
     "specs": {
       "Staple Length": "33mm - 35mm",
       "Micronaire": "3.8 - 4.2",
       "Strength": "40+ g/tex",
-      "Packaging": "Standard Bales (200kg)"
+      "Packaging": "Available in 25kg bags."
     }
   },
   {
