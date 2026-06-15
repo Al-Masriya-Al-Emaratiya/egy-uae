@@ -62,16 +62,25 @@
   },
   {
     "id": 6,
-    "name": "Premium Robusta Coffee Beans",
-    "category": "Food & Beverages",
-    "short_desc": "Unroasted green coffee beans for commercial roasters.",
-    "long_desc": "High-caffeine, full-bodied Robusta beans perfect for espresso blends and instant coffee manufacturing. Sourced directly from certified sustainable farms.",
+    "name": "Natural Hazelnut Kernels",
+    "category": "Nuts",
+    "short_desc": "Roasted Hazelnut Whole",
+    "long_desc": "Standard Size(mm): 13-15, 12-13, 11-12, 11-13, 10-12, 9-11 mm.",
     "image": "https://images.unsplash.com/photo-1559525839-b184a4d698c7?w=600&q=80",
     "specs": {
-      "Screen Size": "16 / 18",
-      "Moisture": "12% Max",
-      "Defects": "Less than 2%",
-      "Packaging": "60kg Jute Bags"
+      "Packaging": "Available in 10 kg, 25 kg standard aluminium or vacuum bags in cartons and various sizes."
+    }
+  },
+  {
+    "id": 7,
+    "name": "Roasted Hazelnut Whole",
+    "category": "Nuts",
+    "short_desc": "Roasted Hazelnut Whole",
+    "long_desc": "Standard Size(mm): 13-15, 12-13, 11-12, 11-13, 10-12, 9-11 mm.",
+    "image": "https://images.unsplash.com/photo-1559525839-b184a4d698c7?w=600&q=80",
+    "specs": {
+      "Standard Size(mm)": "13-15, 12-13, 11-12, 11-13, 10-12, 9-11 mm.",
+      "Packaging": "Available in 10 kg, 25 kg standard aluminium or vacuum bags in cartons and various sizes."
     }
   }
 ]
