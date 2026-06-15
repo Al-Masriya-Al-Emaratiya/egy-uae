@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Enterprise Marketplace</title>
+    <title>Al Massria Al Emaratia - Import & Export Marketplace</title>
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;900&family=Tajawal:wght@400;500;700&display=swap" rel="stylesheet">
     <!-- FontAwesome -->
@@ -19,21 +19,29 @@
         <div class="animated-line" style="top: 80%; animation-delay: 10s;"></div>
     </div>
 
-    <!-- Header -->
+    <!-- Header Navigation -->
     <header>
         <div class="logo">
             <h2>MARKETPLACE</h2>
         </div>
         <ul class="nav-links">
-            <li><a href="#">Home</a></li>
-            <li><a href="#marketplace" class="active">Products</a></li>
-            <li><a href="#contact">Contact</a></li>
+            <li><a href="#" class="active">Marketplace</a></li>
+            <li><a href="Our-Network/Importers.html">Importers</a></li>
+            <li><a href="Our-Network/Exporters.html">Exporters</a></li>
+            <li><a href="Our-Network/Agencies-Directory.html">Agencies</a></li>
+            <li><a href="Our-Network/Factory-Zone.html">Factory Zone</a></li>
+            <li><a href="Our-Network/Business-Hub.html">Business Hub</a></li>
         </ul>
         <div class="header-actions">
             <button class="login-btn">
-                <i class="fas fa-user-circle"></i>
+                <i class="fas fa-user-tie"></i>
                 <span class="login-text">Client Portal</span>
             </button>
+            <div class="hamburger">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
         </div>
     </header>
 
@@ -41,23 +49,59 @@
     <section class="hero">
         <div class="hero-3d-card">
             <div class="hero-content">
-                <h1 class="hero-title">Elite Tech<br>Solutions</h1>
-                <p class="hero-subtitle">B2B Product Marketplace</p>
-                <p>Browse our cutting-edge infrastructure, software, and security solutions. Review technical specifications and request a customized quote for your enterprise.</p>
+                <h1 class="hero-title">Global Trade<br>Solutions</h1>
+                <p class="hero-subtitle">Our Import & Export Products</p>
+                <p>Connecting businesses worldwide with professional trade solutions, premium product sourcing, and seamless logistics. Browse our catalog and request a quote today.</p>
                 <a href="#marketplace" class="system-link" style="margin-top: 30px;">
-                    Explore Products <i class="fas fa-arrow-down"></i>
+                    Explore Marketplace <i class="fas fa-arrow-down"></i>
                 </a>
             </div>
             <div class="hero-video-box">
-                <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?w=800&q=80" alt="Tech Dashboard" style="width: 100%; border: 1px solid var(--border-color); box-shadow: 20px 20px 0px rgba(0, 210, 255, 0.1);">
+                <img src="https://images.unsplash.com/photo-1529070538774-1843cb3265df?auto=format&fit=crop&w=800&q=80" alt="Shipping Containers" style="width: 100%; border: 1px solid var(--border-color); box-shadow: 20px 20px 0px rgba(0, 210, 255, 0.1);">
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="section-padding" style="background: var(--glass-bg); padding-top: 80px; padding-bottom: 80px;">
+        <h2>What We Offer</h2>
+        <div class="services-grid" style="max-width: 1200px; margin: 0 auto;">
+            <div class="grid-container">
+                <div class="service-box">
+                    <i class="fas fa-ship"></i>
+                    <h3>Global Shipping</h3>
+                    <p>Efficient sea and air freight solutions to ensure your goods reach global markets safely and on time.</p>
+                </div>
+                <div class="service-box">
+                    <i class="fas fa-boxes-stacked"></i>
+                    <h3>Product Sourcing</h3>
+                    <p>Find the best suppliers and products worldwide with our trusted sourcing and procurement services.</p>
+                </div>
+                <div class="service-box">
+                    <i class="fas fa-handshake"></i>
+                    <h3>Trade Partnerships</h3>
+                    <p>We connect businesses with reliable partners and distributors to expand their market reach globally.</p>
+                </div>
+                <div class="service-box">
+                    <i class="fas fa-globe"></i>
+                    <h3>Customs & Docs</h3>
+                    <p>Professional handling of import/export documents, compliance, and customs clearance services.</p>
+                </div>
             </div>
         </div>
     </section>
 
     <!-- Marketplace Section -->
     <section id="marketplace" class="section-padding">
-        <h2>Our Solutions</h2>
-        <!-- Products will be injected here via JS -->
+        <h2>Our Products</h2>
+        
+        <!-- Search Box Integrated -->
+        <div class="custom-search-box">
+            <input type="text" id="searchInput" placeholder="Search products, categories..." onkeyup="handleEnter(event)">
+            <button onclick="searchProducts()"><i class="fas fa-search"></i></button>
+        </div>
+
+        <!-- Products Container -->
         <div class="systems-grid" id="products-container">
             <div style="text-align:center; width:100%; grid-column: 1 / -1; color: var(--primary);">
                 <i class="fas fa-circle-notch fa-spin fa-3x"></i>
@@ -67,43 +111,49 @@
     </section>
 
     <!-- Contact / Quote Form Section -->
-    <section id="contact" class="section-padding" style="margin-top: 50px;">
+    <section id="contact" class="section-padding">
         <h2>Request a Quote</h2>
         <div class="contact-form-container">
-            <p>Fill out the form below and our sales engineering team will get back to you with pricing details.</p>
+            <p>Fill out the form below and our international sales team will provide commercial details.</p>
             <form class="contact-form" id="quote-form" onsubmit="event.preventDefault(); alert('Quote Request Submitted Successfully!');">
                 <input type="text" placeholder="Company Name" required>
                 <input type="email" placeholder="Corporate Email" required>
                 <input type="text" id="contact-subject" placeholder="Product / Subject" required>
-                <textarea rows="5" placeholder="Additional Requirements or Setup Details..." required></textarea>
+                <textarea rows="5" placeholder="Order Volume, Port of Destination, or Additional Details..." required></textarea>
                 <button type="submit">Submit Request</button>
             </form>
         </div>
     </section>
 
-    <!-- Footer -->
+    <!-- Footer & Back Button -->
+    <div style="text-align: center; margin-top: 40px;">
+        <a href="index.html" class="system-link" style="padding: 15px 30px; font-size: 1rem;">
+            <i class="fas fa-arrow-left"></i> Back to Home
+        </a>
+    </div>
+
     <footer>
         <div class="footer-wrapper">
             <div class="footer-logo">
-                <h3>MARKETPLACE</h3>
-                <p style="font-size: 0.9rem; color: var(--text-medium); margin-top: 10px;">Empowering enterprises with next-generation digital infrastructure.</p>
+                <h3>AL MASSRIA AL EMARATIA</h3>
+                <p style="font-size: 0.9rem; color: var(--text-medium); margin-top: 10px;">Your trusted partner in international trade, import, and export logistics.</p>
             </div>
             <div class="footer-links">
-                <h4>Categories</h4>
+                <h4>Network Zones</h4>
                 <ul>
-                    <li><a href="#">Hardware</a></li>
-                    <li><a href="#">Software</a></li>
-                    <li><a href="#">Security</a></li>
-                    <li><a href="#">Networking</a></li>
+                    <li><a href="Our-Network/Importers.html">Importers</a></li>
+                    <li><a href="Our-Network/Exporters.html">Exporters</a></li>
+                    <li><a href="Our-Network/Factory-Zone.html">Factory Zone</a></li>
+                    <li><a href="Our-Network/Trader-Stores.html">Trader Stores</a></li>
                 </ul>
             </div>
         </div>
         <div class="footer-bottom">
-            <p style="color: var(--text-medium); font-size: 0.9rem;">&copy; 2026 Enterprise Marketplace. All Rights Reserved.</p>
+            <p style="color: var(--text-medium); font-size: 0.9rem;">&copy; 2026 Al Massria Al Emaratia - Marketplace. All Rights Reserved.</p>
         </div>
     </footer>
 
-    <!-- Product Modal (Hidden by default) -->
+    <!-- Product Details Modal (Hidden by default) -->
     <div class="modal-overlay" id="product-modal">
         <div class="modal-content">
             <i class="fas fa-times close-modal" id="close-modal"></i>
@@ -117,7 +167,7 @@
                 <h2 id="modal-title">Product Name</h2>
                 <p id="modal-desc" style="margin-bottom: 20px; line-height: 1.8;">Full description goes here...</p>
                 
-                <h4 style="color: var(--primary); margin-bottom: 15px;">Technical Specifications</h4>
+                <h4 style="color: var(--primary); margin-bottom: 15px;">Product Specifications</h4>
                 <ul class="modal-specs" id="modal-specs-list">
                     <!-- Specs injected here -->
                 </ul>
