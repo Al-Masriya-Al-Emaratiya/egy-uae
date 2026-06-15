@@ -17,7 +17,7 @@
     "category": "Cocoa Powder",
     "short_desc": "Dairy products, Breakfast or Instant Cocoa Mixes, Biscuits, cookies, Pastries, Ice-cream, Desserts, Real Compound Chocolate And Confectionery.",
     "long_desc": "Dairy products, Breakfast or Instant Cocoa Mixes, Biscuits, cookies, Pastries, Ice-cream, Desserts, Real Compound Chocolate And Confectionery.",
-    "image": "https://images.unsplash.com/photo-1616423640778-28d1b53229bd?w=600&q=80",
+    "image": "products_images/AlkalizedCocoaPowder.jpeg",
     "specs": {
       "Types": "10-12% Fat Content. | 20-22% Fat Content. | 22-24% Fat Content.",
       "Packaging": "Available in 25kg bags."
@@ -25,16 +25,13 @@
   },
   {
     "id": 3,
-    "name": "Organic Hass Avocados",
+    "name": "Black Cocoa Powder",
     "category": "Agricultural Products",
-    "short_desc": "Fresh, export-grade organic Hass avocados.",
-    "long_desc": "Carefully cultivated in premium soil, our Hass Avocados offer a rich, creamy texture and high oil content. Harvested and packed in climate-controlled facilities to ensure maximum shelf life upon arrival.",
+    "short_desc": "Any application using cocoa as a natural ingredient where a darker shade is desired. Cookies and industrial pastries.",
+    "long_desc": "Any application using cocoa as a natural ingredient where a darker shade is desired. Cookies and industrial pastries.",
     "image": "https://images.unsplash.com/photo-1523049673857-eb18f1d7b578?w=600&q=80",
     "specs": {
-      "Grade": "Class 1 Export",
-      "Size Range": "12 to 24 (per 4kg carton)",
-      "Certifications": "GlobalGAP, Organic",
-      "Storage Temp": "5°C - 7°C"
+      "Packaging": "Available in 25kg bags."
     }
   },
   {
