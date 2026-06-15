@@ -2,7 +2,7 @@
   {
     "id": 1,
     "name": "Natural Cocoa Powder",
-    "category": "Cocoa Products",
+    "category": "Cocoa Products / Cocoa Powder",
     "short_desc": "Real & Compound Chocolate, Cocoa Drinks, Coatings,Cream Fillings, Spreads, Sauces, Ice cream and Syrups.",
     "long_desc": "Real & Compound Chocolate, Cocoa Drinks, Coatings,Cream Fillings, Spreads, Sauces, Ice cream and Syrups.",
     "image": "products_images/NaturalCocoaPowder.jpeg",
@@ -14,7 +14,7 @@
   {
     "id": 2,
     "name": "Alkalized Cocoa Powder",
-    "category": "Cocoa Powder",
+    "category": "Cocoa Products / Cocoa Powder",
     "short_desc": "Dairy products, Breakfast or Instant Cocoa Mixes, Biscuits, cookies, Pastries, Ice-cream, Desserts, Real Compound Chocolate And Confectionery.",
     "long_desc": "Dairy products, Breakfast or Instant Cocoa Mixes, Biscuits, cookies, Pastries, Ice-cream, Desserts, Real Compound Chocolate And Confectionery.",
     "image": "products_images/AlkalizedCocoaPowder.jpeg",
@@ -26,7 +26,7 @@
   {
     "id": 3,
     "name": "Black Cocoa Powder",
-    "category": "Cocoa Powder",
+    "category": "Cocoa Products / Cocoa Powder",
     "short_desc": "Any application using cocoa as a natural ingredient where a darker shade is desired. Cookies and industrial pastries.",
     "long_desc": "Any application using cocoa as a natural ingredient where a darker shade is desired. Cookies and industrial pastries.",
     "image": "products_images/BlackCocoaPowder.jpg",
@@ -40,7 +40,7 @@
     "category": "Cocoa Mass",
     "short_desc": "Cocoa mass the combination of cocoa butter with cocoa solids to form our standard ECM cocoa mass.",
     "long_desc": "Cocoa mass the combination of cocoa butter with cocoa solids to form our standard ECM cocoa mass.",
-    "image": "https://images.unsplash.com/photo-1594035910387-fea47794261f?w=600&q=80",
+    "image": "products_images/CocoaMass.jpeg",
     "specs": {
       "Types": "Natural Cocoa Mass. | Alkalized Cocoa Mass.",
       "Applications": "Real & compound Chocolate, Confectionery, Spreads, Ice cream, Cookies and Pastries.",
@@ -49,16 +49,15 @@
   },
   {
     "id": 5,
-    "name": "Smart LED Panel Series",
-    "category": "Electronics & Appliances",
-    "short_desc": "Energy-efficient commercial LED lighting systems.",
-    "long_desc": "Ultra-thin, highly efficient LED panels designed for corporate offices and commercial spaces. Features adjustable color temperatures, low glare (UGR<19), and a lifespan exceeding 50,000 hours.",
-    "image": "https://images.unsplash.com/photo-1565814329452-e1efa11c5b89?w=600&q=80",
+    "name": "Cocoa Butter",
+    "category": "Cocoa Butter",
+    "short_desc": "Cocoa flavor & smell, single origin or custom made, standard ECOM, yellow color are all things about our cocoa butter.",
+    "long_desc": "Cocoa flavor & smell, single origin or custom made, standard ECOM, yellow color are all things about our cocoa butter.",
+    "image": "products_images/CocoaButter.jpg",
     "specs": {
-      "Dimensions": "600x600mm / 1200x300mm",
-      "Power": "40W / 48W",
-      "Luminous Flux": "4000lm - 4800lm",
-      "Warranty": "5 Years"
+      "Types": "Natural PPP. | Semi-deodorized PPP. | Deodorized PPP.",
+      "Applications": "Real & Compound Chocolate, Ice cream Coating, Pastries, and Personal Care Industries.",
+      "Packaging": "Available in cartons of 25 kg."
     }
   },
   {
