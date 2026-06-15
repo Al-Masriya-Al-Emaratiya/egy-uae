@@ -4,27 +4,23 @@
     "name": "Natural Cocoa Powder",
     "category": "Cocoa Products",
     "short_desc": "Real & Compound Chocolate, Cocoa Drinks, Coatings,Cream Fillings, Spreads, Sauces, Ice cream and Syrups.",
-    "long_desc": "Types : 10-12% Fat Content. | 20-22% Fat Content. | 22-24% Fat Content.",
+    "long_desc": "Real & Compound Chocolate, Cocoa Drinks, Coatings,Cream Fillings, Spreads, Sauces, Ice cream and Syrups.",
     "image": "products_images/NaturalCocoaPowder.jpeg",
     "specs": {
-      "Staple Length": "33mm - 35mm",
-      "Micronaire": "3.8 - 4.2",
-      "Strength": "40+ g/tex",
+      "Types": "10-12% Fat Content. | 20-22% Fat Content. | 22-24% Fat Content.",
       "Packaging": "Available in 25kg bags."
     }
   },
   {
     "id": 2,
-    "name": "Industrial Grade Urea 46%",
-    "category": "Chemicals & Raw Materials",
-    "short_desc": "High-nitrogen fertilizer and industrial raw material.",
-    "long_desc": "Top-tier granular Urea with 46% nitrogen content. Suitable for both massive agricultural fertilizing operations and industrial manufacturing processes like resins and plastics.",
+    "name": "Alkalized Cocoa Powder",
+    "category": "Cocoa Powder",
+    "short_desc": "Dairy products, Breakfast or Instant Cocoa Mixes, Biscuits, cookies, Pastries, Ice-cream, Desserts, Real Compound Chocolate And Confectionery.",
+    "long_desc": "Dairy products, Breakfast or Instant Cocoa Mixes, Biscuits, cookies, Pastries, Ice-cream, Desserts, Real Compound Chocolate And Confectionery.",
     "image": "https://images.unsplash.com/photo-1616423640778-28d1b53229bd?w=600&q=80",
     "specs": {
-      "Nitrogen Content": "46% Min",
-      "Moisture": "0.5% Max",
-      "Biuret": "1.0% Max",
-      "Form": "Prilled / Granular"
+      "Types": "10-12% Fat Content. | 20-22% Fat Content. | 22-24% Fat Content.",
+      "Packaging": "Available in 25kg bags."
     }
   },
   {
