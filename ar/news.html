@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>أحدث الأخبار والتحديثات | المصرية الإماراتية</title>
+    <meta name="description" content="ابق على اطلاع بأحدث رؤى التجارة، الاتجاهات اللوجستية، وأخبار شركة المصرية الإماراتية التي تربط الأسواق بين مصر والإمارات." />
+    <meta name="keywords" content="أخبار التجارة مصر الإمارات, تحديثات لوجستية, رؤى سلاسل الإمداد, أخبار شركة المصرية الإماراتية" />
+    <meta name="author" content="المصرية الإماراتية" />
+   
+    <!-- Social Meta Tags -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="wwww.egy-uae.com/news-ar.html" /> 
+    <meta property="og:title" content="أحدث الأخبار والتحديثات | المصرية الإماراتية" />
+    <meta property="og:description" content="ابق على اطلاع بأحدث رؤى التجارة، الاتجاهات اللوجستية، وأخبار شركة المصرية الإماراتية." />
+    <meta property="og:image" content="YOUR_OG_IMAGE_URL" /> 
+
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:title" content="أحدث الأخبار والتحديثات | المصرية الإماراتية" />
+    <meta property="twitter:description" content="ابق على اطلاع بأحدث رؤى التجارة، الاتجاهات اللوجستية، وأخبار الشركات." />
+        
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;900&family=Cairo:wght@600;700;900&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
+    
+    <!-- Swiper CSS & AOS -->
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    
+    <!-- Tech UI Core CSS -->
+    <link rel="stylesheet" href="css/style.css">
+    
+    <!-- News Specific Tech Styles -->
+    <style>
+        /* Tech News Header */
+        .news-hero { padding: 180px 0 60px; text-align: center; position: relative; z-index: 1; border-bottom: 1px solid var(--border-color); background: var(--glass-bg); backdrop-filter: blur(10px); margin-bottom: 60px; }
+        .news-hero p { color: var(--text-muted); font-size: 1.1rem; max-width: 600px; margin: 0 auto; font-weight: 500; }
+        
+        /* Tech News Grid System */
+        .news-container { position: relative; z-index: 2; margin-bottom: 100px; }
+        
+        /* Tech News Card Override */
+        .news-card {
+            background: var(--bg-surface);
+            border: 1px solid var(--border-color);
+            border-top: 3px solid var(--primary);
+            transition: var(--transition);
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            overflow: hidden;
+            transform-style: preserve-3d;
+        }
+        .news-card:hover {
+            transform: translateY(-5px);
+            border-top-color: var(--secondary);
+            box-shadow: 0 15px 30px var(--primary-glow);
+        }
+        
+        /* Highlighted URL Post Animation */
+        .news-card.highlighted { border: 2px solid var(--secondary); box-shadow: 0 0 20px var(--secondary-glow); animation: pulseHighlight 2s infinite alternate; }
+        @keyframes pulseHighlight { 0% { box-shadow: 0 0 10px var(--secondary-glow); } 100% { box-shadow: 0 0 30px var(--secondary-glow); } }
+        
+        .news-img-box { width: 100%; height: 240px; overflow: hidden; background: var(--bg-main); position: relative; border-bottom: 1px solid var(--border-color); }
+        .news-img-box img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease; filter: contrast(1.1); }
+        .news-card:hover .news-img-box img { transform: scale(1.05); }
+        
+        /* Tech Badge */
+        .news-badge {
+            position: absolute;
+            top: 15px; right: 15px; /* تم التعديل لليمين للغة العربية */
+            background: rgba(23, 67, 136, 0.9);
+            color: #fff;
+            padding: 5px 12px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            border: 1px solid var(--primary);
+            backdrop-filter: blur(5px);
+            box-shadow: -2px 2px 0 rgba(0,0,0,0.2);
+        }
+        
+        .news-body { padding: 25px; flex-grow: 1; display: flex; flex-direction: column; }
+        .news-meta { display: flex; gap: 15px; font-size: 0.85rem; color: var(--text-muted); margin-bottom: 12px; font-weight: bold; }
+        .news-meta i { color: var(--secondary); margin-left: 5px; margin-right: 0; }
+        .news-title { font-size: 1.3rem; font-weight: 700; line-height: 1.4; margin-bottom: 12px; color: var(--text-main); font-family: 'Cairo', sans-serif; text-transform: uppercase; }
+        .news-excerpt { color: var(--text-muted); font-size: 0.95rem; line-height: 1.6; margin-bottom: 20px; flex-grow: 1; }
+        
+        .news-footer { margin-top: auto; padding-top: 15px; border-top: 1px solid var(--border-color); display: flex; justify-content: space-between; align-items: center; }
+        .read-more { color: var(--primary); text-decoration: none; font-weight: 700; font-size: 0.95rem; transition: var(--transition); display: inline-flex; align-items: center; gap: 5px; text-transform: uppercase; }
+        .read-more:hover { color: var(--secondary); gap: 8px; }
+        
+        /* Share Buttons Tech Style */
+        .share-actions { display: flex; gap: 10px; }
+        .share-btn {
+            background: var(--bg-main);
+            border: 1px solid var(--border-color);
+            color: var(--primary);
+            width: 35px; height: 35px;
+            display: flex; align-items: center; justify-content: center;
+            cursor: pointer; transition: var(--transition);
+            font-size: 0.9rem;
+        }
+        .share-btn:hover { background: var(--primary); color: #fff; border-color: var(--primary); box-shadow: -2px 2px 0 var(--primary-glow); transform: translateY(-2px); }
+        
+        /* Tech Toast Notification */
+        .toast-notification {
+            position: fixed; bottom: 30px; left: 50%;
+            transform: translateX(-50%) translateY(100px);
+            background: var(--primary);
+            border: 1px solid var(--secondary);
+            color: #fff; padding: 12px 25px;
+            font-weight: 700; text-transform: uppercase; letter-spacing: 1px;
+            box-shadow: 0 10px 30px var(--primary-glow);
+            z-index: 9999; opacity: 0;
+            transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+        }
+        .toast-notification.show { transform: translateX(-50%) translateY(0); opacity: 1; }
+    </style>
+</head>
+<body>
+
+    <!-- Custom Tech Cursor -->
+    <div id="tech-cursor"></div>
+    <div id="tech-cursor-follower"></div>
+
+    <!-- Reading Progress Bar -->
+    <div id="progress-bar"></div>
+
+    <!-- Animated Data Streams Background -->
+    <div class="animated-lines-container"></div>
+
+    <!-- Header & Navigation -->
+    <header class="tech-header" id="header">
+        <div class="container header-container">
+            <div class="logo">
+                <a href="home-ar.html">
+                    <img src="C:\Users\User\Downloads\ME Logo_page-0001.jpg" class="brand-logo" alt="المصرية الإماراتية" onerror="this.onerror=null; this.src='https://via.placeholder.com/200x60/174388/ffffff?text=LOGO+HERE';">
+                </a>
+            </div>
+            
+            <nav class="desktop-nav">
+                <ul class="nav-links">
+                    <li><a href="home-ar.html#home">الرئيسية</a></li>
+                    <li><a href="home-ar.html#services">الخدمات</a></li>
+                    <li><a href="home-ar.html#about">من نحن</a></li>
+                    <li><a href="news-ar.html" class="active">الأخبار</a></li>
+                    <li><a href="home-ar.html#systems">أنظمتنا</a></li>
+                    <li><a href="home-ar.html#contact">اتصل بنا</a></li>
+                </ul>
+            </nav>
+            
+            <div class="header-actions">
+                <a href="login-ar.html" class="btn btn-outline-tech" id="desktop-login-btn">
+                    <i class="fas fa-fingerprint"></i> <span class="login-text">تسجيل الدخول</span>
+                </a>
+
+                <div class="user-profile hidden" id="desktop-user-profile">
+                    <div class="profile-trigger" id="profile-trigger">
+                        <div class="avatar-glow"><i class="fas fa-user-astronaut"></i></div>
+                        <span class="user-name">حسابي</span>
+                        <i class="fas fa-chevron-down arrow-icon"></i>
+                    </div>
+                    <ul class="profile-dropdown tech-dropdown">
+                        <li><a href="portal-ar.html"><i class="fas fa-laptop-file"></i> البوابة</a></li>
+                        <li><a href="settings-ar.html"><i class="fas fa-cog"></i> الإعدادات</a></li>
+                        <li><a href="#" id="logout-btn" class="text-red"><i class="fas fa-sign-out-alt"></i> تسجيل خروج</a></li>
+                    </ul>
+                </div>
+
+                <div class="hamburger">
+                    <span></span><span></span><span></span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Mobile Navigation -->
+    <nav class="mobile-nav glass-panel">
+        <ul class="mobile-links">
+            <li><a href="home-ar.html#home">الرئيسية</a></li>
+            <li><a href="home-ar.html#services">الخدمات</a></li>
+            <li><a href="home-ar.html#about">من نحن</a></li>
+            <li><a href="news-ar.html">الأخبار</a></li>
+            <li><a href="home-ar.html#systems">أنظمتنا</a></li>
+            <li><a href="home-ar.html#contact">اتصل بنا</a></li>
+            <li id="mobile-login-item">
+                <a href="login-ar.html" class="btn btn-tech w-full mt-4"><i class="fas fa-sign-in-alt"></i> تسجيل الدخول</a>
+            </li>
+            <li id="mobile-profile-item" class="hidden">
+                <a href="portal-ar.html" class="btn btn-outline-tech w-full mt-4"><i class="fas fa-laptop-code"></i> بوابتي</a>
+                <a href="#" id="mobile-logout-btn" class="btn btn-danger w-full mt-2"><i class="fas fa-power-off"></i> تسجيل خروج</a>
+            </li>
+        </ul>
+    </nav>
+
+    <!-- News Hero Section -->
+    <section class="news-hero">
+        <div class="container">
+            <div class="section-header" data-aos="fade-up">
+                <h2>رؤى النظام والإعلام</h2>
+                <div class="header-line"></div>
+            </div>
+            <p data-aos="fade-up" data-aos-delay="100">ابقَ على اطلاع دائم بأحدث التحديثات اللوجستية، اتجاهات الشحن العالمية، والأحداث الاقتصادية التي تربط بين مصر والإمارات.</p>
+        </div>
+    </section>
+
+    <!-- News Grid Container -->
+    <main class="news-container container">
+        <div class="grid grid-3">
+
+            <!-- Post 1 -->
+            <article class="news-card" id="post-1" data-aos="fade-up" data-aos-delay="100">
+                <div class="news-img-box">
+                    <span class="news-badge">قطاع الأغذية</span>
+                    <img src="images/news/propak-mena-malaysia-cooperation_1.jpeg" alt="تعاون بروباك ماليزيا" onerror="this.src='https://images.unsplash.com/photo-1542838132-92c53300491e?q=80&w=600&auto=format&fit=cover'">
+                </div>
+                <div class="news-body">
+                    <div class="news-meta">
+                        <span><i class="far fa-calendar-alt"></i> ٤ يونيو ٢٠٢٦</span>
+                        <span><i class="far fa-user"></i> قسم الاتصالات</span>
+                    </div>
+                    <h3 class="news-title">بروباك: تعميق التجارة بين مصر وماليزيا</h3>
+                    <p class="news-excerpt">على هامش معرض بروباك: تعزيز التعاون التجاري في قطاع الأغذية بين مصر وماليزيا وتوسيع الشراكات الاستراتيجية.</p>
+                    <div class="news-footer">
+                        <a href="news_propak-mena-malaysia-cooperation-ar.html" class="read-more">اقرأ المزيد <i class="fas fa-arrow-left"></i></a>
+                        <div class="share-actions">
+                            <button class="share-btn" onclick="sharePost(1, 'بروباك: تعميق التجارة')" title="نسخ الرابط"><i class="fas fa-link"></i></button>
+                            <button class="share-btn" onclick="socialShare('facebook', 1)" title="مشاركة على فيسبوك"><i class="fab fa-facebook-f"></i></button>
+                            <button class="share-btn" onclick="socialShare('linkedin', 1)" title="مشاركة على لينكد إن"><i class="fab fa-linkedin-in"></i></button>
+                        </div>
+                    </div>
+                </div>
+            </article>
+            
+            <!-- Post 2 -->
+            <article class="news-card" id="post-2" data-aos="fade-up" data-aos-delay="200">
+                <div class="news-img-box">
+                    <span class="news-badge">اللوجستيات</span>
+                    <img src="https://images.unsplash.com/photo-1578575437130-527eed3abbec?q=80&w=600&auto=format&fit=cover" alt="لوجستيات قناة السويس">
+                </div>
+                <div class="news-body">
+                    <div class="news-meta">
+                        <span><i class="far fa-calendar-alt"></i> ٢٨ مايو ٢٠٢٦</span>
+                        <span><i class="far fa-user"></i> الإدارة</span>
+                    </div>
+                    <h3 class="news-title">توسيع مسارات التجارة البحرية</h3>
+                    <p class="news-excerpt">المصرية الإماراتية تعلن عن جداول بحرية متكاملة جديدة تهدف إلى تقليل أوقات العبور بنسبة ١٥٪ عبر المحاور الإقليمية الاستراتيجية.</p>
+                    <div class="news-footer">
+                        <a href="#" class="read-more">اقرأ المزيد <i class="fas fa-arrow-left"></i></a>
+                        <div class="share-actions">
+                            <button class="share-btn" onclick="sharePost(2, 'توسيع مسارات التجارة البحرية')" title="نسخ الرابط"><i class="fas fa-link"></i></button>
+                            <button class="share-btn" onclick="socialShare('facebook', 2)" title="مشاركة على فيسبوك"><i class="fab fa-facebook-f"></i></button>
+                            <button class="share-btn" onclick="socialShare('linkedin', 2)" title="مشاركة على لينكد إن"><i class="fab fa-linkedin-in"></i></button>
+                        </div>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Post 3 -->
+            <article class="news-card" id="post-3" data-aos="fade-up" data-aos-delay="300">
+                <div class="news-img-box">
+                    <span class="news-badge">الأنظمة الرقمية</span>
+                    <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=600&auto=format&fit=cover" alt="لوحة التحليلات">
+                </div>
+                <div class="news-body">
+                    <div class="news-meta">
+                        <span><i class="far fa-calendar-alt"></i> ١٥ مايو ٢٠٢٦</span>
+                        <span><i class="far fa-user"></i> الفريق التقني</span>
+                    </div>
+                    <h3 class="news-title">تحليلات الشحن بالذكاء الاصطناعي</h3>
+                    <p class="news-excerpt">ميزة منصتنا الجديدة تجلب الخوارزميات التنبؤية مباشرة إلى لوحة التحكم الخاصة بك، للتنبؤ بالأنماط المخصصة وتحسين مخزون المستودعات.</p>
+                    <div class="news-footer">
+                        <a href="#" class="read-more">اقرأ المزيد <i class="fas fa-arrow-left"></i></a>
+                        <div class="share-actions">
+                            <button class="share-btn" onclick="sharePost(3, 'تحليلات الشحن بالذكاء الاصطناعي')" title="نسخ الرابط"><i class="fas fa-link"></i></button>
+                            <button class="share-btn" onclick="socialShare('facebook', 3)" title="مشاركة على فيسبوك"><i class="fab fa-facebook-f"></i></button>
+                            <button class="share-btn" onclick="socialShare('linkedin', 3)" title="مشاركة على لينكد إن"><i class="fab fa-linkedin-in"></i></button>
+                        </div>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Post 4 -->
+            <article class="news-card" id="post-4" data-aos="fade-up" data-aos-delay="400">
+                <div class="news-img-box">
+                    <span class="news-badge">الشركة</span>
+                    <img src="https://images.unsplash.com/photo-1513828583835-c359b7af1677?q=80&w=600&auto=format&fit=cover" alt="اتفاقيات الشراكة">
+                </div>
+                <div class="news-body">
+                    <div class="news-meta">
+                        <span><i class="far fa-calendar-alt"></i> ٣٠ أبريل ٢٠٢٦</span>
+                        <span><i class="far fa-user"></i> قسم العلاقات</span>
+                    </div>
+                    <h3 class="news-title">قمم الاستثمار الثنائية</h3>
+                    <p class="news-excerpt">ملخص شامل للاتفاقيات التي أبرمتها المصرية الإماراتية مع موزعي الأسواق الاستراتيجية في منطقة الشرق الأوسط وشمال أفريقيا الأسبوع الماضي.</p>
+                    <div class="news-footer">
+                        <a href="#" class="read-more">اقرأ المزيد <i class="fas fa-arrow-left"></i></a>
+                        <div class="share-actions">
+                            <button class="share-btn" onclick="sharePost(4, 'قمم الاستثمار الثنائية')" title="نسخ الرابط"><i class="fas fa-link"></i></button>
+                            <button class="share-btn" onclick="socialShare('facebook', 4)" title="مشاركة على فيسبوك"><i class="fab fa-facebook-f"></i></button>
+                            <button class="share-btn" onclick="socialShare('linkedin', 4)" title="مشاركة على لينكد إن"><i class="fab fa-linkedin-in"></i></button>
+                        </div>
+                    </div>
+                </div>
+            </article>
+
+        </div>
+    </main>
+
+    <!-- Share Toast Notification -->
+    <div id="share-toast" class="toast-notification">تم نسخ الرابط إلى الحافظة بنجاح!</div>
+
+    <!-- Footer -->
+    <footer class="tech-footer">
+        <div class="container">
+            <div class="grid grid-4 footer-wrapper">
+                
+                <div class="footer-logo">
+                    <img src="C:\Users\User\Downloads\Al Massriya Al Emaratiya Logo orginal.jpeg" alt="المصرية الإماراتية" class="brand-logo" onerror="this.onerror=null; this.src='https://via.placeholder.com/200x60/174388/ffffff?text=LOGO+HERE';">
+                    <p class="mt-4">بوابتك التقنية للنمو في مصر والإمارات.</p>
+                    <div class="social-links mt-4">
+                        <a href="https://www.facebook.com/AlMasriyaAlEmaratiya"><i class="fab fa-facebook-f"></i></a>
+                        <a href="https://www.linkedin.com/company/egy-uae"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="https://www.youtube.com/@egy-uae.channel"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+
+                <div class="footer-links">
+                    <h4>دليل الفهرس</h4>
+                    <ul>
+                        <li><a href="home-ar.html#home">الرئيسية</a></li>
+                        <li><a href="home-ar.html#services">الخدمات</a></li>
+                        <li><a href="home-ar.html#about">من نحن</a></li>
+                        <li><a href="news-ar.html">الأخبار</a></li>
+                        <li><a href="home-ar.html#contact">اتصل بنا</a></li>
+                        <li><a href="careers-ar.html">الوظائف</a></li>
+                        <li><a href="sectors-ar.html">قطاعاتنا</a></li>
+                        <li><a href="export-services-ar.html">خدمات التصدير</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-divisions">
+                    <h4>أقسامنا</h4>
+                    <ul>
+                        <li><a href="hotel-supplies-ar.html">الاستيراد والتوريدات الفندقية</a></li>
+                        <li><a href="food-division-ar.html">قطاع الأغذية</a></li>
+                        <li><a href="chemicals-cosmetics-ar.html">الكيماويات ومستحضرات التجميل</a></li>
+                        <li><a href="division-4-ar.html">التجارة العامة</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-language custom-dropdown">
+                    <h4>بروتوكول اللغة</h4>
+                    <div class="dropdown-trigger" id="lang-trigger">
+                        <span><i class="fas fa-globe"></i> العربية</span>
+                        <i class="fas fa-chevron-down arrow-icon"></i>
+                    </div>
+                    <ul class="dropdown-menu tech-dropdown" id="lang-menu">
+                        <li><a href="news.html">English</a></li>
+                        <li><a href="news-ar.html" class="active-lang">العربية</a></li>
+                        <li><a href="news-cn.html">中文</a></li>
+                    </ul>
+                </div>
+
+            </div>
+            <div class="footer-bottom text-center">
+                <p>© <span id="current-year"></span> المصرية الإماراتية. جميع الحقوق محفوظة. إصدار النظام 2.0</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Chat Widget (Tech UI) -->
+    <div id="chat-widget" class="chat-widget">
+        <button class="chat-btn glow-effect" id="chat-toggle">
+            <i class="fas fa-headset"></i> 
+        </button>
+        <div class="chat-container glass-panel" id="chat-box">
+            <div class="chat-header">
+                <h3><i class="fas fa-robot"></i> عقدة الدعم الآلي</h3>
+                <button class="chat-close" id="chat-close">&times;</button>
+            </div>
+            <div class="chat-body" id="chat-body">
+                <div class="message incoming">
+                    <p>تم تأسيس الاتصال بنجاح. كيف يمكننا مساعدة عملياتك اليوم؟</p>
+                </div>
+            </div>
+            <div class="chat-footer">
+                <input type="text" placeholder="اكتب استعلامك..." id="chat-input">
+                <button id="chat-send"><i class="fas fa-paper-plane"></i></button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.8.0/vanilla-tilt.min.js"></script>
+    <script src="js/main.js"></script>
+    
+    <!-- News Specific JS Logic (Sharing & URL Parameters) -->
+    <script>
+        // Share link via Toast Notification
+        function sharePost(id, title) {
+            const baseUrl = window.location.origin + window.location.pathname;
+            const shareUrl = `${baseUrl}?id=${id}`;
+            
+            navigator.clipboard.writeText(shareUrl).then(() => {
+                const toast = document.getElementById('share-toast');
+                toast.classList.add('show');
+                setTimeout(() => {
+                    toast.classList.remove('show');
+                }, 3000);
+            }).catch(err => {
+                console.error('فشل نسخ الرابط: ', err);
+            });
+        }
+
+        // Social Media Sharing
+        function socialShare(platform, id) {
+            const baseUrl = window.location.origin + window.location.pathname;
+            const shareUrl = encodeURIComponent(`${baseUrl}?id=${id}`);
+            let url = '';
+
+            if (platform === 'facebook') {
+                url = `https://www.facebook.com/sharer/sharer.php?u=${shareUrl}`;
+            } else if (platform === 'linkedin') {
+                url = `https://www.linkedin.com/sharing/share-offsite/?url=${shareUrl}`;
+            }
+            
+            window.open(url, '_blank', 'width=600,height=400');
+        }
+
+        // Auto-scroll and Highlight based on URL parameters
+        document.addEventListener('DOMContentLoaded', () => {
+            const urlParams = new URLSearchParams(window.location.search);
+            const postId = urlParams.get('id');
+            
+            if (postId) {
+                const targetPost = document.getElementById(`post-${postId}`);
+                if (targetPost) {
+                    setTimeout(() => {
+                        targetPost.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                        targetPost.classList.add('highlighted');
+                    }, 500);
+                }
+            }
+        });
+    </script>
+</body>
+</html>
