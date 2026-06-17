@@ -1,0 +1,31 @@
+{
+  "merchant": {
+    "name": "أحمد الهاشمي للمقاولات العامة",
+    "id": "TRD-99402",
+    "country": "الإمارات - دبي",
+    "status": "Active Account"
+  },
+  "stats": {
+    "totalShipments": 14,
+    "inCustoms": 3,
+    "delivered": 11
+  },
+  "overview": [
+    { "awb": "#AME-99082", "origin": "Jebel Ali, UAE", "destination": "Cairo, Egypt", "status": "On Customs", "statusClass": "status-customs" },
+    { "awb": "#AME-99105", "origin": "Dubai, UAE", "destination": "Alexandria, Egypt", "status": "In Transit", "statusClass": "status-transit" }
+  ],
+  "shipments": [
+    { "awb": "#AME-99082", "origin": "Jebel Ali, UAE", "destination": "Cairo, Egypt", "status": "On Customs", "statusClass": "status-customs", "weight": "2.5 Tons", "eta": "2026-06-22" },
+    { "awb": "#AME-99105", "origin": "Dubai, UAE", "destination": "Alexandria, Egypt", "status": "In Transit", "statusClass": "status-transit", "weight": "1.2 Tons", "eta": "2026-06-25" },
+    { "awb": "#AME-98741", "origin": "Sharjah, UAE", "destination": "Port Said, Egypt", "status": "Delivered", "statusClass": "status-success", "weight": "5.0 Tons", "eta": "Delivered" }
+  ],
+  "documents": [
+    { "name": "Commercial Invoice - June", "type": "PDF", "size": "1.4 MB", "date": "2026-06-15" },
+    { "name": "Bill of Lading (B/L) #99082", "type": "PDF", "size": "3.2 MB", "date": "2026-06-17" },
+    { "name": "Customs Clearance Certificate", "type": "DOCX", "size": "850 KB", "date": "2026-06-18" }
+  ],
+  "payments": [
+    { "invoice": "INV-2026-089", "amount": "$4,250.00", "status": "Paid", "statusClass": "status-success", "date": "2026-06-10" },
+    { "invoice": "INV-2026-094", "amount": "$1,800.00", "status": "Pending", "statusClass": "status-transit", "date": "2026-06-16" }
+  ]
+}
