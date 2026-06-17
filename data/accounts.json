@@ -1,0 +1,26 @@
+[
+  {
+    "email": "ahmed@example.com",
+    "code": "AM-987654",
+    "name": "Ahmed Youssef",
+    "role": "Individual Trader",
+    "company": "",
+    "status": "active"
+  },
+  {
+    "email": "info@globaltrade.com",
+    "code": "GT-123456",
+    "name": "Mahmoud Ali",
+    "role": "Company Manager",
+    "company": "Global Trade LLC",
+    "status": "active"
+  },
+  {
+    "email": "test@test.com",
+    "code": "123123",
+    "name": "Test User",
+    "role": "Tester",
+    "company": "Test Co",
+    "status": "inactive"
+  }
+]
