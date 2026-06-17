@@ -1,110 +1,107 @@
 /**
- * EGY UAE - Dynamic Dashboard Core Engine
- * Handles SPA tab routing and async JSON data rendering
+ * EGY UAE - Core SPA Engine (Demo Edition)
+ * Dynamically fetches JSON profiles and updates interface layout seamlessly.
  */
 
 document.addEventListener('DOMContentLoaded', () => {
-    let dashboardData = null;
+    const CONFIG_DATA_PATH = 'data/dashboard.json';
 
-    const DATA_URL = 'data/dashboard.json'; 
-
-    async function loadDashboardContent() {
+    async function initializeDashboard() {
         try {
-            const response = await fetch(DATA_URL);
-            if (!response.ok) throw new Error('Failed to fetch dashboard data');
+            const response = await fetch(CONFIG_DATA_PATH);
+            if (!response.ok) throw new Error('Demo data stream failed to initialize.');
             
-            dashboardData = await response.json();
+            const data = await response.json();
             
-            document.getElementById('merchantName').textContent = dashboardData.merchant.name;
-            document.getElementById('merchantMeta').innerHTML = `Trader ID: <span>${dashboardData.merchant.id}</span> | Location: <span>${dashboardData.merchant.country}</span>`;
-            document.getElementById('accountStatus').innerHTML = `<span class="dot"></span> ${dashboardData.merchant.status}`;
+            document.getElementById('merchantName').textContent = data.merchant.name;
+            document.getElementById('merchantMeta').innerHTML = `Trader ID: <span>${data.merchant.id}</span> | Terminal: <span>${data.merchant.country}</span>`;
+            
+            document.getElementById('stat-total').textContent = String(data.stats.totalShipments).padStart(2, '0');
+            document.getElementById('stat-customs').textContent = String(data.stats.inCustoms).padStart(2, '0');
+            document.getElementById('stat-delivered').textContent = String(data.stats.delivered).padStart(2, '0');
 
-            document.getElementById('stat-total').textContent = String(dashboardData.stats.totalShipments).padStart(2, '0');
-            document.getElementById('stat-customs').textContent = String(dashboardData.stats.inCustoms).padStart(2, '0');
-            document.getElementById('stat-delivered').textContent = String(dashboardData.stats.delivered).padStart(2, '0');
-
-            renderOverviewTable(dashboardData.overview);
-            renderShipmentsTable(dashboardData.shipments);
-            renderDocumentsTable(dashboardData.documents);
-            renderPaymentsTable(dashboardData.payments);
+            buildOverview(data.overview);
+            buildShipments(data.shipments);
+            buildDocuments(data.documents);
+            buildPayments(data.payments);
 
         } catch (error) {
-            console.error('Error rendering dashboard:', error);
-            document.getElementById('merchantName').textContent = "Error loading data.";
+            console.error('SPA Engine Exception:', error);
+            document.getElementById('merchantName').textContent = "Demo Mode: Active Profile Container";
         }
     }
 
-    function renderOverviewTable(data) {
-        const container = document.getElementById('table-overview');
-        container.innerHTML = data.map(item => `
+    function buildOverview(items) {
+        const target = document.getElementById('table-overview');
+        target.innerHTML = items.map(i => `
             <tr>
-                <td><span class="awb">${item.awb}</span></td>
-                <td>${item.origin}</td>
-                <td>${item.destination}</td>
-                <td><span class="badge ${item.statusClass}">${item.status}</span></td>
+                <td><span class="awb">${i.awb}</span></td>
+                <td>${i.origin}</td>
+                <td>${i.destination}</td>
+                <td><span class="badge ${i.statusClass}">${i.status}</span></td>
             </tr>
         `).join('');
     }
 
-    function renderShipmentsTable(data) {
-        const container = document.getElementById('table-shipments');
-        container.innerHTML = data.map(item => `
+    function buildShipments(items) {
+        const target = document.getElementById('table-shipments');
+        target.innerHTML = items.map(i => `
             <tr>
-                <td><span class="awb">${item.awb}</span></td>
-                <td>${item.origin}</td>
-                <td>${item.destination}</td>
-                <td>${item.weight}</td>
-                <td>${item.eta}</td>
-                <td><span class="badge ${item.statusClass}">${item.status}</span></td>
+                <td><span class="awb">${i.awb}</span></td>
+                <td>${i.origin}</td>
+                <td>${i.destination}</td>
+                <td>${i.weight}</td>
+                <td>${i.eta}</td>
+                <td><span class="badge ${i.statusClass}">${i.status}</span></td>
             </tr>
         `).join('');
     }
 
-    function renderDocumentsTable(data) {
-        const container = document.getElementById('table-documents');
-        container.innerHTML = data.map(item => `
+    function buildDocuments(items) {
+        const target = document.getElementById('table-documents');
+        target.innerHTML = items.map(i => `
             <tr>
-                <td><i class="far fa-file-pdf text-red" style="margin-right: 8px;"></i> ${item.name}</td>
-                <td><strong>${item.type}</strong></td>
-                <td>${item.size}</td>
-                <td>${item.date}</td>
-                <td><a href="#" class="btn-small" style="font-size:12px; padding:2px 8px; border:1px solid var(--primary);"><i class="fas fa-download"></i> View</a></td>
+                <td><i class="far fa-file-alt" style="color: #174388; margin-right:6px;"></i> ${i.name}</td>
+                <td><strong>${i.type}</strong></td>
+                <td>${i.size}</td>
+                <td>${i.date}</td>
+                <td><a href="#" class="action-link"><i class="fas fa-external-link-alt"></i> View</a></td>
             </tr>
         `).join('');
     }
 
-    function renderPaymentsTable(data) {
-        const container = document.getElementById('table-payments');
-        container.innerHTML = data.map(item => `
+    function buildPayments(items) {
+        const target = document.getElementById('table-payments');
+        target.innerHTML = items.map(i => `
             <tr>
-                <td><strong>${item.invoice}</strong></td>
-                <td class="text-white">${item.amount}</td>
-                <td>${item.date}</td>
-                <td><span class="badge ${item.statusClass}">${item.status}</span></td>
+                <td><strong>${i.invoice}</strong></td>
+                <td style="font-weight: 600; color: #174388;">${i.amount}</td>
+                <td>${i.date}</td>
+                <td><span class="badge ${i.statusClass}">${i.status}</span></td>
             </tr>
         `).join('');
     }
 
-    const navItems = document.querySelectorAll('.side-nav .nav-item[data-page]');
-    const pageSections = document.querySelectorAll('.page-section');
+    const navButtons = document.querySelectorAll('.side-nav .nav-item[data-page]');
+    const dashboardSections = document.querySelectorAll('.page-section');
 
-    navItems.forEach(item => {
-        item.addEventListener('click', (e) => {
-            e.preventDefault();
+    navButtons.forEach(btn => {
+        btn.addEventListener('click', (event) => {
+            event.preventDefault();
             
-            navItems.forEach(nav => nav.classList.remove('active'));
-            pageSections.forEach(section => section.classList.remove('active-page'));
+            navButtons.forEach(b => b.classList.remove('active'));
+            dashboardSections.forEach(s => s.classList.remove('active-page'));
 
-            item.classList.add('active');
-            const targetPage = item.getAttribute('data-page');
-            const targetSection = document.getElementById(`page-${targetPage}`);
+            btn.classList.add('active');
+            const targetPage = btn.getAttribute('data-page');
+            const targetDomSection = document.getElementById(`page-${targetPage}`);
             
-            if (targetSection) {
-                targetSection.classList.add('active-page');
+            if (targetDomSection) {
+                targetDomSection.classList.add('active-page');
             }
         });
     });
 
-    // تشغيل جلب البيانات تلقائياً عند تحميل الواجهة
-    loadDashboardContent();
+    // إطلاق محرك جلب البيانات
+    initializeDashboard();
 });
