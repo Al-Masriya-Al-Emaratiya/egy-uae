@@ -213,3 +213,49 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 });
+// bot
+document.addEventListener('DOMContentLoaded', () => {
+    const chatInput = document.getElementById('chat-input');
+    const chatSend = document.getElementById('chat-send');
+    const chatBody = document.getElementById('chat-body');
+    
+    const lang = document.documentElement.lang || 'en';
+    
+    const basePath = (lang === 'ar') ? 'ar/data/' : 'data/';
+    
+    let knowledgeBase = {};
+
+    async function initChat() {
+        try {
+            const files = ['support.json', 'products.json'];
+            const promises = files.map(file => fetch(basePath + file).then(res => res.json()));
+            const results = await Promise.all(promises);
+            knowledgeBase = Object.assign({}, ...results);
+            console.log("تم تحميل البيانات بنجاح من مسار:", basePath);
+        } catch (e) {
+            console.error("خطأ في تحميل ملفات JSON:", e);
+        }
+    }
+
+    function addMessage(text, type) {
+        const div = document.createElement('div');
+        div.className = `message ${type}`;
+        div.innerHTML = `<p>${text}</p>`;
+        chatBody.appendChild(div);
+        chatBody.scrollTop = chatBody.scrollHeight;
+    }
+
+    chatSend.addEventListener('click', () => {
+        const text = chatInput.value.trim();
+        if (!text) return;
+        
+        addMessage(text, 'outgoing');
+        chatInput.value = '';
+
+        const response = knowledgeBase[text] || (lang === 'ar' ? "عذراً، لم أفهم." : "Sorry, I didn't understand.");
+        
+        setTimeout(() => addMessage(response, 'incoming'), 500);
+    });
+
+    initChat();
+});
