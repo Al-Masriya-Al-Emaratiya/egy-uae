@@ -12,59 +12,82 @@
     <link rel="stylesheet" href="css/dashboard.css">
 
     <style>
-        .video-bg { 
-            position: fixed; top: 0; left: 0; width: 100%; height: 100%; 
-            z-index: -2; overflow: hidden; 
-            background-color: #07090f; 
+        /* الاعتماد على نظام الألوان الرئيسي بدلاً من الفيديو */
+        body {
+            background-color: #f4f7fb; /* الفاتح الافتراضي للموقع أو الداكن التقني حسب التصميم */
+            background-image: radial-gradient(circle at top right, rgba(23, 67, 136, 0.05), transparent),
+                              radial-gradient(circle at bottom left, rgba(213, 36, 43, 0.03), transparent);
+            min-height: 100vh;
+            color: var(--text-main);
         }
-        .video-bg video { 
-            width: 100%; height: 100%; object-fit: cover; 
-            filter: brightness(0.25) contrast(1.1) blur(2px); 
-        }
-        .overlay-mask {
-            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            background: radial-gradient(circle at center, transparent 0%, rgba(7, 9, 15, 0.8) 100%);
-            z-index: -1;
-        }
-        .user-meta-info {
+
+        /* شريط التنبيه العلوى للنظام التجريبي */
+        .demo-alert-bar {
+            background: linear-gradient(90deg, #d5242b 0%, #174388 100%);
+            color: #ffffff;
+            text-align: center;
+            padding: 8px 20px;
+            font-family: 'Cairo', sans-serif;
             font-size: 14px;
-            color: #a0a0a0;
-            margin-top: 5px;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 9999;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
         }
-        .user-meta-info span {
-            color: #00d2ff;
-            font-weight: bold;
+        .demo-alert-bar i {
+            animation: pulse-icon 1.5s infinite;
         }
-        /* SPA Pages Visibility Styles */
+        @keyframes pulse-icon {
+            0% { transform: scale(1); opacity: 1; }
+            50% { transform: scale(1.2); opacity: 0.7; }
+            100% { transform: scale(1); opacity: 1; }
+        }
+
+        /* تعديلات التوافقية مع نمط التصميم الزجاجي والمؤشر */
         .page-section {
             display: none;
         }
         .page-section.active-page {
             display: block;
-            animation: fadeIn 0.4s ease-in-out;
+            animation: fadeIn 0.4s cubic-bezier(0.4, 0, 0.2, 1);
         }
         @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(10px); }
+            from { opacity: 0; transform: translateY(15px); }
             to { opacity: 1; transform: translateY(0); }
         }
-        .badge { padding: 4px 10px; font-weight: bold; font-size: 0.85rem; }
-        .status-customs { background: rgba(213, 36, 43, 0.15); color: #d5242b; border: 1px solid #d5242b; }
-        .status-transit { background: rgba(23, 67, 136, 0.15); color: #174388; border: 1px solid #174388; }
-        .status-success { background: rgba(40, 167, 69, 0.15); color: #28a745; border: 1px solid #28a745; }
+
+        .badge { padding: 4px 10px; font-weight: bold; font-size: 0.85rem; border-radius: 4px; }
+        .status-customs { background: rgba(213, 36, 43, 0.1); color: #d5242b; border: 1px solid rgba(213, 36, 43, 0.2); }
+        .status-transit { background: rgba(23, 67, 136, 0.1); color: #174388; border: 1px solid rgba(23, 67, 136, 0.2); }
+        .status-success { background: rgba(40, 167, 69, 0.1); color: #28a745; border: 1px solid rgba(40, 167, 69, 0.2); }
+        
+        /* تجميل أزرار الجداول المتناسقة مع الفيجوال الرئيسي */
+        .action-link {
+            color: #174388;
+            font-weight: bold;
+            text-decoration: none;
+            transition: all 0.2s ease;
+        }
+        .action-link:hover {
+            color: #d5242b;
+        }
     </style>
 </head>
 <body>
 
+    <div class="demo-alert-bar">
+        <i class="fas fa-flask"></i>
+        <span>بيئة تجريبية تفاعلية (Demo Mode) - نظرة عامة على لوحة تحكم التاجر ونظام تتبع الشحنات الذكي لمجموعة EGY UAE</span>
+    </div>
+
     <div id="tech-cursor"></div>
     <div id="tech-cursor-follower"></div>
-    <div id="progress-bar"></div>
-
-    <div class="video-bg">
-        <video autoplay muted loop playsinline>
-            <source src="../sky_background.mp4" type="video/mp4">
-        </video>
-    </div>
-    <div class="overlay-mask"></div>
 
     <div class="dash-container">
 
@@ -112,38 +135,38 @@
                 </div>
                 <div class="header-actions">
                     <div class="status-badge pulse" id="accountStatus">
-                        <span class="dot"></span> Loading Status...
+                        <span class="dot"></span> Active Account
                     </div>
                 </div>
             </div>
 
             <div class="stat-grid">
                 <div class="stat-card">
-                    <div class="card-icon"><i class="fas fa-box"></i></div>
+                    <div class="card-icon" style="color: #174388;"><i class="fas fa-box"></i></div>
                     <div class="card-info">
                         <h3>Total Shipments</h3>
-                        <p class="counter" id="stat-total">0</p>
+                        <p class="counter" id="stat-total">00</p>
                     </div>
                 </div>
                 <div class="stat-card">
-                    <div class="card-icon secondary"><i class="fas fa-truck-loading"></i></div>
+                    <div class="card-icon secondary" style="color: #d5242b;"><i class="fas fa-truck-loading"></i></div>
                     <div class="card-info">
                         <h3>In Customs</h3>
-                        <p class="counter" id="stat-customs">0</p>
+                        <p class="counter" id="stat-customs">00</p>
                     </div>
                 </div>
                 <div class="stat-card">
-                    <div class="card-icon success"><i class="fas fa-check-circle"></i></div>
+                    <div class="card-icon success" style="color: #28a745;"><i class="fas fa-check-circle"></i></div>
                     <div class="card-info">
                         <h3>Delivered</h3>
-                        <p class="counter" id="stat-delivered">0</p>
+                        <p class="counter" id="stat-delivered">00</p>
                     </div>
                 </div>
             </div>
 
             <section id="page-overview" class="page-section active-page data-section glass-card">
                 <div class="section-header">
-                    <h3><i class="fas fa-location-dot"></i> Live Tracking Overview</h3>
+                    <h3><i class="fas fa-location-dot" style="color: #174388;"></i> Live Tracking Overview</h3>
                 </div>
                 <div class="table-responsive">
                     <table class="modern-table">
@@ -163,7 +186,7 @@
 
             <section id="page-shipments" class="page-section data-section glass-card">
                 <div class="section-header">
-                    <h3><i class="fas fa-ship"></i> Detailed Shipments Report</h3>
+                    <h3><i class="fas fa-ship" style="color: #174388;"></i> Detailed Shipments Report</h3>
                 </div>
                 <div class="table-responsive">
                     <table class="modern-table">
@@ -185,7 +208,7 @@
 
             <section id="page-documents" class="page-section data-section glass-card">
                 <div class="section-header">
-                    <h3><i class="fas fa-file-invoice"></i> Merchant Documents</h3>
+                    <h3><i class="fas fa-file-invoice" style="color: #174388;"></i> Merchant Verified Documents</h3>
                 </div>
                 <div class="table-responsive">
                     <table class="modern-table">
@@ -206,7 +229,7 @@
 
             <section id="page-payments" class="page-section data-section glass-card">
                 <div class="section-header">
-                    <h3><i class="fas fa-wallet"></i> Billing & Payments Invoice</h3>
+                    <h3><i class="fas fa-wallet" style="color: #174388;"></i> Billing & Payments Statement</h3>
                 </div>
                 <div class="table-responsive">
                     <table class="modern-table">
