@@ -3,448 +3,407 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1" />
-    <title>Latest News & Updates | Al Masriya Al Emaratiya</title>
+    <title>Latest News & Updates | Al Massriya Al Emaratiya</title>
     <meta name="description" content="Stay updated with the latest trade insights, logistics trends, and corporate news from Al Masriya Al Emaratiya, connecting markets between Egypt and the UAE." />
     <meta name="keywords" content="Egypt UAE trade news, logistics updates, supply chain insights, Al Masriya Al Emaratiya corporate news" />
-    <meta name="author" content="Al Masriya Al Emaratiya" />
+    <meta name="author" content="Al Massriya Al Emaratiya" />
    
+    <!-- Social Meta Tags -->
     <meta property="og:type" content="website" />
     <meta property="og:url" content="wwww.egy-uae.com/news.html" /> 
-    <meta property="og:title" content="Latest News & Updates | Al Masriya Al Emaratiya" />
+    <meta property="og:title" content="Latest News & Updates | Al Massriya Al Emaratiya" />
     <meta property="og:description" content="Stay updated with the latest trade insights, logistics trends, and corporate news from Al Masriya Al Emaratiya." />
     <meta property="og:image" content="YOUR_OG_IMAGE_URL" /> 
 
     <meta property="twitter:card" content="summary_large_image" />
-    <meta property="twitter:title" content="Latest News & Updates | Al Masriya Al Emaratiya" />
+    <meta property="twitter:title" content="Latest News & Updates | Al Massriya Al Emaratiya" />
     <meta property="twitter:description" content="Stay updated with the latest trade insights, logistics trends, and corporate news." />
         
-    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700;900&family=Cairo:wght@400;700;900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" crossorigin="anonymous" />
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-    <link rel="stylesheet" href="css/style.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;900&family=Cairo:wght@600;700;900&display=swap" rel="stylesheet">
     
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
+    
+    <!-- Swiper CSS & AOS -->
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    
+    <!-- Tech UI Core CSS -->
+    <link rel="stylesheet" href="style.css">
+    
+    <!-- News Specific Tech Styles -->
     <style>
-        .news-hero {
-            padding: 160px 0 60px;
-            text-align: center;
-            position: relative;
-            z-index: 1;
-        }
-        .news-hero h1 {
-            font-size: clamp(2.5rem, 5vw, 3.8rem);
-            font-weight: 900;
-            margin-bottom: 15px;
-            background: linear-gradient(to right, var(--text-light), var(--primary));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-        .news-hero p {
-            color: var(--text-medium);
-            font-size: 1.1rem;
-            max-width: 600px;
-            margin: 0 auto;
-        }
-        .news-container {
-            max-width: 1200px;
-            margin: 0 auto 100px;
-            padding: 0 20px;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 40px;
-            position: relative;
-            z-index: 2;
-        }
+        /* Tech News Header */
+        .news-hero { padding: 180px 0 60px; text-align: center; position: relative; z-index: 1; border-bottom: 1px solid var(--border-color); background: var(--glass-bg); backdrop-filter: blur(10px); margin-bottom: 60px; }
+        .news-hero p { color: var(--text-muted); font-size: 1.1rem; max-width: 600px; margin: 0 auto; font-weight: 500; }
+        
+        /* Tech News Grid System */
+        .news-container { position: relative; z-index: 2; margin-bottom: 100px; }
+        
+        /* Tech News Card Override */
         .news-card {
-            background: #ffffff;
+            background: var(--bg-surface);
             border: 1px solid var(--border-color);
-            box-shadow: var(--card-shadow);
+            border-top: 3px solid var(--primary);
             transition: var(--transition);
             display: flex;
             flex-direction: column;
             position: relative;
             overflow: hidden;
+            transform-style: preserve-3d;
         }
         .news-card:hover {
             transform: translateY(-5px);
-            border-color: var(--primary);
-            box-shadow: var(--card-hover-shadow);
+            border-top-color: var(--secondary);
+            box-shadow: 0 15px 30px var(--primary-glow);
         }
-        .news-card.highlighted {
-            border: 2px solid var(--primary);
-            animation: pulseHighlight 2s ease-in-out infinite alternate;
-        }
-        @keyframes pulseHighlight {
-            0% { box-shadow: 0 5px 20px rgba(0, 210, 255, 0.1); }
-            100% { box-shadow: 0 15px 40px rgba(0, 210, 255, 0.3); }
-        }
-        .news-img-box {
-            width: 100%;
-            height: 240px;
-            overflow: hidden;
-            background: #f4f6f9;
-            position: relative;
-        }
-        .news-img-box img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.5s ease;
-        }
-        .news-card:hover .news-img-box img {
-            transform: scale(1.05);
-        }
+        
+        /* Highlighted URL Post Animation */
+        .news-card.highlighted { border: 2px solid var(--secondary); box-shadow: 0 0 20px var(--secondary-glow); animation: pulseHighlight 2s infinite alternate; }
+        @keyframes pulseHighlight { 0% { box-shadow: 0 0 10px var(--secondary-glow); } 100% { box-shadow: 0 0 30px var(--secondary-glow); } }
+        
+        .news-img-box { width: 100%; height: 240px; overflow: hidden; background: var(--bg-main); position: relative; border-bottom: 1px solid var(--border-color); }
+        .news-img-box img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease; filter: contrast(1.1); }
+        .news-card:hover .news-img-box img { transform: scale(1.05); }
+        
+        /* Tech Badge */
         .news-badge {
             position: absolute;
-            top: 15px;
-            left: 15px;
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            top: 15px; left: 15px;
+            background: rgba(23, 67, 136, 0.9);
             color: #fff;
             padding: 5px 12px;
             font-size: 0.8rem;
             font-weight: 700;
             text-transform: uppercase;
+            border: 1px solid var(--primary);
+            backdrop-filter: blur(5px);
+            box-shadow: 2px 2px 0 rgba(0,0,0,0.2);
         }
-        .news-body {
-            padding: 25px;
-            flex-grow: 1;
-            display: flex;
-            flex-direction: column;
-        }
-        .news-meta {
-            display: flex;
-            gap: 15px;
-            font-size: 0.85rem;
-            color: var(--text-dark);
-            margin-bottom: 12px;
-        }
-        .news-meta i {
-            color: var(--primary);
-            margin-right: 5px;
-        }
-        .news-title {
-            font-size: 1.35rem;
-            font-weight: 700;
-            line-height: 1.4;
-            margin-bottom: 12px;
-            color: var(--text-light);
-        }
-        .news-excerpt {
-            color: var(--text-medium);
-            font-size: 0.95rem;
-            line-height: 1.6;
-            margin-bottom: 20px;
-        }
-        .news-footer {
-            margin-top: auto;
-            padding-top: 15px;
-            border-top: 1px solid var(--border-color);
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        .read-more {
-            color: var(--secondary);
-            text-decoration: none;
-            font-weight: 700;
-            font-size: 0.95rem;
-            transition: var(--transition);
-            display: inline-flex;
-            align-items: center;
-            gap: 5px;
-        }
-        .read-more:hover {
-            color: var(--primary);
-            gap: 8px;
-        }
-        .share-actions {
-            display: flex;
-            gap: 10px;
-        }
+        
+        .news-body { padding: 25px; flex-grow: 1; display: flex; flex-direction: column; }
+        .news-meta { display: flex; gap: 15px; font-size: 0.85rem; color: var(--text-muted); margin-bottom: 12px; font-weight: bold; }
+        .news-meta i { color: var(--secondary); margin-right: 5px; }
+        .news-title { font-size: 1.3rem; font-weight: 700; line-height: 1.4; margin-bottom: 12px; color: var(--text-main); font-family: 'Cairo', sans-serif; text-transform: uppercase; }
+        .news-excerpt { color: var(--text-muted); font-size: 0.95rem; line-height: 1.6; margin-bottom: 20px; flex-grow: 1; }
+        
+        .news-footer { margin-top: auto; padding-top: 15px; border-top: 1px solid var(--border-color); display: flex; justify-content: space-between; align-items: center; }
+        .read-more { color: var(--primary); text-decoration: none; font-weight: 700; font-size: 0.95rem; transition: var(--transition); display: inline-flex; align-items: center; gap: 5px; text-transform: uppercase; }
+        .read-more:hover { color: var(--secondary); gap: 8px; }
+        
+        /* Share Buttons Tech Style */
+        .share-actions { display: flex; gap: 10px; }
         .share-btn {
-            background: rgba(0,0,0,0.02);
+            background: var(--bg-main);
             border: 1px solid var(--border-color);
-            color: var(--text-medium);
-            width: 34px;
-            height: 34px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            transition: var(--transition);
+            color: var(--primary);
+            width: 35px; height: 35px;
+            display: flex; align-items: center; justify-content: center;
+            cursor: pointer; transition: var(--transition);
             font-size: 0.9rem;
         }
-        .share-btn:hover {
-            background: var(--primary);
-            color: #fff;
-            border-color: var(--primary);
-        }
+        .share-btn:hover { background: var(--primary); color: #fff; border-color: var(--primary); box-shadow: 2px 2px 0 var(--primary-glow); transform: translateY(-2px); }
+        
+        /* Tech Toast Notification */
         .toast-notification {
-            position: fixed;
-            bottom: 30px;
-            left: 50%;
+            position: fixed; bottom: 30px; left: 50%;
             transform: translateX(-50%) translateY(100px);
-            background: #1a1d24;
-            color: #fff;
-            padding: 12px 25px;
-            font-weight: 700;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.3);
-            z-index: 9999;
-            opacity: 0;
+            background: var(--primary);
+            border: 1px solid var(--secondary);
+            color: #fff; padding: 12px 25px;
+            font-weight: 700; text-transform: uppercase; letter-spacing: 1px;
+            box-shadow: 0 10px 30px var(--primary-glow);
+            z-index: 9999; opacity: 0;
             transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
         }
-        .toast-notification.show {
-            transform: translateX(-50%) translateY(0);
-            opacity: 1;
-        }
-        @media (max-width: 768px) {
-            .news-hero { padding-top: 120px; }
-            .news-container { grid-template-columns: 1fr; }
-        }
+        .toast-notification.show { transform: translateX(-50%) translateY(0); opacity: 1; }
     </style>
 </head>
 <body>
 
-    <div id="cursor"></div>
+    <!-- Custom Tech Cursor -->
+    <div id="tech-cursor"></div>
+    <div id="tech-cursor-follower"></div>
 
+    <!-- Reading Progress Bar -->
     <div id="progress-bar"></div>
 
+    <!-- Animated Data Streams Background -->
     <div class="animated-lines-container"></div>
 
-    <header>
-        <div class="logo">
-            <h2><a href="index.html" style="color: inherit;">AL MASRIYA AL EMARATIYA<span style="color: var(--primary);">.</span></a></h2>
-        </div>
-        <ul class="nav-links">
-            <li><a href="index.html#home">Home</a></li>
-            <li><a href="index.html#services">Services</a></li>
-            <li><a href="index.html#about">About Us</a></li>
-            <li><a href="news.html" class="active">News</a></li>
-            <li><a href="index.html#systems">Our Systems</a></li>
-            <li><a href="index.html#contact">Contact Us</a></li>
-        </ul>
-        
-        <div class="header-actions">
-            <a href="login.html" class="login-btn" id="desktop-login-btn">
-                <i class="fas fa-user-circle"></i>
-                <span class="login-text">Login</span>
-            </a>
-
-            <div class="user-profile hidden" id="desktop-user-profile">
-                <div class="profile-trigger" id="profile-trigger">
-                    <i class="fas fa-user-circle user-avatar"></i>
-                    <span class="user-name">My Account</span>
-                    <i class="fas fa-chevron-down arrow-icon"></i>
-                </div>
-                <ul class="profile-dropdown">
-                    <li><a href="portal.html"><i class="fas fa-laptop-file"></i> Portal</a></li>
-                    <li><a href="settings.html"><i class="fas fa-cog"></i> Settings</a></li>
-                    <li><a href="#" id="logout-btn"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
-                </ul>
+    <!-- Header & Navigation (Fixed Tech UI) -->
+    <header class="tech-header" id="header">
+        <div class="container header-container">
+            <div class="logo">
+                <a href="index.html">
+                    <img src="C:\Users\User\Downloads\ME Logo_page-0001.jpg" class="brand-logo" alt="Al Massriya Al Emaratiya" onerror="this.onerror=null; this.src='https://via.placeholder.com/200x60/174388/ffffff?text=LOGO+HERE';">
+                </a>
             </div>
+            
+            <nav class="desktop-nav">
+                <ul class="nav-links">
+                    <li><a href="index.html#home">Home</a></li>
+                    <li><a href="index.html#services">Services</a></li>
+                    <li><a href="index.html#about">About Us</a></li>
+                    <li><a href="news.html" class="active">News</a></li>
+                    <li><a href="index.html#systems">Our Systems</a></li>
+                    <li><a href="index.html#contact">Contact Us</a></li>
+                </ul>
+            </nav>
+            
+            <div class="header-actions">
+                <a href="login.html" class="btn btn-outline-tech" id="desktop-login-btn">
+                    <i class="fas fa-fingerprint"></i> <span class="login-text">Login</span>
+                </a>
 
-            <div class="hamburger">
-                <div class="bar"></div><div class="bar"></div><div class="bar"></div>
+                <div class="user-profile hidden" id="desktop-user-profile">
+                    <div class="profile-trigger" id="profile-trigger">
+                        <div class="avatar-glow"><i class="fas fa-user-astronaut"></i></div>
+                        <span class="user-name">My Account</span>
+                        <i class="fas fa-chevron-down arrow-icon"></i>
+                    </div>
+                    <ul class="profile-dropdown tech-dropdown">
+                        <li><a href="portal.html"><i class="fas fa-laptop-file"></i> Portal</a></li>
+                        <li><a href="settings.html"><i class="fas fa-cog"></i> Settings</a></li>
+                        <li><a href="#" id="logout-btn" class="text-red"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
+                    </ul>
+                </div>
+
+                <div class="hamburger">
+                    <span></span><span></span><span></span>
+                </div>
             </div>
         </div>
     </header>
 
-    <nav class="mobile-nav">
-        <ul>
+    <!-- Mobile Navigation (Fixed Tech UI) -->
+    <nav class="mobile-nav glass-panel">
+        <ul class="mobile-links">
             <li><a href="index.html#home">Home</a></li>
             <li><a href="index.html#services">Services</a></li>
             <li><a href="index.html#about">About Us</a></li>
             <li><a href="news.html">News</a></li>
             <li><a href="index.html#systems">Our Systems</a></li>
             <li><a href="index.html#contact">Contact Us</a></li>
-            <li class="mobile-login-item" id="mobile-login-item">
-                <a href="login.html" class="mobile-login-btn"><i class="fas fa-sign-in-alt"></i> Login</a>
+            <li id="mobile-login-item">
+                <a href="login.html" class="btn btn-tech w-full mt-4"><i class="fas fa-sign-in-alt"></i> Login</a>
             </li>
-            <li class="mobile-profile-item hidden" id="mobile-profile-item">
-                <a href="portal.html"><i class="fas fa-user-circle"></i> My Portal</a><br><br>
-                <a href="#" id="mobile-logout-btn" style="color: #ff4757; font-size: 1.2rem;"><i class="fas fa-sign-out-alt"></i> Logout</a>
+            <li id="mobile-profile-item" class="hidden">
+                <a href="portal.html" class="btn btn-outline-tech w-full mt-4"><i class="fas fa-laptop-code"></i> My Portal</a>
+                <a href="#" id="mobile-logout-btn" class="btn btn-danger w-full mt-2"><i class="fas fa-power-off"></i> Logout</a>
             </li>
         </ul>
     </nav>
 
+    <!-- News Hero Section -->
     <section class="news-hero">
-        <h1 data-aos="fade-up">Media & Insights</h1>
-        <p data-aos="fade-up" data-aos-delay="100">Stay up to date with the newest logistical updates, global shipping trends, and economic events bridging Egypt and the UAE.</p>
+        <div class="container">
+            <div class="section-header" data-aos="fade-up">
+                <h2>Media & System Insights</h2>
+                <div class="header-line"></div>
+            </div>
+            <p data-aos="fade-up" data-aos-delay="100">Stay up to date with the newest logistical updates, global shipping trends, and economic events bridging Egypt and the UAE.</p>
+        </div>
     </section>
 
-    <main class="news-container">
+    <!-- News Grid Container -->
+    <main class="news-container container">
+        <div class="grid grid-3">
 
-        <article class="news-card" id="post-1" data-aos="fade-up" data-aos-delay="100">
-            <div class="news-img-box">
-                <span class="news-badge">Global Trade | Food Division | Exhibitions</span>
-                <img src="images/news/propak-mena-malaysia-cooperation_1.jpeg" alt="propak-mena-malaysia-cooperation">
-            </div>
-            <div class="news-body">
-                <div class="news-meta">
-                    <span><i class="far fa-calendar-alt"></i> June 4, 2026</span>
-                    <span><i class="far fa-user"></i> Corporate Communications</span>
+            <!-- Post 1 -->
+            <article class="news-card" id="post-1" data-aos="fade-up" data-aos-delay="100">
+                <div class="news-img-box">
+                    <span class="news-badge">Food Division</span>
+                    <img src="images/news/propak-mena-malaysia-cooperation_1.jpeg" alt="propak-mena-malaysia-cooperation" onerror="this.src='https://images.unsplash.com/photo-1542838132-92c53300491e?q=80&w=600&auto=format&fit=cover'">
                 </div>
-                <h3 class="news-title">ProPak: Deepening Egypt-Malaysia Food Trade</h3>
-                <p class="news-excerpt">On the Sidelines of ProPak: Enhancing Food Sector Trade Cooperation Between Egypt & Malaysia.</p>
-                <div class="news-footer">
-                    <a href="news_propak-mena-malaysia-cooperation.html" class="read-more">Read More <i class="fas fa-arrow-right"></i></a>
-                    <div class="share-actions">
-                        <button class="share-btn" onclick="sharePost(1, 'Expanding Maritime Trade Lanes')" title="Copy Link"><i class="fas fa-link"></i></button>
-                        <button class="share-btn" onclick="socialShare('facebook', 1)" title="Share on Facebook"><i class="fab fa-facebook-f"></i></button>
-                        <button class="share-btn" onclick="socialShare('linkedin', 1)" title="Share on LinkedIn"><i class="fab fa-linkedin-in"></i></button>
+                <div class="news-body">
+                    <div class="news-meta">
+                        <span><i class="far fa-calendar-alt"></i> June 4, 2026</span>
+                        <span><i class="far fa-user"></i> Comms Dept.</span>
+                    </div>
+                    <h3 class="news-title">ProPak: Deepening Egypt-Malaysia Trade</h3>
+                    <p class="news-excerpt">On the Sidelines of ProPak: Enhancing Food Sector Trade Cooperation Between Egypt & Malaysia.</p>
+                    <div class="news-footer">
+                        <a href="news_propak-mena-malaysia-cooperation.html" class="read-more">Read More <i class="fas fa-arrow-right"></i></a>
+                        <div class="share-actions">
+                            <button class="share-btn" onclick="sharePost(1, 'ProPak: Deepening Trade')" title="Copy Link"><i class="fas fa-link"></i></button>
+                            <button class="share-btn" onclick="socialShare('facebook', 1)" title="Share on Facebook"><i class="fab fa-facebook-f"></i></button>
+                            <button class="share-btn" onclick="socialShare('linkedin', 1)" title="Share on LinkedIn"><i class="fab fa-linkedin-in"></i></button>
+                        </div>
                     </div>
                 </div>
-            </div>
-        </article>
-        
-        <article class="news-card" id="post-1" data-aos="fade-up" data-aos-delay="200">
-            <div class="news-img-box">
-                <span class="news-badge">Trade</span>
-                <img src="https://images.unsplash.com/photo-1578575437130-527eed3abbec?q=80&w=600&auto=format&fit=cover" alt="Suez Canal Logistics">
-            </div>
-            <div class="news-body">
-                <div class="news-meta">
-                    <span><i class="far fa-calendar-alt"></i> May 28, 2026</span>
-                    <span><i class="far fa-user"></i> Admin</span>
+            </article>
+            
+            <!-- Post 2 -->
+            <article class="news-card" id="post-2" data-aos="fade-up" data-aos-delay="200">
+                <div class="news-img-box">
+                    <span class="news-badge">Logistics</span>
+                    <img src="https://images.unsplash.com/photo-1578575437130-527eed3abbec?q=80&w=600&auto=format&fit=cover" alt="Suez Canal Logistics">
                 </div>
-                <h3 class="news-title">Expanding Maritime Trade Lanes Between Alexandria & Jebel Ali</h3>
-                <p class="news-excerpt">Al Masriya Al Emaratiya announces new integrated maritime schedules designed to slash transit times by 15% across strategic regional hubs.</p>
-                <div class="news-footer">
-                    <a href="#" class="read-more">Read More <i class="fas fa-arrow-right"></i></a>
-                    <div class="share-actions">
-                        <button class="share-btn" onclick="sharePost(1, 'Expanding Maritime Trade Lanes')" title="Copy Link"><i class="fas fa-link"></i></button>
-                        <button class="share-btn" onclick="socialShare('facebook', 1)" title="Share on Facebook"><i class="fab fa-facebook-f"></i></button>
-                        <button class="share-btn" onclick="socialShare('linkedin', 1)" title="Share on LinkedIn"><i class="fab fa-linkedin-in"></i></button>
+                <div class="news-body">
+                    <div class="news-meta">
+                        <span><i class="far fa-calendar-alt"></i> May 28, 2026</span>
+                        <span><i class="far fa-user"></i> Admin Node</span>
+                    </div>
+                    <h3 class="news-title">Expanding Maritime Trade Lanes</h3>
+                    <p class="news-excerpt">Al Massriya Al Emaratiya announces new integrated maritime schedules designed to slash transit times by 15% across strategic regional hubs.</p>
+                    <div class="news-footer">
+                        <a href="#" class="read-more">Read More <i class="fas fa-arrow-right"></i></a>
+                        <div class="share-actions">
+                            <button class="share-btn" onclick="sharePost(2, 'Expanding Maritime Trade Lanes')" title="Copy Link"><i class="fas fa-link"></i></button>
+                            <button class="share-btn" onclick="socialShare('facebook', 2)" title="Share on Facebook"><i class="fab fa-facebook-f"></i></button>
+                            <button class="share-btn" onclick="socialShare('linkedin', 2)" title="Share on LinkedIn"><i class="fab fa-linkedin-in"></i></button>
+                        </div>
                     </div>
                 </div>
-            </div>
-        </article>
+            </article>
 
-        <article class="news-card" id="post-2" data-aos="fade-up" data-aos-delay="300">
-            <div class="news-img-box">
-                <span class="news-badge">Digital Systems</span>
-                <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=600&auto=format&fit=cover" alt="Analytics Dashboard">
-            </div>
-            <div class="news-body">
-                <div class="news-meta">
-                    <span><i class="far fa-calendar-alt"></i> May 15, 2026</span>
-                    <span><i class="far fa-user"></i> Tech Team</span>
+            <!-- Post 3 -->
+            <article class="news-card" id="post-3" data-aos="fade-up" data-aos-delay="300">
+                <div class="news-img-box">
+                    <span class="news-badge">Digital Systems</span>
+                    <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=600&auto=format&fit=cover" alt="Analytics Dashboard">
                 </div>
-                <h3 class="news-title">AI-Powered Freight Analytics Integrated Into Client Portal</h3>
-                <p class="news-excerpt">Our newest platform feature brings predictive algorithms straight into your dashboard, predicting custom patterns and optimizing warehouse stocks.</p>
-                <div class="news-footer">
-                    <a href="#" class="read-more">Read More <i class="fas fa-arrow-right"></i></a>
-                    <div class="share-actions">
-                        <button class="share-btn" onclick="sharePost(2, 'AI Freight Analytics Platform')" title="Copy Link"><i class="fas fa-link"></i></button>
-                        <button class="share-btn" onclick="socialShare('facebook', 2)" title="Share on Facebook"><i class="fab fa-facebook-f"></i></button>
-                        <button class="share-btn" onclick="socialShare('linkedin', 2)" title="Share on LinkedIn"><i class="fab fa-linkedin-in"></i></button>
+                <div class="news-body">
+                    <div class="news-meta">
+                        <span><i class="far fa-calendar-alt"></i> May 15, 2026</span>
+                        <span><i class="far fa-user"></i> Tech Team</span>
+                    </div>
+                    <h3 class="news-title">AI-Powered Freight Analytics</h3>
+                    <p class="news-excerpt">Our newest platform feature brings predictive algorithms straight into your dashboard, predicting custom patterns and optimizing warehouse stocks.</p>
+                    <div class="news-footer">
+                        <a href="#" class="read-more">Read More <i class="fas fa-arrow-right"></i></a>
+                        <div class="share-actions">
+                            <button class="share-btn" onclick="sharePost(3, 'AI Freight Analytics Platform')" title="Copy Link"><i class="fas fa-link"></i></button>
+                            <button class="share-btn" onclick="socialShare('facebook', 3)" title="Share on Facebook"><i class="fab fa-facebook-f"></i></button>
+                            <button class="share-btn" onclick="socialShare('linkedin', 3)" title="Share on LinkedIn"><i class="fab fa-linkedin-in"></i></button>
+                        </div>
                     </div>
                 </div>
-            </div>
-        </article>
+            </article>
 
-        <article class="news-card" id="post-3" data-aos="fade-up" data-aos-delay="400">
-            <div class="news-img-box">
-                <span class="news-badge">Corporate</span>
-                <img src="https://images.unsplash.com/photo-1513828583835-c359b7af1677?q=80&w=600&auto=format&fit=cover" alt="Partnership Agreement">
-            </div>
-            <div class="news-body">
-                <div class="news-meta">
-                    <span><i class="far fa-calendar-alt"></i> April 30, 2026</span>
-                    <span><i class="far fa-user"></i> Relations</span>
+            <!-- Post 4 -->
+            <article class="news-card" id="post-4" data-aos="fade-up" data-aos-delay="400">
+                <div class="news-img-box">
+                    <span class="news-badge">Corporate</span>
+                    <img src="https://images.unsplash.com/photo-1513828583835-c359b7af1677?q=80&w=600&auto=format&fit=cover" alt="Partnership Agreement">
                 </div>
-                <h3 class="news-title">Fostering Growth: Bilateral Investment Summits In Cairo</h3>
-                <p class="news-excerpt">A comprehensive wrap-up of agreements made by Al Masriya Al Emaratiya with strategic MENA market distributors last week.</p>
-                <div class="news-footer">
-                    <a href="#" class="read-more">Read More <i class="fas fa-arrow-right"></i></a>
-                    <div class="share-actions">
-                        <button class="share-btn" onclick="sharePost(3, 'Bilateral Investment Summits')" title="Copy Link"><i class="fas fa-link"></i></button>
-                        <button class="share-btn" onclick="socialShare('facebook', 3)" title="Share on Facebook"><i class="fab fa-facebook-f"></i></button>
-                        <button class="share-btn" onclick="socialShare('linkedin', 3)" title="Share on LinkedIn"><i class="fab fa-linkedin-in"></i></button>
+                <div class="news-body">
+                    <div class="news-meta">
+                        <span><i class="far fa-calendar-alt"></i> April 30, 2026</span>
+                        <span><i class="far fa-user"></i> Relations Dept.</span>
+                    </div>
+                    <h3 class="news-title">Bilateral Investment Summits</h3>
+                    <p class="news-excerpt">A comprehensive wrap-up of agreements made by Al Massriya Al Emaratiya with strategic MENA market distributors last week.</p>
+                    <div class="news-footer">
+                        <a href="#" class="read-more">Read More <i class="fas fa-arrow-right"></i></a>
+                        <div class="share-actions">
+                            <button class="share-btn" onclick="sharePost(4, 'Bilateral Investment Summits')" title="Copy Link"><i class="fas fa-link"></i></button>
+                            <button class="share-btn" onclick="socialShare('facebook', 4)" title="Share on Facebook"><i class="fab fa-facebook-f"></i></button>
+                            <button class="share-btn" onclick="socialShare('linkedin', 4)" title="Share on LinkedIn"><i class="fab fa-linkedin-in"></i></button>
+                        </div>
                     </div>
                 </div>
-            </div>
-        </article>
+            </article>
 
+        </div>
     </main>
 
+    <!-- Share Toast Notification -->
     <div id="share-toast" class="toast-notification">Link copied to clipboard!</div>
 
-    <footer>
-        <div class="footer-wrapper">
-            <div class="footer-logo">
-                <h3>AL MASRIYA AL EMARATIYA<span style="color: var(--primary);">.</span></h3>
-                <p>Your Gateway to Growth in Egypt & UAE.</p>
-            </div>
-            <div class="footer-links">
-                <h4>Explore</h4>
-                <ul>
-                    <li><a href="index.html#home">Home</a></li>
-                    <li><a href="index.html#services">Services</a></li>
-                    <li><a href="index.html#about">About Us</a></li>
-                    <li><a href="news.html">News</a></li>
-                    <li><a href="index.html#contact">Contact Us</a></li>
-                    <li><a href="careers.html">Careers</a></li>
-                    <li><a href="our-clients.html">Our Client</a></li>
-                    <li><a href="sectors.html">Our Sectors</a></li>
-                    <li><a href="export-services.html">Export Services & Products</a></li>
-                    <li><a href="hotel-supplies.html">Import & Hotel Supplies</a></li>
-                    <li><a href="food-division.html">Food Division</a></li>
-                    <li><a href="chemicals-cosmetics.html">Chemicals & Cosmetics</a></li>
-                </ul>
-            </div>
-
-            <div class="footer-language custom-dropdown">
-                <h4>Language</h4>
-                <div class="dropdown-trigger" id="lang-trigger" tabindex="0">
-                    <span><i class="fas fa-globe"></i> English</span>
-                    <i class="fas fa-chevron-down arrow-icon"></i>
+    <!-- Footer (Fixed Tech UI) -->
+    <footer class="tech-footer">
+        <div class="container">
+            <div class="grid grid-4 footer-wrapper">
+                
+                <div class="footer-logo">
+                    <img src="C:\Users\User\Downloads\Al Massriya Al Emaratiya Logo orginal.jpeg" alt="Al Massriya Al Emaratiya" class="brand-logo" onerror="this.onerror=null; this.src='https://via.placeholder.com/200x60/174388/ffffff?text=LOGO+HERE';">
+                    <p class="mt-4">Your Tech Gateway to Growth in Egypt & UAE.</p>
+                    <div class="social-links mt-4">
+                        <a href="https://www.facebook.com/AlMasriyaAlEmaratiya"><i class="fab fa-facebook-f"></i></a>
+                        <a href="https://www.linkedin.com/company/egy-uae"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="https://www.youtube.com/@egy-uae.channel"><i class="fab fa-youtube"></i></a>
+                    </div>
                 </div>
-                <ul class="dropdown-menu" id="lang-menu">
-                    <li><a href="news.html" class="active-lang">English</a></li>
-                    <li><a href="news-ar.html">العربية</a></li>
-                    <li><a href="news-cn.html">中文</a></li>
-                </ul>
+
+                <div class="footer-links">
+                    <h4>Index Directory</h4>
+                    <ul>
+                        <li><a href="index.html#home">Home</a></li>
+                        <li><a href="index.html#services">Services</a></li>
+                        <li><a href="index.html#about">About Us</a></li>
+                        <li><a href="news.html">News</a></li>
+                        <li><a href="index.html#contact">Contact Us</a></li>
+                        <li><a href="careers.html">Careers</a></li>
+                        <li><a href="sectors.html">Our Sectors</a></li>
+                        <li><a href="export-services.html">Export Services</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-divisions">
+                    <h4>Our Divisions</h4>
+                    <ul>
+                        <li><a href="hotel-supplies.html">Import & Hotel Supplies</a></li>
+                        <li><a href="food-division.html">Food Division</a></li>
+                        <li><a href="chemicals-cosmetics.html">Chemicals & Cosmetics</a></li>
+                        <li><a href="division-4.html">General Trading</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-language custom-dropdown">
+                    <h4>Language Protocol</h4>
+                    <div class="dropdown-trigger" id="lang-trigger">
+                        <span><i class="fas fa-globe"></i> English</span>
+                        <i class="fas fa-chevron-down arrow-icon"></i>
+                    </div>
+                    <ul class="dropdown-menu tech-dropdown" id="lang-menu">
+                        <li><a href="news.html" class="active-lang">English</a></li>
+                        <li><a href="news-ar.html">العربية</a></li>
+                        <li><a href="news-cn.html">中文</a></li>
+                    </ul>
+                </div>
+
             </div>
-        </div>
-        
-        <div class="footer-bottom">
-            <p>© <span id="current-year"></span> Al Masriya Al Emaratiya. All rights reserved.</p>
-            <div class="footer-bottom-social">
-                <a href="https://www.facebook.com/AlMasriyaAlEmaratiya" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
-                <a href="https://www.linkedin.com/company/egy-uae" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
-                <a href="https://www.youtube.com/@egy-uae.channel" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+            <div class="footer-bottom text-center">
+                <p>© <span id="current-year"></span> Al Massriya Al Emaratiya. All Rights Reserved. System Version 2.0</p>
             </div>
         </div>
     </footer>
 
+    <!-- Chat Widget (Tech UI) -->
     <div id="chat-widget" class="chat-widget">
-        <button class="chat-btn" aria-label="Open Chat">
-            <i class="fas fa-comment-dots"></i>
+        <button class="chat-btn glow-effect" id="chat-toggle">
+            <i class="fas fa-headset"></i> 
         </button>
-        <div class="chat-container">
+        <div class="chat-container glass-panel" id="chat-box">
             <div class="chat-header">
-                <h3>Chat with us</h3>
-                <button class="chat-close" aria-label="Close Chat">&times;</button>
+                <h3><i class="fas fa-robot"></i> AI Support Node</h3>
+                <button class="chat-close" id="chat-close">&times;</button>
             </div>
-            <div class="chat-body" tabindex="0">
+            <div class="chat-body" id="chat-body">
                 <div class="message incoming">
-                    <p>Hi there! How can we help you today?</p>
+                    <p>Connection established. How can we assist your operations today?</p>
                 </div>
             </div>
             <div class="chat-footer">
-                <input type="text" placeholder="Type your message..." id="chat-input">
-                <button id="chat-send" aria-label="Send message"><i class="fas fa-paper-plane"></i></button>
+                <input type="text" placeholder="Type query..." id="chat-input">
+                <button id="chat-send"><i class="fas fa-paper-plane"></i></button>
             </div>
         </div>
     </div>
 
+    <!-- Scripts -->
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    <script src="js/main.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.8.0/vanilla-tilt.min.js"></script>
+    <script src="script.js"></script>
     
+    <!-- News Specific JS Logic (Sharing & URL Parameters) -->
     <script>
-      
+        // Share link via Toast Notification
         function sharePost(id, title) {
-          
             const baseUrl = window.location.origin + window.location.pathname;
             const shareUrl = `${baseUrl}?id=${id}`;
             
@@ -459,6 +418,7 @@
             });
         }
 
+        // Social Media Sharing
         function socialShare(platform, id) {
             const baseUrl = window.location.origin + window.location.pathname;
             const shareUrl = encodeURIComponent(`${baseUrl}?id=${id}`);
@@ -473,6 +433,7 @@
             window.open(url, '_blank', 'width=600,height=400');
         }
 
+        // Auto-scroll and Highlight based on URL parameters
         document.addEventListener('DOMContentLoaded', () => {
             const urlParams = new URLSearchParams(window.location.search);
             const postId = urlParams.get('id');
