@@ -180,45 +180,8 @@
         </main>
     </div>
 
-    <script>
-        document.addEventListener("DOMContentLoaded", function() {
-            const isLoggedIn = sessionStorage.getItem('isLoggedIn');
-            if (isLoggedIn !== 'true') {
-                window.location.href = '../portal.html';
-                return;
-            }
-
-            const rawData = sessionStorage.getItem('userData');
-            const userEmail = sessionStorage.getItem('username');
-            
-            if (rawData) {
-                const userData = JSON.parse(rawData);
-                
-                document.getElementById('merchantName').innerHTML = `<span class="highlight">${userData.name}</span>`;
-                
-                document.getElementById('merchantMeta').innerHTML = `
-                    <i class="fas fa-user-tag"></i> Account Type: <span>${userData.role}</span> | 
-                    <i class="fas fa-briefcase"></i> Sector: <span>${userData.sector}</span> | 
-                    <i class="fas fa-envelope"></i> ${userEmail}
-                `;
-            } else {
-                document.getElementById('merchantName').innerHTML = `<span class="highlight">Trader Portal</span>`;
-            }
-
-            document.getElementById('btnLogout').addEventListener('click', function(e) {
-                e.preventDefault();
-                sessionStorage.clear();
-                window.location.href = '../portal.html';
-            });
-            
-            const navItems = document.querySelectorAll('.nav-item:not(.logout)');
-            navItems.forEach(item => {
-                item.addEventListener('click', function() {
-                    navItems.forEach(i => i.classList.remove('active'));
-                    this.classList.add('active');
-                });
-            });
-        });
-    </script>
+    <script src="js/main.js"></script>
+    <script src="dashboard.js"></script>
+        
 </body>
 </html>
