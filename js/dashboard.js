@@ -6,7 +6,7 @@
 document.addEventListener('DOMContentLoaded', () => {
     let dashboardData = null;
 
-    const DATA_URL = 'dashboard-data.json'; 
+    const DATA_URL = 'data/dashboard.json'; 
 
     async function loadDashboardContent() {
         try {
