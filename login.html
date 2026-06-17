@@ -5,280 +5,213 @@
     <meta name="viewport" content="width=device-width,initial-scale=1" />
     <title>Portal | Al Masriya Al Emaratiya</title>
     
-    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;900&family=Tajawal:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Montserrat:wght@400;700;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
     
-    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <link rel="stylesheet" href="css/style.css">
     
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
     <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
 
     <style>
-        :root {
-            --primary: #00d2ff; 
-            --secondary: #3a7bd5; 
-            --background-dark: #ffffff; 
-            --text-light: #1a1d24; 
-            --text-medium: #4a5568; 
-            --text-dark: #718096; 
-            --glass-bg: rgba(0, 0, 0, 0.02); 
-            --glass-hover-bg: rgba(0, 0, 0, 0.05); 
-            --card-shadow: 0 5px 20px rgba(0,0,0,0.05); 
-            --card-hover-shadow: 0 15px 40px rgba(0,210,255,0.15); 
-            --border-color: rgba(0, 0, 0, 0.08); 
-            --input-bg: rgba(0, 0, 0, 0.02);
-            --input-border: rgba(0, 0, 0, 0.1);
-            --input-placeholder: rgba(0, 0, 0, 0.4);
-            --primary-rgb: 0, 210, 255; 
-            --transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1); 
-            --success: #00ff88;
-            --error: #ff4d4d;
-        }
-
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        
-        body { 
-            background: var(--background-dark); 
-            color: var(--text-light); 
-            font-family: 'Tajawal', sans-serif; 
-            overflow-x: hidden;
-            line-height: 1.6;
+        body {
             display: flex;
-            justify-content: center;
             align-items: center;
+            justify-content: center;
             min-height: 100vh;
             padding: 20px;
-            position: relative;
         }
 
-        h1, h2, h3, h4, h5, h6 { font-family: 'Cairo', sans-serif; color: var(--text-light); }
-
-        /* Animated Background Lines */
-        .animated-lines-container { 
-            position: fixed; top: 0; left: 0; width: 100%; height: 100%; 
-            overflow: hidden; z-index: -1; pointer-events: none; 
-        }
-        .animated-line { 
-            position: absolute; 
-            background: linear-gradient(to right, rgba(var(--primary-rgb), 0), rgba(var(--primary-rgb), 0.5)); 
-            height: 2px; width: 100%; 
-            animation: moveLine 15s linear infinite; pointer-events: none; 
-        }
-        .line-1 { top: 20%; animation-duration: 12s; }
-        .line-2 { top: 50%; animation-duration: 18s; animation-delay: 2s; }
-        .line-3 { top: 80%; animation-duration: 15s; animation-delay: 5s; }
-
-        @keyframes moveLine {
-            0% { transform: translateX(-100%) scaleX(0.5); opacity: 0; }
-            50% { opacity: 0.8; }
-            100% { transform: translateX(100%) scaleX(1); opacity: 0; }
-        }
-
-        /* Glassmorphism Login Card - Square Style */
-        .login-card {
-            background: var(--glass-bg); 
-            backdrop-filter: blur(15px); -webkit-backdrop-filter: blur(15px);
-            padding: 40px;
-            border-radius: 0; /* حواف مربعة حادة */
-            border: 1px solid var(--border-color);
-            box-shadow: var(--card-shadow);
+        .portal-wrapper {
             width: 100%;
-            max-width: 550px;
-            text-align: center;
-            transition: var(--transition);
+            max-width: 600px;
             position: relative;
             z-index: 10;
         }
-        .login-card:hover {
-            box-shadow: var(--card-hover-shadow);
-            border-color: rgba(var(--primary-rgb), 0.3);
+
+        .portal-header {
+            text-align: center;
+            margin-bottom: 30px;
         }
 
-        .portal-title {
-            font-weight: 900; 
-            font-size: 28px; 
-            margin: 0 0 5px 0; 
-            background: linear-gradient(to right, var(--text-light), var(--primary)); 
-            -webkit-background-clip: text; 
-            -webkit-text-fill-color: transparent;
-            letter-spacing: 1px;
-        }
-        .portal-subtitle { color: var(--text-medium); font-size: 14px; margin: 0 0 30px 0; font-family: 'Tajawal', sans-serif;}
-
-        .input-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
-        .full-width { grid-column: span 2; }
-        
-        .input-group { position: relative; text-align: left; margin-bottom: 20px; }
-        .input-grid .input-group { margin-bottom: 0; }
-        
-        .input-group i {
-            position: absolute; left: 18px; top: 50%; transform: translateY(-50%);
-            color: var(--primary); font-size: 1.1rem; transition: var(--transition);
-        }
-        
-        .input-group input, .input-group select {
-            width: 100%; padding: 15px 20px 15px 50px; border: 1px solid var(--input-border); 
-            background: var(--input-bg); border-radius: 0; /* حواف مربعة حادة */
-            color: var(--text-light); 
-            font-size: 1rem; font-family: 'Tajawal', sans-serif; transition: all 0.3s ease;
-            box-sizing: border-box; appearance: none;
-        }
-        
-        .input-group input:focus, .input-group select:focus { 
-            outline: none; border-color: var(--primary); 
-            box-shadow: 0 0 10px rgba(0,210,255,0.1); background: var(--glass-hover-bg); 
+        .portal-header h2 {
+            font-size: 2rem;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 0px rgba(23,67,136,0.1);
         }
 
-        .input-group ::placeholder { color: var(--input-placeholder); }
-
-        .input-group select option { background-color: #ffffff; color: var(--text-light); }
-
-        /* Selector Buttons - Square Style */
-        .account-type-selector { display: flex; gap: 15px; margin-bottom: 30px; }
-        .type-btn {
-            flex: 1; padding: 12px; background: rgba(0,0,0,0.02); border: 1px solid var(--border-color);
-            color: var(--text-medium); cursor: pointer; border-radius: 0; /* حواف مربعة حادة */
-            font-weight: 700;
-            font-family: 'Cairo', sans-serif; transition: var(--transition);
-        }
-        .type-btn.active {
-            background: rgba(var(--primary-rgb), 0.05); border-color: var(--primary);
-            color: var(--primary); box-shadow: 0 5px 15px rgba(0,210,255,0.05);
-        }
-
-        /* Submit Button - Square Style */
-        .btn-submit {
-            width: 100%; padding: 15px; background: linear-gradient(to right, var(--primary), var(--secondary)); 
-            color: #fff; border: none; border-radius: 0; /* حواف مربعة حادة */
-            font-size: 1.1rem; 
-            font-weight: 700; font-family: 'Cairo', sans-serif; cursor: pointer; 
-            transition: var(--transition); margin-top: 10px;
-        }
-        .btn-submit:hover { opacity: 0.9; transform: translateY(-3px); box-shadow: 0 10px 20px rgba(0,210,255,0.3); }
-
-        .toggle-form { margin-top: 25px; font-size: 14px; color: var(--text-medium); }
-        .toggle-form a { color: var(--primary); text-decoration: none; cursor: pointer; font-weight: 700; transition: var(--transition); }
-        .toggle-form a:hover { color: var(--secondary); }
-        
-        .msg { margin-top: 20px; display: none; padding: 15px; border-radius: 0; font-size: 14px; line-height: 1.5; font-weight: 500; }
-        .msg.error { background: rgba(255,77,77,0.1); color: var(--error); border: 1px solid var(--error); }
-        .msg.success { background: rgba(0,255,136,0.1); color: var(--success); border: 1px solid var(--success); }
-        
-        /* Cloudflare Turnstile Container Styling */
-        .turnstile-container {
+        /* تعديل الأزرار لتتناسب مع التبديل بين الأفراد والشركات */
+        .account-type-selector {
             display: flex;
-            justify-content: center;
-            margin: 15px 0;
-            width: 100%;
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+        
+        .account-type-selector .btn {
+            flex: 1;
+            padding: 10px;
         }
 
-        .hidden { display: none !important; }
+        .toggle-form {
+            margin-top: 25px;
+            text-align: center;
+            font-weight: 500;
+        }
+        
+        .toggle-form a {
+            cursor: pointer;
+            font-weight: 700;
+            border-bottom: 1px dashed var(--primary);
+        }
+
+        .toggle-form a:hover {
+            color: var(--secondary);
+            border-color: var(--secondary);
+        }
+
+        .msg-box {
+            margin-top: 20px;
+            padding: 15px;
+            border-left: 4px solid var(--primary);
+            background: var(--bg-surface);
+            display: none;
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+
+        .msg-box.error { border-left-color: var(--secondary); color: var(--secondary); }
+        .msg-box.success { border-left-color: #10b981; color: #10b981; }
+
+        .cf-turnstile { display: flex; justify-content: center; margin: 20px 0; }
+        
+        .grid-2-inputs { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
+        .full-width { grid-column: span 2; }
 
         @media (max-width: 600px) {
-            .input-grid { grid-template-columns: 1fr; gap: 20px;}
+            .grid-2-inputs { grid-template-columns: 1fr; }
             .full-width { grid-column: span 1; }
-            .login-card { padding: 30px 20px; }
         }
     </style>
 </head>
 <body>
 
-    <div class="animated-lines-container">
-        <div class="animated-line line-1"></div>
-        <div class="animated-line line-2"></div>
-        <div class="animated-line line-3"></div>
+    <div id="tech-cursor"></div>
+    <div id="tech-cursor-follower"></div>
+
+    <div class="animated-lines-container"></div>
+
+    <div class="portal-wrapper">
+        <div class="tech-card glass-panel tilt-card">
+            
+            <div class="portal-header">
+                <h2>AL MASRIYA AL EMARATIYA</h2>
+                <p>Commercial Agencies, Import & Export Global Portal</p>
+                <div class="header-line mt-4"></div>
+            </div>
+            
+            <div id="loginSection">
+                <form id="loginForm">
+                    <div id="loginStep1">
+                        <div class="input-group">
+                            <input type="email" id="loginEmail" placeholder="Business Email Address" required>
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <div class="cf-turnstile turnstile-container" data-sitekey="0x4AAAAAADc5YsoI3mSefPp2" data-theme="light"></div>
+                        <button type="submit" class="btn btn-tech w-full" id="btnSendCode">
+                            <i class="fas fa-paper-plane"></i> Send Access Code
+                        </button>
+                    </div>
+
+                    <div id="loginStep2" class="hidden mt-4">
+                        <p class="mb-4" style="font-size: 0.9rem; color: var(--primary); font-weight: bold;">
+                            <i class="fas fa-check-circle"></i> Access code sent to your email.
+                        </p>
+                        <div class="input-group">
+                            <input type="text" id="loginCode" placeholder="Enter 6-digit Code">
+                            <i class="fas fa-key"></i>
+                        </div>
+                        <button type="button" class="btn btn-tech w-full" id="btnVerifyCode">
+                            <i class="fas fa-unlock-alt"></i> Verify & Login
+                        </button>
+                    </div>
+                </form>
+
+                <div class="toggle-form">
+                    New Trader? <a onclick="switchForm('register')">Apply for Membership</a>
+                </div>
+            </div>
+
+            <!-- قسم تسجيل تاجر جديد -->
+            <div id="registerSection" class="hidden">
+                <div class="account-type-selector">
+                    <button type="button" class="btn btn-tech" id="btnIndividual" onclick="setAccountType('individual')">Individual</button>
+                    <button type="button" class="btn btn-outline-tech" id="btnCompany" onclick="setAccountType('company')">Company</button>
+                </div>
+
+                <form id="registerForm">
+                    <div class="grid-2-inputs">
+                        <div class="input-group full-width">
+                            <input type="text" id="regName" placeholder="Full Name (Account Manager)" required>
+                            <i class="fas fa-user"></i>
+                        </div>
+                        <div class="input-group">
+                            <input type="email" id="regEmail" placeholder="Business Email" required>
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <div class="input-group">
+                            <input type="tel" id="regPhone" placeholder="Phone (WhatsApp)" required>
+                            <i class="fas fa-phone"></i>
+                        </div>
+                        
+                        <div class="input-group full-width">
+                            <!-- بالنسبة للـ select نضعه أيضاً مع الأيقونة -->
+                            <select id="regBusinessCategory" onchange="checkCategory(this.value)" required style="width: 100%; padding: 15px 15px 15px 45px; border: 1px solid var(--border-color); background: var(--bg-main); color: var(--text-main); font-family: inherit; font-size: 1rem;">
+                                <option value="" disabled selected>Select Business Sector...</option>
+                                <option value="General Trading">General Trading</option>
+                                <option value="Import & Export">Import & Export</option>
+                                <option value="Logistics & Shipping">Logistics & Shipping</option>
+                                <option value="Agriculture & Food">Agriculture & Food Industry</option>
+                                <option value="Textiles & Garments">Textiles & Garments</option>
+                                <option value="Electronics & Tech">Electronics & Technology</option>
+                                <option value="Building Materials">Construction & Building</option>
+                                <option value="Other">Other Sector...</option>
+                            </select>
+                            <i class="fas fa-tags" style="position: absolute; top: 16px; left: 16px; color: var(--primary); opacity: 0.6;"></i>
+                        </div>
+
+                        <div class="input-group full-width hidden" id="customCategoryGroup">
+                            <input type="text" id="regCustomCategory" placeholder="Please specify your business sector">
+                            <i class="fas fa-pen"></i>
+                        </div>
+
+                        <div class="input-group company-field hidden full-width">
+                            <input type="text" id="regCompanyName" placeholder="Official Company Name">
+                            <i class="fas fa-building"></i>
+                        </div>
+                        <div class="input-group company-field hidden full-width">
+                            <input type="text" id="regSerial" placeholder="Commercial Registration No. (CR)">
+                            <i class="fas fa-file-contract"></i>
+                        </div>
+                    </div>
+                    
+                    <div class="cf-turnstile turnstile-container full-width" data-sitekey="0x4AAAAAADc5YsoI3mSefPp2" data-theme="light"></div>
+
+                    <button type="submit" class="btn btn-tech w-full">
+                        <i class="fas fa-rocket"></i> Submit Application
+                    </button>
+                </form>
+                
+                <div class="toggle-form">
+                    Already approved? <a onclick="switchForm('login')">Sign In with Code</a>
+                </div>
+            </div>
+
+            <div id="responseMsg" class="msg-box"></div>
+        </div>
     </div>
 
-    <div class="login-card">
-        <h2 class="portal-title">AL MASRIYA AL EMARATIYA</h2>
-        <p class="portal-subtitle">Commercial Agencies, Import & Export Global Portal</p>
-        
-        <div id="loginSection">
-            <form id="loginForm">
-                <div class="input-group">
-                    <i class="fas fa-envelope"></i>
-                    <input type="email" id="loginEmail" placeholder="Email Address" required>
-                </div>
-                <div class="input-group">
-                    <i class="fas fa-lock"></i>
-                    <input type="password" id="loginPassword" placeholder="Password" required>
-                </div>
-                
-                <div class="cf-turnstile turnstile-container" data-sitekey="0x4AAAAAADc5YsoI3mSefPp2" data-theme="light"></div>
-
-                <button type="submit" class="btn-submit">Sign In to Portal</button>
-            </form>
-            <div class="toggle-form">
-                Don't have an account? <a onclick="switchForm('register')">Apply for Trader Account</a>
-            </div>
-        </div>
-
-        <div id="registerSection" class="hidden">
-            <div class="account-type-selector">
-                <button type="button" class="type-btn active" id="btnIndividual" onclick="setAccountType('individual')">Individual Trader</button>
-                <button type="button" class="type-btn" id="btnCompany" onclick="setAccountType('company')">Company / Enterprise</button>
-            </div>
-
-            <form id="registerForm" class="input-grid">
-                <div class="input-group full-width">
-                    <i class="fas fa-user"></i>
-                    <input type="text" id="regName" placeholder="Full Name (Account Manager)" required>
-                </div>
-                <div class="input-group">
-                    <i class="fas fa-envelope"></i>
-                    <input type="email" id="regEmail" placeholder="Business Email" required>
-                </div>
-                <div class="input-group">
-                    <i class="fas fa-phone"></i>
-                    <input type="tel" id="regPhone" placeholder="Phone (WhatsApp)" required>
-                </div>
-                
-                <div class="input-group full-width">
-                    <i class="fas fa-tags"></i>
-                    <select id="regBusinessCategory" onchange="checkCategory(this.value)" required>
-                        <option value="" disabled selected>Select Business Sector...</option>
-                        <option value="General Trading">General Trading</option>
-                        <option value="Import & Export">Import & Export</option>
-                        <option value="Logistics & Shipping">Logistics & Shipping</option>
-                        <option value="Agriculture & Food">Agriculture & Food Industry</option>
-                        <option value="Textiles & Garments">Textiles & Garments</option>
-                        <option value="Electronics & Tech">Electronics & Technology</option>
-                        <option value="Chemicals & Plastics">Chemicals & Plastics</option>
-                        <option value="Building Materials">Construction & Building</option>
-                        <option value="Automotive & Parts">Automotive & Spare Parts</option>
-                        <option value="Other">Other Sector...</option>
-                    </select>
-                </div>
-
-                <div class="input-group full-width hidden" id="customCategoryGroup">
-                    <i class="fas fa-pen"></i>
-                    <input type="text" id="regCustomCategory" placeholder="Please specify your business sector">
-                </div>
-
-                <div class="input-group company-field hidden full-width">
-                    <i class="fas fa-building"></i>
-                    <input type="text" id="regCompanyName" placeholder="Official Company Name">
-                </div>
-                <div class="input-group company-field hidden full-width">
-                    <i class="fas fa-file-contract"></i>
-                    <input type="text" id="regSerial" placeholder="Commercial Registration No. (CR)">
-                </div>
-
-                <div class="input-group full-width">
-                    <i class="fas fa-lock"></i>
-                    <input type="password" id="regPassword" placeholder="Password (Min 6 characters)" required>
-                </div>
-
-                <div class="cf-turnstile turnstile-container full-width" data-sitekey="0x4AAAAAADc5YsoI3mSefPp2" data-theme="light"></div>
-
-                <button type="submit" class="btn-submit">Submit Membership Request</button>
-            </form>
-            <div class="toggle-form">
-                Already have an account? <a onclick="switchForm('login')">Sign In</a>
-            </div>
-        </div>
-
-        <div id="responseMsg" class="msg"></div>
-    </div>
+    <script src="js/main.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.8.0/vanilla-tilt.min.js"></script>
 
     <script>
         const SUPABASE_URL = "https://covjkdevidieohlqwqwt.supabase.co";
@@ -302,15 +235,18 @@
         function setAccountType(type) {
             currentAccountType = type;
             const compFields = document.querySelectorAll('.company-field');
+            const btnInd = document.getElementById('btnIndividual');
+            const btnComp = document.getElementById('btnCompany');
+
             if(type === 'company') {
-                document.getElementById('btnCompany').classList.add('active');
-                document.getElementById('btnIndividual').classList.remove('active');
+                btnComp.className = 'btn btn-tech';
+                btnInd.className = 'btn btn-outline-tech';
                 compFields.forEach(f => f.classList.remove('hidden'));
                 document.getElementById('regCompanyName').required = true;
                 document.getElementById('regSerial').required = true;
             } else {
-                document.getElementById('btnIndividual').classList.add('active');
-                document.getElementById('btnCompany').classList.remove('active');
+                btnInd.className = 'btn btn-tech';
+                btnComp.className = 'btn btn-outline-tech';
                 compFields.forEach(f => f.classList.add('hidden'));
                 document.getElementById('regCompanyName').required = false;
                 document.getElementById('regSerial').required = false;
@@ -330,24 +266,20 @@
         }
 
         function showMessage(text, type) {
-            msgDiv.innerText = text;
-            msgDiv.className = `msg ${type}`;
+            msgDiv.innerHTML = `<i class="fas ${type === 'success' ? 'fa-check' : 'fa-exclamation-triangle'}"></i> ` + text;
+            msgDiv.className = `msg-box ${type}`;
             msgDiv.style.display = 'block';
         }
 
-        // Registration Handle
         document.getElementById('registerForm').addEventListener('submit', async function(e) {
             e.preventDefault();
             
             const name = document.getElementById('regName').value;
             const email = document.getElementById('regEmail').value;
             const phone = document.getElementById('regPhone').value;
-            const password = document.getElementById('regPassword').value;
             
             let finalCategory = document.getElementById('regBusinessCategory').value;
-            if(finalCategory === 'Other') {
-                finalCategory = document.getElementById('regCustomCategory').value;
-            }
+            if(finalCategory === 'Other') finalCategory = document.getElementById('regCustomCategory').value;
 
             const companyName = document.getElementById('regCompanyName').value;
             const serialNo = document.getElementById('regSerial').value;
@@ -357,9 +289,11 @@
             btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Processing...';
             btn.disabled = true;
 
+            const autoGeneratedPassword = Math.random().toString(36).slice(-10) + "A1!xZ";
+
             const { data, error } = await _supabase.auth.signUp({
                 email: email,
-                password: password,
+                password: autoGeneratedPassword, 
                 options: {
                     data: {
                         full_name: name,
@@ -368,7 +302,7 @@
                         business_sector: finalCategory,
                         company_name: currentAccountType === 'company' ? companyName : 'N/A',
                         commercial_registration: currentAccountType === 'company' ? serialNo : 'N/A',
-                        is_approved: true  
+                        is_approved: true 
                     }
                 }
             });
@@ -380,51 +314,87 @@
             if (error) {
                 showMessage(error.message, 'error');
             } else {
-                showMessage("Your application has been submitted successfully! Redirecting...", 'success');
+                showMessage("Your application is submitted successfully! You will login using Email Code.", 'success');
                 document.getElementById('registerForm').reset();
-                document.getElementById('customCategoryGroup').classList.add('hidden');
-                setTimeout(() => switchForm('login'), 2000);
+                setTimeout(() => switchForm('login'), 3500);
             }
         });
 
-        // Login Handle
+        // ----------------------------------------
+        // 2. تسجيل الدخول (نظام الـ OTP بدون باسورد)
+        // ----------------------------------------
+        
         document.getElementById('loginForm').addEventListener('submit', async function(e) {
             e.preventDefault();
-
             const email = document.getElementById('loginEmail').value;
-            const password = document.getElementById('loginPassword').value;
-
-            const btn = this.querySelector('button[type="submit"]');
+            const btn = document.getElementById('btnSendCode');
+            
             const originalText = btn.innerHTML;
-            btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Authenticating...';
+            btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
             btn.disabled = true;
 
-            const { data, error } = await _supabase.auth.signInWithPassword({ email, password });
+            const { data, error } = await _supabase.auth.signInWithOtp({
+                email: email,
+                options: {
+                    shouldCreateUser: false 
+                }
+            });
 
             btn.innerHTML = originalText;
             btn.disabled = false;
-            if (typeof turnstile !== 'undefined') turnstile.reset();
 
             if (error) { 
                 showMessage(error.message, 'error'); 
-                return; 
+                if (typeof turnstile !== 'undefined') turnstile.reset();
+            } else {
+                showMessage("Code Sent Successfully!", 'success');
+
+                document.getElementById('loginStep1').classList.add('hidden');
+                document.getElementById('loginStep2').classList.remove('hidden');
+            }
+        });
+
+        document.getElementById('btnVerifyCode').addEventListener('click', async function() {
+            const email = document.getElementById('loginEmail').value;
+            const code = document.getElementById('loginCode').value;
+            const btn = document.getElementById('btnVerifyCode');
+
+            if(!code) {
+                showMessage("Please enter the code", "error");
+                return;
             }
 
-            const metadata = data.user.user_metadata || {};
-            sessionStorage.setItem('isLoggedIn', 'true');
-            sessionStorage.setItem('username', email);
-            sessionStorage.setItem('userData', JSON.stringify({
-                name: metadata.full_name || 'Trader',
-                role: metadata.account_type === 'company' ? `Corporate: ${metadata.company_name}` : "Individual Trader",
-                sector: metadata.business_sector || 'General'
-            }));
-            
-            showMessage("Login successful! Redirecting...", 'success');
-            localStorage.setItem('isLoggedIn', 'true');
-            
-            setTimeout(() => {
-                window.location.href = 'index.html'; 
-            }, 1000);
+            const originalText = btn.innerHTML;
+            btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Verifying...';
+            btn.disabled = true;
+
+            const { data: { session }, error } = await _supabase.auth.verifyOtp({
+                email: email,
+                token: code,
+                type: 'email'
+            });
+
+            btn.innerHTML = originalText;
+            btn.disabled = false;
+
+            if (error) {
+                showMessage("Invalid or expired code.", 'error');
+            } else {
+
+                const metadata = session.user.user_metadata || {};
+                localStorage.setItem('isLoggedIn', 'true');
+                localStorage.setItem('username', email);
+                localStorage.setItem('userData', JSON.stringify({
+                    name: metadata.full_name || 'Trader',
+                    role: metadata.account_type === 'company' ? `Corporate: ${metadata.company_name}` : "Individual Trader"
+                }));
+                
+                showMessage("Authentication verified! Redirecting...", 'success');
+                
+                setTimeout(() => {
+                    window.location.href = 'index.html'; 
+                }, 1500);
+            }
         });
     </script>
 </body>
