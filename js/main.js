@@ -167,29 +167,46 @@ document.addEventListener('DOMContentLoaded', () => {
     const chatToggle = qs('#chat-toggle'), chatBox = qs('#chat-box'), chatClose = qs('#chat-close');
     const chatInput = qs('#chat-input'), chatSend = qs('#chat-send'), chatBody = qs('#chat-body');
     
+    const lang = document.documentElement.lang || 'en';
+    const basePath = (lang === 'ar') ? 'ar/data/' : 'data/';
+    let knowledgeBase = {};
+
+    async function initChat() {
+        try {
+            const files = ['support.json', 'products.json'];
+            const promises = files.map(file => fetch(basePath + file).then(res => res.json()));
+            const results = await Promise.all(promises);
+            knowledgeBase = Object.assign({}, ...results);
+        } catch (e) { console.error("Error loading Chat JSON:", e); }
+    }
+
+    function addMessage(text, type) {
+        const div = document.createElement('div');
+        div.className = `message ${type}`;
+        div.innerHTML = `<p>${text}</p>`;
+        chatBody.appendChild(div);
+        chatBody.scrollTop = chatBody.scrollHeight;
+    }
+
     if (chatToggle) chatToggle.addEventListener('click', () => chatBox.classList.add('active'));
     if (chatClose) chatClose.addEventListener('click', () => chatBox.classList.remove('active'));
     
-    const sendMsg = () => {
+    chatSend.addEventListener('click', () => {
         const text = chatInput.value.trim();
-        if (text) {
-            chatBody.innerHTML += `<div class="message outgoing"><p>${text}</p></div>`;
-            chatInput.value = '';
-            chatBody.scrollTop = chatBody.scrollHeight;
-            
-            // AI Simulation Response
-            setTimeout(() => {
-                chatBody.innerHTML += `<div class="message incoming"><p>Data received securely. A specialist will sync with you shortly.</p></div>`;
-                chatBody.scrollTop = chatBody.scrollHeight;
-            }, 1000);
-        }
-    };
-    if (chatSend) chatSend.addEventListener('click', sendMsg);
-    if (chatInput) chatInput.addEventListener('keypress', (e) => { if(e.key === 'Enter') sendMsg(); });
+        if (!text) return;
+        
+        addMessage(text, 'outgoing');
+        chatInput.value = '';
 
-    // Dynamic Year Update
-    const yearSpan = qs('#current-year');
-    if (yearSpan) yearSpan.textContent = new Date().getFullYear();
+        // البحث في ملفات JSON
+        const response = knowledgeBase[text] || (lang === 'ar' ? "عذراً، لم أفهم." : "Sorry, I didn't understand.");
+        setTimeout(() => addMessage(response, 'incoming'), 500);
+    });
+
+    initChat();
+
+
+});
 
     // --- 9. Libraries Initialization ---
     if (typeof AOS !== 'undefined') {
@@ -212,50 +229,4 @@ document.addEventListener('DOMContentLoaded', () => {
             "max-glare": 0.2
         });
     }
-});
-// bot
-document.addEventListener('DOMContentLoaded', () => {
-    const chatInput = document.getElementById('chat-input');
-    const chatSend = document.getElementById('chat-send');
-    const chatBody = document.getElementById('chat-body');
-    
-    const lang = document.documentElement.lang || 'en';
-    
-    const basePath = (lang === 'ar') ? 'ar/data/' : 'data/';
-    
-    let knowledgeBase = {};
-
-    async function initChat() {
-        try {
-            const files = ['support.json', 'products.json'];
-            const promises = files.map(file => fetch(basePath + file).then(res => res.json()));
-            const results = await Promise.all(promises);
-            knowledgeBase = Object.assign({}, ...results);
-            console.log("تم تحميل البيانات بنجاح من مسار:", basePath);
-        } catch (e) {
-            console.error("خطأ في تحميل ملفات JSON:", e);
-        }
-    }
-
-    function addMessage(text, type) {
-        const div = document.createElement('div');
-        div.className = `message ${type}`;
-        div.innerHTML = `<p>${text}</p>`;
-        chatBody.appendChild(div);
-        chatBody.scrollTop = chatBody.scrollHeight;
-    }
-
-    chatSend.addEventListener('click', () => {
-        const text = chatInput.value.trim();
-        if (!text) return;
-        
-        addMessage(text, 'outgoing');
-        chatInput.value = '';
-
-        const response = knowledgeBase[text] || (lang === 'ar' ? "عذراً، لم أفهم." : "Sorry, I didn't understand.");
-        
-        setTimeout(() => addMessage(response, 'incoming'), 500);
-    });
-
-    initChat();
 });
