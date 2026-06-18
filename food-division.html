@@ -51,53 +51,67 @@
     <div class="animated-lines-container"></div>
 
     <!-- Header & Navigation -->
-    <header id="header" class="tech-header">
+     <header class="tech-header" id="header">
         <div class="container header-container">
-            <a href="index.html" class="logo">
-                <h2 style="margin: 0; font-size: 1.5rem; color: var(--text-main);">AL MASRIYA <span class="text-red">AL EMARATIYA.</span></h2>
-            </a>
+            <div class="logo">
+                <a href="index.html">
+                    <img src="Al_Masriya_Al_Emaratiya_icon.png" class="brand-logo" onerror="this.onerror=null; this.src='https://via.placeholder.com/200x60/174388/ffffff?text=LOGO+HERE';">
+                </a>
+            </div>
+            
             <nav class="desktop-nav">
                 <ul class="nav-links">
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="index.html#services">Services</a></li>
-                    <li><a href="sectors.html" class="active">Our Sectors</a></li>
-                    <li><a href="index.html#systems">Our Systems</a></li>
-                    <li><a href="#contact">Contact</a></li>
+                    <li><a href="#home" class="active">Home</a></li>
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="#about">About Us</a></li>
+                    <li><a href="news.html">News</a></li>
+                    <li><a href="#systems">Our Systems</a></li>
+                    <li><a href="#contact">Contact Us</a></li>
                 </ul>
             </nav>
+            
             <div class="header-actions">
                 <a href="login.html" class="btn btn-outline-tech" id="desktop-login-btn">
-                    <i class="fas fa-user-circle"></i> Login
+                    <i class="fas fa-fingerprint"></i> <span class="login-text">Login</span>
                 </a>
+
                 <div class="user-profile hidden" id="desktop-user-profile">
                     <div class="profile-trigger" id="profile-trigger">
-                        <i class="fas fa-user-circle"></i>
-                        <span>Account</span>
-                        <i class="fas fa-chevron-down"></i>
+                        <div class="avatar-glow"><i class="fas fa-user-astronaut"></i></div>
+                        <span class="user-name">My Account</span>
+                        <i class="fas fa-chevron-down arrow-icon"></i>
                     </div>
-                    <ul class="tech-dropdown">
+                    <ul class="profile-dropdown tech-dropdown">
                         <li><a href="portal.html"><i class="fas fa-laptop-file"></i> Portal</a></li>
-                        <li><a href="#" id="logout-btn"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
+                        <li><a href="settings.html"><i class="fas fa-cog"></i> Settings</a></li>
+                        <li><a href="#" id="logout-btn" class="text-red"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
                     </ul>
                 </div>
-                <div class="hamburger"><span></span><span></span><span></span></div>
+
+                <div class="hamburger">
+                    <span></span><span></span><span></span>
+                </div>
             </div>
         </div>
     </header>
 
     <!-- Mobile Menu -->
-    <nav class="mobile-nav">
-        <div class="mobile-links">
-            <a href="index.html">Home</a>
-            <a href="index.html#services">Services</a>
-            <a href="sectors.html" class="active">Our Sectors</a>
-            <a href="#contact">Contact</a>
-            <a href="login.html" class="btn btn-tech mt-4 w-full" id="mobile-login-item">Login</a>
-            <div class="hidden" id="mobile-profile-item">
-                <a href="portal.html">Portal</a>
-                <a href="#" id="mobile-logout-btn" class="text-red">Logout</a>
-            </div>
-        </div>
+    <nav class="mobile-nav glass-panel">
+        <ul class="mobile-links">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#services">Services</a></li>
+            <li><a href="#about">About Us</a></li>
+            <li><a href="news.html">News</a></li>
+            <li><a href="#systems">Our Systems</a></li>
+            <li><a href="#contact">Contact Us</a></li>
+            <li id="mobile-login-item">
+                <a href="login.html" class="btn btn-tech w-full mt-4"><i class="fas fa-sign-in-alt"></i> Login</a>
+            </li>
+            <li id="mobile-profile-item" class="hidden">
+                <a href="portal.html" class="btn btn-outline-tech w-full mt-4"><i class="fas fa-laptop-code"></i> My Portal</a>
+                <a href="#" id="mobile-logout-btn" class="btn btn-danger w-full mt-2"><i class="fas fa-power-off"></i> Logout</a>
+            </li>
+        </ul>
     </nav>
 
     <!-- Sector Hero Section -->
@@ -254,50 +268,86 @@
     </section>
 
     <!-- Footer -->
-    <footer class="tech-footer">
-        <div class="container grid grid-3">
-            <div>
-                <h3 style="color: var(--primary); margin-bottom: 15px;">AL MASRIYA <span class="text-red">AL EMARATIYA.</span></h3>
-                <p>Your Gateway to Growth in Egypt & UAE.</p>
-                <div class="social-links mt-4">
-                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
-                    <a href="#"><i class="fab fa-twitter"></i></a>
+  <footer class="tech-footer">
+        <div class="container">
+            <div class="grid grid-4 footer-wrapper">
+                
+                <div class="footer-logo">
+                    <img src="Al_Masriya_Al_Emaratiya_icon.png" alt="Al Massriya Al Emaratiya Logo" class="brand-logo" onerror="this.onerror=null; this.src='https://via.placeholder.com/200x60/174388/ffffff?text=LOGO+HERE';">
+                    <p class="mt-4">Your Tech Gateway to Growth in Egypt & UAE.</p>
+                    <div class="social-links mt-4">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
                 </div>
+
+                <div class="footer-links">
+                    <h4>Index Directory</h4>
+                    <ul>
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#services">Services</a></li>
+                        <li><a href="#about">About Us</a></li>
+                        <li><a href="news.html">News</a></li>
+                        <li><a href="#contact">Contact Us</a></li>
+                        <li><a href="careers.html">Careers</a></li>
+                        <li><a href="sectors.html">Our Sectors</a></li>
+                    </ul>
+                </div>
+
+                
+                <div class="footer-divisions">
+                    <h4>Our Divisions</h4>
+                    <ul>
+                        <li><a href="food-division.html">Food Division</a></li>
+                        <li><a href="hotel-supplies.html">Hotel Supplies</a></li>
+                        <li><a href="chemicals-cosmetics.html">Chemicals & Cosmetics</a></li>
+                        <li><a href="ose-procurement.html">OS&E Procurement</a></li>
+                        <li><a href="office-furniture.html">Office Furniture</a></li>
+                        <li><a href="banquet-furniture.html">Banquet Furniture</a></li>
+                        <li><a href="metal-beds-lockers.html">Metal Beds & Lockers</a></li>
+                        <li><a href="staff-furniture.html">Staff Furniture</a></li>
+                        <li><a href="staff-sofa-sets.html">Staff Sofa Sets & Accessories</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-language custom-dropdown">
+                    <h4>Language Protocol</h4>
+                    <div class="dropdown-trigger" id="lang-trigger">
+                        <span><i class="fas fa-globe"></i> English</span>
+                        <i class="fas fa-chevron-down arrow-icon"></i>
+                    </div>
+                    <ul class="dropdown-menu tech-dropdown" id="lang-menu">
+                        <li><a href="index.html" class="active-lang">English</a></li>
+                        <li><a href="ar/home.html">العربية</a></li>
+                        <li><a href="home-cn.html">中文</a></li>
+                    </ul>
+                </div>
+
             </div>
-            <div class="footer-links">
-                <h4>Quick Links</h4>
-                <ul>
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="index.html#sectors">Our Sectors</a></li>
-                    <li><a href="portal.html">B2B Portal</a></li>
-                </ul>
-            </div>
-            <div>
-                <h4>Contact Us</h4>
-                <p>Cairo, Egypt<br>Dubai, UAE</p>
-                <p class="text-red mt-2 font-bold">info@almasriyaalemaratiya.com</p>
-            </div>
-        </div>
-        <div class="footer-bottom text-center">
-            <div class="container">
-                <p>© <span id="current-year"></span> Al Masriya Al Emaratiya. All rights reserved.</p>
+            <div class="footer-bottom text-center">
+                <p>© <span id="current-year"></span> Al Massriya Al Emaratiya. All Rights Reserved. System Version 2.0</p>
             </div>
         </div>
     </footer>
 
-    <!-- Chat Widget (Tech System) -->
-    <div class="chat-widget">
-        <button class="chat-btn" id="chat-toggle"><i class="fas fa-robot"></i></button>
-        <div class="chat-container" id="chat-box">
+    <!-- Chat Widget (Tech Headset Icon) -->
+    <div id="chat-widget" class="chat-widget">
+        <button class="chat-btn glow-effect" id="chat-toggle">
+            <i class="fas fa-headset"></i> 
+        </button>
+        <div class="chat-container glass-panel" id="chat-box">
             <div class="chat-header">
-                <h3>Food Trade AI Desk</h3>
-                <button class="chat-close" id="chat-close"><i class="fas fa-times"></i></button>
+                <h3><i class="fas fa-robot"></i> AI Support Node</h3>
+                <button class="chat-close" id="chat-close">&times;</button>
             </div>
             <div class="chat-body" id="chat-body">
-                <div class="message incoming"><p>System Ready. How can we support your trade operations today?</p></div>
+                <div class="message incoming">
+                    <p>Connection established. How can we assist your operations today?</p>
+                </div>
             </div>
             <div class="chat-footer">
-                <input type="text" id="chat-input" placeholder="Type data query...">
+                <input type="text" placeholder="Type query..." id="chat-input">
                 <button id="chat-send"><i class="fas fa-paper-plane"></i></button>
             </div>
         </div>
