@@ -18,10 +18,12 @@
   },
   {
     "id": 3,
-    "name": "Frozen Strawberry IQF",
-    "description": "Grade A individually quick-frozen strawberries perfect for industrial food processing, preserves, and retail.",
-    "category": "Frozen Foods",
-    "origin": "Egypt",
+    "name": "Cocoa Mass",
+    "description": "Cocoa mass the combination of cocoa butter with cocoa solids to form our standard ECM cocoa mass.",
+    "category": "Cocoa Mass",
+    "Types": "Natural Cocoa Mass. | Alkalized Cocoa Mass.",
+    "Applications": "Real & compound Chocolate, Confectionery, Spreads, Ice cream, Cookies and Pastries.",
+    "Packaging": "Available in cartons of 25 kg (Blocks and Flakes).",
     "image": "products/images/CocoaMass..jpeg"
   }
 ]
