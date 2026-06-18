@@ -5,7 +5,7 @@
     "description": "Any application using cocoa as a natural ingredient where a darker shade is desired. Cookies and industrial pastries.",
     "category": "Cocoa Products / Cocoa Powder",
     "origin": "Negreira",
-    "Packaging": "Available in 25kg bags.",
+    "packaging": "Available in 25kg bags.",
     "image": "products/images/BlackCocoaPowder.jpg"
   },
   {
@@ -21,9 +21,9 @@
     "name": "Cocoa Mass",
     "description": "Cocoa mass the combination of cocoa butter with cocoa solids to form our standard ECM cocoa mass.",
     "category": "Cocoa Mass",
-    "Types": "Natural Cocoa Mass. | Alkalized Cocoa Mass.",
-    "Applications": "Real & compound Chocolate, Confectionery, Spreads, Ice cream, Cookies and Pastries.",
-    "Packaging": "Available in cartons of 25 kg (Blocks and Flakes).",
+    "types": "Natural Cocoa Mass. | Alkalized Cocoa Mass.",
+    "applications": "Real & compound Chocolate, Confectionery, Spreads, Ice cream, Cookies and Pastries.",
+    "packaging": "Available in cartons of 25 kg (Blocks and Flakes).",
     "image": "products/images/CocoaMass..jpeg"
   }
 ]
