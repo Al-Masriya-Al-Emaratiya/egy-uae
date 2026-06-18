@@ -1,0 +1,35 @@
+[
+  {
+    "id": 1,
+    "name": "Refined Glycerin 99.5% USP",
+    "description": "High purity refined glycerin used extensively in cosmetics, food, and pharmaceutical applications. Colorless, odorless, and highly soluble.",
+    "category": "Cosmetic Ingredients",
+    "origin": "Imported",
+    "types": "USP Grade 99.5%",
+    "applications": "Skin care formulations, soaps, oral care, and pharmaceutical syrups.",
+    "packaging": "Available in 250kg HDPE drums or IBC tanks.",
+    "image": "products/images/refined-glycerin.jpg"
+  },
+  {
+    "id": 2,
+    "name": "SLES 70% (Sodium Laureth Sulfate)",
+    "description": "Anionic surfactant widely used in rinse-off products. Offers excellent detergency, emulsification, and foamability.",
+    "category": "Industrial Chemicals",
+    "origin": "Imported",
+    "types": "Active Matter 70%",
+    "applications": "Shampoos, dishwashing liquids, liquid soaps, and heavy-duty detergents.",
+    "packaging": "Available in 170kg plastic drums.",
+    "image": "products/images/sles-70.jpg"
+  },
+  {
+    "id": 3,
+    "name": "Organic Argan Hair Serum",
+    "description": "Finished retail-ready hair serum enriched with 100% pure organic Moroccan Argan oil. Formulated to reduce frizz and add radiant shine.",
+    "category": "Finished Cosmetics",
+    "origin": "Egypt",
+    "types": "Cosmetic Retail Product",
+    "applications": "Professional Salons, Beauty Retail Stores, Pharmacies.",
+    "packaging": "Available in 50ml glass bottles (50 bottles per master carton).",
+    "image": "products/images/argan-serum.jpg"
+  }
+]
