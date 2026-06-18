@@ -391,31 +391,35 @@
     </div>
 
     <!-- PRODUCT DETAILS MODAL (Hidden by default) -->
-    <div class="tech-modal-overlay" id="product-modal">
-        <div class="tech-modal-content">
-            <button class="close-modal" id="close-modal" aria-label="Close Modal"><i class="fas fa-times"></i></button>
-            <div class="tech-modal-img">
-                <img id="modal-img" src="" alt="Product Image">
-            </div>
-            <div class="tech-modal-info">
-                <span class="tech-badge" id="modal-category" style="align-self: flex-start; margin-bottom: 10px;"></span>
-                <h2 id="modal-title" style="margin-bottom: 15px; font-size: 1.8rem;"></h2>
-                <p id="modal-desc" style="margin-bottom: 25px; line-height: 1.6; color: var(--text-muted);"></p>
-                <div style="margin-bottom: 30px;" id="modal-origin-container">
-                    <strong style="color: var(--primary);">Origin:</strong> <span id="modal-origin"></span>
-                </div>
-                    <div style="margin-bottom: 30px;" id="modal-origin-container">   
-                    <strong style="color: var(--primary);">Types:</strong> <span id="modal-types"></span>
-                    </div>
-                <div style="margin-bottom: 30px;" id="modal-origin-container">
-                    <strong style="color: var(--primary);">Applications:</strong> <span id="modal-applications"></span>
-                </div>
-                    <strong style="color: var(--primary);">Packaging:</strong> <span id="modal-packaging"></span>
-                </div>
-                <button class="btn btn-tech w-full" id="request-quote-btn">Request Quote for this Product <i class="fas fa-arrow-right"></i></button>
-            </div>
+   <div class="tech-modal-overlay" id="product-modal">
+    <div class="tech-modal-content">
+        <button class="close-modal" id="close-modal" aria-label="Close Modal"><i class="fas fa-times"></i></button>
+        
+        <div class="tech-modal-img">
+            <img id="modal-img" src="" alt="Product Image">
         </div>
-    </div>
+        
+        <div class="tech-modal-info">
+            <span class="tech-badge" id="modal-category" style="align-self: flex-start; margin-bottom: 10px;"></span>
+            <h2 id="modal-title" style="margin-bottom: 15px; font-size: 1.8rem;"></h2>
+            <p id="modal-desc" style="margin-bottom: 25px; line-height: 1.6; color: var(--text-muted);"></p>
+            
+            <div style="margin-bottom: 30px;" id="modal-origin-container">
+                <strong style="color: var(--primary);">Origin:</strong> <span id="modal-origin"></span>
+            </div>
+            <div style="margin-bottom: 30px;" id="modal-types-container">
+                <strong style="color: var(--primary);">Types:</strong> <span id="modal-types"></span>
+            </div>
+            <div style="margin-bottom: 30px;" id="modal-apps-container">
+                <strong style="color: var(--primary);">Applications:</strong> <span id="modal-applications"></span>
+            </div>
+            <div style="margin-bottom: 30px;" id="modal-pkg-container">
+                <strong style="color: var(--primary);">Packaging:</strong> <span id="modal-packaging"></span>
+            </div>
+
+            <button class="btn btn-tech w-full" id="request-quote-btn">Request Quote for this Product <i class="fas fa-arrow-right"></i></button>
+        </div> </div>
+</div>
 
     <!-- Scripts -->
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
