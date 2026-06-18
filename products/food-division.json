@@ -2,25 +2,25 @@
   {
     "id": 1,
     "name": "Egyptian Premium Potatoes",
-    "description": "High-quality processing and table potatoes exported worldwide with strict quality control.",
-    "category": "Vegetables",
+    "description": "High-quality processing and table potatoes exported worldwide with strict quality control. Available in multiple packaging options.",
+    "category": "Fresh Vegetables",
     "origin": "Egypt",
-    "icon": "fa-seedling"
+    "image": "images/products/potatoes.jpg"
   },
   {
     "id": 2,
     "name": "Refined Sunflower Oil",
-    "description": "Pure 100% refined sunflower oil imported for FMCG distribution networks.",
+    "description": "Pure 100% refined sunflower oil imported for FMCG distribution networks. Excellent for cooking and frying.",
     "category": "FMCG",
     "origin": "Imported",
-    "icon": "fa-bottle-droplet"
+    "image": "images/products/sunflower-oil.jpg"
   },
   {
     "id": 3,
     "name": "Frozen Strawberry IQF",
-    "description": "Grade A individually quick-frozen strawberries perfect for industrial food processing.",
+    "description": "Grade A individually quick-frozen strawberries perfect for industrial food processing, preserves, and retail.",
     "category": "Frozen Foods",
     "origin": "Egypt",
-    "icon": "fa-snowflake"
+    "image": "images/products/frozen-strawberry.jpg"
   }
 ]
