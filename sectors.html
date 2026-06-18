@@ -1,99 +1,348 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" dir="ltr">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Under Construction</title>
-    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@700;900&family=Tajawal:wght@500;700&display=anonymous" rel="stylesheet">
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Our Sectors | Al Massriya Al Emaratiya</title>
+    <meta name="description" content="Discover our core business sectors: Commercial Agencies, Import, and Export, driving seamless trade between Egypt and the UAE." />
+    
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;900&family=Cairo:wght@600;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    
     <link rel="stylesheet" href="css/style.css">
     
+    <!-- ستايل إضافي بسيط لتنسيق صفحة القطاعات متوافق مع نفس الـ Variables الخاصة بالموقع -->
     <style>
-        .construction-hero {
-            min-height: 100vh;
+        .inner-hero {
+            min-height: 50vh;
             display: flex;
             align-items: center;
             justify-content: center;
-            perspective: 1000px;
-            padding: 20px;
-            overflow: hidden;
-            position: relative;
-        }
-
-        .construction-card {
-            background: var(--glass-bg);
-            padding: 60px 40px;
-            border: 1px solid var(--border-color);
-            border-radius: 0; 
-            box-shadow: var(--card-shadow);
             text-align: center;
-            max-width: 600px;
-            width: 100%;
-            transform-style: preserve-3d;
-            transition: transform 0.1s ease-out;
-            backdrop-filter: blur(15px);
-            -webkit-backdrop-filter: blur(15px);
+            padding-top: 120px;
+            padding-bottom: 50px;
         }
-
-        .construction-card:hover {
-            border-color: var(--primary);
-            box-shadow: var(--card-hover-shadow);
+        .sector-detail-card {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 40px;
+            align-items: center;
+            padding: 50px;
+            margin-bottom: 40px;
+            background: var(--bg-surface);
+            border: 1px solid var(--border-color);
+            border-left: 5px solid var(--primary);
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
         }
-
-        .square-spinner {
-            width: 50px;
-            height: 50px;
-            border: 3px solid var(--border-color);
-            border-top: 3px solid var(--primary);
-            border-right: 3px solid var(--secondary);
-            border-radius: 0; 
-            margin: 40px auto 0;
-            animation: spin 1.2s cubic-bezier(0.23, 1, 0.32, 1) infinite;
+        .sector-detail-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px var(--primary-glow);
+            border-left-color: var(--secondary);
         }
-
-        @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
+        .sector-icon-wrapper {
+            flex: 0 0 120px;
+            height: 120px;
+            background: rgba(23, 67, 136, 0.05);
+            border: 2px solid var(--primary);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 3.5rem;
+            color: var(--primary);
+            transition: var(--transition);
         }
-
-        .construction-card p {
-            font-size: 1.15rem;
-            margin-bottom: 10px;
-            color: var(--text-medium);
+        .sector-detail-card:hover .sector-icon-wrapper {
+            background: var(--primary);
+            color: #fff;
+            transform: rotate(10deg) scale(1.1);
+            box-shadow: 0 0 20px var(--primary-glow);
+        }
+        .sector-content {
+            flex: 1;
+            min-width: 300px;
+        }
+        .sector-content h2 {
+            font-size: 2.2rem;
+            margin-bottom: 15px;
+            color: var(--primary);
+        }
+        .sector-features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin-top: 25px;
+        }
+        .sector-features li {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            font-weight: 500;
+        }
+        .sector-features li i {
+            color: var(--secondary);
+            margin-top: 5px;
+        }
+        /* لتغيير مكان الخط للقطاع الثاني ليكون يميناً */
+        .border-right-sec {
+            border-left: 1px solid var(--border-color);
+            border-right: 5px solid var(--secondary);
+        }
+        .border-right-sec:hover {
+            border-right-color: var(--primary);
         }
     </style>
 </head>
 <body>
 
+    <div id="tech-cursor"></div>
+    <div id="tech-cursor-follower"></div>
     <div id="progress-bar"></div>
     <div class="animated-lines-container"></div>
-    
-    <div id="cursor"></div>
 
-    <section class="construction-hero">
-        <div class="construction-card hero-3d-card" id="tilt-card">
-            
-            <div data-z="40">
-                <h1 class="hero-title" style="font-size: clamp(2rem, 5vw, 3.5rem); margin-bottom: 25px;">
-                    Under Construction
-                </h1>
+    <!-- Header -->
+    <header class="tech-header" id="header">
+        <div class="container header-container">
+            <div class="logo">
+                <a href="index.html">
+                    <img src="Al_Masriya_Al_Emaratiya_icon.png" class="brand-logo" onerror="this.onerror=null; this.src='https://via.placeholder.com/200x60/174388/ffffff?text=LOGO+HERE';">
+                </a>
             </div>
             
-            <div data-z="20">
-                <p>Our team is working hard to bring you an amazing experience!</p>
-            </div>
+            <nav class="desktop-nav">
+                <ul class="nav-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="index.html#services">Services</a></li>
+                    <li><a href="index.html#about">About Us</a></li>
+                    <li><a href="news.html">News</a></li>
+                    <li><a href="sectors.html" class="active">Our Sectors</a></li>
+                    <li><a href="index.html#contact">Contact Us</a></li>
+                </ul>
+            </nav>
             
-            <div data-z="10">
-                <p style="color: var(--text-dark);">We appreciate your patience.</p>
+            <div class="header-actions">
+                <a href="login.html" class="btn btn-outline-tech" id="desktop-login-btn">
+                    <i class="fas fa-fingerprint"></i> <span class="login-text">Login</span>
+                </a>
+
+                <div class="user-profile hidden" id="desktop-user-profile">
+                    <div class="profile-trigger" id="profile-trigger">
+                        <div class="avatar-glow"><i class="fas fa-user-astronaut"></i></div>
+                        <span class="user-name">My Account</span>
+                        <i class="fas fa-chevron-down arrow-icon"></i>
+                    </div>
+                    <ul class="profile-dropdown tech-dropdown">
+                        <li><a href="portal.html"><i class="fas fa-laptop-file"></i> Portal</a></li>
+                        <li><a href="settings.html"><i class="fas fa-cog"></i> Settings</a></li>
+                        <li><a href="#" id="logout-btn" class="text-red"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
+                    </ul>
+                </div>
+
+                <div class="hamburger">
+                    <span></span><span></span><span></span>
+                </div>
             </div>
-            
-            <div data-z="30">
-                <div class="square-spinner"></div>
-            </div>
-            
+        </div>
+    </header>
+
+    <!-- Mobile Navigation -->
+    <nav class="mobile-nav glass-panel">
+        <ul class="mobile-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="index.html#services">Services</a></li>
+            <li><a href="index.html#about">About Us</a></li>
+            <li><a href="news.html">News</a></li>
+            <li><a href="sectors.html">Our Sectors</a></li>
+            <li><a href="index.html#contact">Contact Us</a></li>
+            <li id="mobile-login-item">
+                <a href="login.html" class="btn btn-tech w-full mt-4"><i class="fas fa-sign-in-alt"></i> Login</a>
+            </li>
+            <li id="mobile-profile-item" class="hidden">
+                <a href="portal.html" class="btn btn-outline-tech w-full mt-4"><i class="fas fa-laptop-code"></i> My Portal</a>
+                <a href="#" id="mobile-logout-btn" class="btn btn-danger w-full mt-2"><i class="fas fa-power-off"></i> Logout</a>
+            </li>
+        </ul>
+    </nav>
+
+    <!-- Inner Banner -->
+    <section class="hero inner-hero relative-z">
+        <div class="container" data-aos="zoom-in">
+            <div class="tech-badge mb-4"><i class="fas fa-sitemap"></i> Business Divisions</div>
+            <h1 class="title" style="font-size: clamp(2.5rem, 5vw, 4rem);">Our <span class="highlight">Sectors</span></h1>
+            <p class="description mx-auto" style="max-width: 700px; font-size: 1.2rem; margin-top: 20px;">
+                Driving economic growth and bridging markets between Egypt and the UAE through specialized, tech-powered business operations.
+            </p>
         </div>
     </section>
 
+    <!-- Sectors Detailed Content -->
+    <section class="section glass-section relative-z">
+        <div class="container">
+            
+            <!-- 1. Commercial Agencies -->
+            <div class="sector-detail-card" data-aos="fade-right">
+                <div class="sector-icon-wrapper tilt-card" data-tilt data-tilt-max="10">
+                    <i class="fas fa-handshake-angle"></i>
+                </div>
+                <div class="sector-content">
+                    <h2>Commercial Agencies</h2>
+                    <p>
+                        Acting as a trusted bridge for global and regional brands, we provide comprehensive commercial agency services. Our robust infrastructure allows international businesses to seamlessly penetrate and establish a dominant presence in the Egyptian and UAE markets.
+                    </p>
+                    <ul class="sector-features">
+                        <li><i class="fas fa-check-square"></i> Exclusive brand representation</li>
+                        <li><i class="fas fa-check-square"></i> Deep market penetration strategies</li>
+                        <li><i class="fas fa-check-square"></i> Regulatory & compliance advisory</li>
+                        <li><i class="fas fa-check-square"></i> Network distribution management</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- 2. Import -->
+            <div class="sector-detail-card border-right-sec" data-aos="fade-left">
+                <div class="sector-content" style="text-align: right;" dir="rtl">
+                    <!-- تم استخدام dir=rtl هنا ليعطي تصميم عكسي (تبادلي) يعطي جمالية للصفحة -->
+                    <h2 dir="ltr" style="text-align: left;">Import Operations</h2>
+                    <p dir="ltr" style="text-align: left;">
+                        We source and import high-quality products, raw materials, and specialized equipment from global markets. Our integrated tech-systems ensure that the entire import cycle—from procurement to customs clearance—is handled with maximum efficiency and transparency.
+                    </p>
+                    <ul class="sector-features" dir="ltr" style="text-align: left;">
+                        <li><i class="fas fa-box-open"></i> Global sourcing & procurement</li>
+                        <li><i class="fas fa-box-open"></i> Supply chain optimization</li>
+                        <li><i class="fas fa-box-open"></i> Accelerated customs clearance</li>
+                        <li><i class="fas fa-box-open"></i> Quality control & inspection</li>
+                    </ul>
+                </div>
+                <div class="sector-icon-wrapper tilt-card" style="color: var(--secondary); border-color: var(--secondary);" data-tilt data-tilt-max="10">
+                    <i class="fas fa-file-import"></i>
+                </div>
+            </div>
+
+            <!-- 3. Export -->
+            <div class="sector-detail-card" data-aos="fade-right">
+                <div class="sector-icon-wrapper tilt-card" data-tilt data-tilt-max="10">
+                    <i class="fas fa-globe"></i>
+                </div>
+                <div class="sector-content">
+                    <h2>Export Solutions</h2>
+                    <p>
+                        Empowering local industries to reach international markets. We handle end-to-end export operations, ensuring that products manufactured in Egypt and the UAE are delivered globally meeting international standards, competitive pricing, and strict deadlines.
+                    </p>
+                    <ul class="sector-features">
+                        <li><i class="fas fa-check-square"></i> International market analysis</li>
+                        <li><i class="fas fa-check-square"></i> Export documentation & licensing</li>
+                        <li><i class="fas fa-check-square"></i> Freight forwarding & logistics</li>
+                        <li><i class="fas fa-check-square"></i> Strategic global partnerships</li>
+                    </ul>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Call to Action Section -->
+    <section class="section dark-tech-section text-center">
+        <div class="container relative-z" data-aos="zoom-in">
+            <h2 class="text-white mb-4">Ready to Optimize Your Trade?</h2>
+            <p class="text-muted mb-5 mx-auto" style="max-width: 600px;">
+                Connect with our system nodes today to explore how our specialized sectors can elevate your business operations globally.
+            </p>
+            <a href="index.html#contact" class="btn btn-tech">Establish Connection <i class="fas fa-satellite-dish"></i></a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="tech-footer">
+        <div class="container">
+            <div class="grid grid-4 footer-wrapper">
+                
+                <div class="footer-logo">
+                    <img src="Al_Masriya_Al_Emaratiya_icon.png" alt="Al Massriya Al Emaratiya Logo" class="brand-logo" onerror="this.onerror=null; this.src='https://via.placeholder.com/200x60/174388/ffffff?text=LOGO+HERE';">
+                    <p class="mt-4">Your Tech Gateway to Growth in Egypt & UAE.</p>
+                    <div class="social-links mt-4">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+
+                <div class="footer-links">
+                    <h4>Index Directory</h4>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="index.html#services">Services</a></li>
+                        <li><a href="index.html#about">About Us</a></li>
+                        <li><a href="news.html">News</a></li>
+                        <li><a href="index.html#contact">Contact Us</a></li>
+                        <li><a href="careers.html">Careers</a></li>
+                        <li><a href="sectors.html">Our Sectors</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-divisions">
+                    <h4>Our Divisions</h4>
+                    <ul>
+                        <li><a href="pages/food-division.html">Food Division</a></li>
+                        <li><a href="pages/hotel-supplies.html">Hotel Supplies</a></li>
+                        <li><a href="pages/chemicals-cosmetics.html">Chemicals & Cosmetics</a></li>
+                        <li><a href="pages/ose-procurement.html">OS&E Procurement</a></li>
+                        <li><a href="pages/office-furniture.html">Office Furniture</a></li>
+                        <li><a href="pages/banquet-furniture.html">Banquet Furniture</a></li>
+                        <li><a href="pages/metal-beds-lockers.html">Metal Beds & Lockers</a></li>
+                        <li><a href="pages/staff-furniture.html">Staff Furniture</a></li>
+                        <li><a href="pages/staff-sofa-sets.html">Staff Sofa Sets & Accessories</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-language custom-dropdown">
+                    <h4>Language Protocol</h4>
+                    <div class="dropdown-trigger" id="lang-trigger">
+                        <span><i class="fas fa-globe"></i> English</span>
+                        <i class="fas fa-chevron-down arrow-icon"></i>
+                    </div>
+                    <ul class="dropdown-menu tech-dropdown" id="lang-menu">
+                        <li><a href="sectors.html" class="active-lang">English</a></li>
+                        <li><a href="ar/sectors.html">العربية</a></li>
+                        <li><a href="sectors-cn.html">中文</a></li>
+                    </ul>
+                </div>
+
+            </div>
+            <div class="footer-bottom text-center">
+                <p>© <span id="current-year"></span> Al Massriya Al Emaratiya. All Rights Reserved. System Version 2.0</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Chat Widget -->
+    <div id="chat-widget" class="chat-widget">
+        <button class="chat-btn glow-effect" id="chat-toggle">
+            <i class="fas fa-headset"></i> 
+        </button>
+        <div class="chat-container glass-panel" id="chat-box">
+            <div class="chat-header">
+                <h3><i class="fas fa-robot"></i> AI Support Node</h3>
+                <button class="chat-close" id="chat-close">&times;</button>
+            </div>
+            <div class="chat-body" id="chat-body">
+                <div class="message incoming">
+                    <p>Connection established. How can we assist your operations today?</p>
+                </div>
+            </div>
+            <div class="chat-footer">
+                <input type="text" placeholder="Type query..." id="chat-input">
+                <button id="chat-send"><i class="fas fa-paper-plane"></i></button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.8.0/vanilla-tilt.min.js"></script>
     <script src="js/main.js"></script>
-    <script src="js/script.js"></script>
 </body>
 </html>
