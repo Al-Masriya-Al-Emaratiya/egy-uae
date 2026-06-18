@@ -1,0 +1,30 @@
+[
+  {
+    "id": 1,
+    "name": "Luxury Bath Towels",
+    "description": "100% Egyptian cotton bath towels offering premium softness and high absorbency. Perfect for 5-star hotel rooms and spas.",
+    "category": "Room Amenities / Linens",
+    "origin": "Egypt",
+    "packaging": "Available in cartons of 50 pieces.",
+    "image": "products/images/luxury-towel.jpg"
+  },
+  {
+    "id": 2,
+    "name": "Sleek Housekeeping Cart",
+    "description": "Heavy-duty commercial housekeeping cart with adjustable shelves, lockable doors, and dual laundry bags. Engineered for daily rigorous use.",
+    "category": "Janitorial Supplies",
+    "origin": "Imported",
+    "image": "products/images/housekeeping-cart.jpg"
+  },
+  {
+    "id": 3,
+    "name": "Premium Chafing Dish",
+    "description": "Stainless steel 8-quart rectangular chafing dish with roll-top cover. Ideal for buffets, banquets, and high-end catering.",
+    "category": "F&B / Restaurant",
+    "origin": "Imported",
+    "types": "Roll-Top | Lift-Off Lid.",
+    "applications": "Breakfast Buffets, Event Catering, Hotel Restaurants.",
+    "packaging": "Available per piece in protective carton.",
+    "image": "products/images/chafing-dish.jpg"
+  }
+]
