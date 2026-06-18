@@ -414,7 +414,7 @@
         document.addEventListener('DOMContentLoaded', () => {
             const productsGrid = document.getElementById('dynamic-products-grid');
 
-            fetch('products/food-division.json')
+            fetch('products/data/food-division.json')
                 .then(response => {
                     if (!response.ok) throw new Error('Network response was not ok');
                     return response.json();
