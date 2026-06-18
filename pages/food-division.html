@@ -16,6 +16,10 @@
     <link rel="stylesheet" href="css/style.css">
 
     <style>
+        /* Fix Custom Cursor Z-index so it doesn't hide behind the modal */
+        #tech-cursor { z-index: 99999 !important; }
+        #tech-cursor-follower { z-index: 99998 !important; }
+
         /* Google Translate Customization for Tech Design */
         .google-translate-wrapper { position: relative; display: inline-block; margin-right: 15px; }
         .skiptranslate iframe, .goog-te-banner-frame { display: none !important; visibility: hidden !important; }
@@ -268,8 +272,8 @@
                 <div data-aos="fade-right">
                     <h3 style="color: var(--primary); margin-bottom: 20px;">Trade Request</h3>
                     <p class="mb-4">Connect directly with our Food Division trade managers to request samples, compliance certificates, or customized Container Load (FCL) wholesale pricing.</p>
-                    <div class="info-item"><i class="fas fa-envelope"></i> trade@almasriyaalemaratiya.com</div>
-                    <div class="info-item"><i class="fas fa-phone"></i> +20 123 456 7890</div>
+                    <div class="info-item"><i class="fas fa-envelope"></i> info@egy-uae.com</div>
+                    <div class="info-item"><i class="fas fa-phone"></i> +20 101 176 6232</div>
                 </div>
                 
                 <div data-aos="fade-left">
@@ -423,7 +427,7 @@
                     if (data && data.length > 0) {
                         data.forEach((product, index) => {
                             const delay = (index % 3) * 100;
-                            // التأكد من وجود صورة، أو استخدام صورة افتراضية
+                            
                             const productImage = product.image || 'https://via.placeholder.com/400x300/174388/ffffff?text=Image+Not+Found';
                             
                             const cardHTML = `
