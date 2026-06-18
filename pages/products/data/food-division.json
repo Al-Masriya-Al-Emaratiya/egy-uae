@@ -1,10 +1,11 @@
 [
   {
     "id": 1,
-    "name": "Egyptian Premium Potatoes",
-    "description": "High-quality processing and table potatoes exported worldwide with strict quality control. Available in multiple packaging options.",
-    "category": "Fresh Vegetables",
-    "origin": "Egypt",
+    "name": "Black Cocoa Powder",
+    "description": "Any application using cocoa as a natural ingredient where a darker shade is desired. Cookies and industrial pastries.",
+    "category": "Cocoa Products / Cocoa Powder",
+    "origin": "Negreira",
+    "Packaging": "Available in 25kg bags.",
     "image": "products/images/BlackCocoaPowder.jpg"
   },
   {
