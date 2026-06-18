@@ -1,1 +1,26 @@
-
+[
+  {
+    "id": 1,
+    "name": "Egyptian Premium Potatoes",
+    "description": "High-quality processing and table potatoes exported worldwide with strict quality control. Available in multiple packaging options.",
+    "category": "Fresh Vegetables",
+    "origin": "Egypt",
+    "image": "products/images/BlackCocoaPowder.jpg"
+  },
+  {
+    "id": 2,
+    "name": "Refined Sunflower Oil",
+    "description": "Pure 100% refined sunflower oil imported for FMCG distribution networks. Excellent for cooking and frying.",
+    "category": "FMCG",
+    "origin": "Imported",
+    "image": "products/images/Cocoa-Powder-Lifestyle.jpg"
+  },
+  {
+    "id": 3,
+    "name": "Frozen Strawberry IQF",
+    "description": "Grade A individually quick-frozen strawberries perfect for industrial food processing, preserves, and retail.",
+    "category": "Frozen Foods",
+    "origin": "Egypt",
+    "image": "products/images/CocoaMass..jpeg"
+  }
+]
