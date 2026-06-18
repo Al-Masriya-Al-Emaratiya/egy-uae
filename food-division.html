@@ -9,490 +9,352 @@
     <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;900&family=Cairo:wght@400;700;900&display=swap" rel="stylesheet">
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
-    <!-- Swiper CSS & AOS -->
-    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
+    <!-- AOS CSS -->
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     
-    <!-- Link to your main stylesheet -->
+    <!-- Link to Main Tech Stylesheet -->
     <link rel="stylesheet" href="css/style.css">
 
     <style>
-        /* Custom styles for the food division page - 100% sharp corners */
-        .division-hero {
-            padding: 150px 20px 80px 20px;
-            background: linear-gradient(135deg, rgba(0,210,255,0.03) 0%, rgba(58,123,213,0.03) 100%);
-            text-align: center;
-            border-bottom: 1px solid var(--border-color);
-        }
-        .division-hero h1 {
-            font-size: 3.5rem;
-            font-weight: 900;
-            margin-bottom: 15px;
-            background: linear-gradient(to right, var(--text-light), var(--secondary));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-        .division-hero p {
-            max-width: 800px;
-            margin: 0 auto;
-            color: var(--text-medium);
-            font-size: 1.1rem;
-            line-height: 1.6;
-        }
-
-        /* Styling for the Google Translate Custom Container */
-        .google-translate-wrapper {
-            position: relative;
-            display: inline-block;
-            margin-right: 15px;
-        }
-        
-        /* Hide the default ugly Google Translate Top Bar Banner */
-        .skiptranslate iframe, .goog-te-banner-frame {
-            display: none !important;
-            visibility: hidden !important;
-        }
-        body {
-            top: 0 !important;
-        }
-        
-        /* Custom styling for Google Dropdown Elements to force 0px Radius and Downward appearance */
+        /* Google Translate Customization for Tech Design */
+        .google-translate-wrapper { position: relative; display: inline-block; margin-right: 15px; }
+        .skiptranslate iframe, .goog-te-banner-frame { display: none !important; visibility: hidden !important; }
+        body { top: 0 !important; }
         .goog-te-gadget-simple {
-            background-color: transparent !important;
+            background-color: var(--bg-surface) !important;
             border: 1px solid var(--border-color) !important;
             padding: 6px 12px !important;
-            border-radius: 0 !important;
             cursor: pointer;
             font-family: 'Tajawal', sans-serif !important;
-            display: flex !important;
-            align-items: center !important;
-            gap: 5px;
+            display: flex !important; align-items: center !important; gap: 5px;
             transition: var(--transition);
         }
-        .goog-te-gadget-simple:hover {
-            border-color: var(--primary) !important;
-            background-color: rgba(0, 210, 255, 0.02) !important;
-        }
-        .goog-te-gadget-simple img {
-            display: none !important; /* Hides the Google icon for cleaner corporate look */
-        }
-        .goog-te-gadget-simple span {
-            color: var(--text-light) !important;
-            font-weight: 500 !important;
-            font-size: 0.9rem !important;
-        }
-        
-        /* Force Google Translate Menu Box to open downward with Sharp Corners */
-        .goog-te-menu-frame {
-            border-radius: 0 !important;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.15) !important;
-            top: 100% !important;
-            margin-top: 5px !important;
-        }
+        .goog-te-gadget-simple:hover { border-color: var(--primary) !important; }
+        .goog-te-gadget-simple img { display: none !important; }
+        .goog-te-gadget-simple span { color: var(--text-main) !important; font-weight: 700 !important; font-size: 0.9rem !important; }
+        .goog-te-menu-frame { box-shadow: 0 10px 30px rgba(0,0,0,0.1) !important; top: 100% !important; margin-top: 5px !important; }
 
-        /* Trade Operations Section */
-        .trade-section {
-            padding: 80px 20px;
-        }
-        .trade-tabs-container {
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-        .trade-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-            gap: 30px;
-            margin-top: 40px;
-        }
-        .product-card {
-            background: var(--glass-bg);
-            border: 1px solid var(--border-color);
-            border-radius: 0 !important; /* Zero border radius */
-            padding: 35px 30px;
-            transition: var(--transition);
-            position: relative;
-            overflow: hidden;
-        }
-        .product-card:hover {
-            transform: translateY(-5px);
-            box-shadow: var(--card-hover-shadow);
-            border-color: var(--primary);
-        }
-        .product-badge {
-            position: absolute;
-            top: 15px;
-            right: 15px;
-            font-size: 0.75rem;
-            text-transform: uppercase;
-            font-weight: 700;
-            padding: 5px 12px;
-            border-radius: 0 !important;
-            letter-spacing: 1px;
-        }
-        .badge-export { background: rgba(0, 210, 255, 0.1); color: var(--primary); border: 1px solid var(--primary); }
-        .badge-import { background: rgba(58, 123, 213, 0.1); color: var(--secondary); border: 1px solid var(--secondary); }
-        
-        .product-card i {
-            font-size: 2.5rem;
-            color: var(--primary);
-            margin-bottom: 20px;
-            display: inline-block;
-        }
-        .product-card h3 {
-            font-size: 1.35rem;
-            margin-bottom: 12px;
-            color: var(--text-light);
-            font-weight: 700;
-        }
-        .product-list {
-            list-style: none;
-            padding: 0;
-            margin-top: 20px;
-            border-top: 1px solid var(--border-color);
-            padding-top: 15px;
-        }
-        .product-list li {
-            padding: 6px 0;
-            color: var(--text-medium);
-            font-size: 0.95rem;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-        .product-list li::before {
-            content: "■";
-            color: var(--primary);
-            font-size: 0.65rem;
-        }
-
-        /* Commercial Agencies Section */
-        .agencies-section {
-            background: rgba(0, 0, 0, 0.01);
-            border-top: 1px solid var(--border-color);
-            border-bottom: 1px solid var(--border-color);
-            padding: 80px 20px;
-        }
-        .section-title {
-            text-align: center;
-            font-weight: 900;
-            font-size: 2.5rem;
-            margin-bottom: 10px;
-            color: var(--text-light);
-            letter-spacing: -0.5px;
-        }
-        .section-subtitle {
-            text-align: center;
-            color: var(--text-dark);
-            margin-bottom: 50px;
-            font-size: 1.05rem;
-        }
-        .agencies-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-            gap: 25px;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-        .agency-box {
-            background: #ffffff;
-            border: 1px solid var(--border-color);
-            padding: 35px 25px;
-            text-align: center;
-            border-radius: 0 !important;
-            transition: var(--transition);
-        }
-        .agency-box:hover {
-            border-color: var(--secondary);
-            box-shadow: var(--card-shadow);
-            transform: scale(1.02);
-        }
-        .agency-box h3 {
-            font-size: 1.15rem;
-            font-weight: 700;
-            color: var(--text-light);
-            margin-bottom: 10px;
-        }
-        .agency-logo-placeholder {
-            height: 60px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: rgba(0,0,0,0.02);
-            margin-bottom: 20px;
-            font-weight: 700;
-            font-size: 0.85rem;
-            letter-spacing: 1px;
-            color: var(--text-dark);
-            border: 1px dashed var(--border-color);
-        }
+        /* Specific Page Tweaks */
+        .division-hero { padding: 160px 0 80px 0; background: var(--bg-surface); border-bottom: var(--tech-border); position: relative; overflow: hidden; }
+        .division-hero::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(135deg, rgba(23,67,136,0.03) 0%, rgba(213,36,43,0.03) 100%); pointer-events: none; }
+        .product-list { border-top: 1px solid var(--border-color); margin-top: 15px; padding-top: 15px; }
+        .product-list li { margin-bottom: 8px; font-size: 0.95rem; display: flex; gap: 10px; align-items: flex-start; }
+        .product-list li i { color: var(--secondary); font-size: 0.8rem; margin-top: 5px; }
     </style>
 </head>
 <body>
 
-    <!-- Custom 3D Cursor -->
-    <div id="cursor"></div>
-    <!-- Reading Progress Bar -->
+    <!-- Tech Cursors & Animations -->
+    <div id="tech-cursor"></div>
+    <div id="tech-cursor-follower"></div>
     <div id="progress-bar"></div>
-    <!-- Animated Lines Background -->
     <div class="animated-lines-container"></div>
 
     <!-- Header & Navigation -->
-    <header>
-        <div class="logo">
-            <h2><a href="index.html" style="color: inherit;">AL MASRIYA AL EMARATIYA<span style="color: var(--primary);">.</span></a></h2>
-        </div>
-        <ul class="nav-links">
-            <li><a href="index.html#home">Home</a></li>
-            <li><a href="index.html#services">Services</a></li>
-            <li><a href="sectors.html" class="active">Our Sectors</a></li>
-            <li><a href="index.html#systems">Our Systems</a></li>
-            <li><a href="#contact">Contact</a></li>
-        </ul>
-        <div class="header-actions">
-            
-            
-            <a href="login.html" class="login-btn" id="desktop-login-btn">
-                <i class="fas fa-user-circle"></i> <span class="login-text">Login</span>
+    <header id="header" class="tech-header">
+        <div class="container header-container">
+            <a href="index.html" class="logo">
+                <h2 style="margin: 0; font-size: 1.5rem; color: var(--text-main);">AL MASRIYA <span class="text-red">AL EMARATIYA.</span></h2>
             </a>
-            <div class="user-profile hidden" id="desktop-user-profile">
-                <div class="profile-trigger" id="profile-trigger">
-                    <i class="fas fa-user-circle user-avatar"></i>
-                    <span class="user-name">Account</span>
-                    <i class="fas fa-chevron-down arrow-icon"></i>
-                </div>
-                <ul class="profile-dropdown" style="border-radius: 0 !important;">
-                    <li><a href="portal.html"><i class="fas fa-laptop-file"></i> Portal</a></li>
-                    <li><a href="#" id="logout-btn"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
+            <nav class="desktop-nav">
+                <ul class="nav-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="index.html#services">Services</a></li>
+                    <li><a href="sectors.html" class="active">Our Sectors</a></li>
+                    <li><a href="index.html#systems">Our Systems</a></li>
+                    <li><a href="#contact">Contact</a></li>
                 </ul>
+            </nav>
+            <div class="header-actions">
+                <a href="login.html" class="btn btn-outline-tech" id="desktop-login-btn">
+                    <i class="fas fa-user-circle"></i> Login
+                </a>
+                <div class="user-profile hidden" id="desktop-user-profile">
+                    <div class="profile-trigger" id="profile-trigger">
+                        <i class="fas fa-user-circle"></i>
+                        <span>Account</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <ul class="tech-dropdown">
+                        <li><a href="portal.html"><i class="fas fa-laptop-file"></i> Portal</a></li>
+                        <li><a href="#" id="logout-btn"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
+                    </ul>
+                </div>
+                <div class="hamburger"><span></span><span></span><span></span></div>
             </div>
-            <div class="hamburger"><div class="bar"></div><div class="bar"></div><div class="bar"></div></div>
         </div>
     </header>
 
     <!-- Mobile Menu -->
     <nav class="mobile-nav">
-        <ul>
-            <li><a href="index.html#home">Home</a></li>
-            <li><a href="index.html#services">Services</a></li>
-            <li><a href="index.html#sectors">Our Sectors</a></li>
-            <li><a href="#contact">Contact</a></li>
-        </ul>
+        <div class="mobile-links">
+            <a href="index.html">Home</a>
+            <a href="index.html#services">Services</a>
+            <a href="sectors.html" class="active">Our Sectors</a>
+            <a href="#contact">Contact</a>
+            <a href="login.html" class="btn btn-tech mt-4 w-full" id="mobile-login-item">Login</a>
+            <div class="hidden" id="mobile-profile-item">
+                <a href="portal.html">Portal</a>
+                <a href="#" id="mobile-logout-btn" class="text-red">Logout</a>
+            </div>
+        </div>
     </nav>
 
     <!-- Sector Hero Section -->
-    <section class="division-hero">
-        <div data-aos="fade-up">
-            <h1>Food Division</h1>
-            <p>Strategic supply chain hub for importing, exporting, and distributing essential food commodities and premium agricultural products between Egypt, the UAE, and global markets.</p>
+    <section class="division-hero section text-center">
+        <div class="container" data-aos="zoom-in">
+            <h1 style="font-size: clamp(2.5rem, 5vw, 4.5rem); font-weight: 900; color: var(--primary); margin-bottom: 20px;">
+                FOOD <span class="text-red">DIVISION</span>
+            </h1>
+            <p style="max-width: 800px; margin: 0 auto; font-size: 1.1rem; color: var(--text-muted);">
+                Strategic supply chain hub for importing, exporting, and distributing essential food commodities and premium agricultural products between Egypt, the UAE, and global markets.
+            </p>
         </div>
     </section>
 
     <!-- Import & Export Operations Section -->
-    <section class="trade-section">
-        <div class="trade-tabs-container">
-            <h2 class="section-title">Import & Export Operations</h2>
-            <p class="section-subtitle">Securing global B2B supply lines for fresh, chilled, and packaged food commodities.</p>
+    <section class="section">
+        <div class="container">
+            <div class="section-header" data-aos="fade-up">
+                <h2>Import & Export Operations</h2>
+                <div class="header-line"></div>
+                <p class="mt-4">Securing global B2B supply lines for fresh, chilled, and packaged food commodities.</p>
+            </div>
             
-            <div class="trade-grid">
-                
-                <!-- Product 1: Export -->
-                <div class="product-card" data-aos="fade-up" data-aos-delay="100">
-                    <span class="product-badge badge-export">Export</span>
-                    <i class="fas fa-apple-whole"></i>
+            <div class="grid grid-3">
+                <!-- Product 1 -->
+                <div class="tech-card" data-aos="fade-up" data-aos-delay="100">
+                    <span class="tech-badge" style="position: absolute; top: 15px; right: 15px;">Export</span>
+                    <div class="icon-box"><i class="fas fa-apple-whole"></i></div>
                     <h3>Fresh Fruits & Vegetables</h3>
                     <p>Exporting Egypt's premium agricultural harvests straight to Gulf and European retail chains.</p>
                     <ul class="product-list">
-                        <li>Citrus fruits (Valencias, Navel Oranges, Lemons)</li>
-                        <li>Fresh Pomegranates and Superior Grapes</li>
-                        <li>Fresh Onions, Garlic, and Premium Potatoes</li>
+                        <li><i class="fas fa-caret-right"></i> Citrus fruits (Valencias, Navel, Lemons)</li>
+                        <li><i class="fas fa-caret-right"></i> Fresh Pomegranates & Grapes</li>
+                        <li><i class="fas fa-caret-right"></i> Onions, Garlic, and Premium Potatoes</li>
                     </ul>
                 </div>
 
-                <!-- Product 2: Export -->
-                <div class="product-card" data-aos="fade-up" data-aos-delay="200">
-                    <span class="product-badge badge-export">Export</span>
-                    <i class="fas fa-seedling"></i>
+                <!-- Product 2 -->
+                <div class="tech-card" data-aos="fade-up" data-aos-delay="200">
+                    <span class="tech-badge" style="position: absolute; top: 15px; right: 15px;">Export</span>
+                    <div class="icon-box"><i class="fas fa-seedling"></i></div>
                     <h3>Herbs & Organic Spices</h3>
-                    <p>Processing and exporting certified organic dried herbs and processing-grade botanical materials.</p>
+                    <p>Processing and exporting certified organic dried herbs and processing-grade materials.</p>
                     <ul class="product-list">
-                        <li>Marjoram, Peppermint, and Dried Chamomile</li>
-                        <li>Premium Cumin, Coriander, and Anise Seeds</li>
-                        <li>Raw botanical ingredients for pharmaceutical extraction</li>
+                        <li><i class="fas fa-caret-right"></i> Marjoram, Peppermint, Chamomile</li>
+                        <li><i class="fas fa-caret-right"></i> Premium Cumin, Coriander, Anise</li>
+                        <li><i class="fas fa-caret-right"></i> Raw ingredients for extraction</li>
                     </ul>
                 </div>
 
-                <!-- Product 3: Import -->
-                <div class="product-card" data-aos="fade-up" data-aos-delay="300">
-                    <span class="product-badge badge-import">Import</span>
-                    <i class="fas fa-wheat-awn"></i>
-                    <h3>Strategic Grains & Commodities</h3>
+                <!-- Product 3 -->
+                <div class="tech-card" data-aos="fade-up" data-aos-delay="300">
+                    <span class="tech-badge" style="background: rgba(23,67,136,0.1); color: var(--primary); border-color: var(--primary); position: absolute; top: 15px; right: 15px;">Import</span>
+                    <div class="icon-box"><i class="fas fa-wheat-awn"></i></div>
+                    <h3>Strategic Grains</h3>
                     <p>Bulk importation and wholesale distribution of critical food security commodities.</p>
                     <ul class="product-list">
-                        <li>Premium White and Basmati Rice</li>
-                        <li>Milling Wheat and Yellow Corn for animal feed</li>
-                        <li>Refined and Raw Cane Sugar</li>
+                        <li><i class="fas fa-caret-right"></i> Premium White and Basmati Rice</li>
+                        <li><i class="fas fa-caret-right"></i> Milling Wheat & Yellow Corn</li>
+                        <li><i class="fas fa-caret-right"></i> Refined and Raw Cane Sugar</li>
                     </ul>
                 </div>
-
-                <!-- Product 4: Import -->
-                <div class="product-card" data-aos="fade-up" data-aos-delay="400">
-                    <span class="product-badge badge-import">Import</span>
-                    <i class="fas fa-box"></i>
-                    <h3>FMCG & Packaged Goods</h3>
-                    <p>Importing and distributing high-demand fast-moving consumer packaged foods.</p>
-                    <ul class="product-list">
-                        <li>Vegetable Oils (Pure Sunflower and Corn Oil)</li>
-                        <li>Canned Fish (Premium Shredded and Solid Tuna)</li>
-                        <li>Full Cream Milk Powder and dairy compounds</li>
-                    </ul>
-                </div>
-
-                <!-- Product 5: Export -->
-                <div class="product-card" data-aos="fade-up" data-aos-delay="500">
-                    <span class="product-badge badge-export">Export</span>
-                    <i class="fas fa-snowflake"></i>
-                    <h3>IQF Frozen Fruits & Veg</h3>
-                    <p>Exporting high-quality Individually Quick Frozen (IQF) food products preserving peak freshness.</p>
-                    <ul class="product-list">
-                        <li>Frozen Strawberries and Mango pulps</li>
-                        <li>Mixed Vegetables (Peas, Green Beans, Okra)</li>
-                        <li>Pre-fried French Fries and Potato wedges</li>
-                    </ul>
-                </div>
-
-                <!-- Product 6: Import -->
-                <div class="product-card" data-aos="fade-up" data-aos-delay="600">
-                    <span class="product-badge badge-import">Import</span>
-                    <i class="fas fa-cheese"></i>
-                    <h3>HORECA & Catering Supplies</h3>
-                    <p>Sourcing luxury ingredients and specialized food supplies for hotels, culinary sectors, and resorts.</p>
-                    <ul class="product-list">
-                        <li>Gourmet European Cheeses and New Zealand Butter</li>
-                        <li>Authentic Italian Pastas and Asian Culinary Sauces</li>
-                        <li>Premium Raw & Roasted Nuts and Dried Fruits</li>
-                    </ul>
-                </div>
-
             </div>
         </div>
     </section>
 
-    <!-- Commercial Agencies & Brands Section -->
-    <section class="agencies-section">
-        <h2 class="section-title">Commercial Agencies & Brands</h2>
-        <p class="section-subtitle">Exclusive commercial partnerships and international brands represented across our network.</p>
-        
-        <div class="agencies-grid">
+    <!-- NEW: Dynamic Food Products Section (JSON Integrated) -->
+    <section class="section glass-section" id="products-catalog">
+        <div class="container">
+            <div class="section-header" data-aos="fade-up">
+                <h2>Our Food Products Catalog</h2>
+                <div class="header-line"></div>
+                <p class="mt-4">Explore our extensive range of traded commodities (Loaded dynamically).</p>
+            </div>
             
-            <!-- Agency 1 -->
-            <div class="agency-box" data-aos="zoom-in" data-aos-delay="100">
-               <div class="agency-logo-placeholder">
-    <img src="images/TAZA BRAND - Logo.png" alt="TAZA" style="max-width: 45px; height: auto; display: block;">
-</div>
-                <h3>TAZA Food Products Inc.</h3>
-                <p style="color: var(--text-dark); font-size: 0.9rem; margin-top: 10px;">At Taza Foods we combine convenience and great tasting food to serve you with the absolute best of both worlds, catering to a variety of palates and satisfying your taste buds.</p>
+            <!-- This grid will be populated from food-products.json -->
+            <div class="grid grid-3" id="dynamic-products-grid">
+                <!-- Products will appear here -->
             </div>
-
-            <!-- Agency 2 -->
-            <div class="agency-box" data-aos="zoom-in" data-aos-delay="200">
-                <div class="agency-logo-placeholder">BRAND LOGO </div>
-                <h3>SOON</h3>
-                <p style="color: var(--text-dark); font-size: 0.9rem; margin-top: 10px;">soon.</p>
-            </div>
-
-            <!-- Agency 3 -->
-            <div class="agency-box" data-aos="zoom-in" data-aos-delay="300">
-                <div class="agency-logo-placeholder">BRAND LOGO </div>
-                <h3>SOON</h3>
-                <p style="color: var(--text-dark); font-size: 0.9rem; margin-top: 10px;">soon.</p>
-            </div>
-
-            <!-- Agency 4 -->
-            <div class="agency-box" data-aos="zoom-in" data-aos-delay="400">
-                <div class="agency-logo-placeholder">BRAND LOGO </div>
-                <h3>SOON</h3>
-                <p style="color: var(--text-dark); font-size: 0.9rem; margin-top: 10px;">soon.</p>
-            </div>
-
         </div>
     </section>
 
-    <!-- Contact & RFQ Section -->
-    <section id="contact" class="contact-section section-padding">
-        <h2>Inquire About Food Supplies</h2>
-        <div class="contact-form-container" data-aos="zoom-in">
-            <p>Connect directly with our Food Division trade managers to request samples, compliance certificates, or customized Container Load (FCL) wholesale pricing.</p>
+    <!-- Commercial Agencies Section -->
+    <section class="section">
+        <div class="container">
+            <div class="section-header" data-aos="fade-up">
+                <h2>Commercial Agencies</h2>
+                <div class="header-line"></div>
+                <p class="mt-4">Exclusive commercial partnerships and international brands represented across our network.</p>
+            </div>
             
-            <form class="contact-form" action="https://formspree.io/f/maqkrwoe" method="POST">
-                <input type="text" name="Name" placeholder="Your Full Name / Company" required style="border-radius:0 !important;">
-                <input type="email" name="Email" placeholder="Business Email" required style="border-radius:0 !important;">
-                <input type="tel" name="Phone" placeholder="WhatsApp / Phone Number" style="border-radius:0 !important;">
+            <div class="grid grid-4">
+                <!-- Agency 1 -->
+                <div class="tech-card text-center" data-aos="zoom-in" data-aos-delay="100">
+                    <div style="height: 80px; display: flex; align-items: center; justify-content: center; border: 1px dashed var(--primary); margin-bottom: 20px; background: rgba(23,67,136,0.05);">
+                        <img src="images/TAZA BRAND - Logo.png" alt="TAZA" style="max-height: 50px;">
+                    </div>
+                    <h3>TAZA Food Inc.</h3>
+                    <p style="font-size: 0.9rem;">Catering to a variety of palates and satisfying your taste buds with great food.</p>
+                </div>
                 
-                <select name="Order-Type" style="width:100%; padding:15px; border:1px solid var(--input-border); background:var(--input-bg); color:var(--text-light); border-radius:0 !important; margin-bottom:20px; font-family:'Tajawal', sans-serif; -webkit-appearance: none;">
-                    <option value="Export Inquiry">Sourcing from Egypt (Export Request)</option>
-                    <option value="Import Inquiry">Supplying to Egypt / UAE (Import Offer)</option>
-                    <option value="Agency / Partnership">Commercial Agency / Brand Partnership</option>
-                </select>
+                <!-- Placeholder Agencies -->
+                <div class="tech-card text-center" data-aos="zoom-in" data-aos-delay="200">
+                    <div style="height: 80px; display: flex; align-items: center; justify-content: center; border: 1px dashed var(--primary); margin-bottom: 20px; font-weight: bold; color: var(--primary);">BRAND LOGO</div>
+                    <h3>SOON</h3>
+                    <p style="font-size: 0.9rem;">Upcoming international partnership.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Form (Tech Styled) -->
+    <section id="contact" class="section glass-section">
+        <div class="container">
+            <div class="section-header" data-aos="fade-up">
+                <h2>Inquire About Supplies</h2>
+                <div class="header-line"></div>
+            </div>
+            
+            <div class="grid grid-2">
+                <div data-aos="fade-right">
+                    <h3 style="color: var(--primary); margin-bottom: 20px;">Trade Request</h3>
+                    <p class="mb-4">Connect directly with our Food Division trade managers to request samples, compliance certificates, or customized Container Load (FCL) wholesale pricing.</p>
+                    <div class="info-item"><i class="fas fa-envelope"></i> trade@almasriyaalemaratiya.com</div>
+                    <div class="info-item"><i class="fas fa-phone"></i> +20 123 456 7890</div>
+                </div>
                 
-                <textarea name="Message" rows="5" placeholder="Please clarify the product specification, required volume in metric tons, packaging preferences, and target destination port..." required style="border-radius:0 !important;"></textarea>
-                
-                <button type="submit" style="border-radius:0 !important;">Submit Trade Request</button>
-            </form>
+                <div data-aos="fade-left">
+                    <form action="https://formspree.io/f/maqkrwoe" method="POST" class="tech-card">
+                        <div class="input-group">
+                            <i class="fas fa-user"></i>
+                            <input type="text" name="Name" placeholder="Full Name / Company" required>
+                        </div>
+                        <div class="input-group">
+                            <i class="fas fa-envelope"></i>
+                            <input type="email" name="Email" placeholder="Business Email" required>
+                        </div>
+                        <div class="input-group" style="margin-bottom: 20px;">
+                            <select name="Order-Type" style="width: 100%; padding: 15px; border: 1px solid var(--border-color); background: var(--bg-main); font-family: inherit; font-size: 1rem; color: var(--text-main); outline: none;">
+                                <option value="Export Inquiry">Sourcing from Egypt (Export)</option>
+                                <option value="Import Inquiry">Supplying to us (Import)</option>
+                                <option value="Agency">Commercial Agency</option>
+                            </select>
+                        </div>
+                        <div class="input-group">
+                            <i class="fas fa-comment-alt"></i>
+                            <textarea name="Message" rows="4" placeholder="Required volume, packaging, target port..." required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-tech w-full">Submit Trade Request <i class="fas fa-paper-plane"></i></button>
+                    </form>
+                </div>
+            </div>
         </div>
     </section>
 
     <!-- Footer -->
-    <footer>
-        <div class="footer-wrapper">
-            <div class="footer-logo">
-                <h3>AL MASRIYA AL EMARATIYA<span style="color: var(--primary);">.</span></h3>
+    <footer class="tech-footer">
+        <div class="container grid grid-3">
+            <div>
+                <h3 style="color: var(--primary); margin-bottom: 15px;">AL MASRIYA <span class="text-red">AL EMARATIYA.</span></h3>
                 <p>Your Gateway to Growth in Egypt & UAE.</p>
+                <div class="social-links mt-4">
+                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                </div>
             </div>
             <div class="footer-links">
-                <h4>Explore</h4>
+                <h4>Quick Links</h4>
                 <ul>
                     <li><a href="index.html">Home</a></li>
-                    <li><a href="food-division.html">Food Division</a></li>
+                    <li><a href="index.html#sectors">Our Sectors</a></li>
                     <li><a href="portal.html">B2B Portal</a></li>
                 </ul>
             </div>
+            <div>
+                <h4>Contact Us</h4>
+                <p>Cairo, Egypt<br>Dubai, UAE</p>
+                <p class="text-red mt-2 font-bold">info@almasriyaalemaratiya.com</p>
+            </div>
         </div>
-        <div class="footer-bottom">
-            <p>© 2026 Al Masriya Al Emaratiya. All rights reserved.</p>
+        <div class="footer-bottom text-center">
+            <div class="container">
+                <p>© <span id="current-year"></span> Al Masriya Al Emaratiya. All rights reserved.</p>
+            </div>
         </div>
     </footer>
 
-    <!-- Chat Widget -->
-    <div id="chat-widget" class="chat-widget" style="border-radius:0 !important;">
-        <button class="chat-btn" aria-label="Open Chat" style="border-radius:0 !important;"><i class="fas fa-comment-dots"></i></button>
-        <div class="chat-container" style="border-radius:0 !important;">
+    <!-- Chat Widget (Tech System) -->
+    <div class="chat-widget">
+        <button class="chat-btn" id="chat-toggle"><i class="fas fa-robot"></i></button>
+        <div class="chat-container" id="chat-box">
             <div class="chat-header">
-                <h3>Food Trading Desk</h3>
-                <button class="chat-close">&times;</button>
+                <h3>Food Trade AI Desk</h3>
+                <button class="chat-close" id="chat-close"><i class="fas fa-times"></i></button>
             </div>
-            <div class="chat-body">
-                <div class="message incoming">
-                    <p>Welcome to our Food Trading Desk! How can we support your import/export operations today?</p>
-                </div>
+            <div class="chat-body" id="chat-body">
+                <div class="message incoming"><p>System Ready. How can we support your trade operations today?</p></div>
             </div>
             <div class="chat-footer">
-                <input type="text" placeholder="Type your message..." id="chat-input" style="border-radius:0 !important;">
-                <button id="chat-send" style="border-radius:0 !important;"><i class="fas fa-paper-plane"></i></button>
+                <input type="text" id="chat-input" placeholder="Type data query...">
+                <button id="chat-send"><i class="fas fa-paper-plane"></i></button>
             </div>
         </div>
     </div>
 
     <!-- Scripts -->
-    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script src="js/main.js"></script>
     
-    <!-- Google Translate Initialization Scripts -->
+    <!-- JSON Products Fetcher Script -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const productsGrid = document.getElementById('dynamic-products-grid');
+
+            fetch('food-products.json')
+                .then(response => {
+                    if (!response.ok) throw new Error('Network response was not ok');
+                    return response.json();
+                })
+                .then(data => {
+                    if (data && data.length > 0) {
+                        data.forEach((product, index) => {
+                            const delay = (index % 3) * 100;
+                            
+                            const cardHTML = `
+                                <div class="tech-card" data-aos="fade-up" data-aos-delay="${delay}">
+                                    <div class="icon-box"><i class="fas ${product.icon || 'fa-box-open'}"></i></div>
+                                    <h3>${product.name}</h3>
+                                    <p>${product.description}</p>
+                                    <div class="mt-4">
+                                        <span class="tech-badge" style="font-size:0.8rem;">${product.category}</span>
+                                        ${product.origin ? `<span class="tech-badge" style="background:transparent; border-color:var(--primary); color:var(--primary); font-size:0.8rem; margin-left:5px;">${product.origin}</span>` : ''}
+                                    </div>
+                                </div>
+                            `;
+                            productsGrid.innerHTML += cardHTML;
+                        });
+                    } else {
+                        productsGrid.innerHTML = `<p style="grid-column: 1 / -1; text-align: center; color: var(--text-muted);">No products found in the database.</p>`;
+                    }
+                })
+                .catch(error => {
+                    console.error('Error fetching products:', error);
+                    productsGrid.innerHTML = `
+                        <p style="grid-column: 1 / -1; text-align: center; color: var(--secondary);">
+                            <i class="fas fa-exclamation-triangle"></i> Unable to load products database at this time.
+                        </p>`;
+                });
+        });
+    </script>
+
+    <!-- Google Translate Script -->
     <script>
         function googleTranslateElementInit() {
             new google.translate.TranslateElement({
                 pageLanguage: 'en',
-                includedLanguages: 'en,ar', // Limits choices directly to English and Arabic
+                includedLanguages: 'en,ar',
                 layout: google.translate.TranslateElement.InlineLayout.SIMPLE,
                 autoDisplay: false
             }, 'google_translate_element');
@@ -500,8 +362,5 @@
     </script>
     <script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 
-    <script>
-        AOS.init({ duration: 800, once: true });
-    </script>
 </body>
 </html>
