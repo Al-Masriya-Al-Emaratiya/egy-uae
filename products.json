@@ -1,86 +1,18 @@
 [
   {
     "id": 1,
-    "name": "Natural Cocoa Powder",
-    "category": "Cocoa Products / Cocoa Powder",
-    "short_desc": "Real & Compound Chocolate, Cocoa Drinks, Coatings,Cream Fillings, Spreads, Sauces, Ice cream and Syrups.",
-    "long_desc": "Real & Compound Chocolate, Cocoa Drinks, Coatings,Cream Fillings, Spreads, Sauces, Ice cream and Syrups.",
-    "image": "products_images/NaturalCocoaPowder.jpeg",
-    "specs": {
-      "Types": "10-12% Fat Content. | 20-22% Fat Content. | 22-24% Fat Content.",
-      "Packaging": "Available in 25kg bags."
-    }
+    "name": "طقم مكاتب إداري",
+    "category": "أثاث مكتبي",
+    "wholesale": 5000,
+    "megaWholesale": 4500,
+    "image": "images/office-desk.jpg"
   },
   {
     "id": 2,
-    "name": "Alkalized Cocoa Powder",
-    "category": "Cocoa Products / Cocoa Powder",
-    "short_desc": "Dairy products, Breakfast or Instant Cocoa Mixes, Biscuits, cookies, Pastries, Ice-cream, Desserts, Real Compound Chocolate And Confectionery.",
-    "long_desc": "Dairy products, Breakfast or Instant Cocoa Mixes, Biscuits, cookies, Pastries, Ice-cream, Desserts, Real Compound Chocolate And Confectionery.",
-    "image": "products_images/AlkalizedCocoaPowder.jpeg",
-    "specs": {
-      "Types": "10-12% Fat Content. | 20-22% Fat Content. | 22-24% Fat Content.",
-      "Packaging": "Available in 25kg bags."
-    }
-  },
-  {
-    "id": 3,
-    "name": "Black Cocoa Powder",
-    "category": "Cocoa Products / Cocoa Powder",
-    "short_desc": "Any application using cocoa as a natural ingredient where a darker shade is desired. Cookies and industrial pastries.",
-    "long_desc": "Any application using cocoa as a natural ingredient where a darker shade is desired. Cookies and industrial pastries.",
-    "image": "products_images/BlackCocoaPowder.jpg",
-    "specs": {
-      "Packaging": "Available in 25kg bags."
-    }
-  },
-  {
-    "id": 4,
-    "name": "Cocoa Mass",
-    "category": "Cocoa Mass",
-    "short_desc": "Cocoa mass the combination of cocoa butter with cocoa solids to form our standard ECM cocoa mass.",
-    "long_desc": "Cocoa mass the combination of cocoa butter with cocoa solids to form our standard ECM cocoa mass.",
-    "image": "products_images/CocoaMass.jpeg",
-    "specs": {
-      "Types": "Natural Cocoa Mass. | Alkalized Cocoa Mass.",
-      "Applications": "Real & compound Chocolate, Confectionery, Spreads, Ice cream, Cookies and Pastries.",
-      "Packaging": "Available in cartons of 25 kg (Blocks and Flakes)."
-    }
-  },
-  {
-    "id": 5,
-    "name": "Cocoa Butter",
-    "category": "Cocoa Butter",
-    "short_desc": "Cocoa flavor & smell, single origin or custom made, standard ECOM, yellow color are all things about our cocoa butter.",
-    "long_desc": "Cocoa flavor & smell, single origin or custom made, standard ECOM, yellow color are all things about our cocoa butter.",
-    "image": "CocoaButter.jpg",
-    "specs": {
-      "Types": "Natural PPP. | Semi-deodorized PPP. | Deodorized PPP.",
-      "Applications": "Real & Compound Chocolate, Ice cream Coating, Pastries, and Personal Care Industries.",
-      "Packaging": "Available in cartons of 25 kg."
-    }
-  },
-  {
-    "id": 6,
-    "name": "Natural Hazelnut Kernels",
-    "category": "Nuts",
-    "short_desc": "Roasted Hazelnut Whole",
-    "long_desc": "Standard Size(mm): 13-15, 12-13, 11-12, 11-13, 10-12, 9-11 mm.",
-    "image": "https://images.unsplash.com/photo-1559525839-b184a4d698c7?w=600&q=80",
-    "specs": {
-      "Packaging": "Available in 10 kg, 25 kg standard aluminium or vacuum bags in cartons and various sizes."
-    }
-  },
-  {
-    "id": 7,
-    "name": "Roasted Hazelnut Whole",
-    "category": "Nuts",
-    "short_desc": "Roasted Hazelnut Whole",
-    "long_desc": "Standard Size(mm): 13-15, 12-13, 11-12, 11-13, 10-12, 9-11 mm.",
-    "image": "https://images.unsplash.com/photo-1559525839-b184a4d698c7?w=600&q=80",
-    "specs": {
-      "Standard Size(mm)": "13-15, 12-13, 11-12, 11-13, 10-12, 9-11 mm.",
-      "Packaging": "Available in 10 kg, 25 kg standard aluminium or vacuum bags in cartons and various sizes."
-    }
+    "name": "مستلزمات فندقية",
+    "category": "مستلزمات",
+    "wholesale": 200,
+    "megaWholesale": 150,
+    "image": "images/hotel-supplies.jpg"
   }
 ]

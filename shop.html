@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Al Massriya Al Emaratiya | Future of Trade - Connecting Egypt & UAE</title>
+    <meta name="description" content="Strategic partner for seamless trade and logistics solutions, bridging markets between Egypt and UAE with cutting-edge tech systems." />
+    
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;900&family=Cairo:wght@600;700;900&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
+    
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    
+    <link rel="stylesheet" href="shop.css">
+</head>
+<body>
+
+    <div id="tech-cursor"></div>
+    <div id="tech-cursor-follower"></div>
+
+    <div id="progress-bar"></div>
+
+    <div class="animated-lines-container"></div>
+
+    <header class="tech-header" id="header">
+        <div class="container header-container">
+            <div class="logo">
+                <a href="index.html">
+                    <img src="Al_Masriya_Al_Emaratiya_icon.png" class="brand-logo" onerror="this.onerror=null; this.src='https://via.placeholder.com/200x60/174388/ffffff?text=LOGO+HERE';">
+                </a>
+            </div>
+            
+            <nav class="desktop-nav">
+                <ul class="nav-links">
+                    <li><a href="#home" class="active">Home</a></li>
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="#about">About Us</a></li>
+                    <li><a href="news.html">News</a></li>
+                    <li><a href="#systems">Our Systems</a></li>
+                    <li><a href="#contact">Contact Us</a></li>
+                </ul>
+            </nav>
+            
+            <div class="header-actions">
+                <a href="login.html" class="btn btn-outline-tech" id="desktop-login-btn">
+                    <i class="fas fa-fingerprint"></i> <span class="login-text">Login</span>
+                </a>
+
+                <div class="user-profile hidden" id="desktop-user-profile">
+                    <div class="profile-trigger" id="profile-trigger">
+                        <div class="avatar-glow"><i class="fas fa-user-astronaut"></i></div>
+                        <span class="user-name">My Account</span>
+                        <i class="fas fa-chevron-down arrow-icon"></i>
+                    </div>
+                    <ul class="profile-dropdown tech-dropdown">
+                        <li><a href="portal.html"><i class="fas fa-laptop-file"></i> Portal</a></li>
+                        <li><a href="settings.html"><i class="fas fa-cog"></i> Settings</a></li>
+                        <li><a href="#" id="logout-btn" class="text-red"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
+                    </ul>
+                </div>
+
+                <div class="hamburger">
+                    <span></span><span></span><span></span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Mobile Navigation -->
+    <nav class="mobile-nav glass-panel">
+        <ul class="mobile-links">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#services">Services</a></li>
+            <li><a href="#about">About Us</a></li>
+            <li><a href="news.html">News</a></li>
+            <li><a href="#systems">Our Systems</a></li>
+            <li><a href="#contact">Contact Us</a></li>
+            <li id="mobile-login-item">
+                <a href="login.html" class="btn btn-tech w-full mt-4"><i class="fas fa-sign-in-alt"></i> Login</a>
+            </li>
+            <li id="mobile-profile-item" class="hidden">
+                <a href="portal.html" class="btn btn-outline-tech w-full mt-4"><i class="fas fa-laptop-code"></i> My Portal</a>
+                <a href="#" id="mobile-logout-btn" class="btn btn-danger w-full mt-2"><i class="fas fa-power-off"></i> Logout</a>
+            </li>
+        </ul>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="container hero-container tilt-card" data-tilt data-tilt-max="2" data-tilt-speed="400" data-tilt-glare data-tilt-max-glare="0.1">
+            <div class="hero-content" data-aos="fade-right">
+                <div class="tech-badge"><i class="fas fa-network-wired"></i> Connecting Egypt & UAE</div>
+                <h1 class="title">Future of <span class="highlight">Trade</span></h1>
+                <p class="description">
+                    Al Massriya Al Emaratiya is your strategic partner for seamless trade and logistics solutions, powered by next-generation tech systems bridging markets.
+                </p>
+                <div class="hero-buttons">
+                    <a href="#services" class="btn btn-tech">Initialize Services <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+            
+            <div class="hero-video-box" data-aos="fade-left">
+                <div class="video-frame">
+                    <video autoplay muted loop playsinline>
+                        <source src="videos/banar_video_egy-uae.mp4" type="video/mp4">
+                    </video>
+                    <div class="frame-corners"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+  <section class="section" style="padding-top: 120px;">
+    <div class="container">
+        <h2 class="text-center">بوابة تجار الجملة</h2>
+        <div id="product-grid" class="grid grid-3 mt-5">
+            </div>
+    </div>
+</section>
+
+<div id="order-modal" class="hidden">
+    <form action="https://formspree.io/f/xlgyeagk" method="POST">
+        <input type="hidden" name="Product" id="selected-product">
+        <input type="text" name="Company" placeholder="اسم الشركة" required>
+        <input type="number" name="Quantity" placeholder="الكمية المطلوبة" required>
+        <button type="submit" class="btn btn-tech">إرسال الطلب</button>
+    </form>
+</div>
+
+    <!-- Footer -->
+    <footer class="tech-footer">
+        <div class="container">
+            <div class="grid grid-4 footer-wrapper">
+                
+                <div class="footer-logo">
+                    <img src="Al_Masriya_Al_Emaratiya_icon.png" alt="Al Massriya Al Emaratiya Logo" class="brand-logo" onerror="this.onerror=null; this.src='https://via.placeholder.com/200x60/174388/ffffff?text=LOGO+HERE';">
+                    <p class="mt-4">Your Tech Gateway to Growth in Egypt & UAE.</p>
+                    <div class="social-links mt-4">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+
+                <div class="footer-links">
+                    <h4>Index Directory</h4>
+                    <ul>
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#services">Services</a></li>
+                        <li><a href="#about">About Us</a></li>
+                        <li><a href="news.html">News</a></li>
+                        <li><a href="#contact">Contact Us</a></li>
+                        <li><a href="careers.html">Careers</a></li>
+                        <li><a href="sectors.html">Our Sectors</a></li>
+                    </ul>
+                </div>
+
+                
+                <div class="footer-divisions">
+                    <h4>Our Divisions</h4>
+                    <ul>
+                        <li><a href="pages/food-division.html">Food Division</a></li>
+                        <li><a href="pages/hotel-supplies.html">Hotel Supplies</a></li>
+                        <li><a href="pages/chemicals-cosmetics.html">Chemicals & Cosmetics</a></li>
+                        <li><a href="pages/ose-procurement.html">OS&E Procurement</a></li>
+                        <li><a href="pages/office-furniture.html">Office Furniture</a></li>
+                        <li><a href="pages/banquet-furniture.html">Banquet Furniture</a></li>
+                        <li><a href="pages/metal-beds-lockers.html">Metal Beds & Lockers</a></li>
+                        <li><a href="pages/staff-furniture.html">Staff Furniture</a></li>
+                        <li><a href="pages/staff-sofa-sets.html">Staff Sofa Sets & Accessories</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-language custom-dropdown">
+                    <h4>Language Protocol</h4>
+                    <div class="dropdown-trigger" id="lang-trigger">
+                        <span><i class="fas fa-globe"></i> English</span>
+                        <i class="fas fa-chevron-down arrow-icon"></i>
+                    </div>
+                    <ul class="dropdown-menu tech-dropdown" id="lang-menu">
+                        <li><a href="index.html" class="active-lang">English</a></li>
+                        <li><a href="ar/home.html">العربية</a></li>
+                        <li><a href="home-cn.html">中文</a></li>
+                    </ul>
+                </div>
+
+            </div>
+            <div class="footer-bottom text-center">
+                <p>© <span id="current-year"></span> Al Massriya Al Emaratiya. All Rights Reserved. System Version 2.0</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Chat Widget (Tech Headset Icon) -->
+    <div id="chat-widget" class="chat-widget">
+        <button class="chat-btn glow-effect" id="chat-toggle">
+            <i class="fas fa-headset"></i> 
+        </button>
+        <div class="chat-container glass-panel" id="chat-box">
+            <div class="chat-header">
+                <h3><i class="fas fa-robot"></i> AI Support Node</h3>
+                <button class="chat-close" id="chat-close">&times;</button>
+            </div>
+            <div class="chat-body" id="chat-body">
+                <div class="message incoming">
+                    <p>Connection established. How can we assist your operations today?</p>
+                </div>
+            </div>
+            <div class="chat-footer">
+                <input type="text" placeholder="Type query..." id="chat-input">
+                <button id="chat-send"><i class="fas fa-paper-plane"></i></button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <!-- Vanilla Tilt for Tech 3D effects -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.8.0/vanilla-tilt.min.js"></script>
+    <script src="shop.js"></script>
+</body>
+</html>
