@@ -1,225 +1,385 @@
 <!DOCTYPE html>
-<html lang="en" dir="ltr">
+<html lang="ar" dir="rtl">
 <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width,initial-scale=1" />
-    <title>Al Massriya Al Emaratiya | Future of Trade - Connecting Egypt & UAE</title>
-    <meta name="description" content="Strategic partner for seamless trade and logistics solutions, bridging markets between Egypt and UAE with cutting-edge tech systems." />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>بوابة تجار المصرية الإماراتية للبيع بالجملة</title>
     
+    <!-- Google Fonts: Cairo & Tajawal -->
     <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;900&family=Cairo:wght@600;700;900&display=swap" rel="stylesheet">
     
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
-    
-    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-    
+    <!-- Tailwind CSS Play CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brandBlue: '#174388',
+                        brandRed: '#d5242b',
+                        brandGlow: 'rgba(23, 67, 136, 0.1)'
+                    },
+                    fontFamily: {
+                        sans: ['Tajawal', 'sans-serif'],
+                        display: ['Cairo', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
     <link rel="stylesheet" href="shop.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
 </head>
-<body>
+<body class="bg-[#f4f7fb] text-slate-800 font-sans min-h-screen">
 
-    <div id="tech-cursor"></div>
-    <div id="tech-cursor-follower"></div>
+    <!-- Top Status Ribbon -->
+    <div class="bg-brandBlue text-white text-[10px] sm:text-xs py-2 px-4 flex flex-col sm:flex-row justify-between items-center gap-2 z-50 relative border-b border-white/10 font-bold">
+        <div class="flex items-center gap-2">
+            <span class="inline-block w-2.5 h-2.5 bg-green-500 rounded-full animate-ping"></span>
+            <span>بوابة التجار المعتمدين - أسعار الجملة وجملة الجملة المباشرة</span>
+        </div>
+        <div class="flex items-center gap-4 text-[10px] sm:text-xs">
+            <span>فرع مصر: +201011766232</span>
+            <span>فرع الإمارات: الشارقة</span>
+        </div>
+    </div>
 
-    <div id="progress-bar"></div>
-
-    <div class="animated-lines-container"></div>
-
-    <header class="tech-header" id="header">
-        <div class="container header-container">
-            <div class="logo">
-                <a href="index.html">
-                    <img src="Al_Masriya_Al_Emaratiya_icon.png" class="brand-logo" onerror="this.onerror=null; this.src='https://via.placeholder.com/200x60/174388/ffffff?text=LOGO+HERE';">
-                </a>
+    <!-- Main Navigation Bar -->
+    <header class="bg-white/90 backdrop-blur-md sticky top-0 z-40 border-b border-slate-200">
+        <div class="max-w-7xl mx-auto px-4 py-3 sm:py-4 flex flex-col sm:flex-row justify-between items-center gap-3">
+            <div class="flex items-center gap-3">
+                <!-- Platform Brand Image Logo -->
+                <div class="w-14 h-14 flex items-center justify-center rounded overflow-hidden bg-slate-50 border border-slate-200 p-1">
+                    <img src="images/logo.png" alt="AME Logo" class="object-contain w-full h-full" onerror="this.style.display='none'; document.getElementById('logo-fallback').style.display='flex'">
+                    <div id="logo-fallback" class="hidden w-full h-full bg-brandBlue text-white font-black text-xs items-center justify-center rounded">AME</div>
+                </div>
+                <div>
+                    <h1 class="font-display font-black text-base sm:text-lg text-brandBlue leading-tight">المصرية الإماراتية للتجارة</h1>
+                    <p class="text-[9px] sm:text-[10px] text-brandRed font-bold tracking-widest uppercase">Wholesale Portal</p>
+                </div>
             </div>
             
-            <nav class="desktop-nav">
-                <ul class="nav-links">
-                    <li><a href="#home" class="active">Home</a></li>
-                    <li><a href="#services">Services</a></li>
-                    <li><a href="#about">About Us</a></li>
-                    <li><a href="news.html">News</a></li>
-                    <li><a href="#systems">Our Systems</a></li>
-                    <li><a href="#contact">Contact Us</a></li>
-                </ul>
-            </nav>
-            
-            <div class="header-actions">
-                <a href="login.html" class="btn btn-outline-tech" id="desktop-login-btn">
-                    <i class="fas fa-fingerprint"></i> <span class="login-text">Login</span>
+            <div class="flex items-center gap-3 w-full sm:w-auto justify-between sm:justify-end">
+                <a href="#catalog" class="text-xs sm:text-sm font-bold text-slate-600 hover:text-brandBlue transition-colors">دليل المنتجات</a>
+                <a href="#order-form" class="bg-brandRed text-white px-3 sm:px-4 py-2 text-[10px] sm:text-xs font-bold hover:bg-red-700 transition flex items-center gap-1.5">
+                    <i class="fa fa-paper-plane"></i> إرسال طلب عرض أسعار
                 </a>
-
-                <div class="user-profile hidden" id="desktop-user-profile">
-                    <div class="profile-trigger" id="profile-trigger">
-                        <div class="avatar-glow"><i class="fas fa-user-astronaut"></i></div>
-                        <span class="user-name">My Account</span>
-                        <i class="fas fa-chevron-down arrow-icon"></i>
-                    </div>
-                    <ul class="profile-dropdown tech-dropdown">
-                        <li><a href="portal.html"><i class="fas fa-laptop-file"></i> Portal</a></li>
-                        <li><a href="settings.html"><i class="fas fa-cog"></i> Settings</a></li>
-                        <li><a href="#" id="logout-btn" class="text-red"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
-                    </ul>
-                </div>
-
-                <div class="hamburger">
-                    <span></span><span></span><span></span>
-                </div>
             </div>
         </div>
     </header>
 
-    <!-- Mobile Navigation -->
-    <nav class="mobile-nav glass-panel">
-        <ul class="mobile-links">
-            <li><a href="#home">Home</a></li>
-            <li><a href="#services">Services</a></li>
-            <li><a href="#about">About Us</a></li>
-            <li><a href="news.html">News</a></li>
-            <li><a href="#systems">Our Systems</a></li>
-            <li><a href="#contact">Contact Us</a></li>
-            <li id="mobile-login-item">
-                <a href="login.html" class="btn btn-tech w-full mt-4"><i class="fas fa-sign-in-alt"></i> Login</a>
-            </li>
-            <li id="mobile-profile-item" class="hidden">
-                <a href="portal.html" class="btn btn-outline-tech w-full mt-4"><i class="fas fa-laptop-code"></i> My Portal</a>
-                <a href="#" id="mobile-logout-btn" class="btn btn-danger w-full mt-2"><i class="fas fa-power-off"></i> Logout</a>
-            </li>
-        </ul>
-    </nav>
-
-    <!-- Hero Section -->
-    <section class="hero" id="home">
-        <div class="container hero-container tilt-card" data-tilt data-tilt-max="2" data-tilt-speed="400" data-tilt-glare data-tilt-max-glare="0.1">
-            <div class="hero-content" data-aos="fade-right">
-                <div class="tech-badge"><i class="fas fa-network-wired"></i> Connecting Egypt & UAE</div>
-                <h1 class="title">Future of <span class="highlight">Trade</span></h1>
-                <p class="description">
-                    Al Massriya Al Emaratiya is your strategic partner for seamless trade and logistics solutions, powered by next-generation tech systems bridging markets.
+    <!-- App Hero Header -->
+    <section class="relative bg-gradient-to-r from-brandBlue to-[#0f306b] text-white py-10 sm:py-14 px-4 overflow-hidden">
+        <div class="absolute inset-0 opacity-10 bg-[radial-gradient(#fff_1px,transparent_1px)] [background-size:20px_20px]"></div>
+        <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-8 relative z-10">
+            <div class="text-right max-w-2xl">
+                <span class="bg-brandRed/20 text-brandRed border border-brandRed/30 px-3 py-1 text-[10px] sm:text-xs font-bold inline-flex items-center gap-2 mb-4">
+                    <i class="fa-solid fa-shield-halved"></i> أسعار تجارية حصرية مطابقة لمستودعات الشركة
+                </span>
+                <h2 class="text-2xl sm:text-4xl md:text-5xl font-display font-black mb-4 leading-tight">صفحة التجار والموزعين المعتمدة</h2>
+                <p class="text-blue-100 text-xs sm:text-sm md:text-base leading-relaxed">
+                    من دورتنا اللوجستية المباشرة بين مصر والإمارات، نقدم لكم خدمات توريد السلع الغذائية الفاخرة، لوازم الفنادق والمفروشات الملكية، والأثاث وسكن العمال بجودة تصدير فائقة وأسعار جملة مخفضة للغاية.
                 </p>
-                <div class="hero-buttons">
-                    <a href="#services" class="btn btn-tech">Initialize Services <i class="fas fa-arrow-right"></i></a>
-                </div>
             </div>
-            
-            <div class="hero-video-box" data-aos="fade-left">
-                <div class="video-frame">
-                    <video autoplay muted loop playsinline>
-                        <source src="videos/banar_video_egy-uae.mp4" type="video/mp4">
-                    </video>
-                    <div class="frame-corners"></div>
+            <div class="bg-white/10 backdrop-blur-md p-5 border border-white/20 text-right w-full md:w-80">
+                <h3 class="font-display font-bold text-sm sm:text-lg mb-3 border-b border-white/20 pb-2">مستويات التسعير الذكي:</h3>
+                <div class="space-y-3">
+                    <div class="flex justify-between items-center text-[11px] sm:text-xs">
+                        <span class="text-slate-300">سعر التجزئة (قطاعي)</span>
+                        <span class="font-black">للقطع المنفردة</span>
+                    </div>
+                    <div class="flex justify-between items-center text-[11px] sm:text-xs text-yellow-300 font-bold">
+                        <span>سعر الجملة التجاري</span>
+                        <span>شراء باكيت / حزمة</span>
+                    </div>
+                    <div class="flex justify-between items-center text-[11px] sm:text-xs text-emerald-400 font-bold">
+                        <span>جملة الجملة الكبرى</span>
+                        <span>طلبيات الحاويات والمشاريع</span>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-  <section class="section" style="padding-top: 120px;">
-    <div class="container">
-        <h2 class="text-center">بوابة تجار الجملة</h2>
-        <div id="product-grid" class="grid grid-3 mt-5">
-            </div>
-    </div>
-</section>
-
-<div id="order-modal" class="hidden">
-    <form action="https://formspree.io/f/xlgyeagk" method="POST">
-        <input type="hidden" name="Product" id="selected-product">
-        <input type="text" name="Company" placeholder="اسم الشركة" required>
-        <input type="number" name="Quantity" placeholder="الكمية المطلوبة" required>
-        <button type="submit" class="btn btn-tech">إرسال الطلب</button>
-    </form>
-</div>
-
-    <!-- Footer -->
-    <footer class="tech-footer">
-        <div class="container">
-            <div class="grid grid-4 footer-wrapper">
+    <!-- Main Dynamic Application Container -->
+    <main class="max-w-7xl mx-auto px-4 py-6 sm:py-8 grid grid-cols-1 lg:grid-cols-12 gap-8" id="catalog">
+        
+        <!-- Products Column -->
+        <section class="lg:col-span-8 space-y-6">
+            
+            <!-- Category and Search Control Bar -->
+            <div class="bg-white p-4 border border-slate-200 flex flex-col md:flex-row gap-4 items-center justify-between">
+                <div class="flex w-full md:w-auto overflow-x-auto gap-2 scrollbar-none pb-2 md:pb-0 font-bold whitespace-nowrap">
+                    <button class="category-btn active px-3 sm:px-4 py-1.5 text-[11px] sm:text-xs border border-brandBlue bg-brandBlue text-white hover:bg-brandBlue hover:text-white transition" data-category="all">كل المعروض</button>
+                    <button class="category-btn px-3 sm:px-4 py-1.5 text-[11px] sm:text-xs border border-slate-200 text-slate-600 bg-white hover:border-brandBlue hover:text-brandBlue transition" data-category="food">غذائية</button>
+                    <button class="category-btn px-3 sm:px-4 py-1.5 text-[11px] sm:text-xs border border-slate-200 text-slate-600 bg-white hover:border-brandBlue hover:text-brandBlue transition" data-category="hotel">تجهيزات الفنادق</button>
+                    <button class="category-btn px-3 sm:px-4 py-1.5 text-[11px] sm:text-xs border border-slate-200 text-slate-600 bg-white hover:border-brandBlue hover:text-brandBlue transition" data-category="chemicals">كيميائيات</button>
+                    <button class="category-btn px-3 sm:px-4 py-1.5 text-[11px] sm:text-xs border border-slate-200 text-slate-600 bg-white hover:border-brandBlue hover:text-brandBlue transition" data-category="furniture">أثاث عمالي</button>
+                    <button class="category-btn px-3 sm:px-4 py-1.5 text-[11px] sm:text-xs border border-slate-200 text-slate-600 bg-white hover:border-brandBlue hover:text-brandBlue transition" data-category="Perfumes">عطور وتجميل</button>
+                </div>
                 
-                <div class="footer-logo">
-                    <img src="Al_Masriya_Al_Emaratiya_icon.png" alt="Al Massriya Al Emaratiya Logo" class="brand-logo" onerror="this.onerror=null; this.src='https://via.placeholder.com/200x60/174388/ffffff?text=LOGO+HERE';">
-                    <p class="mt-4">Your Tech Gateway to Growth in Egypt & UAE.</p>
-                    <div class="social-links mt-4">
-                        <a href="#"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
-                        <a href="#"><i class="fab fa-youtube"></i></a>
+                <div class="relative w-full md:w-64">
+                    <i class="fa fa-search absolute right-3 top-3 text-slate-400 text-xs"></i>
+                    <input type="text" id="product-search" placeholder="ابحث باسم المنتج..." class="w-full pr-8 pl-3 py-1.5 text-xs border border-slate-200 focus:outline-none focus:border-brandBlue bg-slate-50">
+                </div>
+            </div>
+
+            <!-- Products Grid - Optimized Responsive Columns -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6" id="products-grid">
+                <!-- Products dynamically loaded by JS -->
+            </div>
+            
+        </section>
+
+        <!-- Shopping Cart & Order Summary Form Column -->
+        <aside class="lg:col-span-4 space-y-6">
+            
+            <!-- Shopping Cart Panel -->
+            <div class="bg-white border-2 border-slate-800 p-4 sm:p-5">
+                <div class="flex justify-between items-center border-b border-slate-100 pb-3 mb-4">
+                    <h3 class="font-display font-bold text-slate-800 text-sm sm:text-base flex items-center gap-2">
+                        <i class="fa fa-shopping-basket text-brandRed"></i> سلة طلبيات الجملة
+                    </h3>
+                    <span class="bg-slate-100 text-slate-700 text-xs font-bold px-2 py-0.5" id="cart-item-count">0 عناصر</span>
+                </div>
+
+                <!-- Empty Cart State -->
+                <div id="empty-cart-view" class="text-center py-8 text-slate-400">
+                    <i class="fa-solid fa-box-open text-3xl mb-3 block text-slate-300 animate-pulse"></i>
+                    <p class="text-xs">السلة فارغة حالياً. برجاء تصفح السلع وإدخال الكمية لبناء كشف الطلب الخاص بك.</p>
+                </div>
+
+                <!-- Cart Items Container -->
+                <div id="cart-items-container" class="space-y-4 max-h-72 overflow-y-auto pr-1 hidden">
+                    <!-- Dynamic rendering by client JS -->
+                </div>
+
+                <!-- Live Price Calculation Widget -->
+                <div id="cart-summary-calculations" class="border-t border-slate-200 mt-4 pt-4 space-y-2 text-xs font-bold hidden">
+                    <div class="flex justify-between text-slate-600">
+                        <span>إجمالي الجملة الصافي:</span>
+                        <span id="subtotal-display">0 ج.م</span>
+                    </div>
+                    <div class="flex justify-between text-slate-600">
+                        <span>ضريبة القيمة المضافة (14%):</span>
+                        <span id="tax-display">0 ج.م</span>
+                    </div>
+                    <div class="flex justify-between text-emerald-600 bg-emerald-50 p-2 border border-emerald-200">
+                        <span>لقد وفرت بالشراء بالجملة:</span>
+                        <span id="savings-display">0 ج.م</span>
+                    </div>
+                    <div class="flex justify-between text-slate-900 border-t border-slate-200 pt-2 text-sm">
+                        <span>الإجمالي الإرشادي النهائي:</span>
+                        <span id="final-total-display" class="font-black text-brandBlue text-lg">0 ج.م</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Lead Submission Formspree Portal -->
+            <div class="bg-white border border-slate-200 p-4 sm:p-5 rounded-sm shadow-sm" id="order-form">
+                <h3 class="font-display font-bold text-slate-800 text-sm mb-1 leading-tight flex items-center gap-2">
+                    <i class="fa-solid fa-clipboard-question text-brandBlue"></i> تأكيد الطلب الفوري وتأمين السعر
+                </h3>
+                <p class="text-[11px] text-slate-500 mb-4 font-medium">املأ البيانات أدناه وسيتم إرسال سلة الطلب مباشرة لمكتب المبيعات للمطابقة اللوجستية.</p>
+                
+                <form id="formspree-order-form" class="space-y-3">
+                    <div>
+                        <label class="block text-[11px] font-bold text-slate-600 mb-1">اسم المؤسسة / التاجر المشتري *</label>
+                        <input type="text" id="form-name" required placeholder="مثال: شركة النور للمواد الغذائية" class="w-full text-xs px-3 py-2 border border-slate-200 focus:outline-none focus:border-brandBlue bg-slate-50/50">
+                    </div>
+
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                        <div>
+                            <label class="block text-[11px] font-bold text-slate-600 mb-1">رقم الواتساب للتواصل الكثيف *</label>
+                            <input type="tel" id="form-phone" required placeholder="مثال: 01011766232" class="w-full text-xs px-3 py-2 border border-slate-200 focus:outline-none focus:border-brandBlue bg-slate-50/50">
+                        </div>
+                        <div>
+                            <label class="block text-[11px] font-bold text-slate-600 mb-1">البريد الإلكتروني للشركة</label>
+                            <input type="email" id="form-email" placeholder="example@company.com" class="w-full text-xs px-3 py-2 border border-slate-200 focus:outline-none focus:border-brandBlue bg-slate-50/50">
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                        <div>
+                            <label class="block text-[11px] font-bold text-slate-600 mb-1">مقر التوريد اللوجستي</label>
+                            <select id="form-location" class="w-full text-xs px-3 py-1.5 border border-slate-200 focus:outline-none focus:border-brandBlue bg-slate-50/50">
+                                <option value="Egypt">جمهورية مصر العربية</option>
+                                <option value="UAE">دولة الإمارات العربية المتحدة</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="block text-[11px] font-bold text-slate-600 mb-1">رقم السجل التجاري (إن وجد)</label>
+                            <input type="text" id="form-reg" placeholder="أو رقم الرخصة التجارية" class="w-full text-xs px-3 py-1.5 border border-slate-200 focus:outline-none focus:border-brandBlue bg-slate-50/50">
+                        </div>
+                    </div>
+
+                    <div>
+                        <label class="block text-[11px] font-bold text-slate-600 mb-1">ملاحظات تسليم خاصة / مواعيد الشحن</label>
+                        <textarea id="form-notes" rows="2" placeholder="برجاء كتابة أي مواصفات تعديل أو شروط خاصة بالتفريغ والتسليم..." class="w-full text-xs px-3 py-2 border border-slate-200 focus:outline-none focus:border-brandBlue bg-slate-50/50"></textarea>
+                    </div>
+
+                    <!-- Hidden fields to aggregate order lists to send to Formspree -->
+                    <input type="hidden" id="form-summary" name="Order_Summary">
+                    <input type="hidden" id="form-total-price" name="Order_Price_Total">
+
+                    <button type="submit" id="submit-btn" class="w-full bg-brandBlue text-white py-3 text-xs font-bold hover:bg-slate-900 transition flex items-center justify-center gap-2 border border-brandBlue">
+                        <span>إرسال تفاصيل الطلب المجمع الفورية</span> <i class="fa fa-truck"></i>
+                    </button>
+                    
+                    <div id="submit-loader" class="hidden text-center py-2 text-slate-500 font-bold text-xs">
+                        <i class="fa fa-spinner animate-spin text-brandBlue mr-2"></i> جاري بث الطلب بشكل آمن ومطابقة الأسعار...
+                    </div>
+                </form>
+
+                <!-- Success State Overlay -->
+                <div id="success-message" class="hidden border border-emerald-200 bg-emerald-50 text-emerald-800 p-4 text-center mt-3 font-bold rounded-sm">
+                    <i class="fa-solid fa-circle-check text-2xl text-emerald-600 mb-1.5 block"></i>
+                    <p class="text-sm">تم إرسال الطلب بنجاح للشركة الجملية!</p>
+                    <p class="text-[10px] text-slate-500 mt-2">سنرسل لك الفاتورة التفصيلية والتنسيق اللوجستي بالاتصال أو الواتساب خلال ساعة عمل واحدة.</p>
+                </div>
+            </div>
+        </aside>
+    </main>
+
+    <!-- Administrative / Owner Control Center Panel -->
+    <section class="max-w-7xl mx-auto px-4 py-6 mt-6 border-t border-slate-200">
+        <div class="bg-slate-950 text-white p-4 sm:p-6 rounded shadow-lg">
+            <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center border-b border-slate-800 pb-3 mb-4 gap-3">
+                <h3 class="font-display font-black text-xs sm:text-sm text-yellow-500 flex items-center gap-2">
+                    <i class="fa-solid fa-lock"></i> لوحة إدارة وتحديث وتعديل المنتجات (خاص بك فقط)
+                </h3>
+                <button onclick="toggleAdminPanel()" id="admin-toggle-btn" class="w-full sm:w-auto bg-slate-800 hover:bg-slate-700 text-slate-300 px-3 py-1.5 text-xs font-bold rounded text-center">
+                    فتح لوحة الإشراف
+                </button>
+            </div>
+
+            <div id="admin-panel-content" class="hidden space-y-6">
+                <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+                    
+                    <!-- Column 1: Add or Edit Product Form -->
+                    <div class="lg:col-span-2 bg-slate-900 p-4 rounded border border-slate-800">
+                        <div class="flex justify-between items-center mb-3">
+                            <h4 id="admin-form-title" class="text-xs font-black text-yellow-500 uppercase">إضافة منتج جديد فوري</h4>
+                            <button id="admin-cancel-edit-btn" onclick="cancelProductEdit()" class="hidden bg-slate-800 hover:bg-slate-700 text-red-400 px-2 py-1 text-[10px] font-bold rounded">
+                                إلغاء وضع التعديل
+                            </button>
+                        </div>
+                        <form id="admin-add-product-form" onsubmit="adminAddOrUpdateProduct(event)" class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs">
+                            <div>
+                                <label class="block text-slate-400 mb-1">المعرف الفريد للمنتج (ID)</label>
+                                <input type="text" id="admin-id" placeholder="مثال: id-perfume-9" required class="w-full bg-slate-800 border border-slate-700 p-2 text-white">
+                            </div>
+                            <div>
+                                <label class="block text-slate-400 mb-1">رقم الموديل (SKU)</label>
+                                <input type="text" id="admin-sku" placeholder="مثال: SKU-OUD-01" required class="w-full bg-slate-800 border border-slate-700 p-2 text-white">
+                            </div>
+                            <div>
+                                <label class="block text-slate-400 mb-1">الاسم باللغة العربية</label>
+                                <input type="text" id="admin-nameAr" placeholder="مثال: طقم عطر عود ملوكي فاخر" required class="w-full bg-slate-800 border border-slate-700 p-2 text-white">
+                            </div>
+                            <div>
+                                <label class="block text-slate-400 mb-1">الاسم بالإنجليزية</label>
+                                <input type="text" id="admin-nameEn" placeholder="مثال: Royal Oud Perfume Set" required class="w-full bg-slate-800 border border-slate-700 p-2 text-white">
+                            </div>
+                            <div>
+                                <label class="block text-slate-400 mb-1">التصنيف (Category)</label>
+                                <select id="admin-category" class="w-full bg-slate-800 border border-slate-700 p-2 text-white">
+                                    <option value="food">غذائية (food)</option>
+                                    <option value="hotel">تجهيزات الفنادق (hotel)</option>
+                                    <option value="chemicals">كيميائيات (chemicals)</option>
+                                    <option value="furniture">أثاث عمالي (furniture)</option>
+                                    <option value="Perfumes">عطور وتجميل (Perfumes)</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label class="block text-slate-400 mb-1">مسار أو رابط الصورة المباشر 🔗</label>
+                                <input type="text" id="admin-image" placeholder="رابط ويب أو مسار مثل: images/item.jpg" required class="w-full bg-slate-800 border border-slate-700 p-2 text-white">
+                            </div>
+                            <div>
+                                <label class="block text-slate-400 mb-1">توصيف التعبئة والحزمة</label>
+                                <input type="text" id="admin-packAr" placeholder="مثال: كرتونة بها 12 قطعة" required class="w-full bg-slate-800 border border-slate-700 p-2 text-white">
+                            </div>
+                            <div>
+                                <label class="block text-slate-400 mb-1">وحدة بيع المنتج</label>
+                                <input type="text" id="admin-unitAr" placeholder="مثال: كرتونة / طقم / حزمة" required class="w-full bg-slate-800 border border-slate-700 p-2 text-white">
+                            </div>
+                            <div>
+                                <label class="block text-slate-400 mb-1">سعر التجزئة (قطاعي)</label>
+                                <input type="number" id="admin-retailPrice" placeholder="مثال: 1500" required class="w-full bg-slate-800 border border-slate-700 p-2 text-white">
+                            </div>
+                            <div>
+                                <label class="block text-slate-400 mb-1">سعر الجملة التجاري</label>
+                                <input type="number" id="admin-wholesalePrice" placeholder="مثال: 1200" required class="w-full bg-slate-800 border border-slate-700 p-2 text-white">
+                            </div>
+                            <div>
+                                <label class="block text-slate-400 mb-1">سعر جملة الجملة الأكبر</label>
+                                <input type="number" id="admin-bulkPrice" placeholder="مثال: 1000" required class="w-full bg-slate-800 border border-slate-700 p-2 text-white">
+                            </div>
+                            <div>
+                                <label class="block text-slate-400 mb-1">الكمية الدنيا للجملة / لجملة الجملة</label>
+                                <div class="grid grid-cols-2 gap-2">
+                                    <input type="number" id="admin-wholesaleMinQty" placeholder="جملة (مثال: 10)" required class="w-full bg-slate-800 border border-slate-700 p-2 text-white">
+                                    <input type="number" id="admin-bulkMinQty" placeholder="كبرى (مثال: 40)" required class="w-full bg-slate-800 border border-slate-700 p-2 text-white">
+                                </div>
+                            </div>
+                            <div class="sm:col-span-2">
+                                <label class="block text-slate-400 mb-1">وصف المنتج المفصل بالكامل</label>
+                                <textarea id="admin-descriptionAr" rows="3" placeholder="اكتب المكونات ومواصفات التصدير بالتفصيل..." required class="w-full bg-slate-800 border border-slate-700 p-2 text-white"></textarea>
+                            </div>
+                            <div class="sm:col-span-2 flex justify-between items-center pt-3">
+                                <button type="submit" id="admin-submit-btn" class="w-full sm:w-auto bg-emerald-600 hover:bg-emerald-700 text-white px-5 py-2.5 font-bold rounded">
+                                    <i class="fa fa-plus"></i> إضافة المنتج للمعاينة الفورية
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+
+                    <!-- Column 2: Export Action & Guidelines -->
+                    <div class="bg-slate-900 p-4 rounded border border-slate-800 flex flex-col justify-between gap-4">
+                        <div>
+                            <h4 class="text-xs font-black text-yellow-500 mb-3">حفظ التغييرات بشكل نهائي على جيت هوب</h4>
+                            <p class="text-[11px] text-slate-400 leading-relaxed mb-4">
+                                عند إضافتك أو حذفك للمنتجات من هنا، سيتم حفظها في متصفحك بشكل مؤقت لترى النتيجة. لجعلها دائمة للجميع على الإنترنت:
+                            </p>
+                            <ol class="text-[11px] text-slate-300 list-decimal list-inside space-y-2 mb-4">
+                                <li>قم بإضافة كافة منتجاتك الجديدة وتعديلها.</li>
+                                <li>انقر على الزر بالأسفل لنسخ الكود بالكامل.</li>
+                                <li>افتح ملف <code class="bg-slate-950 text-emerald-400 px-1 font-mono">shop.js</code> في حسابك على GitHub.</li>
+                                <li>استبدل مصفوفة <code class="bg-slate-950 text-emerald-400 px-1 font-mono">PRODUCTS</code> بالكود المنسوخ بالكامل ثم احفظ التغييرات.</li>
+                            </ol>
+                        </div>
+                        <div class="space-y-2">
+                            <button onclick="exportProductsCode()" class="w-full bg-yellow-500 hover:bg-yellow-600 text-slate-950 py-2.5 text-xs font-black rounded flex items-center justify-center gap-1">
+                                <i class="fa fa-copy"></i> نسخ كود المنتجات المحدث كاملاً لتحديث ملف JS
+                            </button>
+                            <button onclick="resetToDefaults()" class="w-full bg-slate-800 hover:bg-red-900 text-slate-400 hover:text-white py-1.5 text-[10px] font-bold rounded">
+                                استعادة المنتجات الأساسية الافتراضية
+                            </button>
+                        </div>
                     </div>
                 </div>
 
-                <div class="footer-links">
-                    <h4>Index Directory</h4>
-                    <ul>
-                        <li><a href="#home">Home</a></li>
-                        <li><a href="#services">Services</a></li>
-                        <li><a href="#about">About Us</a></li>
-                        <li><a href="news.html">News</a></li>
-                        <li><a href="#contact">Contact Us</a></li>
-                        <li><a href="careers.html">Careers</a></li>
-                        <li><a href="sectors.html">Our Sectors</a></li>
-                    </ul>
-                </div>
-
-                
-                <div class="footer-divisions">
-                    <h4>Our Divisions</h4>
-                    <ul>
-                        <li><a href="pages/food-division.html">Food Division</a></li>
-                        <li><a href="pages/hotel-supplies.html">Hotel Supplies</a></li>
-                        <li><a href="pages/chemicals-cosmetics.html">Chemicals & Cosmetics</a></li>
-                        <li><a href="pages/ose-procurement.html">OS&E Procurement</a></li>
-                        <li><a href="pages/office-furniture.html">Office Furniture</a></li>
-                        <li><a href="pages/banquet-furniture.html">Banquet Furniture</a></li>
-                        <li><a href="pages/metal-beds-lockers.html">Metal Beds & Lockers</a></li>
-                        <li><a href="pages/staff-furniture.html">Staff Furniture</a></li>
-                        <li><a href="pages/staff-sofa-sets.html">Staff Sofa Sets & Accessories</a></li>
-                    </ul>
-                </div>
-
-                <div class="footer-language custom-dropdown">
-                    <h4>Language Protocol</h4>
-                    <div class="dropdown-trigger" id="lang-trigger">
-                        <span><i class="fas fa-globe"></i> English</span>
-                        <i class="fas fa-chevron-down arrow-icon"></i>
+                <!-- Products list in Admin for deletion & modification -->
+                <div class="border-t border-slate-800 pt-4">
+                    <h4 class="text-xs font-black text-yellow-500 mb-3">إدارة المنتجات الحالية (تعديل أو حذف):</h4>
+                    <div class="max-h-80 overflow-y-auto space-y-2 pr-2" id="admin-products-list">
+                        <!-- Loaded dynamically -->
                     </div>
-                    <ul class="dropdown-menu tech-dropdown" id="lang-menu">
-                        <li><a href="index.html" class="active-lang">English</a></li>
-                        <li><a href="ar/home.html">العربية</a></li>
-                        <li><a href="home-cn.html">中文</a></li>
-                    </ul>
                 </div>
+            </div>
+        </div>
+    </section>
 
-            </div>
-            <div class="footer-bottom text-center">
-                <p>© <span id="current-year"></span> Al Massriya Al Emaratiya. All Rights Reserved. System Version 2.0</p>
-            </div>
+    <!-- Simple Corporate Footer -->
+    <footer class="bg-slate-900 text-slate-400 py-12 px-4 mt-16 border-t-4 border-brandBlue">
+        <div class="max-w-7xl mx-auto text-center space-y-4">
+            <h4 class="font-display font-black text-white text-lg">المصرية الإماراتية للتجارة والتوكيلات اللوجستية</h4>
+            <p class="text-xs max-w-xl mx-auto text-slate-400">بوابة إلكترونية صممت خصيصاً للتصدير والتجارة الثنائية بالجملة وجملة الجملة للموردين وأصحاب المشاريع لتطوير سلاسل التوريد بين مصر والإمارات.</p>
+            <p class="text-[10px] text-slate-500 font-bold border-t border-slate-800 pt-6">© 2026 جميع الحقوق محفوظة للمصرية الإماراتية للتوريدات - تم النشر عبر GitHub Pages</p>
         </div>
     </footer>
 
-    <!-- Chat Widget (Tech Headset Icon) -->
-    <div id="chat-widget" class="chat-widget">
-        <button class="chat-btn glow-effect" id="chat-toggle">
-            <i class="fas fa-headset"></i> 
-        </button>
-        <div class="chat-container glass-panel" id="chat-box">
-            <div class="chat-header">
-                <h3><i class="fas fa-robot"></i> AI Support Node</h3>
-                <button class="chat-close" id="chat-close">&times;</button>
-            </div>
-            <div class="chat-body" id="chat-body">
-                <div class="message incoming">
-                    <p>Connection established. How can we assist your operations today?</p>
-                </div>
-            </div>
-            <div class="chat-footer">
-                <input type="text" placeholder="Type query..." id="chat-input">
-                <button id="chat-send"><i class="fas fa-paper-plane"></i></button>
-            </div>
-        </div>
-    </div>
-
-    <!-- Scripts -->
-    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    <!-- Vanilla Tilt for Tech 3D effects -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.8.0/vanilla-tilt.min.js"></script>
+    <!-- Script Import -->
     <script src="shop.js"></script>
 </body>
 </html>
