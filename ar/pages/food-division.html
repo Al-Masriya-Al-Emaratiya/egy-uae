@@ -1,0 +1,562 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>قطاع الأغذية | المصرية الإماراتية</title>
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;900&family=Cairo:wght@400;700;900&display=swap" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
+    <!-- AOS CSS -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    
+    <!-- Link to Main Tech Stylesheet -->
+    <link rel="stylesheet" href="css/style.css">
+
+    <style>
+        /* Fix Custom Cursor Z-index so it doesn't hide behind the modal */
+        #tech-cursor { z-index: 99999 !important; pointer-events: none !important; }
+        #tech-cursor-follower { z-index: 99998 !important; pointer-events: none !important; }
+
+        /* Google Translate Customization for Tech Design */
+        .google-translate-wrapper { position: relative; display: inline-block; margin-right: 15px; }
+        .skiptranslate iframe, .goog-te-banner-frame { display: none !important; visibility: hidden !important; }
+        body { top: 0 !important; }
+        .goog-te-gadget-simple {
+            background-color: var(--bg-surface) !important;
+            border: 1px solid var(--border-color) !important;
+            padding: 6px 12px !important;
+            cursor: pointer;
+            font-family: 'Tajawal', sans-serif !important;
+            display: flex !important; align-items: center !important; gap: 5px;
+            transition: var(--transition);
+        }
+        .goog-te-gadget-simple:hover { border-color: var(--primary) !important; }
+        .goog-te-gadget-simple img { display: none !important; }
+        .goog-te-gadget-simple span { color: var(--text-main) !important; font-weight: 700 !important; font-size: 0.9rem !important; }
+        .goog-te-menu-frame { box-shadow: 0 10px 30px rgba(0,0,0,0.1) !important; top: 100% !important; margin-top: 5px !important; }
+
+        /* Specific Page Tweaks */
+        .division-hero { padding: 160px 0 80px 0; background: var(--bg-surface); border-bottom: var(--tech-border); position: relative; overflow: hidden; }
+        .division-hero::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(135deg, rgba(23,67,136,0.03) 0%, rgba(213,36,43,0.03) 100%); pointer-events: none; }
+        .product-list { border-top: 1px solid var(--border-color); margin-top: 15px; padding-top: 15px; }
+        .product-list li { margin-bottom: 8px; font-size: 0.95rem; display: flex; gap: 10px; align-items: flex-start; }
+        .product-list li i { color: var(--secondary); font-size: 0.8rem; margin-top: 5px; }
+
+        /* Product Image Box in Grid */
+        .product-img-box {
+            width: 100%; height: 200px; overflow: hidden;
+            border: 1px solid var(--primary); margin-bottom: 20px;
+            background: rgba(23,67,136,0.05); display: flex; align-items: center; justify-content: center;
+        }
+        .product-img-box img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s; }
+        .tech-card:hover .product-img-box img { transform: scale(1.1); }
+        .tech-card-clickable:hover { border-color: var(--secondary); cursor: pointer; }
+
+        /* Tech Modal (Popup) Styles */
+        .tech-modal-overlay {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(7, 14, 28, 0.85); backdrop-filter: blur(5px);
+            z-index: 10000; display: flex; align-items: center; justify-content: center;
+            opacity: 0; visibility: hidden; transition: var(--transition);
+        }
+        .tech-modal-overlay.active { opacity: 1; visibility: visible; }
+        .tech-modal-content {
+            background: var(--bg-surface); width: 90%; max-width: 800px;
+            border: 1px solid var(--primary); border-top: 4px solid var(--secondary);
+            display: flex; flex-direction: column; position: relative;
+            transform: translateY(-50px); transition: transform 0.4s;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.3);
+        }
+        .tech-modal-overlay.active .tech-modal-content { transform: translateY(0); }
+        @media (min-width: 768px) { .tech-modal-content { flex-direction: row; } }
+        .tech-modal-img { flex: 1; min-height: 250px; border-left: 1px solid var(--border-color); background: var(--bg-main); overflow: hidden; }
+        .tech-modal-img img { width: 100%; height: 100%; object-fit: cover; }
+        .tech-modal-info { flex: 1; padding: 40px 30px; display: flex; flex-direction: column; justify-content: center; text-align: right; }
+        .close-modal {
+            position: absolute; top: 15px; left: 15px; background: var(--bg-surface);
+            border: 1px solid var(--border-color); color: var(--text-main); font-size: 1.2rem;
+            width: 35px; height: 35px; display: flex; align-items: center; justify-content: center;
+            cursor: pointer; transition: 0.3s; z-index: 10;
+        }
+        .close-modal:hover { color: #fff; background: var(--secondary); border-color: var(--secondary); }
+        
+        /* Adjustments for RTL */
+        .tech-badge { left: auto; right: 15px; }
+        .info-item i { margin-left: 10px; margin-right: 0; }
+    </style>
+</head>
+<body>
+
+    <!-- Tech Cursors & Animations -->
+    <div id="tech-cursor"></div>
+    <div id="tech-cursor-follower"></div>
+    <div id="progress-bar"></div>
+    <div class="animated-lines-container"></div>
+
+    <!-- Header & Navigation -->
+     <header class="tech-header" id="header">
+        <div class="container header-container">
+            <div class="logo">
+                <a href="../home.html">
+                    <img src="Al_Masriya_Al_Emaratiya_icon.png" class="brand-logo" onerror="this.onerror=null; this.src='https://via.placeholder.com/200x60/174388/ffffff?text=LOGO+HERE';">
+                </a>
+            </div>
+            
+            <nav class="desktop-nav">
+                <ul class="nav-links">
+                    <li><a href="../index.html#home" class="active">الرئيسية</a></li>
+                    <li><a href="../index.html#services">خدماتنا</a></li>
+                    <li><a href="../index.html#about">من نحن</a></li>
+                    <li><a href="../news.html">الأخبار</a></li>
+                    <li><a href="../index.html#systems">أنظمتنا</a></li>
+                    <li><a href="../index.html#contact">اتصل بنا</a></li>
+                </ul>
+            </nav>
+            
+            <div class="header-actions">
+                <a href="../login.html" class="btn btn-outline-tech" id="desktop-login-btn">
+                    <i class="fas fa-fingerprint"></i> <span class="login-text">تسجيل الدخول</span>
+                </a>
+
+                <div class="user-profile hidden" id="desktop-user-profile">
+                    <div class="profile-trigger" id="profile-trigger">
+                        <div class="avatar-glow"><i class="fas fa-user-astronaut"></i></div>
+                        <span class="user-name">حسابي</span>
+                        <i class="fas fa-chevron-down arrow-icon"></i>
+                    </div>
+                    <ul class="profile-dropdown tech-dropdown">
+                        <li><a href="portal.html"><i class="fas fa-laptop-file"></i> البوابة الإلكترونية</a></li>
+                        <li><a href="settings.html"><i class="fas fa-cog"></i> الإعدادات</a></li>
+                        <li><a href="#" id="logout-btn" class="text-red"><i class="fas fa-sign-out-alt"></i> تسجيل الخروج</a></li>
+                    </ul>
+                </div>
+
+                <div class="hamburger">
+                    <span></span><span></span><span></span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Mobile Menu -->
+    <nav class="mobile-nav glass-panel">
+        <ul class="mobile-links">
+            <li><a href="#home">الرئيسية</a></li>
+            <li><a href="#services">خدماتنا</a></li>
+            <li><a href="#about">من نحن</a></li>
+            <li><a href="news.html">الأخبار</a></li>
+            <li><a href="#systems">أنظمتنا</a></li>
+            <li><a href="#contact">اتصل بنا</a></li>
+            <li id="mobile-login-item">
+                <a href="login.html" class="btn btn-tech w-full mt-4"><i class="fas fa-sign-in-alt"></i> تسجيل الدخول</a>
+            </li>
+            <li id="mobile-profile-item" class="hidden">
+                <a href="portal.html" class="btn btn-outline-tech w-full mt-4"><i class="fas fa-laptop-code"></i> البوابة الخاصة بي</a>
+                <a href="#" id="mobile-logout-btn" class="btn btn-danger w-full mt-2"><i class="fas fa-power-off"></i> تسجيل الخروج</a>
+            </li>
+        </ul>
+    </nav>
+
+    <!-- Sector Hero Section -->
+    <section class="division-hero section text-center">
+        <div class="container" data-aos="zoom-in">
+            <h1 style="font-size: clamp(2.5rem, 5vw, 4.5rem); font-weight: 900; color: var(--primary); margin-bottom: 20px;">
+                قطاع <span class="text-red">الأغذية</span>
+            </h1>
+            <p style="max-width: 800px; margin: 0 auto; font-size: 1.1rem; color: var(--text-muted);">
+                مركز استراتيجي لسلاسل التوريد لاستيراد وتصدير وتوزيع السلع الغذائية الأساسية والمنتجات الزراعية الممتازة بين مصر والإمارات العربية المتحدة والأسواق العالمية.
+            </p>
+        </div>
+    </section>
+
+    <!-- Import & Export Operations Section -->
+    <section class="section">
+        <div class="container">
+            <div class="section-header" data-aos="fade-up">
+                <h2>عمليات الاستيراد والتصدير</h2>
+                <div class="header-line"></div>
+                <p class="mt-4">تأمين خطوط الإمداد العالمية (B2B) للسلع الغذائية الطازجة، المبردة، والمعبأة.</p>
+            </div>
+            
+            <div class="grid grid-3">
+                <div class="tech-card" data-aos="fade-up" data-aos-delay="100">
+                    <span class="tech-badge" style="position: absolute; top: 15px; left: 15px; right: auto;">تصدير</span>
+                    <div class="icon-box"><i class="fas fa-apple-whole"></i></div>
+                    <h3>خضروات وفواكه طازجة</h3>
+                    <p>تصدير المحاصيل الزراعية المصرية الممتازة مباشرة إلى سلاسل التجزئة في الخليج وأوروبا.</p>
+                    <ul class="product-list">
+                        <li><i class="fas fa-caret-left"></i> الحمضيات (برتقال فالنسيا، أبو صرة، ليمون)</li>
+                        <li><i class="fas fa-caret-left"></i> الرمان والعنب الطازج</li>
+                        <li><i class="fas fa-caret-left"></i> البصل، الثوم، والبطاطس الممتازة</li>
+                    </ul>
+                </div>
+
+                <div class="tech-card" data-aos="fade-up" data-aos-delay="200">
+                    <span class="tech-badge" style="position: absolute; top: 15px; left: 15px; right: auto;">تصدير</span>
+                    <div class="icon-box"><i class="fas fa-seedling"></i></div>
+                    <h3>أعشاب وتوابل عضوية</h3>
+                    <p>تجهيز وتصدير الأعشاب المجففة العضوية المعتمدة والمواد الخام المخصصة للتصنيع الغذائي.</p>
+                    <ul class="product-list">
+                        <li><i class="fas fa-caret-left"></i> البردقوش، النعناع الفلفلي، البابونج</li>
+                        <li><i class="fas fa-caret-left"></i> الكمون الفاخر، الكزبرة، الينسون</li>
+                        <li><i class="fas fa-caret-left"></i> مواد خام ومستخلصات تصنيعية</li>
+                    </ul>
+                </div>
+
+                <div class="tech-card" data-aos="fade-up" data-aos-delay="300">
+                    <span class="tech-badge" style="background: rgba(23,67,136,0.1); color: var(--primary); border-color: var(--primary); position: absolute; top: 15px; left: 15px; right: auto;">استيراد</span>
+                    <div class="icon-box"><i class="fas fa-wheat-awn"></i></div>
+                    <h3>الحبوب الاستراتيجية</h3>
+                    <p>استيراد وتوزيع كميات ضخمة من السلع الأساسية لدعم الأمن الغذائي بأسعار الجملة.</p>
+                    <ul class="product-list">
+                        <li><i class="fas fa-caret-left"></i> الأرز الأبيض والبسمتي الفاخر</li>
+                        <li><i class="fas fa-caret-left"></i> قمح المطاحن والذرة الصفراء</li>
+                        <li><i class="fas fa-caret-left"></i> سكر القصب الخام والمكرر</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- NEW: Dynamic Food Products Section -->
+    <section class="section glass-section" id="products-catalog">
+        <div class="container">
+            <div class="section-header" data-aos="fade-up">
+                <h2>كتالوج المنتجات الغذائية</h2>
+                <div class="header-line"></div>
+                <p class="mt-4">انقر على أي منتج لعرض التفاصيل الكاملة وطلب عرض أسعار مخصص.</p>
+            </div>
+            
+            <!-- This grid will be populated dynamically from products/data/food-division-ar.json -->
+            <div class="grid grid-3" id="dynamic-products-grid">
+                
+            </div>
+        </div>
+    </section>
+
+    <!-- Commercial Agencies Section -->
+    <section class="section">
+        <div class="container">
+            <div class="section-header" data-aos="fade-up">
+                <h2>الوكالات التجارية</h2>
+                <div class="header-line"></div>
+                <p class="mt-4">شراكات تجارية حصرية وماركات عالمية مرموقة نمثلها في أسواقنا.</p>
+            </div>
+            
+            <div class="grid grid-4">
+                <div class="tech-card text-center" data-aos="zoom-in" data-aos-delay="100">
+                    <div style="height: 80px; display: flex; align-items: center; justify-content: center; border: 1px dashed var(--primary); margin-bottom: 20px; background: rgba(23,67,136,0.05);">
+                        <img src="products/images/deZaan.png" alt="deZaan" style="max-height: 50px;">
+                    </div>
+                    <h3>deZaan</h3>
+                    <p style="font-size: 0.9rem;">مكونات الكاكاو المصممة للتميز والريادة</p>
+                </div>
+                
+                <div class="tech-card text-center" data-aos="zoom-in" data-aos-delay="200">
+                    <div style="height: 80px; display: flex; align-items: center; justify-content: center; border: 1px dashed var(--primary); margin-bottom: 20px; font-weight: bold; color: var(--primary);">شعار الشريك</div>
+                    <h3>قريباً</h3>
+                    <p style="font-size: 0.9rem;">شراكة دولية قادمة في القريب العاجل.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Form Section -->
+    <section id="contact" class="section glass-section">
+        <div class="container">
+            <div class="section-header" data-aos="fade-up">
+                <h2>الاستفسار عن التوريدات</h2>
+                <div class="header-line"></div>
+            </div>
+            
+            <div class="grid grid-2">
+                <div data-aos="fade-right">
+                    <h3 style="color: var(--primary); margin-bottom: 20px;">طلب تبادل تجاري</h3>
+                    <p class="mb-4">تواصل مباشرة مع مديري العمليات التجارية في قطاع الأغذية لدينا لطلب عينات المنتجات، شهادات المطابقة، أو أسعار الجملة المخصصة للشحن بالحاويات الكاملة (FCL).</p>
+                    <div class="info-item"><i class="fas fa-envelope"></i> info@egy-uae.com</div>
+                    <div class="info-item"><i class="fas fa-phone"></i> +20 101 176 6232</div>
+                </div>
+                
+                <div data-aos="fade-left">
+                    <form action="https://formspree.io/f/maqkrwoe" method="POST" class="tech-card">
+                        <div class="input-group">
+                            <i class="fas fa-user"></i>
+                            <input type="text" name="Name" placeholder="الاسم الكامل / الشركة" required>
+                        </div>
+                        <div class="input-group">
+                            <i class="fas fa-envelope"></i>
+                            <input type="email" name="Email" placeholder="البريد الإلكتروني للعمل" required>
+                        </div>
+                        <div class="input-group" style="margin-bottom: 20px;">
+                            <select name="Order-Type" id="contact-order-type" style="width: 100%; padding: 15px; border: 1px solid var(--border-color); background: var(--bg-main); font-family: inherit; font-size: 1rem; color: var(--text-main); outline: none;">
+                                <option value="Export Inquiry">الاستيراد من مصر (تصدير)</option>
+                                <option value="Import Inquiry">التوريد إلينا (استيراد)</option>
+                                <option value="Agency">الوكالات التجارية</option>
+                            </select>
+                        </div>
+                        <div class="input-group">
+                            <i class="fas fa-comment-alt"></i>
+                            <textarea name="Message" id="contact-message" rows="5" placeholder="الكميات المطلوبة، تفاصيل التعبئة، ميناء الوصول المستهدف..." required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-tech w-full">إرسال طلب التوريد <i class="fas fa-paper-plane" style="margin-right: 8px;"></i></button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+      <footer class="tech-footer">
+        <div class="container">
+            <div class="grid grid-4 footer-wrapper">
+                
+                <div class="footer-logo">
+                    <img src="Al_Masriya_Al_Emaratiya_icon.png" alt="Al Massriya Al Emaratiya Logo" class="brand-logo" onerror="this.onerror=null; this.src='https://via.placeholder.com/200x60/174388/ffffff?text=LOGO+HERE';">
+                    <p class="mt-4">بوابتك التكنولوجية والتجارية للنمو والريادة في مصر والإمارات.</p>
+                    <div class="social-links mt-4">
+                        <a href="https://www.facebook.com/AlMasriyaAlEmaratiya"><i class="fab fa-facebook-f"></i></a>
+                        <a href="https://www.linkedin.com/company/egy-uae"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="https://www.youtube.com/@egy-uae.channel"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+
+                <div class="footer-links">
+                    <h4>دليل الموقع</h4>
+                    <ul>
+                        <li><a href="../index.html#home">الرئيسية</a></li>
+                        <li><a href="../index.html#services">خدماتنا</a></li>
+                        <li><a href="../index.html#about">من نحن</a></li>
+                        <li><a href="../news.html">الأخبار</a></li>
+                        <li><a href="../index.html#contact">اتصل بنا</a></li>
+                        <li><a href="../careers.html">الوظائف</a></li>
+                        <li><a href="../sectors.html">قطاعاتنا</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-divisions">
+                    <h4>قطاعاتنا</h4>
+                    <ul>
+                        <li><a href="food-division.html">قطاع الأغذية</a></li>
+                        <li><a href="hotel-supplies.html">مستلزمات الفنادق</a></li>
+                        <li><a href="chemicals-cosmetics.html">المواد الكيميائية ومستحضرات التجميل</a></li>
+                        <li><a href="ose-procurement.html">مشتريات OS&E</a></li>
+                        <li><a href="office-furniture.html">الأثاث المكتبي</a></li>
+                        <li><a href="banquet-furniture.html">أثاث الحفلات والمؤتمرات</a></li>
+                        <li><a href="metal-beds-lockers.html">الأسرة المعدنية وخزائن حفظ الأمانات</a></li>
+                        <li><a href="staff-furniture.html">أثاث سكن الموظفين</a></li>
+                        <li><a href="staff-sofa-sets.html">أطقم الكنب وإكسسوارات سكن الموظفين</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-language custom-dropdown">
+                    <h4>بروتوكول اللغة</h4>
+                    <div class="dropdown-trigger" id="lang-trigger">
+                        <span><i class="fas fa-globe"></i> العربية</span>
+                        <i class="fas fa-chevron-down arrow-icon"></i>
+                    </div>
+                    <ul class="dropdown-menu tech-dropdown" id="lang-menu">
+                        <li><a href="food-division.html">English</a></li>
+                        <li><a href="../ar/pages/food-division.html" class="active-lang">العربية</a></li>
+                        <li><a href="../food-division-cn.html">中文</a></li>
+                    </ul>
+                </div>
+
+            </div>
+            <div class="footer-bottom text-center">
+                <p>© <span id="current-year"></span> المصرية الإماراتية. جميع الحقوق محفوظة. إصدار النظام 2.0</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Chat Widget -->
+    <div id="chat-widget" class="chat-widget">
+        <button class="chat-btn glow-effect" id="chat-toggle">
+            <i class="fas fa-headset"></i> 
+        </button>
+        <div class="chat-container glass-panel" id="chat-box">
+            <div class="chat-header">
+                <h3><i class="fas fa-robot"></i> وحدة الدعم الذكي</h3>
+                <button class="chat-close" id="chat-close">&times;</button>
+            </div>
+            <div class="chat-body" id="chat-body">
+                <div class="message incoming">
+                    <p>تم تأسيس الاتصال الآمن. كيف يمكننا دعم عملياتكم التجارية اليوم؟</p>
+                </div>
+            </div>
+            <div class="chat-footer">
+                <input type="text" placeholder="اكتب استفسارك هنا..." id="chat-input">
+                <button id="chat-send"><i class="fas fa-paper-plane"></i></button>
+            </div>
+        </div>
+    </div>
+
+    <!-- PRODUCT DETAILS MODAL (Hidden by default) -->
+   <div class="tech-modal-overlay" id="product-modal">
+    <div class="tech-modal-content">
+        <button class="close-modal" id="close-modal" aria-label="إغلاق النافذة"><i class="fas fa-times"></i></button>
+        
+        <div class="tech-modal-img">
+            <img id="modal-img" src="" alt="صورة المنتج">
+        </div>
+        
+        <div class="tech-modal-info">
+            <span class="tech-badge" id="modal-category" style="align-self: flex-start; margin-bottom: 10px;"></span>
+            <h2 id="modal-title" style="margin-bottom: 15px; font-size: 1.8rem;"></h2>
+            <p id="modal-desc" style="margin-bottom: 25px; line-height: 1.6; color: var(--text-muted);"></p>
+            
+            <div style="margin-bottom: 20px;" id="modal-origin-container">
+                <strong style="color: var(--primary);">المنشأ:</strong> <span id="modal-origin"></span>
+            </div>
+            <div style="margin-bottom: 20px;" id="modal-types-container">
+                <strong style="color: var(--primary);">النوع / الشكل:</strong> <span id="modal-types"></span>
+            </div>
+            <div style="margin-bottom: 20px;" id="modal-apps-container">
+                <strong style="color: var(--primary);">الاستخدامات والتطبيقات:</strong> <span id="modal-applications"></span>
+            </div>
+            <div style="margin-bottom: 20px;" id="modal-pkg-container">
+                <strong style="color: var(--primary);">التعبئة والتغليف:</strong> <span id="modal-packaging"></span>
+            </div>
+
+            <button class="btn btn-tech w-full" id="request-quote-btn">طلب تسعير لهذا المنتج <i class="fas fa-arrow-left" style="margin-right: 8px;"></i></button>
+        </div> </div>
+</div>
+
+    <!-- Scripts -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="js/main.js"></script>
+    
+    <!-- JSON Products Fetcher & Modal Logic -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const productsGrid = document.getElementById('dynamic-products-grid');
+            let globalProducts = []; 
+
+            // جلب البيانات من ملف JSON الخارجي المعرّب
+            fetch('products/data/food-division-ar.json')
+                .then(response => {
+                    if (!response.ok) throw new Error('خطأ في الاتصال بالخادم وقراءة البيانات');
+                    return response.json();
+                })
+                .then(data => {
+                    if (data && data.length > 0) {
+                        globalProducts = data;
+                        productsGrid.innerHTML = '';  
+                        
+                        data.forEach((product, index) => {
+                            const delay = (index % 3) * 100;
+                            const productImage = product.image || 'https://via.placeholder.com/400x300/174388/ffffff?text=Image+Not+Found';
+                            
+                            const cardHTML = `
+                                <div class="tech-card tech-card-clickable" data-aos="fade-up" data-aos-delay="${delay}" onclick="openProductModal(${index})">
+                                    <div class="product-img-box">
+                                        <img src="${productImage}" alt="${product.name}" loading="lazy">
+                                    </div>
+                                    <h3 style="font-size: 1.2rem;">${product.name}</h3>
+                                    <p style="display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; font-size: 0.9rem;">${product.description}</p>
+                                    <div class="mt-4">
+                                        <span class="tech-badge" style="font-size:0.75rem;">${product.category}</span>
+                                    </div>
+                                    <button class="btn btn-outline-tech w-full mt-4" style="padding: 8px; font-size: 0.85rem;">عرض التفاصيل كاملة</button>
+                                </div>
+                            `;
+                            productsGrid.innerHTML += cardHTML;
+                        });
+                    } else {
+                        productsGrid.innerHTML = `<p style="grid-column: 1 / -1; text-align: center; color: var(--text-muted);">لم يتم العثور على أي منتجات في قاعدة البيانات حالياً.</p>`;
+                    }
+                })
+                .catch(error => {
+                    console.error('Error fetching products:', error);
+                    productsGrid.innerHTML = `
+                        <p style="grid-column: 1 / -1; text-align: center; color: var(--secondary);">
+                            <i class="fas fa-exclamation-triangle"></i> عذرًا، تعذر تحميل قاعدة بيانات المنتجات في الوقت الحالي.
+                        </p>`;
+                });
+
+            // Modal Logic 
+            const modal = document.getElementById('product-modal');
+            const closeBtn = document.getElementById('close-modal');
+            const quoteBtn = document.getElementById('request-quote-btn');
+            const contactMessage = document.getElementById('contact-message');
+            let currentProductName = '';
+
+            window.openProductModal = function(index) {
+                const product = globalProducts[index];
+                if (!product) return;
+
+                currentProductName = product.name;
+                document.getElementById('modal-title').textContent = product.name;
+                document.getElementById('modal-img').src = product.image || 'https://via.placeholder.com/400x300/174388/ffffff?text=Image+Not+Found';
+                document.getElementById('modal-desc').textContent = product.description;
+                document.getElementById('modal-category').textContent = product.category;
+                
+                // Origin
+                if(product.origin) {
+                    document.getElementById('modal-origin-container').style.display = 'block';
+                    document.getElementById('modal-origin').textContent = product.origin;
+                } else {
+                    document.getElementById('modal-origin-container').style.display = 'none';
+                }
+
+                // Types
+                if(product.types) {
+                    document.getElementById('modal-types-container').style.display = 'block';
+                    document.getElementById('modal-types').textContent = product.types;
+                } else {
+                    document.getElementById('modal-types-container').style.display = 'none';
+                }
+
+                // Applications
+                if(product.applications) {
+                    document.getElementById('modal-apps-container').style.display = 'block';
+                    document.getElementById('modal-applications').textContent = product.applications;
+                } else {
+                    document.getElementById('modal-apps-container').style.display = 'none';
+                }
+
+                // Packaging
+                if(product.packaging) {
+                    document.getElementById('modal-pkg-container').style.display = 'block';
+                    document.getElementById('modal-packaging').textContent = product.packaging;
+                } else {
+                    document.getElementById('modal-pkg-container').style.display = 'none';
+                }
+
+                modal.classList.add('active');
+            };
+
+            closeBtn.addEventListener('click', () => modal.classList.remove('active'));
+            modal.addEventListener('click', (e) => {
+                if(e.target === modal) modal.classList.remove('active');
+            });
+
+            quoteBtn.addEventListener('click', () => {
+                modal.classList.remove('active');
+                
+                contactMessage.value = `مرحباً، أود الاستفسار وطلب عرض سعر لمنتج: [ ${currentProductName} ].\n\nيرجى تزويدي بالتفاصيل التالية:\n- الكمية المطلوبة للحاوية أو بالطن:\n- ميناء الوصول المستهدف:\n- خيارات التعبئة المفضلة:\n`;
+                
+                document.getElementById('contact').scrollIntoView({ behavior: 'smooth' });
+                
+                setTimeout(() => { contactMessage.focus(); }, 800);
+            });
+        });
+    </script>
+
+    <!-- Google Translate Script -->
+    <script>
+        function googleTranslateElementInit() {
+            new google.translate.TranslateElement({
+                pageLanguage: 'ar',
+                includedLanguages: 'en,ar',
+                layout: google.translate.TranslateElement.InlineLayout.SIMPLE,
+                autoDisplay: false
+            }, 'google_translate_element');
+        }
+    </script>
+    <script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
+</body>
+</html>
