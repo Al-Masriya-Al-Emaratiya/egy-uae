@@ -429,7 +429,7 @@
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             const productsGrid = document.getElementById('dynamic-products-grid');
-            let globalProducts = []; // لتخزين مصفوفة المنتجات وتجنب مشاكل علامات الاقتباس في نصوص الوصف
+            let globalProducts = []; 
 
             fetch('products/data/food-division.json')
                 .then(response => {
@@ -439,7 +439,7 @@
                 .then(data => {
                     if (data && data.length > 0) {
                         globalProducts = data;
-                        productsGrid.innerHTML = ''; // تنظيف الحاوية قبل الإضافة
+                        productsGrid.innerHTML = '';  
                         
                         data.forEach((product, index) => {
                             const delay = (index % 3) * 100;
@@ -489,7 +489,6 @@
                 document.getElementById('modal-desc').textContent = product.description;
                 document.getElementById('modal-category').textContent = product.category;
                 
-                // التحكم في عرض وتعبئة حقول التفاصيل الإضافية
                 
                 // Origin
                 if(product.origin) {
