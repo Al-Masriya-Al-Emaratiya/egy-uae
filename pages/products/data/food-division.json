@@ -15,7 +15,6 @@
     "name": "Coffee Essence",
     "description": "Concentrated flavor for coffee taste",
     "category": "Flavorings",
-    "origin": "Imported",
     "packaging": "Plastic Jerrycan",
     "types": "Liquid",
     "applications": "Confectionery, Beverages",
@@ -32,7 +31,7 @@
     "applications": "Confectionery, Ice Cream",
     "packaging": "Plastic Jerrycan",
     "image": "products/images/CocoaMass..jpeg"
-  }
+  },
   {
     "id": 4,
     "name": "New Zealand Butter",
@@ -43,7 +42,7 @@
     "applications": "Bakery, Confectionery",
     "packaging": "25kg Carton",
     "image": "products/images/CocoaMass..jpeg"
-  }
+  },
   {
     "id": 5,
     "name": "Brazilian Soy Lecithin",
@@ -54,7 +53,7 @@
     "applications": "Chocolate, Bakery",
     "packaging": "200kg Drum",
     "image": "products/images/CocoaMass..jpeg"
-  }
+  },
   {
     "id": 6,
     "name": "Sodium Bicarbonate",
@@ -65,7 +64,7 @@
     "applications": "Bakery",
     "packaging": "25kg Bag",
     "image": "products/images/CocoaMass..jpeg"
-  }
+  },
   {
     "id": 7,
     "name": "Cocoa Mass",
@@ -76,7 +75,7 @@
     "applications": "Real & compound Chocolate, Confectionery, Spreads, Ice cream, Cookies and Pastries.",
     "packaging": "Available in cartons of 25 kg (Blocks and Flakes).",
     "image": "products/images/CocoaMass..jpeg"
-  }
+  },
   {
     "id": 8,
     "name": "Cocoa Mass",
