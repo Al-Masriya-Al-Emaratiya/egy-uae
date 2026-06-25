@@ -435,7 +435,7 @@
             let globalProducts = []; 
 
             // جلب البيانات من ملف JSON الخارجي المعرّب
-            fetch('products/data/food-division-ar.json')
+            fetch('products/data/food-division.json')
                 .then(response => {
                     if (!response.ok) throw new Error('خطأ في الاتصال بالخادم وقراءة البيانات');
                     return response.json();
