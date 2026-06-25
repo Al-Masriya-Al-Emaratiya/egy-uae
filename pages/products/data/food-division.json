@@ -67,24 +67,24 @@
   },
   {
     "id": 7,
-    "name": "Cocoa Mass",
-    "description": "Cocoa mass the combination of cocoa butter with cocoa solids to form our standard ECM cocoa mass.",
-    "category": "Cocoa Mass",
+    "name": "Condensed Milk Essence",
+    "description": "Concentrated flavor for condensed milk aroma",
+    "category": "Flavorings",
     "origin": "Imported",
-    "types": "Natural Cocoa Mass. | Alkalized Cocoa Mass.",
-    "applications": "Real & compound Chocolate, Confectionery, Spreads, Ice cream, Cookies and Pastries.",
-    "packaging": "Available in cartons of 25 kg (Blocks and Flakes).",
+    "types": "Liquid",
+    "applications": "Confectionery, Bakery",
+    "packaging": "Jerrycan/Bottle",
     "image": "products/images/CocoaMass..jpeg"
   },
   {
     "id": 8,
-    "name": "Cocoa Mass",
-    "description": "Cocoa mass the combination of cocoa butter with cocoa solids to form our standard ECM cocoa mass.",
-    "category": "Cocoa Mass",
-    "origin": "Imported",
-    "types": "Natural Cocoa Mass. | Alkalized Cocoa Mass.",
-    "applications": "Real & compound Chocolate, Confectionery, Spreads, Ice cream, Cookies and Pastries.",
-    "packaging": "Available in cartons of 25 kg (Blocks and Flakes).",
+    "name": "Barry Callebaut Natural Cocoa Butter",
+    "description": "High-quality cocoa butter by Barry Callebaut",
+    "category": "Cocoa Raw Materials",
+    "origin": "Imported (Belgium)",
+    "types": "Solid (Buttons)",
+    "applications": "Chocolate Making",
+    "packaging": "Bag/Carton",
     "image": "products/images/CocoaMass..jpeg"
   }
 ]
