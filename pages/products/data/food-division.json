@@ -45,6 +45,28 @@
   },
   {
     "id": 5,
+    "name": "Mango Essence",
+    "description": "Concentrated flavor for mango taste",
+    "category": "Flavorings",
+    "origin": "Imported",
+    "types": "Liquid",
+    "applications": "Confectionery, Beverages",
+    "packaging": "Jerrycan/Bottle",
+    "image": "products/images/Condensed Milk Essence_amae_server_ai.png"
+  },
+  {
+    "id": 6,
+    "name": "Cola Essence",
+    "description": "Concentrated flavor for cola taste",
+    "category": "Flavorings",
+    "origin": "Imported",
+    "types": "Liquid",
+    "applications": "Beverages, Confectionery",
+    "packaging": "Jerrycan/Bottle",
+    "image": "products/images/Condensed Milk Essence_amae_server_ai.png"
+  },
+  {
+    "id": 7,
     "name": "New Zealand Butter",
     "description": "High-quality natural dairy butter",
     "category": "Fats & Dairy",
@@ -55,7 +77,7 @@
     "image": "products/images/CocoaMass..jpeg"
   },
   {
-    "id": 6,
+    "id": 8,
     "name": "Brazilian Soy Lecithin",
     "description": "Natural emulsifier agent",
     "category": "Food Additives",
@@ -66,7 +88,7 @@
     "image": "products/images/CocoaMass..jpeg"
   },
   {
-    "id": 7,
+    "id": 9,
     "name": "Sodium Bicarbonate",
     "description": "Leavening and pH regulator agent",
     "category": "Food Chemicals",
@@ -77,7 +99,7 @@
     "image": "products/images/CocoaMass..jpeg"
   },
   {
-    "id": 8,
+    "id": 10,
     "name": "Barry Callebaut Natural Cocoa Butter",
     "description": "High-quality cocoa butter by Barry Callebaut",
     "category": "Cocoa Raw Materials",
