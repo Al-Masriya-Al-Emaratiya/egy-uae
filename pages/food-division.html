@@ -429,6 +429,7 @@
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             const productsGrid = document.getElementById('dynamic-products-grid');
+            let globalProducts = []; // لتخزين مصفوفة المنتجات وتجنب مشاكل علامات الاقتباس في نصوص الوصف
 
             fetch('products/data/food-division.json')
                 .then(response => {
@@ -437,13 +438,15 @@
                 })
                 .then(data => {
                     if (data && data.length > 0) {
+                        globalProducts = data;
+                        productsGrid.innerHTML = ''; // تنظيف الحاوية قبل الإضافة
+                        
                         data.forEach((product, index) => {
                             const delay = (index % 3) * 100;
-                            
                             const productImage = product.image || 'https://via.placeholder.com/400x300/174388/ffffff?text=Image+Not+Found';
                             
                             const cardHTML = `
-                                <div class="tech-card tech-card-clickable" data-aos="fade-up" data-aos-delay="${delay}" onclick="openProductModal('${product.name}', '${productImage}', '${product.description.replace(/'/g, "\\'")}', '${product.category}', '${product.origin || ''}')">
+                                <div class="tech-card tech-card-clickable" data-aos="fade-up" data-aos-delay="${delay}" onclick="openProductModal(${index})">
                                     <div class="product-img-box">
                                         <img src="${productImage}" alt="${product.name}" loading="lazy">
                                     </div>
@@ -476,18 +479,48 @@
             const contactMessage = document.getElementById('contact-message');
             let currentProductName = '';
 
-            window.openProductModal = function(name, img, desc, category, origin) {
-                currentProductName = name;
-                document.getElementById('modal-title').textContent = name;
-                document.getElementById('modal-img').src = img;
-                document.getElementById('modal-desc').textContent = desc;
-                document.getElementById('modal-category').textContent = category;
+            window.openProductModal = function(index) {
+                const product = globalProducts[index];
+                if (!product) return;
+
+                currentProductName = product.name;
+                document.getElementById('modal-title').textContent = product.name;
+                document.getElementById('modal-img').src = product.image || 'https://via.placeholder.com/400x300/174388/ffffff?text=Image+Not+Found';
+                document.getElementById('modal-desc').textContent = product.description;
+                document.getElementById('modal-category').textContent = product.category;
                 
-                if(origin) {
+                // التحكم في عرض وتعبئة حقول التفاصيل الإضافية
+                
+                // Origin
+                if(product.origin) {
                     document.getElementById('modal-origin-container').style.display = 'block';
-                    document.getElementById('modal-origin').textContent = origin;
+                    document.getElementById('modal-origin').textContent = product.origin;
                 } else {
                     document.getElementById('modal-origin-container').style.display = 'none';
+                }
+
+                // Types
+                if(product.types) {
+                    document.getElementById('modal-types-container').style.display = 'block';
+                    document.getElementById('modal-types').textContent = product.types;
+                } else {
+                    document.getElementById('modal-types-container').style.display = 'none';
+                }
+
+                // Applications
+                if(product.applications) {
+                    document.getElementById('modal-apps-container').style.display = 'block';
+                    document.getElementById('modal-applications').textContent = product.applications;
+                } else {
+                    document.getElementById('modal-apps-container').style.display = 'none';
+                }
+
+                // Packaging
+                if(product.packaging) {
+                    document.getElementById('modal-pkg-container').style.display = 'block';
+                    document.getElementById('modal-packaging').textContent = product.packaging;
+                } else {
+                    document.getElementById('modal-pkg-container').style.display = 'none';
                 }
 
                 modal.classList.add('active');
