@@ -78,6 +78,17 @@
   },
   {
     "id": 8,
+    "name": "Uruguayan Natural Butter",
+    "description": "Natural bovine butter",
+    "category": "Dairy & Fats",
+    "origin": "Imported (Uruguay)",
+    "types": "Solid",
+    "applications": "Bakery, Confectionery",
+    "packaging": "25kg Carton",
+    "image": "products/images/New Zealand Butter_amae_server_ai.png"
+  },
+  {
+    "id": 9,
     "name": "Brazilian Soy Lecithin",
     "description": "Natural emulsifier agent",
     "category": "Food Additives",
@@ -88,7 +99,7 @@
     "image": "products/images/CocoaMass..jpeg"
   },
   {
-    "id": 9,
+    "id": 10,
     "name": "Sodium Bicarbonate",
     "description": "Leavening and pH regulator agent",
     "category": "Food Chemicals",
@@ -99,7 +110,7 @@
     "image": "products/images/CocoaMass..jpeg"
   },
   {
-    "id": 10,
+    "id": 11,
     "name": "Barry Callebaut Natural Cocoa Butter",
     "description": "High-quality cocoa butter by Barry Callebaut",
     "category": "Cocoa Raw Materials",
