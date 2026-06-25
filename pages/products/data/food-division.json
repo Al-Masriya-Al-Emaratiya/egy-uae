@@ -34,6 +34,17 @@
   },
   {
     "id": 4,
+    "name": "Condensed Milk Essence",
+    "description": "Concentrated flavor for condensed milk aroma",
+    "category": "Flavorings",
+    "origin": "Imported",
+    "types": "Liquid",
+    "applications": "Confectionery, Bakery",
+    "packaging": "Jerrycan/Bottle",
+    "image": "products/images/Condensed Milk Essence_amae_server_ai.png"
+  },
+  {
+    "id": 5,
     "name": "New Zealand Butter",
     "description": "High-quality natural dairy butter",
     "category": "Fats & Dairy",
@@ -44,7 +55,7 @@
     "image": "products/images/CocoaMass..jpeg"
   },
   {
-    "id": 5,
+    "id": 6,
     "name": "Brazilian Soy Lecithin",
     "description": "Natural emulsifier agent",
     "category": "Food Additives",
@@ -55,7 +66,7 @@
     "image": "products/images/CocoaMass..jpeg"
   },
   {
-    "id": 6,
+    "id": 7,
     "name": "Sodium Bicarbonate",
     "description": "Leavening and pH regulator agent",
     "category": "Food Chemicals",
@@ -63,17 +74,6 @@
     "types": "Powder",
     "applications": "Bakery",
     "packaging": "25kg Bag",
-    "image": "products/images/CocoaMass..jpeg"
-  },
-  {
-    "id": 7,
-    "name": "Condensed Milk Essence",
-    "description": "Concentrated flavor for condensed milk aroma",
-    "category": "Flavorings",
-    "origin": "Imported",
-    "types": "Liquid",
-    "applications": "Confectionery, Bakery",
-    "packaging": "Jerrycan/Bottle",
     "image": "products/images/CocoaMass..jpeg"
   },
   {
