@@ -57,13 +57,13 @@
   }
   {
     "id": 6,
-    "name": "Cocoa Mass",
-    "description": "Cocoa mass the combination of cocoa butter with cocoa solids to form our standard ECM cocoa mass.",
-    "category": "Cocoa Mass",
-    "origin": "Imported",
-    "types": "Natural Cocoa Mass. | Alkalized Cocoa Mass.",
-    "applications": "Real & compound Chocolate, Confectionery, Spreads, Ice cream, Cookies and Pastries.",
-    "packaging": "Available in cartons of 25 kg (Blocks and Flakes).",
+    "name": "Sodium Bicarbonate",
+    "description": "Leavening and pH regulator agent",
+    "category": "Food Chemicals",
+    "origin": "Imported (Turkey)",
+    "types": "Powder",
+    "applications": "Bakery",
+    "packaging": "25kg Bag",
     "image": "products/images/CocoaMass..jpeg"
   }
   {
