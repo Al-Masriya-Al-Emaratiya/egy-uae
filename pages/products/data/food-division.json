@@ -52,7 +52,7 @@
     "types": "Liquid",
     "applications": "Confectionery, Beverages",
     "packaging": "Jerrycan/Bottle",
-    "image": "products/images/Condensed Milk Essence_amae_server_ai.png"
+    "image": "products/images/Mango Essence_amae_server_ai.png"
   },
   {
     "id": 6,
@@ -63,7 +63,7 @@
     "types": "Liquid",
     "applications": "Beverages, Confectionery",
     "packaging": "Jerrycan/Bottle",
-    "image": "products/images/Condensed Milk Essence_amae_server_ai.png"
+    "image": "products/images/Cola Essence_amae_server_ai.png"
   },
   {
     "id": 7,
