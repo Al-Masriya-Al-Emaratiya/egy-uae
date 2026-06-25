@@ -1,0 +1,123 @@
+[
+  {
+    "id": 1,
+    "name": "نكهة الشوكولاتة المركزة (أسانس الشوكولاتة)",
+    "description": "نكهة مركزة لإكساب طعم ورائحة الشوكولاتة الغنية للأغذية والمصنعات.",
+    "category": "النكهات ومكسبات الطعم",
+    "origin": "مستورد",
+    "packaging": "جركن بلاستيكي",
+    "types": "سائل",
+    "applications": "الحلويات والمخبوزات",
+    "image": "products/images/Chocolate Essence_amae_server_ai.png"
+  },
+  {
+    "id": 2,
+    "name": "نكهة القهوة المركزة (أسانس القهوة)",
+    "description": "نكهة غنية ومركزة للغاية تمنح طعم ورائحة القهوة الحقيقية الفاخرة.",
+    "category": "النكهات ومكسبات الطعم",
+    "packaging": "جركن بلاستيكي",
+    "types": "سائل",
+    "applications": "الحلويات والمشروبات",
+    "origin": "مستورد",
+    "image": "products/images/Coffee Essence_amae_server_ai.png"
+  },
+  {
+    "id": 3,
+    "name": "نكهة الفراولة المركزة (أسانس الفراولة)",
+    "description": "مكسب طعم مركز للغاية يطابق طعم الفراولة الطبيعي والمنعش.",
+    "category": "النكهات ومكسبات الطعم",
+    "origin": "مستورد",
+    "types": "سائل",
+    "applications": "الحلويات والآيس كريم",
+    "packaging": "جركن بلاستيكي",
+    "image": "products/images/Strawberry Essence_amae_server_ai.png"
+  },
+  {
+    "id": 4,
+    "name": "أسانس الحليب المكثف",
+    "description": "نكهة مركزة خصيصاً لإعطاء رائحة وطعم الحليب المكثف الغني للمخبوزات والحلويات.",
+    "category": "النكهات ومكسبات الطعم",
+    "origin": "مستورد",
+    "types": "سائل",
+    "applications": "الحلويات والمخبوزات",
+    "packaging": "جركن / زجاجة",
+    "image": "products/images/Condensed Milk Essence_amae_server_ai.png"
+  },
+  {
+    "id": 5,
+    "name": "نكهة المانجو المركزة (أسانس المانجو)",
+    "description": "نكهة مركزة فائقة الجودة تمنح المشروبات والحلويات طعم المانجو الطبيعي المميز.",
+    "category": "النكهات ومكسبات الطعم",
+    "origin": "مستورد",
+    "types": "سائل",
+    "applications": "الحلويات والمشروبات",
+    "packaging": "جركن / زجاجة",
+    "image": "products/images/Mango Essence_amae_server_ai.png"
+  },
+  {
+    "id": 6,
+    "name": "نكهة الكولا المركزة (أسانس الكولا)",
+    "description": "نكهة كلاسيكية مركزة ومطابقة للطبيعة مخصصة للمشروبات والحلويات.",
+    "category": "النكهات ومكسبات الطعم",
+    "origin": "مستورد",
+    "types": "سائل",
+    "applications": "المشروبات والحلويات",
+    "packaging": "جركن / زجاجة",
+    "image": "products/images/Cola Essence_amae_server_ai.png"
+  },
+  {
+    "id": 7,
+    "name": "زبدة نيوزيلاندي طبيعية",
+    "description": "زبدة طبيعية نقية 100% عالية الجودة مستخلصة من حليب الأبقار النيوزيلاندية.",
+    "category": "الدهون ومنتجات الألبان",
+    "origin": "مستورد (نيوزيلندا)",
+    "types": "طبيعي",
+    "applications": "المخبوزات، الحلويات وصناعة الأغذية",
+    "packaging": "كرتونة 25 كجم",
+    "image": "products/images/New Zealand Butter_amae_server_ai.png"
+  },
+  {
+    "id": 8,
+    "name": "زبدة طبيعية أوروجواياني",
+    "description": "زبدة بقرية طبيعية ممتازة توفر قواماً وطعماً مثالياً لخطوط الإنتاج الغذائي.",
+    "category": "الدهون ومنتجات الألبان",
+    "origin": "مستورد (الأوروغواي)",
+    "types": "صلب",
+    "applications": "المخبوزات والحلويات",
+    "packaging": "كرتونة 25 كجم",
+    "image": "products/images/Uruguayan Natural Butter_amae_server_ai.png"
+  },
+  {
+    "id": 9,
+    "name": "ليسيثين الصويا البرازيلي",
+    "description": "عامل استحلاب طبيعي عالي الفعالية يستخدم كعنصر أساسي ومثبت للقوام.",
+    "category": "المضافات الغذائية",
+    "origin": "مستورد (البرازيل)",
+    "types": "سائل لزج",
+    "applications": "صناعة الشوكولاتة، الكيك والمخبوزات",
+    "packaging": "برميل 200 كجم",
+    "image": "products/images/Brazilian Soy Lecithin_amae_server_ai.png"
+  },
+  {
+    "id": 10,
+    "name": "بيكربونات الصوديوم (بيكينج صودا)",
+    "description": "عامل رفع فعال ومنظم لدرجة الحموضة (pH) معتمد للإنتاج الغذائي والمخبوزات.",
+    "category": "الكيماويات الغذائية",
+    "origin": "مستورد (تركيا)",
+    "types": "مسحوق (بودرة)",
+    "applications": "صناعات المخبوزات والبسكويت",
+    "packaging": "شيكارة 25 كجم",
+    "image": "products/images/Sodium Bicarbonate_amae_server_ai.png"
+  },
+  {
+    "id": 11,
+    "name": "زبدة كاكاو طبيعية باري كاليبو",
+    "description": "زبدة كاكاو بكر ممتازة من إنتاج شركة باري كاليبو البلجيكية الشهيرة لإنتاج أفخر أنواع الشوكولاتة.",
+    "category": "خامات الكاكاو والحلويات",
+    "origin": "مستورد (بلجيكا)",
+    "types": "صلب (أقراص/أزرار دائرية)",
+    "applications": "صناعة الشوكولاتة الفاخرة والتزيين",
+    "packaging": "شيكارة / كرتونة مغلقة",
+    "image": "products/images/Barry Callebaut Natural Cocoa Butter_amae_server_ai.png"
+  }
+]
