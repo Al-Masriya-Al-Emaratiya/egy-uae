@@ -1,23 +1,84 @@
 [
   {
     "id": 1,
-    "name": "Black Cocoa Powder",
-    "description": "Any application using cocoa as a natural ingredient where a darker shade is desired. Cookies and industrial pastries.",
-    "category": "Cocoa Products / Cocoa Powder",
+    "name": "Chocolate Essence",
+    "description": "Concentrated flavor for chocolate taste",
+    "category": "Flavorings",
     "origin": "Imported",
-    "packaging": "Available in 25kg bags.",
+    "packaging": "Plastic Jerrycan",
+    "types": "Liquid",
+    "applications": "Confectionery, Bakery",
     "image": "products/images/BlackCocoaPowder.jpg"
   },
   {
     "id": 2,
-    "name": "Refined Sunflower Oil",
-    "description": "Pure 100% refined sunflower oil imported for FMCG distribution networks. Excellent for cooking and frying.",
-    "category": "FMCG",
+    "name": "Coffee Essence",
+    "description": "Concentrated flavor for coffee taste",
+    "category": "Flavorings",
+    "origin": "Imported",
+    "packaging": "Plastic Jerrycan",
+    "types": "Liquid",
+    "applications": "Confectionery, Beverages",
     "origin": "Imported",
     "image": "products/images/Cocoa-Powder-Lifestyle.jpg"
   },
   {
     "id": 3,
+    "name": "Strawberry Essence",
+    "description": "Concentrated flavor for strawberry taste",
+    "category": "Flavorings",
+    "origin": "Imported",
+    "types": "Liquid",
+    "applications": "Confectionery, Ice Cream",
+    "packaging": "Plastic Jerrycan",
+    "image": "products/images/CocoaMass..jpeg"
+  }
+  {
+    "id": 4,
+    "name": "New Zealand Butter",
+    "description": "High-quality natural dairy butter",
+    "category": "Fats & Dairy",
+    "origin": "Imported (New Zealand)",
+    "types": "Natural",
+    "applications": "Bakery, Confectionery",
+    "packaging": "25kg Carton",
+    "image": "products/images/CocoaMass..jpeg"
+  }
+  {
+    "id": 5,
+    "name": "Brazilian Soy Lecithin",
+    "description": "Natural emulsifier agent",
+    "category": "Food Additives",
+    "origin": "Imported (Brazil)",
+    "types": "Liquid",
+    "applications": "Chocolate, Bakery",
+    "packaging": "200kg Drum",
+    "image": "products/images/CocoaMass..jpeg"
+  }
+  {
+    "id": 6,
+    "name": "Cocoa Mass",
+    "description": "Cocoa mass the combination of cocoa butter with cocoa solids to form our standard ECM cocoa mass.",
+    "category": "Cocoa Mass",
+    "origin": "Imported",
+    "types": "Natural Cocoa Mass. | Alkalized Cocoa Mass.",
+    "applications": "Real & compound Chocolate, Confectionery, Spreads, Ice cream, Cookies and Pastries.",
+    "packaging": "Available in cartons of 25 kg (Blocks and Flakes).",
+    "image": "products/images/CocoaMass..jpeg"
+  }
+  {
+    "id": 7,
+    "name": "Cocoa Mass",
+    "description": "Cocoa mass the combination of cocoa butter with cocoa solids to form our standard ECM cocoa mass.",
+    "category": "Cocoa Mass",
+    "origin": "Imported",
+    "types": "Natural Cocoa Mass. | Alkalized Cocoa Mass.",
+    "applications": "Real & compound Chocolate, Confectionery, Spreads, Ice cream, Cookies and Pastries.",
+    "packaging": "Available in cartons of 25 kg (Blocks and Flakes).",
+    "image": "products/images/CocoaMass..jpeg"
+  }
+  {
+    "id": 8,
     "name": "Cocoa Mass",
     "description": "Cocoa mass the combination of cocoa butter with cocoa solids to form our standard ECM cocoa mass.",
     "category": "Cocoa Mass",
