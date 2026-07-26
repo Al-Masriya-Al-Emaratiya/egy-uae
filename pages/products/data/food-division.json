@@ -1,6 +1,50 @@
 [
   {
     "id": 1,
+    "name": "Thompson Grapes",
+    "description": "Seedless white table grapes, sweet and versatile",
+    "category": "Fresh Fruit",
+    "origin": "Export",
+    "packaging": "Plastic Clamshell or Carton",
+    "types": "Seedless",
+    "applications": "Fresh consumption, Dried raisins",
+    "image": "products/images/Thompson_Grapes.jpg"
+  },
+  {
+    "id": 2,
+    "name": "Crimson Grapes",
+    "description": "Late-season red seedless grapes with firm texture",
+    "category": "Fresh Fruit",
+    "origin": "Export",
+    "packaging": "Plastic Clamshell or Carton",
+    "types": "Seedless",
+    "applications": "Fresh consumption, Fruit salads",
+    "image": "products/images/Crimson_Grapes.png"
+  },
+  {
+    "id": 3,
+    "name": "Red Globe Grapes",
+    "description": "Large, round, seeded red grapes known for their size",
+    "category": "Fresh Fruit",
+    "origin": "Export",
+    "packaging": "Carton",
+    "types": "Seeded",
+    "applications": "Fresh consumption, Decorative garnishing",
+    "image": "products/images/Red_Globe_Grapes.png"
+  },
+  {
+    "id": 4,
+    "name": "Banati Grapes",
+    "description": "Classic white seedless grapes, popular for local market",
+    "category": "Fresh Fruit",
+    "origin": "Local/Export",
+    "packaging": "Plastic Clamshell or Crate",
+    "types": "Seedless",
+    "applications": "Fresh consumption",
+    "image": "products/images/Banati_Grapes.png"
+  },
+  {
+    "id": 5,
     "name": "Chocolate Essence",
     "description": "Concentrated flavor for chocolate taste",
     "category": "Flavorings",
@@ -11,7 +55,7 @@
     "image": "products/images/Chocolate Essence_amae_server_ai.png"
   },
   {
-    "id": 2,
+    "id": 6,
     "name": "Coffee Essence",
     "description": "Concentrated flavor for coffee taste",
     "category": "Flavorings",
@@ -22,7 +66,7 @@
     "image": "products/images/Coffee Essence_amae_server_ai.png"
   },
   {
-    "id": 3,
+    "id": 7,
     "name": "Strawberry Essence",
     "description": "Concentrated flavor for strawberry taste",
     "category": "Flavorings",
@@ -33,7 +77,7 @@
     "image": "products/images/Strawberry Essence_amae_server_ai.png"
   },
   {
-    "id": 4,
+    "id": 8,
     "name": "Condensed Milk Essence",
     "description": "Concentrated flavor for condensed milk aroma",
     "category": "Flavorings",
@@ -44,7 +88,7 @@
     "image": "products/images/Condensed Milk Essence_amae_server_ai.png"
   },
   {
-    "id": 5,
+    "id": 9,
     "name": "Mango Essence",
     "description": "Concentrated flavor for mango taste",
     "category": "Flavorings",
@@ -55,7 +99,7 @@
     "image": "products/images/Mango Essence_amae_server_ai.png"
   },
   {
-    "id": 6,
+    "id": 10,
     "name": "Cola Essence",
     "description": "Concentrated flavor for cola taste",
     "category": "Flavorings",
@@ -66,7 +110,7 @@
     "image": "products/images/Cola Essence_amae_server_ai.png"
   },
   {
-    "id": 7,
+    "id": 11,
     "name": "New Zealand Butter",
     "description": "High-quality natural dairy butter",
     "category": "Fats & Dairy",
@@ -77,7 +121,7 @@
     "image": "products/images/New Zealand Butter_amae_server_ai.png"
   },
   {
-    "id": 8,
+    "id": 12,
     "name": "Uruguayan Natural Butter",
     "description": "Natural bovine butter",
     "category": "Dairy & Fats",
@@ -88,7 +132,7 @@
     "image": "products/images/Uruguayan Natural Butter_amae_server_ai.png"
   },
   {
-    "id": 9,
+    "id": 13,
     "name": "Brazilian Soy Lecithin",
     "description": "Natural emulsifier agent",
     "category": "Food Additives",
@@ -99,7 +143,7 @@
     "image": "products/images/Brazilian Soy Lecithin_amae_server_ai.png"
   },
   {
-    "id": 10,
+    "id": 14,
     "name": "Sodium Bicarbonate",
     "description": "Leavening and pH regulator agent",
     "category": "Food Chemicals",
@@ -110,7 +154,7 @@
     "image": "products/images/Sodium Bicarbonate_amae_server_ai.png"
   },
   {
-    "id": 11,
+    "id": 15,
     "name": "Barry Callebaut Natural Cocoa Butter",
     "description": "High-quality cocoa butter by Barry Callebaut",
     "category": "Cocoa Raw Materials",
