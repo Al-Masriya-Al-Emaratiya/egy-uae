@@ -2,266 +2,352 @@
 <html lang="en" dir="ltr">
 <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Shipment Tracking — Al Masriya Al Emaratia</title>
     
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;900&family=Tajawal:wght@300;400;500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
 
+    <link rel="stylesheet" href="css/style.css" />
+
     <style>
-        :root {
-            --primary: #00d2ff; 
-            --secondary: #3a7bd5; 
-            --background-dark: #ffffff; 
-            --text-light: #1a1d24; 
-            --text-medium: #4a5568; 
-            --text-dark: #718096; 
-            --glass-bg: rgba(0, 0, 0, 0.02); 
-            --glass-hover-bg: rgba(0, 0, 0, 0.05); 
-            --header-bg-transparent: rgba(255, 255, 255, 0.9); 
-            --card-shadow: 0 5px 20px rgba(0,0,0,0.05); 
-            --card-hover-shadow: 0 15px 40px rgba(0,210,255,0.15); 
-            --border-color: rgba(0, 0, 0, 0.08); 
-            --input-bg: rgba(0, 0, 0, 0.02);
-            --input-border: rgba(0, 0, 0, 0.1);
-            --primary-rgb: 0, 210, 255; 
-            --transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1); 
-        }
-
-        * { margin: 0; padding: 0; box-sizing: border-box; }
         
-        body { 
-            font-family: 'Tajawal', sans-serif; 
-            color: var(--text-light);
-            background-color: var(--background-dark);
-            min-height: 100vh;
-            overflow-x: hidden;
-            line-height: 1.6;
-        }
-
-        h1, h2, h3, h4, h5 { font-family: 'Cairo', sans-serif; line-height: 1.2; }
-
-        /* تزيين الخلفية بالخطوط المتحركة التجريدية */
-        .animated-lines-container { 
-            position: fixed; top: 0; left: 0; width: 100%; height: 100%; 
-            overflow: hidden; z-index: -1; pointer-events: none; 
-        }
-        .animated-line { 
-            position: absolute; 
-            background: linear-gradient(to right, rgba(var(--primary-rgb), 0), rgba(var(--primary-rgb), 0.3)); 
-            height: 2px; width: 100%; animation: moveLine 15s linear infinite; pointer-events: none; 
-        }
-        @keyframes moveLine {
-            0% { transform: translateX(-100%) scaleX(0.5); opacity: 0; }
-            50% { opacity: 0.6; }
-            100% { transform: translateX(100%) scaleX(1); opacity: 0; }
-        }
-
-        /* --- Header (التصميم الإنسيابي والمستقيم بدون لوجو) --- */
-        header {
-            position: fixed; top: 20px; left: 50%; transform: translateX(-50%); 
-            width: 95%; max-width: 1300px; padding: 12px 25px;
-            background: var(--header-bg-transparent); 
-            backdrop-filter: blur(15px); -webkit-backdrop-filter: blur(15px);
-            border: 1px solid var(--border-color); border-radius: 0; 
-            display: flex; justify-content: space-between; align-items: center; 
-            z-index: 1000; box-shadow: var(--card-shadow);
-        }
-        .logo-area { display: flex; align-items: center; }
-        .logo-area span { 
-            font-weight: 900; font-family: 'Cairo'; font-size: 1.3rem; letter-spacing: -0.5px;
-            background: linear-gradient(to right, var(--text-light), var(--primary)); 
-            -webkit-background-clip: text; -webkit-text-fill-color: transparent; 
-        }
-        .lang-btn {
-            text-decoration: none; color: var(--text-light); font-weight: 700;
-            border: 1px solid var(--border-color); padding: 8px 20px; 
-            border-radius: 0; font-size: 0.9rem; transition: var(--transition);
-            background: rgba(0,0,0,0.02);
-        }
-        .lang-btn:hover { border-color: var(--primary); color: var(--primary); box-shadow: 0 5px 15px rgba(0,210,255,0.15); }
-
-        /* --- Hero Section (صندوق البحث الرئيسي) --- */
-        .hero-section { padding: 160px 20px 60px; text-align: center; position: relative; z-index: 1; }
-        .hero-section h2 { 
-            font-size: clamp(2.5rem, 5vw, 4rem); font-weight: 900; margin-bottom: 30px;
-            background: linear-gradient(to right, var(--primary), var(--secondary));
-            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-        }
-
-        .search-container {
-            max-width: 700px; margin: 0 auto; display: flex; gap: 0; 
-            background: var(--background-dark); padding: 0; border-radius: 0;
+        .search-box-wrapper {
+            max-width: 700px;
+            margin: 40px auto 0;
+            background: var(--bg-surface);
             border: 1px solid var(--border-color);
-            box-shadow: var(--card-shadow);
+            padding: 30px;
+            box-shadow: 6px 6px 0 var(--primary-glow);
+        }
+
+        .map-card {
+            padding: 10px;
+            background: var(--bg-surface);
+            border: 1px solid var(--border-color);
+            border-bottom: 4px solid var(--primary);
+            box-shadow: 6px 6px 0 var(--primary-glow);
             transition: var(--transition);
         }
-        .search-container:hover { border-color: var(--primary); box-shadow: var(--card-hover-shadow); }
-        
-        .search-container input {
-            flex: 1; padding: 18px 25px; border: none;
-            background: var(--input-bg); border-radius: 0; color: var(--text-light);
-            font-size: 1.05rem; outline: none; transition: var(--transition);
+        .map-card:hover {
+            border-bottom-color: var(--secondary);
+            box-shadow: 8px 8px 0 var(--secondary-glow);
+        }
+        #map { 
+            height: 480px; 
+            width: 100%; 
+            z-index: 1; 
+        }
+
+        .leaflet-container {
+            background-color: var(--bg-main) !important;
             font-family: 'Tajawal', sans-serif;
         }
-        .search-container input:focus { background: #fff; }
-        
-        .btn-track {
-            background: linear-gradient(to right, var(--primary), var(--secondary));
-            color: #fff; border: none; padding: 0 35px; border-radius: 0; 
-            font-size: 1rem; font-weight: 700; cursor: pointer; transition: var(--transition);
-            font-family: 'Cairo', sans-serif;
+        .leaflet-bar a {
+            background-color: var(--bg-surface) !important;
+            color: var(--primary) !important;
+            border: 1px solid var(--border-color) !important;
+            border-radius: 0 !important;
+            transition: var(--transition);
         }
-        .btn-track:hover { opacity: 0.95; }
+        .leaflet-bar a:hover {
+            background-color: var(--primary) !important;
+            color: #fff !important;
+        }
+        .leaflet-popup-content-wrapper, .leaflet-popup-tip {
+            background: var(--bg-surface) !important;
+            color: var(--text-main) !important;
+            border-radius: 0 !important;
+            border: 1px solid var(--border-color) !important;
+            box-shadow: 4px 4px 0 var(--primary-glow) !important;
+        }
 
-        /* --- Results Content --- */
-        .main-content { width: 95%; max-width: 1300px; margin: 0 auto 80px; position: relative; z-index: 1; }
-        #result-section { display: none; animation: popIn 0.5s cubic-bezier(0.23, 1, 0.32, 1) forwards; opacity: 0; transform: translateY(30px); }
-
-        /* كروت معلومات الشحنة */
-        .data-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 25px; margin-bottom: 40px; }
-        .info-card { 
-            background: var(--glass-bg); padding: 35px 30px; border-radius: 0; 
+        .timeline-container {
+            background: var(--bg-surface);
+            padding: 40px;
             border: 1px solid var(--border-color);
-            box-shadow: var(--card-shadow); transition: var(--transition);
-            text-align: center; position: relative;
+            border-left: 4px solid var(--primary);
+            box-shadow: 6px 6px 0 var(--primary-glow);
         }
-        .info-card::before { 
-            content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 3px; 
-            background: linear-gradient(to right, var(--primary), var(--secondary)); opacity: 0; transition: var(--transition); 
+        .timeline-container h3 {
+            margin-bottom: 35px;
+            font-size: 1.5rem;
+            font-weight: 900;
         }
-        .info-card:hover { transform: translateY(-5px); background: var(--glass-hover-bg); border-color: var(--primary); box-shadow: var(--card-hover-shadow); }
-        .info-card:hover::before { opacity: 1; }
         
-        .info-card h4 { color: var(--text-dark); margin-bottom: 12px; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 1.5px; font-weight: 700; }
-        .info-card p { font-size: 1.4rem; font-weight: 700; color: var(--text-light); }
-        .info-card p i { margin-right: 8px; color: var(--text-medium); }
-        #status { color: var(--secondary); }
-
-        /* حاوية الخريطة المتناسقة */
-        .map-container {
-            background: #fff; padding: 10px; border-radius: 0;
-            border: 1px solid var(--border-color); box-shadow: var(--card-shadow);
-            margin-bottom: 40px; transition: var(--transition);
+        .t-item { 
+            position: relative; 
+            padding-left: 50px; 
+            padding-bottom: 35px; 
         }
-        .map-container:hover { border-color: var(--primary); box-shadow: var(--card-hover-shadow); }
-        #map { height: 480px; border-radius: 0; z-index: 1; }
-        
-        .leaflet-container { background: #f4f6f9; }
-
-        /* --- خط السير الزمني الحاد (Timeline) --- */
-        .timeline-card { 
-            background: var(--glass-bg); padding: 45px 40px; border-radius: 0; 
-            border: 1px solid var(--border-color); box-shadow: var(--card-shadow);
+        .t-item::before { 
+            content: ''; 
+            position: absolute; 
+            left: 19px; 
+            top: 0; 
+            width: 2px; 
+            height: 100%; 
+            background: var(--border-color); 
         }
-        .timeline-card h3 { color: var(--text-light); margin-bottom: 35px; font-size: 1.6rem; text-align: center; font-weight: 900; }
-        
-        .t-item { position: relative; padding-left: 50px; padding-bottom: 35px; }
-        .t-item::before { content: ''; position: absolute; left: 19px; top: 0; width: 2px; height: 100%; background: var(--border-color); }
-        .t-item:last-child::before { display: none; }
+        .t-item:last-child::before { 
+            display: none; 
+        }
         
         .t-icon {
-            position: absolute; left: 0; top: 0; width: 40px; height: 40px;
-            background: #fff; border: 2px solid var(--border-color); border-radius: 0; 
-            display: flex; align-items: center; justify-content: center; z-index: 2;
-            color: var(--text-dark); transition: var(--transition); font-size: 1rem;
+            position: absolute; 
+            left: 0; 
+            top: 0; 
+            width: 40px; 
+            height: 40px;
+            background: var(--bg-surface); 
+            border: 2px solid var(--border-color); 
+            display: flex; 
+            align-items: center; 
+            justify-content: center; 
+            z-index: 2;
+            color: var(--text-muted); 
+            transition: var(--transition); 
+            font-size: 1rem;
         }
         
-        .t-item.completed::before { background: var(--primary); }
-        .t-item.completed .t-icon { border-color: var(--primary); color: var(--primary); box-shadow: 0 0 10px rgba(0,210,255,0.2); }
-        .t-item.active .t-icon { background: var(--primary); color: #fff; border-color: var(--primary); box-shadow: 0 5px 15px rgba(0,210,255,0.3); }
+        .t-item.completed::before { 
+            background: var(--primary); 
+        }
+        .t-item.completed .t-icon { 
+            border-color: var(--primary); 
+            color: var(--primary); 
+            box-shadow: 0 0 10px var(--primary-glow); 
+        }
+        .t-item.active .t-icon { 
+            background: var(--secondary); 
+            color: #fff; 
+            border-color: var(--secondary); 
+            box-shadow: 0 0 15px var(--secondary-glow); 
+        }
         
-        .t-content { background: #fff; padding: 20px 25px; border-radius: 0; border: 1px solid var(--border-color); transition: var(--transition); box-shadow: 0 2px 10px rgba(0,0,0,0.02); }
-        .t-item:hover .t-content { border-color: var(--primary); transform: translateX(5px); box-shadow: var(--card-shadow); }
-        .t-content h5 { margin: 0 0 8px; font-size: 1.15rem; font-weight: 700; color: var(--text-light); }
-        .t-content p { margin: 0; font-size: 0.95rem; color: var(--text-medium); }
-        .t-content span { color: var(--primary); font-weight: 700; margin-left: 5px; }
+        .t-content { 
+            background: var(--bg-main); 
+            padding: 20px 25px; 
+            border: 1px solid var(--border-color); 
+            transition: var(--transition); 
+        }
+        .t-item:hover .t-content { 
+            border-color: var(--primary); 
+            transform: translateX(5px); 
+            background: #fff;
+            box-shadow: 4px 4px 0 var(--primary-glow);
+        }
+        .t-content h5 { 
+            margin: 0 0 8px; 
+            font-size: 1.15rem; 
+            font-weight: 700; 
+            color: var(--primary); 
+        }
+        .t-content p { 
+            margin: 0; 
+            font-size: 0.95rem; 
+            color: var(--text-muted); 
+        }
+        .t-content span { 
+            color: var(--secondary); 
+            font-weight: 700; 
+            margin-left: 5px; 
+        }
 
-        @keyframes popIn { to { opacity: 1; transform: translateY(0); } }
-        
-        /* التوافق مع الشاشات الصغيرة */
+        [dir="rtl"] .search-box-wrapper {
+            box-shadow: -6px 6px 0 var(--primary-glow);
+        }
+        [dir="rtl"] .map-card {
+            box-shadow: -6px 6px 0 var(--primary-glow);
+        }
+        [dir="rtl"] .map-card:hover {
+            box-shadow: -8px 8px 0 var(--secondary-glow);
+        }
+        [dir="rtl"] .timeline-container {
+            border-left: none;
+            border-right: 4px solid var(--primary);
+            box-shadow: -6px 6px 0 var(--primary-glow);
+        }
+        [dir="rtl"] .t-item {
+            padding-left: 0;
+            padding-right: 50px;
+        }
+        [dir="rtl"] .t-item::before {
+            left: auto;
+            right: 19px;
+        }
+        [dir="rtl"] .t-icon {
+            left: auto;
+            right: 0;
+        }
+        [dir="rtl"] .t-item:hover .t-content {
+            transform: translateX(-5px);
+            box-shadow: -4px 4px 0 var(--primary-glow);
+        }
+        [dir="rtl"] .t-content span {
+            margin-left: 0;
+            margin-right: 5px;
+        }
+
+        #result-section { 
+            display: none; 
+            animation: popIn 0.5s cubic-bezier(0.4, 0, 0.2, 1) forwards; 
+            opacity: 0; 
+            transform: translateY(30px); 
+        }
+        @keyframes popIn { 
+            to { 
+                opacity: 1; 
+                transform: translateY(0); 
+            } 
+        }
+
         @media (max-width: 768px) {
-            header { width: 90%; padding: 10px 15px; }
-            .hero-section { padding-top: 130px; }
-            .search-container { flex-direction: column; border: none; box-shadow: none; background: transparent; gap: 15px; }
-            .search-container input { border: 1px solid var(--border-color); height: 55px; }
-            .search-container input:focus { border-color: var(--primary); }
-            .btn-track { padding: 15px; width: 100%; height: 55px; }
-            .timeline-card { padding: 30px 20px; }
+            .search-box-wrapper { padding: 20px; }
+            .timeline-container { padding: 25px 15px; }
             .t-item { padding-left: 40px; }
+            [dir="rtl"] .t-item { padding-right: 40px; padding-left: 0; }
             .t-icon { width: 34px; height: 34px; }
             .t-item::before { left: 16px; }
+            [dir="rtl"] .t-item::before { right: 16px; left: auto; }
+            [dir="rtl"] .t-icon { right: 0; left: auto; }
         }
     </style>
 </head>
 <body>
 
+    <div id="progress-bar"></div>
+    <div id="tech-cursor"></div>
+    <div id="tech-cursor-follower"></div>
     <div class="animated-lines-container" id="lines-container"></div>
 
-    <header>
-        <div class="logo-area">
-            <span>AL MASRIYA AL EMARATIA</span>
+    <header class="tech-header">
+        <div class="container header-container">
+            <div class="logo-area">
+                <span style="font-family: 'Cairo'; font-weight: 900; font-size: 1.4rem; color: var(--primary); letter-spacing: 0.5px;">
+                    AL MASRIYA AL EMARATIA
+                </span>
+            </div>
+            <div class="header-actions">
+                <a href="tracking-ar.html" class="btn btn-outline-tech"><i class="fas fa-globe"></i> العربية</a>
+            </div>
         </div>
-        <a href="tracking-ar.html" class="lang-btn"><i class="fas fa-globe"></i> العربية</a>
     </header>
 
-    <section class="hero-section">
-        <h2>Global Shipment Tracking</h2>
-        <div class="search-container">
-            <input type="text" id="trackInput" placeholder="Enter Container or B/L Number...">
-            <button class="btn-track" onclick="startTracking()"><i class="fas fa-search"></i> TRACK</button>
+    <section class="hero">
+        <div class="container">
+            <div class="section-header">
+                <span class="tech-badge">Live Tracking System</span>
+                <h2>Global Shipment Tracking</h2>
+                <div class="header-line"></div>
+            </div>
+
+            <div class="search-box-wrapper">
+                <div class="input-group">
+                    <input type="text" id="trackInput" placeholder="Enter Container or B/L Number...">
+                    <i class="fas fa-search"></i>
+                </div>
+                <button class="btn btn-tech w-full mt-4" onclick="startTracking()">
+                    <i class="fas fa-satellite-dish"></i> Track Shipment
+                </button>
+            </div>
         </div>
     </section>
 
-    <main class="main-content">
+    <main class="container mb-4">
         <div id="result-section">
-            <div class="data-grid">
-                <div class="info-card">
-                    <h4>Vessel Name</h4>
-                    <p id="vessel-name"><i class="fas fa-ship"></i> ---</p>
+            
+            <div class="grid grid-3 mb-4">
+                <div class="tech-card">
+                    <div class="icon-box">
+                        <i class="fas fa-ship"></i>
+                    </div>
+                    <h3>Vessel Name</h3>
+                    <p id="vessel-name" style="font-size: 1.25rem; font-weight: 700; color: var(--text-main);">---</p>
                 </div>
-                <div class="info-card">
-                    <h4>Current Status</h4>
-                    <p id="status"><i class="fas fa-satellite-dish"></i> ---</p>
+                <div class="tech-card">
+                    <div class="icon-box">
+                        <i class="fas fa-signal"></i>
+                    </div>
+                    <h3>Current Status</h3>
+                    <p id="status" class="text-red" style="font-size: 1.25rem; font-weight: 700;">---</p>
                 </div>
-                <div class="info-card">
-                    <h4>Final Destination</h4>
-                    <p id="destination"><i class="fas fa-map-marker-alt"></i> ---</p>
+                <div class="tech-card">
+                    <div class="icon-box">
+                        <i class="fas fa-map-marked-alt"></i>
+                    </div>
+                    <h3>Final Destination</h3>
+                    <p id="destination" style="font-size: 1.25rem; font-weight: 700; color: var(--text-main);">---</p>
                 </div>
             </div>
 
-            <div class="map-container">
+            <div class="map-card mb-4">
                 <div id="map"></div>
             </div>
 
-            <div class="timeline-card">
-                <h3><i class="fas fa-route" style="color: var(--primary); margin-right: 10px;"></i> Shipment Milestones</h3>
+            <div class="timeline-container">
+                <h3 class="text-white" style="color: var(--primary) !important;">
+                    <i class="fas fa-route" style="color: var(--secondary); margin-right: 10px;"></i> Shipment Milestones
+                </h3>
                 <div id="timeline-list"></div>
             </div>
+            
         </div>
     </main>
 
+    <footer class="tech-footer" style="padding: 40px 0 20px;">
+        <div class="container text-center">
+            <p class="footer-bottom" style="margin-top: 0; border-top: none;">
+                &copy; 2026 Al Masriya Al Emaratia. All Rights Reserved. Powered by Tech OS.
+            </p>
+        </div>
+    </footer>
+
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
     <script>
-        // دالة إنشاء خطوط الخلفية المتحركة ديناميكياً
         document.addEventListener('DOMContentLoaded', () => {
             const container = document.getElementById('lines-container');
-            const createLine = () => {
-                if (document.querySelectorAll('.animated-line').length > 15) return;
-                const line = document.createElement('div');
-                line.classList.add('animated-line');
-                line.style.top = Math.random() * 100 + '%';
-                line.style.animationDelay = Math.random() * 4 + 's';
-                line.style.animationDuration = (10 + Math.random() * 8) + 's';
-                container.appendChild(line);
-                line.addEventListener('animationend', () => line.remove());
-            };
-            for (let i = 0; i < 8; i++) createLine();
-            setInterval(createLine, 2500);
+            if (container) {
+                const createLine = () => {
+                    if (document.querySelectorAll('.data-stream').length > 15) return;
+                    const line = document.createElement('div');
+                    line.classList.add('data-stream');
+                    line.style.left = Math.random() * 100 + '%';
+                    line.style.animationDelay = Math.random() * 2 + 's';
+                    line.style.animationDuration = (8 + Math.random() * 6) + 's';
+                    container.appendChild(line);
+                    line.addEventListener('animationend', () => line.remove());
+                };
+                for (let i = 0; i < 8; i++) createLine();
+                setInterval(createLine, 2000);
+            }
+
+            const cursor = document.getElementById('tech-cursor');
+            const follower = document.getElementById('tech-cursor-follower');
+            
+            if (cursor && follower && window.matchMedia('(hover: hover) and (pointer: fine)').matches) {
+                document.addEventListener('mousemove', (e) => {
+                    cursor.style.left = e.clientX + 'px';
+                    cursor.style.top = e.clientY + 'px';
+                    
+                    follower.animate({
+                        left: e.clientX + 'px',
+                        top: e.clientY + 'px'
+                    }, { duration: 150, fill: 'forwards' });
+                });
+            }
         });
 
-        // تتبع الشحنات وجلب البيانات والخريطة من ملف shipments.json
+        window.addEventListener('scroll', () => {
+            const winScroll = document.documentElement.scrollTop || document.body.scrollTop;
+            const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            const scrolled = (winScroll / height) * 100;
+            const bar = document.getElementById('progress-bar');
+            if (bar) bar.style.width = scrolled + '%';
+        });
+
         let map;
 
         async function startTracking() {
@@ -291,9 +377,9 @@
         }
 
         function renderData(ship) {
-            document.getElementById('vessel-name').innerHTML = `<i class="fas fa-ship"></i> ${ship.vessel_name}`;
-            document.getElementById('status').innerHTML = `<i class="fas fa-satellite-dish"></i> ${ship.current_status}`;
-            document.getElementById('destination').innerHTML = `<i class="fas fa-map-marker-alt"></i> ${ship.destination.port}`;
+            document.getElementById('vessel-name').innerHTML = ship.vessel_name;
+            document.getElementById('status').innerHTML = ship.current_status;
+            document.getElementById('destination').innerHTML = ship.destination.port;
 
             const list = document.getElementById('timeline-list');
             list.innerHTML = "";
@@ -331,10 +417,10 @@
                 className: 'ship-marker',
                 html: `<div style="
                     background: linear-gradient(135deg, var(--primary), var(--secondary)); 
-                    color:white; width:42px; height:42px; border-radius:0; 
+                    color:white; width:42px; height:42px; border-radius:0 !important; 
                     display:flex; align-items:center; justify-content:center; 
-                    border: 2px solid #fff; 
-                    box-shadow: 0 4px 15px rgba(0,210,255,0.4);
+                    border: 1px solid #fff; 
+                    box-shadow: 4px 4px 0 var(--primary-glow);
                     font-size: 1.1rem;
                 "><i class="fas fa-ship"></i></div>`,
                 iconSize: [42, 42],
@@ -343,8 +429,8 @@
 
             L.marker([loc.lat, loc.lng], {icon: shipIcon}).addTo(map)
                 .bindPopup(`
-                    <div style="color:var(--text-light); padding:3px; font-family:'Tajawal', sans-serif;">
-                        <b style="color:var(--secondary); font-size:1rem;">Current Location:</b><br>${loc.name}
+                    <div style="color:var(--text-main); padding:3px; font-family:'Tajawal', sans-serif;">
+                        <b style="color:var(--secondary); font-size:1rem; font-family: 'Cairo';">Current Location:</b><br>${loc.name}
                     </div>
                 `).openPopup();
         }
