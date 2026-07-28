@@ -9,39 +9,28 @@ document.addEventListener('DOMContentLoaded', () => {
     const qsa = (selector) => document.querySelectorAll(selector);
 
     // --- 1. Custom Tech Cursor (Crosshair/Square Style) ---
-    const cursor = qs('#tech-cursor');
-    const follower = qs('#tech-cursor-follower');
-    
-    // Only activate cursor if not on touch device
-    if (window.matchMedia("(pointer: fine)").matches && cursor && follower) {
-        document.addEventListener('mousemove', (e) => {
-            cursor.style.left = e.clientX + 'px';
-            cursor.style.top = e.clientY + 'px';
-            follower.style.left = e.clientX + 'px';
-            follower.style.top = e.clientY + 'px';
-        });
+const cursor = document.getElementById('tech-cursor');
+const follower = document.getElementById('tech-cursor-follower');
 
-        // Hover effect on interactable elements
-        const interactables = qsa('a, button, input, textarea, .faq-question, .dropdown-trigger, .profile-trigger');
-        interactables.forEach(el => {
-            el.addEventListener('mouseenter', () => {
-                follower.style.width = '45px';
-                follower.style.height = '45px';
-                follower.style.borderColor = 'var(--secondary)';
-                follower.style.transform = 'translate(-50%, -50%) rotate(45deg)'; // Tech target rotation
-                follower.style.backgroundColor = 'rgba(213, 36, 43, 0.05)';
-                cursor.style.transform = 'translate(-50%, -50%) scale(1.5)';
-            });
-            el.addEventListener('mouseleave', () => {
-                follower.style.width = '30px';
-                follower.style.height = '30px';
-                follower.style.borderColor = 'var(--primary)';
-                follower.style.transform = 'translate(-50%, -50%) rotate(0deg)';
-                follower.style.backgroundColor = 'transparent';
-                cursor.style.transform = 'translate(-50%, -50%) scale(1)';
-            });
-        });
-    }
+document.addEventListener('mousemove', (e) => {
+    cursor.style.left = e.clientX + 'px';
+    cursor.style.top = e.clientY + 'px';
+    
+    setTimeout(() => {
+        follower.style.left = e.clientX + 'px';
+        follower.style.top = e.clientY + 'px';
+    }, 50);
+});
+
+const interactiveElements = document.querySelectorAll('a, button, .faq-question, .dropdown-trigger, .profile-trigger, input, textarea');
+interactiveElements.forEach(el => {
+    el.addEventListener('mouseenter', () => {
+        document.body.classList.add('hover-interactive');
+    });
+    el.addEventListener('mouseleave', () => {
+        document.body.classList.remove('hover-interactive');
+    });
+});
 
     // --- 2. Reading Progress Bar ---
     const progressBar = qs('#progress-bar');
