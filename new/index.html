@@ -1,0 +1,560 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>egy-uae Investment & Holding Group</title>
+    
+    <!-- Google Fonts: Lora & Manrope -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Manrope:wght@200;300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- AOS (Animate On Scroll) CSS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" rel="stylesheet">
+
+    <!-- Slick Carousel CSS -->
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.css"/>
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.min.css"/>
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Skip Link for Accessibility -->
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+
+    <!-- Header Navigation -->
+    <header class="header-wrap" id="siteHeader">
+        <div class="container">
+            <nav class="navbar navbar-expand-lg navbar-light">
+                <!-- شعار الموقع كصورة مخصصة -->
+                <a class="navbar-brand d-flex align-items-center" href="#">
+                    <img src="logo.png" alt="egy-uae Logo" class="logo-img" style="max-height: 50px;">
+                </a>
+                
+                <!-- زر فتح القائمة للهواتف باستخدام أيقونات صور مخصصة -->
+                <button class="navbar-toggler" id="menuOpenBtn" type="button" aria-label="Toggle navigation">
+                    <span class="activeblock"><img src="menu-icon.png" alt="Menu" style="width: 24px; height: 24px;"></span>
+                    <span class="noneblock"><img src="close-icon.png" alt="Close" style="width: 24px; height: 24px;"></span>
+                </button>
+                
+                <div class="navbar-collapse" id="navbarNav">
+                    <button class="drawer-close-btn" id="menuCloseBtn" aria-label="Close menu">
+                        <img src="close-icon.png" alt="Close" style="width: 20px; height: 20px;">
+                    </button>
+                    <ul class="navbar-nav ms-auto font-manrope">
+                        <li class="nav-item"><a class="nav-link active" href="#hero">Home</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#sectors">Sectors</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#stats">Performance</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#about">Legacy</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#products">Products</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#capabilities">Capabilities</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#group">Group Companies</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Drawer Mobile Menu Overlay -->
+    <div class="nav-overlay" id="navOverlay"></div>
+
+    <main id="main-content">
+        
+        <!-- Hero Section with Background Video -->
+        <section id="hero" class="hero-section">
+            <video autoplay loop muted playsinline class="hero-video">
+                <source src="hero-video.mp4" type="video/mp4">
+            </video>
+            <div class="hero-overlay"></div>
+            
+            <div class="container hero-content">
+                <div class="row">
+                    <div class="col-lg-8" data-aos="fade-right" data-aos-duration="1200">
+                        <p class="hero-tagline uppercase tracking-widest text-white opacity-75">INVESTING IN STRATEGIC CORRIDORS</p>
+                        <h1 class="hero-heading text-80 font-lora">Bilateral Investments For Sustained Growth</h1>
+                        <p class="hero-para font-manrope">Powering cross-border trade, industrial expansion, and strategic partnerships between Egypt and the United Arab Emirates.</p>
+                        <a href="#sectors" class="btn btn-white-hero">
+                            <span>Explore Strategic Sectors</span>
+                            <span class="img-icon">
+                                <img src="arrow-icon.png" alt="Arrow">
+                            </span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Sectors Portfolio Section -->
+        <section id="sectors" class="partners-section spacing-y-2">
+            <div class="container">
+                <div class="row align-items-end mb-5" data-aos="fade-up">
+                    <div class="col-lg-7">
+                        <h2 class="partners-heading font-lora text-65">Cooperative Economic Sectors</h2>
+                        <p class="partners-para font-manrope">Leveraging shared logistics networks and financial hubs to accelerate growth across key strategic fields.</p>
+                    </div>
+                    <div class="col-lg-5 text-lg-end mb-3 mb-lg-0">
+                        <a href="#contact" class="btn btn-black">
+                            <span>Partner with EGY-UAE</span>
+                            <span class="img-icon">
+                                <img src="arrow-icon-white.png" alt="Arrow">
+                            </span>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="row g-4">
+                    <!-- Sector Card 1 -->
+                    <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
+                        <div class="partner-card">
+                            <h3 class="partner-card-title font-lora text-28">Trade & Commerce</h3>
+                            <p class="partner-card-desc font-manrope">Facilitating premium raw materials, grain trading, and crop export-import operations between Cairo and Abu Dhabi.</p>
+                            <div class="partnerimgae mt-4">
+                                <img src="trade-egy-uae.jpg" alt="Trade Corridor" class="w-100 radius-8">
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Sector Card 2 -->
+                    <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="200">
+                        <div class="partner-card">
+                            <h3 class="partner-card-title font-lora text-28">Logistics & Ports</h3>
+                            <p class="partner-card-desc font-manrope">Empowering secure maritime supply lines and storage facilities spanning the Suez Canal to GCC ports.</p>
+                            <div class="partnerimgae mt-4">
+                                <img src="logistics-egy-uae.jpg" alt="Logistics Corridor" class="w-100 radius-8">
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Sector Card 3 -->
+                    <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="300">
+                        <div class="partner-card">
+                            <h3 class="partner-card-title font-lora text-28">Investments</h3>
+                            <p class="partner-card-desc font-manrope">Structured equity funding and industrial infrastructure developments across special economic zones.</p>
+                            <div class="partnerimgae mt-4">
+                                <img src="invest-egy-uae.jpg" alt="Investment Corridor" class="w-100 radius-8">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Stats Section -->
+        <section id="stats" class="stats-section spacing-y-2">
+            <div class="container">
+                <div class="row g-5">
+                    <div class="col-lg-5" data-aos="fade-right">
+                        <h2 class="stats-heading font-lora text-65">Backed by Shared Experience</h2>
+                        <p class="stats-para font-manrope">Combining regional capabilities to develop highly stable, secure supply pipelines and joint sovereign investments.</p>
+                    </div>
+                    <div class="col-lg-7">
+                        <div class="stats-grid">
+                            <div class="stats-col">
+                                <div class="stat-card stat-card--green" data-aos="zoom-in" data-aos-delay="100">
+                                    <div>
+                                        <span class="stat-number">15+</span>
+                                        <p class="stat-label">Bilateral Projects Active</p>
+                                    </div>
+                                </div>
+                                <div class="stat-card stat-card--orange" data-aos="zoom-in" data-aos-delay="200">
+                                    <div>
+                                        <span class="stat-number">$1.2B</span>
+                                        <p class="stat-label">Assets Under Management</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="stats-col stats-col--offset">
+                                <div class="stat-card stat-card--red" data-aos="zoom-in" data-aos-delay="300">
+                                    <div>
+                                        <span class="stat-number">30M+</span>
+                                        <p class="stat-label">Tons Exported Annually</p>
+                                    </div>
+                                </div>
+                                <div class="stat-card stat-card--light-green" data-aos="zoom-in" data-aos-delay="400">
+                                    <div>
+                                        <span class="stat-number">100%</span>
+                                        <p class="stat-label">Operational Traceability</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- About / Legacy Section -->
+        <section id="about" class="about-section spacing-y-2">
+            <div class="container">
+                <div class="row align-items-center g-5">
+                    <div class="col-lg-6" data-aos="fade-right">
+                        <div class="about-img-wrap image-scale-hover">
+                            <img src="about-egy-uae.jpg" alt="Cairo and Abu Dhabi alliance" class="about-img" style="background-color: var(--grey);">
+                        </div>
+                    </div>
+                    <div class="col-lg-6" data-aos="fade-left">
+                        <div class="custom-content-wrapper">
+                            <span class="badge bg-green text-white mb-3 px-3 py-2">Alliance Profile</span>
+                            <h2 class="about-heading font-lora text-45">An Alliance Built on Trust & Progress</h2>
+                            <p class="about-para">We operate with the strong belief that combined resources drive unmatched prosperity. EGY-UAE Group leverages Egypt’s massive industrial workforce and agricultural fertility along with the UAE’s world-class financial structure and logistics innovation.</p>
+                            <p class="about-para">Our objective is to deliver robust supply consistency, navigate global regulatory compliance, and deploy sovereign-backed investment models that generate secure dividends.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Freshness In Season / Slider Carousel Section -->
+        <section id="products" class="freshness-section spacing-y-2">
+            <div class="container">
+                <div class="row text-center mb-5" data-aos="fade-up">
+                    <div class="col-lg-8 mx-auto">
+                        <h2 class="freshness-heading font-lora text-60 text-white">Import & Export Portfolios</h2>
+                        <p class="freshness-sub font-manrope text-white opacity-90 mt-2">Providing immediate trade solutions for high-demand consumer goods in bulk quantities.</p>
+                    </div>
+                </div>
+                
+                <div class="freshness-carousel-wrap" data-aos="fade-up" data-aos-delay="200">
+                    <!-- سهم السابق كصورة مخصصة -->
+                    <button class="freshness-arrow prev" id="sliderPrev" aria-label="Previous Slide">
+                        <img src="chevron-left.png" alt="Previous" style="width: 32px; height: 32px;">
+                    </button>
+                    
+                    <div class="freshness-carousel" id="freshnessCarousel">
+                        <!-- Slide 1 -->
+                        <div class="product-item">
+                            <div class="freshness-card">
+                                <div class="freshness-card-text">
+                                    <h3 class="freshness-card-title">Citrus Fruits</h3>
+                                    <p class="freshness-card-desc">Egyptian premium quality oranges, lemons, and mandarins ready for shipping to Gulf markets.</p>
+                                </div>
+                                <div class="freshness-card-img">
+                                    <img src="product-citrus.png" alt="Citrus Fruits">
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Slide 2 -->
+                        <div class="product-item">
+                            <div class="freshness-card">
+                                <div class="freshness-card-text">
+                                    <h3 class="freshness-card-title">Organic Greens</h3>
+                                    <p class="freshness-card-desc">Traceable fresh onions, potatoes, and garlic packaged within specialized dry-sorting sites.</p>
+                                </div>
+                                <div class="freshness-card-img">
+                                    <img src="product-greens.png" alt="Organic Greens">
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Slide 3 -->
+                        <div class="product-item">
+                            <div class="freshness-card">
+                                <div class="freshness-card-text">
+                                    <h3 class="freshness-card-title">Dried Legumes</h3>
+                                    <p class="freshness-card-desc">Silos-packaged raw materials and dry grains delivered under strict shipping guidelines.</p>
+                                </div>
+                                <div class="freshness-card-img">
+                                    <img src="product-legumes.png" alt="Legumes">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- سهم التالي كصورة مخصصة -->
+                    <button class="freshness-arrow next" id="sliderNext" aria-label="Next Slide">
+                        <img src="chevron-right.png" alt="Next" style="width: 32px; height: 32px;">
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Capabilities Section -->
+        <section id="capabilities" class="capabilities-section spacing-y-2">
+            <div class="container">
+                <div class="row mb-5 text-center" data-aos="fade-up">
+                    <div class="col-lg-8 mx-auto">
+                        <h2 class="capabilities-heading font-lora text-65">Strategic Framework</h2>
+                        <p class="capabilities-para mx-auto font-manrope">Achieving complete regulatory integration across both Egypt and the GCC.</p>
+                    </div>
+                </div>
+                
+                <div class="row g-4">
+                    <!-- Capability 1 -->
+                    <div class="col-lg-4" data-aos="fade-up" data-aos-delay="100">
+                        <div class="capability-card capability-card--green h-100">
+                            <h3 class="capability-card-title">Production Sourcing</h3>
+                            <p class="capability-card-desc">Sourcing high-quality agricultural yield, minerals, and refined products directly from fertile Egyptian hubs.</p>
+                        </div>
+                    </div>
+                    <!-- Capability 2 -->
+                    <div class="col-lg-4" data-aos="fade-up" data-aos-delay="200">
+                        <div class="capability-card capability-card--orange h-100">
+                            <h3 class="capability-card-title">Strategic Investment</h3>
+                            <p class="capability-card-desc">Providing world-class funding, asset management, and expansion advisory from our Dubai and Abu Dhabi offices.</p>
+                        </div>
+                    </div>
+                    <!-- Capability 3 -->
+                    <div class="col-lg-4" data-aos="fade-up" data-aos-delay="300">
+                        <div class="capability-card capability-card--red h-100">
+                            <h3 class="capability-card-title">Cross-Border Logistics</h3>
+                            <p class="capability-card-desc">Unifying freight, cold chains, and maritime paths to maintain safe and efficient cargo flow across borders.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Sovereign Bilateral Visual Section -->
+        <section class="why-kaf-section">
+            <img src="egy-uae-corridor.jpg" alt="Cairo and Abu Dhabi background" class="why-kaf-bg-img" style="background-color: var(--black2);">
+            
+            <div class="why-kaf-top">
+                <div class="why-kaf-overlay why-kaf-overlay--green"></div>
+                <div class="why-kaf-top-content container">
+                    <h2 class="why-kaf-heading text-45">Solidifying Bilateral Prosperity</h2>
+                    <p class="why-kaf-intro">Bridging Egyptian industrial power with UAE’s world-leading commercial infrastructure.</p>
+                </div>
+            </div>
+
+            <div class="why-kaf-bottom">
+                <div class="why-kaf-overlay" style="background-color: rgba(15,15,15,0.85);"></div>
+                <div class="why-kaf-bottom-content container">
+                    <div class="why-kaf-features">
+                        <!-- تم تبديل الأيقونات البرمجية هنا بصور عادية تضعها بنفسك -->
+                        <div class="why-kaf-feature" data-aos="fade-up" data-aos-delay="100">
+                            <div class="why-kaf-icon">
+                                <img src="icon-agility.png" alt="Agility" style="max-height: 60px; width: auto;">
+                            </div>
+                            <h3 class="why-kaf-feature-title">Agility</h3>
+                            <p class="why-kaf-feature-desc">Dynamic trade solutions responsive to real-time regional market changes.</p>
+                        </div>
+                        <div class="why-kaf-divider"></div>
+                        <div class="why-kaf-feature" data-aos="fade-up" data-aos-delay="200">
+                            <div class="why-kaf-icon">
+                                <img src="icon-reliable.png" alt="Reliable Funding" style="max-height: 60px; width: auto;">
+                            </div>
+                            <h3 class="why-kaf-feature-title">Reliable Funding</h3>
+                            <p class="why-kaf-feature-desc">Backed by leading sovereign and private institutions from both nations.</p>
+                        </div>
+                        <div class="why-kaf-divider"></div>
+                        <div class="why-kaf-feature" data-aos="fade-up" data-aos-delay="300">
+                            <div class="why-kaf-icon">
+                                <img src="icon-network.png" alt="Integrated Network" style="max-height: 60px; width: auto;">
+                            </div>
+                            <h3 class="why-kaf-feature-title">Integrated Network</h3>
+                            <p class="why-kaf-feature-desc">Unifying customs channels to drastically reduce transit times.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Subsidiary Companies Section -->
+        <section id="group" class="group-section spacing-y-2">
+            <div class="container">
+                <div class="group-intro text-center" data-aos="fade-up">
+                    <h2 class="group-heading font-lora text-65">Subsidiaries & Joint Companies</h2>
+                    <p class="group-sub font-manrope">Operating specialized corporate entities across both nations.</p>
+                </div>
+                
+                <div class="row group-cards-row g-4">
+                    <!-- Subsidiary 1 -->
+                    <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="100">
+                        <div class="group-card">
+                            <div class="group-card-logo">
+                                <img src="sub-1.png" alt="EGY-UAE Trading" onerror="this.style.display='none'; this.nextElementSibling.style.display='inline';">
+                                <span class="font-lora text-20 fw-bold green" style="display:none;">EGY-UAE Trade</span>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Subsidiary 2 -->
+                    <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="200">
+                        <div class="group-card">
+                            <div class="group-card-logo">
+                                <img src="sub-2.png" alt="EGY-UAE Capital" onerror="this.style.display='none'; this.nextElementSibling.style.display='inline';">
+                                <span class="font-lora text-20 fw-bold green" style="display:none;">EGY-UAE Capital</span>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Subsidiary 3 -->
+                    <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="300">
+                        <div class="group-card">
+                            <div class="group-card-logo">
+                                <img src="sub-3.png" alt="EGY-UAE Logistics" onerror="this.style.display='none'; this.nextElementSibling.style.display='inline';">
+                                <span class="font-lora text-20 fw-bold green" style="display:none;">EGY-UAE Freight</span>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Subsidiary 4 -->
+                    <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="400">
+                        <div class="group-card">
+                            <div class="group-card-logo">
+                                <img src="sub-4.png" alt="EGY-UAE Agri" onerror="this.style.display='none'; this.nextElementSibling.style.display='inline';">
+                                <span class="font-lora text-20 fw-bold green" style="display:none;">EGY-UAE Agri</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA Partner Alliance -->
+        <section class="inner-hero-section partner-cta-section">
+            <img src="egy-uae-field.jpg" alt="Cairo and Abu Dhabi corridor background" class="contact-banner-img" style="background-color: var(--green);">
+            <div class="division-banner-overlay"></div>
+            
+            <div class="container common-banner-content text-center" data-aos="fade-up">
+                <h2 class="common-banner-heading font-lora text-45">Integrate Your Operation With EGY-UAE</h2>
+                <p class="common-banner-para font-manrope mb-4">Leverage our specialized industrial paths and trade agreements. Establish scalable corridors between Egyptian supply bases and GCC markets.</p>
+                <a href="#contact" class="btn btn-white-hero mx-auto" style="max-width: 250px;">
+                    <span>Connect with Our Desk</span>
+                    <span class="img-icon">
+                        <img src="arrow-icon.png" alt="Arrow">
+                    </span>
+                </a>
+            </div>
+        </section>
+
+        <!-- Contact Section (تمت إزالة الفورم وإعادة تنسيق المساحة بشكل مميز) -->
+        <section id="contact" class="contact-section spacing-y-2">
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-lg-10 text-center" data-aos="fade-up">
+                        <h2 class="contact-form-heading font-lora text-65">Establish Connection</h2>
+                        <p class="font-manrope text-20 mb-5" style="color: var(--black6);">Our specialized bilateral desks in Cairo and Abu Dhabi are ready to assist with your institutional inquiries.</p>
+                        
+                        <!-- توزيع بيانات التواصل كبطاقات متناسقة وجميلة -->
+                        <div class="row g-4 text-start">
+                            <div class="col-md-6 col-lg-3">
+                                <div class="p-4 bg-light rounded-4 h-100">
+                                    <span class="contact-info-label font-lora d-block mb-2">Email</span>
+                                    <a href="mailto:info@egy-uae.com" class="contact-info-value">info@egy-uae.com</a>
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-lg-3">
+                                <div class="p-4 bg-light rounded-4 h-100">
+                                    <span class="contact-info-label font-lora d-block mb-2">Corporate Phone</span>
+                                    <a href="tel:+2021234567" class="contact-info-value d-block mb-1">EG: +20 (0) 2 123 4567</a>
+                                    <a href="tel:+9712123456" class="contact-info-value d-block">AE: +971 (0) 2 123 4567</a>
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-lg-3">
+                                <div class="p-4 bg-light rounded-4 h-100">
+                                    <span class="contact-info-label font-lora d-block mb-2">Corporate Desks</span>
+                                    <span class="contact-info-value d-block mb-1">Cairo: New Cairo, Egypt</span>
+                                    <span class="contact-info-value d-block">Abu Dhabi: Al Maryah Island</span>
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-lg-3">
+                                <div class="p-4 bg-light rounded-4 h-100">
+                                    <span class="contact-info-label font-lora d-block mb-2">Official Channels</span>
+                                    <div class="contact-social-icons mt-2">
+                                        <a href="#" class="contact-social-link"><img src="linkedin-dark.png" alt="LinkedIn" style="width: 18px; height: 18px;"></a>
+                                        <a href="#" class="contact-social-link"><img src="x-dark.png" alt="X" style="width: 18px; height: 18px;"></a>
+                                        <a href="#" class="contact-social-link"><img src="instagram-dark.png" alt="Instagram" style="width: 18px; height: 18px;"></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- زر مخصص لتوجيه العميل لصفحة الفورم الجديدة أو النافذة المنبثقة -->
+                        <div class="mt-5">
+                            <a href="contact-form.html" class="btn btn-black mx-auto" style="min-width: 250px;">
+                                <span>Open Inquiry Form</span>
+                                <span class="img-icon">
+                                    <img src="arrow-icon-white.png" alt="Arrow">
+                                </span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="row mt-5">
+                    <div class="col-12" data-aos="fade-up">
+                        <div class="iframe-container">
+                            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3630.916893665516!2d54.38479531500642!3d24.5056708842247!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3e5e66699bc45cfb%3A0xb3ab20fa5853fb3!2sADGM%20Authorities%20Building!5e0!3m2!1sen!2sae!4v1672531100000!5m2!1sen!2sae" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer Area (تم تبديل الأيقونات وتفعيل خلفية مدمجة باللون الأحمر وصورة مخصصة) -->
+    <footer class="footer">
+        <div class="container">
+            <div class="row footer-top">
+                <!-- Column 1 -->
+                <div class="col-lg-3 col-md-6 mb-5 mb-lg-0">
+                    <img src="logo-footer.png" alt="EGY-UAE Group" class="mb-3" style="max-height: 50px;">
+                    <p class="footer-desc">An integrated institutional holding firm deploying smart sovereign-backed assets, specialized customs paths, and cross-border commercial expansions.</p>
+                </div>
+                
+                <!-- Column 2 -->
+                <div class="col-lg-2 col-md-6 mb-4 mb-md-0 ps-lg-4">
+                    <h4 class="font-lora text-20 mb-3 text-white">Navigation</h4>
+                    <ul class="footer-nav">
+                        <li><a href="#hero">Home</a></li>
+                        <li><a href="#sectors">Sectors</a></li>
+                        <li><a href="#about">Legacy</a></li>
+                        <li><a href="#products">Products</a></li>
+                    </ul>
+                </div>
+                
+                <!-- Column 3 -->
+                <div class="col-lg-2 col-md-6 mb-4 mb-md-0 ps-lg-4">
+                    <h4 class="font-lora text-20 mb-3 text-white">Alliances</h4>
+                    <ul class="footer-nav">
+                        <li><a href="#capabilities">Capabilities</a></li>
+                        <li><a href="#group">Group Hubs</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <!-- Column 4 -->
+                <div class="col-lg-5 col-md-6">
+                    <h4 class="font-lora text-20 mb-3 text-white">Bilateral Offices</h4>
+                    <p class="footer-address">Cairo: New Cairo Commercial District, Egypt<br>Abu Dhabi: ADGM Building, Al Maryah Island, UAE</p>
+                    <ul class="footer-contact">
+                        <li><a href="mailto:info@egy-uae.com">info@egy-uae.com</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <!-- Symmetrical Footer Bottom -->
+            <div class="row footer-bottom pt-4 align-items-center">
+                <div class="col-lg-4 col-md-12 text-center text-lg-start mb-3 mb-lg-0">
+                    <p class="footer-copy mb-0">&copy; 2026 EGY-UAE Group. All rights reserved.</p>
+                </div>
+                <div class="col-lg-4 col-md-6 text-center mb-3 mb-md-0">
+                    <div class="footer-social d-inline-flex gap-4">
+                        <!-- أيقونات الفوتر كصور مخصصة بالكامل تضعها بنفسك -->
+                        <a href="#"><img src="linkedin.png" alt="LinkedIn"></a>
+                        <a href="#"><img src="x.png" alt="X"></a>
+                        <a href="#"><img src="instagram.png" alt="Instagram"></a>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 text-center text-lg-end">
+                    <div class="footer-legal d-inline-flex gap-3">
+                        <a href="#">Privacy Policy</a>
+                        <a href="#">Terms & Conditions</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JS Libraries (Scroll, Slick & Animations) -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js"></script>
+
+    <!-- Custom App Logic with Carousel Initializer -->
+    <script src="main.js"></script>
+</body>
+</html>
