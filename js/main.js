@@ -337,29 +337,72 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // --- 10. B2B Chat Widget Logic ---
+   // --- 10. B2B Chat Widget Logic (Supabase AI Integration) ---
     const chatToggle = qs('#chat-toggle'), chatBox = qs('#chat-box'), chatClose = qs('#chat-close');
     const chatInput = qs('#chat-input'), chatSend = qs('#chat-send'), chatBody = qs('#chat-body');
     
     if (chatToggle) chatToggle.addEventListener('click', () => chatBox.classList.add('active'));
     if (chatClose) chatClose.addEventListener('click', () => chatBox.classList.remove('active'));
     
-    const sendMsg = () => {
+    const sendMsg = async () => {
         const text = chatInput.value.trim();
-        if (text) {
-            chatBody.innerHTML += `<div class="message outgoing"><p>${text}</p></div>`;
-            chatInput.value = '';
-            chatBody.scrollTop = chatBody.scrollHeight;
+        if (!text) return;
+
+        // إضافة رسالة المستخدم إلى الشاشة
+        chatBody.innerHTML += `<div class="message outgoing"><p>${escapeHtml(text)}</p></div>`;
+        chatInput.value = '';
+        chatBody.scrollTop = chatBody.scrollHeight;
+        
+        // مؤشر التحميل أثناء انتظار الرد الحقيقي
+        const loadingId = 'loading-' + Date.now();
+        chatBody.innerHTML += `<div class="message incoming" id="${loadingId}"><p>جارٍ معالجة الطلب...</p></div>`;
+        chatBody.scrollTop = chatBody.scrollHeight;
+
+        try {
+            // إرسال الطلب إلى دالة Supabase الخاصة بك بأمان تام
+            const response = await fetch('https://yoniptlacaorxqqojdko.supabase.co/functions/v1/quick-task', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                    // لو الدالة تتطلب مصادقة Anon Key يمكنك إضافتها هنا:
+                    // 'Authorization': 'Bearer YOUR_SUPABASE_ANON_KEY'
+                },
+                body: JSON.stringify({ message: text })
+            });
+
+            const data = await response.json();
             
-            setTimeout(() => {
-                chatBody.innerHTML += `<div class="message incoming"><p>System alert: Specifications acknowledged. A trade specialist will review your cargo requirements shortly.</p></div>`;
-                chatBody.scrollTop = chatBody.scrollHeight;
-            }, 1000);
+            // إزالة مؤشر التحميل
+            const loadingElement = document.getElementById(loadingId);
+            if (loadingElement) loadingElement.remove();
+
+            // استخراج الرد من استجابة Groq القادمة عبر سوبابيس
+            if (data.choices && data.choices.length > 0) {
+                const aiReply = data.choices[0].message.content;
+                chatBody.innerHTML += `<div class="message incoming"><p>${escapeHtml(aiReply)}</p></div>`;
+            } else {
+                throw new Error('Invalid response structure');
+            }
+            
+            chatBody.scrollTop = chatBody.scrollHeight;
+
+        } catch (error) {
+            const loadingElement = document.getElementById(loadingId);
+            if (loadingElement) loadingElement.remove();
+            
+            chatBody.innerHTML += `<div class="message incoming"><p>عذراً، حدث خطأ في الاتصال بالنظام. يجدر التحقق من إعدادات الدالة.</p></div>`;
+            chatBody.scrollTop = chatBody.scrollHeight;
         }
     };
+
     if (chatSend) chatSend.addEventListener('click', sendMsg);
     if (chatInput) chatInput.addEventListener('keypress', (e) => { if(e.key === 'Enter') sendMsg(); });
 
+    // دالة حماية بسيطة لتنظيف النصوص
+    function escapeHtml(text) {
+        const map = { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#039;' };
+        return text.replace(/[&<>"']/g, m => map[m]);
+    }
     // Dynamic Year Update
     const yearSpan = qs('#current-year');
     if (yearSpan) yearSpan.textContent = new Date().getFullYear();
