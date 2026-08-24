@@ -1,19 +1,18 @@
 <!DOCTYPE html>
-<html lang="en" dir="ltr">
+<html lang="en" dir="ltr" data-theme="light">
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1" />
     <title>Our Sectors | Al Massriya Al Emaratiya</title>
     <meta name="description" content="Discover our core business sectors: Commercial Agencies, Import, and Export, driving seamless trade between Egypt and the UAE." />
     
-    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;900&family=Cairo:wght@600;700;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;900&family=Cairo:wght@600;700;900&family=Plus+Jakarta+Sans:wght@300;400;600;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
     <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     
     <link rel="stylesheet" href="css/style.css">
     
-    <!-- ستايل إضافي بسيط لتنسيق صفحة القطاعات متوافق مع نفس الـ Variables الخاصة بالموقع -->
     <style>
         .inner-hero {
             min-height: 50vh;
@@ -21,8 +20,11 @@
             align-items: center;
             justify-content: center;
             text-align: center;
-            padding-top: 120px;
-            padding-bottom: 50px;
+            padding-top: 170px !important;
+            padding-bottom: 60px;
+            background: var(--bg-card-hover);
+            border-bottom: 1px solid var(--border);
+            box-sizing: border-box;
         }
         .sector-detail-card {
             display: flex;
@@ -31,22 +33,25 @@
             align-items: center;
             padding: 50px;
             margin-bottom: 40px;
-            background: var(--bg-surface);
-            border: 1px solid var(--border-color);
+            background: var(--bg-card);
+            border: 1px solid var(--border);
             border-left: 5px solid var(--primary);
+            border-radius: 20px;
             transition: var(--transition);
             position: relative;
             overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.02);
         }
         .sector-detail-card:hover {
             transform: translateY(-5px);
-            box-shadow: 0 15px 30px var(--primary-glow);
-            border-left-color: var(--secondary);
+            box-shadow: 0 15px 35px rgba(4, 77, 161, 0.1);
+            border-left-color: var(--accent);
         }
         .sector-icon-wrapper {
             flex: 0 0 120px;
             height: 120px;
-            background: rgba(23, 67, 136, 0.05);
+            border-radius: 20px;
+            background: rgba(4, 77, 161, 0.05);
             border: 2px solid var(--primary);
             display: flex;
             justify-content: center;
@@ -59,7 +64,7 @@
             background: var(--primary);
             color: #fff;
             transform: rotate(10deg) scale(1.1);
-            box-shadow: 0 0 20px var(--primary-glow);
+            box-shadow: 0 10px 25px rgba(4, 77, 161, 0.2);
         }
         .sector-content {
             flex: 1;
@@ -67,6 +72,7 @@
         }
         .sector-content h2 {
             font-size: 2.2rem;
+            font-weight: 800;
             margin-bottom: 15px;
             color: var(--primary);
         }
@@ -75,21 +81,23 @@
             grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
             gap: 15px;
             margin-top: 25px;
+            list-style: none;
         }
         .sector-features li {
             display: flex;
             align-items: flex-start;
             gap: 10px;
             font-weight: 500;
+            color: var(--text-muted);
         }
         .sector-features li i {
-            color: var(--secondary);
+            color: var(--accent);
             margin-top: 5px;
         }
-        /* لتغيير مكان الخط للقطاع الثاني ليكون يميناً */
+        /* تصميم تبادلي للبطاقة الثانية */
         .border-right-sec {
-            border-left: 1px solid var(--border-color);
-            border-right: 5px solid var(--secondary);
+            border-left: 1px solid var(--border);
+            border-right: 5px solid var(--accent);
         }
         .border-right-sec:hover {
             border-right-color: var(--primary);
@@ -98,81 +106,107 @@
 </head>
 <body>
 
+    <!-- Tech UI Background Utilities -->
     <div id="tech-cursor"></div>
     <div id="tech-cursor-follower"></div>
     <div id="progress-bar"></div>
     <div class="animated-lines-container"></div>
 
-    <!-- Header -->
+    <!-- Header Block -->
     <header class="tech-header" id="header">
+        <!-- Top Utility Bar -->
+        <div class="header-top-bar">
+            <div class="container top-bar-container">
+                <div class="top-bar-left">
+                    <span><i class="fas fa-globe"></i> Multi-Market Trade Channel</span>
+                </div>
+                <div class="top-bar-right">
+                    <a href="careers.html">Careers</a>
+                    <a href="sectors.html" class="active">Our Sectors</a>
+                    <a href="index.html#contact">Help Center</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Main Search & Action Header -->
         <div class="container header-container">
             <div class="logo">
                 <a href="index.html">
-                    <img src="Al_Masriya_Al_Emaratiya_icon.png" class="brand-logo" onerror="this.onerror=null; this.src='https://via.placeholder.com/200x60/174388/ffffff?text=LOGO+HERE';">
+                    <img src="Al_Masriya_Al_Emaratiya_icon.png" class="brand-logo" onerror="this.onerror=null; this.src='https://via.placeholder.com/200x60/044da1/ffffff?text=LOGO+HERE';">
                 </a>
             </div>
             
-            <nav class="desktop-nav">
-                <ul class="nav-links">
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="index.html#services">Services</a></li>
-                    <li><a href="index.html#about">About Us</a></li>
-                    <li><a href="news.html">News</a></li>
-                    <li><a href="sectors.html" class="active">Our Sectors</a></li>
-                    <li><a href="index.html#contact">Contact Us</a></li>
-                </ul>
-            </nav>
+            <!-- Global Directory Search Bar -->
+            <div class="header-search-bar">
+                <div class="search-form-wrapper">
+                    <form action="index.html#divisions" method="GET" class="search-form" onsubmit="event.preventDefault();">
+                        <div class="search-category-select">
+                            <span>Global Catalog</span>
+                        </div>
+                        <input type="text" placeholder="Search pages, services, or divisions..." id="global-search-input" autocomplete="off">
+                        <button type="submit" class="search-btn">
+                            <i class="fas fa-search"></i>
+                        </button>
+                    </form>
+                    <!-- Live Search Results Dropdown -->
+                    <div id="search-results-dropdown" class="search-results-dropdown hidden"></div>
+                </div>
+            </div>
             
             <div class="header-actions">
-                <a href="login.html" class="btn btn-outline-tech" id="desktop-login-btn">
-                    <i class="fas fa-fingerprint"></i> <span class="login-text">Login</span>
+                <a href="https://amae.egy-uae.com" target="_self" class="btn btn-outline-tech" id="marketplace-nav-btn">
+                    <i class="fas fa-store"></i> <span class="marketplace-btn-text">Go to Marketplace</span>
                 </a>
-
-                <div class="user-profile hidden" id="desktop-user-profile">
-                    <div class="profile-trigger" id="profile-trigger">
-                        <div class="avatar-glow"><i class="fas fa-user-astronaut"></i></div>
-                        <span class="user-name">My Account</span>
-                        <i class="fas fa-chevron-down arrow-icon"></i>
-                    </div>
-                    <ul class="profile-dropdown tech-dropdown">
-                        <li><a href="portal.html"><i class="fas fa-laptop-file"></i> Portal</a></li>
-                        <li><a href="settings.html"><i class="fas fa-cog"></i> Settings</a></li>
-                        <li><a href="#" id="logout-btn" class="text-red"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
-                    </ul>
-                </div>
 
                 <div class="hamburger">
                     <span></span><span></span><span></span>
                 </div>
             </div>
         </div>
+
+        <!-- Main Navigation Bar -->
+        <nav class="desktop-nav">
+            <div class="container nav-container">
+                <div class="nav-left">
+                    <a href="index.html#divisions" class="all-categories-trigger" id="all-categories-btn">
+                        <i class="fas fa-bars"></i> Our Trade Divisions
+                    </a>
+                </div>
+                <ul class="nav-links">
+                    <li><a href="index.html#home">Home</a></li>
+                    <li><a href="index.html#services">Services</a></li>
+                    <li><a href="index.html#divisions">Trade Catalog</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="news.html">News</a></li>
+                    <li><a href="sectors.html" class="active">Our Sectors</a></li>
+                    <li><a href="index.html#contact">Contact Us</a></li>
+                </ul>
+            </div>
+        </nav>
     </header>
 
     <!-- Mobile Navigation -->
     <nav class="mobile-nav glass-panel">
         <ul class="mobile-links">
-            <li><a href="index.html">Home</a></li>
+            <li><a href="index.html#home">Home</a></li>
             <li><a href="index.html#services">Services</a></li>
-            <li><a href="index.html#about">About Us</a></li>
+            <li><a href="index.html#divisions">Trade Divisions</a></li>
+            <li><a href="about.html">About Us</a></li>
             <li><a href="news.html">News</a></li>
             <li><a href="sectors.html">Our Sectors</a></li>
             <li><a href="index.html#contact">Contact Us</a></li>
-            <li id="mobile-login-item">
-                <a href="login.html" class="btn btn-tech w-full mt-4"><i class="fas fa-sign-in-alt"></i> Login</a>
-            </li>
-            <li id="mobile-profile-item" class="hidden">
-                <a href="portal.html" class="btn btn-outline-tech w-full mt-4"><i class="fas fa-laptop-code"></i> My Portal</a>
-                <a href="#" id="mobile-logout-btn" class="btn btn-danger w-full mt-2"><i class="fas fa-power-off"></i> Logout</a>
+            <li>
+                <a href="https://amae.egy-uae.com" target="_self" class="btn btn-tech w-full mt-4"><i class="fas fa-store"></i> Go to Marketplace</a>
             </li>
         </ul>
     </nav>
 
-    <!-- Inner Banner -->
-    <section class="hero inner-hero relative-z">
+    <!-- Inner Banner (Overlap Fixed) -->
+    <section class="inner-hero relative-z">
         <div class="container" data-aos="zoom-in">
-            <div class="tech-badge mb-4"><i class="fas fa-sitemap"></i> Business Divisions</div>
-            <h1 class="title" style="font-size: clamp(2.5rem, 5vw, 4rem);">Our <span class="highlight">Sectors</span></h1>
-            <p class="description mx-auto" style="max-width: 700px; font-size: 1.2rem; margin-top: 20px;">
+            <div class="tech-badge"><i class="fas fa-sitemap"></i> Business Divisions</div>
+            <h1>Our <span class="gradient-text">Sectors</span></h1>
+            <p class="subtitle-text" style="max-width: 700px; font-size: 1.2rem; margin: 20px auto 0 auto;">
                 Driving economic growth and bridging markets between Egypt and the UAE through specialized, tech-powered business operations.
             </p>
         </div>
@@ -204,9 +238,8 @@
             <!-- 2. Import -->
             <div class="sector-detail-card border-right-sec" data-aos="fade-left">
                 <div class="sector-content" style="text-align: right;" dir="rtl">
-                    <!-- تم استخدام dir=rtl هنا ليعطي تصميم عكسي (تبادلي) يعطي جمالية للصفحة -->
                     <h2 dir="ltr" style="text-align: left;">Import Operations</h2>
-                    <p dir="ltr" style="text-align: left;">
+                    <p dir="ltr" style="text-align: left; margin-bottom: 25px;">
                         We source and import high-quality products, raw materials, and specialized equipment from global markets. Our integrated tech-systems ensure that the entire import cycle—from procurement to customs clearance—is handled with maximum efficiency and transparency.
                     </p>
                     <ul class="sector-features" dir="ltr" style="text-align: left;">
@@ -216,7 +249,7 @@
                         <li><i class="fas fa-box-open"></i> Quality control & inspection</li>
                     </ul>
                 </div>
-                <div class="sector-icon-wrapper tilt-card" style="color: var(--secondary); border-color: var(--secondary);" data-tilt data-tilt-max="10">
+                <div class="sector-icon-wrapper tilt-card" style="color: var(--accent); border-color: var(--accent);" data-tilt data-tilt-max="10">
                     <i class="fas fa-file-import"></i>
                 </div>
             </div>
@@ -244,61 +277,56 @@
     </section>
 
     <!-- Call to Action Section -->
-    <section class="section dark-tech-section text-center">
+    <section class="section dark-tech-section text-center" style="background: var(--bg-card-hover); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);">
         <div class="container relative-z" data-aos="zoom-in">
-            <h2 class="text-white mb-4">Ready to Optimize Your Trade?</h2>
-            <p class="text-muted mb-5 mx-auto" style="max-width: 600px;">
+            <h2 class="mb-4">Ready to Optimize Your Trade?</h2>
+            <p class="text-muted mb-5 mx-auto" style="max-width: 600px; margin-bottom: 40px;">
                 Connect with our system nodes today to explore how our specialized sectors can elevate your business operations globally.
             </p>
             <a href="index.html#contact" class="btn btn-tech">Establish Connection <i class="fas fa-satellite-dish"></i></a>
         </div>
     </section>
 
-    <!-- Footer -->
+    <!-- Footer Area -->
     <footer class="tech-footer">
-        <div class="container">
-            <div class="grid grid-4 footer-wrapper">
-                
-                <div class="footer-logo">
-                    <img src="Al_Masriya_Al_Emaratiya_icon.png" alt="Al Massriya Al Emaratiya Logo" class="brand-logo" onerror="this.onerror=null; this.src='https://via.placeholder.com/200x60/174388/ffffff?text=LOGO+HERE';">
-                    <p class="mt-4">Your Tech Gateway to Growth in Egypt & UAE.</p>
-                    <div class="social-links mt-4">
-                        <a href="#"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
-                        <a href="#"><i class="fab fa-youtube"></i></a>
-                    </div>
+        <div class="container footer-container-grid">
+            <div class="footer-brand-section">
+                <img src="Al_Masriya_Al_Emaratiya_icon.png" alt="Al Massriya Al Emaratiya Logo" class="brand-logo" onerror="this.onerror=null; this.src='https://via.placeholder.com/200x60/044da1/ffffff?text=LOGO+HERE';">
+                <p class="footer-desc">Your Integrated Gateway for Secure Trade & Commercial Pipelines Connecting Egypt and the UAE.</p>
+                <div class="social-links">
+                    <a href="https://www.facebook.com/AlMasriyaAlEmaratiya" target="_blank" rel="noopener" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://www.linkedin.com/company/egy-uae" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="https://www.youtube.com/@egy-uae.channel" target="_blank" rel="noopener" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
                 </div>
+            </div>
 
-                <div class="footer-links">
-                    <h4>Index Directory</h4>
-                    <ul>
-                        <li><a href="index.html">Home</a></li>
-                        <li><a href="index.html#services">Services</a></li>
-                        <li><a href="index.html#about">About Us</a></li>
-                        <li><a href="news.html">News</a></li>
-                        <li><a href="index.html#contact">Contact Us</a></li>
-                        <li><a href="careers.html">Careers</a></li>
-                        <li><a href="sectors.html">Our Sectors</a></li>
-                    </ul>
-                </div>
+            <div class="footer-links-group">
+                <h4 class="footer-section-title">Marketplace Index</h4>
+                <ul class="footer-ul-list">
+                    <li><a href="index.html#home">Home</a></li>
+                    <li><a href="index.html#services">Operation Capacity</a></li>
+                    <li><a href="index.html#divisions">Trade Catalogs</a></li>
+                    <li><a href="about.html">Corporate Architecture</a></li>
+                    <li><a href="news.html">Market News</a></li>
+                    <li><a href="index.html#contact">RFQ Desk</a></li>
+                </ul>
+            </div>
 
-                <div class="footer-divisions">
-                    <h4>Our Divisions</h4>
-                    <ul>
-                        <li><a href="pages/food-division.html">Food Division</a></li>
-                        <li><a href="pages/hotel-supplies.html">Hotel Supplies</a></li>
-                        <li><a href="pages/chemicals-cosmetics.html">Chemicals & Cosmetics</a></li>
-                        <li><a href="pages/ose-procurement.html">OS&E Procurement</a></li>
-                        <li><a href="pages/office-furniture.html">Office Furniture</a></li>
-                        <li><a href="pages/banquet-furniture.html">Banquet Furniture</a></li>
-                        <li><a href="pages/metal-beds-lockers.html">Metal Beds & Lockers</a></li>
-                        <li><a href="pages/staff-furniture.html">Staff Furniture</a></li>
-                        <li><a href="pages/staff-sofa-sets.html">Staff Sofa Sets & Accessories</a></li>
-                    </ul>
-                </div>
+            <div class="footer-links-group">
+                <h4 class="footer-section-title">Divisions Directory</h4>
+                <ul class="footer-ul-list">
+                    <li><a href="pages/food-division.html">Food Division</a></li>
+                    <li><a href="pages/hotel-supplies.html">Hotel Supplies</a></li>
+                    <li><a href="pages/chemicals-cosmetics.html">Chemicals & Cosmetics</a></li>
+                    <li><a href="pages/ose-procurement.html">OS&E Sourcing</a></li>
+                    <li><a href="pages/office-furniture.html">Office Furniture</a></li>
+                    <li><a href="pages/banquet-furniture.html">Banquet Furniture</a></li>
+                </ul>
+            </div>
 
+            <div class="footer-links-group footer-lang-wrap">
+                <h4 class="footer-section-title">Language & UI</h4>
                 <div class="footer-language custom-dropdown">
-                    <h4>Language Protocol</h4>
                     <div class="dropdown-trigger" id="lang-trigger">
                         <span><i class="fas fa-globe"></i> English</span>
                         <i class="fas fa-chevron-down arrow-icon"></i>
@@ -309,17 +337,16 @@
                         <li><a href="sectors-cn.html">中文</a></li>
                     </ul>
                 </div>
-
             </div>
-            <div class="footer-bottom text-center">
-                <p>© <span id="current-year"></span> Al Massriya Al Emaratiya. All Rights Reserved. System Version 2.0</p>
-            </div>
+        </div>
+        <div class="container footer-bottom-panel">
+            <p>© <span id="current-year"></span> Al Massriya Al Emaratiya. Integrated B2B Network Solutions. Powered by Tech OS.</p>
         </div>
     </footer>
 
-    <!-- Chat Widget -->
+    <!-- AI Chat Support Widget -->
     <div id="chat-widget" class="chat-widget">
-        <button class="chat-btn glow-effect" id="chat-toggle">
+        <button class="chat-btn glow-effect" id="chat-toggle" aria-label="Toggle Support Chat">
             <i class="fas fa-headset"></i> 
         </button>
         <div class="chat-container glass-panel" id="chat-box">
@@ -329,12 +356,12 @@
             </div>
             <div class="chat-body" id="chat-body">
                 <div class="message incoming">
-                    <p>Connection established. How can we assist your operations today?</p>
+                    <p>Connection established securely. How can we assist your operations today?</p>
                 </div>
             </div>
             <div class="chat-footer">
-                <input type="text" placeholder="Type query..." id="chat-input">
-                <button id="chat-send"><i class="fas fa-paper-plane"></i></button>
+                <input type="text" placeholder="Type procurement query..." id="chat-input">
+                <button id="chat-send" aria-label="Send Message"><i class="fas fa-paper-plane"></i></button>
             </div>
         </div>
     </div>
