@@ -1,291 +1,348 @@
 <!DOCTYPE html>
-<html lang="en" dir="ltr">
+<html lang="en" dir="ltr" data-theme="light">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>About Us | Al Masriya Al Emaratiya</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us | Al Massriya Al Emaratiya</title>
 
-  <!-- Meta tags for SEO -->
-  <meta name="description" content="Egyptian Emirati is a leading import and export company based in Egypt and the UAE, offering reliable trade, logistics, and commercial agency services worldwide.">
-  <meta name="keywords" content="Egyptian Emirati, import export Egypt UAE, international trade, logistics, commercial agencies, global business">
-  <meta name="author" content="Egyptian Emirati">
+    <!-- Meta tags for SEO -->
+    <meta name="description" content="Egyptian Emirati is a leading import and export company based in Egypt and the UAE, offering reliable trade, logistics, and commercial agency services worldwide.">
+    <meta name="keywords" content="Egyptian Emirati, import export Egypt UAE, international trade, logistics, commercial agencies, global business">
+    <meta name="author" content="Egyptian Emirati">
 
-  <!-- Open Graph -->
-  <meta property="og:title" content="About Us | Egyptian Emirati">
-  <meta property="og:description" content="Learn more about Egyptian Emirati, a global leader in import, export, and commercial agencies.">
-  <meta property="og:image" content="https://images.unsplash.com/photo-1605902711622-cfb43c4437d7?w=800">
-  <meta property="og:type" content="website">
-  <meta property="og:url" content="https://www.egy-uae.com/about.html">
+    <!-- Open Graph -->
+    <meta property="og:title" content="About Us | Egyptian Emirati">
+    <meta property="og:description" content="Learn more about Egyptian Emirati, a global leader in import, export, and commercial agencies.">
+    <meta property="og:image" content="https://images.unsplash.com/photo-1605902711622-cfb43c4437d7?w=800">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://www.egy-uae.com/about.html">
 
-  <!-- Icons and Fonts -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&display=swap" rel="stylesheet">
+    <!-- Icons and Fonts -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;800&family=Cairo:wght@400;600;700&family=Tajawal:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
 
-  <style>
-    /* Basic designs */
-    *{margin:0;padding:0;box-sizing:border-box;font-family:"Cairo",sans-serif;}
-    body{line-height:1.6;color:#333;background:#f9f9f9;direction:ltr;} /* LTR support */
-
-    /* Header */
-    header{
-      background:linear-gradient(90deg,#1976d2,#0d47a1);
-      padding:1rem 0;
-      color:#fff;
-      box-shadow:0 3px 6px rgba(0,0,0,0.2);
-      display: flex; 
-      justify-content: space-between; 
-      align-items: center; 
-      flex-wrap: wrap; 
-    }
-    .navbar{
-      width:90%;
-      margin:auto;
-      display:flex;
-      justify-content:space-between;
-      align-items:center;
-      flex-wrap:wrap;
-    }
-    .navbar .logo a{color:#fff;font-size:1.5rem;font-weight:700;text-decoration:none;}
-    .nav-links{list-style:none;display:flex;gap:1.5rem;}
-    .nav-links li a{
-      color:#fff;
-      font-weight:600;
-      position:relative;
-      text-decoration:none;          
-      border:none;          
-      transition:0.3s;
-    }
-    .nav-links li a::after{
-      content:"";
-      position:absolute;
-      left:0; /* Direction for LTR */
-      bottom:-4px;
-      width:0;
-      height:2px;
-      background:#bbdefb;
-      transition:width 0.3s ease;
-    }
-    .nav-links li a:hover::after,
-    .nav-links li a.active::after{width:100%;}
-    .company-logo-header {
-      height: 40px;
-      vertical-align: middle;
-      margin-right: 10px; /* Margin for LTR */
-      margin-left: 0;
-    }
-    .logo a {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
-    .menu-toggle {
-      display: none;
-      font-size: 2rem;
-      cursor: pointer;
-      color: #fff;
-    }
-
-    /* Hero section */
-    .hero{
-      background:url('https://images.unsplash.com/photo-1505839673365-e3971f8d9184?w=1200') center/cover no-repeat;
-      color:#fff;text-align:center;
-      padding:100px 20px;
-      animation:fadeIn 1.5s;
-    }
-    .hero h1{font-size:48px;margin-bottom:10px;}
-    .hero p{font-size:20px;max-width:700px;margin:auto;}
-
-    /* About Us content */
-    .about-content{
-      display:flex;align-items:center;justify-content:space-between;
-      gap:40px;width:90%;margin:60px auto;flex-wrap:wrap;
-      flex-direction: row; /* Order for LTR */
-    }
-    .about-content .text{flex:1;animation:slideInLeft 1s;} /* Animation direction */
-    .about-content .text h2{color:#0d47a1;margin-bottom:15px;}
-    .about-content .text p{margin-bottom:20px;}
-    .about-content .image{flex:1;animation:slideInRight 1s;} /* Animation direction */
-    .about-content .image img{width:100%;border-radius:10px;box-shadow:0 5px 15px rgba(0,0,0,0.2);}
-
-    /* Highlights */
-    .highlights{background:#fff;padding:60px 20px;}
-    .highlights h2{text-align:center;color:#0d47a1;margin-bottom:40px;}
-    .highlight-grid{
-      display:grid;
-      grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-      gap:20px;width:90%;margin:auto;
-    }
-    .highlight{
-      background:#f1f7ff;
-      padding:30px;
-      border-radius:12px;
-      text-align:center;
-      transition:0.3s;
-      animation:fadeInUp 1s;
-    }
-    .highlight i{font-size:40px;color:#0d47a1;margin-bottom:15px;}
-    .highlight h3{margin-bottom:10px;color:#0d47a1;}
-    .highlight:hover{transform:translateY(-8px);box-shadow:0 6px 20px rgba(0,0,0,0.1);}
-
-    /* Footer */
-    footer{background:#0d47a1;color:#fff;text-align:center;padding:20px 10px;margin-top:50px;}
-    footer p{margin-bottom:8px;}
-    footer .social a{color:#fff;margin:0 10px;font-size:18px;transition:0.3s;}
-    footer .social a:hover{color:#bbdefb;}
-
-    /* Animations */
-    @keyframes fadeIn{from{opacity:0;}to{opacity:1;}}
-    @keyframes slideInLeft{from{opacity:0;transform:translateX(-50px);}to{opacity:1;transform:translateX(0);}}
-    @keyframes slideInRight{from{opacity:0;transform:translateX(50px);}to{opacity:1;transform:translateX(0);}}
-    @keyframes fadeInUp{from{opacity:0;transform:translateY(30px);}to{opacity:1;transform:translateY(0);}}
-
-    /* Responsiveness */
-    @media(max-width:992px){
-      .nav-links{display:none;flex-direction:column;width:100%;background:#0d47a1;position:absolute;top:70px;left:0;padding-bottom:15px;z-index:1000;}
-      .nav-links.nav-active{display:flex;}
-      .nav-links li{text-align:center;margin:10px 0;}
-      .nav-links li a{padding:10px 0;display:block;}
-      .menu-toggle{display:block;}
-      .about-content{flex-direction:column;}
-      .hero h1{font-size:36px;}
-      .hero p{font-size:18px;}
-    }
-    @media(max-width:768px){
-      .navbar{flex-direction:column;align-items:flex-start;} /* Adjusted alignment for LTR column mode */
-      .hero h1{font-size:32px;}
-      .hero p{font-size:16px;}
-    }
-
-    /* Custom language switcher button design */
-    .language-switcher {
-      position: relative;
-      display: inline-block;
-      margin-left: 20px; /* Adjusted for LTR */
-      font-size: 1rem;
-    }
-
-    .language-switcher a {
-      color: #fff;
-      text-decoration: none;
-      padding: 8px 15px;
-      border: 1px solid #bbdefb;
-      border-radius: 5px;
-      transition: background-color 0.3s ease, color 0.3s ease;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-    }
-
-    .language-switcher a:hover {
-      background-color: #bbdefb;
-      color: #0d47a1;
-    }
-
-    .language-switcher a i {
-      font-size: 1.2em;
-    }
-  </style>
+    <!-- تنسيقات هيكلية خفيفة خاصة بالصفحة الفرعية مدمجة مع الأنماط الأساسية -->
+    <style>
+        .sub-page-hero {
+            height: 60vh !important;
+            min-height: 450px !important;
+        }
+        .about-text-column {
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+        }
+        .about-text-column h2 {
+            font-size: 2rem;
+            color: var(--primary);
+            font-weight: 800;
+            position: relative;
+            padding-bottom: 10px;
+        }
+        .about-text-column h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background: var(--accent);
+        }
+        .about-text-column p {
+            font-size: 1.05rem;
+            color: var(--text-muted);
+            line-height: 1.7;
+        }
+        .about-image-column img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 24px;
+            border: 1px solid var(--border);
+            box-shadow: 0 15px 40px rgba(4, 77, 161, 0.08);
+        }
+    </style>
 </head>
 <body>
-  <!-- Header -->
-  <header>
-    <nav class="navbar">
-      <div class="logo">
-        <a href="index.html">
-          <!-- Using a company logo image. This should be replaced with a professional, static logo. -->
-          <img src="https://i.postimg.cc/C5SkqykS/IMG-20241008-WA0000-removebg-preview.png" alt="Egyptian Emirati Logo" class="company-logo-header"> 
-          Al Masriya Al Emaratiya
-        </a>
-      </div>
-      <ul class="nav-links">
-        <li><a href="index.html">Home</a></li>
-        <li><a href="about.html" class="active">About Us</a></li>
-        <li><a href="services.html">Services</a></li>
-        <li><a href="faqs.html">FAQs</a></li>
-        <li><a href="contact.html">Contact Us</a></li>
-      </ul>
-      <div class="language-switcher">
-        <a href="about-ar.html" aria-label="Arabic Language"><i class="fas fa-globe"></i> العربية</a>
-      </div>
-      <div class="menu-toggle" onclick="toggleMenu()">☰</div>
+
+    <!-- Tech UI Background Utilities -->
+    <div id="tech-cursor"></div>
+    <div id="tech-cursor-follower"></div>
+    <div id="progress-bar"></div>
+    <div class="animated-lines-container"></div>
+
+    <!-- Header Block -->
+    <header class="tech-header" id="header">
+        <!-- Top Utility Bar -->
+        <div class="header-top-bar">
+            <div class="container top-bar-container">
+                <div class="top-bar-left">
+                    <span><i class="fas fa-globe"></i> Multi-Market Trade Channel</span>
+                </div>
+                <div class="top-bar-right">
+                    <a href="careers.html">Careers</a>
+                    <a href="sectors.html">Our Sectors</a>
+                    <a href="index.html#contact">Help Center</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Main Search & Action Header -->
+        <div class="container header-container">
+            <div class="logo">
+                <a href="index.html">
+                    <img src="Al_Masriya_Al_Emaratiya_icon.png" class="brand-logo" alt="Al Massriya Al Emaratiya" onerror="this.onerror=null; this.src='https://via.placeholder.com/200x60/044da1/ffffff?text=LOGO+HERE';">
+                </a>
+            </div>
+            
+            <!-- Global Directory Search Bar -->
+            <div class="header-search-bar">
+                <div class="search-form-wrapper">
+                    <form action="index.html#divisions" method="GET" class="search-form" onsubmit="event.preventDefault();">
+                        <div class="search-category-select">
+                            <span>Global Catalog</span>
+                        </div>
+                        <input type="text" placeholder="Search pages, services, or divisions..." id="global-search-input" autocomplete="off">
+                        <button type="submit" class="search-btn">
+                            <i class="fas fa-search"></i>
+                        </button>
+                    </form>
+                    <!-- Live Search Results Dropdown -->
+                    <div id="search-results-dropdown" class="search-results-dropdown hidden"></div>
+                </div>
+            </div>
+            
+            <div class="header-actions">
+                <a href="https://amae.egy-uae.com" target="_self" class="btn btn-outline-tech" id="marketplace-nav-btn">
+                    <i class="fas fa-store"></i> <span class="marketplace-btn-text">Go to Marketplace</span>
+                </a>
+
+                <div class="hamburger">
+                    <span></span><span></span><span></span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Main Navigation Bar -->
+        <nav class="desktop-nav">
+            <div class="container nav-container">
+                <div class="nav-left">
+                    <a href="index.html#divisions" class="all-categories-trigger" id="all-categories-btn">
+                        <i class="fas fa-bars"></i> Our Trade Divisions
+                    </a>
+                </div>
+                <ul class="nav-links">
+                    <li><a href="index.html#home">Home</a></li>
+                    <li><a href="index.html#services">Services</a></li>
+                    <li><a href="index.html#divisions">Trade Catalog</a></li>
+                    <li><a href="about.html" class="active">About Us</a></li>
+                    <li><a href="news.html">Market News</a></li>
+                    <li><a href="index.html#systems">Digital Systems</a></li>
+                    <li><a href="index.html#contact">RFQ Desk</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Mobile Navigation -->
+    <nav class="mobile-nav glass-panel">
+        <ul class="mobile-links">
+            <li><a href="index.html#home">Home</a></li>
+            <li><a href="index.html#services">Services</a></li>
+            <li><a href="index.html#divisions">Trade Divisions</a></li>
+            <li><a href="about.html" class="active">About Us</a></li>
+            <li><a href="news.html">News</a></li>
+            <li><a href="index.html#systems">Our Systems</a></li>
+            <li><a href="index.html#contact">Contact & RFQ</a></li>
+            <li>
+                <a href="https://amae.egy-uae.com" target="_self" class="btn btn-tech w-full mt-4"><i class="fas fa-store"></i> Go to Marketplace</a>
+            </li>
+        </ul>
     </nav>
-  </header>
 
-  <!-- Hero -->
-  <section class="hero">
-    <h1>About Us</h1>
-    <p>Discover who we are, what we stand for, and why companies worldwide trust Egyptian Emirati.</p>
-  </section>
+    <!-- Hero Section (Aligned with Overlap Fixed Layout) -->
+    <section class="immersive-hero sub-page-hero" id="home">
+        <div class="immersive-hero-media">
+            <img src="https://images.unsplash.com/photo-1505839673365-e3971f8d9184?w=1200" alt="About Us Banner" style="width:100%; height:100%; object-fit:cover;">
+        </div>
+        <div class="immersive-hero-overlay"></div>
 
-  <!-- About Us content -->
-  <section class="about-content">
-    <div class="text">
-      <h2>About Us</h2>
-      <p>
-        Established in 2010, <strong>Al Masriya Al Emaratiya</strong> is a reliable import and export company 
-        offering comprehensive trade and commercial agency services. With our strong roots in Egypt and the UAE, 
-        we connect businesses globally through efficient logistics, transparent operations, and trusted partnerships.
-      </p>
+        <div class="immersive-hero-content" data-aos="fade-up">
+            <div class="tech-badge"><i class="fas fa-info-circle"></i> Corporate Framework</div>
+            <h1>About <span class="gradient-text">Our Agency</span></h1>
+            <p>Discover who we are, what we stand for, and why companies worldwide trust Al Masriya Al Emaratiya.</p>
+        </div>
+    </section>
 
-      <h2>Our Vision</h2>
-      <p>
-        To become a global leader in trade and logistics, renowned for excellence, trust, and sustainable growth.
-      </p>
-
-      <h2>Our Mission</h2>
-      <p>
-        We aim to provide seamless international trade services that empower businesses and build long-term success.  
-        Our mission is to simplify global trade while creating value for our partners and clients.
-      </p>
+    <!-- Infinite Marquee Ticker -->
+    <div class="marquee-ticker">
+        <div class="marquee-content">
+            <span>EGYPT - UAE CORRIDOR</span> • <span>GLOBAL LOGISTICS EXCELLENCE</span> • <span>SECURE B2B ESCROW</span> • <span>FAST CUSTOMS CLEARANCE</span> • <span>EXPRESS OCEAN FREIGHT</span> • <span>SMART TRACKING SYSTEMS</span> • <span>EGYPT - UAE CORRIDOR</span> • <span>GLOBAL LOGISTICS EXCELLENCE</span>
+        </div>
     </div>
-    <div class="image">
-      <img src="https://images.unsplash.com/photo-1578575437130-527eed3abbec?w=800" alt="Global Trade">
-    </div>
-  </section>
 
-  <!-- Highlights -->
-  <section class="highlights">
-    <h2>Why Choose Us</h2>
-    <div class="highlight-grid">
-      <div class="highlight">
-        <i class="fas fa-globe"></i>
-        <h3>Global Reach</h3>
-        <p>Expand your business across international markets with confidence.</p>
-      </div>
-      <div class="highlight">
-        <i class="fas fa-handshake"></i>
-        <h3>Trusted Partnerships</h3>
-        <p>Building long-term relationships based on trust and transparency.</p>
-      </div>
-      <div class="highlight">
-        <i class="fas fa-truck-fast"></i>
-        <h3>Efficient Logistics</h3>
-        <p>Reliable and seamless supply chain solutions tailored to your needs.</p>
-      </div>
-      <div class="highlight">
-        <i class="fas fa-award"></i>
-        <h3>Proven Excellence</h3>
-        <p>A track record of delivering world-class import and export services.</p>
-      </div>
-    </div>
-  </section>
+    <!-- About Content Section -->
+    <section class="section">
+        <div class="container">
+            <div class="grid grid-2" style="align-items: center; gap: 60px;">
+                <!-- Text Column -->
+                <div class="about-text-column" data-aos="fade-right">
+                    <div>
+                        <h2>About Us</h2>
+                        <p style="margin-top: 15px;">
+                            Established in 2010, <strong>Al Masriya Al Emaratiya</strong> is a reliable import and export company 
+                            offering comprehensive trade and commercial agency services. With our strong roots in Egypt and the UAE, 
+                            we connect businesses globally through efficient logistics, transparent operations, and trusted partnerships.
+                        </p>
+                    </div>
 
-  <!-- Footer -->
-  <footer>
-    <p>&copy; 2025 Egyptian Emirati. All rights reserved.</p>
-    <div class="social">
-      <a href="https://www.facebook.com/yourcompany" target="_blank" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
-      <a href="https://www.linkedin.com/company/yourcompany" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
-    </div>
-  </footer>
+                    <div>
+                        <h2>Our Vision</h2>
+                        <p style="margin-top: 15px;">
+                            To become a global leader in trade and logistics, renowned for excellence, trust, and sustainable growth across the cross-border corridors.
+                        </p>
+                    </div>
 
-  <script>
-    function toggleMenu() {
-      const navLinks = document.querySelector('.nav-links');
-      navLinks.classList.toggle('nav-active');
-    }
-    // Update year in footer (if you want it to update dynamically)
-    // document.querySelector('footer p').innerHTML = '&copy; ' + new Date().getFullYear() + ' Egyptian Emirati. All rights reserved.';
-  </script>
+                    <div>
+                        <h2>Our Mission</h2>
+                        <p style="margin-top: 15px;">
+                            We aim to provide seamless international trade services that empower businesses and build long-term success.  
+                            Our mission is to simplify global trade while creating value for our partners and clients.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Image Column -->
+                <div class="about-image-column" data-aos="fade-left" style="height: 100%; min-height: 450px;">
+                    <img src="https://images.unsplash.com/photo-1578575437130-527eed3abbec?w=800" alt="Global Trade Logistics">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Highlights Section (Consistent with homepage cards) -->
+    <section class="section" style="background: var(--bg-card-hover); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);">
+        <div class="container">
+            <div class="section-header text-center" data-aos="fade-up" style="max-width: 600px; margin: 0 auto 60px auto;">
+                <h2 style="text-align: center;">Why Choose Us</h2>
+                <p class="subtitle-text" style="text-align: center;">The core pillars supporting our international trade network</p>
+                <div class="header-line" style="margin: 15px auto 0 auto;"></div>
+            </div>
+
+            <div class="grid grid-4">
+                <div class="system-card text-center" data-aos="fade-up" data-aos-delay="100" style="text-align: center;">
+                    <div class="sys-icon"><i class="fas fa-globe"></i></div>
+                    <h3 style="font-weight: 700; font-size: 1.2rem; margin-bottom: 10px;">Global Reach</h3>
+                    <p style="color: var(--text-muted); font-size: 0.9rem;">Expand your business across international markets with confidence.</p>
+                </div>
+
+                <div class="system-card text-center" data-aos="fade-up" data-aos-delay="200" style="text-align: center;">
+                    <div class="sys-icon"><i class="fas fa-handshake"></i></div>
+                    <h3 style="font-weight: 700; font-size: 1.2rem; margin-bottom: 10px;">Trusted Partnerships</h3>
+                    <p style="color: var(--text-muted); font-size: 0.9rem;">Building long-term relationships based on trust and transparency.</p>
+                </div>
+
+                <div class="system-card text-center" data-aos="fade-up" data-aos-delay="300" style="text-align: center;">
+                    <div class="sys-icon"><i class="fas fa-truck-fast"></i></div>
+                    <h3 style="font-weight: 700; font-size: 1.2rem; margin-bottom: 10px;">Efficient Logistics</h3>
+                    <p style="color: var(--text-muted); font-size: 0.9rem;">Reliable and seamless supply chain solutions tailored to your needs.</p>
+                </div>
+
+                <div class="system-card text-center" data-aos="fade-up" data-aos-delay="400" style="text-align: center;">
+                    <div class="sys-icon"><i class="fas fa-award"></i></div>
+                    <h3 style="font-weight: 700; font-size: 1.2rem; margin-bottom: 10px;">Proven Excellence</h3>
+                    <p style="color: var(--text-muted); font-size: 0.9rem;">A track record of delivering world-class import and export services.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer Area -->
+    <footer class="tech-footer">
+        <div class="container footer-container-grid">
+            <div class="footer-brand-section">
+                <img src="Al_Masriya_Al_Emaratiya_icon.png" alt="Al Massriya Al Emaratiya Logo" class="brand-logo" onerror="this.onerror=null; this.src='https://via.placeholder.com/200x60/044da1/ffffff?text=LOGO+HERE';">
+                <p class="footer-desc">Your Integrated Gateway for Secure Trade & Commercial Pipelines Connecting Egypt and the UAE.</p>
+                <div class="social-links">
+                    <a href="https://www.facebook.com/AlMasriyaAlEmaratiya" target="_blank" rel="noopener" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://www.linkedin.com/company/egy-uae" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="https://www.youtube.com/@egy-uae.channel" target="_blank" rel="noopener" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+
+            <div class="footer-links-group">
+                <h4 class="footer-section-title">Marketplace Index</h4>
+                <ul class="footer-ul-list">
+                    <li><a href="index.html#home">Home</a></li>
+                    <li><a href="index.html#services">Operation Capacity</a></li>
+                    <li><a href="index.html#divisions">Trade Catalogs</a></li>
+                    <li><a href="about.html">Corporate Architecture</a></li>
+                    <li><a href="news.html">Market News</a></li>
+                    <li><a href="index.html#contact">RFQ Desk</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-links-group">
+                <h4 class="footer-section-title">Divisions Directory</h4>
+                <ul class="footer-ul-list">
+                    <li><a href="pages/food-division.html">Food Division</a></li>
+                    <li><a href="pages/hotel-supplies.html">Hotel Supplies</a></li>
+                    <li><a href="pages/chemicals-cosmetics.html">Chemicals & Cosmetics</a></li>
+                    <li><a href="pages/ose-procurement.html">OS&E Sourcing</a></li>
+                    <li><a href="pages/office-furniture.html">Office Furniture</a></li>
+                    <li><a href="pages/banquet-furniture.html">Banquet Furniture</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-links-group footer-lang-wrap">
+                <h4 class="footer-section-title">Language & UI</h4>
+                <div class="footer-language custom-dropdown">
+                    <div class="dropdown-trigger" id="lang-trigger">
+                        <span><i class="fas fa-globe"></i> English</span>
+                        <i class="fas fa-chevron-down arrow-icon"></i>
+                    </div>
+                    <ul class="dropdown-menu tech-dropdown" id="lang-menu">
+                        <li><a href="index.html" class="active-lang">English</a></li>
+                        <li><a href="ar/home.html">العربية</a></li>
+                        <li><a href="home-cn.html">中文</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="container footer-bottom-panel">
+            <p>© <span id="current-year"></span> Al Massriya Al Emaratiya. Integrated B2B Network Solutions. Powered by Tech OS.</p>
+        </div>
+    </footer>
+
+    <!-- AI Chat Support Widget -->
+    <div id="chat-widget" class="chat-widget">
+        <button class="chat-btn glow-effect" id="chat-toggle" aria-label="Toggle Support Chat">
+            <i class="fas fa-headset"></i> 
+        </button>
+        <div class="chat-container glass-panel" id="chat-box">
+            <div class="chat-header">
+                <h3><i class="fas fa-robot"></i> AI Support Node</h3>
+                <button class="chat-close" id="chat-close">&times;</button>
+            </div>
+            <div class="chat-body" id="chat-body">
+                <div class="message incoming">
+                    <p>Connection established securely. How can we assist your operations today?</p>
+                </div>
+            </div>
+            <div class="chat-footer">
+                <input type="text" placeholder="Type procurement query..." id="chat-input">
+                <button id="chat-send" aria-label="Send Message"><i class="fas fa-paper-plane"></i></button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.8.0/vanilla-tilt.min.js"></script>
+    <script src="js/main.js"></script>
 </body>
 </html>
