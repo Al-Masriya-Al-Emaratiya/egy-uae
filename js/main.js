@@ -1,431 +1,303 @@
-/**
- * Al Massriya Al Emaratiya - B2B Dynamic Auth & Interface Controllers
- */
+/* ==========================================================================
+   AL MASSRIYA AL EMARATIYA - CLIENT ENGINE (LIGHT EXCLUSIVE)
+   ========================================================================== */
 
 document.addEventListener('DOMContentLoaded', () => {
 
-    const qs = (selector) => document.querySelector(selector);
-    const qsa = (selector) => document.querySelectorAll(selector);
+    // --- Interactive Search System ---
+    const searchDatabase = [
+        { title: "Food Division", url: "pages/food-division.html", category: "Trade Division", keywords: "food, orange, export, corridor, sharjah" },
+        { title: "Hotel Supplies", url: "pages/hotel-supplies.html", category: "Trade Division", keywords: "hotel, premium, sheets, supplies, ports" },
+        { title: "Chemicals & Cosmetics", url: "pages/chemicals-cosmetics.html", category: "Trade Division", keywords: "chemicals, cosmetics, safety, alexandria, reach" },
+        { title: "OS&E Procurement", url: "pages/ose-procurement.html", category: "Trade Division", keywords: "ose, procurement, sourcing, cargo" },
+        { title: "Office Furniture", url: "pages/office-furniture.html", category: "Trade Division", keywords: "office, furniture, hardwood, desk, chairs, damietta" },
+        { title: "Banquet Furniture", url: "pages/banquet-furniture.html", category: "Trade Division", keywords: "banquet, furniture, hotel, luxury, stackable" },
+        { title: "Metal Beds & Lockers", url: "pages/metal-beds-lockers.html", category: "Trade Division", keywords: "metal, bed, locker, rust, accommodation" },
+        { title: "Staff Furniture", url: "pages/staff-furniture.html", category: "Trade Division", keywords: "staff, modular, desk, office" },
+        { title: "Staff Sofa Sets", url: "pages/staff-sofa-sets.html", category: "Trade Division", keywords: "sofa, sets, modular, ergonomic" },
+        { title: "Logistics & Supply Chain", url: "#services", category: "Service", keywords: "logistics, shipping, supply, cargo" },
+        { title: "Freight Forwarding", url: "#services", category: "Service", keywords: "freight, forwarding, air, sea, transport" },
+        { title: "Trade Facilitation", url: "#services", category: "Service", keywords: "trade, facilitation, business, entry, advisory" },
+        { title: "Customs Clearance", url: "#services", category: "Service", keywords: "customs, clearance, tax, papers" },
+        { title: "Transportation Services", url: "#services", category: "Service", keywords: "transport, trucks, shipping, terminal" },
+        { title: "Warehousing Solutions", url: "#services", category: "Service", keywords: "warehouse, storage, inventory" },
+        { title: "RFQ Desk & Contact", url: "#contact", category: "Support", keywords: "rfq, quote, contact, mail, phone" }
+    ];
 
-    const SUPABASE_PROJECT_ID = "yoniptlacaorxqqojdko"; 
-    const SUPABASE_URL = `https://yoniptlacaorxqqojdko.supabase.co`;
-    const SUPABASE_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InlvbmlwdGxhY2FvcnhxcW9qZGtvIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODUzMzUyOTcsImV4cCI6MjEwMDkxMTI5N30.52jAALxRLC-ZRPWliZUr5TO4EZgSCjqm8UlZcsp7tzo";
-    
-    let supabaseClient = null;
-    try {
-        if (typeof supabase !== 'undefined') {
-            supabaseClient = supabase.createClient("https://yoniptlacaorxqqojdko.supabase.co", "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InlvbmlwdGxhY2FvcnhxcW9qZGtvIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODUzMzUyOTcsImV4cCI6MjEwMDkxMTI5N30.52jAALxRLC-ZRPWliZUr5TO4EZgSCjqm8UlZcsp7tzo");
-        } else {
-            console.error("Supabase SDK script failed to load. Authentication offline.");
-        }
-    } catch (e) {
-        console.error("Initialization error inside Supabase Client:", e);
+    const searchInput = document.getElementById('global-search-input');
+    const resultsDropdown = document.getElementById('search-results-dropdown');
+
+    if (searchInput && resultsDropdown) {
+        searchInput.addEventListener('input', (e) => {
+            const query = e.target.value.toLowerCase().trim();
+            resultsDropdown.innerHTML = '';
+
+            if (query.length < 2) {
+                resultsDropdown.classList.add('hidden');
+                return;
+            }
+
+            // Filter entries using key lookups
+            const filteredResults = searchDatabase.filter(item => 
+                item.title.toLowerCase().includes(query) || 
+                item.keywords.toLowerCase().includes(query) ||
+                item.category.toLowerCase().includes(query)
+            );
+
+            if (filteredResults.length === 0) {
+                const emptyItem = document.createElement('div');
+                emptyItem.className = 'search-result-item';
+                emptyItem.innerHTML = `<span class="title">No matches found for "${e.target.value}"</span>`;
+                resultsDropdown.appendChild(emptyItem);
+            } else {
+                filteredResults.forEach(item => {
+                    const resultItem = document.createElement('div');
+                    resultItem.className = 'search-result-item';
+                    resultItem.innerHTML = `
+                        <span class="title">${item.title}</span>
+                        <span class="category">${item.category}</span>
+                    `;
+                    resultItem.addEventListener('click', () => {
+                        window.location.href = item.url;
+                        resultsDropdown.classList.add('hidden');
+                        searchInput.value = '';
+                    });
+                    resultsDropdown.appendChild(resultItem);
+                });
+            }
+
+            resultsDropdown.classList.remove('hidden');
+        });
+
+        // Close search list on clicking outside bounds
+        document.addEventListener('click', (e) => {
+            if (!searchInput.contains(e.target) && !resultsDropdown.contains(e.target)) {
+                resultsDropdown.classList.add('hidden');
+            }
+        });
     }
 
-    // --- 2. Custom Tech Cursor Implementation with Smooth Lerping ---
+    // --- Interactive Divisions Filtering ---
+    const filterButtons = document.querySelectorAll('.filter-tab-btn');
+    const productCards = document.querySelectorAll('.b2b-product-card');
+
+    filterButtons.forEach(btn => {
+        btn.addEventListener('click', () => {
+            // Toggle active filter button states
+            filterButtons.forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+
+            const filterValue = btn.getAttribute('data-filter');
+
+            productCards.forEach(card => {
+                const cardCategory = card.getAttribute('data-category');
+
+                if (filterValue === 'all' || cardCategory === filterValue) {
+                    card.classList.remove('hidden-card');
+                    card.style.display = 'block';
+                    setTimeout(() => {
+                        card.style.opacity = '1';
+                        card.style.transform = 'scale(1)';
+                    }, 50);
+                } else {
+                    card.style.opacity = '0';
+                    card.style.transform = 'scale(0.9)';
+                    setTimeout(() => {
+                        card.classList.add('hidden-card');
+                        card.style.display = 'none';
+                    }, 400); // Transitions align with CSS timing
+                }
+            });
+        });
+    });
+
+    // --- Smooth Anchor Navigation for "Our Trade Divisions" Trigger ---
+    const allCategoriesBtn = document.getElementById('all-categories-btn');
+    if (allCategoriesBtn) {
+        allCategoriesBtn.addEventListener('click', () => {
+            const divisionsSection = document.getElementById('divisions');
+            if (divisionsSection) {
+                divisionsSection.scrollIntoView({ behavior: 'smooth' });
+            }
+        });
+    }
+
+    // --- Custom Interactive Cursor ---
     const cursor = document.getElementById('tech-cursor');
     const follower = document.getElementById('tech-cursor-follower');
 
     if (cursor && follower) {
-        let mouseX = 0, mouseY = 0;
-        let followerX = 0, followerY = 0;
-
         document.addEventListener('mousemove', (e) => {
-            mouseX = e.clientX;
-            mouseY = e.clientY;
+            cursor.style.left = e.clientX + 'px';
+            cursor.style.top = e.clientY + 'px';
             
-            // تحويل حركة المؤشر مباشرة بشكل سريع
-            cursor.style.transform = `translate3d(${mouseX}px, ${mouseY}px, 0)`;
-        });
-
-        // حركة انسيابية ناعمة لتابع مؤشر الماوس
-        function updateFollower() {
-            followerX += (mouseX - followerX) * 0.15;
-            followerY += (mouseY - followerY) * 0.15;
-            
-            follower.style.transform = `translate3d(${followerX - 13}px, ${followerY - 13}px, 0)`;
-            requestAnimationFrame(updateFollower);
-        }
-        requestAnimationFrame(updateFollower);
-
-        const interactiveElements = qsa('a, button, .faq-question, .dropdown-trigger, .profile-trigger, input, textarea, .sidebar-menu-list a, .auth-modal-close, .auth-tab-btn');
-        interactiveElements.forEach(el => {
-            el.addEventListener('mouseenter', () => {
-                document.body.classList.add('hover-interactive');
-            });
-            el.addEventListener('mouseleave', () => {
-                document.body.classList.remove('hover-interactive');
-            });
+            setTimeout(() => {
+                follower.style.left = e.clientX + 'px';
+                follower.style.top = e.clientY + 'px';
+            }, 50);
         });
     }
 
-    // --- 3. B2B RFQ Helper ---
-    window.setRFQCategory = function(categoryName) {
-        const subjectInput = qs('#rfq-division-subject');
-        if (subjectInput) {
-            subjectInput.value = `Inquiry: ${categoryName}`;
-            const rfqSection = qs('#contact');
-            if (rfqSection) {
-                rfqSection.scrollIntoView({ behavior: 'smooth' });
-            }
-        }
-    };
-
-    // --- 4. Interactive Auth Modal Controls ---
-    const authModal = qs('#auth-modal');
-    const openModalBtns = qsa('#desktop-login-btn, #mobile-login-btn, .trigger-auth-modal');
-    const closeModalBtn = qs('#auth-modal-close');
-    const authFeedback = qs('#auth-feedback-msg');
-
-    const showFeedback = (text, type = 'error') => {
-        if (!authFeedback) return;
-        authFeedback.textContent = text;
-        authFeedback.className = `auth-feedback ${type}`;
-    };
-
-    const clearFeedback = () => {
-        if (authFeedback) {
-            authFeedback.className = "auth-feedback hidden";
-            authFeedback.textContent = "";
-        }
-    };
-
-    const toggleAuthModal = (state) => {
-        if (!authModal) return;
-        clearFeedback();
-        if (state) {
-            authModal.classList.add('active');
-        } else {
-            authModal.classList.remove('active');
-        }
-    };
-
-    openModalBtns.forEach(btn => {
-        btn.addEventListener('click', () => toggleAuthModal(true));
-    });
-
-    if (closeModalBtn) {
-        closeModalBtn.addEventListener('click', () => toggleAuthModal(false));
-    }
-
-    // Tab Switching Logic inside Modal
-    const tabButtons = qsa('.auth-tab-btn');
-    const formTabs = qsa('.auth-form-tab');
-
-    tabButtons.forEach(btn => {
-        btn.addEventListener('click', () => {
-            tabButtons.forEach(b => b.classList.remove('active'));
-            formTabs.forEach(f => f.classList.remove('active'));
-
-            btn.classList.add('active');
-            const targetForm = qs(`#${btn.dataset.tab}`);
-            if (targetForm) targetForm.classList.add('active');
-            clearFeedback();
-        });
-    });
-
-    // --- 5. Supabase Authentication Core Actions ---
-    const signinForm = qs('#signin-form');
-    const signupForm = qs('#signup-form');
-
-    // Handle Sign In
-    if (signinForm) {
-        signinForm.addEventListener('submit', async (e) => {
-            e.preventDefault();
-            clearFeedback();
-
-            const email = qs('#signin-email').value.trim();
-            const password = qs('#signin-password').value.trim();
-
-            if (!supabaseClient) {
-                showFeedback("Connection pipeline offline. Supabase client failed to initialize.");
-                return;
-            }
-
-            showFeedback("Authenticating credentials...", "success");
-
-            const { data, error } = await supabaseClient.auth.signInWithPassword({
-                email: email,
-                password: password,
-            });
-
-            if (error) {
-                showFeedback(error.message, "error");
-            } else {
-                showFeedback("Access verified successfully! Connecting to dashboard...", "success");
-                setTimeout(() => {
-                    syncAuthState(data.user);
-                    toggleAuthModal(false);
-                    signinForm.reset();
-                }, 1200);
-            }
-        });
-    }
-
-    // Handle Registration (Sign Up)
-    if (signupForm) {
-        signupForm.addEventListener('submit', async (e) => {
-            e.preventDefault();
-            clearFeedback();
-
-            const name = qs('#signup-name').value.trim();
-            const email = qs('#signup-email').value.trim();
-            const password = qs('#signup-password').value.trim();
-
-            if (!supabaseClient) {
-                showFeedback("Connection pipeline offline. Supabase client failed to initialize.");
-                return;
-            }
-
-            showFeedback("Processing credentials...", "success");
-
-            const { data, error } = await supabaseClient.auth.signUp({
-                email: email,
-                password: password,
-                options: {
-                    data: {
-                        full_name: name
-                    }
-                }
-            });
-
-            if (error) {
-                showFeedback(error.message, "error");
-            } else {
-                if (data.session === null) {
-                     showFeedback("Account initialization initialized. Please check your email inbox to confirm security nodes.", "success");
-                } else {
-                     showFeedback("Account built and verified successfully!", "success");
-                     setTimeout(() => {
-                         syncAuthState(data.user);
-                         toggleAuthModal(false);
-                         signupForm.reset();
-                     }, 1500);
-                }
-            }
-        });
-    }
-
-    // Handle Session Logouts
-    const logoutBtn = qs('#logout-btn');
-    const mobileLogoutBtn = qs('#mobile-logout-btn');
-
-    const handleDisconnect = async (e) => {
-        if (e) e.preventDefault();
-        if (supabaseClient) {
-            await supabaseClient.auth.signOut();
-        }
-        syncAuthState(null);
-    };
-
-    if (logoutBtn) logoutBtn.addEventListener('click', handleDisconnect);
-    if (mobileLogoutBtn) mobileLogoutBtn.addEventListener('click', handleDisconnect);
-
-    // Dynamic State Synchronization
-    function syncAuthState(user) {
-        const dLogin = qs('#desktop-login-btn');
-        const dProfile = qs('#desktop-user-profile');
-        const mLogin = qs('#mobile-login-item');
-        const mProfile = qs('#mobile-profile-item');
-        const userDisplayName = qs('#user-display-name');
-
-        if (user) {
-            if (dLogin) dLogin.classList.add('hidden');
-            if (dProfile) dProfile.classList.remove('hidden');
-            if (mLogin) mLogin.classList.add('hidden');
-            if (mProfile) mProfile.classList.remove('hidden');
-
-            const displayName = user.user_metadata?.full_name || user.email.split('@')[0];
-            if (userDisplayName) userDisplayName.textContent = displayName;
-        } else {
-            if (dLogin) dLogin.classList.remove('hidden');
-            if (dProfile) dProfile.classList.add('hidden');
-            if (mLogin) mLogin.classList.remove('hidden');
-            if (mProfile) mProfile.classList.add('hidden');
-            if (userDisplayName) userDisplayName.textContent = "My Account";
-        }
-    }
-
-    // آلية المزامنة اللحظية المستمرة (Real-time Session Observer)
-    // هذا الجزء يبقي المنصة متزامنة طوال الوقت فور تغيير حالة تسجيل الدخول تلقائياً
-    if (supabaseClient) {
-        supabaseClient.auth.onAuthStateChange((event, session) => {
-            if (session) {
-                syncAuthState(session.user);
-            } else {
-                syncAuthState(null);
-            }
-        });
-    }
-
-    // --- 6. Reading Progress Bar ---
-    const progressBarNode = qs('#progress-bar');
-    if (progressBarNode) {
-        window.addEventListener('scroll', () => {
-            const totalHeight = document.body.scrollHeight - window.innerHeight;
-            const progress = (window.scrollY / totalHeight) * 100;
-            progressBarNode.style.width = progress + '%';
-        });
-    }
-
-    // --- 7. Navigation Tracking & Scroll States ---
-    const headerNode = qs('#header');
-    const sections = qsa('section');
-    const navLinks = qsa('.desktop-nav a');
-    
+    // --- Window Scroll Progress Indicator ---
     window.addEventListener('scroll', () => {
-        if (window.scrollY > 40) headerNode.classList.add('scrolled');
-        else headerNode.classList.remove('scrolled');
+        const winScroll = document.documentElement.scrollTop || document.body.scrollTop;
+        const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+        const scrolled = (winScroll / height) * 100;
+        const progressBar = document.getElementById('progress-bar');
+        if (progressBar) {
+            progressBar.style.width = scrolled + '%';
+        }
 
-        let current = '';
-        sections.forEach(sec => {
-            if (window.scrollY >= sec.offsetTop - 200) current = sec.getAttribute('id');
-        });
-        navLinks.forEach(link => {
-            link.classList.remove('active');
-            if (link.getAttribute('href') === `#${current}`) link.classList.add('active');
-        });
+        const header = document.getElementById('header');
+        if (header) {
+            if (winScroll > 50) {
+                header.style.padding = '8px 0';
+            } else {
+                header.style.padding = '15px 0';
+            }
+        }
     });
 
-    // Mobile Navigation Toggle
-    const hamburger = qs('.hamburger');
-    const mobileNav = qs('.mobile-nav');
+    // --- Mobile Burger Menu Toggle ---
+    const hamburger = document.querySelector('.hamburger');
+    const mobileNav = document.querySelector('.mobile-nav');
+
     if (hamburger && mobileNav) {
         hamburger.addEventListener('click', () => {
-            hamburger.classList.toggle('active');
             mobileNav.classList.toggle('active');
-        });
-        qsa('.mobile-links a').forEach(link => {
-            link.addEventListener('click', () => {
-                hamburger.classList.remove('active');
-                mobileNav.classList.remove('active');
-            });
+            hamburger.classList.toggle('active');
         });
     }
 
-    // --- 8. FAQ Interactive Accordion ---
-    qsa('.faq-question').forEach(q => {
-        q.addEventListener('click', () => {
-            const item = q.parentElement;
-            qsa('.faq-item').forEach(i => { if (i !== item) i.classList.remove('active'); });
-            item.classList.toggle('active');
+    // --- Language Selector Dropdown ---
+    const langTrigger = document.getElementById('lang-trigger');
+    const langMenu = document.getElementById('lang-menu');
+
+    if (langTrigger && langMenu) {
+        langTrigger.addEventListener('click', (e) => {
+            e.stopPropagation();
+            langMenu.classList.toggle('active');
+        });
+    }
+
+    // Close Dropdown upon click outside bounds
+    document.addEventListener('click', () => {
+        if (langMenu) langMenu.classList.remove('active');
+    });
+
+    // --- Dynamic Automatic Calendar Year ---
+    const currentYearSpan = document.getElementById('current-year');
+    if (currentYearSpan) {
+        currentYearSpan.textContent = new Date().getFullYear();
+    }
+
+    // --- FAQ Accordeon Slide mechanic ---
+    const faqQuestions = document.querySelectorAll('.faq-question');
+    faqQuestions.forEach(question => {
+        question.addEventListener('click', () => {
+            const parent = question.parentElement;
+            parent.classList.toggle('active');
         });
     });
 
-    // --- 9. Dropdown Triggers ---
-    const langTrigger = qs('#lang-trigger');
-    const langDropdown = qs('.footer-language.custom-dropdown');
-    if (langTrigger && langDropdown) {
-        langTrigger.addEventListener('click', (e) => {
-            e.stopPropagation();
-            langDropdown.classList.toggle('active');
-        });
-        document.addEventListener('click', () => {
-            langDropdown.classList.remove('active');
+    // --- Init AOS (Animate On Scroll) ---
+    if (typeof AOS !== 'undefined') {
+        AOS.init({
+            duration: 1000,
+            once: true,
+            offset: 120
         });
     }
 
-    const profileTrigger = qs('#profile-trigger');
-    const userProfile = qs('#desktop-user-profile');
-    if (profileTrigger && userProfile) {
-        profileTrigger.addEventListener('click', (e) => {
-            e.stopPropagation();
-            userProfile.classList.toggle('active');
-        });
-        document.addEventListener('click', () => {
-            userProfile.classList.remove('active');
+    // --- Init Swiper Testimonials Slider ---
+    if (typeof Swiper !== 'undefined') {
+        new Swiper('.testimonial-slider', {
+            slidesPerView: 1,
+            spaceBetween: 30,
+            loop: true,
+            pagination: {
+                el: '.swiper-pagination',
+                clickable: true,
+            },
+            breakpoints: {
+                768: {
+                    slidesPerView: 2,
+                }
+            }
         });
     }
 
-   // --- 10. B2B Chat Widget Logic (Supabase AI Integration) ---
-    const chatToggle = qs('#chat-toggle'), chatBox = qs('#chat-box'), chatClose = qs('#chat-close');
-    const chatInput = qs('#chat-input'), chatSend = qs('#chat-send'), chatBody = qs('#chat-body');
-    
-    if (chatToggle) chatToggle.addEventListener('click', () => chatBox.classList.add('active'));
-    if (chatClose) chatClose.addEventListener('click', () => chatBox.classList.remove('active'));
-    
-    const sendMsg = async () => {
+    // --- Init Vanilla Tilt for Dashboard consoles ---
+    if (typeof VanillaTilt !== 'undefined') {
+        VanillaTilt.init(document.querySelectorAll('.tilt-card'), {
+            max: 10,
+            speed: 400,
+            glare: true,
+            "max-glare": 0.2
+        });
+    }
+
+    // --- Quick Sourcing Selection Auto-fill ---
+    window.setRFQCategory = function(categoryName) {
+        const rfqInput = document.getElementById('rfq-division-subject');
+        const contactSection = document.getElementById('contact');
+        if (rfqInput) {
+            rfqInput.value = `Sourcing inquiry regarding: ${categoryName}`;
+        }
+        if (contactSection) {
+            contactSection.scrollIntoView({ behavior: 'smooth' });
+        }
+    };
+
+    // ==========================================================================
+    // AI SUPPORT CHAT MECHANICS
+    // ==========================================================================
+    const chatToggle = document.getElementById('chat-toggle');
+    const chatBox = document.getElementById('chat-box');
+    const chatClose = document.getElementById('chat-close');
+    const chatInput = document.getElementById('chat-input');
+    const chatSend = document.getElementById('chat-send');
+    const chatBody = document.getElementById('chat-body');
+
+    if (chatToggle && chatBox) {
+        chatToggle.addEventListener('click', () => chatBox.classList.toggle('active'));
+    }
+    if (chatClose && chatBox) {
+        chatClose.addEventListener('click', () => chatBox.classList.remove('active'));
+    }
+
+    const appendMessage = (text, type = 'outgoing') => {
+        const msgElement = document.createElement('div');
+        msgElement.className = `message ${type}`;
+        msgElement.innerHTML = `<p>${text}</p>`;
+        if (chatBody) {
+            chatBody.appendChild(msgElement);
+            chatBody.scrollTop = chatBody.scrollHeight;
+        }
+    };
+
+    const handleSendMessage = () => {
         const text = chatInput.value.trim();
         if (!text) return;
 
-        // إضافة رسالة المستخدم إلى الشاشة
-        chatBody.innerHTML += `<div class="message outgoing"><p>${escapeHtml(text)}</p></div>`;
+        appendMessage(text, 'outgoing');
         chatInput.value = '';
-        chatBody.scrollTop = chatBody.scrollHeight;
-        
-        // مؤشر التحميل أثناء انتظار الرد الحقيقي
-        const loadingId = 'loading-' + Date.now();
-        chatBody.innerHTML += `<div class="message incoming" id="${loadingId}"><p>جارٍ معالجة الطلب...</p></div>`;
-        chatBody.scrollTop = chatBody.scrollHeight;
 
-        try {
-            // إرسال الطلب إلى دالة Supabase الخاصة بك بأمان تام
-            const response = await fetch('https://yoniptlacaorxqqojdko.supabase.co/functions/v1/quick-task', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                    // لو الدالة تتطلب مصادقة Anon Key يمكنك إضافتها هنا:
-                    // 'Authorization': 'Bearer YOUR_SUPABASE_ANON_KEY'
-                },
-                body: JSON.stringify({ message: text })
-            });
-
-            const data = await response.json();
-            
-            // إزالة مؤشر التحميل
-            const loadingElement = document.getElementById(loadingId);
-            if (loadingElement) loadingElement.remove();
-
-            // استخراج الرد من استجابة Groq القادمة عبر سوبابيس
-            if (data.choices && data.choices.length > 0) {
-                const aiReply = data.choices[0].message.content;
-                chatBody.innerHTML += `<div class="message incoming"><p>${escapeHtml(aiReply)}</p></div>`;
-            } else {
-                throw new Error('Invalid response structure');
+        setTimeout(() => {
+            let aiReply = "Connecting queries with Egypt & UAE databases... How may we help you configure your sourcing line?";
+            if (text.toLowerCase().includes('food')) {
+                aiReply = "Our Food Division specializes in exporting Egyptian citrus, dry goods, and imports to Dubai. Select 'Source Division' in our Directory to directly initialize cargo.";
+            } else if (text.toLowerCase().includes('furniture')) {
+                aiReply = "We manage high-density bulk cargo for Banquet and Office furniture directly out of premium Damietta ports to UAE hubs.";
             }
-            
-            chatBody.scrollTop = chatBody.scrollHeight;
-
-        } catch (error) {
-            const loadingElement = document.getElementById(loadingId);
-            if (loadingElement) loadingElement.remove();
-            
-            chatBody.innerHTML += `<div class="message incoming"><p>عذراً، حدث خطأ في الاتصال بالنظام. يجدر التحقق من إعدادات الدالة.</p></div>`;
-            chatBody.scrollTop = chatBody.scrollHeight;
-        }
+            appendMessage(aiReply, 'incoming');
+        }, 1000);
     };
 
-    if (chatSend) chatSend.addEventListener('click', sendMsg);
-    if (chatInput) chatInput.addEventListener('keypress', (e) => { if(e.key === 'Enter') sendMsg(); });
-
-    // دالة حماية بسيطة لتنظيف النصوص
-    function escapeHtml(text) {
-        const map = { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#039;' };
-        return text.replace(/[&<>"']/g, m => map[m]);
-    }
-    // Dynamic Year Update
-    const yearSpan = qs('#current-year');
-    if (yearSpan) yearSpan.textContent = new Date().getFullYear();
-
-    // --- 11. Libraries Initialization ---
-    if (typeof AOS !== 'undefined') {
-        AOS.init({ duration: 800, once: true, offset: 50 });
-    }
-    
-    if (typeof Swiper !== 'undefined' && qs('.testimonial-slider')) {
-        new Swiper('.testimonial-slider', {
-            loop: true, 
-            autoplay: { delay: 6000 },
-            pagination: { el: '.swiper-pagination', clickable: true }
-        });
-    }
-
-    if (typeof VanillaTilt !== 'undefined') {
-        VanillaTilt.init(document.querySelectorAll(".tilt-card"), { 
-            max: 5, 
-            speed: 400,
-            glare: true,
-            "max-glare": 0.15
+    if (chatSend && chatInput) {
+        chatSend.addEventListener('click', handleSendMessage);
+        chatInput.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') handleSendMessage();
         });
     }
 });
