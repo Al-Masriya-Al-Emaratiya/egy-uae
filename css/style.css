@@ -386,7 +386,7 @@ a {
     box-shadow: 0 8px 24px var(--accent-glow);
 }
 .btn-outline-tech {
-    background: transparent;
+    background: #ffffff44;
     color: var(--text-primary);
     border: 1px solid var(--border);
 }
