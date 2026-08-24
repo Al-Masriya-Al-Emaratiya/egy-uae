@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" dir="ltr">
+<html lang="en" dir="ltr" data-theme="light">
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1" />
@@ -10,188 +10,234 @@
    
     <!-- Social Meta Tags -->
     <meta property="og:type" content="website" />
-    <meta property="og:url" content="wwww.egy-uae.com/news.html" /> 
+    <meta property="og:url" content="https://www.egy-uae.com/news.html" /> 
     <meta property="og:title" content="Latest News & Updates | Al Massriya Al Emaratiya" />
     <meta property="og:description" content="Stay updated with the latest trade insights, logistics trends, and corporate news from Al Masriya Al Emaratiya." />
-    <meta property="og:image" content="YOUR_OG_IMAGE_URL" /> 
+    <meta property="og:image" content="https://images.unsplash.com/photo-1505839673365-e3971f8d9184?w=1200" /> 
 
     <meta property="twitter:card" content="summary_large_image" />
     <meta property="twitter:title" content="Latest News & Updates | Al Massriya Al Emaratiya" />
     <meta property="twitter:description" content="Stay updated with the latest trade insights, logistics trends, and corporate news." />
         
     <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;900&family=Cairo:wght@600;700;900&display=swap" rel="stylesheet">
-    
-    <!-- Font Awesome -->
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;900&family=Cairo:wght@600;700;900&family=Plus+Jakarta+Sans:wght@300;400;600;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
-    
-    <!-- Swiper CSS & AOS -->
     <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-    
-    <!-- Tech UI Core CSS -->
     <link rel="stylesheet" href="css/style.css">
     
-    <!-- News Specific Tech Styles -->
     <style>
-        /* Tech News Header */
-        .news-hero { padding: 180px 0 60px; text-align: center; position: relative; z-index: 1; border-bottom: 1px solid var(--border-color); background: var(--glass-bg); backdrop-filter: blur(10px); margin-bottom: 60px; }
-        .news-hero p { color: var(--text-muted); font-size: 1.1rem; max-width: 600px; margin: 0 auto; font-weight: 500; }
-        
-        /* Tech News Grid System */
-        .news-container { position: relative; z-index: 2; margin-bottom: 100px; }
-        
-        /* Tech News Card Override */
-        .news-card {
-            background: var(--bg-surface);
-            border: 1px solid var(--border-color);
-            border-top: 3px solid var(--primary);
-            transition: var(--transition);
+        .news-hero {
+            padding: 225px 0 60px 0;
+            text-align: center;
+            position: relative;
+            background: var(--bg-card-hover);
+            border-bottom: 1px solid var(--border);
+            margin-bottom: 60px;
+        }
+        .news-hero p {
+            color: var(--text-muted);
+            font-size: 1.1rem;
+            max-width: 600px;
+            margin: 15px auto 0 auto;
+            font-weight: 500;
+        }
+
+        .news-banner-list {
             display: flex;
             flex-direction: column;
+            gap: 40px;
+            margin-bottom: 100px;
+        }
+        .news-banner-link {
+            display: block;
+            width: 100%;
+        }
+        .news-banner-card {
             position: relative;
+            width: 100%;
+            border-radius: 20px;
             overflow: hidden;
-            transform-style: preserve-3d;
+            border: 1px solid var(--border);
+            background: var(--bg-card);
+            transition: var(--transition);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.02);
+            cursor: pointer;
         }
-        .news-card:hover {
-            transform: translateY(-5px);
-            border-top-color: var(--secondary);
-            box-shadow: 0 15px 30px var(--primary-glow);
+        .news-banner-img {
+            width: 100%;
+            height: auto;
+            display: block;
+            object-fit: cover;
+            aspect-ratio: 21 / 8; 
+            transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
         }
         
-        /* Highlighted URL Post Animation */
-        .news-card.highlighted { border: 2px solid var(--secondary); box-shadow: 0 0 20px var(--secondary-glow); animation: pulseHighlight 2s infinite alternate; }
-        @keyframes pulseHighlight { 0% { box-shadow: 0 0 10px var(--secondary-glow); } 100% { box-shadow: 0 0 30px var(--secondary-glow); } }
-        
-        .news-img-box { width: 100%; height: 240px; overflow: hidden; background: var(--bg-main); position: relative; border-bottom: 1px solid var(--border-color); }
-        .news-img-box img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease; filter: contrast(1.1); }
-        .news-card:hover .news-img-box img { transform: scale(1.05); }
-        
-        /* Tech Badge */
-        .news-badge {
+        .news-banner-badge {
             position: absolute;
-            top: 15px; left: 15px;
-            background: rgba(23, 67, 136, 0.9);
-            color: #fff;
-            padding: 5px 12px;
-            font-size: 0.8rem;
+            top: 25px;
+            left: 25px;
+            background: rgba(4, 77, 161, 0.9);
+            color: #ffffff;
+            padding: 6px 14px;
+            font-size: 0.75rem;
             font-weight: 700;
+            letter-spacing: 1px;
             text-transform: uppercase;
-            border: 1px solid var(--primary);
-            backdrop-filter: blur(5px);
-            box-shadow: 2px 2px 0 rgba(0,0,0,0.2);
+            border-radius: 30px;
+            z-index: 3;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
         }
-        
-        .news-body { padding: 25px; flex-grow: 1; display: flex; flex-direction: column; }
-        .news-meta { display: flex; gap: 15px; font-size: 0.85rem; color: var(--text-muted); margin-bottom: 12px; font-weight: bold; }
-        .news-meta i { color: var(--secondary); margin-right: 5px; }
-        .news-title { font-size: 1.3rem; font-weight: 700; line-height: 1.4; margin-bottom: 12px; color: var(--text-main); font-family: 'Cairo', sans-serif; text-transform: uppercase; }
-        .news-excerpt { color: var(--text-muted); font-size: 0.95rem; line-height: 1.6; margin-bottom: 20px; flex-grow: 1; }
-        
-        .news-footer { margin-top: auto; padding-top: 15px; border-top: 1px solid var(--border-color); display: flex; justify-content: space-between; align-items: center; }
-        .read-more { color: var(--primary); text-decoration: none; font-weight: 700; font-size: 0.95rem; transition: var(--transition); display: inline-flex; align-items: center; gap: 5px; text-transform: uppercase; }
-        .read-more:hover { color: var(--secondary); gap: 8px; }
-        
-        /* Share Buttons Tech Style */
-        .share-actions { display: flex; gap: 10px; }
-        .share-btn {
-            background: var(--bg-main);
-            border: 1px solid var(--border-color);
-            color: var(--primary);
-            width: 35px; height: 35px;
-            display: flex; align-items: center; justify-content: center;
-            cursor: pointer; transition: var(--transition);
+
+        .news-banner-hover-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(4, 77, 161, 0.18);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: all 0.4s ease;
+            z-index: 2;
+        }
+        .news-banner-hover-overlay span {
+            background: #ffffff;
+            color: #000000;
+            padding: 12px 28px;
+            border-radius: 30px;
+            font-weight: 700;
             font-size: 0.9rem;
+            transform: translateY(15px);
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
         }
-        .share-btn:hover { background: var(--primary); color: #fff; border-color: var(--primary); box-shadow: 2px 2px 0 var(--primary-glow); transform: translateY(-2px); }
-        
-        /* Tech Toast Notification */
-        .toast-notification {
-            position: fixed; bottom: 30px; left: 50%;
-            transform: translateX(-50%) translateY(100px);
-            background: var(--primary);
-            border: 1px solid var(--secondary);
-            color: #fff; padding: 12px 25px;
-            font-weight: 700; text-transform: uppercase; letter-spacing: 1px;
-            box-shadow: 0 10px 30px var(--primary-glow);
-            z-index: 9999; opacity: 0;
-            transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+        .news-banner-card:hover {
+            border-color: var(--primary);
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(4, 77, 161, 0.12);
         }
-        .toast-notification.show { transform: translateX(-50%) translateY(0); opacity: 1; }
+        .news-banner-card:hover .news-banner-img {
+            transform: scale(1.03);
+        }
+        .news-banner-card:hover .news-banner-hover-overlay {
+            opacity: 1;
+        }
+        .news-banner-card:hover .news-banner-hover-overlay span {
+            transform: translateY(0);
+        }
+
+        @media (max-width: 768px) {
+            .news-banner-img {
+                aspect-ratio: 16 / 9; 
+            }
+            .news-banner-badge {
+                top: 15px;
+                left: 15px;
+                padding: 4px 10px;
+                font-size: 0.65rem;
+            }
+        }
     </style>
 </head>
 <body>
 
-    <!-- Custom Tech Cursor -->
+    <!-- Tech UI Background Utilities -->
     <div id="tech-cursor"></div>
     <div id="tech-cursor-follower"></div>
-
-    <!-- Reading Progress Bar -->
     <div id="progress-bar"></div>
-
-    <!-- Animated Data Streams Background -->
     <div class="animated-lines-container"></div>
 
-    <!-- Header & Navigation (Fixed Tech UI) -->
+    <!-- Header Block -->
     <header class="tech-header" id="header">
+        <!-- Top Utility Bar -->
+        <div class="header-top-bar">
+            <div class="container top-bar-container">
+                <div class="top-bar-left">
+                    <span><i class="fas fa-globe"></i> Multi-Market Trade Channel</span>
+                </div>
+                <div class="top-bar-right">
+                    <a href="careers.html">Careers</a>
+                    <a href="sectors.html">Our Sectors</a>
+                    <a href="index.html#contact">Help Center</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Main Search & Action Header -->
         <div class="container header-container">
             <div class="logo">
                 <a href="index.html">
-                    <img src="Al_Masriya_Al_Emaratiya_icon.png" class="brand-logo" alt="Al Massriya Al Emaratiya" onerror="this.onerror=null; this.src='https://via.placeholder.com/200x60/174388/ffffff?text=LOGO+HERE';">
+                    <img src="Al_Masriya_Al_Emaratiya_icon.png" class="brand-logo" alt="Al Massriya Al Emaratiya" onerror="this.onerror=null; this.src='https://via.placeholder.com/200x60/044da1/ffffff?text=LOGO+HERE';">
                 </a>
             </div>
             
-            <nav class="desktop-nav">
-                <ul class="nav-links">
-                    <li><a href="index.html#home">Home</a></li>
-                    <li><a href="index.html#services">Services</a></li>
-                    <li><a href="index.html#about">About Us</a></li>
-                    <li><a href="news.html" class="active">News</a></li>
-                    <li><a href="index.html#systems">Our Systems</a></li>
-                    <li><a href="index.html#contact">Contact Us</a></li>
-                </ul>
-            </nav>
+            <!-- Global Directory Search Bar -->
+            <div class="header-search-bar">
+                <div class="search-form-wrapper">
+                    <form action="index.html#divisions" method="GET" class="search-form" onsubmit="event.preventDefault();">
+                        <div class="search-category-select">
+                            <span>Global Catalog</span>
+                        </div>
+                        <input type="text" placeholder="Search pages, services, or divisions..." id="global-search-input" autocomplete="off">
+                        <button type="submit" class="search-btn">
+                            <i class="fas fa-search"></i>
+                        </button>
+                    </form>
+                    <!-- Live Search Results Dropdown -->
+                    <div id="search-results-dropdown" class="search-results-dropdown hidden"></div>
+                </div>
+            </div>
             
             <div class="header-actions">
-                <a href="login.html" class="btn btn-outline-tech" id="desktop-login-btn">
-                    <i class="fas fa-fingerprint"></i> <span class="login-text">Login</span>
+                <a href="https://amae.egy-uae.com" target="_self" class="btn btn-outline-tech" id="marketplace-nav-btn">
+                    <i class="fas fa-store"></i> <span class="marketplace-btn-text">Go to Marketplace</span>
                 </a>
-
-                <div class="user-profile hidden" id="desktop-user-profile">
-                    <div class="profile-trigger" id="profile-trigger">
-                        <div class="avatar-glow"><i class="fas fa-user-astronaut"></i></div>
-                        <span class="user-name">My Account</span>
-                        <i class="fas fa-chevron-down arrow-icon"></i>
-                    </div>
-                    <ul class="profile-dropdown tech-dropdown">
-                        <li><a href="portal.html"><i class="fas fa-laptop-file"></i> Portal</a></li>
-                        <li><a href="settings.html"><i class="fas fa-cog"></i> Settings</a></li>
-                        <li><a href="#" id="logout-btn" class="text-red"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
-                    </ul>
-                </div>
 
                 <div class="hamburger">
                     <span></span><span></span><span></span>
                 </div>
             </div>
         </div>
+
+        <!-- Main Navigation Bar -->
+        <nav class="desktop-nav">
+            <div class="container nav-container">
+                <div class="nav-left">
+                    <a href="index.html#divisions" class="all-categories-trigger" id="all-categories-btn">
+                        <i class="fas fa-bars"></i> Our Trade Divisions
+                    </a>
+                </div>
+                <ul class="nav-links">
+                    <li><a href="index.html#home">Home</a></li>
+                    <li><a href="index.html#services">Services</a></li>
+                    <li><a href="index.html#divisions">Trade Catalog</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="news.html" class="active">News</a></li>
+                    <li><a href="index.html#systems">Our Systems</a></li>
+                    <li><a href="index.html#contact">Contact Us</a></li>
+                </ul>
+            </div>
+        </nav>
     </header>
 
-    <!-- Mobile Navigation (Fixed Tech UI) -->
+    <!-- Mobile Navigation -->
     <nav class="mobile-nav glass-panel">
         <ul class="mobile-links">
             <li><a href="index.html#home">Home</a></li>
             <li><a href="index.html#services">Services</a></li>
-            <li><a href="index.html#about">About Us</a></li>
+            <li><a href="index.html#divisions">Trade Divisions</a></li>
+            <li><a href="about.html">About Us</a></li>
             <li><a href="news.html">News</a></li>
             <li><a href="index.html#systems">Our Systems</a></li>
             <li><a href="index.html#contact">Contact Us</a></li>
-            <li id="mobile-login-item">
-                <a href="login.html" class="btn btn-tech w-full mt-4"><i class="fas fa-sign-in-alt"></i> Login</a>
-            </li>
-            <li id="mobile-profile-item" class="hidden">
-                <a href="portal.html" class="btn btn-outline-tech w-full mt-4"><i class="fas fa-laptop-code"></i> My Portal</a>
-                <a href="#" id="mobile-logout-btn" class="btn btn-danger w-full mt-2"><i class="fas fa-power-off"></i> Logout</a>
+            <li>
+                <a href="https://amae.egy-uae.com" target="_self" class="btn btn-tech w-full mt-4"><i class="fas fa-store"></i> Go to Marketplace</a>
             </li>
         </ul>
     </nav>
@@ -207,157 +253,98 @@
         </div>
     </section>
 
-    <!-- News Grid Container -->
+    <!-- News Grid Container (Banners Only) -->
     <main class="news-container container">
-        <div class="grid grid-3">
+        <div class="news-banner-list">
 
-            <!-- Post 1 -->
-            <article class="news-card" id="post-1" data-aos="fade-up" data-aos-delay="100">
-                <div class="news-img-box">
-                    <span class="news-badge">Food Division</span>
-                    <img src="images/news/propak-mena-malaysia-cooperation_1.jpeg" alt="propak-mena-malaysia-cooperation" onerror="this.src='https://images.unsplash.com/photo-1542838132-92c53300491e?q=80&w=600&auto=format&fit=cover'">
-                </div>
-                <div class="news-body">
-                    <div class="news-meta">
-                        <span><i class="far fa-calendar-alt"></i> June 4, 2026</span>
-                        <span><i class="far fa-user"></i> Comms Dept.</span>
-                    </div>
-                    <h3 class="news-title">ProPak: Deepening Egypt-Malaysia Trade</h3>
-                    <p class="news-excerpt">On the Sidelines of ProPak: Enhancing Food Sector Trade Cooperation Between Egypt & Malaysia.</p>
-                    <div class="news-footer">
-                        <a href="news_propak-mena-malaysia-cooperation.html" class="read-more">Read More <i class="fas fa-arrow-right"></i></a>
-                        <div class="share-actions">
-                            <button class="share-btn" onclick="sharePost(1, 'ProPak: Deepening Trade')" title="Copy Link"><i class="fas fa-link"></i></button>
-                            <button class="share-btn" onclick="socialShare('facebook', 1)" title="Share on Facebook"><i class="fab fa-facebook-f"></i></button>
-                            <button class="share-btn" onclick="socialShare('linkedin', 1)" title="Share on LinkedIn"><i class="fab fa-linkedin-in"></i></button>
-                        </div>
+            <!-- Banner News 1 -->
+            <a href="news_propak-mena-malaysia-cooperation.html" class="news-banner-link" data-aos="fade-up" data-aos-delay="100">
+                <div class="news-banner-card" id="post-1">
+                    <span class="news-banner-badge">Food Division</span>
+                    <!-- صورة المقال الأفقية الطويلة المدمج بها التصميم والخبر -->
+                    <img src="images/news/propak-mena-malaysia-cooperation_1.jpeg" alt="ProPak MENA Egypt Malaysia Trade Cooperation" class="news-banner-img" onerror="this.onerror=null; this.src='https://via.placeholder.com/1200x450/eef2f9/044da1?text=PROPAK+MENA:+DEEPENING+EGYPT-MALAYSIA+TRADE';">
+                    <div class="news-banner-hover-overlay">
+                        <span>Read Full Article <i class="fas fa-arrow-right"></i></span>
                     </div>
                 </div>
-            </article>
+            </a>
             
-            <!-- Post 2 -->
-            <article class="news-card" id="post-2" data-aos="fade-up" data-aos-delay="200">
-                <div class="news-img-box">
-                    <span class="news-badge">Logistics</span>
-                    <img src="https://images.unsplash.com/photo-1578575437130-527eed3abbec?q=80&w=600&auto=format&fit=cover" alt="Suez Canal Logistics">
-                </div>
-                <div class="news-body">
-                    <div class="news-meta">
-                        <span><i class="far fa-calendar-alt"></i> May 28, 2026</span>
-                        <span><i class="far fa-user"></i> Admin Node</span>
-                    </div>
-                    <h3 class="news-title">Expanding Maritime Trade Lanes</h3>
-                    <p class="news-excerpt">Al Massriya Al Emaratiya announces new integrated maritime schedules designed to slash transit times by 15% across strategic regional hubs.</p>
-                    <div class="news-footer">
-                        <a href="#" class="read-more">Read More <i class="fas fa-arrow-right"></i></a>
-                        <div class="share-actions">
-                            <button class="share-btn" onclick="sharePost(2, 'Expanding Maritime Trade Lanes')" title="Copy Link"><i class="fas fa-link"></i></button>
-                            <button class="share-btn" onclick="socialShare('facebook', 2)" title="Share on Facebook"><i class="fab fa-facebook-f"></i></button>
-                            <button class="share-btn" onclick="socialShare('linkedin', 2)" title="Share on LinkedIn"><i class="fab fa-linkedin-in"></i></button>
-                        </div>
+            <!-- Banner News 2 -->
+            <a href="#" class="news-banner-link" data-aos="fade-up" data-aos-delay="200">
+                <div class="news-banner-card" id="post-2">
+                    <span class="news-banner-badge">Logistics</span>
+                    <img src="https://via.placeholder.com/1200x450/eef2f9/044da1?text=EXPANDING+MARITIME+TRADE+LANES" alt="Expanding Maritime Trade Lanes" class="news-banner-img">
+                    <div class="news-banner-hover-overlay">
+                        <span>Read Full Article <i class="fas fa-arrow-right"></i></span>
                     </div>
                 </div>
-            </article>
+            </a>
 
-            <!-- Post 3 -->
-            <article class="news-card" id="post-3" data-aos="fade-up" data-aos-delay="300">
-                <div class="news-img-box">
-                    <span class="news-badge">Digital Systems</span>
-                    <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=600&auto=format&fit=cover" alt="Analytics Dashboard">
-                </div>
-                <div class="news-body">
-                    <div class="news-meta">
-                        <span><i class="far fa-calendar-alt"></i> May 15, 2026</span>
-                        <span><i class="far fa-user"></i> Tech Team</span>
-                    </div>
-                    <h3 class="news-title">AI-Powered Freight Analytics</h3>
-                    <p class="news-excerpt">Our newest platform feature brings predictive algorithms straight into your dashboard, predicting custom patterns and optimizing warehouse stocks.</p>
-                    <div class="news-footer">
-                        <a href="#" class="read-more">Read More <i class="fas fa-arrow-right"></i></a>
-                        <div class="share-actions">
-                            <button class="share-btn" onclick="sharePost(3, 'AI Freight Analytics Platform')" title="Copy Link"><i class="fas fa-link"></i></button>
-                            <button class="share-btn" onclick="socialShare('facebook', 3)" title="Share on Facebook"><i class="fab fa-facebook-f"></i></button>
-                            <button class="share-btn" onclick="socialShare('linkedin', 3)" title="Share on LinkedIn"><i class="fab fa-linkedin-in"></i></button>
-                        </div>
+            <!-- Banner News 3 -->
+            <a href="#" class="news-banner-link" data-aos="fade-up" data-aos-delay="300">
+                <div class="news-banner-card" id="post-3">
+                    <span class="news-banner-badge">Digital Systems</span>
+                    <img src="https://via.placeholder.com/1200x450/eef2f9/044da1?text=AI-POWERED+FREIGHT+ANALYTICS+DASHBOARD" alt="AI Freight Analytics" class="news-banner-img">
+                    <div class="news-banner-hover-overlay">
+                        <span>Read Full Article <i class="fas fa-arrow-right"></i></span>
                     </div>
                 </div>
-            </article>
+            </a>
 
-            <!-- Post 4 -->
-            <article class="news-card" id="post-4" data-aos="fade-up" data-aos-delay="400">
-                <div class="news-img-box">
-                    <span class="news-badge">Corporate</span>
-                    <img src="https://images.unsplash.com/photo-1513828583835-c359b7af1677?q=80&w=600&auto=format&fit=cover" alt="Partnership Agreement">
-                </div>
-                <div class="news-body">
-                    <div class="news-meta">
-                        <span><i class="far fa-calendar-alt"></i> April 30, 2026</span>
-                        <span><i class="far fa-user"></i> Relations Dept.</span>
-                    </div>
-                    <h3 class="news-title">Bilateral Investment Summits</h3>
-                    <p class="news-excerpt">A comprehensive wrap-up of agreements made by Al Massriya Al Emaratiya with strategic MENA market distributors last week.</p>
-                    <div class="news-footer">
-                        <a href="#" class="read-more">Read More <i class="fas fa-arrow-right"></i></a>
-                        <div class="share-actions">
-                            <button class="share-btn" onclick="sharePost(4, 'Bilateral Investment Summits')" title="Copy Link"><i class="fas fa-link"></i></button>
-                            <button class="share-btn" onclick="socialShare('facebook', 4)" title="Share on Facebook"><i class="fab fa-facebook-f"></i></button>
-                            <button class="share-btn" onclick="socialShare('linkedin', 4)" title="Share on LinkedIn"><i class="fab fa-linkedin-in"></i></button>
-                        </div>
+            <!-- Banner News 4 -->
+            <a href="#" class="news-banner-link" data-aos="fade-up" data-aos-delay="400">
+                <div class="news-banner-card" id="post-4">
+                    <span class="news-banner-badge">Corporate</span>
+                    <img src="https://via.placeholder.com/1200x450/eef2f9/044da1?text=BILATERAL+INVESTMENT+SUMMITS+2026" alt="Bilateral Investment Summits" class="news-banner-img">
+                    <div class="news-banner-hover-overlay">
+                        <span>Read Full Article <i class="fas fa-arrow-right"></i></span>
                     </div>
                 </div>
-            </article>
+            </a>
 
         </div>
     </main>
 
-    <!-- Share Toast Notification -->
-    <div id="share-toast" class="toast-notification">Link copied to clipboard!</div>
-
-    <!-- Footer (Fixed Tech UI) -->
+    <!-- Footer Area -->
     <footer class="tech-footer">
-        <div class="container">
-            <div class="grid grid-4 footer-wrapper">
-                
-                <div class="footer-logo">
-                    <img src="Al_Masriya_Al_Emaratiya_icon.png" alt="Al Massriya Al Emaratiya" class="brand-logo" onerror="this.onerror=null; this.src='https://via.placeholder.com/200x60/174388/ffffff?text=LOGO+HERE';">
-                    <p class="mt-4">Your Tech Gateway to Growth in Egypt & UAE.</p>
-                    <div class="social-links mt-4">
-                        <a href="https://www.facebook.com/AlMasriyaAlEmaratiya"><i class="fab fa-facebook-f"></i></a>
-                        <a href="https://www.linkedin.com/company/egy-uae"><i class="fab fa-linkedin-in"></i></a>
-                        <a href="https://www.youtube.com/@egy-uae.channel"><i class="fab fa-youtube"></i></a>
-                    </div>
+        <div class="container footer-container-grid">
+            <div class="footer-brand-section">
+                <img src="Al_Masriya_Al_Emaratiya_icon.png" alt="Al Massriya Al Emaratiya Logo" class="brand-logo" onerror="this.onerror=null; this.src='https://via.placeholder.com/200x60/044da1/ffffff?text=LOGO+HERE';">
+                <p class="footer-desc">Your Integrated Gateway for Secure Trade & Commercial Pipelines Connecting Egypt and the UAE.</p>
+                <div class="social-links">
+                    <a href="https://www.facebook.com/AlMasriyaAlEmaratiya" target="_blank" rel="noopener" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://www.linkedin.com/company/egy-uae" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="https://www.youtube.com/@egy-uae.channel" target="_blank" rel="noopener" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
                 </div>
+            </div>
 
-                <div class="footer-links">
-                    <h4>Index Directory</h4>
-                    <ul>
-                        <li><a href="index.html#home">Home</a></li>
-                        <li><a href="index.html#services">Services</a></li>
-                        <li><a href="index.html#about">About Us</a></li>
-                        <li><a href="news.html">News</a></li>
-                        <li><a href="index.html#contact">Contact Us</a></li>
-                        <li><a href="careers.html">Careers</a></li>
-                        <li><a href="sectors.html">Our Sectors</a></li>
-                    </ul>
-                </div>
+            <div class="footer-links-group">
+                <h4 class="footer-section-title">Marketplace Index</h4>
+                <ul class="footer-ul-list">
+                    <li><a href="index.html#home">Home</a></li>
+                    <li><a href="index.html#services">Operation Capacity</a></li>
+                    <li><a href="index.html#divisions">Trade Catalogs</a></li>
+                    <li><a href="about.html">Corporate Architecture</a></li>
+                    <li><a href="news.html">Market News</a></li>
+                    <li><a href="index.html#contact">RFQ Desk</a></li>
+                </ul>
+            </div>
 
-                <div class="footer-divisions">
-                    <h4>Our Divisions</h4>
-                    <ul>
-                        <li><a href="food-division.html">Food Division</a></li>
-                        <li><a href="hotel-supplies.html">Hotel Supplies</a></li>
-                        <li><a href="chemicals-cosmetics.html">Chemicals & Cosmetics</a></li>
-                        <li><a href="ose-procurement.html">OS&E Procurement</a></li>
-                        <li><a href="office-furniture.html">Office Furniture</a></li>
-                        <li><a href="banquet-furniture.html">Banquet Furniture</a></li>
-                        <li><a href="metal-beds-lockers.html">Metal Beds & Lockers</a></li>
-                        <li><a href="staff-furniture.html">Staff Furniture</a></li>
-                        <li><a href="staff-sofa-sets.html">Staff Sofa Sets & Accessories</a></li>
-                    </ul>
-                </div>
+            <div class="footer-links-group">
+                <h4 class="footer-section-title">Divisions Directory</h4>
+                <ul class="footer-ul-list">
+                    <li><a href="pages/food-division.html">Food Division</a></li>
+                    <li><a href="pages/hotel-supplies.html">Hotel Supplies</a></li>
+                    <li><a href="pages/chemicals-cosmetics.html">Chemicals & Cosmetics</a></li>
+                    <li><a href="pages/ose-procurement.html">OS&E Sourcing</a></li>
+                    <li><a href="pages/office-furniture.html">Office Furniture</a></li>
+                    <li><a href="pages/banquet-furniture.html">Banquet Furniture</a></li>
+                </ul>
+            </div>
 
+            <div class="footer-links-group footer-lang-wrap">
+                <h4 class="footer-section-title">Language & UI</h4>
                 <div class="footer-language custom-dropdown">
-                    <h4>Language Protocol</h4>
                     <div class="dropdown-trigger" id="lang-trigger">
                         <span><i class="fas fa-globe"></i> English</span>
                         <i class="fas fa-chevron-down arrow-icon"></i>
@@ -368,17 +355,16 @@
                         <li><a href="news-cn.html">中文</a></li>
                     </ul>
                 </div>
-
             </div>
-            <div class="footer-bottom text-center">
-                <p>© <span id="current-year"></span> Al Massriya Al Emaratiya. All Rights Reserved. System Version 2.0</p>
-            </div>
+        </div>
+        <div class="container footer-bottom-panel">
+            <p>© <span id="current-year"></span> Al Massriya Al Emaratiya. Integrated B2B Network Solutions. Powered by Tech OS.</p>
         </div>
     </footer>
 
-    <!-- Chat Widget (Tech UI) -->
+    <!-- AI Chat Support Widget -->
     <div id="chat-widget" class="chat-widget">
-        <button class="chat-btn glow-effect" id="chat-toggle">
+        <button class="chat-btn glow-effect" id="chat-toggle" aria-label="Toggle Support Chat">
             <i class="fas fa-headset"></i> 
         </button>
         <div class="chat-container glass-panel" id="chat-box">
@@ -388,12 +374,12 @@
             </div>
             <div class="chat-body" id="chat-body">
                 <div class="message incoming">
-                    <p>Connection established. How can we assist your operations today?</p>
+                    <p>Connection established securely. How can we assist your operations today?</p>
                 </div>
             </div>
             <div class="chat-footer">
-                <input type="text" placeholder="Type query..." id="chat-input">
-                <button id="chat-send"><i class="fas fa-paper-plane"></i></button>
+                <input type="text" placeholder="Type procurement query..." id="chat-input">
+                <button id="chat-send" aria-label="Send Message"><i class="fas fa-paper-plane"></i></button>
             </div>
         </div>
     </div>
@@ -404,40 +390,8 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.8.0/vanilla-tilt.min.js"></script>
     <script src="js/main.js"></script>
     
-    <!-- News Specific JS Logic (Sharing & URL Parameters) -->
+    <!-- Auto Scroll to highlighted post if linked directly -->
     <script>
-        // Share link via Toast Notification
-        function sharePost(id, title) {
-            const baseUrl = window.location.origin + window.location.pathname;
-            const shareUrl = `${baseUrl}?id=${id}`;
-            
-            navigator.clipboard.writeText(shareUrl).then(() => {
-                const toast = document.getElementById('share-toast');
-                toast.classList.add('show');
-                setTimeout(() => {
-                    toast.classList.remove('show');
-                }, 3000);
-            }).catch(err => {
-                console.error('Failed to copy link: ', err);
-            });
-        }
-
-        // Social Media Sharing
-        function socialShare(platform, id) {
-            const baseUrl = window.location.origin + window.location.pathname;
-            const shareUrl = encodeURIComponent(`${baseUrl}?id=${id}`);
-            let url = '';
-
-            if (platform === 'facebook') {
-                url = `https://www.facebook.com/sharer/sharer.php?u=${shareUrl}`;
-            } else if (platform === 'linkedin') {
-                url = `https://www.linkedin.com/sharing/share-offsite/?url=${shareUrl}`;
-            }
-            
-            window.open(url, '_blank', 'width=600,height=400');
-        }
-
-        // Auto-scroll and Highlight based on URL parameters
         document.addEventListener('DOMContentLoaded', () => {
             const urlParams = new URLSearchParams(window.location.search);
             const postId = urlParams.get('id');
@@ -447,8 +401,9 @@
                 if (targetPost) {
                     setTimeout(() => {
                         targetPost.scrollIntoView({ behavior: 'smooth', block: 'center' });
-                        targetPost.classList.add('highlighted');
-                    }, 500);
+                        targetPost.style.borderColor = 'var(--accent)';
+                        targetPost.style.boxShadow = '0 15px 35px rgba(236, 28, 36, 0.25)';
+                    }, 600);
                 }
             }
         });
