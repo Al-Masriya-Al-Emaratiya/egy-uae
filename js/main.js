@@ -4,123 +4,198 @@
 
 document.addEventListener('DOMContentLoaded', () => {
 
-    // --- Interactive Search System ---
-    const searchDatabase = [
-        { title: "Food Division", url: "pages/food-division.html", category: "Trade Division", keywords: "food, orange, export, corridor, sharjah" },
-        { title: "Hotel Supplies", url: "pages/hotel-supplies.html", category: "Trade Division", keywords: "hotel, premium, sheets, supplies, ports" },
-        { title: "Chemicals & Cosmetics", url: "pages/chemicals-cosmetics.html", category: "Trade Division", keywords: "chemicals, cosmetics, safety, alexandria, reach" },
-        { title: "OS&E Procurement", url: "pages/ose-procurement.html", category: "Trade Division", keywords: "ose, procurement, sourcing, cargo" },
-        { title: "Office Furniture", url: "pages/office-furniture.html", category: "Trade Division", keywords: "office, furniture, hardwood, desk, chairs, damietta" },
-        { title: "Banquet Furniture", url: "pages/banquet-furniture.html", category: "Trade Division", keywords: "banquet, furniture, hotel, luxury, stackable" },
-        { title: "Metal Beds & Lockers", url: "pages/metal-beds-lockers.html", category: "Trade Division", keywords: "metal, bed, locker, rust, accommodation" },
-        { title: "Staff Furniture", url: "pages/staff-furniture.html", category: "Trade Division", keywords: "staff, modular, desk, office" },
-        { title: "Staff Sofa Sets", url: "pages/staff-sofa-sets.html", category: "Trade Division", keywords: "sofa, sets, modular, ergonomic" },
-        { title: "Logistics & Supply Chain", url: "#services", category: "Service", keywords: "logistics, shipping, supply, cargo" },
-        { title: "Freight Forwarding", url: "#services", category: "Service", keywords: "freight, forwarding, air, sea, transport" },
-        { title: "Trade Facilitation", url: "#services", category: "Service", keywords: "trade, facilitation, business, entry, advisory" },
-        { title: "Customs Clearance", url: "#services", category: "Service", keywords: "customs, clearance, tax, papers" },
-        { title: "Transportation Services", url: "#services", category: "Service", keywords: "transport, trucks, shipping, terminal" },
-        { title: "Warehousing Solutions", url: "#services", category: "Service", keywords: "warehouse, storage, inventory" },
-        { title: "RFQ Desk & Contact", url: "#contact", category: "Support", keywords: "rfq, quote, contact, mail, phone" }
-    ];
-
-    const searchInput = document.getElementById('global-search-input');
-    const resultsDropdown = document.getElementById('search-results-dropdown');
-
-    if (searchInput && resultsDropdown) {
-        searchInput.addEventListener('input', (e) => {
-            const query = e.target.value.toLowerCase().trim();
-            resultsDropdown.innerHTML = '';
-
-            if (query.length < 2) {
-                resultsDropdown.classList.add('hidden');
-                return;
+    // الوظيفة الأساسية لجلب وتحميل ملفات الـ HTML الخارجية
+    async function loadComponent(elementId, filePath) {
+        const element = document.getElementById(elementId);
+        if (!element) return;
+        
+        try {
+            const response = await fetch(filePath);
+            if (!response.ok) {
+                throw new Error(`Could not load ${filePath}, status: ${response.status}`);
             }
-
-            // Filter entries using key lookups
-            const filteredResults = searchDatabase.filter(item => 
-                item.title.toLowerCase().includes(query) || 
-                item.keywords.toLowerCase().includes(query) ||
-                item.category.toLowerCase().includes(query)
-            );
-
-            if (filteredResults.length === 0) {
-                const emptyItem = document.createElement('div');
-                emptyItem.className = 'search-result-item';
-                emptyItem.innerHTML = `<span class="title">No matches found for "${e.target.value}"</span>`;
-                resultsDropdown.appendChild(emptyItem);
-            } else {
-                filteredResults.forEach(item => {
-                    const resultItem = document.createElement('div');
-                    resultItem.className = 'search-result-item';
-                    resultItem.innerHTML = `
-                        <span class="title">${item.title}</span>
-                        <span class="category">${item.category}</span>
-                    `;
-                    resultItem.addEventListener('click', () => {
-                        window.location.href = item.url;
-                        resultsDropdown.classList.add('hidden');
-                        searchInput.value = '';
-                    });
-                    resultsDropdown.appendChild(resultItem);
-                });
-            }
-
-            resultsDropdown.classList.remove('hidden');
-        });
-
-        // Close search list on clicking outside bounds
-        document.addEventListener('click', (e) => {
-            if (!searchInput.contains(e.target) && !resultsDropdown.contains(e.target)) {
-                resultsDropdown.classList.add('hidden');
-            }
-        });
+            const htmlText = await response.text();
+            element.innerHTML = htmlText;
+        } catch (error) {
+            console.error("Error loading component:", error);
+        }
     }
 
-    // --- Interactive Divisions Filtering ---
-    const filterButtons = document.querySelectorAll('.filter-tab-btn');
-    const productCards = document.querySelectorAll('.b2b-product-card');
+    // تشغيل عملية تحميل الهيدر والفوتر بشكل متوازي
+    async function initLayout() {
+        // إذا كانت الصفحة في مجلد فرعي (مثل pages)، قد تحتاج لتعديل المسار لـ "../header.html"
+        // الكود الحالي يفترض أن الصفحات والملفات المشتركة تقع في نفس المستوى الرئيسي.
+        let pathPrefix = "";
+        if (window.location.pathname.includes("/pages/") || window.location.pathname.includes("/ar/")) {
+            pathPrefix = "../";
+        }
 
-    filterButtons.forEach(btn => {
-        btn.addEventListener('click', () => {
-            // Toggle active filter button states
-            filterButtons.forEach(b => b.classList.remove('active'));
-            btn.classList.add('active');
+        await Promise.all([
+            loadComponent('header', pathPrefix + 'header.html'),
+            loadComponent('footer-placeholder', pathPrefix + 'footer.html')
+        ]);
 
-            const filterValue = btn.getAttribute('data-filter');
+        // بعد اكتمال تحميل المكونات، يتم تفعيل التفاعلات البرمجية المرتبطة بها
+        initializeInteractions();
+    }
 
-            productCards.forEach(card => {
-                const cardCategory = card.getAttribute('data-category');
+    // دالة تجميع كل العمليات التفاعلية بعد تحميل العناصر في الـ DOM
+    function initializeInteractions() {
 
-                if (filterValue === 'all' || cardCategory === filterValue) {
-                    card.classList.remove('hidden-card');
-                    card.style.display = 'block';
-                    setTimeout(() => {
-                        card.style.opacity = '1';
-                        card.style.transform = 'scale(1)';
-                    }, 50);
+        // --- Interactive Search System ---
+        const searchDatabase = [
+            { title: "Food Division", url: "pages/food-division.html", category: "Trade Division", keywords: "food, orange, export, corridor, sharjah" },
+            { title: "Hotel Supplies", url: "pages/hotel-supplies.html", category: "Trade Division", keywords: "hotel, premium, sheets, supplies, ports" },
+            { title: "Chemicals & Cosmetics", url: "pages/chemicals-cosmetics.html", category: "Trade Division", keywords: "chemicals, cosmetics, safety, alexandria, reach" },
+            { title: "OS&E Procurement", url: "pages/ose-procurement.html", category: "Trade Division", keywords: "ose, procurement, sourcing, cargo" },
+            { title: "Office Furniture", url: "pages/office-furniture.html", category: "Trade Division", keywords: "office, furniture, hardwood, desk, chairs, damietta" },
+            { title: "Banquet Furniture", url: "pages/banquet-furniture.html", category: "Trade Division", keywords: "banquet, furniture, hotel, luxury, stackable" },
+            { title: "Metal Beds & Lockers", url: "pages/metal-beds-lockers.html", category: "Trade Division", keywords: "metal, bed, locker, rust, accommodation" },
+            { title: "Staff Furniture", url: "pages/staff-furniture.html", category: "Trade Division", keywords: "staff, modular, desk, office" },
+            { title: "Staff Sofa Sets", url: "pages/staff-sofa-sets.html", category: "Trade Division", keywords: "sofa, sets, modular, ergonomic" },
+            { title: "Logistics & Supply Chain", url: "#services", category: "Service", keywords: "logistics, shipping, supply, cargo" },
+            { title: "Freight Forwarding", url: "#services", category: "Service", keywords: "freight, forwarding, air, sea, transport" },
+            { title: "Trade Facilitation", url: "#services", category: "Service", keywords: "trade, facilitation, business, entry, advisory" },
+            { title: "Customs Clearance", url: "#services", category: "Service", keywords: "customs, clearance, tax, papers" },
+            { title: "Transportation Services", url: "#services", category: "Service", keywords: "transport, trucks, shipping, terminal" },
+            { title: "Warehousing Solutions", url: "#services", category: "Service", keywords: "warehouse, storage, inventory" },
+            { title: "RFQ Desk & Contact", url: "#contact", category: "Support", keywords: "rfq, quote, contact, mail, phone" }
+        ];
+
+        const searchInput = document.getElementById('global-search-input');
+        const resultsDropdown = document.getElementById('search-results-dropdown');
+
+        if (searchInput && resultsDropdown) {
+            searchInput.addEventListener('input', (e) => {
+                const query = e.target.value.toLowerCase().trim();
+                resultsDropdown.innerHTML = '';
+
+                if (query.length < 2) {
+                    resultsDropdown.classList.add('hidden');
+                    return;
+                }
+
+                const filteredResults = searchDatabase.filter(item => 
+                    item.title.toLowerCase().includes(query) || 
+                    item.keywords.toLowerCase().includes(query) ||
+                    item.category.toLowerCase().includes(query)
+                );
+
+                if (filteredResults.length === 0) {
+                    const emptyItem = document.createElement('div');
+                    emptyItem.className = 'search-result-item';
+                    emptyItem.innerHTML = `<span class="title">No matches found for "${e.target.value}"</span>`;
+                    resultsDropdown.appendChild(emptyItem);
                 } else {
-                    card.style.opacity = '0';
-                    card.style.transform = 'scale(0.9)';
-                    setTimeout(() => {
-                        card.classList.add('hidden-card');
-                        card.style.display = 'none';
-                    }, 400); // Transitions align with CSS timing
+                    filteredResults.forEach(item => {
+                        const resultItem = document.createElement('div');
+                        resultItem.className = 'search-result-item';
+                        resultItem.innerHTML = `
+                            <span class="title">${item.title}</span>
+                            <span class="category">${item.category}</span>
+                        `;
+                        resultItem.addEventListener('click', () => {
+                            window.location.href = item.url;
+                            resultsDropdown.classList.add('hidden');
+                            searchInput.value = '';
+                        });
+                        resultsDropdown.appendChild(resultItem);
+                    });
+                }
+
+                resultsDropdown.classList.remove('hidden');
+            });
+
+            document.addEventListener('click', (e) => {
+                if (!searchInput.contains(e.target) && !resultsDropdown.contains(e.target)) {
+                    resultsDropdown.classList.add('hidden');
                 }
             });
-        });
-    });
+        }
 
-    // --- Smooth Anchor Navigation for "Our Trade Divisions" Trigger ---
-    const allCategoriesBtn = document.getElementById('all-categories-btn');
-    if (allCategoriesBtn) {
-        allCategoriesBtn.addEventListener('click', () => {
-            const divisionsSection = document.getElementById('divisions');
-            if (divisionsSection) {
-                divisionsSection.scrollIntoView({ behavior: 'smooth' });
-            }
+        // --- Interactive Divisions Filtering ---
+        const filterButtons = document.querySelectorAll('.filter-tab-btn');
+        const productCards = document.querySelectorAll('.b2b-product-card');
+
+        filterButtons.forEach(btn => {
+            btn.addEventListener('click', () => {
+                filterButtons.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+
+                const filterValue = btn.getAttribute('data-filter');
+
+                productCards.forEach(card => {
+                    const cardCategory = card.getAttribute('data-category');
+
+                    if (filterValue === 'all' || cardCategory === filterValue) {
+                        card.classList.remove('hidden-card');
+                        card.style.display = 'block';
+                        setTimeout(() => {
+                            card.style.opacity = '1';
+                            card.style.transform = 'scale(1)';
+                        }, 50);
+                    } else {
+                        card.style.opacity = '0';
+                        card.style.transform = 'scale(0.9)';
+                        setTimeout(() => {
+                            card.classList.add('hidden-card');
+                            card.style.display = 'none';
+                        }, 400);
+                    }
+                });
+            });
         });
+
+        // --- Smooth Anchor Navigation ---
+        const allCategoriesBtn = document.getElementById('all-categories-btn');
+        if (allCategoriesBtn) {
+            allCategoriesBtn.addEventListener('click', () => {
+                const divisionsSection = document.getElementById('divisions');
+                if (divisionsSection) {
+                    divisionsSection.scrollIntoView({ behavior: 'smooth' });
+                }
+            });
+        }
+
+        // --- Mobile Burger Menu Toggle ---
+        const hamburger = document.querySelector('.hamburger');
+        const mobileNav = document.querySelector('.mobile-nav');
+
+        if (hamburger && mobileNav) {
+            hamburger.addEventListener('click', () => {
+                mobileNav.classList.toggle('active');
+                hamburger.classList.toggle('active');
+            });
+        }
+
+        // --- Language Selector Dropdown ---
+        const langTrigger = document.getElementById('lang-trigger');
+        const langMenu = document.getElementById('lang-menu');
+
+        if (langTrigger && langMenu) {
+            langTrigger.addEventListener('click', (e) => {
+                e.stopPropagation();
+                langMenu.classList.toggle('active');
+            });
+        }
+
+        document.addEventListener('click', () => {
+            if (langMenu) langMenu.classList.remove('active');
+        });
+
+        // --- Dynamic Automatic Calendar Year ---
+        const currentYearSpan = document.getElementById('current-year');
+        if (currentYearSpan) {
+            currentYearSpan.textContent = new Date().getFullYear();
+        }
     }
+
+    // --- تشغيل دالة جلب المكونات كخطوة أولى ---
+    initLayout();
+
+    // ==========================================================================
+    // بقية الأكواد المستقلة (تعمل دون انتظار الهيدر والفوتر)
+    // ==========================================================================
 
     // --- Custom Interactive Cursor ---
     const cursor = document.getElementById('tech-cursor');
@@ -157,39 +232,6 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         }
     });
-
-    // --- Mobile Burger Menu Toggle ---
-    const hamburger = document.querySelector('.hamburger');
-    const mobileNav = document.querySelector('.mobile-nav');
-
-    if (hamburger && mobileNav) {
-        hamburger.addEventListener('click', () => {
-            mobileNav.classList.toggle('active');
-            hamburger.classList.toggle('active');
-        });
-    }
-
-    // --- Language Selector Dropdown ---
-    const langTrigger = document.getElementById('lang-trigger');
-    const langMenu = document.getElementById('lang-menu');
-
-    if (langTrigger && langMenu) {
-        langTrigger.addEventListener('click', (e) => {
-            e.stopPropagation();
-            langMenu.classList.toggle('active');
-        });
-    }
-
-    // Close Dropdown upon click outside bounds
-    document.addEventListener('click', () => {
-        if (langMenu) langMenu.classList.remove('active');
-    });
-
-    // --- Dynamic Automatic Calendar Year ---
-    const currentYearSpan = document.getElementById('current-year');
-    if (currentYearSpan) {
-        currentYearSpan.textContent = new Date().getFullYear();
-    }
 
     // --- FAQ Accordeon Slide mechanic ---
     const faqQuestions = document.querySelectorAll('.faq-question');
@@ -249,9 +291,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     };
 
-    // ==========================================================================
-    // AI SUPPORT CHAT MECHANICS
-    // ==========================================================================
+    // --- AI SUPPORT CHAT MECHANICS ---
     const chatToggle = document.getElementById('chat-toggle');
     const chatBox = document.getElementById('chat-box');
     const chatClose = document.getElementById('chat-close');
