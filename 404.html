@@ -7,11 +7,76 @@
     <link rel="stylesheet" href="css/style.css"> 
 </head>
 <body>
-    <!-- Header Block -->
-<header class="tech-header" id="header">
-    <!-- سيتم تحميل المحتوى ديناميكيًا هنا -->
-</header>
+    <!-- Top Utility Bar -->
+<div class="header-top-bar">
+    <div class="container top-bar-container">
+        <div class="top-bar-left">
+            <span><i class="fas fa-globe"></i> Multi-Market Trade Channel</span>
+        </div>
+        <div class="top-bar-right">
+            <a href="careers.html">Careers</a>
+            <a href="sectors.html">Our Sectors</a>
+            <a href="#contact">Help Center</a>
+        </div>
+    </div>
+</div>
 
+<!-- Main Search & Action Header -->
+<div class="container header-container">
+    <div class="logo">
+        <a href="index.html">
+            <img src="Al_Masriya_Al_Emaratiya_icon.png" class="brand-logo" alt="Al Massriya Al Emaratiya" onerror="this.onerror=null; this.src='https://via.placeholder.com/200x60/044da1/ffffff?text=LOGO+HERE';">
+        </a>
+    </div>
+    
+    <!-- Global Directory Search Bar -->
+    <div class="header-search-bar">
+        <div class="search-form-wrapper">
+            <form action="#divisions" method="GET" class="search-form" onsubmit="event.preventDefault();">
+                <div class="search-category-select">
+                    <span>Global Catalog</span>
+                </div>
+                <input type="text" placeholder="Search pages, services, or divisions..." id="global-search-input" autocomplete="off">
+                <button type="submit" class="search-btn">
+                    <i class="fas fa-search"></i>
+                </button>
+            </form>
+            <!-- Live Search Results Dropdown -->
+            <div id="search-results-dropdown" class="search-results-dropdown hidden"></div>
+        </div>
+    </div>
+    
+    <div class="header-actions">
+        <!-- Redirect Button -->
+        <a href="https://amae.egy-uae.com" target="_self" class="btn btn-outline-tech" id="marketplace-nav-btn">
+            <i class="fas fa-store"></i> <span class="marketplace-btn-text">Go to Marketplace</span>
+        </a>
+
+        <div class="hamburger">
+            <span></span><span></span><span></span>
+        </div>
+    </div>
+</div>
+
+<!-- Main Navigation Bar -->
+<nav class="desktop-nav">
+    <div class="container nav-container">
+        <div class="nav-left">
+            <div class="all-categories-trigger" id="all-categories-btn">
+                <i class="fas fa-bars"></i> Our Trade Divisions
+            </div>
+        </div>
+        <ul class="nav-links">
+            <li><a href="#home" class="active">Home</a></li>
+            <li><a href="#services">Services</a></li>
+            <li><a href="#divisions">Trade Catalog</a></li>
+            <li><a href="#about">About Architecture</a></li>
+            <li><a href="news.html">Market News</a></li>
+            <li><a href="#systems">Digital Systems</a></li>
+            <li><a href="#contact">RFQ Desk</a></li>
+        </ul>
+    </div>
+</nav>
 <!-- Mobile Navigation -->
 <nav class="mobile-nav glass-panel" id="mobile-nav-placeholder">
 
@@ -45,8 +110,59 @@
             </div>
         </div>
     </section>
-<footer class="tech-footer" id="footer-placeholder">
-</footer>
+    <div class="container footer-container-grid">
+    <div class="footer-brand-section">
+        <img src="Al_Masriya_Al_Emaratiya_icon.png" alt="Al Massriya Al Emaratiya Logo" class="brand-logo" onerror="this.onerror=null; this.src='https://via.placeholder.com/200x60/044da1/ffffff?text=LOGO+HERE';">
+        <p class="footer-desc">Your Integrated Gateway for Secure Trade & Commercial Pipelines Connecting Egypt and the UAE.</p>
+        <div class="social-links">
+            <a href="https://www.facebook.com/AlMasriyaAlEmaratiya" target="_blank" rel="noopener" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+            <a href="https://www.linkedin.com/company/egy-uae" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+            <a href="https://www.youtube.com/@egy-uae.channel" target="_blank" rel="noopener" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+        </div>
+    </div>
+
+    <div class="footer-links-group">
+        <h4 class="footer-section-title">Marketplace Index</h4>
+        <ul class="footer-ul-list">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#services">Operation Capacity</a></li>
+            <li><a href="#divisions">Trade Catalogs</a></li>
+            <li><a href="#about">Corporate Architecture</a></li>
+            <li><a href="news.html">Market News</a></li>
+            <li><a href="#contact">RFQ Desk</a></li>
+        </ul>
+    </div>
+
+    <div class="footer-links-group">
+        <h4 class="footer-section-title">Divisions Directory</h4>
+        <ul class="footer-ul-list">
+            <li><a href="pages/food-division.html">Food Division</a></li>
+            <li><a href="pages/hotel-supplies.html">Hotel Supplies</a></li>
+            <li><a href="pages/chemicals-cosmetics.html">Chemicals & Cosmetics</a></li>
+            <li><a href="pages/ose-procurement.html">OS&E Sourcing</a></li>
+            <li><a href="pages/office-furniture.html">Office Furniture</a></li>
+            <li><a href="pages/banquet-furniture.html">Banquet Furniture</a></li>
+        </ul>
+    </div>
+
+    <div class="footer-links-group footer-lang-wrap">
+        <h4 class="footer-section-title">Language & UI</h4>
+        <div class="footer-language custom-dropdown">
+            <div class="dropdown-trigger" id="lang-trigger">
+                <span><i class="fas fa-globe"></i> English</span>
+                <i class="fas fa-chevron-down arrow-icon"></i>
+            </div>
+            <ul class="dropdown-menu tech-dropdown" id="lang-menu">
+                <li><a href="index.html" class="active-lang">English</a></li>
+                <li><a href="ar/home.html">العربية</a></li>
+                <li><a href="home-cn.html">中文</a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+<div class="container footer-bottom-panel">
+    <p>© <span id="current-year"></span> Al Massriya Al Emaratiya. Integrated B2B Network Solutions. Powered by Tech OS.</p>
+</div>
     <script>
         // Tech Cursor Logic
         const cursor = document.getElementById('tech-cursor');
