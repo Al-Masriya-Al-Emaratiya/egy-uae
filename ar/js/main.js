@@ -1,204 +1,303 @@
-/**
- * Hybrid Tech UI Script
- * Includes: Custom Tech Cursor, Data Streams, Tilt effects, and UI Logic.
- */
+/* ==========================================================================
+   AL MASSRIYA AL EMARATIYA - CLIENT ENGINE (LIGHT EXCLUSIVE)
+   ========================================================================== */
 
 document.addEventListener('DOMContentLoaded', () => {
 
-    const qs = (selector) => document.querySelector(selector);
-    const qsa = (selector) => document.querySelectorAll(selector);
+    // --- Interactive Search System ---
+    const searchDatabase = [
+        { title: "Food Division", url: "pages/food-division.html", category: "Trade Division", keywords: "food, orange, export, corridor, sharjah" },
+        { title: "Hotel Supplies", url: "pages/hotel-supplies.html", category: "Trade Division", keywords: "hotel, premium, sheets, supplies, ports" },
+        { title: "Chemicals & Cosmetics", url: "pages/chemicals-cosmetics.html", category: "Trade Division", keywords: "chemicals, cosmetics, safety, alexandria, reach" },
+        { title: "OS&E Procurement", url: "pages/ose-procurement.html", category: "Trade Division", keywords: "ose, procurement, sourcing, cargo" },
+        { title: "Office Furniture", url: "pages/office-furniture.html", category: "Trade Division", keywords: "office, furniture, hardwood, desk, chairs, damietta" },
+        { title: "Banquet Furniture", url: "pages/banquet-furniture.html", category: "Trade Division", keywords: "banquet, furniture, hotel, luxury, stackable" },
+        { title: "Metal Beds & Lockers", url: "pages/metal-beds-lockers.html", category: "Trade Division", keywords: "metal, bed, locker, rust, accommodation" },
+        { title: "Staff Furniture", url: "pages/staff-furniture.html", category: "Trade Division", keywords: "staff, modular, desk, office" },
+        { title: "Staff Sofa Sets", url: "pages/staff-sofa-sets.html", category: "Trade Division", keywords: "sofa, sets, modular, ergonomic" },
+        { title: "Logistics & Supply Chain", url: "#services", category: "Service", keywords: "logistics, shipping, supply, cargo" },
+        { title: "Freight Forwarding", url: "#services", category: "Service", keywords: "freight, forwarding, air, sea, transport" },
+        { title: "Trade Facilitation", url: "#services", category: "Service", keywords: "trade, facilitation, business, entry, advisory" },
+        { title: "Customs Clearance", url: "#services", category: "Service", keywords: "customs, clearance, tax, papers" },
+        { title: "Transportation Services", url: "#services", category: "Service", keywords: "transport, trucks, shipping, terminal" },
+        { title: "Warehousing Solutions", url: "#services", category: "Service", keywords: "warehouse, storage, inventory" },
+        { title: "RFQ Desk & Contact", url: "#contact", category: "Support", keywords: "rfq, quote, contact, mail, phone" }
+    ];
 
-    // --- 1. Custom Tech Cursor (Crosshair/Square Style) ---
-const cursor = document.getElementById('tech-cursor');
-const follower = document.getElementById('tech-cursor-follower');
+    const searchInput = document.getElementById('global-search-input');
+    const resultsDropdown = document.getElementById('search-results-dropdown');
 
-document.addEventListener('mousemove', (e) => {
-    cursor.style.left = e.clientX + 'px';
-    cursor.style.top = e.clientY + 'px';
-    
-    setTimeout(() => {
-        follower.style.left = e.clientX + 'px';
-        follower.style.top = e.clientY + 'px';
-    }, 50);
-});
+    if (searchInput && resultsDropdown) {
+        searchInput.addEventListener('input', (e) => {
+            const query = e.target.value.toLowerCase().trim();
+            resultsDropdown.innerHTML = '';
 
-const interactiveElements = document.querySelectorAll('a, button, .faq-question, .dropdown-trigger, .profile-trigger, input, textarea');
-interactiveElements.forEach(el => {
-    el.addEventListener('mouseenter', () => {
-        document.body.classList.add('hover-interactive');
-    });
-    el.addEventListener('mouseleave', () => {
-        document.body.classList.remove('hover-interactive');
-    });
-});
+            if (query.length < 2) {
+                resultsDropdown.classList.add('hidden');
+                return;
+            }
 
-    // --- 2. Reading Progress Bar ---
-    const progressBar = qs('#progress-bar');
-    if (progressBar) {
-        window.addEventListener('scroll', () => {
-            const totalHeight = document.body.scrollHeight - window.innerHeight;
-            const progress = (window.scrollY / totalHeight) * 100;
-            progressBar.style.width = progress + '%';
+            // Filter entries using key lookups
+            const filteredResults = searchDatabase.filter(item => 
+                item.title.toLowerCase().includes(query) || 
+                item.keywords.toLowerCase().includes(query) ||
+                item.category.toLowerCase().includes(query)
+            );
+
+            if (filteredResults.length === 0) {
+                const emptyItem = document.createElement('div');
+                emptyItem.className = 'search-result-item';
+                emptyItem.innerHTML = `<span class="title">No matches found for "${e.target.value}"</span>`;
+                resultsDropdown.appendChild(emptyItem);
+            } else {
+                filteredResults.forEach(item => {
+                    const resultItem = document.createElement('div');
+                    resultItem.className = 'search-result-item';
+                    resultItem.innerHTML = `
+                        <span class="title">${item.title}</span>
+                        <span class="category">${item.category}</span>
+                    `;
+                    resultItem.addEventListener('click', () => {
+                        window.location.href = item.url;
+                        resultsDropdown.classList.add('hidden');
+                        searchInput.value = '';
+                    });
+                    resultsDropdown.appendChild(resultItem);
+                });
+            }
+
+            resultsDropdown.classList.remove('hidden');
+        });
+
+        // Close search list on clicking outside bounds
+        document.addEventListener('click', (e) => {
+            if (!searchInput.contains(e.target) && !resultsDropdown.contains(e.target)) {
+                resultsDropdown.classList.add('hidden');
+            }
         });
     }
 
-    // --- 3. Animated Data Streams (Matrix effect) ---
-    const linesContainer = qs('.animated-lines-container');
-    if (linesContainer) {
-        const createLine = () => {
-            if (qsa('.data-stream').length > 15) return; // Limit number of streams
-            const line = document.createElement('div');
-            line.classList.add('data-stream');
-            line.style.left = Math.random() * 100 + 'vw';
-            line.style.height = (50 + Math.random() * 150) + 'px'; // Random length
-            line.style.animationDuration = (3 + Math.random() * 5) + 's'; 
-            linesContainer.appendChild(line);
-            line.addEventListener('animationend', () => line.remove());
-        };
-        setInterval(createLine, 400); // Generate streams
-    }
+    // --- Interactive Divisions Filtering ---
+    const filterButtons = document.querySelectorAll('.filter-tab-btn');
+    const productCards = document.querySelectorAll('.b2b-product-card');
 
-    // --- 4. Auth State Logic ---
-    function checkLoginState() {
-        const isLoggedIn = localStorage.getItem('isLoggedIn') === 'true';
-        const dLogin = qs('#desktop-login-btn');
-        const dProfile = qs('#desktop-user-profile');
-        const mLogin = qs('#mobile-login-item');
-        const mProfile = qs('#mobile-profile-item');
+    filterButtons.forEach(btn => {
+        btn.addEventListener('click', () => {
+            // Toggle active filter button states
+            filterButtons.forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
 
-        if (isLoggedIn) {
-            if (dLogin) dLogin.classList.add('hidden');
-            if (dProfile) dProfile.classList.remove('hidden');
-            if (mLogin) mLogin.classList.add('hidden');
-            if (mProfile) mProfile.classList.remove('hidden');
-        } else {
-            if (dLogin) dLogin.classList.remove('hidden');
-            if (dProfile) dProfile.classList.add('hidden');
-            if (mLogin) mLogin.classList.remove('hidden');
-            if (mProfile) mProfile.classList.add('hidden');
-        }
-    }
-    checkLoginState();
-    
-    // Testing Function to simulate Login
-    window.login = function() { localStorage.setItem('isLoggedIn', 'true'); checkLoginState(); }; 
+            const filterValue = btn.getAttribute('data-filter');
 
-    qsa('#logout-btn, #mobile-logout-btn').forEach(btn => {
-        btn.addEventListener('click', (e) => {
-            e.preventDefault();
-            localStorage.removeItem('isLoggedIn');
-            checkLoginState();
-            window.location.href = 'index.html';
+            productCards.forEach(card => {
+                const cardCategory = card.getAttribute('data-category');
+
+                if (filterValue === 'all' || cardCategory === filterValue) {
+                    card.classList.remove('hidden-card');
+                    card.style.display = 'block';
+                    setTimeout(() => {
+                        card.style.opacity = '1';
+                        card.style.transform = 'scale(1)';
+                    }, 50);
+                } else {
+                    card.style.opacity = '0';
+                    card.style.transform = 'scale(0.9)';
+                    setTimeout(() => {
+                        card.classList.add('hidden-card');
+                        card.style.display = 'none';
+                    }, 400); // Transitions align with CSS timing
+                }
+            });
         });
     });
 
-    // --- 5. Dropdowns (Profile & Language) ---
-    const toggleDropdown = (triggerSelector, containerSelector) => {
-        const trigger = qs(triggerSelector);
-        const container = qs(containerSelector);
-        if (trigger && container) {
-            trigger.addEventListener('click', (e) => {
-                e.stopPropagation();
-                container.classList.toggle('active');
-            });
-            document.addEventListener('click', (e) => {
-                if (!container.contains(e.target)) container.classList.remove('active');
-            });
-        }
-    };
-    toggleDropdown('#profile-trigger', '.user-profile');
-    toggleDropdown('#lang-trigger', '.custom-dropdown');
+    // --- Smooth Anchor Navigation for "Our Trade Divisions" Trigger ---
+    const allCategoriesBtn = document.getElementById('all-categories-btn');
+    if (allCategoriesBtn) {
+        allCategoriesBtn.addEventListener('click', () => {
+            const divisionsSection = document.getElementById('divisions');
+            if (divisionsSection) {
+                divisionsSection.scrollIntoView({ behavior: 'smooth' });
+            }
+        });
+    }
 
-    // --- 6. Mobile Nav & Sticky Header ---
-    const header = qs('#header');
-    const sections = qsa('section');
-    const navLinks = qsa('.desktop-nav a');
-    
+    // --- Custom Interactive Cursor ---
+    const cursor = document.getElementById('tech-cursor');
+    const follower = document.getElementById('tech-cursor-follower');
+
+    if (cursor && follower) {
+        document.addEventListener('mousemove', (e) => {
+            cursor.style.left = e.clientX + 'px';
+            cursor.style.top = e.clientY + 'px';
+            
+            setTimeout(() => {
+                follower.style.left = e.clientX + 'px';
+                follower.style.top = e.clientY + 'px';
+            }, 50);
+        });
+    }
+
+    // --- Window Scroll Progress Indicator ---
     window.addEventListener('scroll', () => {
-        if (window.scrollY > 50) header.classList.add('scrolled');
-        else header.classList.remove('scrolled');
+        const winScroll = document.documentElement.scrollTop || document.body.scrollTop;
+        const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+        const scrolled = (winScroll / height) * 100;
+        const progressBar = document.getElementById('progress-bar');
+        if (progressBar) {
+            progressBar.style.width = scrolled + '%';
+        }
 
-        let current = '';
-        sections.forEach(sec => {
-            if (window.scrollY >= sec.offsetTop - 150) current = sec.getAttribute('id');
-        });
-        navLinks.forEach(link => {
-            link.classList.remove('active');
-            if (link.getAttribute('href') === `#${current}`) link.classList.add('active');
-        });
+        const header = document.getElementById('header');
+        if (header) {
+            if (winScroll > 50) {
+                header.style.padding = '8px 0';
+            } else {
+                header.style.padding = '15px 0';
+            }
+        }
     });
 
-    const hamburger = qs('.hamburger');
-    const mobileNav = qs('.mobile-nav');
+    // --- Mobile Burger Menu Toggle ---
+    const hamburger = document.querySelector('.hamburger');
+    const mobileNav = document.querySelector('.mobile-nav');
+
     if (hamburger && mobileNav) {
         hamburger.addEventListener('click', () => {
-            hamburger.classList.toggle('active');
             mobileNav.classList.toggle('active');
-        });
-        qsa('.mobile-links a').forEach(link => {
-            link.addEventListener('click', () => {
-                hamburger.classList.remove('active');
-                mobileNav.classList.remove('active');
-            });
+            hamburger.classList.toggle('active');
         });
     }
 
-    // --- 7. FAQ Accordion ---
-    qsa('.faq-question').forEach(q => {
-        q.addEventListener('click', () => {
-            const item = q.parentElement;
-            qsa('.faq-item').forEach(i => { if (i !== item) i.classList.remove('active'); });
-            item.classList.toggle('active');
+    // --- Language Selector Dropdown ---
+    const langTrigger = document.getElementById('lang-trigger');
+    const langMenu = document.getElementById('lang-menu');
+
+    if (langTrigger && langMenu) {
+        langTrigger.addEventListener('click', (e) => {
+            e.stopPropagation();
+            langMenu.classList.toggle('active');
+        });
+    }
+
+    // Close Dropdown upon click outside bounds
+    document.addEventListener('click', () => {
+        if (langMenu) langMenu.classList.remove('active');
+    });
+
+    // --- Dynamic Automatic Calendar Year ---
+    const currentYearSpan = document.getElementById('current-year');
+    if (currentYearSpan) {
+        currentYearSpan.textContent = new Date().getFullYear();
+    }
+
+    // --- FAQ Accordeon Slide mechanic ---
+    const faqQuestions = document.querySelectorAll('.faq-question');
+    faqQuestions.forEach(question => {
+        question.addEventListener('click', () => {
+            const parent = question.parentElement;
+            parent.classList.toggle('active');
         });
     });
 
-    // --- 8. Tech Chat Widget Logic ---
-    const chatToggle = qs('#chat-toggle'), chatBox = qs('#chat-box'), chatClose = qs('#chat-close');
-    const chatInput = qs('#chat-input'), chatSend = qs('#chat-send'), chatBody = qs('#chat-body');
-    
-    if (chatToggle) chatToggle.addEventListener('click', () => chatBox.classList.add('active'));
-    if (chatClose) chatClose.addEventListener('click', () => chatBox.classList.remove('active'));
-    
-    const sendMsg = () => {
-        const text = chatInput.value.trim();
-        if (text) {
-            chatBody.innerHTML += `<div class="message outgoing"><p>${text}</p></div>`;
-            chatInput.value = '';
-            chatBody.scrollTop = chatBody.scrollHeight;
-            
-            // AI Simulation Response
-            setTimeout(() => {
-                chatBody.innerHTML += `<div class="message incoming"><p>Data received securely. A specialist will sync with you shortly.</p></div>`;
-                chatBody.scrollTop = chatBody.scrollHeight;
-            }, 1000);
-        }
-    };
-    if (chatSend) chatSend.addEventListener('click', sendMsg);
-    if (chatInput) chatInput.addEventListener('keypress', (e) => { if(e.key === 'Enter') sendMsg(); });
-
-    // Dynamic Year Update
-    const yearSpan = qs('#current-year');
-    if (yearSpan) yearSpan.textContent = new Date().getFullYear();
-
-    // --- 9. Libraries Initialization ---
+    // --- Init AOS (Animate On Scroll) ---
     if (typeof AOS !== 'undefined') {
-        AOS.init({ duration: 800, once: true, offset: 50 });
-    }
-    
-    if (typeof Swiper !== 'undefined' && qs('.testimonial-slider')) {
-        new Swiper('.testimonial-slider', {
-            loop: true, 
-            autoplay: { delay: 5000 },
-            pagination: { el: '.swiper-pagination', clickable: true }
+        AOS.init({
+            duration: 1000,
+            once: true,
+            offset: 120
         });
     }
 
+    // --- Init Swiper Testimonials Slider ---
+    if (typeof Swiper !== 'undefined') {
+        new Swiper('.testimonial-slider', {
+            slidesPerView: 1,
+            spaceBetween: 30,
+            loop: true,
+            pagination: {
+                el: '.swiper-pagination',
+                clickable: true,
+            },
+            breakpoints: {
+                768: {
+                    slidesPerView: 2,
+                }
+            }
+        });
+    }
+
+    // --- Init Vanilla Tilt for Dashboard consoles ---
     if (typeof VanillaTilt !== 'undefined') {
-        VanillaTilt.init(document.querySelectorAll(".tilt-card"), { 
-            max: 5, 
+        VanillaTilt.init(document.querySelectorAll('.tilt-card'), {
+            max: 10,
             speed: 400,
             glare: true,
             "max-glare": 0.2
+        });
+    }
+
+    // --- Quick Sourcing Selection Auto-fill ---
+    window.setRFQCategory = function(categoryName) {
+        const rfqInput = document.getElementById('rfq-division-subject');
+        const contactSection = document.getElementById('contact');
+        if (rfqInput) {
+            rfqInput.value = `Sourcing inquiry regarding: ${categoryName}`;
+        }
+        if (contactSection) {
+            contactSection.scrollIntoView({ behavior: 'smooth' });
+        }
+    };
+
+    // ==========================================================================
+    // AI SUPPORT CHAT MECHANICS
+    // ==========================================================================
+    const chatToggle = document.getElementById('chat-toggle');
+    const chatBox = document.getElementById('chat-box');
+    const chatClose = document.getElementById('chat-close');
+    const chatInput = document.getElementById('chat-input');
+    const chatSend = document.getElementById('chat-send');
+    const chatBody = document.getElementById('chat-body');
+
+    if (chatToggle && chatBox) {
+        chatToggle.addEventListener('click', () => chatBox.classList.toggle('active'));
+    }
+    if (chatClose && chatBox) {
+        chatClose.addEventListener('click', () => chatBox.classList.remove('active'));
+    }
+
+    const appendMessage = (text, type = 'outgoing') => {
+        const msgElement = document.createElement('div');
+        msgElement.className = `message ${type}`;
+        msgElement.innerHTML = `<p>${text}</p>`;
+        if (chatBody) {
+            chatBody.appendChild(msgElement);
+            chatBody.scrollTop = chatBody.scrollHeight;
+        }
+    };
+
+    const handleSendMessage = () => {
+        const text = chatInput.value.trim();
+        if (!text) return;
+
+        appendMessage(text, 'outgoing');
+        chatInput.value = '';
+
+        setTimeout(() => {
+            let aiReply = "Connecting queries with Egypt & UAE databases... How may we help you configure your sourcing line?";
+            if (text.toLowerCase().includes('food')) {
+                aiReply = "Our Food Division specializes in exporting Egyptian citrus, dry goods, and imports to Dubai. Select 'Source Division' in our Directory to directly initialize cargo.";
+            } else if (text.toLowerCase().includes('furniture')) {
+                aiReply = "We manage high-density bulk cargo for Banquet and Office furniture directly out of premium Damietta ports to UAE hubs.";
+            }
+            appendMessage(aiReply, 'incoming');
+        }, 1000);
+    };
+
+    if (chatSend && chatInput) {
+        chatSend.addEventListener('click', handleSendMessage);
+        chatInput.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') handleSendMessage();
         });
     }
 });
