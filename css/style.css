@@ -386,7 +386,7 @@ a {
     box-shadow: 0 8px 24px var(--accent-glow);
 }
 .btn-outline-tech {
-    background: #ffffff44;
+    background: transparent;
     color: var(--text-primary);
     border: 1px solid var(--border);
 }
@@ -399,17 +399,13 @@ a {
 /* Cinematic Hero */
 .immersive-hero {
     position: relative;
-    min-height: 100vh; 
+    height: 80vh;
     width: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
     overflow: hidden;
-    padding-top: 150px; 
-    padding-bottom: 80px;
-    box-sizing: border-box;
 }
-
 .immersive-hero-media {
     position: absolute;
     top: 0;
@@ -418,83 +414,59 @@ a {
     height: 100%;
     z-index: 1;
 }
-
 .immersive-hero-media video {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    filter: brightness(0.3) contrast(1.15); 
+    filter: brightness(0.45) contrast(1.05);
 }
-
 .immersive-hero-overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(3, 6, 8, 0.25); 
-    z-index: 2;
-}
-
-.immersive-hero::after {
-    content: '';
     position: absolute;
     bottom: 0;
     left: 0;
     width: 100%;
-    height: 180px;
-    background: linear-gradient(to top, var(--bg-dark) 0%, rgba(245, 247, 251, 0.5) 60%, transparent 100%);
+    height: 60%;
+    background: linear-gradient(to top, var(--bg-dark), transparent);
     z-index: 2;
-    pointer-events: none;
 }
-
 .immersive-hero-content {
     position: relative;
     z-index: 3;
     max-width: 900px;
     text-align: center;
     padding: 0 20px;
+    margin-top: 80px;
 }
-
 .immersive-hero-content h1 {
-    font-size: clamp(2.2rem, 5.5vw, 4rem) !important;
+    font-size: clamp(2.5rem, 6vw, 4rem);
     font-weight: 800;
-    line-height: 1.15;
+    line-height: 1.1;
     letter-spacing: -1.5px;
-    color: #ffffff !important; 
-    text-shadow: 0 4px 20px rgba(0, 0, 0, 0.75), 0 2px 4px rgba(0, 0, 0, 0.5); 
-    margin-bottom: 20px;
+    color: #ffffff;
 }
-
 .immersive-hero-content p {
-    font-size: clamp(0.95rem, 2vw, 1.15rem) !important;
-    color: rgba(255, 255, 255, 0.95) !important; 
-    text-shadow: 0 2px 12px rgba(0, 0, 0, 0.8); 
-    margin-bottom: 2.5rem;
-    font-weight: 400;
-    line-height: 1.6;
+    font-size: clamp(1rem, 2vw, 1.15rem);
+    color: rgba(255, 255, 255, 0.85);
+    margin-bottom: 2rem;
+    font-weight: 300;
 }
-
 .tech-badge {
     background: rgba(4, 77, 161, 0.25);
     border: 1px solid rgba(4, 77, 161, 0.4);
-    color: #ffffff !important;
+    color: #ffffff;
     display: inline-flex;
     padding: 6px 15px;
     border-radius: 30px;
     margin-bottom: 20px;
     font-size: 0.82rem;
-    font-weight: 600;
-    text-shadow: 0 1px 3px rgba(0,0,0,0.3);
 }
-
 .hero-actions-container {
     display: flex;
     gap: 15px;
     justify-content: center;
     flex-wrap: wrap;
-    z-index: 4;
 }
+
 /* Loop Marquee */
 .marquee-ticker {
     overflow: hidden;
@@ -1010,5 +982,124 @@ a {
     .footer-container-grid {
         grid-template-columns: 1fr;
         gap: 35px;
+    }
+}
+
+/* Chat widgets Support */
+.chat-widget {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    z-index: 1000;
+}
+.chat-btn {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--primary), var(--accent));
+    color: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    cursor: pointer;
+    border: none;
+    box-shadow: 0 10px 30px var(--accent-glow);
+}
+.chat-container {
+    position: absolute;
+    bottom: 80px;
+    right: 0;
+    width: 380px;
+    height: 500px;
+    background: var(--modal-bg);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    opacity: 0;
+    pointer-events: none;
+    transform: translateY(20px);
+    transition: var(--transition);
+}
+.chat-container.active {
+    opacity: 1;
+    pointer-events: auto;
+    transform: translateY(0);
+}
+.chat-header {
+    background: var(--bg-card-hover);
+    border-bottom: 1px solid var(--border);
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.chat-close {
+    background: transparent;
+    border: none;
+    color: var(--text-primary);
+    font-size: 1.2rem;
+    cursor: pointer;
+}
+.chat-body {
+    flex: 1;
+    padding: 20px;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+.message {
+    max-width: 80%;
+    padding: 12px 18px;
+    border-radius: 15px;
+    font-size: 0.9rem;
+}
+.message.incoming {
+    background: var(--bg-card-hover);
+    color: var(--text-primary);
+    align-self: flex-start;
+    border-bottom-left-radius: 2px;
+}
+.message.outgoing {
+    background: var(--accent);
+    color: #ffffff;
+    align-self: flex-end;
+    border-bottom-right-radius: 2px;
+}
+.chat-footer {
+    padding: 15px 20px;
+    display: flex;
+    gap: 10px;
+    border-top: 1px solid var(--border);
+}
+.chat-footer input {
+    flex: 1;
+    background: var(--input-bg);
+    border: 1px solid var(--border);
+    border-radius: 30px;
+    padding: 12px 20px;
+    color: var(--text-primary);
+    outline: none;
+}
+.chat-footer button {
+    background: var(--accent);
+    border: none;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    color: #ffffff;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+@media (max-width: 480px) {
+    .chat-container {
+        width: calc(100vw - 40px);
+        right: -10px;
     }
 }
