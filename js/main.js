@@ -1,10 +1,5 @@
-/* ==========================================================================
-   AL MASSRIYA AL EMARATIYA - CLIENT ENGINE (LIGHT EXCLUSIVE)
-   ========================================================================== */
-
 document.addEventListener('DOMContentLoaded', () => {
 
-    // الوظيفة الأساسية لجلب وتحميل ملفات الـ HTML الخارجية
     async function loadComponent(elementId, filePath) {
         const element = document.getElementById(elementId);
         if (!element) return;
@@ -21,10 +16,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    // تشغيل عملية تحميل الهيدر والفوتر بشكل متوازي
     async function initLayout() {
-        // إذا كانت الصفحة في مجلد فرعي (مثل pages)، قد تحتاج لتعديل المسار لـ "../header.html"
-        // الكود الحالي يفترض أن الصفحات والملفات المشتركة تقع في نفس المستوى الرئيسي.
         let pathPrefix = "";
         if (window.location.pathname.includes("/pages/") || window.location.pathname.includes("/ar/")) {
             pathPrefix = "../";
@@ -35,11 +27,9 @@ document.addEventListener('DOMContentLoaded', () => {
             loadComponent('footer-placeholder', pathPrefix + 'footer.html')
         ]);
 
-        // بعد اكتمال تحميل المكونات، يتم تفعيل التفاعلات البرمجية المرتبطة بها
         initializeInteractions();
     }
 
-    // دالة تجميع كل العمليات التفاعلية بعد تحميل العناصر في الـ DOM
     function initializeInteractions() {
 
         // --- Interactive Search System ---
