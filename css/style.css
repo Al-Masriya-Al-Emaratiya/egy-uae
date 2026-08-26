@@ -127,7 +127,7 @@ a {
     font-weight: 800;
 }
 
-/* Header & Nav */
+/* Header & Nav with Alignment Fixes */
 .tech-header {
     background: var(--header-bg);
     backdrop-filter: blur(20px);
@@ -151,6 +151,20 @@ a {
     justify-content: space-between;
     align-items: center;
 }
+.top-bar-left {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+.top-bar-left span {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+}
+.top-bar-left span i {
+    font-size: 0.85rem;
+    transform: translateY(0px);
+}
 .top-bar-right {
     display: flex;
     align-items: center;
@@ -158,6 +172,8 @@ a {
 }
 .top-bar-right a {
     color: var(--text-muted);
+    display: inline-flex;
+    align-items: center;
 }
 .top-bar-right a:hover {
     color: var(--accent);
@@ -277,7 +293,7 @@ a {
     font-weight: 700;
 }
 
-/* Nav links */
+/* Nav links with Icon Alignment */
 .desktop-nav {
     border-top: 1px solid var(--border);
     padding: 12px 0;
@@ -291,11 +307,14 @@ a {
     font-size: 0.85rem;
     font-weight: 600;
     cursor: pointer;
-    display: flex;
+    display: inline-flex;
     align-items: center;
     gap: 8px;
     color: var(--primary);
     transition: var(--transition);
+}
+.all-categories-trigger i {
+    font-size: 0.95rem;
 }
 .all-categories-trigger:hover {
     color: var(--accent);
@@ -375,6 +394,9 @@ a {
     border: 1px solid transparent;
     cursor: pointer;
     transition: var(--transition);
+}
+.btn i {
+    font-size: 0.85rem;
 }
 .btn-tech {
     background: var(--primary);
@@ -480,6 +502,8 @@ a {
     border: 1px solid rgba(4, 77, 161, 0.4);
     color: #ffffff !important;
     display: inline-flex;
+    align-items: center;
+    gap: 8px;
     padding: 6px 15px;
     border-radius: 30px;
     margin-bottom: 20px;
@@ -495,6 +519,7 @@ a {
     flex-wrap: wrap;
     z-index: 4;
 }
+
 /* Loop Marquee */
 .marquee-ticker {
     overflow: hidden;
@@ -520,7 +545,7 @@ a {
     100% { transform: translate3d(-50%, 0, 0); }
 }
 
-/* Trust Bar */
+/* Trust Bar with Perfect Alignment */
 .trust-features-bar {
     padding: 80px 0;
     border-bottom: 1px solid var(--border);
@@ -533,7 +558,7 @@ a {
 .trust-item {
     display: flex;
     gap: 20px;
-    align-items: flex-start;
+    align-items: center;
 }
 .icon-indicator {
     background: rgba(4, 77, 161, 0.05);
@@ -541,11 +566,12 @@ a {
     width: 60px;
     height: 60px;
     border-radius: 16px;
-    display: flex;
+    display: inline-flex;
     align-items: center;
     justify-content: center;
     font-size: 1.5rem;
     color: var(--accent);
+    flex-shrink: 0;
 }
 
 /* Global Sections */
@@ -610,6 +636,8 @@ a {
     color: var(--accent);
     margin-bottom: 18px;
     transition: var(--transition);
+    display: inline-flex;
+    align-items: center;
 }
 .service-image-card:hover .icon-box {
     transform: translateY(-5px);
@@ -722,14 +750,42 @@ a {
     margin-bottom: 5px;
     color: #ffffff;
 }
-.route-info, .product-meta {
+.route-info {
+    font-size: 0.85rem;
+    color: #ffffff;
+    opacity: 0.9;
+    margin-bottom: 15px;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+}
+.route-info i {
+    font-size: 0.9rem;
+}
+.product-meta {
     font-size: 0.85rem;
     color: #ffffff;
     opacity: 0.9;
     margin-bottom: 15px;
 }
 
-/* Horizontal core values cards */
+/* Horizontal core values cards with Alignment */
+.about-seo-intro-card {
+    text-align: center;
+    max-width: 850px;
+    margin: 0 auto 50px auto;
+    font-size: 1.08rem;
+    line-height: 1.8;
+    color: var(--text-primary);
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    padding: 25px 35px;
+    border-radius: 16px;
+    box-shadow: 0 4px 20px rgba(4, 77, 161, 0.02);
+}
+.about-seo-intro-card strong {
+    color: var(--primary);
+}
 .value-item.tech-card-horizontal {
     background: var(--bg-card);
     border: 1px solid var(--border);
@@ -751,6 +807,12 @@ a {
     height: 100%;
     object-fit: cover;
 }
+.value-text-block h3 {
+    font-size: 1.25rem;
+    font-weight: 700;
+    margin-bottom: 8px;
+    color: var(--text-primary);
+}
 
 /* Systems consoles */
 .dark-tech-section {
@@ -771,19 +833,23 @@ a {
     font-size: 2.5rem;
     color: var(--accent);
     margin-bottom: 20px;
+    display: inline-flex;
+    align-items: center;
 }
 .sys-link {
     color: var(--primary);
     font-size: 0.85rem;
     font-weight: 700;
     margin-top: 20px;
-    display: inline-block;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
 }
 .sys-link:hover {
     color: var(--accent);
 }
 
-/* Testimonials & FAQ items */
+/* Testimonials & FAQ items with Alignment Fixes */
 .testimonial-card {
     background: var(--bg-card);
     border: 1px solid var(--border);
@@ -794,7 +860,8 @@ a {
     font-size: 2rem;
     color: var(--accent);
     margin-bottom: 20px;
-    display: block;
+    display: inline-flex;
+    align-items: center;
 }
 .faq-container {
     display: flex;
@@ -816,6 +883,10 @@ a {
     font-size: 1.1rem;
     font-weight: 600;
 }
+.faq-question i {
+    font-size: 1rem;
+    transition: transform 0.4s ease;
+}
 .faq-answer {
     max-height: 0;
     overflow: hidden;
@@ -830,7 +901,26 @@ a {
     color: var(--accent);
 }
 
-/* Contact cards Form */
+/* Contact Info Icon Alignment Fix */
+.contact-info .info-item {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 18px;
+    font-size: 0.95rem;
+}
+.contact-info .info-item i {
+    font-size: 1.1rem;
+    color: var(--accent);
+    width: 20px;
+    text-align: center;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+/* Contact forms Input Alignment */
 .contact-form-container {
     background: var(--bg-card);
     border: 1px solid var(--border);
@@ -840,16 +930,19 @@ a {
 .input-group {
     position: relative;
     margin-bottom: 20px;
+    display: flex;
+    align-items: center;
 }
 .input-group i {
     position: absolute;
     left: 20px;
-    top: 50%;
-    transform: translateY(-50%);
     color: var(--text-muted);
-}
-.input-group textarea ~ i {
-    top: 25px;
+    pointer-events: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 16px;
+    height: 16px;
 }
 .input-group input, .input-group textarea {
     width: 100%;
@@ -864,6 +957,10 @@ a {
 }
 .input-group input:focus, .input-group textarea:focus {
     border-color: var(--primary);
+}
+.input-group textarea ~ i {
+    top: 22px;
+    transform: none;
 }
 
 /* Dropdowns triggers Languages */
@@ -933,8 +1030,8 @@ a {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    opacity: 0.40; /* زيادة الشفافية وتوضيح الخلفية */
-    filter: grayscale(100%) brightness(1.1); /* توازن هادئ */
+    opacity: 0.40; 
+    filter: grayscale(100%) brightness(1.1); 
 }
 .footer-overlay {
     position: absolute;
@@ -942,7 +1039,7 @@ a {
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(245, 247, 251, 0.72); /* فلتر مريح يعزز سهولة قراءة النصوص */
+    background: rgba(245, 247, 251, 0.72); 
     z-index: 2;
     pointer-events: none;
 }
@@ -1177,6 +1274,33 @@ a {
 .align-items-center {
     align-items: center;
 }
+.features-list {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+.feature-item {
+    display: flex;
+    gap: 15px;
+    align-items: center;
+}
+.feature-item .icon-indicator {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 45px;
+    height: 45px;
+    font-size: 1.1rem;
+    flex-shrink: 0;
+}
+.feature-text h4 {
+    font-size: 0.95rem;
+    font-weight: 700;
+}
+.feature-text p {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+}
 .portrait-video-wrapper {
     display: flex;
     justify-content: center;
@@ -1186,8 +1310,8 @@ a {
 .portrait-phone-frame {
     position: relative;
     width: 100%;
-    max-width: 320px; /* العرض الطولي المثالي للهواتف */
-    aspect-ratio: 9 / 16; /* النسبة الطولية الاحترافية للفيديو */
+    max-width: 320px; 
+    aspect-ratio: 9 / 16; 
     border-radius: 40px;
     overflow: hidden;
     box-shadow: 0 25px 60px rgba(4, 77, 161, 0.12);
@@ -1207,4 +1331,108 @@ a {
     height: 100%;
     background: linear-gradient(to top, rgba(4, 77, 161, 0.15) 0%, transparent 50%);
     pointer-events: none;
+}
+
+/* ==========================================================================
+   CLIENT & PARTNER INFINITE MARQUEE SLIDERS
+   ========================================================================== */
+.ecosystem-section {
+    background: var(--bg-card);
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+}
+.ecosystem-wrapper {
+    margin-bottom: 50px;
+}
+.ecosystem-wrapper:last-child {
+    margin-bottom: 0;
+}
+.ecosystem-row-title {
+    font-size: 1.1rem;
+    font-weight: 700;
+    margin-bottom: 20px;
+    color: var(--text-primary);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.ecosystem-row-title i {
+    color: var(--accent);
+    font-size: 1.15rem;
+}
+.logo-marquee-container {
+    width: 100%;
+    overflow: hidden;
+    background: var(--bg-dark);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 25px 0;
+    position: relative;
+    display: flex;
+}
+.logo-marquee-container::before,
+.logo-marquee-container::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    width: 120px;
+    height: 100%;
+    z-index: 2;
+    pointer-events: none;
+}
+.logo-marquee-container::before {
+    left: 0;
+    background: linear-gradient(to right, var(--bg-dark) 0%, transparent 100%);
+}
+.logo-marquee-container::after {
+    right: 0;
+    background: linear-gradient(to left, var(--bg-dark) 0%, transparent 100%);
+}
+.logo-marquee-track {
+    display: flex;
+    width: max-content;
+    gap: 50px;
+    align-items: center;
+    will-change: transform;
+}
+.track-left {
+    animation: scrollMarqueeLeft 30s linear infinite;
+}
+.track-right {
+    animation: scrollMarqueeRight 30s linear infinite;
+}
+.logo-item {
+    width: 160px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+.logo-item img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+    filter: grayscale(100%) opacity(0.65);
+    transition: var(--transition);
+}
+.logo-item img:hover {
+    filter: grayscale(0%) opacity(1);
+}
+
+@keyframes scrollMarqueeLeft {
+    0% {
+        transform: translate3d(0, 0, 0);
+    }
+    100% {
+        transform: translate3d(calc(-50% - 25px), 0, 0);
+    }
+}
+@keyframes scrollMarqueeRight {
+    0% {
+        transform: translate3d(calc(-50% - 25px), 0, 0);
+    }
+    100% {
+        transform: translate3d(0, 0, 0);
+    }
 }
