@@ -1,0 +1,59 @@
+{
+  "intents": [
+    {
+      "tag": "greetings",
+      "keywords": ["hello", "hi", "hey", "greetings", "welcome", "dear", "مرحبا", "أهلاً", "سلام"],
+      "responses": [
+        "Welcome to Al Massriya Al Emaratiya Support. Connection established. How can we assist your trade operations today?",
+        "Hello! How can we help you configure your sourcing line or logistics route between Egypt and UAE today?"
+      ]
+    },
+    {
+      "tag": "food_division",
+      "keywords": ["food", "citrus", "orange", "dry goods", "agriculture", "crops", "أغذية", "طعام", "برتقال", "زراعي"],
+      "responses": [
+        "Our Food Division specializes in exporting high-quality Egyptian agricultural products, citrus, and dry goods from our Cairo terminals to the Sharjah hub in the UAE. You can request pricing by launching an RFQ below."
+      ]
+    },
+    {
+      "tag": "furniture_division",
+      "keywords": ["furniture", "office", "banquet", "sofa", "wood", "damietta", "hardwood", "modular", "chair", "desk", "أثاث", "مكتب", "مكتبة", "خشب", "دمياط"],
+      "responses": [
+        "We source premium solid hardwoods and modular office/banquet furniture directly out of Damietta Port to UAE distribution networks. Use the RFQ Desk below to transmit your container volume requirements."
+      ]
+    },
+    {
+      "tag": "chemicals_cosmetics",
+      "keywords": ["chemical", "cosmetics", "safety", "alexandria", "reach", "soap", "detergent", "كيميائية", "مستحضرات", "تجميل", "منظفات"],
+      "responses": [
+        "Our Chemicals & Cosmetics division handles fully certified compliance (REACH / REACH-EG) shipping from Alexandria to Khalifa Port, ensuring industrial safety standard packing."
+      ]
+    },
+    {
+      "tag": "logistics_services",
+      "keywords": ["logistics", "shipping", "forwarding", "freight", "cargo", "ocean", "air", "clearance", "customs", "شحن", "لوجستيات", "تخليص", "جمرك"],
+      "responses": [
+        "We provide integrated sea and air freight forwarding, customs clearance, and domestic transport networks inside Egypt and the UAE. Track your status via our Digital Systems or access our RFQ panel."
+      ]
+    },
+    {
+      "tag": "tracking_dashboard",
+      "keywords": ["track", "status", "dashboard", "portal", "system", "analytics", "terminal", "تتبع", "نظام", "لوحة", "شحنة"],
+      "responses": [
+        "You can monitor your active trade routes and documents via our 'Trade Operations Interface' links (Smart Tracking, Analytics Dashboard, or Client Portal) featured in our systems section."
+      ]
+    },
+    {
+      "tag": "rfq_contact",
+      "keywords": ["rfq", "quote", "contact", "email", "phone", "location", "address", "egy-uae.com", "تواصل", "اتصال", "بريد", "هاتف", "عنوان"],
+      "responses": [
+        "Our physical desks are located in 10th of Ramadan (Egypt) and Sharjah (UAE). You can contact us via info@egy-uae.com, call +20 101 176 6232, or submit the RFQ form on this page directly."
+      ]
+    }
+  ],
+  "fallbacks": [
+    "I understand you have a trade query. Could you please specify if it relates to Logistics, Food Division, Furniture, or RFQ requests?",
+    "To help you configure your sourcing corridor, please mention keywords like 'shipping', 'tracking', 'furniture', 'food', or 'RFQ'.",
+    "Connection active. You can also directly type your specifications into our 'Launch Trade RFQ Panel' on this page for a formal response."
+  ]
+}
