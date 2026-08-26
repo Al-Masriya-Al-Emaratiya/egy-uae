@@ -1,3 +1,6 @@
+/* ==========================================================================
+   AL MASSRIYA AL EMARATIYA - LIGHT MODE STYLE SHEET
+   ========================================================================== */
 
 :root {
     --bg-dark: #f5f7fb;
@@ -930,8 +933,8 @@ a {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    opacity: 0.50; /* زيادة الشفافية  */
-    filter: grayscale(80%) brightness(1.15); /* توازن الألوان ليناسب الطابع الهادئ */
+    opacity: 0.40; /* زيادة الشفافية وتوضيح الخلفية */
+    filter: grayscale(100%) brightness(1.1); /* توازن هادئ */
 }
 .footer-overlay {
     position: absolute;
@@ -939,14 +942,14 @@ a {
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(245, 247, 251, 0.65); /* تقليل سماكة الفلتر ليتضح الفيديو بالخلفية */
+    background: rgba(245, 247, 251, 0.72); /* فلتر مريح يعزز سهولة قراءة النصوص */
     z-index: 2;
     pointer-events: none;
 }
 .footer-container-grid, 
 .footer-bottom-panel {
     position: relative;
-    z-index: 3; /* البقاء فوق طبقة الفيديو والتظليل للتفاعل الكامل */
+    z-index: 3;
 }
 
 .footer-container-grid {
@@ -1160,4 +1163,48 @@ a {
         width: calc(100vw - 40px);
         right: -10px;
     }
+}
+
+/* ==========================================================================
+   VERTICAL PORTRAIT VIDEO SHOWCASE SECTION
+   ========================================================================== */
+.portrait-showcase-section {
+    background: var(--bg-card);
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+    overflow: hidden;
+}
+.align-items-center {
+    align-items: center;
+}
+.portrait-video-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+.portrait-phone-frame {
+    position: relative;
+    width: 100%;
+    max-width: 320px; /* العرض الطولي المثالي للهواتف */
+    aspect-ratio: 9 / 16; /* النسبة الطولية الاحترافية للفيديو */
+    border-radius: 40px;
+    overflow: hidden;
+    box-shadow: 0 25px 60px rgba(4, 77, 161, 0.12);
+    border: 8px solid var(--text-primary);
+    background: #000000;
+}
+.portrait-phone-frame video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+.portrait-overlay-glow {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to top, rgba(4, 77, 161, 0.15) 0%, transparent 50%);
+    pointer-events: none;
 }
