@@ -1,6 +1,4 @@
-/* ==========================================================================
-   AL MASSRIYA AL EMARATIYA - CLIENT ENGINE (LIGHT EXCLUSIVE)
-   ========================================================================== */
+
 
 document.addEventListener('DOMContentLoaded', () => {
 
@@ -248,4 +246,5 @@ document.addEventListener('DOMContentLoaded', () => {
             contactSection.scrollIntoView({ behavior: 'smooth' });
         }
     };
+
 });
