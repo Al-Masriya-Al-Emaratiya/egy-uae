@@ -574,6 +574,14 @@
 
     <!-- Footer Area -->
     <footer class="tech-footer">
+        <!-- Integrated Background Video Node -->
+        <div class="footer-video-bg">
+            <video autoplay muted loop playsinline>
+                <source src="videos/new_video_banner.mp4" type="video/mp4">
+            </video>
+        </div>
+        <div class="footer-overlay"></div>
+
         <div class="container footer-container-grid">
             <div class="footer-brand-section">
                 <img src="Al_Masriya_Al_Emaratiya_icon.png" alt="Al Massriya Al Emaratiya Logo" class="brand-logo" onerror="this.onerror=null; this.src='https://via.placeholder.com/200x60/044da1/ffffff?text=LOGO+HERE';">
@@ -639,11 +647,8 @@
                 <h3><i class="fas fa-robot"></i> AI Support Node</h3>
                 <button class="chat-close" id="chat-close">&times;</button>
             </div>
-            <div class="chat-body" id="chat-body">
-                <div class="message incoming">
-                    <p>Connection established securely. How can we assist your operations today?</p>
-                </div>
-            </div>
+            <!-- تم إفراغ الرسالة الثابتة ليتم التحكم بها ديناميكياً بالكامل عبر ملف script.js المتصل بملف data.json -->
+            <div class="chat-body" id="chat-body"></div>
             <div class="chat-footer">
                 <input type="text" placeholder="Type procurement query..." id="chat-input">
                 <button id="chat-send" aria-label="Send Message"><i class="fas fa-paper-plane"></i></button>
