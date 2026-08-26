@@ -1,113 +1,134 @@
-document.addEventListener("DOMContentLoaded", () => {
-    
-    // --- 1. Custom Cursor ---
-    const cursor = document.getElementById("cursor");
-    if(window.innerWidth > 768) {
-        cursor.style.display = "block";
-        document.addEventListener("mousemove", (e) => {
-            cursor.style.left = e.clientX + "px";
-            cursor.style.top = e.clientY + "px";
+/* ==========================================================================
+   AL MASSRIYA AL EMARATIYA - LOCAL AI CHATBOT ENGINE
+   ========================================================================== */
+
+document.addEventListener('DOMContentLoaded', () => {
+    let chatbotData = { intents: [], fallbacks: [] };
+
+    // جلب ملف البيانات المحلي
+    fetch('data.json')
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Database connection issue');
+            }
+            return response.json();
+        })
+        .then(data => {
+            chatbotData = data;
+        })
+        .catch(error => {
+            console.warn('Chatbot data could not be fully loaded. Using inline fallbacks.', error);
         });
 
-        document.querySelectorAll("a, button, .product-card").forEach(el => {
-            el.addEventListener("mouseenter", () => {
-                cursor.style.width = "60px";
-                cursor.style.height = "60px";
-                cursor.style.borderColor = "var(--secondary)";
+    // عناصر واجهة المستخدم للمحادثة
+    const chatToggle = document.getElementById('chat-toggle');
+    const chatBox = document.getElementById('chat-box');
+    const chatClose = document.getElementById('chat-close');
+    const chatInput = document.getElementById('chat-input');
+    const chatSend = document.getElementById('chat-send');
+    const chatBody = document.getElementById('chat-body');
+
+    // تصفية ومعالجة الردود بناءً على الكلمات المفتاحية
+    function generateResponse(userInput) {
+        const text = userInput.toLowerCase().trim();
+        if (!text) return "";
+
+        let bestMatch = null;
+        let highestScore = 0;
+
+        // البحث في نوايا وقواعد البيانات المتوفرة
+        if (chatbotData.intents && chatbotData.intents.length > 0) {
+            chatbotData.intents.forEach(intent => {
+                let score = 0;
+                intent.keywords.forEach(keyword => {
+                    if (text.includes(keyword.toLowerCase())) {
+                        score += 1;
+                    }
+                });
+
+                if (score > highestScore) {
+                    highestScore = score;
+                    bestMatch = intent;
+                }
             });
-            el.addEventListener("mouseleave", () => {
-                cursor.style.width = "40px";
-                cursor.style.height = "40px";
-                cursor.style.borderColor = "var(--primary)";
-            });
-        });
+        }
+
+        // إرجاع الرد المطابق أو رد بديل عشوائي
+        if (highestScore > 0 && bestMatch) {
+            const index = Math.floor(Math.random() * bestMatch.responses.length);
+            return bestMatch.responses[index];
+        } else {
+            const fallbacks = chatbotData.fallbacks || [
+                "Connection established. How may we assist your operations today?"
+            ];
+            const index = Math.floor(Math.random() * fallbacks.length);
+            return fallbacks[index];
+        }
     }
 
-    // --- 2. Progress Bar ---
-    window.addEventListener("scroll", () => {
-        const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
-        const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-        const scrolled = (winScroll / height) * 100;
-        document.getElementById("progress-bar").style.width = scrolled + "%";
-    });
+    // إرسال وعرض الرسائل داخل النافذة
+    function appendChatMessage(messageText, senderType) {
+        if (!chatBody) return;
+        const msgDiv = document.createElement('div');
+        msgDiv.className = `message ${senderType}`;
+        msgDiv.innerHTML = `<p>${escapeHTML(messageText)}</p>`;
+        chatBody.appendChild(msgDiv);
+        chatBody.scrollTop = chatBody.scrollHeight;
+    }
 
-    // --- 3. Mobile Menu Toggle ---
-    const hamburger = document.querySelector(".hamburger");
-    const mobileNav = document.querySelector(".mobile-nav");
-    const body = document.body;
+    // تنظيف النصوص لمنع ثغرات حقن الأكواد
+    function escapeHTML(text) {
+        return text
+            .replace(/&/g, "&amp;")
+            .replace(/</g, "&lt;")
+            .replace(/>/g, "&gt;")
+            .replace(/"/g, "&quot;")
+            .replace(/'/g, "&#039;");
+    }
 
-    hamburger.addEventListener("click", () => {
-        hamburger.classList.toggle("active");
-        mobileNav.classList.toggle("active");
-        body.classList.toggle("no-scroll");
-    });
+    function processUserMessage() {
+        if (!chatInput) return;
+        const userText = chatInput.value.trim();
+        if (!userText) return;
 
-    document.querySelectorAll(".mobile-nav a").forEach(link => {
-        link.addEventListener("click", () => {
-            hamburger.classList.remove("active");
-            mobileNav.classList.remove("active");
-            body.classList.remove("no-scroll");
-        });
-    });
+        // إضافة رسالة المستخدم للواجهة
+        appendChatMessage(userText, 'outgoing');
+        chatInput.value = '';
 
-    // --- 4. 3D Tilt Effect for Products and Hero (تأثير الـ 3D الأساسي) ---
-    const cards = document.querySelectorAll(".product-card, .hero-3d-card");
+        // تأخير بسيط لمحاكاة التفكير البشري للمساعد
+        setTimeout(() => {
+            const botReply = generateResponse(userText);
+            appendChatMessage(botReply, 'incoming');
+        }, 600);
+    }
 
-    cards.forEach(card => {
-        card.addEventListener("mousemove", (e) => {
-            const rect = card.getBoundingClientRect();
-            // تحديد موقع الماوس داخل البطاقة
-            const x = e.clientX - rect.left;
-            const y = e.clientY - rect.top;
-            
-            // حساب المركز
-            const centerX = rect.width / 2;
-            const centerY = rect.height / 2;
-            
-            // حساب مقدار الدوران للحصول على شكل الـ 3D
-            const rotateX = ((y - centerY) / centerY) * -15; 
-            const rotateY = ((x - centerX) / centerX) * 15;
-            
-            // تطبيق التأثير
-            card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.02, 1.02, 1.02)`;
+    // ربط مستمعي الأحداث البرمجية
+    if (chatToggle && chatBox) {
+        // فك ارتباط أي مستمعين سابقين قد يتعارضون مع هذا السلوك
+        const newChatToggle = chatToggle.cloneNode(true);
+        chatToggle.parentNode.replaceChild(newChatToggle, chatToggle);
+
+        newChatToggle.addEventListener('click', (e) => {
+            e.stopPropagation();
+            chatBox.classList.toggle('active');
         });
 
-        // إعادة البطاقة لوضعها الطبيعي عند خروج الماوس
-        card.addEventListener("mouseleave", () => {
-            card.style.transform = `perspective(1000px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)`;
-            card.style.transition = "transform 0.5s ease-out"; 
-        });
+        // ربط زر الإغلاق
+        if (chatClose) {
+            chatClose.addEventListener('click', (e) => {
+                e.stopPropagation();
+                chatBox.classList.remove('active');
+            });
+        }
 
-        // إزالة الـ transition أثناء الحركة لتكون سلسة ومباشرة
-        card.addEventListener("mouseenter", () => {
-            card.style.transition = "none";
-        });
-    });
-
-    // --- 5. WhatsApp Quote Request ---
-    const quoteButtons = document.querySelectorAll(".quote-btn");
-    
-    // رقم الواتساب الخاص بك
-    const phoneNumber = "201013378572"; 
-
-    quoteButtons.forEach(btn => {
-        btn.addEventListener("click", (e) => {
-            e.stopPropagation(); // لمنع تداخل الضغطة مع تأثيرات البطاقة الـ 3D
-            
-            // جلب اسم المنتج من الـ data-product المكتوب في الـ HTML
-            const productName = btn.getAttribute("data-product");
-            
-            // تجهيز نص الرسالة
-            const message = `مرحباً شركة المصرية الإماراتية،\nأود الاستفسار وطلب عرض سعر لمنتج: *${productName}*\nوشكراً لكم.`;
-            
-            // تحويل النص لصيغة تدعمها الروابط
-            const encodedMessage = encodeURIComponent(message);
-            
-            // إنشاء رابط الواتساب
-            const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodedMessage}`;
-            
-            // فتح الواتساب في نافذة جديدة
-            window.open(whatsappUrl, "_blank");
-        });
-    });
+        // إرسال الرسالة عند النقر أو الضغط على مفتاح Enter
+        if (chatSend && chatInput) {
+            chatSend.addEventListener('click', processUserMessage);
+            chatInput.addEventListener('keypress', (e) => {
+                if (e.key === 'Enter') {
+                    processUserMessage();
+                }
+            });
+        }
+    }
 });
