@@ -1,5 +1,3 @@
-
-
 document.addEventListener('DOMContentLoaded', () => {
 
     // --- Interactive Search System ---
