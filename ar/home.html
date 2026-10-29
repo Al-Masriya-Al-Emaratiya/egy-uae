@@ -2,39 +2,56 @@
 <html lang="ar" dir="rtl" data-theme="light">
 <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width,initial-scale=1" />
-    <title>المصرية الإماراتية | بوابة التجارة العالمية المشتركة بين مصر والإمارات</title>
-    <meta name="description" content="شريككم الاستراتيجي للحلول التجارية واللوجستية المتكاملة، نربط بين الأسواق المصرية والإماراتية بأحدث الأنظمة التقنية." />
+    <meta name="viewport" content="width=device-width,initial-scale=1, maximum-scale=1, user-scalable=0" />
+    <title>المصرية الإماراتية | منصة التجارة العالمية B2B - الربط بين مصر والإمارات</title>
     
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-B4D213Y8RJ"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', 'G-B4D213Y8RJ');
+    <!-- Meta Tags لتحسين محركات البحث SEO -->
+    <meta name="description" content="تأسست عام 2010، المصرية الإماراتية شركة رائدة في الاستيراد والتصدير تقدم حلولاً شاملة للتجارة والخدمات والوكالات التجارية بين مصر والإمارات." />
+    <meta name="keywords" content="المصرية الإماراتية, تجارة مصر الإمارات, منصة B2B, استيراد وتصدير مصر, لوجستيات الإمارات, وكالات تجارية مصر, توريدات الشركات" />
+    <meta name="author" content="المصرية الإماراتية" />
+    <meta name="robots" content="index, follow" />
+    <link rel="canonical" href="https://egy-uae.com" />
+
+    <!-- Structured Data JSON-LD Schema Markup -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Corporation",
+      "name": "المصرية الإماراتية",
+      "url": "https://egy-uae.com",
+      "logo": "https://egy-uae.com/Al_Masriya_Al_Emaratiya_icon.png",
+      "foundingDate": "2010"
+    }
     </script>
     
-    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;900&family=Cairo:wght@600;700;900&family=Plus+Jakarta+Sans:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <!-- الخطوط والمكتبات الخارجية -->
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&family=Plus+Jakarta+Sans:wght@300;400;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
     <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-    <link rel="stylesheet" href="css/style.css">
+    
+    <!-- ملف التنسيقات الرئيسي -->
+    <link rel="stylesheet" href="..css/style.css">
+    <style>
+        body {
+            font-family: 'Cairo', 'Plus Jakarta Sans', sans-serif;
+        }
+    </style>
 </head>
 <body>
 
-    <!-- Tech UI Background Utilities -->
+    <!-- مؤشر رقمي تفاعلي (للكمبيوتر فقط) -->
     <div id="tech-cursor"></div>
     <div id="tech-cursor-follower"></div>
     <div id="progress-bar"></div>
-    <div class="animated-lines-container"></div>
 
-    <!-- Header Block -->
-    <header class="tech-header" id="header">
-        <!-- Top Utility Bar -->
-        <div class="header-top-bar">
+    <!-- ترويسة الموقع الذكية (تصميم زجاجي) -->
+    <header class="app-header glass-panel" id="header">
+        <!-- الشريط العلوي (للشاشات الكبيرة فقط) -->
+        <div class="header-top-bar desktop-only">
             <div class="container top-bar-container">
                 <div class="top-bar-left">
-                    <span><i class="fas fa-globe"></i> ممر التبادل التجاري متعدد الأسواق</span>
+                    <span><i class="fas fa-globe"></i> قنوات تجارية متعددة الأسواق</span>
                 </div>
                 <div class="top-bar-right">
                     <a href="careers.html">الوظائف</a>
@@ -44,457 +61,507 @@
             </div>
         </div>
 
-        <!-- Main Search & Action Header -->
         <div class="container header-container">
             <div class="logo">
                 <a href="index.html">
-                    <img src="Al_Masriya_Al_Emaratiya_icon.png" class="brand-logo" alt="المصرية الإماراتية" onerror="this.onerror=null; this.src='https://via.placeholder.com/200x60/044da1/ffffff?text=LOGO+HERE';">
+                    <img src="Al_Masriya_Al_Emaratiya_icon.png" class="brand-logo" alt="المصرية الإماراتية" onerror="this.onerror=null; this.src='https://via.placeholder.com/200x50/044da1/ffffff?text=المصرية+الإماراتية';">
                 </a>
             </div>
             
-            <!-- Global Directory Search Bar -->
-            <div class="header-search-bar">
+            <!-- شريط البحث الشامل -->
+            <div class="header-search-bar desktop-only">
                 <div class="search-form-wrapper">
                     <form action="#divisions" method="GET" class="search-form" onsubmit="event.preventDefault();">
-                        <div class="search-category-select">
-                            <span>الكتالوج الشامل</span>
-                        </div>
-                        <input type="text" placeholder="ابحث عن الصفحات، الخدمات، أو الأقسام التجارية..." id="global-search-input" autocomplete="off">
-                        <button type="submit" class="search-btn">
-                            <i class="fas fa-search"></i>
-                        </button>
+                        <input type="text" placeholder="ابحث عن الصفحات، الخدمات، أو القطاعات..." id="global-search-input" autocomplete="off">
+                        <button type="submit" class="search-btn"><i class="fas fa-search"></i></button>
                     </form>
-                    <!-- Live Search Results Dropdown -->
                     <div id="search-results-dropdown" class="search-results-dropdown hidden"></div>
                 </div>
             </div>
             
+            <!-- أزرار الإجراءات وقائمة الموبايل -->
             <div class="header-actions">
-                <!-- Redirect Button replaces login options (Opens in same tab) -->
-                <a href="https://amae.egy-uae.com" target="_self" class="btn btn-outline-tech" id="marketplace-nav-btn">
-                    <i class="fas fa-store"></i> <span class="marketplace-btn-text">الذهاب إلى المتجر</span>
+                <a href="https://amae.egy-uae.com" target="_self" class="btn-primary desktop-only">
+                    <i class="fas fa-store"></i> الانتقال للمتجر الإلكتروني
                 </a>
-
-                <div class="hamburger">
-                    <span></span><span></span><span></span>
-                </div>
+                <button class="icon-btn menu-toggle mobile-only">
+                    <i class="fas fa-bars"></i>
+                </button>
             </div>
         </div>
 
-        <!-- Main Navigation Bar -->
-        <nav class="desktop-nav">
+        <!-- قائمة التصفح للشاشات الكبيرة -->
+        <nav class="desktop-nav desktop-only">
             <div class="container nav-container">
-                <div class="nav-left">
-                    <div class="all-categories-trigger" id="all-categories-btn">
-                        <i class="fas fa-bars"></i> أقسامنا التجارية المشتركة
-                    </div>
-                </div>
                 <ul class="nav-links">
                     <li><a href="#home" class="active">الرئيسية</a></li>
-                    <li><a href="#services">الخدمات اللوجستية</a></li>
-                    <li><a href="#divisions">دليل الأقسام</a></li>
-                    <li><a href="#about">الهيكل والعمليات</a></li>
-                    <li><a href="news.html">أخبار السوق</a></li>
+                    <li><a href="#services">خدماتنا</a></li>
+                    <li><a href="#divisions">دليل التجارة</a></li>
+                    <li><a href="#about">من نحن</a></li>
+                    <li><a href="news.html">الأخبار</a></li>
                     <li><a href="#systems">الأنظمة الرقمية</a></li>
-                    <li><a href="#contact">طلب عرض أسعار</a></li>
+                    <li><a href="#contact">طلب عرض أسعار (RFQ)</a></li>
                 </ul>
             </div>
         </nav>
     </header>
 
-    <!-- Mobile Navigation -->
-    <nav class="mobile-nav glass-panel">
-        <ul class="mobile-links">
-            <li><a href="#home">الرئيسية</a></li>
-            <li><a href="#services">الخدمات</a></li>
-            <li><a href="#divisions">الأقسام التجارية</a></li>
-            <li><a href="#about">عن الشركة</a></li>
-            <li><a href="news.html">الأخبار</a></li>
-            <li><a href="#systems">أنظمتنا</a></li>
-            <li><a href="#contact">طلب عرض أسعار</a></li>
-            <li>
-                <a href="https://amae.egy-uae.com" target="_self" class="btn btn-tech w-full mt-4"><i class="fas fa-store"></i> الذهاب إلى المتجر</a>
-            </li>
-        </ul>
-    </nav>
+    <!-- القائمة الجانبية لتطبيقات الهواتف -->
+    <div class="side-drawer" id="side-drawer">
+        <div class="drawer-header">
+            <img src="Al_Masriya_Al_Emaratiya_icon.png" height="35" alt="الشعار" onerror="this.onerror=null; this.src='https://via.placeholder.com/150x35/044da1/ffffff?text=المصرية+الإماراتية';">
+            <button class="icon-btn menu-toggle"><i class="fas fa-times"></i></button>
+        </div>
+        <div class="drawer-links">
+            <a href="#home"><i class="fas fa-home"></i> الرئيسية</a>
+            <a href="#services"><i class="fas fa-truck-fast"></i> الخدمات اللوجستية</a>
+            <a href="#divisions"><i class="fas fa-cubes"></i> القطاعات التجارية</a>
+            <a href="#about"><i class="fas fa-building"></i> عن الشركة</a>
+            <a href="#systems"><i class="fas fa-microchip"></i> منصاتنا الرقمية</a>
+            <a href="#contact"><i class="fas fa-paper-plane"></i> اتصل بنا وطلب التسعير</a>
+            <a href="https://amae.egy-uae.com" class="btn-primary w-full mt-4" style="color:white; justify-content:center;"><i class="fas fa-store"></i> بوابة المتجر التجاري</a>
+        </div>
+    </div>
+    <div class="drawer-overlay menu-toggle"></div>
 
-    <!-- Immersive Cinematic Hero Section -->
+    <!-- الواجهة الرئيسية (Hero Section) -->
     <section class="immersive-hero" id="home">
         <div class="immersive-hero-media">
             <video autoplay muted loop playsinline>
-                <source src="../videos/new_video_banner.mp4" type="video/mp4">
+                <source src="sky_background.mp4" type="video/mp4">
             </video>
         </div>
         <div class="immersive-hero-overlay"></div>
 
         <div class="immersive-hero-content" data-aos="fade-up">
-            <div class="tech-badge"><i class="fas fa-network-wired"></i> ممر التبادل التجاري: مصر - الإمارات</div>
-            <h1>سلاسل الإمداد للشركات <br><span class="gradient-text">بمنظور متطور</span></h1>
-            <p>نحن نمزج بين الحلول الرقمية المتقدمة والممرات اللوجستية المادية الموثوقة، لنقدم خدمات نقل سلسة، وتخليص جمركي آمن، وقنوات توريد محسنة وفعالة.</p>
+            <div class="epic-badge"><i class="fas fa-network-wired"></i> الممر التجاري: مصر - الإمارات</div>
+            <h1>إعادة صياغة سلاسل الإمداد <br><span class="gradient-text">لقطاع الأعمال (B2B)</span></h1>
+            <p>ندمج البنية الرقمية المتطورة مع مسارات التجارة الحيوية، لنمنحكم نقلاً سلساً للبضائع، وإجراءات جمركية مرنة، وقنوات توريد معتمدة وموثوقة.</p>
             <div class="hero-actions-container">
-                <a href="#divisions" class="btn btn-tech">استكشاف الدليل التجاري <i class="fas fa-cubes"></i></a>
-                <a href="#contact" class="btn btn-outline-tech">طلب عرض أسعار مباشر <i class="fas fa-paper-plane"></i></a>
+                <a href="#divisions" class="btn-primary">استعراض القطاعات <i class="fas fa-cubes"></i></a>
+                <a href="#contact" class="btn-glass">طلب عرض أسعار (RFQ) <i class="fas fa-paper-plane"></i></a>
             </div>
         </div>
     </section>
 
-    <!-- Infinite Marquee Ticker -->
+    <!-- شريط الأخبار المتحرك -->
     <div class="marquee-ticker">
         <div class="marquee-content">
-            <span>ممر مصر - الإمارات التجاري</span> • <span>التميز اللوجستي العالمي</span> • <span>ضمان مالي آمن للشركات</span> • <span>تخليص جمركي سريع</span> • <span>شحن بحري وجوي سريع</span> • <span>أنظمة تتبع ذكية للشحنات</span> • <span>ممر مصر - الإمارات التجاري</span> • <span>التميز اللوجستي العالمي</span>
+            <span>ممر التجارة: مصر - الإمارات</span> • <span>تميز لوجستي بمعايير عالمية</span> • <span>حلول تعاقد وضمان موثوقة (B2B)</span> • <span>تخليص جمركي فوري</span> • <span>شحن بحري سريع</span> • <span>منظومة تتبع رقمية ذكية</span> • <span>ممر التجارة: مصر - الإمارات</span> • <span>تميز لوجستي بمعايير عالمية</span>
         </div>
     </div>
 
-    <!-- Trust & Quality Features Bar -->
+    <!-- شريط مميزات الثقة والجودة -->
     <section class="trust-features-bar">
         <div class="container trust-grid">
-            <div class="trust-item">
+            <div class="trust-item epic-card">
                 <span class="icon-indicator"><i class="fas fa-user-shield"></i></span>
                 <div>
                     <h3>بروتوكولات تجارية آمنة</h3>
-                    <p>امتثال تنظيمي موثق ومعتمد لعمليات الاستيراد والتصدير</p>
+                    <p>امتثال تنظيمي وقانوني كامل لعمليات الاستيراد والتصدير</p>
                 </div>
             </div>
-            <div class="trust-item">
+            <div class="trust-item epic-card">
                 <span class="icon-indicator"><i class="fas fa-truck-ramp-box"></i></span>
                 <div>
-                    <h3>لوجستيات متكاملة</h3>
-                    <p>تنسيق مبسط واحترافي لعمليات الشحن البحري والجوي</p>
+                    <h3>خدمات لوجستية متكاملة</h3>
+                    <p>تنسيق دقيق واحترافي لعمليات الشحن الجوي والبحري</p>
                 </div>
             </div>
-            <div class="trust-item">
+            <div class="trust-item epic-card">
                 <span class="icon-indicator"><i class="fas fa-headset"></i></span>
                 <div>
-                    <h3>مكتب دعم توريدي 24/7</h3>
-                    <p>تحديثات فورية مباشرة لكافة طلبات التوريد النشطة</p>
+                    <h3>مركز دعم على مدار الساعة</h3>
+                    <p>متابعة وتحديثات فورية لجميع الطلبات والشحنات</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Services Section -->
+    <!-- قسم الخدمات -->
     <section id="services" class="section">
         <div class="container">
             <div class="section-header" data-aos="fade-up">
-                <h2>خدمات سلاسل الإمداد المتكاملة</h2>
-                <p class="subtitle-text">قدرات تشغيلية لوجستية واسعة تدعم عمليات التوصيل المباشر لأقسامنا التجارية</p>
-                <div class="header-line"></div>
+                <h2>خدمات <span class="gradient-text">سلاسل الإمداد</span> والتوريد</h2>
+                <p class="subtitle-text">قدرات تشغيلية استثنائية تدعم مسارات التوزيع والشحن المباشر</p>
             </div>
             
             <div class="grid grid-3">
-                <div class="tech-card service-image-card" data-aos="fade-up" data-aos-delay="100">
-                    <img src="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=600&q=80" alt="الخدمات اللوجستية" class="card-bg-img">
-                    <div class="card-content-overlay">
+                <div class="epic-image-card" data-aos="fade-up" data-aos-delay="100">
+                    <img src="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=600&q=80" alt="اللوجستيات وسلاسل الإمداد" class="card-bg-img">
+                    <div class="card-overlay-content">
                         <div class="icon-box"><i class="fas fa-boxes-stacked"></i></div>
                         <h3>اللوجستيات وسلاسل الإمداد</h3>
-                        <p>حلول شاملة لإدارة حركة البضائع، التخزين، والتوزيع لضمان وصول الشحنات في مواعيدها المحددة بكفاءة عالية.</p>
+                        <p>حلول متكاملة لتحريك ونقل البضائع، التخزين، وإعادة التوزيع لضمان سرعة الوصول في المواعيد المحددة.</p>
                     </div>
                 </div>
 
-                <div class="tech-card service-image-card" data-aos="fade-up" data-aos-delay="200">
-                    <img src="https://images.unsplash.com/photo-1494412519320-aa613dfb7738?auto=format&fit=crop&w=600&q=80" alt="شحن البضائع وتوجيهها" class="card-bg-img">
-                    <div class="card-content-overlay">
+                <div class="epic-image-card" data-aos="fade-up" data-aos-delay="200">
+                    <img src="https://images.unsplash.com/photo-1494412519320-aa613dfb7738?auto=format&fit=crop&w=600&q=80" alt="الشحن الدولي للبضائع" class="card-bg-img">
+                    <div class="card-overlay-content">
                         <div class="icon-box"><i class="fas fa-plane-up"></i></div>
-                        <h3>شحن وتوجيه البضائع</h3>
-                        <p>إدارة خبيرة لعمليات الشحن البحري والجوي، وتقديم خدمات الوساطة الجمركية الدقيقة لضمان سلاسة العمليات.</p>
+                        <h3>الشحن الدولي للبضائع</h3>
+                        <p>إدارة احترافية للشحن الجوي والبحري، الوساطة الجمركية، وتجهيز الوثائق القانونية لضمان تدفق سلس للبضائع.</p>
                     </div>
                 </div>
 
-                <div class="tech-card service-image-card" data-aos="fade-up" data-aos-delay="300">
-                    <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=600&q=80" alt="تسهيل التجارة" class="card-bg-img">
-                    <div class="card-content-overlay">
+                <div class="epic-image-card" data-aos="fade-up" data-aos-delay="300">
+                    <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=600&q=80" alt="تيسير التجارة" class="card-bg-img">
+                    <div class="card-overlay-content">
                         <div class="icon-box"><i class="fas fa-handshake"></i></div>
-                        <h3>تسهيل التبادل التجاري</h3>
-                        <p>تقديم الاستشارات الاستراتيجية والدعم الشامل لدخول الأسواق، وضمان الامتثال التام للأنظمة الجمركية المعتمدة.</p>
+                        <h3>تيسير التجارة والأعمال</h3>
+                        <p>استشارات استراتيجية لدخول الأسواق، والامتثال للتشريعات والقوانين، وتوسيع الشراكات التجارية الإقليمية.</p>
                     </div>
                 </div>
 
-                <div class="tech-card service-image-card" data-aos="fade-up" data-aos-delay="400">
+                <div class="epic-image-card" data-aos="fade-up" data-aos-delay="400">
                     <img src="https://images.unsplash.com/photo-1544027993-37dbfe43562a?auto=format&fit=crop&w=600&q=80" alt="التخليص الجمركي" class="card-bg-img">
-                    <div class="card-content-overlay">
+                    <div class="card-overlay-content">
                         <div class="icon-box"><i class="fas fa-file-invoice"></i></div>
                         <h3>التخليص الجمركي</h3>
-                        <p>تسهيل الإجراءات الجمركية وإعداد المستندات والوثائق بدقة متناهية لتقليل فترات الانتظار والتأخير.</p>
+                        <p>إجراءات جمركية سريعة ومتقنة وإعداد دقيق للمستندات لتقليص أوقات الانتظار ومنع التعطيل في الموانئ.</p>
                     </div>
                 </div>
 
-                <div class="tech-card service-image-card" data-aos="fade-up" data-aos-delay="500">
-                    <img src="https://images.unsplash.com/photo-1601584115197-04ecc0da31d7?auto=format&fit=crop&w=600&q=80" alt="النقل والشحن البري" class="card-bg-img">
-                    <div class="card-content-overlay">
+                <div class="epic-image-card" data-aos="fade-up" data-aos-delay="500">
+                    <img src="https://images.unsplash.com/photo-1601584115197-04ecc0da31d7?auto=format&fit=crop&w=600&q=80" alt="النقل البري" class="card-bg-img">
+                    <div class="card-overlay-content">
                         <div class="icon-box"><i class="fas fa-truck-fast"></i></div>
-                        <h3>النقل البري الداخلي</h3>
-                        <p>شبكة نقل بري موثوقة تغطي جمهورية مصر العربية ودولة الإمارات، مجهزة بأحدث تقنيات تتبع الحركة الفورية.</p>
+                        <h3>النقل البري</h3>
+                        <p>شبكة نقل بري آمنة وفعالة تغطي محافظات مصر وإمارات الدولة، مدعومة بأنظمة تتبع رقمية حية.</p>
                     </div>
                 </div>
 
-                <div class="tech-card service-image-card" data-aos="fade-up" data-aos-delay="600">
-                    <img src="https://images.unsplash.com/photo-1587293852726-70cdb56c2866?auto=format&fit=crop&w=600&q=80" alt="حلول التخزين" class="card-bg-img">
-                    <div class="card-content-overlay">
+                <div class="epic-image-card" data-aos="fade-up" data-aos-delay="600">
+                    <img src="https://images.unsplash.com/photo-1587293852726-70cdb56c2866?auto=format&fit=crop&w=600&q=80" alt="حلول التخزين والمستودعات" class="card-bg-img">
+                    <div class="card-overlay-content">
                         <div class="icon-box"><i class="fas fa-warehouse"></i></div>
-                        <h3>مستودعات وحلول التخزين</h3>
-                        <p>مستودعات تخزين آمنة وحديثة ومزودة بأحدث أنظمة إدارة المخزون لتلبية المتطلبات الخاصة بعمليات التوريد.</p>
+                        <h3>حلول التخزين والمستودعات</h3>
+                        <p>مستودعات تخزين حديثة ومؤمنة مجهزة بأنظمة دقيقة لإدارة المخزون مصممة وفق طبيعة منتجاتكم.</p>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Trade Divisions Showcase with Active Interactive Filters -->
-    <section id="divisions" class="section glass-section">
+    <!-- دليل القطاعات التجارية -->
+    <section id="divisions" class="section bg-light">
         <div class="container">
             <div class="section-header" data-aos="fade-up">
-                <h2>دليل الأقسام التجارية العابرة للحدود</h2>
-                <p class="subtitle-text">اختر القسم التجاري المستهدف لبدء قنوات التوريد والتواصل الخاصة بمشروعك</p>
-                <div class="header-line"></div>
+                <h2>دليل <span class="gradient-text">القطاعات التجارية الدولية</span></h2>
+                <p class="subtitle-text">اختر القطاع المناسب لبدء عمليات التوريد والشراء المباشر</p>
             </div>
 
-            <!-- Sleek Interactive Filter Tabs -->
             <div class="portfolio-filter-tabs" data-aos="fade-up">
-                <button class="filter-tab-btn active" data-filter="all">جميع الأقسام</button>
-                <button class="filter-tab-btn" data-filter="consumables">المستهلكات والكيماويات</button>
-                <button class="filter-tab-btn" data-filter="furniture">الأثاث الفاخر والراقي</button>
-                <button class="filter-tab-btn" data-filter="industrial">معدات التشغيل OS&E والقطاع الصناعي</button>
+                <button class="filter-tab-btn active" data-filter="all">جميع القطاعات</button>
+                <button class="filter-tab-btn" data-filter="consumables">المواد الاستهلاكية والكيماويات</button>
+                <button class="filter-tab-btn" data-filter="furniture">الأثاث والمفروشات</button>
+                <button class="filter-tab-btn" data-filter="industrial">التجهيزات الفندقية والمعدات</button>
             </div>
 
             <div class="grid grid-3 b2b-directory-grid">
-                <!-- Division Block 1 -->
-                <div class="b2b-product-card" data-category="consumables" data-aos="fade-up">
-                    <div class="badge-status">معايير معتمدة</div>
-                    <img src="https://images.unsplash.com/photo-1506084868230-bb9d95c24759?auto=format&fit=crop&w=400&q=80" alt="قسم المواد الغذائية" class="product-thumb">
+                <!-- قطاع 1 -->
+                <div class="b2b-product-card epic-card" data-category="consumables" data-aos="fade-up">
+                    <div class="badge-status">معايير قياسية معتمدة</div>
+                    <img src="https://images.unsplash.com/photo-1506084868230-bb9d95c24759?auto=format&fit=crop&w=400&q=80" alt="قطاع الأغذية" class="product-thumb">
                     <div class="product-info">
-                        <h3>قسم المواد الغذائية</h3>
-                        <p class="route-info"><i class="fas fa-anchor"></i> محطة القاهرة &rarr; مركز الشارقة</p>
-                        <div class="product-meta">
-                            <span><strong>المسار المستهدف:</strong> ممر مصر - الإمارات التجاري</span>
-                        </div>
-                        <a href="#contact" class="btn btn-tech w-full" onclick="setRFQCategory('Food Division')">تصدير من القسم <i class="fas fa-arrow-left" style="transform: rotate(180deg);"></i></a>
+                        <h3>قطاع الأغذية</h3>
+                        <p class="route-info"><i class="fas fa-anchor text-red"></i> محطة القاهرة &larr; مركز الشارقة</p>
+                        <div class="product-meta"><span><strong>المسار:</strong> ممر التجارة مصر - الإمارات</span></div>
+                        <a href="#contact" class="btn-outline w-full" onclick="setRFQCategory('قطاع الأغذية')">طلب توريد من القطاع <i class="fas fa-arrow-left"></i></a>
                     </div>
                 </div>
 
-                <!-- Division Block 2 -->
-                <div class="b2b-product-card" data-category="consumables" data-aos="fade-up" data-aos-delay="100">
+                <!-- قطاع 2 -->
+                <div class="b2b-product-card epic-card" data-category="consumables" data-aos="fade-up" data-aos-delay="100">
                     <div class="badge-status">مستوى فندقي فاخر</div>
-                    <img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=400&q=80" alt="مستلزمات الفنادق" class="product-thumb">
+                    <img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=400&q=80" alt="المستلزمات الفندقية" class="product-thumb">
                     <div class="product-info">
-                        <h3>قسم مستلزمات الفنادق</h3>
-                        <p class="route-info"><i class="fas fa-anchor"></i> ميناء بورسعيد &rarr; ميناء جبل علي</p>
-                        <div class="product-meta">
-                            <span><strong>النطاق:</strong> مستلزمات تشغيلية واستهلاكية للفنادق</span>
-                        </div>
-                        <a href="#contact" class="btn btn-tech w-full" onclick="setRFQCategory('Hotel Supplies')">تصدير من القسم <i class="fas fa-arrow-left" style="transform: rotate(180deg);"></i></a>
+                        <h3>المستلزمات الفندقية</h3>
+                        <p class="route-info"><i class="fas fa-anchor text-red"></i> ميناء بورسعيد &larr; جبل علي</p>
+                        <div class="product-meta"><span><strong>النطاق:</strong> مستهلكات ومستلزمات الضيافة</span></div>
+                        <a href="#contact" class="btn-outline w-full" onclick="setRFQCategory('المستلزمات الفندقية')">طلب توريد من القطاع <i class="fas fa-arrow-left"></i></a>
                     </div>
                 </div>
 
-                <!-- Division Block 3 -->
-                <div class="b2b-product-card" data-category="consumables" data-aos="fade-up" data-aos-delay="200">
-                    <div class="badge-status">صناعي ومعتمد</div>
+                <!-- قطاع 3 -->
+                <div class="b2b-product-card epic-card" data-category="consumables" data-aos="fade-up" data-aos-delay="200">
+                    <div class="badge-status">مطابق للأمان الصناعي</div>
                     <img src="https://images.unsplash.com/photo-1601522244217-cd3c403695db?auto=format&fit=crop&w=400&q=80" alt="الكيماويات ومستحضرات التجميل" class="product-thumb">
                     <div class="product-info">
                         <h3>الكيماويات ومستحضرات التجميل</h3>
-                        <p class="route-info"><i class="fas fa-anchor"></i> ميناء الإسكندرية &rarr; ميناء خليفة</p>
-                        <div class="product-meta">
-                            <span><strong>الشهادة:</strong> مطابقة لمعايير ومواصفات REACH الدولية</span>
-                        </div>
-                        <a href="#contact" class="btn btn-tech w-full" onclick="setRFQCategory('Chemicals & Cosmetics')">تصدير من القسم <i class="fas fa-arrow-left" style="transform: rotate(180deg);"></i></a>
+                        <p class="route-info"><i class="fas fa-anchor text-red"></i> ميناء الإسكندرية &larr; ميناء خليفة</p>
+                        <div class="product-meta"><span><strong>الشهادات:</strong> معايير REACH / REACH-EG</span></div>
+                        <a href="#contact" class="btn-outline w-full" onclick="setRFQCategory('الكيماويات ومستحضرات التجميل')">طلب توريد من القطاع <i class="fas fa-arrow-left"></i></a>
                     </div>
                 </div>
 
-                <!-- Division Block 4 -->
-                <div class="b2b-product-card" data-category="industrial" data-aos="fade-up" data-aos-delay="300">
-                    <div class="badge-status">تجهيزات لوجستية كاملة</div>
-                    <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=400&q=80" alt="معدات التشغيل OS&E" class="product-thumb">
+                <!-- قطاع 4 -->
+                <div class="b2b-product-card epic-card" data-category="industrial" data-aos="fade-up" data-aos-delay="300">
+                    <div class="badge-status">توريد مشاريع متكاملة</div>
+                    <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=400&q=80" alt="تجهيزات المشاريع والضيافة OS&E" class="product-thumb">
                     <div class="product-info">
-                        <h3>توريدات معدات التشغيل OS&E</h3>
-                        <p class="route-info"><i class="fas fa-anchor"></i> خط الشحن والربط المباشر للمشروع</p>
-                        <div class="product-meta">
-                            <span><strong>القدرة التشغيلية:</strong> تأمين وتوريد متكامل للمشاريع الكبرى</span>
-                        </div>
-                        <a href="#contact" class="btn btn-tech w-full" onclick="setRFQCategory('OS&E Procurement')">تصدير من القسم <i class="fas fa-arrow-left" style="transform: rotate(180deg);"></i></a>
+                        <h3>تجهيزات المشاريع والضيافة (OS&E)</h3>
+                        <p class="route-info"><i class="fas fa-anchor text-red"></i> شحن مباشر لمواقع المشاريع</p>
+                        <div class="product-meta"><span><strong>القدرة:</strong> توريد كلي للمشاريع الكبرى</span></div>
+                        <a href="#contact" class="btn-outline w-full" onclick="setRFQCategory('تجهيزات المشاريع والضيافة OS&E')">طلب توريد من القطاع <i class="fas fa-arrow-left"></i></a>
                     </div>
                 </div>
 
-                <!-- Division Block 5 -->
-                <div class="b2b-product-card" data-category="furniture" data-aos="fade-up" data-aos-delay="400">
-                    <div class="badge-status">مواصفات مؤسسية</div>
+                <!-- قطاع 5 -->
+                <div class="b2b-product-card epic-card" data-category="furniture" data-aos="fade-up" data-aos-delay="400">
+                    <div class="badge-status">معايير مخصصة للشركات</div>
                     <img src="https://images.unsplash.com/photo-1524758631624-e2822e304c36?auto=format&fit=crop&w=400&q=80" alt="الأثاث المكتبي" class="product-thumb">
                     <div class="product-info">
-                        <h3>الأثاث المكتبي ومساحات العمل</h3>
-                        <p class="route-info"><i class="fas fa-anchor"></i> ميناء دمياط &rarr; مركز الشارقة اللوجستي</p>
-                        <div class="product-meta">
-                            <span><strong>المكونات:</strong> أخشاب طبيعية صلبة بتشطيبات ممتازة</span>
-                        </div>
-                        <a href="#contact" class="btn btn-tech w-full" onclick="setRFQCategory('Office Furniture')">تصدير من القسم <i class="fas fa-arrow-left" style="transform: rotate(180deg);"></i></a>
+                        <h3>الأثاث المكتبي</h3>
+                        <p class="route-info"><i class="fas fa-anchor text-red"></i> ميناء دمياط &larr; مركز الشارقة</p>
+                        <div class="product-meta"><span><strong>الخامات:</strong> أخشاب طبيعية صلبة فاخرة</span></div>
+                        <a href="#contact" class="btn-outline w-full" onclick="setRFQCategory('الأثاث المكتبي')">طلب توريد من القطاع <i class="fas fa-arrow-left"></i></a>
                     </div>
                 </div>
 
-                <!-- Division Block 6 -->
-                <div class="b2b-product-card" data-category="furniture" data-aos="fade-up" data-aos-delay="500">
-                    <div class="badge-status">أثاث وتجهيز الفعاليات</div>
-                    <img src="https://images.unsplash.com/photo-1464366400600-7168b8af9bc3?auto=format&fit=crop&w=400&q=80" alt="أثاث القاعات والحفلات" class="product-thumb">
+                <!-- قطاع 6 -->
+                <div class="b2b-product-card epic-card" data-category="furniture" data-aos="fade-up" data-aos-delay="500">
+                    <div class="badge-status">للفعاليات والمناسبات الكبرى</div>
+                    <img src="https://images.unsplash.com/photo-1464366400600-7168b8af9bc3?auto=format&fit=crop&w=400&q=80" alt="أثاث القاعات والاحتفالات" class="product-thumb">
                     <div class="product-info">
-                        <h3>أثاث القاعات والمؤتمرات</h3>
-                        <p class="route-info"><i class="fas fa-anchor"></i> خط نقل آمن ومعزز لحماية الشحنات</p>
-                        <div class="product-meta">
-                            <span><strong>المزايا:</strong> وحدات ومقاعد معدنية عالية الكثافة وقابلة للتكديس</span>
-                        </div>
-                        <a href="#contact" class="btn btn-tech w-full" onclick="setRFQCategory('Banquet Furniture')">تصدير من القسم <i class="fas fa-arrow-left" style="transform: rotate(180deg);"></i></a>
+                        <h3>أثاث القاعات والاحتفالات</h3>
+                        <p class="route-info"><i class="fas fa-anchor text-red"></i> خط شحن مخصص وآمن للنقل</p>
+                        <div class="product-meta"><span><strong>المواصفات:</strong> تصميم عملي قابل للتكديس</span></div>
+                        <a href="#contact" class="btn-outline w-full" onclick="setRFQCategory('أثاث القاعات والاحتفالات')">طلب توريد من القطاع <i class="fas fa-arrow-left"></i></a>
                     </div>
                 </div>
 
-                <!-- Division Block 7 -->
-                <div class="b2b-product-card" data-category="industrial" data-aos="fade-up" data-aos-delay="600">
-                    <div class="badge-status">تحمل وصناعة ثقيلة</div>
-                    <img src="https://images.unsplash.com/photo-1555041469-a586c61ea9bc?auto=format&fit=crop&w=400&q=80" alt="الأسرة المعدنية والخزائن" class="product-thumb">
+                <!-- قطاع 7 -->
+                <div class="b2b-product-card epic-card" data-category="industrial" data-aos="fade-up" data-aos-delay="600">
+                    <div class="badge-status">تحمل عالي واستخدام شاق</div>
+                    <img src="https://images.unsplash.com/photo-1555041469-a586c61ea9bc?auto=format&fit=crop&w=400&q=80" alt="الأسرة والخزائن المعدنية" class="product-thumb">
                     <div class="product-info">
-                        <h3>الأسرة المعدنية وخزائن الموظفين</h3>
-                        <p class="route-info"><i class="fas fa-anchor"></i> ممر القطاع الصناعي والإنشائي للمشروع</p>
-                        <div class="product-meta">
-                            <span><strong>المميزات:</strong> طلاءات حرارية متقدمة ومقاومة للصدأ والتآكل</span>
-                        </div>
-                        <a href="#contact" class="btn btn-tech w-full" onclick="setRFQCategory('Metal Beds & Lockers')">تصدير من القسم <i class="fas fa-arrow-left" style="transform: rotate(180deg);"></i></a>
+                        <h3>الأسرة والخزائن المعدنية</h3>
+                        <p class="route-info"><i class="fas fa-anchor text-red"></i> ممر القطاع الصناعي وسكن العمال</p>
+                        <div class="product-meta"><span><strong>الحماية:</strong> معالجة مقاومة للصدأ والتآكل</span></div>
+                        <a href="#contact" class="btn-outline w-full" onclick="setRFQCategory('الأسرة والخزائن المعدنية')">طلب توريد من القطاع <i class="fas fa-arrow-left"></i></a>
                     </div>
                 </div>
 
-                <!-- Division Block 8 -->
-                <div class="b2b-product-card" data-category="furniture" data-aos="fade-up" data-aos-delay="700">
-                    <div class="badge-status">متانة ممتازة جودة صلبة</div>
-                    <img src="https://images.unsplash.com/photo-1540518614846-7eded433c457?auto=format&fit=crop&w=400&q=80" alt="أثاث سكن العاملين" class="product-thumb">
+                <!-- قطاع 8 -->
+                <div class="b2b-product-card epic-card" data-category="furniture" data-aos="fade-up" data-aos-delay="700">
+                    <div class="badge-status">جودة متينة للمشاريع</div>
+                    <img src="https://images.unsplash.com/photo-1540518614846-7eded433c457?auto=format&fit=crop&w=400&q=80" alt="أثاث سكن الموظفين" class="product-thumb">
                     <div class="product-info">
-                        <h3>أثاث سكن الموظفين والعاملين</h3>
-                        <p class="route-info"><i class="fas fa-anchor"></i> شحن بري مباشر ومؤمن لمركز المشروع</p>
-                        <div class="product-meta">
-                            <span><strong>البنية:</strong> وحدات معيارية مصممة للاستخدامات عالية الكثافة</span>
-                        </div>
-                        <a href="#contact" class="btn btn-tech w-full" onclick="setRFQCategory('Staff Furniture')">تصدير من القسم <i class="fas fa-arrow-left" style="transform: rotate(180deg);"></i></a>
+                        <h3>أثاث سكن الموظفين</h3>
+                        <p class="route-info"><i class="fas fa-anchor text-red"></i> شحن بري مباشر ومؤمن</p>
+                        <div class="product-meta"><span><strong>الهيكل:</strong> وحدات عملية فائقة التحمل</span></div>
+                        <a href="#contact" class="btn-outline w-full" onclick="setRFQCategory('أثاث سكن الموظفين')">طلب توريد من القطاع <i class="fas fa-arrow-left"></i></a>
                     </div>
                 </div>
 
-                <!-- Division Block 9 -->
-                <div class="b2b-product-card" data-category="furniture" data-aos="fade-up" data-aos-delay="800">
-                    <div class="badge-status">تصاميم مريحة وذكية</div>
-                    <img src="https://images.unsplash.com/photo-1484101403633-562f891dc89a?auto=format&fit=crop&w=400&q=80" alt="أطقم الكنب والإكسسوارات" class="product-thumb">
+                <!-- قطاع 9 -->
+                <div class="b2b-product-card epic-card" data-category="furniture" data-aos="fade-up" data-aos-delay="800">
+                    <div class="badge-status">تصاميم مريحة وعصرية</div>
+                    <img src="https://images.unsplash.com/photo-1484101403633-562f891dc89a?auto=format&fit=crop&w=400&q=80" alt="أطقم الأرائك والمفروشات" class="product-thumb">
                     <div class="product-info">
-                        <h3>أطقم الكنب والمجالس والإكسسوارات</h3>
-                        <p class="route-info"><i class="fas fa-anchor"></i> شبكة التوزيع والربط الإقليمي المشترك</p>
-                        <div class="product-meta">
-                            <span><strong>التصميم:</strong> تشكيلات مرنة وحلول تعبئة ممتازة لسلامة النقل</span>
-                        </div>
-                        <a href="#contact" class="btn btn-tech w-full" onclick="setRFQCategory('Staff Sofa Sets & Accessories')">تصدير من القسم <i class="fas fa-arrow-left" style="transform: rotate(180deg);"></i></a>
+                        <h3>أطقم الأرائك والمفروشات</h3>
+                        <p class="route-info"><i class="fas fa-anchor text-red"></i> شبكة توزيع ولوجستيات إقليمية</p>
+                        <div class="product-meta"><span><strong>التصميم:</strong> تشكيلات معيارية مرنة</span></div>
+                        <a href="#contact" class="btn-outline w-full" onclick="setRFQCategory('أطقم الأرائك والمفروشات')">طلب توريد من القطاع <i class="fas fa-arrow-left"></i></a>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Core Values Section -->
+    <!-- الهيكل التشغيلي وعن الشركة -->
     <section id="about" class="section">
         <div class="container">
             <div class="section-header" data-aos="fade-up">
-                <h2>الإطار التشغيلي ومبادئ العمل الأساسية</h2>
-                <div class="header-line"></div>
+                <h2>الهيكل التشغيلي والرؤية <span class="gradient-text">المؤسسية</span></h2>
             </div>
+
+            <div class="about-seo-intro-card epic-card" data-aos="fade-up">
+                <p>
+                    تأسست شركة <strong>المصرية الإماراتية</strong> في عام 2010، وهي شركة رائدة وموثوقة متخصصة في خدمات الاستيراد والتصدير والوكالات التجارية المتكاملة. انطلاقاً من جذورنا الراسخة في كل من مصر ودولة الإمارات العربية المتحدة، نربط قطاعات الأعمال عالمياً عبر شبكات لوجستية بالغة الدقة، وتعاملات تتسم بالشفافية المطلقة، وشراكات تجارية مبنية على الثقة المتبادلة.
+                </p>
+            </div>
+
             <div class="grid grid-2 core-values-grid">
-                
-                <div class="value-item tech-card-horizontal" data-aos="fade-right" data-aos-delay="100">
-                    <div class="core-img-box">
-                        <img src="images/Innovation%20Image.jpg" alt="الابتكار والكفاءة" onerror="this.onerror=null; this.src='https://via.placeholder.com/300x200/044da1/ffffff?text=Innovation';">
-                    </div>
-                    <div>
-                        <h3>الابتكار والكفاءة التشغيلية</h3>
-                        <p>نستعين بأحدث التقنيات الرقمية والاستراتيجيات المبتكرة لتقديم حلول تجارية ولوجستية ممتازة وسريعة.</p>
+                <div class="value-item epic-card horizontal-card" data-aos="fade-right" data-aos-delay="100">
+                    <div class="core-img-box"><img src="images/Innovation%20Image.jpg" alt="الابتكار والكفاءة" onerror="this.onerror=null; this.src='https://via.placeholder.com/300x200/044da1/ffffff?text=الابتكار';"></div>
+                    <div class="value-text-block">
+                        <h3>الابتكار والكفاءة العالية</h3>
+                        <p>نوظف أحدث الابتكارات التقنية والاستراتيجيات الذكية لتقديم حلول تجارية فورية وأكثر كفاءة لشركائنا.</p>
                     </div>
                 </div>
 
-                <div class="value-item tech-card-horizontal" data-aos="fade-left" data-aos-delay="200">
-                    <div class="core-img-box">
-                        <img src="images/Client%20Image.jpg" alt="التركيز على العميل" onerror="this.onerror=null; this.src='https://via.placeholder.com/300x200/044da1/ffffff?text=Client-Centric';">
-                    </div>
-                    <div>
-                        <h3>التميز المرتكز على نجاح العميل</h3>
-                        <p>نجاح أعمالكم وتجارتكم هو أولويتنا الأولى. نكرس جهودنا لتقديم خدمات مخصصة وبناء علاقات ثقة مستدامة.</p>
+                <div class="value-item epic-card horizontal-card" data-aos="fade-left" data-aos-delay="200">
+                    <div class="core-img-box"><img src="images/Client%20Image.jpg" alt="خدمة العملاء المتميزة" onerror="this.onerror=null; this.src='https://via.placeholder.com/300x200/044da1/ffffff?text=خدمة+العملاء';"></div>
+                    <div class="value-text-block">
+                        <h3>الأولوية لنجاح العميل</h3>
+                        <p>نجاح أعمالكم هو غايتنا الأولى؛ نحرص على تقديم خدمات مخصصة تلبي تطلعاتكم وتدعم استدامة الثقة بيننا.</p>
                     </div>
                 </div>
 
-                <div class="value-item tech-card-horizontal" data-aos="fade-right" data-aos-delay="300">
-                    <div class="core-img-box">
-                        <img src="images/Connectivity%20Image.jpg" alt="الربط السلس" onerror="this.onerror=null; this.src='https://via.placeholder.com/300x200/044da1/ffffff?text=Connectivity';">
-                    </div>
-                    <div>
-                        <h3>اتصال تجاري ولوجستي انسيابي</h3>
-                        <p>خلق بيئة تجارية خالية من العقبات، لربط الشركات والأعمال التجارية عبر أسواق الشرق الأوسط وخارجها.</p>
+                <div class="value-item epic-card horizontal-card" data-aos="fade-right" data-aos-delay="300">
+                    <div class="core-img-box"><img src="images/Connectivity%20Image.jpg" alt="الترابط السلس" onerror="this.onerror=null; this.src='https://via.placeholder.com/300x200/044da1/ffffff?text=الترابط';"></div>
+                    <div class="value-text-block">
+                        <h3>تواصل تجاري سلس ومتكامل</h3>
+                        <p>نؤسس بيئة تجارية مترابطة تربط قطاعات الأعمال في منطقة الشرق الأوسط وشمال أفريقيا ومختلف دول العالم.</p>
                     </div>
                 </div>
 
-                <div class="value-item tech-card-horizontal" data-aos="fade-left" data-aos-delay="400">
-                    <div class="core-img-box">
-                        <img src="images/Security%20Image.jpg" alt="النزاهة والأمان" onerror="this.onerror=null; this.src='https://via.placeholder.com/300x200/044da1/ffffff?text=Security';">
-                    </div>
-                    <div>
-                        <h3>النزاهة والشفافية وأمن البيانات</h3>
-                        <p>نعمل وفقاً لأعلى المعايير المهنية والأخلاقية، مما يضمن الشفافية الكاملة في التوثيق وأمن بيانات المعاملات.</p>
+                <div class="value-item epic-card horizontal-card" data-aos="fade-left" data-aos-delay="400">
+                    <div class="core-img-box"><img src="images/Security%20Image.jpg" alt="النزاهة والأمان" onerror="this.onerror=null; this.src='https://via.placeholder.com/300x200/044da1/ffffff?text=النزاهة';"></div>
+                    <div class="value-text-block">
+                        <h3>النزاهة والأمان المالي</h3>
+                        <p>نعمل بأعلى المعايير الأخلاقية والمهنية، بما يضمن الشفافية التامة وحماية المعاملات وسرية البيانات.</p>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Systems Section -->
+   <!-- عرض الفيديو التعريفي -->
+    <section class="section portrait-showcase-section bg-light">
+        <div class="container">
+            <div class="grid grid-2 align-items-center">
+                <div class="showcase-content" data-aos="fade-right">
+                    <span class="epic-badge"><i class="fas fa-play"></i> ابدأ الآن</span>
+                    <h2>حلول متكاملة في <span class="gradient-text">الاستيراد، التصدير والوكالات التجارية</span></h2>
+                    <p class="mb-4">نقدم حلولاً تجارية ولوجستية شاملة للشركات، لنربط الأسواق المصرية بالمراكز الإقليمية والعالمية بأعلى كفاءة. ومن خلال شبكة واسعة من الوكالات التجارية وخطوط الملاحة الموثوقة، نضمن تنفيذ أعمالكم التجارية بأقصى درجات الدقة والاحترافية.</p>
+                    <div class="features-list">
+                        <div class="feature-item">
+                            <span class="icon-indicator"><i class="fas fa-handshake"></i></span>
+                            <div class="feature-text">
+                                <h4>إدارة الوكالات التجارية</h4>
+                                <p>تمثيل تجاري احترافي وبناء علاقات أعمال متينة لدعم توسعكم الإقليمي والدولي في الأسواق المستهدفة.</p>
+                            </div>
+                        </div>
+                        <div class="feature-item">
+                            <span class="icon-indicator"><i class="fas fa-globe"></i></span>
+                            <div class="feature-text">
+                                <h4>خدمات الاستيراد والتصدير</h4>
+                                <p>تيسير حركة الشحنات وتقديم حلول لوجستية مرنة تلبي متطلباتكم التشغيلية بدقة وموثوقية عالية.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="portrait-video-wrapper" data-aos="fade-left">
+                    <div class="portrait-phone-frame">
+                        <video autoplay muted loop playsinline>
+                            <source src="videos/banar_video_egy-uae.mp4" type="video/mp4">
+                        </video>
+                        <div class="portrait-overlay-glow"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- قسم الأنظمة الرقمية -->
     <section id="systems" class="section dark-tech-section">
         <div class="container relative-z">
             <div class="section-header text-center" data-aos="fade-up">
-                <h2>واجهة العمليات والأنظمة الرقمية</h2>
-                <p class="subtitle-text">منصات متابعة ولوحات مراقبة مركزية لتنسيق عمليات التجارة في الوقت الفعلي</p>
-                <div class="header-line glow-line"></div>
+                <h2 style="color:white;">واجهة العمليات <span class="gradient-text">والمنظومات الرقمية</span></h2>
+                <p class="subtitle-text" style="color:#aaa;">لوحات تحكم مركزية لمتابعة وتنسيق خطوط الإمداد والتجارة لحظة بلحظة</p>
             </div>
             
             <div class="grid grid-3">
-                <div class="system-card glass-panel tilt-card" data-tilt data-tilt-glare data-tilt-max-glare="0.2" data-aos="zoom-in" data-aos-delay="100">
-                    <div class="sys-icon"><i class="fas fa-satellite"></i></div>
-                    <h3>منصة التتبع الذكي</h3>
-                    <p>رؤية كاملة وآنية لشحناتك. تابع الموقع الدقيق وحالة المستندات ومواعيد الوصول المتوقعة مباشرة.</p>
-                    <a href="tracking.html" class="sys-link">تشغيل نظام التتبع <i class="fas fa-terminal"></i></a>
+                <div class="system-card epic-card tilt-card" data-tilt data-tilt-glare data-tilt-max-glare="0.2" data-aos="zoom-in" data-aos-delay="100">
+                    <div class="sys-icon"><i class="fas fa-satellite text-red"></i></div>
+                    <h3>التتبع الذكي للشحنات</h3>
+                    <p>متابعة حية ومباشرة لحركة الشحنات وتحديد المواقع بدقة، وأوقات النقل، ومواعيد الوصول المتوقعة بدقة فائقة.</p>
+                    <a href="tracking.html" class="btn-text">بدء التتبع <i class="fas fa-arrow-left"></i></a>
                 </div>
                 
-                <div class="system-card glass-panel tilt-card" data-tilt data-tilt-glare data-tilt-max-glare="0.2" data-aos="zoom-in" data-aos-delay="200">
-                    <div class="sys-icon"><i class="fas fa-chart-pie"></i></div>
-                    <h3>لوحة تحليلات الأداء</h3>
-                    <p>تصور شامل لبيانات التوريد. حلل مؤشرات أداء سلاسل الإمداد ومقاييس سرعة ومسارات الشحن المعتمدة.</p>
-                    <a href="dashboard.html" class="sys-link">عرض لوحة البيانات <i class="fas fa-terminal"></i></a>
+                <div class="system-card epic-card tilt-card" data-tilt data-tilt-glare data-tilt-max-glare="0.2" data-aos="zoom-in" data-aos-delay="200">
+                    <div class="sys-icon"><i class="fas fa-chart-pie text-red"></i></div>
+                    <h3>لوحة التحليلات والبيانات</h3>
+                    <p>قراءة بيانية متقدمة للمؤشرات؛ لتحليل كفاءة سلاسل الإمداد، والتقارير المالية، ومعدلات الأداء التشغيلي للمؤسسة.</p>
+                    <a href="dashboard.html" class="btn-text">فتح لوحة التحكم <i class="fas fa-arrow-left"></i></a>
                 </div>
                 
-                <div class="system-card glass-panel tilt-card" data-tilt data-tilt-glare data-tilt-max-glare="0.2" data-aos="zoom-in" data-aos-delay="300">
-                    <div class="sys-icon"><i class="fas fa-microchip"></i></div>
+                <div class="system-card epic-card tilt-card" data-tilt data-tilt-glare data-tilt-max-glare="0.2" data-aos="zoom-in" data-aos-delay="300">
+                    <div class="sys-icon"><i class="fas fa-microchip text-red"></i></div>
                     <h3>بوابة العملاء الموحدة</h3>
-                    <p>مركز تحكم موحد لإدارة عملياتك اللوجستية. أدر فواتيرك، وتابع المستندات الرسمية، وتواصل مع فريق الدعم.</p>
-                    <a href="https://egy-uae.softr.app" class="sys-link">الدخول للبوابة الرقمية <i class="fas fa-terminal"></i></a>
+                    <p>منصة شاملة لإدارة متطلباتكم اللوجستية؛ متابعة الفواتير، تقديم الطلبات، والوصول السريع والآمن لمستندات الشحن.</p>
+                    <a href="portal.html" class="btn-text">تسجيل الدخول للبوابة <i class="fas fa-arrow-left"></i></a>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Testimonials Section -->
-    <section class="section">
+    <!-- منظومة الشركاء والعملاء -->
+    <section class="section ecosystem-section">
         <div class="container">
             <div class="section-header" data-aos="fade-up">
-                <h2>شركاء التجارة الموثقون والآراء</h2>
-                <div class="header-line"></div>
+                <h2>شبكة <span class="gradient-text">شركائنا وعملائنا</span></h2>
+                <p class="subtitle-text">مؤسسات رائدة وشركاء استراتيجيون يقودون حركة التجارة عبر الحدود</p>
+            </div>
+            
+            <!-- العملاء -->
+            <div class="ecosystem-wrapper" data-aos="fade-up" data-aos-delay="100">
+                <h3 class="ecosystem-row-title"><i class="fas fa-handshake text-red"></i> عملاء B2B معتمدون</h3>
+                <div class="logo-marquee-container epic-card">
+                    <div class="logo-marquee-track track-left">
+                        <div class="logo-item"><img src="images/Lords Hotel - logo.jpg" alt="Lords Hotel" onerror="this.onerror=null; this.src='https://via.placeholder.com/150x60/ffffff/044da1?text=عميل';"></div>
+                        <div class="logo-item"><img src="images/Oceanic Hotel - logo.png" alt="Oceanic Hotel" onerror="this.onerror=null; this.src='https://via.placeholder.com/150x60/ffffff/044da1?text=عميل';"></div>
+                        <div class="logo-item"><img src="images/Holiday International - logo.png" alt="Holiday International" onerror="this.onerror=null; this.src='https://via.placeholder.com/150x60/ffffff/044da1?text=عميل';"></div>
+                        <div class="logo-item"><img src="images/Al Maha Hotel - logo .jpg" alt="Al Maha Hotel" onerror="this.onerror=null; this.src='https://via.placeholder.com/150x60/ffffff/044da1?text=عميل';"></div>
+                        <div class="logo-item"><img src="images/Al Haiat Hotel Group - logo.png" alt="Al Haiat Hotel Group" onerror="this.onerror=null; this.src='https://via.placeholder.com/150x60/ffffff/044da1?text=عميل';"></div>
+                        <div class="logo-item"><img src="images/Rotana Hotel - logo.png" alt="Rotana Hotel" onerror="this.onerror=null; this.src='https://via.placeholder.com/150x60/ffffff/044da1?text=عميل';"></div>
+                        <div class="logo-item"><img src="images/Skydive Dubai - logo.jpg" alt="Skydive Dubai" onerror="this.onerror=null; this.src='https://via.placeholder.com/150x60/ffffff/044da1?text=عميل';"></div>
+                        <!-- تكرار لعرض الشريط المتواصل -->
+                        <div class="logo-item"><img src="images/Lords Hotel - logo.jpg" alt="Lords Hotel" onerror="this.onerror=null; this.src='https://via.placeholder.com/150x60/ffffff/044da1?text=عميل';"></div>
+                        <div class="logo-item"><img src="images/Oceanic Hotel - logo.png" alt="Oceanic Hotel" onerror="this.onerror=null; this.src='https://via.placeholder.com/150x60/ffffff/044da1?text=عميل';"></div>
+                        <div class="logo-item"><img src="images/Holiday International - logo.png" alt="Holiday International" onerror="this.onerror=null; this.src='https://via.placeholder.com/150x60/ffffff/044da1?text=عميل';"></div>
+                        <div class="logo-item"><img src="images/Al Maha Hotel - logo .jpg" alt="Al Maha Hotel" onerror="this.onerror=null; this.src='https://via.placeholder.com/150x60/ffffff/044da1?text=عميل';"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- الشركاء -->
+            <div class="ecosystem-wrapper" data-aos="fade-up" data-aos-delay="200">
+                <h3 class="ecosystem-row-title"><i class="fas fa-network-wired text-red"></i> شركاء النجاح العالميون</h3>
+                <div class="logo-marquee-container epic-card">
+                    <div class="logo-marquee-track track-right">
+                        <div class="logo-item"><img src="images/JT-Express-Logo.png" alt="J&T Express" onerror="this.onerror=null; this.src='https://via.placeholder.com/150x60/ffffff/ec1c24?text=شريك';"></div>
+                        <div class="logo-item"><img src="images/DHL-Logo.png" alt="DHL" onerror="this.onerror=null; this.src='https://via.placeholder.com/150x60/ffffff/ec1c24?text=شريك';"></div>
+                        <div class="logo-item"><img src="images/nafeza-en.svg" alt="Nafeza" onerror="this.onerror=null; this.src='https://via.placeholder.com/150x60/ffffff/ec1c24?text=نافذة';"></div>
+                        <div class="logo-item"><img src="images/company - logo.png" alt="Partner" onerror="this.onerror=null; this.src='https://via.placeholder.com/150x60/ffffff/ec1c24?text=شريك';"></div>
+                        <!-- تكرار لعرض الشريط المتواصل -->
+                        <div class="logo-item"><img src="images/JT-Express-Logo.png" alt="J&T Express" onerror="this.onerror=null; this.src='https://via.placeholder.com/150x60/ffffff/ec1c24?text=شريك';"></div>
+                        <div class="logo-item"><img src="images/DHL-Logo.png" alt="DHL" onerror="this.onerror=null; this.src='https://via.placeholder.com/150x60/ffffff/ec1c24?text=شريك';"></div>
+                        <div class="logo-item"><img src="images/nafeza-en.svg" alt="Nafeza" onerror="this.onerror=null; this.src='https://via.placeholder.com/150x60/ffffff/ec1c24?text=نافذة';"></div>
+                        <div class="logo-item"><img src="images/company - logo.png" alt="Partner" onerror="this.onerror=null; this.src='https://via.placeholder.com/150x60/ffffff/ec1c24?text=شريك';"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- آراء العملاء -->
+    <section class="section bg-light">
+        <div class="container">
+            <div class="section-header" data-aos="fade-up">
+                <h2>شهادات <span class="gradient-text">شركاء التجارة</span></h2>
             </div>
             <div class="swiper testimonial-slider" data-aos="fade-up" data-aos-delay="100">
                 <div class="swiper-wrapper">
                     <div class="swiper-slide">
-                        <div class="testimonial-card">
-                            <i class="fas fa-quote-left quote-mark"></i>
-                            <p>"لقد كانت خدمات المصرية الإماراتية ركيزة أساسية ساعدتنا على تحسين وتطوير مساراتنا اللوجستية والتجارية بين القاهرة ودبي."</p>
+                        <div class="testimonial-card epic-card">
+                            <i class="fas fa-quote-right quote-mark text-red"></i>
+                            <p>"كانت المصرية الإماراتية شريكاً محورياً في تعزيز وتحسين مساراتنا التجارية بين القاهرة ودبي بأعلى مستويات الاحترافية."</p>
                             <h4>- عمر الفارس</h4>
-                            <span>مدير إدارة سلاسل الإمداد</span>
+                            <span style="color:var(--text-muted); font-size:0.85rem;">مدير قطاع سلاسل الإمداد</span>
                         </div>
                     </div>
                     <div class="swiper-slide">
-                        <div class="testimonial-card">
-                            <i class="fas fa-quote-left quote-mark"></i>
-                            <p>"لمسنا احترافية استثنائية وسرعة فائقة في عمليات التخليص الجمركي، وحظينا بدعم لوجستي متميز من خلال بوابتهم الرقمية."</p>
+                        <div class="testimonial-card epic-card">
+                            <i class="fas fa-quote-right quote-mark text-red"></i>
+                            <p>"شهدنا مرونة وسرعة غير مسبوقة في التخليص الجمركي وإدارة الخدمات اللوجستية من خلال منصتهم الرقمية المتطورة."</p>
                             <h4>- لطيفة حسن</h4>
-                            <span>مديرة العمليات التشغيلية</span>
+                            <span style="color:var(--text-muted); font-size:0.85rem;">مديرة العمليات التشغيلية</span>
                         </div>
                     </div>
                 </div>
@@ -503,157 +570,192 @@
         </div>
     </section>
 
-    <!-- FAQ & B2B RFQ Desk -->
-    <section id="contact" class="section glass-section">
+    <!-- الأسئلة الشائعة ونموذج طلب التسعير B2B -->
+    <section id="contact" class="section">
         <div class="container">
             <div class="grid grid-2">
                 
-                <!-- FAQ Panel -->
+                <!-- الأسئلة المتكررة والتواصل -->
                 <div class="faq-container" data-aos="fade-right">
-                    <div class="section-header text-left">
-                        <h2>استفسارات المكتب التجاري (الأسئلة الشائعة)</h2>
-                        <div class="header-line"></div>
+                    <div class="section-header text-right">
+                        <h2>استفسارات <span class="gradient-text">المكتب التجاري</span></h2>
                     </div>
-                    <div class="faq-item">
-                        <div class="faq-question">
-                            <h3>ما هي طبيعة البضائع والشحنات التي تتعاملون معها؟</h3>
-                            <i class="fas fa-plus"></i>
+                    <div class="epic-card" style="padding:20px;">
+                        <div class="faq-item">
+                            <div class="faq-question">
+                                <h3>ما هي أبرز أنواع البضائع التي تديرونها في التبادل التجاري؟</h3>
+                                <i class="fas fa-plus text-primary"></i>
+                            </div>
+                            <div class="faq-answer">
+                                <p>نقوم بإدارة المنتجات الصناعية، السلع الاستهلاكية الغذائية وغير الغذائية، المواد الخام الكيماوية، ومستلزمات المشاريع المتخصصة.</p>
+                            </div>
                         </div>
-                        <div class="faq-answer">
-                            <p>نحن ندير العمليات اللوجستية والتوريدية للمنتجات الصناعية، السلع الاستهلاكية، المواد الخام، مستلزمات الفنادق الفاخرة، والشحنات المتخصصة مع مراعاة أعلى معايير الأمان والامتثال الجمركي.</p>
-                        </div>
-                    </div>
-                    <div class="faq-item">
-                        <div class="faq-question">
-                            <h3>هل تتوفر لديكم خدمات تتبع فورية للشحنات النشطة؟</h3>
-                            <i class="fas fa-plus"></i>
-                        </div>
-                        <div class="faq-answer">
-                            <p>نعم، توفر واجهتنا الرقمية المتقدمة تحديثات وتتبعاً دقيقاً ومباشراً لكافة الشحنات عبر بوابة العملاء المؤمنة.</p>
+                        <div class="faq-item">
+                            <div class="faq-question">
+                                <h3>هل توفرون خاصية التتبع المباشر للشحنات في الوقت الفعلي؟</h3>
+                                <i class="fas fa-plus text-primary"></i>
+                            </div>
+                            <div class="faq-answer">
+                                <p>نعم، تتيح أنظمتنا اللوجستية الذكية متابعة حية ومحدثة لكافة الشحنات عبر منصة مخصصة للعملاء برقم تتبع خاص.</p>
+                            </div>
                         </div>
                     </div>
                     
-                    <div class="contact-info mt-5">
-                        <div class="info-item"><i class="fas fa-map-marker-alt"></i> العاشر من رمضان، جمهورية مصر العربية & الشارقة، الإمارات العربية المتحدة</div>
-                        <div class="info-item"><i class="fas fa-phone-alt"></i> +20 101 176 6232</div>
-                        <div class="info-item"><i class="fas fa-envelope"></i> info@egy-uae.com</div>
+                    <div class="contact-info mt-5 epic-card" style="padding:25px; margin-top:20px;">
+                        <div class="info-item">
+                            <i class="fas fa-map-marker-alt text-red"></i>
+                            <span>العاشر من رمضان، مصر & الشارقة، الإمارات العربية المتحدة</span>
+                        </div>
+                        <div class="info-item">
+                            <i class="fas fa-phone-alt text-red"></i>
+                            <span>201011766232+</span>
+                        </div>
+                        <div class="info-item">
+                            <i class="fas fa-envelope text-red"></i>
+                            <span>info@egy-uae.com</span>
+                        </div>
                     </div>
                 </div>
 
-                <!-- B2B RFQ Form -->
-                <div class="contact-form-container tech-card" data-aos="fade-left">
-                    <h3 class="form-title">إرسال طلب عرض أسعار للقسم التجاري (RFQ)</h3>
-                    <p class="text-muted mb-4">أرسل مواصفات شحنتك والكميات المطلوبة مباشرة إلى المتخصصين لمراجعتها وتوفير العرض المناسب.</p>
+                <!-- نموذج تقديم طلب التسعير B2B -->
+                <div class="contact-form-container epic-card" data-aos="fade-left">
+                    <h3 class="form-title" style="font-size: 1.5rem; margin-bottom:10px;">إرسال طلب عرض أسعار تجاري (RFQ)</h3>
+                    <p class="text-muted mb-4" style="margin-bottom: 25px; font-size: 0.9rem;">أرسل مواصفات وتفاصيل شحنتكم مباشرة إلى فريق الخبراء التجاريين لدينا.</p>
                     <form class="contact-form" action="https://formspree.io/f/maqkrwoe" method="POST">
                         <div class="input-group">
                             <i class="fas fa-user"></i>
-                            <input type="text" name="Name" placeholder="الاسم الكامل / مسؤول إدارة المشتريات" required>
+                            <input type="text" name="Name" placeholder="الاسم / مدير المشتريات" required>
                         </div>
                         <div class="input-group">
                             <i class="fas fa-envelope"></i>
-                            <input type="email" name="Email" placeholder="البريد الإلكتروني الرسمي للشركة" required>
+                            <input type="email" name="Email" placeholder="البريد الإلكتروني للعمل / المؤسسة" required>
                         </div>
                         <div class="input-group">
                             <i class="fas fa-phone"></i>
-                            <input type="tel" name="Phone" placeholder="رقم الهاتف المباشر للتواصل">
+                            <input type="tel" name="Phone" placeholder="رقم الهاتف للتواصل المباشر">
                         </div>
                         <div class="input-group">
                             <i class="fas fa-tag"></i>
-                            <input type="text" name="Subject" id="rfq-division-subject" placeholder="القسم التجاري المحدد / البضائع المستهدفة" required>
+                            <input type="text" name="Subject" id="rfq-division-subject" placeholder="القطاع المطلوب / نوع الشحنة" required>
                         </div>
                         <div class="input-group">
                             <i class="fas fa-comment-alt"></i>
-                            <textarea name="Message" rows="4" placeholder="يرجى كتابة تفاصيل حجم الشحنة، المواصفات المطلوبة، تفاصيل التعبئة والموانئ المستهدفة للاستيراد أو التصدير بالتفصيل..." required></textarea>
+                            <textarea name="Message" rows="4" placeholder="وضح هنا حجم البضاعة، مواصفاتها المطلوبة، تفاصيل الشحنة، وموانئ الاستلام والتسليم المحددة..." required></textarea>
                         </div>
-                        <button type="submit" class="btn btn-tech w-full">إرسال تفاصيل طلب عرض الأسعار <i class="fas fa-paper-plane"></i></button>
+                        <button type="submit" class="btn-primary w-full">إرسال تفاصيل ومواصفات الطلب <i class="fas fa-paper-plane"></i></button>
                     </form>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Footer Area -->
+    <!-- تذييل الصفحة (Footer) -->
     <footer class="tech-footer">
+        <div class="footer-video-bg">
+            <video autoplay muted loop playsinline>
+                <source src="videos/new_video_banner.mp4" type="video/mp4">
+            </video>
+        </div>
+        <div class="footer-overlay"></div>
+
         <div class="container footer-container-grid">
             <div class="footer-brand-section">
-                <img src="Al_Masriya_Al_Emaratiya_icon.png" alt="شعار المصرية الإماراتية" class="brand-logo" onerror="this.onerror=null; this.src='https://via.placeholder.com/200x60/044da1/ffffff?text=LOGO+HERE';">
-                <p class="footer-desc">بوابتكم المتكاملة للممرات التجارية الآمنة وسلسلة التوريد الموثوقة لربط الشركات والأعمال بين جمهورية مصر العربية ودولة الإمارات العربية المتحدة.</p>
+                <img src="Al_Masriya_Al_Emaratiya_icon.png" alt="شعار المصرية الإماراتية" class="brand-logo" onerror="this.onerror=null; this.src='https://via.placeholder.com/200x60/044da1/ffffff?text=المصرية+الإماراتية';">
+                <p class="footer-desc">بوابتكم المتكاملة للتجارة الآمنة وقنوات التوريد التجارية الاستراتيجية الرابطة بين جمهورية مصر العربية ودولة الإمارات العربية المتحدة.</p>
                 <div class="social-links">
-                    <a href="https://www.facebook.com/AlMasriyaAlEmaratiya" target="_blank" rel="noopener" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
-                    <a href="https://www.linkedin.com/company/egy-uae" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
-                    <a href="https://www.youtube.com/@egy-uae.channel" target="_blank" rel="noopener" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                    <a href="https://www.facebook.com/AlMasriyaAlEmaratiya" target="_blank" rel="noopener"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://www.linkedin.com/company/egy-uae" target="_blank" rel="noopener"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="https://www.youtube.com/@egy-uae.channel" target="_blank" rel="noopener"><i class="fab fa-youtube"></i></a>
                 </div>
             </div>
 
             <div class="footer-links-group">
-                <h4 class="footer-section-title">فهرس السوق</h4>
+                <h4 class="footer-section-title">فهرس المنصة</h4>
                 <ul class="footer-ul-list">
                     <li><a href="#home">الرئيسية</a></li>
-                    <li><a href="#services">القدرات اللوجستية</a></li>
-                    <li><a href="#divisions">دليل أقسام التوريد</a></li>
-                    <li><a href="#about">الهيكل والعمليات</a></li>
-                    <li><a href="news.html">أخبار وتطورات السوق</a></li>
-                    <li><a href="#contact">طلب عرض أسعار</a></li>
+                    <li><a href="#services">القدرات التشغيلية</a></li>
+                    <li><a href="#divisions">دليل القطاعات</a></li>
+                    <li><a href="#about">الهيكل المؤسسي</a></li>
+                    <li><a href="#contact">طلب عرض أسعار (RFQ)</a></li>
                 </ul>
             </div>
 
             <div class="footer-links-group">
-                <h4 class="footer-section-title">دليل الأقسام التجارية</h4>
+                <h4 class="footer-section-title">القطاعات الرئيسية</h4>
                 <ul class="footer-ul-list">
-                    <li><a href="pages/food-division.html">قسم المواد الغذائية</a></li>
-                    <li><a href="pages/hotel-supplies.html">قسم مستلزمات الفنادق</a></li>
+                    <li><a href="pages/food-division.html">قطاع الأغذية</a></li>
+                    <li><a href="pages/hotel-supplies.html">المستلزمات الفندقية</a></li>
                     <li><a href="pages/chemicals-cosmetics.html">الكيماويات ومستحضرات التجميل</a></li>
-                    <li><a href="pages/ose-procurement.html">توريدات معدات التشغيل OS&E</a></li>
-                    <li><a href="pages/office-furniture.html">قسم الأثاث المكتبي</a></li>
-                    <li><a href="pages/banquet-furniture.html">أثاث القاعات والحفلات</a></li>
+                    <li><a href="pages/office-furniture.html">الأثاث المكتبي</a></li>
                 </ul>
             </div>
 
             <div class="footer-links-group footer-lang-wrap">
-                <h4 class="footer-section-title">اللغة وواجهة المستخدم</h4>
+                <h4 class="footer-section-title">اللغة وواجهة الاستخدام</h4>
                 <div class="footer-language custom-dropdown">
                     <div class="dropdown-trigger" id="lang-trigger">
                         <span><i class="fas fa-globe"></i> العربية</span>
                         <i class="fas fa-chevron-down arrow-icon"></i>
                     </div>
                     <ul class="dropdown-menu tech-dropdown" id="lang-menu">
-                        <li><a href="../index.html">English</a></li>
+                        <li><a href="index.html">English</a></li>
                         <li><a href="ar/home.html" class="active-lang">العربية</a></li>
-                        <li><a href="../home-cn.html">中文</a></li>
+                        <li><a href="home-cn.html">中文</a></li>
                     </ul>
                 </div>
             </div>
         </div>
         <div class="container footer-bottom-panel">
-            <p>© <span id="current-year"></span> المصرية الإماراتية. حلول شبكات التبادل التجاري B2B المتكاملة. مدعوم بنظام التشغيل والحلول الرقمية Tech OS.</p>
+            <p>© <span id="current-year"></span> المصرية الإماراتية. جميع الحقوق محفوظة. حلول شبكات B2B المتكاملة. مدعوم بنظام Tech OS.</p>
         </div>
     </footer>
 
-    <!-- AI Chat Support Widget -->
+    <!-- شريط التنقل السفلي (للهواتف فقط) -->
+    <nav class="app-bottom-nav">
+        <a href="#home" class="nav-item active">
+            <i class="fas fa-compass"></i>
+            <span>استكشاف</span>
+        </a>
+        <a href="#divisions" class="nav-item">
+            <i class="fas fa-cubes"></i>
+            <span>القطاعات</span>
+        </a>
+        <a href="https://amae.egy-uae.com" class="nav-item fab-center">
+            <div class="fab"><i class="fas fa-store"></i></div>
+            <span>المتجر</span>
+        </a>
+        <a href="#systems" class="nav-item">
+            <i class="fas fa-satellite"></i>
+            <span>الأنظمة</span>
+        </a>
+        <a href="#contact" class="nav-item">
+            <i class="fas fa-headset"></i>
+            <span>الدعم</span>
+        </a>
+    </nav>
+
+    <!-- نافذة المساعد الذكي (AI Chat Widget) -->
     <div id="chat-widget" class="chat-widget">
-        <button class="chat-btn glow-effect" id="chat-toggle" aria-label="مستشار الدعم الذكي">
-            <i class="fas fa-headset"></i> 
+        <button class="chat-btn glow-effect" id="chat-toggle" aria-label="فتح الدردشة والدعم">
+            <i class="fas fa-comment-dots"></i> 
         </button>
         <div class="chat-container glass-panel" id="chat-box">
             <div class="chat-header">
-                <h3><i class="fas fa-robot"></i> مستشار الدعم الذكي</h3>
-                <button class="chat-close" id="chat-close">&times;</button>
+                <h3 style="margin:0; font-size:1rem;"><i class="fas fa-robot"></i> المساعد التجاري الذكي</h3>
+                <button class="chat-close" id="chat-close" style="background:none; border:none; font-size:1.2rem; cursor:pointer;">&times;</button>
             </div>
-            <div class="chat-body" id="chat-body">
-                <div class="message incoming">
-                    <p>تم تأسيس اتصال آمن ومستقر بقواعد البيانات المشتركة. كيف يمكننا مساعدة عملياتكم اللوجستية وتوريداتكم اليوم؟</p>
-                </div>
-            </div>
+            <div class="chat-body" id="chat-body"></div>
             <div class="chat-footer">
-                <input type="text" placeholder="اكتب هنا استفسار التوريد الخاص بك..." id="chat-input">
-                <button id="chat-send" aria-label="إرسال"><i class="fas fa-paper-plane"></i></button>
+                <input type="text" placeholder="اكتب استفسارك التجاري أو اللوجستي..." id="chat-input">
+                <button id="chat-send" aria-label="إرسال الرسالة"><i class="fas fa-paper-plane"></i></button>
             </div>
         </div>
     </div>
 
+    <!-- السكريبتات البرمجية -->
     <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.8.0/vanilla-tilt.min.js"></script>
-    <script src="js/main.js"></script>
+    <script src="..js/main.js"></script>
 </body>
 </html>
