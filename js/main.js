@@ -1,144 +1,165 @@
 /**
  * AL MASSRIYA AL EMARATIYA - GLOBAL TRADE ENGINE CONTROLLER
- * Zero-Jank & Multi-Device Responsive Execution
+ * High-performance, accessible, and reactive cross-device execution
  */
 
 document.addEventListener('DOMContentLoaded', () => {
 
     // ==========================================
-    // 1. SMART HEADER & SCROLLSPY CONTROLLER
+    // 1. SMART HEADER & SCROLL CONTROLLER
     // ==========================================
     const header = document.getElementById('header');
-    let lastScroll = 0;
-    const desktopNavLinks = document.querySelectorAll('.desktop-navigation .nav-item-link');
-    const bottomDockLinks = document.querySelectorAll('.app-bottom-dock .dock-nav-item:not(.center-portal)');
-    const mainSections = document.querySelectorAll('main section[id]');
     const progressBar = document.getElementById('progress-bar');
+    let lastScroll = 0;
+    let ticking = false;
 
     window.addEventListener('scroll', () => {
-        const currentScroll = window.pageYOffset || document.documentElement.scrollTop;
+        if (!ticking) {
+            window.requestAnimationFrame(() => {
+                const currentScroll = window.pageYOffset || document.documentElement.scrollTop;
 
-        // Smart Header Hide / Show Logic
-        if (currentScroll <= 15) {
-            header.classList.remove('hidden');
-            header.style.boxShadow = "none";
-        } else {
-            header.style.boxShadow = "0 8px 30px rgba(4, 77, 161, 0.08)";
-            if (currentScroll > lastScroll && currentScroll > 140) {
-                header.classList.add('hidden'); // Scrolling Down -> Hide
-            } else {
-                header.classList.remove('hidden'); // Scrolling Up -> Show
-            }
-        }
-        lastScroll = currentScroll;
+                // Smart Header Hide / Show Logic
+                if (currentScroll <= 15) {
+                    header.classList.remove('hidden');
+                    header.style.boxShadow = "none";
+                } else {
+                    header.style.boxShadow = "0 8px 30px rgba(4, 77, 161, 0.08)";
+                    if (currentScroll > lastScroll && currentScroll > 140) {
+                        header.classList.add('hidden');
+                    } else {
+                        header.classList.remove('hidden');
+                    }
+                }
+                lastScroll = Math.max(0, currentScroll);
 
-        // Performant Scrollspy
-        let activeId = '';
-        mainSections.forEach(section => {
-            const sectionTop = section.offsetTop - 130;
-            const sectionHeight = section.offsetHeight;
-            if (currentScroll >= sectionTop && currentScroll < sectionTop + sectionHeight) {
-                activeId = section.getAttribute('id');
-            }
-        });
+                // Progress Bar
+                if (progressBar) {
+                    const winHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+                    const scrolled = winHeight > 0 ? (currentScroll / winHeight) * 100 : 0;
+                    progressBar.style.width = `${scrolled}%`;
+                }
 
-        // Update Desktop Links
-        desktopNavLinks.forEach(link => {
-            link.classList.remove('active');
-            if (link.getAttribute('href') === `#${activeId}`) {
-                link.classList.add('active');
-            }
-        });
-
-        // Update Mobile Bottom Dock
-        bottomDockLinks.forEach(dock => {
-            dock.classList.remove('active');
-            if (dock.getAttribute('href') === `#${activeId}`) {
-                dock.classList.add('active');
-            }
-        });
-
-        // Reading Progress Indicator
-        if (progressBar) {
-            const winHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-            const scrolled = (currentScroll / winHeight) * 100;
-            progressBar.style.width = `${scrolled}%`;
+                ticking = false;
+            });
+            ticking = true;
         }
     }, { passive: true });
 
     // ==========================================
-    // 2. MOBILE DRAWER WITH BACKDROP CONTROLLER
+    // 2. INTERSECTION OBSERVER SCROLLSPY (Zero Layout Thrashing)
+    // ==========================================
+    const desktopNavLinks = document.querySelectorAll('.desktop-navigation .nav-item-link');
+    const bottomDockLinks = document.querySelectorAll('.app-bottom-dock .dock-nav-item:not(.center-portal)');
+    const trackedSections = document.querySelectorAll('main section[id]');
+
+    const scrollspyObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const activeId = entry.target.getAttribute('id');
+
+                desktopNavLinks.forEach(link => {
+                    const href = link.getAttribute('href');
+                    link.classList.toggle('active', href === `#${activeId}`);
+                });
+
+                bottomDockLinks.forEach(dock => {
+                    const href = dock.getAttribute('href');
+                    dock.classList.toggle('active', href === `#${activeId}`);
+                });
+            }
+        });
+    }, {
+        root: null,
+        rootMargin: '-30% 0px -60% 0px',
+        threshold: 0
+    });
+
+    trackedSections.forEach(section => scrollspyObserver.observe(section));
+
+    // ==========================================
+    // 3. MOBILE SIDE DRAWER (With Focus Management)
     // ==========================================
     const menuToggles = document.querySelectorAll('.menu-toggle');
     const sideDrawer = document.getElementById('side-drawer');
     const drawerBackdrop = document.querySelector('.drawer-backdrop');
-    const drawerLinks = document.querySelectorAll('.drawer-nav-list a');
+    const burgerBtn = document.querySelector('.menu-burger-btn');
 
-    function toggleMobileDrawer() {
+    function toggleMobileDrawer(forceState) {
         if (!sideDrawer) return;
-        const isActive = sideDrawer.classList.toggle('active');
-        if (drawerBackdrop) drawerBackdrop.classList.toggle('active');
-        sideDrawer.setAttribute('aria-hidden', !isActive);
-        document.body.style.overflow = isActive ? 'hidden' : '';
+        const willBeActive = typeof forceState === 'boolean' 
+            ? forceState 
+            : !sideDrawer.classList.contains('active');
+
+        sideDrawer.classList.toggle('active', willBeActive);
+        if (drawerBackdrop) drawerBackdrop.classList.toggle('active', willBeActive);
+        sideDrawer.setAttribute('aria-hidden', !willBeActive);
+        if (burgerBtn) burgerBtn.setAttribute('aria-expanded', willBeActive);
+        document.body.style.overflow = willBeActive ? 'hidden' : '';
+
+        if (willBeActive) {
+            const firstLink = sideDrawer.querySelector('input, a, button');
+            if (firstLink) firstLink.focus();
+        } else if (burgerBtn) {
+            burgerBtn.focus();
+        }
     }
 
-    menuToggles.forEach(btn => btn.addEventListener('click', toggleMobileDrawer));
+    menuToggles.forEach(btn => btn.addEventListener('click', () => toggleMobileDrawer()));
 
-    drawerLinks.forEach(link => {
-        link.addEventListener('click', () => {
-            if (sideDrawer && sideDrawer.classList.contains('active')) {
-                toggleMobileDrawer();
-            }
-        });
+    // Close on navigation link selection
+    document.querySelectorAll('.drawer-nav-list a').forEach(link => {
+        link.addEventListener('click', () => toggleMobileDrawer(false));
     });
 
     // Close on Escape Key
     document.addEventListener('keydown', (e) => {
         if (e.key === 'Escape') {
             if (sideDrawer && sideDrawer.classList.contains('active')) {
-                toggleMobileDrawer();
+                toggleMobileDrawer(false);
             }
             if (resultsDropdown) resultsDropdown.classList.add('hidden');
-            if (langMenu) langMenu.classList.remove('active');
+            if (drawerResultsDropdown) drawerResultsDropdown.classList.add('hidden');
+            if (langMenu) {
+                langMenu.classList.remove('active');
+                if (langTrigger) langTrigger.setAttribute('aria-expanded', 'false');
+            }
         }
     });
 
     // ==========================================
-    // 3. ENTERPRISE SEARCH & QUICK JUMP
+    // 4. ENTERPRISE SEARCH & QUICK DISPATCH
     // ==========================================
     const tradeSearchDB = [
-        { title: "Food & Agricultural Division", url: "pages/food-division.html", category: "Division", keywords: "food, fresh, citrus, potatoes, export, sharjah" },
-        { title: "Hotel Linen & Operating Supplies", url: "pages/hotel-supplies.html", category: "Division", keywords: "hotel, cotton, linen, bedsheets, giza, port said, jebel ali" },
-        { title: "Chemicals & Cosmetics Raw Materials", url: "pages/chemicals-cosmetics.html", category: "Division", keywords: "chemicals, detergents, cosmetics, reach, sokhna, khalifa" },
-        { title: "OS&E & Turnkey Project Procurement", url: "pages/ose-procurement.html", category: "Division", keywords: "ose, ffe, turnkey, hospital, resort, project cargo" },
-        { title: "Damietta Office Furniture Systems", url: "pages/office-furniture.html", category: "Division", keywords: "office, desk, chairs, hardwood, damietta, sharjah" },
-        { title: "Banquet & Convention Installations", url: "pages/banquet-furniture.html", category: "Division", keywords: "banquet, event, ballroom, stackable chairs, tables" },
-        { title: "Accommodation Metal Beds & Lockers", url: "pages/metal-beds-lockers.html", category: "Division", keywords: "bunk bed, lockers, metal, accommodation, 10th of ramadan" },
-        { title: "Staff Residential Modular Suites", url: "pages/staff-furniture.html", category: "Division", keywords: "modular, staff housing, wardrobes, dorms, damietta" },
-        { title: "Commercial Lounges & Sofa Systems", url: "pages/staff-sofa-sets.html", category: "Division", keywords: "sofa, lounge, lobby, reception, waiting area" },
-        { title: "Customs Clearance (Nafeza & Mirsal)", url: "#services", category: "Service", keywords: "nafeza, customs, acid, mirsal, egypt, uae, clearance" },
-        { title: "Ocean & Air Freight Forwarding", url: "#services", category: "Service", keywords: "freight, ocean, sea, air, fcl, lcl, containers" },
-        { title: "Commercial Agency Representation", url: "#services", category: "Service", keywords: "agency, trade proxy, commercial license, representation" },
-        { title: "Live Cargo Telematics Tracking", url: "tracking.html", category: "System", keywords: "tracking, telemetry, container status, bill of lading" },
-        { title: "Launch Sourcing RFQ Desk", url: "#contact", category: "Support", keywords: "rfq, quote, inquiry, proposal, procurement" }
+        { title: "Food & Agricultural Division", url: "pages/food-division.html", category: "Division", keywords: "food fresh citrus potatoes export sharjah crops vegetables" },
+        { title: "Hotel Linen & Operating Supplies", url: "pages/hotel-supplies.html", category: "Division", keywords: "hotel cotton linen bedsheets giza port said jebel ali fabrics amenities" },
+        { title: "Chemicals & Cosmetics Raw Materials", url: "pages/chemicals-cosmetics.html", category: "Division", keywords: "chemicals detergents cosmetics reach sokhna khalifa industrial" },
+        { title: "OS&E & Turnkey Project Procurement", url: "pages/ose-procurement.html", category: "Division", keywords: "ose ffe turnkey hospital clinic resort project cargo fixtures" },
+        { title: "Damietta Office Furniture Systems", url: "pages/office-furniture.html", category: "Division", keywords: "office desk chairs hardwood damietta sharjah workstations mahogany" },
+        { title: "Banquet & Convention Installations", url: "pages/banquet-furniture.html", category: "Division", keywords: "banquet event ballroom stackable chairs tables staging" },
+        { title: "Accommodation Metal Beds & Lockers", url: "pages/metal-beds-lockers.html", category: "Division", keywords: "bunk bed lockers metal accommodation 10th of ramadan labor housing" },
+        { title: "Staff Residential Modular Suites", url: "pages/staff-furniture.html", category: "Division", keywords: "modular staff housing wardrobes dorms damietta residential suites" },
+        { title: "Commercial Lounges & Sofa Systems", url: "pages/staff-sofa-sets.html", category: "Division", keywords: "sofa lounge lobby reception waiting area leather armchairs" },
+        { title: "Customs Clearance (Nafeza & Mirsal)", url: "#services", category: "Service", keywords: "nafeza customs acid mirsal egypt uae clearance broker" },
+        { title: "Ocean & Air Freight Forwarding", url: "#services", category: "Service", keywords: "freight ocean sea air fcl lcl containers charter booking" },
+        { title: "Commercial Agency Representation", url: "#services", category: "Service", keywords: "agency trade proxy commercial license legal representation MENA" },
+        { title: "Live Cargo Telematics Tracking", url: "tracking.html", category: "System", keywords: "tracking telemetry container status bill of lading flight manifest" },
+        { title: "Launch Sourcing RFQ Desk", url: "#contact", category: "Support", keywords: "rfq quote inquiry proposal procurement dispatch" }
     ];
 
     const searchInput = document.getElementById('global-search-input');
     const drawerSearchInput = document.getElementById('drawer-search-input');
     const resultsDropdown = document.getElementById('search-results-dropdown');
+    const drawerResultsDropdown = document.getElementById('drawer-search-results');
     const clearSearchBtn = document.getElementById('clear-search-btn');
 
-    function executeSearch(query) {
-        if (!resultsDropdown) return;
-        resultsDropdown.innerHTML = '';
+    function renderSearchResults(query, container, onSelect) {
+        if (!container) return;
+        container.innerHTML = '';
 
         if (query.length < 2) {
-            resultsDropdown.classList.add('hidden');
-            if (clearSearchBtn) clearSearchBtn.classList.add('hidden');
+            container.classList.add('hidden');
             return;
         }
-
-        if (clearSearchBtn) clearSearchBtn.classList.remove('hidden');
 
         const filtered = tradeSearchDB.filter(item => 
             item.title.toLowerCase().includes(query) || 
@@ -149,60 +170,97 @@ document.addEventListener('DOMContentLoaded', () => {
         if (filtered.length === 0) {
             const noRes = document.createElement('div');
             noRes.className = 'search-item';
-            noRes.innerHTML = `<span class="title">No trade matches for "${query}"</span>`;
-            resultsDropdown.appendChild(noRes);
+            noRes.innerHTML = `<span class="title">No trade matches for "${escapeHtml(query)}"</span>`;
+            container.appendChild(noRes);
         } else {
             filtered.forEach(item => {
                 const el = document.createElement('div');
                 el.className = 'search-item';
+                el.setAttribute('tabindex', '0');
+                el.setAttribute('role', 'option');
                 el.innerHTML = `
-                    <span class="title">${item.title}</span>
-                    <span class="category">${item.category}</span>
+                    <span class="title">${escapeHtml(item.title)}</span>
+                    <span class="category">${escapeHtml(item.category)}</span>
                 `;
-                el.addEventListener('click', () => {
-                    window.location.href = item.url;
-                    resultsDropdown.classList.add('hidden');
-                    if (searchInput) searchInput.value = '';
+                
+                const selectItem = () => {
+                    if (onSelect) onSelect();
+                    navigateToDestination(item.url);
+                };
+
+                el.addEventListener('click', selectItem);
+                el.addEventListener('keydown', (e) => {
+                    if (e.key === 'Enter') selectItem();
                 });
-                resultsDropdown.appendChild(el);
+
+                container.appendChild(el);
             });
         }
-        resultsDropdown.classList.remove('hidden');
+        container.classList.remove('hidden');
     }
 
-    if (searchInput) {
-        searchInput.addEventListener('input', (e) => executeSearch(e.target.value.toLowerCase().trim()));
+    function navigateToDestination(url) {
+        if (url.startsWith('#')) {
+            const target = document.querySelector(url);
+            if (target) {
+                target.scrollIntoView({ behavior: 'smooth' });
+                return;
+            }
+        }
+        window.location.href = url;
+    }
+
+    function escapeHtml(str) {
+        return str.replace(/[&<>"']/g, (match) => {
+            const map = { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#039;' };
+            return map[match];
+        });
+    }
+
+    if (searchInput && resultsDropdown) {
+        searchInput.addEventListener('input', (e) => {
+            const query = e.target.value.toLowerCase().trim();
+            if (clearSearchBtn) clearSearchBtn.classList.toggle('hidden', query.length === 0);
+            renderSearchResults(query, resultsDropdown, () => {
+                resultsDropdown.classList.add('hidden');
+                searchInput.value = '';
+                if (clearSearchBtn) clearSearchBtn.classList.add('hidden');
+            });
+        });
+
         if (clearSearchBtn) {
             clearSearchBtn.addEventListener('click', () => {
                 searchInput.value = '';
                 resultsDropdown.classList.add('hidden');
                 clearSearchBtn.classList.add('hidden');
+                searchInput.focus();
             });
         }
     }
 
-    if (drawerSearchInput) {
-        drawerSearchInput.addEventListener('keypress', (e) => {
-            if (e.key === 'Enter') {
-                e.preventDefault();
-                const q = drawerSearchInput.value.toLowerCase().trim();
-                const match = tradeSearchDB.find(i => i.title.toLowerCase().includes(q) || i.keywords.includes(q));
-                if (match) {
-                    window.location.href = match.url;
-                    toggleMobileDrawer();
-                }
-            }
+    if (drawerSearchInput && drawerResultsDropdown) {
+        drawerSearchInput.addEventListener('input', (e) => {
+            const query = e.target.value.toLowerCase().trim();
+            renderSearchResults(query, drawerResultsDropdown, () => {
+                toggleMobileDrawer(false);
+                drawerResultsDropdown.classList.add('hidden');
+                drawerSearchInput.value = '';
+            });
         });
     }
 
+    // Dismiss search when clicking outside
     document.addEventListener('click', (e) => {
-        if (searchInput && resultsDropdown && !searchInput.contains(e.target) && !resultsDropdown.contains(e.target)) {
+        if (resultsDropdown && !resultsDropdown.contains(e.target) && !e.target.closest('.search-box')) {
             resultsDropdown.classList.add('hidden');
+        }
+        if (drawerResultsDropdown && !drawerResultsDropdown.contains(e.target) && !e.target.closest('.drawer-search-box')) {
+            drawerResultsDropdown.classList.add('hidden');
         }
     });
 
     // ==========================================
-    // 4. TRADE DIVISION FILTER TABS
+    // 5. TRADE DIVISION FILTER TABS
     // ==========================================
     const filterPills = document.querySelectorAll('.filter-pill-btn');
     const catalogCards = document.querySelectorAll('.b2b-trade-card');
@@ -216,60 +274,64 @@ document.addEventListener('DOMContentLoaded', () => {
 
             catalogCards.forEach(card => {
                 const category = card.getAttribute('data-category');
-                if (filterTarget === 'all' || category === filterTarget) {
-                    card.style.display = 'flex';
-                    setTimeout(() => {
-                        card.style.opacity = '1';
-                        card.style.transform = 'scale(1)';
-                    }, 20);
+                const shouldShow = filterTarget === 'all' || category === filterTarget;
+
+                if (shouldShow) {
+                    card.classList.remove('is-filtered-out');
                 } else {
-                    card.style.opacity = '0';
-                    card.style.transform = 'scale(0.96)';
-                    setTimeout(() => {
-                        card.style.display = 'none';
-                    }, 300);
+                    card.classList.add('is-filtered-out');
                 }
             });
         });
     });
 
     // ==========================================
-    // 5. ACCORDION FAQ
+    // 6. ACCESSIBLE ACCORDION FAQ
     // ==========================================
     const accordionHeaders = document.querySelectorAll('.accordion-header');
-    accordionHeaders.forEach(header => {
-        header.addEventListener('click', () => {
-            const item = header.parentElement;
-            const isOpen = item.classList.contains('active');
+    accordionHeaders.forEach(headerBtn => {
+        headerBtn.addEventListener('click', () => {
+            const currentItem = headerBtn.closest('.accordion-item');
+            const isCurrentlyActive = currentItem.classList.contains('active');
 
-            document.querySelectorAll('.accordion-item').forEach(i => i.classList.remove('active'));
+            // Close all items
+            document.querySelectorAll('.accordion-item').forEach(item => {
+                item.classList.remove('active');
+                const btn = item.querySelector('.accordion-header');
+                if (btn) btn.setAttribute('aria-expanded', 'false');
+            });
 
-            if (!isOpen) {
-                item.classList.add('active');
+            // Toggle selected item
+            if (!isCurrentlyActive) {
+                currentItem.classList.add('active');
+                headerBtn.setAttribute('aria-expanded', 'true');
             }
         });
     });
 
     // ==========================================
-    // 6. LANGUAGE MENU DROPDOWN
+    // 7. LANGUAGE DROPDOWN
     // ==========================================
     const langTrigger = document.getElementById('lang-trigger');
     const langMenu = document.getElementById('lang-menu');
+
     if (langTrigger && langMenu) {
         langTrigger.addEventListener('click', (e) => {
             e.stopPropagation();
-            const expanded = langMenu.classList.toggle('active');
-            langTrigger.setAttribute('aria-expanded', expanded);
+            const isActive = langMenu.classList.toggle('active');
+            langTrigger.setAttribute('aria-expanded', isActive);
         });
 
         document.addEventListener('click', () => {
-            langMenu.classList.remove('active');
-            langTrigger.setAttribute('aria-expanded', 'false');
+            if (langMenu.classList.contains('active')) {
+                langMenu.classList.remove('active');
+                langTrigger.setAttribute('aria-expanded', 'false');
+            }
         });
     }
 
     // ==========================================
-    // 7. RFQ AUTO-FILL TRIGGER & FOCUS
+    // 8. RFQ AUTOFILL JUMP
     // ==========================================
     const rfqAutofillButtons = document.querySelectorAll('.rfq-autofill-btn');
     const rfqSubjectField = document.getElementById('rfq-division-subject');
@@ -277,60 +339,131 @@ document.addEventListener('DOMContentLoaded', () => {
 
     rfqAutofillButtons.forEach(btn => {
         btn.addEventListener('click', () => {
-            const target = btn.getAttribute('data-target-subject');
+            const targetSubject = btn.getAttribute('data-target-subject');
             if (rfqSubjectField) {
-                rfqSubjectField.value = `Procurement Inquiry: ${target}`;
-                rfqSubjectField.focus();
+                rfqSubjectField.value = `Procurement Sourcing: ${targetSubject}`;
             }
             if (contactSection) {
                 contactSection.scrollIntoView({ behavior: 'smooth' });
+                setTimeout(() => {
+                    if (rfqSubjectField) rfqSubjectField.focus();
+                }, 400);
             }
         });
     });
 
     // ==========================================
-    // 8. HARDWARE-ACCELERATED TECH CURSOR
+    // 9. HIGH-CONVERTING ASYNC RFQ SUBMISSION
     // ==========================================
+    const rfqForm = document.getElementById('rfq-main-form');
+    const rfqAlert = document.getElementById('rfq-form-alert');
+    const rfqSubmitBtn = document.getElementById('rfq-submit-btn');
+
+    if (rfqForm) {
+        rfqForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+
+            // Native validation check
+            if (!rfqForm.checkValidity()) {
+                rfqForm.reportValidity();
+                return;
+            }
+
+            const btnText = rfqSubmitBtn.querySelector('.btn-text');
+            const btnLoader = rfqSubmitBtn.querySelector('.btn-loader');
+            
+            // Set loading state
+            rfqSubmitBtn.disabled = true;
+            if (btnText) btnText.classList.add('hidden');
+            if (btnLoader) btnLoader.classList.remove('hidden');
+            if (rfqAlert) rfqAlert.classList.add('hidden');
+
+            try {
+                const formData = new FormData(rfqForm);
+                const response = await fetch(rfqForm.action, {
+                    method: 'POST',
+                    body: formData,
+                    headers: { 'Accept': 'application/json' }
+                });
+
+                if (response.ok) {
+                    rfqAlert.className = 'rfq-alert success';
+                    rfqAlert.textContent = 'RFQ Transmitted Successfully. Your consignment manifest has been queued for dispatch review.';
+                    rfqAlert.classList.remove('hidden');
+                    rfqForm.reset();
+                } else {
+                    const data = await response.json();
+                    throw new Error(data?.errors?.[0]?.message || 'Server rejected submission');
+                }
+            } catch (error) {
+                rfqAlert.className = 'rfq-alert error';
+                rfqAlert.textContent = 'Transmission Error: Unable to route your RFQ. Please reach our direct line: +20 101 176 6232.';
+                rfqAlert.classList.remove('hidden');
+            } finally {
+                rfqSubmitBtn.disabled = false;
+                if (btnText) btnText.classList.remove('hidden');
+                if (btnLoader) btnLoader.classList.add('hidden');
+            }
+        });
+    }
+
+    // ==========================================
+    // 10. PRECISION DESKTOP CURSOR (Hover-Only)
+    // ==========================================
+    const isFinePointer = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
     const cursor = document.getElementById('tech-cursor');
     const follower = document.getElementById('tech-cursor-follower');
 
-    if (cursor && follower && window.innerWidth > 1024) {
-        let mouseX = 0, mouseY = 0;
-        let followerX = 0, followerY = 0;
+    if (isFinePointer && cursor && follower) {
+        let mouseX = window.innerWidth / 2;
+        let mouseY = window.innerHeight / 2;
+        let followerX = mouseX;
+        let followerY = mouseY;
+        let isCursorMoving = false;
 
         document.addEventListener('mousemove', (e) => {
             mouseX = e.clientX;
             mouseY = e.clientY;
             cursor.style.left = `${mouseX}px`;
             cursor.style.top = `${mouseY}px`;
+
+            if (!isCursorMoving) {
+                document.body.classList.add('cursor-active');
+                isCursorMoving = true;
+            }
         }, { passive: true });
 
         function animateFollower() {
-            followerX += (mouseX - followerX) * 0.15;
-            followerY += (mouseY - followerY) * 0.15;
+            followerX += (mouseX - followerX) * 0.16;
+            followerY += (mouseY - followerY) * 0.16;
             follower.style.left = `${followerX}px`;
             follower.style.top = `${followerY}px`;
             requestAnimationFrame(animateFollower);
         }
         requestAnimationFrame(animateFollower);
 
-        const hoverTargets = document.querySelectorAll('a, button, input, textarea, .epic-card');
-        hoverTargets.forEach(el => {
-            el.addEventListener('mouseenter', () => {
+        // Delegated hover magnification
+        document.addEventListener('mouseover', (e) => {
+            const target = e.target.closest('a, button, input, textarea, .epic-card, .filter-pill-btn');
+            if (target) {
                 follower.style.width = '48px';
                 follower.style.height = '48px';
                 follower.style.borderColor = 'var(--accent)';
-            });
-            el.addEventListener('mouseleave', () => {
+            }
+        });
+
+        document.addEventListener('mouseout', (e) => {
+            const target = e.target.closest('a, button, input, textarea, .epic-card, .filter-pill-btn');
+            if (target) {
                 follower.style.width = '32px';
                 follower.style.height = '32px';
                 follower.style.borderColor = 'var(--primary)';
-            });
+            }
         });
     }
 
     // ==========================================
-    // 9. DYNAMIC CURRENT YEAR
+    // 11. DYNAMIC CURRENT YEAR
     // ==========================================
     const yearSpan = document.getElementById('current-year');
     if (yearSpan) {
@@ -338,15 +471,15 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // ==========================================
-    // 10. THIRD-PARTY LIBRARIES INITIALIZATION
+    // 12. THIRD-PARTY INITIALIZATION
     // ==========================================
-    // AOS (Animate on Scroll)
+    // AOS (Animate On Scroll)
     if (typeof AOS !== 'undefined') {
         AOS.init({
             duration: 800,
             easing: 'ease-out-cubic',
             once: true,
-            offset: 50
+            offset: 40
         });
     }
 
@@ -354,11 +487,12 @@ document.addEventListener('DOMContentLoaded', () => {
     if (typeof Swiper !== 'undefined') {
         new Swiper('.testimonial-slider', {
             slidesPerView: 1,
-            spaceBetween: 20,
+            spaceBetween: 24,
             loop: true,
             autoplay: {
                 delay: 6000,
                 disableOnInteraction: false,
+                pauseOnMouseEnter: true
             },
             pagination: {
                 el: '.swiper-pagination',
@@ -371,7 +505,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // Vanilla Tilt
-    if (typeof VanillaTilt !== 'undefined') {
+    if (typeof VanillaTilt !== 'undefined' && isFinePointer) {
         VanillaTilt.init(document.querySelectorAll('.tilt-card'), {
             max: 8,
             speed: 500,
@@ -379,5 +513,4 @@ document.addEventListener('DOMContentLoaded', () => {
             "max-glare": 0.15
         });
     }
-
 });
