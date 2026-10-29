@@ -2,17 +2,17 @@
 <html lang="en" dir="ltr" data-theme="light">
 <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width,initial-scale=1, maximum-scale=1, user-scalable=0" />
-    <title>Almassriya Alemaratiya | B2B Global Trade Portal - Connecting Egypt & UAE</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Almassriya Alemaratiya | Premier B2B Global Trade Portal - Egypt & UAE</title>
     
-    <!-- SEO Optimization Meta Tags -->
-    <meta name="description" content="Established in 2010, Al Masriya Al Emaratiya is a reliable import and export company offering comprehensive trade and commercial agency services." />
-    <meta name="keywords" content="Al Masriya Al Emaratiya, Al Massriya Al Emaratiya, Egypt UAE Trade, B2B Global Trade, Import Export Egypt, Logistics UAE, Commercial Agency Egypt, Corporate Procurement" />
+    <!-- SEO Optimization -->
+    <meta name="description" content="Established in 2010, Al Masriya Al Emaratiya is a trusted global trade network providing strategic import-export, logistics pipelines, and commercial agency operations connecting Egypt, UAE, and the world." />
+    <meta name="keywords" content="Al Masriya Al Emaratiya, Egypt UAE Trade Corridor, B2B Global Trade, Import Export Egypt, Freight Logistics UAE, Commercial Agency Cairo Dubai" />
     <meta name="author" content="Al Masriya Al Emaratiya" />
     <meta name="robots" content="index, follow" />
     <link rel="canonical" href="https://egy-uae.com" />
 
-    <!-- Structured Data JSON-LD Schema Markup -->
+    <!-- Schema Markup -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -20,12 +20,15 @@
       "name": "Almassriya Alemaratiya",
       "url": "https://egy-uae.com",
       "logo": "https://egy-uae.com/Al_Masriya_Al_Emaratiya_icon.png",
-      "foundingDate": "2010"
+      "foundingDate": "2010",
+      "areaServed": ["Egypt", "United Arab Emirates", "MENA Region", "Global"]
     }
     </script>
     
-    <!-- Fonts & Libraries -->
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;700;800&family=Cairo:wght@600;700;900&display=swap" rel="stylesheet">
+    <!-- Fonts & Icons -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Cairo:wght@600;700;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
     <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
@@ -35,23 +38,24 @@
 </head>
 <body>
 
-    <!-- Dynamic Cursor (Desktop Only) -->
+    <!-- Tech Precision Cursor (Desktop Only) -->
     <div id="tech-cursor"></div>
     <div id="tech-cursor-follower"></div>
     <div id="progress-bar"></div>
 
-    <!-- App-Like Smart Header (Glassmorphism) -->
+    <!-- App-Like Smart Header -->
     <header class="app-header glass-panel" id="header">
-        <!-- Top Bar (Desktop only) -->
+        <!-- Top Bar -->
         <div class="header-top-bar desktop-only">
             <div class="container top-bar-container">
                 <div class="top-bar-left">
-                    <span><i class="fas fa-globe"></i> Multi-Market Trade Channel</span>
+                    <span><i class="fas fa-shield-halved text-red"></i> Verified Cross-Border Trade Corridor: Egypt & UAE</span>
+                    <span class="corridor-status"><span class="pulse-dot"></span> Port Operations: Active</span>
                 </div>
                 <div class="top-bar-right">
-                    <a href="careers.html">Careers</a>
-                    <a href="sectors.html">Our Sectors</a>
-                    <a href="#contact">Help Center</a>
+                    <a href="careers.html"><i class="fas fa-briefcase"></i> Careers</a>
+                    <a href="sectors.html"><i class="fas fa-diagram-project"></i> Sectors</a>
+                    <a href="#contact"><i class="fas fa-headset"></i> RFQ Desk</a>
                 </div>
             </div>
         </div>
@@ -59,7 +63,7 @@
         <div class="container header-container">
             <div class="logo">
                 <a href="index.html">
-                    <img src="Al_Masriya_Al_Emaratiya_icon.png" class="brand-logo" alt="Al Massriya Al Emaratiya" onerror="this.onerror=null; this.src='https://via.placeholder.com/200x50/044da1/ffffff?text=Al+Masriya';">
+                    <img src="Al_Masriya_Al_Emaratiya_icon.png" class="brand-logo" alt="Al Masriya Al Emaratiya Logo" onerror="this.onerror=null; this.src='https://via.placeholder.com/200x50/044da1/ffffff?text=Al+Masriya+Al+Emaratiya';">
                 </a>
             </div>
             
@@ -67,587 +71,714 @@
             <div class="header-search-bar desktop-only">
                 <div class="search-form-wrapper">
                     <form action="#divisions" method="GET" class="search-form" onsubmit="event.preventDefault();">
-                        <input type="text" placeholder="Search pages, services, or divisions..." id="global-search-input" autocomplete="off">
-                        <button type="submit" class="search-btn"><i class="fas fa-search"></i></button>
+                        <i class="fas fa-search search-icon"></i>
+                        <input type="text" placeholder="Search division, commodity, port route..." id="global-search-input" autocomplete="off" aria-label="Search divisions">
+                        <button type="button" id="clear-search-btn" class="clear-btn hidden" aria-label="Clear Search"><i class="fas fa-times"></i></button>
                     </form>
-                    <div id="search-results-dropdown" class="search-results-dropdown hidden"></div>
+                    <div id="search-results-dropdown" class="search-results-dropdown hidden" role="listbox"></div>
                 </div>
             </div>
             
-            <!-- Actions & Mobile Menu Toggle -->
+            <!-- Header Actions -->
             <div class="header-actions">
-                <a href="https://amae.egy-uae.com" target="_self" class="btn-primary desktop-only">
-                    <i class="fas fa-store"></i> Go to Marketplace
+                <a href="https://amae.egy-uae.com" target="_blank" rel="noopener" class="btn-primary desktop-only">
+                    <i class="fas fa-store"></i> B2B Portal
                 </a>
-                <button class="icon-btn menu-toggle mobile-only">
-                    <i class="fas fa-bars"></i>
+                <button class="icon-btn menu-toggle mobile-only" aria-label="Open Navigation Menu">
+                    <i class="fas fa-bars-staggered"></i>
                 </button>
             </div>
         </div>
 
-        <!-- Desktop Navigation -->
+        <!-- Navigation Bar -->
         <nav class="desktop-nav desktop-only">
             <div class="container nav-container">
                 <ul class="nav-links">
-                    <li><a href="#home" class="active">Home</a></li>
-                    <li><a href="#services">Services</a></li>
-                    <li><a href="#divisions">Trade Catalog</a></li>
-                    <li><a href="#about">About</a></li>
-                    <li><a href="news.html">News</a></li>
-                    <li><a href="#systems">Digital Systems</a></li>
-                    <li><a href="#contact">RFQ Desk</a></li>
+                    <li><a href="#home" class="nav-link active">Home</a></li>
+                    <li><a href="#services" class="nav-link">Logistics & Services</a></li>
+                    <li><a href="#divisions" class="nav-link">Trade Divisions</a></li>
+                    <li><a href="#about" class="nav-link">Corporate Profile</a></li>
+                    <li><a href="news.html" class="nav-link">Trade News</a></li>
+                    <li><a href="#systems" class="nav-link">Digital Systems</a></li>
+                    <li><a href="#contact" class="nav-link">Launch RFQ</a></li>
                 </ul>
             </div>
         </nav>
     </header>
 
-    <!-- App-Like Mobile Side Drawer -->
-    <div class="side-drawer" id="side-drawer">
+    <!-- Mobile Drawer Menu -->
+    <aside class="side-drawer" id="side-drawer" aria-hidden="true">
         <div class="drawer-header">
-            <img src="Al_Masriya_Al_Emaratiya_icon.png" height="35" alt="Logo" onerror="this.onerror=null; this.src='https://via.placeholder.com/150x35/044da1/ffffff?text=Logo';">
-            <button class="icon-btn menu-toggle"><i class="fas fa-times"></i></button>
+            <img src="Al_Masriya_Al_Emaratiya_icon.png" height="38" alt="Al Masriya Logo" onerror="this.onerror=null; this.src='https://via.placeholder.com/150x38/044da1/ffffff?text=Al+Masriya';">
+            <button class="icon-btn menu-toggle" aria-label="Close Navigation Menu"><i class="fas fa-times"></i></button>
+        </div>
+        <div class="drawer-search mobile-only">
+            <input type="text" placeholder="Search operations..." id="mobile-search-input">
         </div>
         <div class="drawer-links">
-            <a href="#home"><i class="fas fa-home"></i> Home</a>
-            <a href="#services"><i class="fas fa-truck-fast"></i> Services</a>
-            <a href="#divisions"><i class="fas fa-cubes"></i> Trade Divisions</a>
-            <a href="#about"><i class="fas fa-building"></i> About Us</a>
-            <a href="#systems"><i class="fas fa-microchip"></i> Our Systems</a>
-            <a href="#contact"><i class="fas fa-paper-plane"></i> Contact & RFQ</a>
-            <a href="https://amae.egy-uae.com" class="btn-primary w-full mt-4" style="color:white; justify-content:center;"><i class="fas fa-store"></i> Marketplace Portal</a>
+            <a href="#home"><i class="fas fa-house-chimney"></i> Home</a>
+            <a href="#services"><i class="fas fa-truck-moving"></i> Services & Shipping</a>
+            <a href="#divisions"><i class="fas fa-boxes-packing"></i> Trade Catalog</a>
+            <a href="#about"><i class="fas fa-building-columns"></i> Corporate Profile</a>
+            <a href="#systems"><i class="fas fa-microchip"></i> Portals & Systems</a>
+            <a href="#contact"><i class="fas fa-file-signature"></i> Launch RFQ Inquiry</a>
+            <a href="https://amae.egy-uae.com" target="_blank" rel="noopener" class="btn-primary w-full mt-3"><i class="fas fa-arrow-up-right-from-square"></i> Access Marketplace</a>
         </div>
-    </div>
-    <div class="drawer-overlay menu-toggle"></div>
+    </aside>
+    <div class="drawer-overlay menu-toggle" aria-hidden="true"></div>
 
-    <!-- Immersive Cinematic Hero Section -->
-    <section class="immersive-hero" id="home">
-        <div class="immersive-hero-media">
-            <video autoplay muted loop playsinline>
-                <source src="sky_background.mp4" type="video/mp4">
-            </video>
-        </div>
-        <div class="immersive-hero-overlay"></div>
-
-        <div class="immersive-hero-content" data-aos="fade-up">
-            <div class="epic-badge"><i class="fas fa-network-wired"></i> Trade Corridor: Egypt - UAE</div>
-            <h1>B2B Supply Chains <br><span class="gradient-text">Redefined</span></h1>
-            <p>We blend cinematic digital architecture with reliable physical trade lanes, providing frictionless transit, custom protocols, and optimized procurement channels.</p>
-            <div class="hero-actions-container">
-                <a href="#divisions" class="btn-primary">Explore Directory <i class="fas fa-cubes"></i></a>
-                <a href="#contact" class="btn-glass">Launch RFQ <i class="fas fa-paper-plane"></i></a>
+    <main>
+        <!-- Immersive Cinematic Hero -->
+        <section class="immersive-hero" id="home">
+            <div class="immersive-hero-media">
+                <video autoplay muted loop playsinline poster="https://images.unsplash.com/photo-1578575437130-527eed3abbec?auto=format&fit=crop&w=1920&q=80">
+                    <source src="sky_background.mp4" type="video/mp4">
+                </video>
             </div>
-        </div>
-    </section>
+            <div class="immersive-hero-overlay"></div>
 
-    <!-- Infinite Marquee Ticker -->
-    <div class="marquee-ticker">
-        <div class="marquee-content">
-            <span>EGYPT - UAE CORRIDOR</span> • <span>GLOBAL LOGISTICS EXCELLENCE</span> • <span>SECURE B2B ESCROW</span> • <span>FAST CUSTOMS CLEARANCE</span> • <span>EXPRESS OCEAN FREIGHT</span> • <span>SMART TRACKING SYSTEMS</span> • <span>EGYPT - UAE CORRIDOR</span> • <span>GLOBAL LOGISTICS EXCELLENCE</span>
-        </div>
-    </div>
-
-    <!-- Trust & Quality Features Bar -->
-    <section class="trust-features-bar">
-        <div class="container trust-grid">
-            <div class="trust-item epic-card">
-                <span class="icon-indicator"><i class="fas fa-user-shield"></i></span>
-                <div>
-                    <h3>Secure Trade Protocols</h3>
-                    <p>Verified regulatory compliance for import/export</p>
+            <div class="immersive-hero-content" data-aos="fade-up">
+                <div class="epic-badge">
+                    <i class="fas fa-earth-americas text-red"></i> Egypt &bull; UAE Trade Corridor
+                </div>
+                <h1>Empowering Cross-Border <br><span class="gradient-text">B2B Trade Networks</span></h1>
+                <p>Delivering end-to-end commercial agency representation, streamlined supply chain execution, and frictionless ocean & air freight transit between Cairo, Damietta, Alexandria, and Sharjah / Dubai ports.</p>
+                <div class="hero-actions-container">
+                    <a href="#divisions" class="btn-primary">Browse Trade Catalog <i class="fas fa-arrow-right"></i></a>
+                    <a href="#contact" class="btn-glass">Submit Sourcing RFQ <i class="fas fa-file-pen"></i></a>
                 </div>
             </div>
-            <div class="trust-item epic-card">
-                <span class="icon-indicator"><i class="fas fa-truck-ramp-box"></i></span>
-                <div>
-                    <h3>Integrated Logistics</h3>
-                    <p>Ocean & air freight coordination made simple</p>
+
+            <!-- Hero Metrics Floating Dock -->
+            <div class="hero-metrics-dock">
+                <div class="metric-item">
+                    <span class="metric-num">14+</span>
+                    <span class="metric-label">Years of Excellence</span>
+                </div>
+                <div class="metric-divider"></div>
+                <div class="metric-item">
+                    <span class="metric-num">2</span>
+                    <span class="metric-label">Primary HQ Hubs</span>
+                </div>
+                <div class="metric-divider"></div>
+                <div class="metric-item">
+                    <span class="metric-num">100%</span>
+                    <span class="metric-label">Regulatory Compliance</span>
                 </div>
             </div>
-            <div class="trust-item epic-card">
-                <span class="icon-indicator"><i class="fas fa-headset"></i></span>
-                <div>
-                    <h3>24/7 Support Desk</h3>
-                    <p>Real-time updates on active requests</p>
-                </div>
-            </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- Services Section -->
-    <section id="services" class="section">
-        <div class="container">
-            <div class="section-header" data-aos="fade-up">
-                <h2>Our Supply Chain <span class="gradient-text">Services</span></h2>
-                <p class="subtitle-text">Operational capacities backing our direct division delivery systems</p>
-            </div>
-            
-            <div class="grid grid-3">
-                <div class="epic-image-card" data-aos="fade-up" data-aos-delay="100">
-                    <img src="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=600&q=80" alt="Logistics & Supply Chain" class="card-bg-img">
-                    <div class="card-overlay-content">
-                        <div class="icon-box"><i class="fas fa-boxes-stacked"></i></div>
-                        <h3>Logistics & Supply Chain</h3>
-                        <p>End-to-end solutions for efficient cargo movement, warehousing, and distribution, ensuring timely delivery.</p>
-                    </div>
-                </div>
-
-                <div class="epic-image-card" data-aos="fade-up" data-aos-delay="200">
-                    <img src="https://images.unsplash.com/photo-1494412519320-aa613dfb7738?auto=format&fit=crop&w=600&q=80" alt="Freight Forwarding" class="card-bg-img">
-                    <div class="card-overlay-content">
-                        <div class="icon-box"><i class="fas fa-plane-up"></i></div>
-                        <h3>Freight Forwarding</h3>
-                        <p>Expert handling of air and sea freight, customs brokerage, and documentation for smooth operations.</p>
-                    </div>
-                </div>
-
-                <div class="epic-image-card" data-aos="fade-up" data-aos-delay="300">
-                    <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=600&q=80" alt="Trade Facilitation" class="card-bg-img">
-                    <div class="card-overlay-content">
-                        <div class="icon-box"><i class="fas fa-handshake"></i></div>
-                        <h3>Trade Facilitation</h3>
-                        <p>Strategic advisory and support for market entry, regulatory compliance, and business development.</p>
-                    </div>
-                </div>
-
-                <div class="epic-image-card" data-aos="fade-up" data-aos-delay="400">
-                    <img src="https://images.unsplash.com/photo-1544027993-37dbfe43562a?auto=format&fit=crop&w=600&q=80" alt="Customs Clearance" class="card-bg-img">
-                    <div class="card-overlay-content">
-                        <div class="icon-box"><i class="fas fa-file-invoice"></i></div>
-                        <h3>Customs Clearance</h3>
-                        <p>Expedited customs procedures and meticulous document preparation to minimize delays.</p>
-                    </div>
-                </div>
-
-                <div class="epic-image-card" data-aos="fade-up" data-aos-delay="500">
-                    <img src="https://images.unsplash.com/photo-1601584115197-04ecc0da31d7?auto=format&fit=crop&w=600&q=80" alt="Transportation" class="card-bg-img">
-                    <div class="card-overlay-content">
-                        <div class="icon-box"><i class="fas fa-truck-fast"></i></div>
-                        <h3>Transportation</h3>
-                        <p>Reliable inland transportation network covering Egypt and UAE, equipped with advanced tracking.</p>
-                    </div>
-                </div>
-
-                <div class="epic-image-card" data-aos="fade-up" data-aos-delay="600">
-                    <img src="https://images.unsplash.com/photo-1587293852726-70cdb56c2866?auto=format&fit=crop&w=600&q=80" alt="Warehousing Solutions" class="card-bg-img">
-                    <div class="card-overlay-content">
-                        <div class="icon-box"><i class="fas fa-warehouse"></i></div>
-                        <h3>Warehousing Solutions</h3>
-                        <p>Modern and secure storage facilities with inventory management systems tailored to your needs.</p>
-                    </div>
-                </div>
+        <!-- Dynamic Ticker -->
+        <div class="marquee-ticker" aria-hidden="true">
+            <div class="marquee-content">
+                <span>EGYPT - UAE COMMERCIAL ARTERY</span> &bull; 
+                <span>FAST CUSTOMS NAFIZA COMPLIANCE</span> &bull; 
+                <span>EXPEDITED OCEAN & AIR FREIGHT</span> &bull; 
+                <span>SECURE B2B ESCROW TRANSACTIONS</span> &bull; 
+                <span>CERTIFIED IMPORT / EXPORT PROTOCOLS</span> &bull; 
+                <span>SHARJAH & CAIRO OPERATIONS DESKS</span> &bull;
+                <span>EGYPT - UAE COMMERCIAL ARTERY</span> &bull; 
+                <span>FAST CUSTOMS NAFIZA COMPLIANCE</span> &bull; 
+                <span>EXPEDITED OCEAN & AIR FREIGHT</span>
             </div>
         </div>
-    </section>
 
-    <!-- Trade Divisions Showcase -->
-    <section id="divisions" class="section bg-light">
-        <div class="container">
-            <div class="section-header" data-aos="fade-up">
-                <h2>Cross-Border <span class="gradient-text">Divisions Directory</span></h2>
-                <p class="subtitle-text">Select your target division to initialize procurement pipelines</p>
-            </div>
-
-            <div class="portfolio-filter-tabs" data-aos="fade-up">
-                <button class="filter-tab-btn active" data-filter="all">All Divisions</button>
-                <button class="filter-tab-btn" data-filter="consumables">Consumables & Chemicals</button>
-                <button class="filter-tab-btn" data-filter="furniture">Premium Furniture</button>
-                <button class="filter-tab-btn" data-filter="industrial">OS&E & Industrial</button>
-            </div>
-
-            <div class="grid grid-3 b2b-directory-grid">
-                <!-- Division 1 -->
-                <div class="b2b-product-card epic-card" data-category="consumables" data-aos="fade-up">
-                    <div class="badge-status">Certified Standard</div>
-                    <img src="https://images.unsplash.com/photo-1506084868230-bb9d95c24759?auto=format&fit=crop&w=400&q=80" alt="Food Division" class="product-thumb">
-                    <div class="product-info">
-                        <h3>Food Division</h3>
-                        <p class="route-info"><i class="fas fa-anchor text-red"></i> Cairo Terminal &rarr; Sharjah Hub</p>
-                        <div class="product-meta"><span><strong>Route:</strong> EG - UAE Corridor</span></div>
-                        <a href="#contact" class="btn-outline w-full" onclick="setRFQCategory('Food Division')">Source Division <i class="fas fa-arrow-right"></i></a>
+        <!-- Trust Features Bar -->
+        <section class="trust-features-bar">
+            <div class="container trust-grid">
+                <div class="trust-item epic-card">
+                    <div class="icon-indicator"><i class="fas fa-shield-check"></i></div>
+                    <div>
+                        <h3>Certified Compliance</h3>
+                        <p>Fully compliant with Egyptian GOEIC and UAE Customs regulations.</p>
                     </div>
                 </div>
-
-                <!-- Division 2 -->
-                <div class="b2b-product-card epic-card" data-category="consumables" data-aos="fade-up" data-aos-delay="100">
-                    <div class="badge-status">Enterprise Grade</div>
-                    <img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=400&q=80" alt="Hotel Supplies" class="product-thumb">
-                    <div class="product-info">
-                        <h3>Hotel Supplies</h3>
-                        <p class="route-info"><i class="fas fa-anchor text-red"></i> Port Said &rarr; Jebel Ali</p>
-                        <div class="product-meta"><span><strong>Scope:</strong> Operational Consumables</span></div>
-                        <a href="#contact" class="btn-outline w-full" onclick="setRFQCategory('Hotel Supplies')">Source Division <i class="fas fa-arrow-right"></i></a>
+                <div class="trust-item epic-card">
+                    <div class="icon-indicator"><i class="fas fa-ship"></i></div>
+                    <div>
+                        <h3>Integrated Transit</h3>
+                        <p>Dedicated sea & air cargo lanes from factory to warehousing node.</p>
                     </div>
                 </div>
-
-                <!-- Division 3 -->
-                <div class="b2b-product-card epic-card" data-category="consumables" data-aos="fade-up" data-aos-delay="200">
-                    <div class="badge-status">Industrial Safety</div>
-                    <img src="https://images.unsplash.com/photo-1601522244217-cd3c403695db?auto=format&fit=crop&w=400&q=80" alt="Chemicals & Cosmetics" class="product-thumb">
-                    <div class="product-info">
-                        <h3>Chemicals & Cosmetics</h3>
-                        <p class="route-info"><i class="fas fa-anchor text-red"></i> Alexandria &rarr; Khalifa Port</p>
-                        <div class="product-meta"><span><strong>Cert:</strong> REACH / REACH-EG</span></div>
-                        <a href="#contact" class="btn-outline w-full" onclick="setRFQCategory('Chemicals & Cosmetics')">Source Division <i class="fas fa-arrow-right"></i></a>
-                    </div>
-                </div>
-
-                <!-- Division 4 -->
-                <div class="b2b-product-card epic-card" data-category="industrial" data-aos="fade-up" data-aos-delay="300">
-                    <div class="badge-status">Integrated Proc</div>
-                    <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=400&q=80" alt="OS&E Procurement" class="product-thumb">
-                    <div class="product-info">
-                        <h3>OS&E Procurement</h3>
-                        <p class="route-info"><i class="fas fa-anchor text-red"></i> Direct Hub Manifest</p>
-                        <div class="product-meta"><span><strong>Capacity:</strong> Project Sourcing</span></div>
-                        <a href="#contact" class="btn-outline w-full" onclick="setRFQCategory('OS&E Procurement')">Source Division <i class="fas fa-arrow-right"></i></a>
-                    </div>
-                </div>
-
-                <!-- Division 5 -->
-                <div class="b2b-product-card epic-card" data-category="furniture" data-aos="fade-up" data-aos-delay="400">
-                    <div class="badge-status">B2B Standard</div>
-                    <img src="https://images.unsplash.com/photo-1524758631624-e2822e304c36?auto=format&fit=crop&w=400&q=80" alt="Office Furniture" class="product-thumb">
-                    <div class="product-info">
-                        <h3>Office Furniture</h3>
-                        <p class="route-info"><i class="fas fa-anchor text-red"></i> Damietta Port &rarr; Sharjah Hub</p>
-                        <div class="product-meta"><span><strong>Materials:</strong> Premium Hardwood</span></div>
-                        <a href="#contact" class="btn-outline w-full" onclick="setRFQCategory('Office Furniture')">Source Division <i class="fas fa-arrow-right"></i></a>
-                    </div>
-                </div>
-
-                <!-- Division 6 -->
-                <div class="b2b-product-card epic-card" data-category="furniture" data-aos="fade-up" data-aos-delay="500">
-                    <div class="badge-status">Corporate Event</div>
-                    <img src="https://images.unsplash.com/photo-1464366400600-7168b8af9bc3?auto=format&fit=crop&w=400&q=80" alt="Banquet Furniture" class="product-thumb">
-                    <div class="product-info">
-                        <h3>Banquet Furniture</h3>
-                        <p class="route-info"><i class="fas fa-anchor text-red"></i> Transit-Safe Cargo Line</p>
-                        <div class="product-meta"><span><strong>Type:</strong> High-Density Stackable</span></div>
-                        <a href="#contact" class="btn-outline w-full" onclick="setRFQCategory('Banquet Furniture')">Source Division <i class="fas fa-arrow-right"></i></a>
-                    </div>
-                </div>
-
-                <!-- Division 7 -->
-                <div class="b2b-product-card epic-card" data-category="industrial" data-aos="fade-up" data-aos-delay="600">
-                    <div class="badge-status">Heavy Duty</div>
-                    <img src="https://images.unsplash.com/photo-1555041469-a586c61ea9bc?auto=format&fit=crop&w=400&q=80" alt="Metal Beds & Lockers" class="product-thumb">
-                    <div class="product-info">
-                        <h3>Metal Beds & Lockers</h3>
-                        <p class="route-info"><i class="fas fa-anchor text-red"></i> Industrial Sector Corridor</p>
-                        <div class="product-meta"><span><strong>Protection:</strong> Rust-Resistant</span></div>
-                        <a href="#contact" class="btn-outline w-full" onclick="setRFQCategory('Metal Beds & Lockers')">Source Division <i class="fas fa-arrow-right"></i></a>
-                    </div>
-                </div>
-
-                <!-- Division 8 -->
-                <div class="b2b-product-card epic-card" data-category="furniture" data-aos="fade-up" data-aos-delay="700">
-                    <div class="badge-status">Premium Solid</div>
-                    <img src="https://images.unsplash.com/photo-1540518614846-7eded433c457?auto=format&fit=crop&w=400&q=80" alt="Staff Furniture" class="product-thumb">
-                    <div class="product-info">
-                        <h3>Staff Furniture</h3>
-                        <p class="route-info"><i class="fas fa-anchor text-red"></i> Direct Inland Transit</p>
-                        <div class="product-meta"><span><strong>Build:</strong> High-Durability Modular</span></div>
-                        <a href="#contact" class="btn-outline w-full" onclick="setRFQCategory('Staff Furniture')">Source Division <i class="fas fa-arrow-right"></i></a>
-                    </div>
-                </div>
-
-                <!-- Division 9 -->
-                <div class="b2b-product-card epic-card" data-category="furniture" data-aos="fade-up" data-aos-delay="800">
-                    <div class="badge-status">Ergonomic</div>
-                    <img src="https://images.unsplash.com/photo-1484101403633-562f891dc89a?auto=format&fit=crop&w=400&q=80" alt="Staff Sofa Sets" class="product-thumb">
-                    <div class="product-info">
-                        <h3>Sofa Sets & Accs</h3>
-                        <p class="route-info"><i class="fas fa-anchor text-red"></i> Regional Distribution Network</p>
-                        <div class="product-meta"><span><strong>Design:</strong> Modular Configurations</span></div>
-                        <a href="#contact" class="btn-outline w-full" onclick="setRFQCategory('Staff Sofa Sets & Accessories')">Source Division <i class="fas fa-arrow-right"></i></a>
+                <div class="trust-item epic-card">
+                    <div class="icon-indicator"><i class="fas fa-file-shield"></i></div>
+                    <div>
+                        <h3>Commercial Agency</h3>
+                        <p>Authorized legal and sales agency representation across MENA.</p>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- Operational Architecture & About Section -->
-    <section id="about" class="section">
-        <div class="container">
-            <div class="section-header" data-aos="fade-up">
-                <h2>Operational Framework & Core <span class="gradient-text">Architecture</span></h2>
-            </div>
-
-            <div class="about-seo-intro-card epic-card" data-aos="fade-up">
-                <p>
-                    Established in 2010, <strong>Almasriya Alemaratiya</strong> is a reliable import and export company offering comprehensive trade and commercial agency services. With our strong roots in Egypt and the UAE, we connect businesses globally through efficient logistics, transparent operations, and trusted partnerships.
-                </p>
-            </div>
-
-            <div class="grid grid-2 core-values-grid">
-                <div class="value-item epic-card horizontal-card" data-aos="fade-right" data-aos-delay="100">
-                    <div class="core-img-box"><img src="images/Innovation%20Image.jpg" alt="Innovation" onerror="this.onerror=null; this.src='https://via.placeholder.com/300x200/044da1/ffffff?text=Innovation';"></div>
-                    <div class="value-text-block">
-                        <h3>Innovation & Efficiency</h3>
-                        <p>Leveraging cutting-edge technology and innovative strategies to deliver efficient trade solutions.</p>
-                    </div>
-                </div>
-
-                <div class="value-item epic-card horizontal-card" data-aos="fade-left" data-aos-delay="200">
-                    <div class="core-img-box"><img src="images/Client%20Image.jpg" alt="Client-Centric" onerror="this.onerror=null; this.src='https://via.placeholder.com/300x200/044da1/ffffff?text=Client-Centric';"></div>
-                    <div class="value-text-block">
-                        <h3>Client-Centric Excellence</h3>
-                        <p>Your success is our priority. We are dedicated to providing personalized service and building trust.</p>
-                    </div>
-                </div>
-
-                <div class="value-item epic-card horizontal-card" data-aos="fade-right" data-aos-delay="300">
-                    <div class="core-img-box"><img src="images/Connectivity%20Image.jpg" alt="Connectivity" onerror="this.onerror=null; this.src='https://via.placeholder.com/300x200/044da1/ffffff?text=Connectivity';"></div>
-                    <div class="value-text-block">
-                        <h3>Seamless Connectivity</h3>
-                        <p>Creating a seamless trade environment, connecting businesses across the MENA region and beyond.</p>
-                    </div>
-                </div>
-
-                <div class="value-item epic-card horizontal-card" data-aos="fade-left" data-aos-delay="400">
-                    <div class="core-img-box"><img src="images/Security%20Image.jpg" alt="Security" onerror="this.onerror=null; this.src='https://via.placeholder.com/300x200/044da1/ffffff?text=Security';"></div>
-                    <div class="value-text-block">
-                        <h3>Integrity & Security</h3>
-                        <p>Operating with the highest ethical standards, ensuring complete transparency and data security.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-   <!-- Vertical Video Showcase Section -->
-    <section class="section portrait-showcase-section bg-light">
-        <div class="container">
-            <div class="grid grid-2 align-items-center">
-                <div class="showcase-content" data-aos="fade-right">
-                    <span class="epic-badge"><i class="fas fa-play"></i> Start Now</span>
-                    <h2>Integrated <span class="gradient-text">Import, Export & Commercial Agency</span> Solutions</h2>
-                    <p class="mb-4">We provide comprehensive commercial and logistics solutions for businesses, seamlessly connecting Egyptian markets with global and regional hubs with high efficiency. Leveraging an extensive network of commercial agencies and reliable shipping lines, we ensure your business operations are executed with precision and professionalism.</p>
-                    <div class="features-list">
-                        <div class="feature-item">
-                            <span class="icon-indicator"><i class="fas fa-handshake"></i></span>
-                            <div class="feature-text">
-                                <h4>Commercial Agency Management</h4>
-                                <p>Professional representation and strong business relationships to support your regional and international expansion.</p>
-                            </div>
-                        </div>
-                        <div class="feature-item">
-                            <span class="icon-indicator"><i class="fas fa-globe"></i></span>
-                            <div class="feature-text">
-                                <h4>Import & Export Services</h4>
-                                <p>Facilitating cargo movement and delivering flexible logistics solutions tailored precisely to your operational needs.</p>
-                            </div>
-                        </div>
-                    </div>
+        <!-- Services Section -->
+        <section id="services" class="section">
+            <div class="container">
+                <div class="section-header" data-aos="fade-up">
+                    <span class="category-tag">Capabilities</span>
+                    <h2>Comprehensive <span class="gradient-text">Logistics & Trade Infrastructure</span></h2>
+                    <p class="subtitle-text">Precision operational architecture engineered for seamless cargo movement</p>
+                    <div class="header-line"></div>
                 </div>
                 
-                <div class="portrait-video-wrapper" data-aos="fade-left">
-                    <div class="portrait-phone-frame">
-                        <video autoplay muted loop playsinline>
-                            <source src="videos/banar_video_egy-uae.mp4" type="video/mp4">
-                        </video>
-                        <div class="portrait-overlay-glow"></div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Systems Section -->
-    <section id="systems" class="section dark-tech-section">
-        <div class="container relative-z">
-            <div class="section-header text-center" data-aos="fade-up">
-                <h2 style="color:white;">Trade Operations <span class="gradient-text">Interface</span></h2>
-                <p class="subtitle-text" style="color:#aaa;">Centralized monitoring consoles for real-time trade coordination</p>
-            </div>
-            
-            <div class="grid grid-3">
-                <div class="system-card epic-card tilt-card" data-tilt data-tilt-glare data-tilt-max-glare="0.2" data-aos="zoom-in" data-aos-delay="100">
-                    <div class="sys-icon"><i class="fas fa-satellite text-red"></i></div>
-                    <h3>Smart Tracking</h3>
-                    <p>Real-time visibility of your shipments. Monitor exact locations, transit times, and estimated arrivals instantly.</p>
-                    <a href="tracking.html" class="btn-text">Run Tracking <i class="fas fa-arrow-right"></i></a>
-                </div>
-                
-                <div class="system-card epic-card tilt-card" data-tilt data-tilt-glare data-tilt-max-glare="0.2" data-aos="zoom-in" data-aos-delay="200">
-                    <div class="sys-icon"><i class="fas fa-chart-pie text-red"></i></div>
-                    <h3>Analytics Dashboard</h3>
-                    <p>Comprehensive data visualization. Analyze supply chain metrics, financial reports, and performance indicators.</p>
-                    <a href="dashboard.html" class="btn-text">View Dashboard <i class="fas fa-arrow-right"></i></a>
-                </div>
-                
-                <div class="system-card epic-card tilt-card" data-tilt data-tilt-glare data-tilt-max-glare="0.2" data-aos="zoom-in" data-aos-delay="300">
-                    <div class="sys-icon"><i class="fas fa-microchip text-red"></i></div>
-                    <h3>Client Portal</h3>
-                    <p>A unified hub for all your logistics needs. Manage invoices, submit requests, and securely access shipping documents.</p>
-                    <a href="portal.html" class="btn-text">Access Node <i class="fas fa-arrow-right"></i></a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Corporate Ecosystem -->
-    <section class="section ecosystem-section">
-        <div class="container">
-            <div class="section-header" data-aos="fade-up">
-                <h2>Our <span class="gradient-text">Network</span></h2>
-                <p class="subtitle-text">Global enterprises and strategic partners driving international supply chains</p>
-            </div>
-            
-            <!-- Clients -->
-            <div class="ecosystem-wrapper" data-aos="fade-up" data-aos-delay="100">
-                <h3 class="ecosystem-row-title"><i class="fas fa-handshake text-red"></i> Verified B2B Clients</h3>
-                <div class="logo-marquee-container epic-card">
-                    <div class="logo-marquee-track track-left">
-                        <div class="logo-item"><img src="images/Lords Hotel - logo.jpg" onerror="this.onerror=null; this.src='https://via.placeholder.com/150x60/ffffff/044da1?text=Client';"></div>
-                        <div class="logo-item"><img src="images/Oceanic Hotel - logo.png" onerror="this.onerror=null; this.src='https://via.placeholder.com/150x60/ffffff/044da1?text=Client';"></div>
-                        <div class="logo-item"><img src="images/Holiday International - logo.png" onerror="this.onerror=null; this.src='https://via.placeholder.com/150x60/ffffff/044da1?text=Client';"></div>
-                        <div class="logo-item"><img src="images/Al Maha Hotel - logo .jpg" onerror="this.onerror=null; this.src='https://via.placeholder.com/150x60/ffffff/044da1?text=Client';"></div>
-                        <div class="logo-item"><img src="images/Al Haiat Hotel Group - logo.png" onerror="this.onerror=null; this.src='https://via.placeholder.com/150x60/ffffff/044da1?text=Client';"></div>
-                        <div class="logo-item"><img src="images/Rotana Hotel - logo.png" onerror="this.onerror=null; this.src='https://via.placeholder.com/150x60/ffffff/044da1?text=Client';"></div>
-                        <div class="logo-item"><img src="images/Skydive Dubai - logo.jpg" onerror="this.onerror=null; this.src='https://via.placeholder.com/150x60/ffffff/044da1?text=Client';"></div>
-                        <!-- Duplicates for loop -->
-                        <div class="logo-item"><img src="images/Lords Hotel - logo.jpg" onerror="this.onerror=null; this.src='https://via.placeholder.com/150x60/ffffff/044da1?text=Client';"></div>
-                        <div class="logo-item"><img src="images/Oceanic Hotel - logo.png" onerror="this.onerror=null; this.src='https://via.placeholder.com/150x60/ffffff/044da1?text=Client';"></div>
-                        <div class="logo-item"><img src="images/Holiday International - logo.png" onerror="this.onerror=null; this.src='https://via.placeholder.com/150x60/ffffff/044da1?text=Client';"></div>
-                        <div class="logo-item"><img src="images/Al Maha Hotel - logo .jpg" onerror="this.onerror=null; this.src='https://via.placeholder.com/150x60/ffffff/044da1?text=Client';"></div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Partners -->
-            <div class="ecosystem-wrapper" data-aos="fade-up" data-aos-delay="200">
-                <h3 class="ecosystem-row-title"><i class="fas fa-network-wired text-red"></i> Global Strategic Partners</h3>
-                <div class="logo-marquee-container epic-card">
-                    <div class="logo-marquee-track track-right">
-                        <div class="logo-item"><img src="images/JT-Express-Logo.png" onerror="this.onerror=null; this.src='https://via.placeholder.com/150x60/ffffff/ec1c24?text=Partner';"></div>
-                        <div class="logo-item"><img src="images/DHL-Logo.png" onerror="this.onerror=null; this.src='https://via.placeholder.com/150x60/ffffff/ec1c24?text=Partner';"></div>
-                        <div class="logo-item"><img src="images/nafeza-en.svg" onerror="this.onerror=null; this.src='https://via.placeholder.com/150x60/ffffff/ec1c24?text=Partner';"></div>
-                        <div class="logo-item"><img src="images/company - logo.png" onerror="this.onerror=null; this.src='https://via.placeholder.com/150x60/ffffff/ec1c24?text=Partner';"></div>
-                        <!-- Duplicates for loop -->
-                        <div class="logo-item"><img src="images/JT-Express-Logo.png" onerror="this.onerror=null; this.src='https://via.placeholder.com/150x60/ffffff/ec1c24?text=Partner';"></div>
-                        <div class="logo-item"><img src="images/DHL-Logo.png" onerror="this.onerror=null; this.src='https://via.placeholder.com/150x60/ffffff/ec1c24?text=Partner';"></div>
-                        <div class="logo-item"><img src="images/nafeza-en.svg" onerror="this.onerror=null; this.src='https://via.placeholder.com/150x60/ffffff/ec1c24?text=Partner';"></div>
-                        <div class="logo-item"><img src="images/company - logo.png" onerror="this.onerror=null; this.src='https://via.placeholder.com/150x60/ffffff/ec1c24?text=Partner';"></div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Testimonials Section -->
-    <section class="section bg-light">
-        <div class="container">
-            <div class="section-header" data-aos="fade-up">
-                <h2>Verified Trade <span class="gradient-text">Feedback</span></h2>
-            </div>
-            <div class="swiper testimonial-slider" data-aos="fade-up" data-aos-delay="100">
-                <div class="swiper-wrapper">
-                    <div class="swiper-slide">
-                        <div class="testimonial-card epic-card">
-                            <i class="fas fa-quote-left quote-mark text-red"></i>
-                            <p>"Almassriya Alemaratiya has been instrumental in optimizing our trade routes between Cairo and Dubai."</p>
-                            <h4>- Omar Al Fares</h4>
-                            <span style="color:var(--text-muted); font-size:0.85rem;">Supply Chain Director</span>
+                <div class="grid grid-3">
+                    <div class="epic-image-card" data-aos="fade-up" data-aos-delay="100">
+                        <img src="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=700&q=80" alt="Supply Chain Warehousing" class="card-bg-img">
+                        <div class="card-overlay-content">
+                            <div class="icon-box"><i class="fas fa-boxes-stacked"></i></div>
+                            <h3>Logistics & Supply Chain</h3>
+                            <p>End-to-end multi-modal logistics, warehouse consolidation, and inventory distribution designed for scale.</p>
                         </div>
                     </div>
-                    <div class="swiper-slide">
-                        <div class="testimonial-card epic-card">
-                            <i class="fas fa-quote-left quote-mark text-red"></i>
-                            <p>"We experienced seamless customs clearance and unparalleled logistics support through their digital portal."</p>
-                            <h4>- Latifa Hassan</h4>
-                            <span style="color:var(--text-muted); font-size:0.85rem;">Operations Manager</span>
+
+                    <div class="epic-image-card" data-aos="fade-up" data-aos-delay="150">
+                        <img src="https://images.unsplash.com/photo-1494412519320-aa613dfb7738?auto=format&fit=crop&w=700&q=80" alt="Freight Forwarding Fleet" class="card-bg-img">
+                        <div class="card-overlay-content">
+                            <div class="icon-box"><i class="fas fa-plane-departure"></i></div>
+                            <h3>Freight Forwarding</h3>
+                            <p>Global sea container transit (FCL/LCL) and expedited air cargo with complete manifest management.</p>
+                        </div>
+                    </div>
+
+                    <div class="epic-image-card" data-aos="fade-up" data-aos-delay="200">
+                        <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=700&q=80" alt="B2B Commercial Agency Advisory" class="card-bg-img">
+                        <div class="card-overlay-content">
+                            <div class="icon-box"><i class="fas fa-handshake"></i></div>
+                            <h3>Trade Facilitation & Agency</h3>
+                            <p>Official representation, local entity proxy, market entry strategy, and regional supplier vetting.</p>
+                        </div>
+                    </div>
+
+                    <div class="epic-image-card" data-aos="fade-up" data-aos-delay="250">
+                        <img src="https://images.unsplash.com/photo-1544027993-37dbfe43562a?auto=format&fit=crop&w=700&q=80" alt="Port Customs Clearance" class="card-bg-img">
+                        <div class="card-overlay-content">
+                            <div class="icon-box"><i class="fas fa-stamp"></i></div>
+                            <h3>Customs Clearance (ACI/Nafeza)</h3>
+                            <p>Direct integration with Egyptian ACI Nafeza and UAE Mirsal customs clearance systems for zero delays.</p>
+                        </div>
+                    </div>
+
+                    <div class="epic-image-card" data-aos="fade-up" data-aos-delay="300">
+                        <img src="https://images.unsplash.com/photo-1601584115197-04ecc0da31d7?auto=format&fit=crop&w=700&q=80" alt="Inland Transport Network" class="card-bg-img">
+                        <div class="card-overlay-content">
+                            <div class="icon-box"><i class="fas fa-truck-fast"></i></div>
+                            <h3>Inland Road Transit</h3>
+                            <p>Heavy-duty bonded trucking network operating continuously between production hubs and commercial ports.</p>
+                        </div>
+                    </div>
+
+                    <div class="epic-image-card" data-aos="fade-up" data-aos-delay="350">
+                        <img src="https://images.unsplash.com/photo-1587293852726-70cdb56c2866?auto=format&fit=crop&w=700&q=80" alt="Secure Cold and Dry Warehousing" class="card-bg-img">
+                        <div class="card-overlay-content">
+                            <div class="icon-box"><i class="fas fa-warehouse"></i></div>
+                            <h3>Warehousing & Fulfillment</h3>
+                            <p>Secure, climate-controlled storage nodes in 10th of Ramadan and Sharjah with real-time inventory tracking.</p>
                         </div>
                     </div>
                 </div>
-                <div class="swiper-pagination"></div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- FAQ & B2B RFQ Desk -->
-    <section id="contact" class="section">
-        <div class="container">
-            <div class="grid grid-2">
-                
-                <!-- FAQ Panel -->
-                <div class="faq-container" data-aos="fade-right">
-                    <div class="section-header text-left">
-                        <h2>Trade Desk <span class="gradient-text">Queries</span></h2>
-                    </div>
-                    <div class="epic-card" style="padding:20px;">
-                        <div class="faq-item">
-                            <div class="faq-question">
-                                <h3>What types of goods do you handle for trade?</h3>
-                                <i class="fas fa-plus text-primary"></i>
-                            </div>
-                            <div class="faq-answer">
-                                <p>We handle industrial products, consumer goods, raw materials, and specialized cargo.</p>
-                            </div>
+        <!-- Trade Divisions Showcase -->
+        <section id="divisions" class="section bg-light">
+            <div class="container">
+                <div class="section-header" data-aos="fade-up">
+                    <span class="category-tag">B2B Directory</span>
+                    <h2>Active Cross-Border <span class="gradient-text">Trade Divisions</span></h2>
+                    <p class="subtitle-text">Verified commodities with direct procurement channels ready for shipment</p>
+                    <div class="header-line"></div>
+                </div>
+
+                <div class="portfolio-filter-tabs" data-aos="fade-up">
+                    <button class="filter-tab-btn active" data-filter="all"><i class="fas fa-layer-group"></i> All Divisions</button>
+                    <button class="filter-tab-btn" data-filter="consumables"><i class="fas fa-wheat-awn"></i> Food & Consumables</button>
+                    <button class="filter-tab-btn" data-filter="furniture"><i class="fas fa-couch"></i> Furniture & Hospitality</button>
+                    <button class="filter-tab-btn" data-filter="industrial"><i class="fas fa-gears"></i> OS&E & Industrial</button>
+                </div>
+
+                <div class="grid grid-3 b2b-directory-grid">
+                    <!-- Division 1 -->
+                    <div class="b2b-product-card epic-card" data-category="consumables" data-aos="fade-up">
+                        <div class="badge-status"><i class="fas fa-certificate text-red"></i> Standard Certified</div>
+                        <div class="card-img-wrap">
+                            <img src="https://images.unsplash.com/photo-1506084868230-bb9d95c24759?auto=format&fit=crop&w=600&q=80" alt="Food & Agriculture Division" class="product-thumb">
                         </div>
-                        <div class="faq-item">
-                            <div class="faq-question">
-                                <h3>Do you offer real-time tracking for shipments?</h3>
-                                <i class="fas fa-plus text-primary"></i>
+                        <div class="product-info">
+                            <h3>Food & Agricultural Division</h3>
+                            <p class="route-info"><i class="fas fa-anchor text-red"></i> Alexandria Port &rarr; Sharjah Hub</p>
+                            <p class="product-desc">Export-grade fresh produce, dry provisions, and certified consumable bulk goods.</p>
+                            <div class="product-meta"><span><strong>Route:</strong> Egypt &ndash; UAE Corridor</span></div>
+                            <button type="button" class="btn-outline w-full rfq-trigger-btn" data-subject="Food & Agricultural Division">Source Division <i class="fas fa-arrow-right"></i></button>
+                        </div>
+                    </div>
+
+                    <!-- Division 2 -->
+                    <div class="b2b-product-card epic-card" data-category="consumables" data-aos="fade-up" data-aos-delay="100">
+                        <div class="badge-status"><i class="fas fa-star text-red"></i> 5-Star Grade</div>
+                        <div class="card-img-wrap">
+                            <img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=600&q=80" alt="Hotel & Hospitality Supplies" class="product-thumb">
+                        </div>
+                        <div class="product-info">
+                            <h3>Hotel & Hospitality Supplies</h3>
+                            <p class="route-info"><i class="fas fa-anchor text-red"></i> Port Said &rarr; Jebel Ali Hub</p>
+                            <p class="product-desc">Egyptian cotton linens, guestroom amenities, and bespoke hospitality textiles.</p>
+                            <div class="product-meta"><span><strong>Scope:</strong> Operational OS&E</span></div>
+                            <button type="button" class="btn-outline w-full rfq-trigger-btn" data-subject="Hotel & Hospitality Supplies">Source Division <i class="fas fa-arrow-right"></i></button>
+                        </div>
+                    </div>
+
+                    <!-- Division 3 -->
+                    <div class="b2b-product-card epic-card" data-category="consumables" data-aos="fade-up" data-aos-delay="200">
+                        <div class="badge-status"><i class="fas fa-shield-virus text-red"></i> ISO / REACH</div>
+                        <div class="card-img-wrap">
+                            <img src="https://images.unsplash.com/photo-1601522244217-cd3c403695db?auto=format&fit=crop&w=600&q=80" alt="Chemicals and Cosmetics Raw Materials" class="product-thumb">
+                        </div>
+                        <div class="product-info">
+                            <h3>Chemicals & Cosmetics</h3>
+                            <p class="route-info"><i class="fas fa-anchor text-red"></i> Ain Sokhna &rarr; Khalifa Port</p>
+                            <p class="product-desc">Raw materials, specialized industrial detergents, and personal care formulations.</p>
+                            <div class="product-meta"><span><strong>Certifications:</strong> REACH / ISO Compliant</span></div>
+                            <button type="button" class="btn-outline w-full rfq-trigger-btn" data-subject="Chemicals & Cosmetics Division">Source Division <i class="fas fa-arrow-right"></i></button>
+                        </div>
+                    </div>
+
+                    <!-- Division 4 -->
+                    <div class="b2b-product-card epic-card" data-category="industrial" data-aos="fade-up" data-aos-delay="300">
+                        <div class="badge-status"><i class="fas fa-sliders text-red"></i> Integrated Sourcing</div>
+                        <div class="card-img-wrap">
+                            <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=600&q=80" alt="OS&E Turnkey Procurement" class="product-thumb">
+                        </div>
+                        <div class="product-info">
+                            <h3>OS&E Project Procurement</h3>
+                            <p class="route-info"><i class="fas fa-anchor text-red"></i> Cairo Terminal &rarr; Dubai Node</p>
+                            <p class="product-desc">Turnkey FF&E and OS&E procurement solutions for institutional and mega projects.</p>
+                            <div class="product-meta"><span><strong>Capacity:</strong> Turnkey Supply</span></div>
+                            <button type="button" class="btn-outline w-full rfq-trigger-btn" data-subject="OS&E Project Procurement">Source Division <i class="fas fa-arrow-right"></i></button>
+                        </div>
+                    </div>
+
+                    <!-- Division 5 -->
+                    <div class="b2b-product-card epic-card" data-category="furniture" data-aos="fade-up" data-aos-delay="400">
+                        <div class="badge-status"><i class="fas fa-tree text-red"></i> Solid Hardwood</div>
+                        <div class="card-img-wrap">
+                            <img src="https://images.unsplash.com/photo-1524758631624-e2822e304c36?auto=format&fit=crop&w=600&q=80" alt="Executive Office Furniture" class="product-thumb">
+                        </div>
+                        <div class="product-info">
+                            <h3>Office Furniture Systems</h3>
+                            <p class="route-info"><i class="fas fa-anchor text-red"></i> Damietta &rarr; Sharjah Logistics</p>
+                            <p class="product-desc">Ergonomic workstations, executive suites, and corporate conference installations.</p>
+                            <div class="product-meta"><span><strong>Origin:</strong> Damietta Craftsmen</span></div>
+                            <button type="button" class="btn-outline w-full rfq-trigger-btn" data-subject="Office Furniture Systems">Source Division <i class="fas fa-arrow-right"></i></button>
+                        </div>
+                    </div>
+
+                    <!-- Division 6 -->
+                    <div class="b2b-product-card epic-card" data-category="furniture" data-aos="fade-up" data-aos-delay="500">
+                        <div class="badge-status"><i class="fas fa-award text-red"></i> High Durability</div>
+                        <div class="card-img-wrap">
+                            <img src="https://images.unsplash.com/photo-1464366400600-7168b8af9bc3?auto=format&fit=crop&w=600&q=80" alt="Banquet and Event Furniture" class="product-thumb">
+                        </div>
+                        <div class="product-info">
+                            <h3>Banquet & Convention Sets</h3>
+                            <p class="route-info"><i class="fas fa-anchor text-red"></i> Alexandria &rarr; Abu Dhabi Hub</p>
+                            <p class="product-desc">Stackable heavy-duty banquet chairs, modular staging, and convention tables.</p>
+                            <div class="product-meta"><span><strong>Type:</strong> High-Density Stackable</span></div>
+                            <button type="button" class="btn-outline w-full rfq-trigger-btn" data-subject="Banquet & Convention Furniture">Source Division <i class="fas fa-arrow-right"></i></button>
+                        </div>
+                    </div>
+
+                    <!-- Division 7 -->
+                    <div class="b2b-product-card epic-card" data-category="industrial" data-aos="fade-up" data-aos-delay="600">
+                        <div class="badge-status"><i class="fas fa-hammer text-red"></i> Rust Resistant</div>
+                        <div class="card-img-wrap">
+                            <img src="https://images.unsplash.com/photo-1555041469-a586c61ea9bc?auto=format&fit=crop&w=600&q=80" alt="Industrial Metal Beds and Lockers" class="product-thumb">
+                        </div>
+                        <div class="product-info">
+                            <h3>Metal Accommodation Beds & Lockers</h3>
+                            <p class="route-info"><i class="fas fa-anchor text-red"></i> 10th of Ramadan &rarr; UAE Logistics</p>
+                            <p class="product-desc">Electrostatic powder-coated metal bunk beds, lockers, and accommodation units.</p>
+                            <div class="product-meta"><span><strong>Standard:</strong> Heavy-Gauge Steel</span></div>
+                            <button type="button" class="btn-outline w-full rfq-trigger-btn" data-subject="Metal Beds & Lockers Division">Source Division <i class="fas fa-arrow-right"></i></button>
+                        </div>
+                    </div>
+
+                    <!-- Division 8 -->
+                    <div class="b2b-product-card epic-card" data-category="furniture" data-aos="fade-up" data-aos-delay="700">
+                        <div class="badge-status"><i class="fas fa-building text-red"></i> Modular Build</div>
+                        <div class="card-img-wrap">
+                            <img src="https://images.unsplash.com/photo-1540518614846-7eded433c457?auto=format&fit=crop&w=600&q=80" alt="Staff Modular Furniture" class="product-thumb">
+                        </div>
+                        <div class="product-info">
+                            <h3>Staff Modular Housing Furniture</h3>
+                            <p class="route-info"><i class="fas fa-anchor text-red"></i> Damietta Port &rarr; Jebel Ali</p>
+                            <p class="product-desc">Turnkey residential fittings for corporate quarters, labor accommodation, and dorms.</p>
+                            <div class="product-meta"><span><strong>Build:</strong> High-Density Modular</span></div>
+                            <button type="button" class="btn-outline w-full rfq-trigger-btn" data-subject="Staff Housing Furniture">Source Division <i class="fas fa-arrow-right"></i></button>
+                        </div>
+                    </div>
+
+                    <!-- Division 9 -->
+                    <div class="b2b-product-card epic-card" data-category="furniture" data-aos="fade-up" data-aos-delay="800">
+                        <div class="badge-status"><i class="fas fa-gem text-red"></i> Premium Leather</div>
+                        <div class="card-img-wrap">
+                            <img src="https://images.unsplash.com/photo-1484101403633-562f891dc89a?auto=format&fit=crop&w=600&q=80" alt="Commercial Sofa Sets and Lounges" class="product-thumb">
+                        </div>
+                        <div class="product-info">
+                            <h3>Commercial Lounge & Sofa Sets</h3>
+                            <p class="route-info"><i class="fas fa-anchor text-red"></i> Damietta &rarr; Dubai Logistics</p>
+                            <p class="product-desc">Lobby reception sets, healthcare waiting rooms, and luxury hospitality lounges.</p>
+                            <div class="product-meta"><span><strong>Design:</strong> Commercial Contract Grade</span></div>
+                            <button type="button" class="btn-outline w-full rfq-trigger-btn" data-subject="Commercial Lounge & Sofa Sets">Source Division <i class="fas fa-arrow-right"></i></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Operational Architecture & About -->
+        <section id="about" class="section">
+            <div class="container">
+                <div class="section-header" data-aos="fade-up">
+                    <span class="category-tag">Heritage & Network</span>
+                    <h2>Strategic Corporate <span class="gradient-text">Architecture</span></h2>
+                    <p class="subtitle-text">Bridging MENA trade boundaries with integrity, velocity, and institutional scale</p>
+                    <div class="header-line"></div>
+                </div>
+
+                <div class="about-seo-intro-card epic-card" data-aos="fade-up">
+                    <p>
+                        Established in <strong>2010</strong>, <strong>Almasriya Alemaratiya</strong> serves as a high-reliability bridge for cross-border commerce and commercial agency management. Operating fully licensed hubs in <strong>Egypt (10th of Ramadan City)</strong> and the <strong>United Arab Emirates (Sharjah / Dubai)</strong>, we engineer frictionless procurement and transit ecosystems across the Arab world.
+                    </p>
+                </div>
+
+                <div class="grid grid-2 core-values-grid">
+                    <div class="value-item epic-card horizontal-card" data-aos="fade-right" data-aos-delay="100">
+                        <div class="core-img-box">
+                            <img src="images/Innovation%20Image.jpg" alt="Innovation and Tech Logistics" onerror="this.onerror=null; this.src='https://via.placeholder.com/300x200/044da1/ffffff?text=Innovation';">
+                        </div>
+                        <div class="value-text-block">
+                            <h3>Digital Precision & Agility</h3>
+                            <p>Utilizing live telemetry, streamlined ACI/Nafeza clearance, and smart tracking to eliminate supply chain friction.</p>
+                        </div>
+                    </div>
+
+                    <div class="value-item epic-card horizontal-card" data-aos="fade-left" data-aos-delay="200">
+                        <div class="core-img-box">
+                            <img src="images/Client%20Image.jpg" alt="Client Focus" onerror="this.onerror=null; this.src='https://via.placeholder.com/300x200/044da1/ffffff?text=Partnership';">
+                        </div>
+                        <div class="value-text-block">
+                            <h3>Verified Commercial Agency</h3>
+                            <p>Acting as legal, exclusive, or authorized commercial agents for manufacturers expanding across GCC markets.</p>
+                        </div>
+                    </div>
+
+                    <div class="value-item epic-card horizontal-card" data-aos="fade-right" data-aos-delay="300">
+                        <div class="core-img-box">
+                            <img src="images/Connectivity%20Image.jpg" alt="Regional Connectivity" onerror="this.onerror=null; this.src='https://via.placeholder.com/300x200/044da1/ffffff?text=Connectivity';">
+                        </div>
+                        <div class="value-text-block">
+                            <h3>Strategic Arab Trade Corridor</h3>
+                            <p>Consolidating multi-port ocean shipping and expedited air cargo lanes between the Nile Delta and the Arabian Gulf.</p>
+                        </div>
+                    </div>
+
+                    <div class="value-item epic-card horizontal-card" data-aos="fade-left" data-aos-delay="400">
+                        <div class="core-img-box">
+                            <img src="images/Security%20Image.jpg" alt="Integrity and Security" onerror="this.onerror=null; this.src='https://via.placeholder.com/300x200/044da1/ffffff?text=Security';">
+                        </div>
+                        <div class="value-text-block">
+                            <h3>Fiscal Integrity & Escrow</h3>
+                            <p>Transparent documentation, letter of credit handling, and verified trade compliance across all jurisdictions.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Vertical Video Showcase -->
+        <section class="section portrait-showcase-section bg-light">
+            <div class="container">
+                <div class="grid grid-2 align-items-center">
+                    <div class="showcase-content" data-aos="fade-right">
+                        <span class="epic-badge"><i class="fas fa-play text-red"></i> Corporate Spotlight</span>
+                        <h2>Integrated Solutions for <span class="gradient-text">Trade Expansion</span></h2>
+                        <p class="mb-4">From factory audit and sourcing verification in Egypt to warehousing, transit documentation, and customs release in UAE free zones, Al Masriya Al Emaratiya delivers end-to-end commercial confidence.</p>
+                        <div class="features-list">
+                            <div class="feature-item">
+                                <div class="icon-indicator"><i class="fas fa-handshake-simple"></i></div>
+                                <div class="feature-text">
+                                    <h4>Agency Representation</h4>
+                                    <p>Accelerating market readiness with seasoned commercial representations and business development networks.</p>
+                                </div>
                             </div>
-                            <div class="faq-answer">
-                                <p>Yes, our advanced logistics system provides real-time tracking for all shipments via a dedicated portal.</p>
+                            <div class="feature-item">
+                                <div class="icon-indicator"><i class="fas fa-route"></i></div>
+                                <div class="feature-text">
+                                    <h4>Bespoke Freight Routing</h4>
+                                    <p>Optimized carrier arrangements for hazardous, dry bulk, heavy machinery, and temperature-controlled items.</p>
+                                </div>
                             </div>
                         </div>
                     </div>
                     
-                    <div class="contact-info mt-5 epic-card" style="padding:25px; margin-top:20px;">
-                        <div class="info-item">
-                            <i class="fas fa-map-marker-alt text-red"></i>
-                            <span>10th of Ramadan, Egypt & Sharjah, UAE</span>
+                    <div class="portrait-video-wrapper" data-aos="fade-left">
+                        <div class="portrait-phone-frame">
+                            <video autoplay muted loop playsinline poster="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?auto=format&fit=crop&w=720&q=80">
+                                <source src="videos/banar_video_egy-uae.mp4" type="video/mp4">
+                            </video>
+                            <div class="portrait-overlay-glow"></div>
                         </div>
-                        <div class="info-item">
-                            <i class="fas fa-phone-alt text-red"></i>
-                            <span>+20 101 176 6232</span>
-                        </div>
-                        <div class="info-item">
-                            <i class="fas fa-envelope text-red"></i>
-                            <span>info@egy-uae.com</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Digital Systems -->
+        <section id="systems" class="section dark-tech-section">
+            <div class="container relative-z">
+                <div class="section-header text-center" data-aos="fade-up">
+                    <span class="category-tag-dark">Digital Command</span>
+                    <h2 style="color:white;">Centralized Trade <span class="gradient-text">Consoles</span></h2>
+                    <p class="subtitle-text" style="color:#94a3b8;">High-availability interfaces connecting buyers, suppliers, and customs agents</p>
+                    <div class="header-line"></div>
+                </div>
+                
+                <div class="grid grid-3">
+                    <div class="system-card epic-card tilt-card" data-tilt data-tilt-glare data-tilt-max-glare="0.2" data-aos="zoom-in" data-aos-delay="100">
+                        <div class="sys-icon"><i class="fas fa-satellite-dish text-red"></i></div>
+                        <h3>Smart Tracking Console</h3>
+                        <p>Real-time telematics and milestone tracking for ocean containers, air waybills, and inland trailers.</p>
+                        <a href="tracking.html" class="btn-text">Access Tracker <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                    
+                    <div class="system-card epic-card tilt-card" data-tilt data-tilt-glare data-tilt-max-glare="0.2" data-aos="zoom-in" data-aos-delay="200">
+                        <div class="sys-icon"><i class="fas fa-chart-line text-red"></i></div>
+                        <h3>Supply Chain Analytics</h3>
+                        <p>Comprehensive ledger reports, freight indices, tariff computations, and delivery efficiency dashboards.</p>
+                        <a href="dashboard.html" class="btn-text">View Metrics <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                    
+                    <div class="system-card epic-card tilt-card" data-tilt data-tilt-glare data-tilt-max-glare="0.2" data-aos="zoom-in" data-aos-delay="300">
+                        <div class="sys-icon"><i class="fas fa-laptop-code text-red"></i></div>
+                        <h3>B2B Client Enterprise Node</h3>
+                        <p>A unified hub to manage invoices, upload EUR.1 / COO certificates, and initiate instant RFQ bids.</p>
+                        <a href="portal.html" class="btn-text">Enter Portal <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Corporate Ecosystem (Clients & Partners) -->
+        <section class="section ecosystem-section">
+            <div class="container">
+                <div class="section-header" data-aos="fade-up">
+                    <span class="category-tag">Ecosystem</span>
+                    <h2>Strategic Alliances & <span class="gradient-text">Valued Partners</span></h2>
+                    <p class="subtitle-text">Enterprises relying on our cross-border logistics lanes and agency support</p>
+                    <div class="header-line"></div>
+                </div>
+                
+                <!-- Clients Marquee -->
+                <div class="ecosystem-wrapper" data-aos="fade-up" data-aos-delay="100">
+                    <h3 class="ecosystem-row-title"><i class="fas fa-hotel text-red"></i> Institutional Clients</h3>
+                    <div class="logo-marquee-container epic-card">
+                        <div class="logo-marquee-track track-left">
+                            <div class="logo-item"><img src="images/Lords Hotel - logo.jpg" alt="Lords Hotel" onerror="this.onerror=null; this.src='https://via.placeholder.com/150x60/ffffff/044da1?text=Lords+Hotel';"></div>
+                            <div class="logo-item"><img src="images/Oceanic Hotel - logo.png" alt="Oceanic Hotel" onerror="this.onerror=null; this.src='https://via.placeholder.com/150x60/ffffff/044da1?text=Oceanic+Hotel';"></div>
+                            <div class="logo-item"><img src="images/Holiday International - logo.png" alt="Holiday International" onerror="this.onerror=null; this.src='https://via.placeholder.com/150x60/ffffff/044da1?text=Holiday+Int';"></div>
+                            <div class="logo-item"><img src="images/Al Maha Hotel - logo .jpg" alt="Al Maha Hotel" onerror="this.onerror=null; this.src='https://via.placeholder.com/150x60/ffffff/044da1?text=Al+Maha';"></div>
+                            <div class="logo-item"><img src="images/Al Haiat Hotel Group - logo.png" alt="Al Haiat Group" onerror="this.onerror=null; this.src='https://via.placeholder.com/150x60/ffffff/044da1?text=Al+Haiat';"></div>
+                            <div class="logo-item"><img src="images/Rotana Hotel - logo.png" alt="Rotana Hotels" onerror="this.onerror=null; this.src='https://via.placeholder.com/150x60/ffffff/044da1?text=Rotana';"></div>
+                            <div class="logo-item"><img src="images/Skydive Dubai - logo.jpg" alt="Skydive Dubai" onerror="this.onerror=null; this.src='https://via.placeholder.com/150x60/ffffff/044da1?text=Skydive+Dubai';"></div>
+                            <!-- Duplicates for Infinite Loop -->
+                            <div class="logo-item"><img src="images/Lords Hotel - logo.jpg" alt="Lords Hotel" onerror="this.onerror=null; this.src='https://via.placeholder.com/150x60/ffffff/044da1?text=Lords+Hotel';"></div>
+                            <div class="logo-item"><img src="images/Oceanic Hotel - logo.png" alt="Oceanic Hotel" onerror="this.onerror=null; this.src='https://via.placeholder.com/150x60/ffffff/044da1?text=Oceanic+Hotel';"></div>
+                            <div class="logo-item"><img src="images/Holiday International - logo.png" alt="Holiday International" onerror="this.onerror=null; this.src='https://via.placeholder.com/150x60/ffffff/044da1?text=Holiday+Int';"></div>
                         </div>
                     </div>
                 </div>
 
-                <!-- B2B RFQ Form -->
-                <div class="contact-form-container epic-card" data-aos="fade-left">
-                    <h3 class="form-title" style="font-size: 1.5rem; margin-bottom:10px;">Launch Trade RFQ Panel</h3>
-                    <p class="text-muted mb-4" style="margin-bottom: 25px; font-size: 0.9rem;">Transmit specifications directly to our trade specialists.</p>
-                    <form class="contact-form" action="https://formspree.io/f/maqkrwoe" method="POST">
-                        <div class="input-group">
-                            <i class="fas fa-user"></i>
-                            <input type="text" name="Name" placeholder="Procurement Manager / Name" required>
+                <!-- Logistics Strategic Partners -->
+                <div class="ecosystem-wrapper" data-aos="fade-up" data-aos-delay="200">
+                    <h3 class="ecosystem-row-title"><i class="fas fa-network-wired text-red"></i> Customs & Freight Alliances</h3>
+                    <div class="logo-marquee-container epic-card">
+                        <div class="logo-marquee-track track-right">
+                            <div class="logo-item"><img src="images/JT-Express-Logo.png" alt="J&T Express" onerror="this.onerror=null; this.src='https://via.placeholder.com/150x60/ffffff/ec1c24?text=J%26T+Express';"></div>
+                            <div class="logo-item"><img src="images/DHL-Logo.png" alt="DHL Express" onerror="this.onerror=null; this.src='https://via.placeholder.com/150x60/ffffff/ec1c24?text=DHL';"></div>
+                            <div class="logo-item"><img src="images/nafeza-en.svg" alt="Nafeza Customs Portal Egypt" onerror="this.onerror=null; this.src='https://via.placeholder.com/150x60/ffffff/ec1c24?text=Nafeza';"></div>
+                            <div class="logo-item"><img src="images/company - logo.png" alt="Trade Partner" onerror="this.onerror=null; this.src='https://via.placeholder.com/150x60/ffffff/ec1c24?text=Strategic+Alliance';"></div>
+                            <!-- Duplicates for Infinite Loop -->
+                            <div class="logo-item"><img src="images/JT-Express-Logo.png" alt="J&T Express" onerror="this.onerror=null; this.src='https://via.placeholder.com/150x60/ffffff/ec1c24?text=J%26T+Express';"></div>
+                            <div class="logo-item"><img src="images/DHL-Logo.png" alt="DHL Express" onerror="this.onerror=null; this.src='https://via.placeholder.com/150x60/ffffff/ec1c24?text=DHL';"></div>
+                            <div class="logo-item"><img src="images/nafeza-en.svg" alt="Nafeza Customs Portal Egypt" onerror="this.onerror=null; this.src='https://via.placeholder.com/150x60/ffffff/ec1c24?text=Nafeza';"></div>
                         </div>
-                        <div class="input-group">
-                            <i class="fas fa-envelope"></i>
-                            <input type="email" name="Email" placeholder="Official Business Email" required>
-                        </div>
-                        <div class="input-group">
-                            <i class="fas fa-phone"></i>
-                            <input type="tel" name="Phone" placeholder="Direct Contact Signal (Phone)">
-                        </div>
-                        <div class="input-group">
-                            <i class="fas fa-tag"></i>
-                            <input type="text" name="Subject" id="rfq-division-subject" placeholder="Selected Division / Target Payload" required>
-                        </div>
-                        <div class="input-group">
-                            <i class="fas fa-comment-alt"></i>
-                            <textarea name="Message" rows="4" placeholder="Detail your trade volume, specifications, cargo details and port configurations here..." required></textarea>
-                        </div>
-                        <button type="submit" class="btn-primary w-full">Transmit RFQ Specifications <i class="fas fa-paper-plane"></i></button>
-                    </form>
+                    </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- Footer Area -->
+        <!-- Testimonials -->
+        <section class="section bg-light">
+            <div class="container">
+                <div class="section-header" data-aos="fade-up">
+                    <span class="category-tag">Client Trust</span>
+                    <h2>Verified Trade <span class="gradient-text">Feedback</span></h2>
+                    <p class="subtitle-text">Corporate executives commenting on our cross-border transit times and agency efficiency</p>
+                    <div class="header-line"></div>
+                </div>
+                <div class="swiper testimonial-slider" data-aos="fade-up" data-aos-delay="100">
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide">
+                            <div class="testimonial-card epic-card">
+                                <div class="rating-stars mb-2">
+                                    <i class="fas fa-star text-gold"></i>
+                                    <i class="fas fa-star text-gold"></i>
+                                    <i class="fas fa-star text-gold"></i>
+                                    <i class="fas fa-star text-gold"></i>
+                                    <i class="fas fa-star text-gold"></i>
+                                </div>
+                                <i class="fas fa-quote-left quote-mark text-red"></i>
+                                <p>"Almassriya Alemaratiya has transformed how we manage shipments between Damietta and Sharjah. Their customs clearance team handled all ACI complexities effortlessly."</p>
+                                <h4>Omar Al Fares</h4>
+                                <span class="client-role">Supply Chain Director &ndash; Hospitality Group</span>
+                            </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="testimonial-card epic-card">
+                                <div class="rating-stars mb-2">
+                                    <i class="fas fa-star text-gold"></i>
+                                    <i class="fas fa-star text-gold"></i>
+                                    <i class="fas fa-star text-gold"></i>
+                                    <i class="fas fa-star text-gold"></i>
+                                    <i class="fas fa-star text-gold"></i>
+                                </div>
+                                <i class="fas fa-quote-left quote-mark text-red"></i>
+                                <p>"Their commercial agency services allowed our chemical brand to establish direct distribution hubs in the UAE without setting up a massive local infrastructure from day one."</p>
+                                <h4>Latifa Hassan</h4>
+                                <span class="client-role">Commercial Director &ndash; MENA Chemicals</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="swiper-pagination"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- FAQ & RFQ Desk -->
+        <section id="contact" class="section">
+            <div class="container">
+                <div class="grid grid-2">
+                    
+                    <!-- FAQ Panel -->
+                    <div class="faq-container" data-aos="fade-right">
+                        <div class="section-header text-left">
+                            <span class="category-tag">Trade Inquiries</span>
+                            <h2>Trade Desk <span class="gradient-text">Queries</span></h2>
+                            <p class="subtitle-text">Key operational insights regarding routes, ports, and procedures</p>
+                        </div>
+                        
+                        <div class="epic-card p-4">
+                            <div class="faq-item">
+                                <div class="faq-question">
+                                    <h3>What trade commodities are supported under your corridor?</h3>
+                                    <i class="fas fa-chevron-down"></i>
+                                </div>
+                                <div class="faq-answer">
+                                    <p>We handle heavy industrial equipment, hotel OS&E/FF&E goods, chemical raw materials (REACH-compliant), certified foodstuffs, and furniture directly through major Egyptian and UAE ports.</p>
+                                </div>
+                            </div>
+                            <div class="faq-item">
+                                <div class="faq-question">
+                                    <h3>Do you provide Nafeza & ACI compliance assistance in Egypt?</h3>
+                                    <i class="fas fa-chevron-down"></i>
+                                </div>
+                                <div class="faq-answer">
+                                    <p>Yes. Our in-house customs brokers manage full ACID number issuance, pre-shipment documentation, and digital cargo declaration via Egypt's single-window portal (Nafeza).</p>
+                                </div>
+                            </div>
+                            <div class="faq-item">
+                                <div class="faq-question">
+                                    <h3>Can Al Masriya Al Emaratiya act as our official Commercial Agent?</h3>
+                                    <i class="fas fa-chevron-down"></i>
+                                </div>
+                                <div class="faq-answer">
+                                    <p>Absolutely. We hold full commercial registration in both Egypt and the UAE, allowing us to represent global manufacturers and exporters with verified regional sales agency status.</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Contact Detail Card -->
+                        <div class="contact-info mt-4 epic-card p-4">
+                            <div class="info-item">
+                                <i class="fas fa-location-dot text-red"></i>
+                                <div>
+                                    <strong>Dual Operations Headquarters:</strong>
+                                    <p>10th of Ramadan City, Egypt &bull; Sharjah Free Zone, UAE</p>
+                                </div>
+                            </div>
+                            <div class="info-item">
+                                <i class="fas fa-phone-volume text-red"></i>
+                                <div>
+                                    <strong>Direct Support Channel:</strong>
+                                    <p><a href="tel:+201011766232">+20 101 176 6232</a></p>
+                                </div>
+                            </div>
+                            <div class="info-item">
+                                <i class="fas fa-envelope-open-text text-red"></i>
+                                <div>
+                                    <strong>Procurement Desk:</strong>
+                                    <p><a href="mailto:info@egy-uae.com">info@egy-uae.com</a></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- B2B RFQ Form -->
+                    <div class="contact-form-container epic-card p-5" data-aos="fade-left">
+                        <div class="form-header mb-4">
+                            <span class="category-tag-red">Direct Transmit</span>
+                            <h3 class="form-title">Launch Sourcing RFQ</h3>
+                            <p class="text-muted">Transmit detailed cargo specifications directly to our regional trade desks.</p>
+                        </div>
+
+                        <form class="contact-form" action="https://formspree.io/f/maqkrwoe" method="POST" id="rfq-form">
+                            <div class="input-group">
+                                <i class="fas fa-user-tie"></i>
+                                <input type="text" name="Name" placeholder="Full Name / Procurement Officer" required>
+                            </div>
+                            <div class="input-group">
+                                <i class="fas fa-building"></i>
+                                <input type="text" name="Company" placeholder="Company Name & Trade License No." required>
+                            </div>
+                            <div class="input-group">
+                                <i class="fas fa-envelope"></i>
+                                <input type="email" name="Email" placeholder="Official Corporate Email" required>
+                            </div>
+                            <div class="input-group">
+                                <i class="fas fa-phone"></i>
+                                <input type="tel" name="Phone" placeholder="Mobile / Direct Dial (with Country Code)">
+                            </div>
+                            <div class="input-group">
+                                <i class="fas fa-tag"></i>
+                                <input type="text" name="Subject" id="rfq-division-subject" placeholder="Commodity Division / Cargo Target" required>
+                            </div>
+                            <div class="input-group">
+                                <i class="fas fa-pen-to-square"></i>
+                                <textarea name="Message" rows="4" placeholder="Detail estimated shipment volume, Incoterms (FOB, CIF, EXW), target ports (e.g. Damietta to Sharjah), and timeline..." required></textarea>
+                            </div>
+                            <button type="submit" class="btn-primary w-full shadow-hover">
+                                Transmit RFQ Specifications <i class="fas fa-paper-plane"></i>
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Tech Footer -->
     <footer class="tech-footer">
         <div class="footer-video-bg">
-            <video autoplay muted loop playsinline>
+            <video autoplay muted loop playsinline poster="https://images.unsplash.com/photo-1518241353330-0f7941c2d9b5?auto=format&fit=crop&w=1920&q=80">
                 <source src="videos/new_video_banner.mp4" type="video/mp4">
             </video>
         </div>
@@ -655,102 +786,91 @@
 
         <div class="container footer-container-grid">
             <div class="footer-brand-section">
-                <img src="Al_Masriya_Al_Emaratiya_icon.png" alt="Al Massriya Al Emaratiya Logo" class="brand-logo" onerror="this.onerror=null; this.src='https://via.placeholder.com/200x60/044da1/ffffff?text=LOGO';">
-                <p class="footer-desc">Your Integrated Gateway for Secure Trade & Commercial Pipelines Connecting Egypt and the UAE.</p>
+                <img src="Al_Masriya_Al_Emaratiya_icon.png" alt="Al Massriya Al Emaratiya Logo" class="brand-logo footer-logo" onerror="this.onerror=null; this.src='https://via.placeholder.com/200x60/044da1/ffffff?text=Al+Masriya';">
+                <p class="footer-desc">Your verified cross-border gateway for trade corridors, freight logistics, and commercial agency operations linking Egypt, the UAE, and global markets.</p>
                 <div class="social-links">
-                    <a href="https://www.facebook.com/AlMasriyaAlEmaratiya" target="_blank" rel="noopener"><i class="fab fa-facebook-f"></i></a>
-                    <a href="https://www.linkedin.com/company/egy-uae" target="_blank" rel="noopener"><i class="fab fa-linkedin-in"></i></a>
-                    <a href="https://www.youtube.com/@egy-uae.channel" target="_blank" rel="noopener"><i class="fab fa-youtube"></i></a>
+                    <a href="https://www.facebook.com/AlMasriyaAlEmaratiya" target="_blank" rel="noopener" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://www.linkedin.com/company/egy-uae" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="https://www.youtube.com/@egy-uae.channel" target="_blank" rel="noopener" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
                 </div>
             </div>
 
             <div class="footer-links-group">
-                <h4 class="footer-section-title">Marketplace Index</h4>
+                <h4 class="footer-section-title">Navigation Index</h4>
                 <ul class="footer-ul-list">
-                    <li><a href="#home">Home</a></li>
-                    <li><a href="#services">Operation Capacity</a></li>
+                    <li><a href="#home">Corridor Home</a></li>
+                    <li><a href="#services">Shipping Capabilities</a></li>
                     <li><a href="#divisions">Trade Catalogs</a></li>
                     <li><a href="#about">Corporate Architecture</a></li>
+                    <li><a href="#systems">Digital Systems</a></li>
                     <li><a href="#contact">RFQ Desk</a></li>
                 </ul>
             </div>
 
             <div class="footer-links-group">
-                <h4 class="footer-section-title">Divisions Directory</h4>
+                <h4 class="footer-section-title">Trade Divisions</h4>
                 <ul class="footer-ul-list">
-                    <li><a href="pages/food-division.html">Food Division</a></li>
-                    <li><a href="pages/hotel-supplies.html">Hotel Supplies</a></li>
-                    <li><a href="pages/chemicals-cosmetics.html">Chemicals & Cosmetics</a></li>
-                    <li><a href="pages/office-furniture.html">Office Furniture</a></li>
+                    <li><a href="pages/food-division.html">Food & Agricultural</a></li>
+                    <li><a href="pages/hotel-supplies.html">Hotel & OS&E Supplies</a></li>
+                    <li><a href="pages/chemicals-cosmetics.html">Chemicals & Detergents</a></li>
+                    <li><a href="pages/office-furniture.html">Damietta Office Furniture</a></li>
+                    <li><a href="pages/banquet-furniture.html">Banquet & Event Furniture</a></li>
                 </ul>
             </div>
 
             <div class="footer-links-group footer-lang-wrap">
-                <h4 class="footer-section-title">Language & UI</h4>
+                <h4 class="footer-section-title">Language & Regional UI</h4>
                 <div class="footer-language custom-dropdown">
-                    <div class="dropdown-trigger" id="lang-trigger">
-                        <span><i class="fas fa-globe"></i> English</span>
-                        <i class="fas fa-chevron-down arrow-icon"></i>
-                    </div>
-                    <ul class="dropdown-menu tech-dropdown" id="lang-menu">
-                        <li><a href="index.html" class="active-lang">English</a></li>
-                        <li><a href="ar/home.html">العربية</a></li>
-                        <li><a href="home-cn.html">中文</a></li>
+                    <button type="button" class="dropdown-trigger" id="lang-trigger" aria-haspopup="listbox" aria-expanded="false">
+                        <span><i class="fas fa-globe text-red"></i> English (US)</span>
+                        <i class="fas fa-chevron-up arrow-icon"></i>
+                    </button>
+                    <ul class="dropdown-menu tech-dropdown" id="lang-menu" role="listbox">
+                        <li><a href="index.html" class="active-lang">English (US)</a></li>
+                        <li><a href="ar/home.html">العربية (Egypt / UAE)</a></li>
+                        <li><a href="home-cn.html">中文 (Chinese)</a></li>
                     </ul>
+                </div>
+                <div class="cert-box mt-4">
+                    <span class="cert-text"><i class="fas fa-badge-check text-red"></i> ISO 9001:2015 Standards Compliant Trade Network</span>
                 </div>
             </div>
         </div>
+
         <div class="container footer-bottom-panel">
-            <p>© <span id="current-year"></span> Al Massriya Al Emaratiya. Integrated B2B Network Solutions. Powered by Tech OS.</p>
+            <p>&copy; <span id="current-year">2026</span> <strong>Al Massriya Al Emaratiya</strong>. All Rights Reserved. Engineered for International Trade.</p>
         </div>
     </footer>
 
-    <!-- App-Like Bottom Navigation (Mobile Only) -->
-    <nav class="app-bottom-nav">
+    <!-- Mobile Native Bottom Navigation -->
+    <nav class="app-bottom-nav mobile-only" aria-label="Mobile Bottom Navigation">
         <a href="#home" class="nav-item active">
             <i class="fas fa-compass"></i>
             <span>Explore</span>
         </a>
         <a href="#divisions" class="nav-item">
-            <i class="fas fa-cubes"></i>
+            <i class="fas fa-cubes-stacked"></i>
             <span>Divisions</span>
         </a>
-        <a href="https://amae.egy-uae.com" class="nav-item fab-center">
+        <a href="https://amae.egy-uae.com" target="_blank" rel="noopener" class="nav-item fab-center" aria-label="Open B2B Portal">
             <div class="fab"><i class="fas fa-store"></i></div>
             <span>Portal</span>
         </a>
         <a href="#systems" class="nav-item">
-            <i class="fas fa-satellite"></i>
+            <i class="fas fa-satellite-dish"></i>
             <span>Systems</span>
         </a>
         <a href="#contact" class="nav-item">
-            <i class="fas fa-headset"></i>
-            <span>Support</span>
+            <i class="fas fa-file-pen"></i>
+            <span>RFQ</span>
         </a>
     </nav>
 
-    <!-- AI Chat Support Widget -->
-    <div id="chat-widget" class="chat-widget">
-        <button class="chat-btn glow-effect" id="chat-toggle" aria-label="Toggle Support Chat">
-            <i class="fas fa-comment-dots"></i> 
-        </button>
-        <div class="chat-container glass-panel" id="chat-box">
-            <div class="chat-header">
-                <h3 style="margin:0; font-size:1rem;"><i class="fas fa-robot"></i> AI Support Node</h3>
-                <button class="chat-close" id="chat-close" style="background:none; border:none; font-size:1.2rem; cursor:pointer;">&times;</button>
-            </div>
-            <div class="chat-body" id="chat-body"></div>
-            <div class="chat-footer">
-                <input type="text" placeholder="Type procurement query..." id="chat-input">
-                <button id="chat-send" aria-label="Send Message"><i class="fas fa-paper-plane"></i></button>
-            </div>
-        </div>
-    </div>
-
-    <!-- Scripts -->
+    <!-- Vendor Scripts -->
     <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.8.0/vanilla-tilt.min.js"></script>
+    <!-- Custom Main JS -->
     <script src="js/main.js"></script>
 </body>
 </html>
