@@ -1,86 +1,94 @@
 /**
- * AL MASSRIYA AL EMARATIYA - CORE INTERACTION CONTROLLER
- * Optimized for Enterprise Global B2B Performance
+ * AL MASSRIYA AL EMARATIYA - GLOBAL TRADE ENGINE CONTROLLER
+ * Zero-Jank & Multi-Device Responsive Execution
  */
 
 document.addEventListener('DOMContentLoaded', () => {
 
     // ==========================================
-    // 1. SMART DYNAMIC HEADER & SCROLLSPY
+    // 1. SMART HEADER & SCROLLSPY CONTROLLER
     // ==========================================
     const header = document.getElementById('header');
     let lastScroll = 0;
-    const navLinks = document.querySelectorAll('.desktop-nav .nav-link');
-    const sections = document.querySelectorAll('main section[id]');
+    const desktopNavLinks = document.querySelectorAll('.desktop-navigation .nav-item-link');
+    const bottomDockLinks = document.querySelectorAll('.app-bottom-dock .dock-nav-item:not(.center-portal)');
+    const mainSections = document.querySelectorAll('main section[id]');
+    const progressBar = document.getElementById('progress-bar');
 
     window.addEventListener('scroll', () => {
         const currentScroll = window.pageYOffset || document.documentElement.scrollTop;
 
-        // Header Shadow & Hide/Show Logic
-        if (currentScroll <= 10) {
+        // Smart Header Hide / Show Logic
+        if (currentScroll <= 15) {
             header.classList.remove('hidden');
             header.style.boxShadow = "none";
         } else {
             header.style.boxShadow = "0 8px 30px rgba(4, 77, 161, 0.08)";
-            if (currentScroll > lastScroll && currentScroll > 150) {
-                header.classList.add('hidden'); // Scrolling down
+            if (currentScroll > lastScroll && currentScroll > 140) {
+                header.classList.add('hidden'); // Scrolling Down -> Hide
             } else {
-                header.classList.remove('hidden'); // Scrolling up
+                header.classList.remove('hidden'); // Scrolling Up -> Show
             }
         }
         lastScroll = currentScroll;
 
-        // Performant Scrollspy to Highlight Active Menu
-        let currentSectionId = '';
-        sections.forEach(sec => {
-            const sectionTop = sec.offsetTop - 120;
-            const sectionHeight = sec.offsetHeight;
+        // Performant Scrollspy
+        let activeId = '';
+        mainSections.forEach(section => {
+            const sectionTop = section.offsetTop - 130;
+            const sectionHeight = section.offsetHeight;
             if (currentScroll >= sectionTop && currentScroll < sectionTop + sectionHeight) {
-                currentSectionId = sec.getAttribute('id');
+                activeId = section.getAttribute('id');
             }
         });
 
-        navLinks.forEach(link => {
+        // Update Desktop Links
+        desktopNavLinks.forEach(link => {
             link.classList.remove('active');
-            if (link.getAttribute('href') === `#${currentSectionId}`) {
+            if (link.getAttribute('href') === `#${activeId}`) {
                 link.classList.add('active');
             }
         });
 
+        // Update Mobile Bottom Dock
+        bottomDockLinks.forEach(dock => {
+            dock.classList.remove('active');
+            if (dock.getAttribute('href') === `#${activeId}`) {
+                dock.classList.add('active');
+            }
+        });
+
         // Reading Progress Indicator
-        const winScroll = document.documentElement.scrollTop || document.body.scrollTop;
-        const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-        const scrolled = (winScroll / height) * 100;
-        const progressBar = document.getElementById('progress-bar');
         if (progressBar) {
+            const winHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            const scrolled = (currentScroll / winHeight) * 100;
             progressBar.style.width = `${scrolled}%`;
         }
     }, { passive: true });
 
     // ==========================================
-    // 2. MOBILE DRAWER CONTROLLER
+    // 2. MOBILE DRAWER WITH BACKDROP CONTROLLER
     // ==========================================
     const menuToggles = document.querySelectorAll('.menu-toggle');
     const sideDrawer = document.getElementById('side-drawer');
-    const drawerOverlay = document.querySelector('.drawer-overlay');
-    const drawerLinks = document.querySelectorAll('.drawer-links a');
+    const drawerBackdrop = document.querySelector('.drawer-backdrop');
+    const drawerLinks = document.querySelectorAll('.drawer-nav-list a');
 
-    function toggleDrawer() {
+    function toggleMobileDrawer() {
+        if (!sideDrawer) return;
         const isActive = sideDrawer.classList.toggle('active');
-        drawerOverlay.classList.toggle('active');
+        if (drawerBackdrop) drawerBackdrop.classList.toggle('active');
         sideDrawer.setAttribute('aria-hidden', !isActive);
         document.body.style.overflow = isActive ? 'hidden' : '';
     }
 
-    menuToggles.forEach(btn => btn.addEventListener('click', toggleDrawer));
-    if (drawerOverlay) drawerOverlay.addEventListener('click', toggleDrawer);
+    menuToggles.forEach(btn => btn.addEventListener('click', toggleMobileDrawer));
 
     drawerLinks.forEach(link => {
         link.addEventListener('click', () => {
-            sideDrawer.classList.remove('active');
-            drawerOverlay.classList.remove('active');
-            sideDrawer.setAttribute('aria-hidden', 'true');
-            document.body.style.overflow = '';
+            if (sideDrawer && sideDrawer.classList.contains('active')) {
+                toggleMobileDrawer();
+            }
         });
     });
 
@@ -88,44 +96,39 @@ document.addEventListener('DOMContentLoaded', () => {
     document.addEventListener('keydown', (e) => {
         if (e.key === 'Escape') {
             if (sideDrawer && sideDrawer.classList.contains('active')) {
-                toggleDrawer();
+                toggleMobileDrawer();
             }
-            if (resultsDropdown) {
-                resultsDropdown.classList.add('hidden');
-            }
-            if (langMenu) {
-                langMenu.classList.remove('active');
-            }
+            if (resultsDropdown) resultsDropdown.classList.add('hidden');
+            if (langMenu) langMenu.classList.remove('active');
         }
     });
 
     // ==========================================
-    // 3. ENTERPRISE SEARCH DATABASE & AUTOCOMPLETE
+    // 3. ENTERPRISE SEARCH & QUICK JUMP
     // ==========================================
-    const searchDatabase = [
-        { title: "Food & Agricultural Division", url: "pages/food-division.html", category: "Trade Division", keywords: "food, orange, onions, grain, export, corridor, sharjah" },
-        { title: "Hotel & Hospitality Supplies", url: "pages/hotel-supplies.html", category: "Trade Division", keywords: "hotel, cotton, linen, bedsheets, luxury, port said" },
-        { title: "Chemicals & Cosmetics", url: "pages/chemicals-cosmetics.html", category: "Trade Division", keywords: "chemicals, cosmetics, safety, alexandria, reach, iso" },
-        { title: "OS&E Project Procurement", url: "pages/ose-procurement.html", category: "Trade Division", keywords: "ose, ff&e, procurement, turnkey, hotel build, cargo" },
-        { title: "Office Furniture Systems", url: "pages/office-furniture.html", category: "Trade Division", keywords: "office, furniture, hardwood, desks, chairs, damietta" },
-        { title: "Banquet & Convention Sets", url: "pages/banquet-furniture.html", category: "Trade Division", keywords: "banquet, event, stackable chairs, convention, ballroom" },
-        { title: "Metal Accommodation Beds & Lockers", url: "pages/metal-beds-lockers.html", category: "Trade Division", keywords: "metal, bunk beds, lockers, steel, rust proof, dorm" },
-        { title: "Staff Modular Housing Furniture", url: "pages/staff-furniture.html", category: "Trade Division", keywords: "staff, modular, dorms, housing, damietta" },
-        { title: "Commercial Lounge & Sofa Sets", url: "pages/staff-sofa-sets.html", category: "Trade Division", keywords: "sofa, lounge, lobby, reception, modular" },
-        { title: "Freight Forwarding & Sea Transit", url: "#services", category: "Service", keywords: "freight, ocean, sea, fcl, lcl, jebel ali, alexandria" },
-        { title: "Trade Facilitation & Commercial Agency", url: "#services", category: "Service", keywords: "agency, trade license, business setup, proxy, legal" },
-        { title: "Customs Clearance (Nafeza & ACI)", url: "#services", category: "Service", keywords: "customs, nafeza, acid, clearance, tariffs, taxes" },
-        { title: "Inland Road Transit & Trucking", url: "#services", category: "Service", keywords: "trucks, trailers, bonded transit, inland, terminal" },
-        { title: "Smart Tracking System", url: "tracking.html", category: "System", keywords: "track, telemetry, cargo status, container, airway bill" },
-        { title: "Launch Sourcing RFQ Desk", url: "#contact", category: "Desk", keywords: "rfq, quote, inquiry, proposal, procurement" }
+    const tradeSearchDB = [
+        { title: "Food & Agricultural Division", url: "pages/food-division.html", category: "Division", keywords: "food, fresh, citrus, potatoes, export, sharjah" },
+        { title: "Hotel Linen & Operating Supplies", url: "pages/hotel-supplies.html", category: "Division", keywords: "hotel, cotton, linen, bedsheets, giza, port said, jebel ali" },
+        { title: "Chemicals & Cosmetics Raw Materials", url: "pages/chemicals-cosmetics.html", category: "Division", keywords: "chemicals, detergents, cosmetics, reach, sokhna, khalifa" },
+        { title: "OS&E & Turnkey Project Procurement", url: "pages/ose-procurement.html", category: "Division", keywords: "ose, ffe, turnkey, hospital, resort, project cargo" },
+        { title: "Damietta Office Furniture Systems", url: "pages/office-furniture.html", category: "Division", keywords: "office, desk, chairs, hardwood, damietta, sharjah" },
+        { title: "Banquet & Convention Installations", url: "pages/banquet-furniture.html", category: "Division", keywords: "banquet, event, ballroom, stackable chairs, tables" },
+        { title: "Accommodation Metal Beds & Lockers", url: "pages/metal-beds-lockers.html", category: "Division", keywords: "bunk bed, lockers, metal, accommodation, 10th of ramadan" },
+        { title: "Staff Residential Modular Suites", url: "pages/staff-furniture.html", category: "Division", keywords: "modular, staff housing, wardrobes, dorms, damietta" },
+        { title: "Commercial Lounges & Sofa Systems", url: "pages/staff-sofa-sets.html", category: "Division", keywords: "sofa, lounge, lobby, reception, waiting area" },
+        { title: "Customs Clearance (Nafeza & Mirsal)", url: "#services", category: "Service", keywords: "nafeza, customs, acid, mirsal, egypt, uae, clearance" },
+        { title: "Ocean & Air Freight Forwarding", url: "#services", category: "Service", keywords: "freight, ocean, sea, air, fcl, lcl, containers" },
+        { title: "Commercial Agency Representation", url: "#services", category: "Service", keywords: "agency, trade proxy, commercial license, representation" },
+        { title: "Live Cargo Telematics Tracking", url: "tracking.html", category: "System", keywords: "tracking, telemetry, container status, bill of lading" },
+        { title: "Launch Sourcing RFQ Desk", url: "#contact", category: "Support", keywords: "rfq, quote, inquiry, proposal, procurement" }
     ];
 
     const searchInput = document.getElementById('global-search-input');
-    const mobileSearchInput = document.getElementById('mobile-search-input');
+    const drawerSearchInput = document.getElementById('drawer-search-input');
     const resultsDropdown = document.getElementById('search-results-dropdown');
     const clearSearchBtn = document.getElementById('clear-search-btn');
 
-    function handleSearch(query) {
+    function executeSearch(query) {
         if (!resultsDropdown) return;
         resultsDropdown.innerHTML = '';
 
@@ -137,21 +140,21 @@ document.addEventListener('DOMContentLoaded', () => {
 
         if (clearSearchBtn) clearSearchBtn.classList.remove('hidden');
 
-        const filtered = searchDatabase.filter(item => 
+        const filtered = tradeSearchDB.filter(item => 
             item.title.toLowerCase().includes(query) || 
             item.keywords.toLowerCase().includes(query) ||
             item.category.toLowerCase().includes(query)
         );
 
         if (filtered.length === 0) {
-            const empty = document.createElement('div');
-            empty.className = 'search-result-item';
-            empty.innerHTML = `<span class="title">No verified matches found for "${query}"</span>`;
-            resultsDropdown.appendChild(empty);
+            const noRes = document.createElement('div');
+            noRes.className = 'search-item';
+            noRes.innerHTML = `<span class="title">No trade matches for "${query}"</span>`;
+            resultsDropdown.appendChild(noRes);
         } else {
             filtered.forEach(item => {
                 const el = document.createElement('div');
-                el.className = 'search-result-item';
+                el.className = 'search-item';
                 el.innerHTML = `
                     <span class="title">${item.title}</span>
                     <span class="category">${item.category}</span>
@@ -168,7 +171,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     if (searchInput) {
-        searchInput.addEventListener('input', (e) => handleSearch(e.target.value.toLowerCase().trim()));
+        searchInput.addEventListener('input', (e) => executeSearch(e.target.value.toLowerCase().trim()));
         if (clearSearchBtn) {
             clearSearchBtn.addEventListener('click', () => {
                 searchInput.value = '';
@@ -178,21 +181,20 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    if (mobileSearchInput) {
-        mobileSearchInput.addEventListener('keypress', (e) => {
+    if (drawerSearchInput) {
+        drawerSearchInput.addEventListener('keypress', (e) => {
             if (e.key === 'Enter') {
                 e.preventDefault();
-                const q = mobileSearchInput.value.toLowerCase().trim();
-                const matched = searchDatabase.find(item => item.title.toLowerCase().includes(q) || item.keywords.includes(q));
-                if (matched) {
-                    window.location.href = matched.url;
-                    toggleDrawer();
+                const q = drawerSearchInput.value.toLowerCase().trim();
+                const match = tradeSearchDB.find(i => i.title.toLowerCase().includes(q) || i.keywords.includes(q));
+                if (match) {
+                    window.location.href = match.url;
+                    toggleMobileDrawer();
                 }
             }
         });
     }
 
-    // Click Outside Search Closes Dropdown
     document.addEventListener('click', (e) => {
         if (searchInput && resultsDropdown && !searchInput.contains(e.target) && !resultsDropdown.contains(e.target)) {
             resultsDropdown.classList.add('hidden');
@@ -202,19 +204,19 @@ document.addEventListener('DOMContentLoaded', () => {
     // ==========================================
     // 4. TRADE DIVISION FILTER TABS
     // ==========================================
-    const filterButtons = document.querySelectorAll('.filter-tab-btn');
-    const productCards = document.querySelectorAll('.b2b-product-card');
+    const filterPills = document.querySelectorAll('.filter-pill-btn');
+    const catalogCards = document.querySelectorAll('.b2b-trade-card');
 
-    filterButtons.forEach(btn => {
-        btn.addEventListener('click', () => {
-            filterButtons.forEach(b => b.classList.remove('active'));
-            btn.classList.add('active');
+    filterPills.forEach(pill => {
+        pill.addEventListener('click', () => {
+            filterPills.forEach(p => p.classList.remove('active'));
+            pill.classList.add('active');
 
-            const filterValue = btn.getAttribute('data-filter');
+            const filterTarget = pill.getAttribute('data-filter');
 
-            productCards.forEach(card => {
+            catalogCards.forEach(card => {
                 const category = card.getAttribute('data-category');
-                if (filterValue === 'all' || category === filterValue) {
+                if (filterTarget === 'all' || category === filterTarget) {
                     card.style.display = 'flex';
                     setTimeout(() => {
                         card.style.opacity = '1';
@@ -222,7 +224,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     }, 20);
                 } else {
                     card.style.opacity = '0';
-                    card.style.transform = 'scale(0.95)';
+                    card.style.transform = 'scale(0.96)';
                     setTimeout(() => {
                         card.style.display = 'none';
                     }, 300);
@@ -234,23 +236,22 @@ document.addEventListener('DOMContentLoaded', () => {
     // ==========================================
     // 5. ACCORDION FAQ
     // ==========================================
-    const faqQuestions = document.querySelectorAll('.faq-question');
-    faqQuestions.forEach(q => {
-        q.addEventListener('click', () => {
-            const currentItem = q.parentElement;
-            const isOpen = currentItem.classList.contains('active');
+    const accordionHeaders = document.querySelectorAll('.accordion-header');
+    accordionHeaders.forEach(header => {
+        header.addEventListener('click', () => {
+            const item = header.parentElement;
+            const isOpen = item.classList.contains('active');
 
-            // Close siblings
-            document.querySelectorAll('.faq-item').forEach(item => item.classList.remove('active'));
+            document.querySelectorAll('.accordion-item').forEach(i => i.classList.remove('active'));
 
             if (!isOpen) {
-                currentItem.classList.add('active');
+                item.classList.add('active');
             }
         });
     });
 
     // ==========================================
-    // 6. LANGUAGE MENU TOGGLE
+    // 6. LANGUAGE MENU DROPDOWN
     // ==========================================
     const langTrigger = document.getElementById('lang-trigger');
     const langMenu = document.getElementById('lang-menu');
@@ -268,18 +269,18 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // ==========================================
-    // 7. SMOOTH RFQ AUTO-FILL TRIGGER
+    // 7. RFQ AUTO-FILL TRIGGER & FOCUS
     // ==========================================
-    const rfqButtons = document.querySelectorAll('.rfq-trigger-btn');
-    const rfqSubjectInput = document.getElementById('rfq-division-subject');
+    const rfqAutofillButtons = document.querySelectorAll('.rfq-autofill-btn');
+    const rfqSubjectField = document.getElementById('rfq-division-subject');
     const contactSection = document.getElementById('contact');
 
-    rfqButtons.forEach(btn => {
+    rfqAutofillButtons.forEach(btn => {
         btn.addEventListener('click', () => {
-            const targetSubject = btn.getAttribute('data-subject');
-            if (rfqSubjectInput) {
-                rfqSubjectInput.value = `Sourcing Inquiry: ${targetSubject}`;
-                rfqSubjectInput.focus();
+            const target = btn.getAttribute('data-target-subject');
+            if (rfqSubjectField) {
+                rfqSubjectField.value = `Procurement Inquiry: ${target}`;
+                rfqSubjectField.focus();
             }
             if (contactSection) {
                 contactSection.scrollIntoView({ behavior: 'smooth' });
@@ -288,7 +289,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // ==========================================
-    // 8. HARDWARE ACCELERATED TECH CURSOR
+    // 8. HARDWARE-ACCELERATED TECH CURSOR
     // ==========================================
     const cursor = document.getElementById('tech-cursor');
     const follower = document.getElementById('tech-cursor-follower');
@@ -313,12 +314,11 @@ document.addEventListener('DOMContentLoaded', () => {
         }
         requestAnimationFrame(animateFollower);
 
-        // Hover scale effects
-        const interactiveElements = document.querySelectorAll('a, button, input, textarea, .epic-card');
-        interactiveElements.forEach(el => {
+        const hoverTargets = document.querySelectorAll('a, button, input, textarea, .epic-card');
+        hoverTargets.forEach(el => {
             el.addEventListener('mouseenter', () => {
-                follower.style.width = '50px';
-                follower.style.height = '50px';
+                follower.style.width = '48px';
+                follower.style.height = '48px';
                 follower.style.borderColor = 'var(--accent)';
             });
             el.addEventListener('mouseleave', () => {
@@ -330,11 +330,11 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // ==========================================
-    // 9. DYNAMIC FOOTER YEAR
+    // 9. DYNAMIC CURRENT YEAR
     // ==========================================
-    const currentYearSpan = document.getElementById('current-year');
-    if (currentYearSpan) {
-        currentYearSpan.textContent = new Date().getFullYear();
+    const yearSpan = document.getElementById('current-year');
+    if (yearSpan) {
+        yearSpan.textContent = new Date().getFullYear();
     }
 
     // ==========================================
@@ -346,15 +346,15 @@ document.addEventListener('DOMContentLoaded', () => {
             duration: 800,
             easing: 'ease-out-cubic',
             once: true,
-            offset: 60
+            offset: 50
         });
     }
 
-    // Swiper Testimonials Slider
+    // Swiper Testimonial Slider
     if (typeof Swiper !== 'undefined') {
         new Swiper('.testimonial-slider', {
             slidesPerView: 1,
-            spaceBetween: 25,
+            spaceBetween: 20,
             loop: true,
             autoplay: {
                 delay: 6000,
@@ -370,7 +370,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // Vanilla Tilt for Systems Cards
+    // Vanilla Tilt
     if (typeof VanillaTilt !== 'undefined') {
         VanillaTilt.init(document.querySelectorAll('.tilt-card'), {
             max: 8,
