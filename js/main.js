@@ -1,13 +1,4 @@
-/**
- * ALMASSRIYA ALEMARATIYA — REFINED ENTERPRISE CLIENT ENGINE
- * Handles:
- * 1. Default Light Theme Engine with user persistence
- * 2. Multi-Language Switcher Dropdown (EN, AR, CN)
- * 3. Real-Time Commodity Search
- * 4. Catalog Category Filtering
- * 5. Direct RFQ Payload Autofill & Asynchronous Submission
- * 6. Clean FAQ Accordion
- */
+
 
 document.addEventListener('DOMContentLoaded', () => {
   'use strict';
@@ -87,9 +78,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
   menuTriggers.forEach(btn => btn.addEventListener('click', handleDrawerToggle));
 
-  // 6. Interactive Commodity Search
+  // 6. Interactive Commodity Search (Global Trade Database)
   const tradeDatabase = [
-    { title: 'Food & Agricultural Produce', cat: 'Consumables', desc: 'Citrus, frozen vegetables, and agricultural commodities.' },
+    { title: 'Food & Agricultural Produce', cat: 'Consumables', desc: 'Citrus, frozen vegetables, and export agro commodities.' },
     { title: 'Hotel Linen & Operating Supplies', cat: 'Hospitality', desc: '100% Egyptian Giza cotton luxury beddings and bath linens.' },
     { title: 'Damietta Office Furniture Systems', cat: 'Furniture', desc: 'Executive beechwood desks, acoustic conference tables.' },
     { title: 'Chemicals & Detergents Raw Materials', cat: 'Industrial', desc: 'Surfactants, industrial detergent bases, fragrance oils.' },
@@ -255,13 +246,13 @@ document.addEventListener('DOMContentLoaded', () => {
         });
 
         if (response.ok) {
-          showAlert('Thank you. Your RFQ specifications have been sent to our trade desk. We will revert within 2 hours.', 'success');
+          showAlert('Thank you. Your RFQ specifications have been received by our international trade desk. We will revert within 2 hours.', 'success');
           rfqForm.reset();
         } else {
           showAlert('Submission was not completed. Please reach our desk directly at +20 101 176 6232.', 'error');
         }
       } catch (err) {
-        showAlert('Network error prevented transmission. Please try again or call dispatch.', 'error');
+        showAlert('Network error prevented transmission. Please try again or reach dispatch.', 'error');
       } finally {
         btnText.classList.remove('hidden');
         btnLoader.classList.add('hidden');
