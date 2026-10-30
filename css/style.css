@@ -1,15 +1,4 @@
-/* ==========================================================================
-   ALMASSRIYA ALEMARATIYA — REFINED ENTERPRISE B2B DESIGN SYSTEM
-   Default Mode: Pristine White / Light Enterprise Slate
-   Accent Colors:
-   - Corporate Blue: #174aa1
-   - Trade Red:     #ed1a24
-   Clean, human-crafted corporate aesthetics inspired by modern GitHub/Stripe
-   ========================================================================== */
 
-/* --------------------------------------------------------------------------
-   Tokens & Color Architecture
-   -------------------------------------------------------------------------- */
 :root {
   /* Brand Core Accents */
   --brand-blue: #174aa1;
@@ -33,7 +22,6 @@ html:not([data-theme]) {
   --bg-subtle: #f6f8fa;
   --bg-card: #ffffff;
   --bg-card-hover: #ffffff;
-  --bg-top-bar: #f8fafc;
   --bg-elevated: #ffffff;
 
   --border-color: #d0d7de;
@@ -57,7 +45,6 @@ html[data-theme="dark"] {
   --bg-subtle: #161b22;
   --bg-card: #161b22;
   --bg-card-hover: #1c2128;
-  --bg-top-bar: #010409;
   --bg-elevated: #21262d;
 
   --border-color: #30363d;
@@ -151,57 +138,6 @@ body {
   background-color: var(--bg-page);
   border-bottom: 1px solid var(--border-color);
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.03);
-}
-
-/* Top Telemetry Strip */
-.top-corporate-bar {
-  background-color: var(--bg-top-bar);
-  border-bottom: 1px solid var(--border-light);
-  font-size: 0.78rem;
-  padding: 0.35rem 0;
-}
-
-.top-bar-flex {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.top-bar-left {
-  display: flex;
-  align-items: center;
-  gap: 0.75rem;
-  color: var(--text-muted);
-}
-
-.corp-badge {
-  font-weight: 600;
-  color: var(--text-primary);
-}
-
-.corp-sep {
-  color: var(--border-color);
-}
-
-.top-bar-right {
-  display: flex;
-  align-items: center;
-  gap: 1.25rem;
-}
-
-.top-bar-link {
-  color: var(--text-muted);
-  text-decoration: none;
-  transition: color var(--ease-quick);
-}
-
-.top-bar-link:hover {
-  color: var(--brand-blue);
-}
-
-.top-bar-link.highlight {
-  color: var(--brand-red);
-  font-weight: 600;
 }
 
 /* Main Navigation Row */
@@ -344,7 +280,7 @@ body {
   position: absolute;
   top: calc(100% + 6px);
   right: 0;
-  width: 190px;
+  width: 210px;
   background-color: var(--bg-elevated);
   border: 1px solid var(--border-color);
   border-radius: 8px;
@@ -838,6 +774,10 @@ body {
   transition: all var(--ease-smooth);
 }
 
+.catalog-card-item:hover .card-img {
+  transform: scale(1.04);
+}
+
 .catalog-card-item:hover {
   border-color: var(--brand-blue);
   box-shadow: var(--shadow-hover);
@@ -855,10 +795,6 @@ body {
   height: 100%;
   object-fit: cover;
   transition: transform 0.4s ease;
-}
-
-.catalog-card-item:hover .card-img {
-  transform: scale(1.04);
 }
 
 .card-badge {
@@ -1459,35 +1395,8 @@ body {
 }
 
 /* --------------------------------------------------------------------------
-   Mobile Drawer & Dock
+   Mobile Drawer
    -------------------------------------------------------------------------- */
-.mobile-bottom-dock {
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  background-color: var(--bg-page);
-  border-top: 1px solid var(--border-color);
-  display: flex;
-  justify-content: space-around;
-  padding: 0.5rem 0;
-  z-index: 999;
-}
-
-.dock-nav-item {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 0.15rem;
-  color: var(--text-muted);
-  text-decoration: none;
-  font-size: 0.65rem;
-  font-weight: 600;
-}
-
-.dock-nav-item.active { color: var(--brand-blue); }
-.dock-nav-item.highlight { color: var(--brand-red); }
-
 .mobile-side-drawer {
   position: fixed;
   top: 0;
