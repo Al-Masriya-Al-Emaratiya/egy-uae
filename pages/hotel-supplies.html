@@ -1,528 +1,836 @@
 <!DOCTYPE html>
-<html lang="en" dir="ltr">
+<html lang="en" data-theme="light" dir="ltr">
 <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Hotel Supplies | Al Masriya Al Emaratiya</title>
     
     <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;900&family=Cairo:wght@400;700;900&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet">
+    
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
     <!-- AOS CSS -->
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     
-    <!-- Link to Main Tech Stylesheet -->
+    <!-- Design System CSS -->
     <link rel="stylesheet" href="css/style.css">
 
     <style>
-        /* Fix Custom Cursor Z-index so it doesn't hide behind the modal */
-        #tech-cursor { z-index: 99999 !important; pointer-events: none !important; }
-        #tech-cursor-follower { z-index: 99998 !important; pointer-events: none !important; }
-
-        /* Google Translate Customization for Tech Design */
-        .google-translate-wrapper { position: relative; display: inline-block; margin-right: 15px; }
-        .skiptranslate iframe, .goog-te-banner-frame { display: none !important; visibility: hidden !important; }
-        body { top: 0 !important; }
-        .goog-te-gadget-simple {
-            background-color: var(--bg-surface) !important;
-            border: 1px solid var(--border-color) !important;
-            padding: 6px 12px !important;
+        /* Modern Modal Tweaks aligned with the New Theme */
+        .clean-modal-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(13, 17, 23, 0.7);
+            backdrop-filter: blur(6px);
+            z-index: 9999;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            visibility: hidden;
+            transition: all var(--ease-quick);
+            padding: 1rem;
+        }
+        .clean-modal-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+        .clean-modal-card {
+            background-color: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            width: 100%;
+            max-width: 840px;
+            overflow: hidden;
+            position: relative;
+            box-shadow: var(--shadow-hover);
+            transform: scale(0.96) translateY(10px);
+            transition: all var(--ease-quick);
+            display: grid;
+            grid-template-columns: 1fr 1.2fr;
+        }
+        .clean-modal-overlay.active .clean-modal-card {
+            transform: scale(1) translateY(0);
+        }
+        .clean-modal-img-wrap {
+            position: relative;
+            background-color: var(--bg-subtle);
+            min-height: 280px;
+        }
+        .clean-modal-img-wrap img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .clean-modal-body {
+            padding: 2rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+        .clean-close-btn {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            color: var(--text-primary);
+            width: 32px;
+            height: 32px;
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
             cursor: pointer;
-            font-family: 'Tajawal', sans-serif !important;
-            display: flex !important; align-items: center !important; gap: 5px;
-            transition: var(--transition);
+            z-index: 10;
+            transition: all var(--ease-quick);
         }
-        .goog-te-gadget-simple:hover { border-color: var(--primary) !important; }
-        .goog-te-gadget-simple img { display: none !important; }
-        .goog-te-gadget-simple span { color: var(--text-main) !important; font-weight: 700 !important; font-size: 0.9rem !important; }
-        .goog-te-menu-frame { box-shadow: 0 10px 30px rgba(0,0,0,0.1) !important; top: 100% !important; margin-top: 5px !important; }
-
-        /* Specific Page Tweaks */
-        .division-hero { padding: 160px 0 80px 0; background: var(--bg-surface); border-bottom: var(--tech-border); position: relative; overflow: hidden; }
-        .division-hero::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(135deg, rgba(23,67,136,0.03) 0%, rgba(213,36,43,0.03) 100%); pointer-events: none; }
-        .product-list { border-top: 1px solid var(--border-color); margin-top: 15px; padding-top: 15px; }
-        .product-list li { margin-bottom: 8px; font-size: 0.95rem; display: flex; gap: 10px; align-items: flex-start; }
-        .product-list li i { color: var(--secondary); font-size: 0.8rem; margin-top: 5px; }
-
-        /* Product Image Box in Grid */
-        .product-img-box {
-            width: 100%; height: 200px; overflow: hidden;
-            border: 1px solid var(--primary); margin-bottom: 20px;
-            background: rgba(23,67,136,0.05); display: flex; align-items: center; justify-content: center;
+        .clean-close-btn:hover {
+            border-color: var(--brand-red);
+            color: var(--brand-red);
         }
-        .product-img-box img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s; }
-        .tech-card:hover .product-img-box img { transform: scale(1.1); }
-        .tech-card-clickable:hover { border-color: var(--secondary); cursor: pointer; }
-
-        /* Tech Modal (Popup) Styles */
-        .tech-modal-overlay {
-            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(7, 14, 28, 0.85); backdrop-filter: blur(5px);
-            z-index: 10000; display: flex; align-items: center; justify-content: center;
-            opacity: 0; visibility: hidden; transition: var(--transition);
+        .meta-tag {
+            display: inline-block;
+            font-size: 0.72rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            padding: 0.2rem 0.6rem;
+            background: var(--brand-blue-subtle);
+            color: var(--brand-blue);
+            border-radius: 4px;
+            margin-bottom: 0.6rem;
         }
-        .tech-modal-overlay.active { opacity: 1; visibility: visible; }
-        .tech-modal-content {
-            background: var(--bg-surface); width: 90%; max-width: 800px;
-            border: 1px solid var(--primary); border-top: 4px solid var(--secondary);
-            display: flex; flex-direction: column; position: relative;
-            transform: translateY(-50px); transition: transform 0.4s;
-            box-shadow: 0 15px 40px rgba(0,0,0,0.3);
+        @media (max-width: 768px) {
+            .clean-modal-card { grid-template-columns: 1fr; max-height: 90vh; overflow-y: auto; }
+            .clean-modal-img-wrap { height: 200px; min-height: 200px; }
         }
-        .tech-modal-overlay.active .tech-modal-content { transform: translateY(0); }
-        @media (min-width: 768px) { .tech-modal-content { flex-direction: row; } }
-        .tech-modal-img { flex: 1; min-height: 250px; border-right: 1px solid var(--border-color); background: var(--bg-main); overflow: hidden; }
-        .tech-modal-img img { width: 100%; height: 100%; object-fit: cover; }
-        .tech-modal-info { flex: 1; padding: 40px 30px; display: flex; flex-direction: column; justify-content: center; }
-        .close-modal {
-            position: absolute; top: 15px; right: 15px; background: var(--bg-surface);
-            border: 1px solid var(--border-color); color: var(--text-main); font-size: 1.2rem;
-            width: 35px; height: 35px; display: flex; align-items: center; justify-content: center;
-            cursor: pointer; transition: 0.3s; z-index: 10;
-        }
-        .close-modal:hover { color: #fff; background: var(--secondary); border-color: var(--secondary); }
     </style>
 </head>
 <body>
 
-    <!-- Tech Cursors & Animations -->
-    <div id="tech-cursor"></div>
-    <div id="tech-cursor-follower"></div>
-    <div id="progress-bar"></div>
-    <div class="animated-lines-container"></div>
+    <!-- Scroll Progress Indicator -->
+    <div id="scroll-progress-line"></div>
 
-    <!-- Header & Navigation -->
-     <header class="tech-header" id="header">
-        <div class="container header-container">
-            <div class="logo">
-                <a href="../index.html">
-                    <img src="Al_Masriya_Al_Emaratiya_icon.png" class="brand-logo" onerror="this.onerror=null; this.src='https://via.placeholder.com/200x60/174388/ffffff?text=LOGO+HERE';">
-                </a>
+    <!-- Master Header -->
+    <header class="site-header" id="site-header">
+        <div class="container main-nav-container">
+            <a href="../index.html" class="brand-link">
+                <img src="Al_Masriya_Al_Emaratiya_icon.png" alt="Logo" class="brand-logo" onerror="this.onerror=null; this.src='https://via.placeholder.com/160x40/174aa1/ffffff?text=EGY-UAE';">
+            </a>
+
+            <!-- Search Field with Live Filter -->
+            <div class="search-box-wrapper desktop-only">
+                <div class="search-input-shell">
+                    <i class="fas fa-search search-icon"></i>
+                    <input type="text" id="catalog-search" placeholder="Search linens, guest amenities, chinaware, trolleys..." autocomplete="off">
+                    <button type="button" class="clear-search-btn hidden" id="clear-search-btn"><i class="fas fa-times"></i></button>
+                </div>
             </div>
-            
-            <nav class="desktop-nav">
-                <ul class="nav-links">
-                    <li><a href="../index.html#home" class="active">Home</a></li>
-                    <li><a href="../index.html#services">Services</a></li>
-                    <li><a href="../index.html#about">About Us</a></li>
-                    <li><a href="../news.html">News</a></li>
-                    <li><a href="../index.html#systems">Our Systems</a></li>
-                    <li><a href="../index.html#contact">Contact Us</a></li>
-                </ul>
-            </nav>
-            
-            <div class="header-actions">
-                <a href="../login.html" class="btn btn-outline-tech" id="desktop-login-btn">
-                    <i class="fas fa-fingerprint"></i> <span class="login-text">Login</span>
-                </a>
 
-                <div class="user-profile hidden" id="desktop-user-profile">
-                    <div class="profile-trigger" id="profile-trigger">
-                        <div class="avatar-glow"><i class="fas fa-user-astronaut"></i></div>
-                        <span class="user-name">My Account</span>
-                        <i class="fas fa-chevron-down arrow-icon"></i>
-                    </div>
-                    <ul class="profile-dropdown tech-dropdown">
-                        <li><a href="portal.html"><i class="fas fa-laptop-file"></i> Portal</a></li>
-                        <li><a href="settings.html"><i class="fas fa-cog"></i> Settings</a></li>
-                        <li><a href="#" id="logout-btn" class="text-red"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
+            <div class="header-actions">
+                <!-- Theme Mode Toggle -->
+                <button class="theme-switch-btn" id="theme-toggle" aria-label="Toggle Theme">
+                    <i class="fas fa-moon moon-icon"></i>
+                    <i class="fas fa-sun sun-icon"></i>
+                </button>
+
+                <!-- Language Selector -->
+                <div class="lang-dropdown">
+                    <button class="lang-trigger-btn" id="lang-trigger">
+                        <i class="fas fa-globe"></i> <span>EN</span>
+                        <i class="fas fa-chevron-down arrow-indicator"></i>
+                    </button>
+                    <ul class="lang-menu hidden" id="lang-menu">
+                        <li><a href="hotel-supplies.html" class="lang-option active"><span class="flag-icon">🇬🇧</span> <div><strong>English</strong><small>Global</small></div></a></li>
+                        <li><a href="../ar/pages/hotel-supplies.html" class="lang-option"><span class="flag-icon">🇪🇬</span> <div><strong>العربية</strong><small>الشرق الأوسط</small></div></a></li>
+                        <li><a href="../hotel-supplies-cn.html" class="lang-option"><span class="flag-icon">🇨🇳</span> <div><strong>中文</strong><small>Asia Pacific</small></div></a></li>
                     </ul>
                 </div>
 
-                <div class="hamburger">
-                    <span></span><span></span><span></span>
-                </div>
+                <!-- Client Portal Button -->
+                <a href="../login.html" class="btn-clean-secondary desktop-only" id="auth-btn">
+                    <i class="fas fa-arrow-right-to-bracket"></i> <span>Portal Login</span>
+                </a>
+
+                <!-- Mobile Navigation Toggle -->
+                <button class="mobile-toggle-btn mobile-only" id="mobile-toggle" aria-label="Open Navigation">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Desktop Menu Ribbon -->
+        <div class="desktop-menu-bar desktop-only">
+            <div class="container">
+                <ul class="nav-links">
+                    <li><a href="../index.html#home" class="nav-anchor">Home</a></li>
+                    <li><a href="food-division.html" class="nav-anchor">Food Division</a></li>
+                    <li><a href="hotel-supplies.html" class="nav-anchor active">Hotel Supplies</a></li>
+                    <li><a href="chemicals-cosmetics.html" class="nav-anchor">Chemicals & Cosmetics</a></li>
+                    <li><a href="ose-procurement.html" class="nav-anchor">OS&E Procurement</a></li>
+                    <li><a href="../news.html" class="nav-anchor">News</a></li>
+                    <li><a href="#contact" class="nav-anchor nav-highlight">Procurement RFQ</a></li>
+                </ul>
             </div>
         </div>
     </header>
 
-    <!-- Mobile Menu -->
-    <nav class="mobile-nav glass-panel">
-        <ul class="mobile-links">
-            <li><a href="#home">Home</a></li>
-            <li><a href="#services">Services</a></li>
-            <li><a href="#about">About Us</a></li>
-            <li><a href="news.html">News</a></li>
-            <li><a href="#systems">Our Systems</a></li>
-            <li><a href="#contact">Contact Us</a></li>
-            <li id="mobile-login-item">
-                <a href="login.html" class="btn btn-tech w-full mt-4"><i class="fas fa-sign-in-alt"></i> Login</a>
-            </li>
-            <li id="mobile-profile-item" class="hidden">
-                <a href="portal.html" class="btn btn-outline-tech w-full mt-4"><i class="fas fa-laptop-code"></i> My Portal</a>
-                <a href="#" id="mobile-logout-btn" class="btn btn-danger w-full mt-2"><i class="fas fa-power-off"></i> Logout</a>
-            </li>
-        </ul>
-    </nav>
-
-    <!-- Sector Hero Section -->
-    <section class="division-hero section text-center">
-        <div class="container" data-aos="zoom-in">
-            <h1 style="font-size: clamp(2.5rem, 5vw, 4.5rem); font-weight: 900; color: var(--primary); margin-bottom: 20px;">
-                HOTEL <span class="text-red">SUPPLIES</span>
-            </h1>
-            <p style="max-width: 800px; margin: 0 auto; font-size: 1.1rem; color: var(--text-muted);">
-                Providing comprehensive, premium quality hotel amenities, operational equipment, and housekeeping solutions for the hospitality sector globally.
-            </p>
+    <!-- Mobile Drawer & Backdrop -->
+    <div class="drawer-backdrop" id="drawer-backdrop"></div>
+    <aside class="mobile-side-drawer" id="mobile-drawer">
+        <div class="drawer-header">
+            <img src="Al_Masriya_Al_Emaratiya_icon.png" alt="Logo" class="drawer-logo">
+            <button class="drawer-close-btn" id="drawer-close">&times;</button>
         </div>
-    </section>
+        <div class="drawer-search">
+            <input type="text" id="mobile-search-input" placeholder="Search hotel supplies...">
+        </div>
+        <nav class="drawer-links-list">
+            <a href="../index.html" class="drawer-link"><i class="fas fa-home"></i> Home</a>
+            <a href="food-division.html" class="drawer-link"><i class="fas fa-wheat-awn"></i> Food Division</a>
+            <a href="hotel-supplies.html" class="drawer-link highlight-red"><i class="fas fa-hotel"></i> Hotel Supplies</a>
+            <a href="chemicals-cosmetics.html" class="drawer-link"><i class="fas fa-flask"></i> Chemicals & Cosmetics</a>
+            <a href="ose-procurement.html" class="drawer-link"><i class="fas fa-boxes-packing"></i> OS&E Procurement</a>
+            <a href="../news.html" class="drawer-link"><i class="fas fa-newspaper"></i> News & Insights</a>
+            <a href="#contact" class="drawer-link"><i class="fas fa-file-signature"></i> Request Hospitality Quote</a>
+            <a href="../login.html" class="drawer-link mt-4" style="border: 1px solid var(--border-color); justify-content: center;"><i class="fas fa-sign-in-alt"></i> Login Portal</a>
+        </nav>
+    </aside>
 
-    <!-- Hospitality Solutions Section -->
-    <section class="section">
-        <div class="container">
-            <div class="section-header" data-aos="fade-up">
-                <h2>Hospitality Solutions</h2>
-                <div class="header-line"></div>
-                <p class="mt-4">Equipping luxury hotels and resorts with premium operational supplies to guarantee exceptional guest experiences.</p>
-            </div>
-            
-            <div class="grid grid-3">
-                <div class="tech-card" data-aos="fade-up" data-aos-delay="100">
-                    <span class="tech-badge" style="position: absolute; top: 15px; right: 15px;">Amenities</span>
-                    <div class="icon-box"><i class="fas fa-bed"></i></div>
-                    <h3>Guest Room Amenities</h3>
-                    <p>Elevating guest comfort with high-end room essentials and luxurious personal care items.</p>
-                    <ul class="product-list">
-                        <li><i class="fas fa-caret-right"></i> Premium Toiletries & Cosmetics</li>
-                        <li><i class="fas fa-caret-right"></i> Plush Bathrobes, Slippers & Linens</li>
-                        <li><i class="fas fa-caret-right"></i> In-room Coffee/Tea & Mini-bar Supplies</li>
-                    </ul>
+    <!-- Hero Section -->
+    <section class="corporate-hero">
+        <div class="container hero-grid">
+            <div data-aos="fade-right">
+                <div class="hero-tag-pill">
+                    <span class="status-dot"></span>
+                    <span>Hospitality Procurement & Turnkey OS&E</span>
+                </div>
+                <h1 class="hero-title">
+                    World-Class Supplies & Amenities for <span class="text-brand-blue">Luxury Hospitality</span>
+                </h1>
+                <p class="hero-lead">
+                    Delivering end-to-end operational solutions for 4-star and 5-star hotels, luxury resorts, and boutique stays across Egypt, the UAE, and the GCC. From bespoke guest cosmetics to commercial banquet tableware.
+                </p>
+
+                <div class="hero-actions-row">
+                    <a href="#products-catalog" class="btn-clean-primary btn-lg">
+                        <i class="fas fa-boxes-stacked"></i> View Supplies Catalog
+                    </a>
+                    <a href="#contact" class="btn-clean-secondary btn-lg">
+                        <i class="fas fa-file-contract"></i> Project RFQ
+                    </a>
                 </div>
 
-                <div class="tech-card" data-aos="fade-up" data-aos-delay="200">
-                    <span class="tech-badge" style="position: absolute; top: 15px; right: 15px;">F&B</span>
-                    <div class="icon-box"><i class="fas fa-utensils"></i></div>
-                    <h3>F&B and Restaurant</h3>
-                    <p>Supplying elegant tableware and robust equipment for restaurants, banquets, and catering.</p>
-                    <ul class="product-list">
-                        <li><i class="fas fa-caret-right"></i> Fine Bone China & Glassware</li>
-                        <li><i class="fas fa-caret-right"></i> Premium Cutlery & Buffet Displays</li>
-                        <li><i class="fas fa-caret-right"></i> Chafing Dishes & Service Trays</li>
-                    </ul>
-                </div>
-
-                <div class="tech-card" data-aos="fade-up" data-aos-delay="300">
-                    <span class="tech-badge" style="background: rgba(23,67,136,0.1); color: var(--primary); border-color: var(--primary); position: absolute; top: 15px; right: 15px;">Operations</span>
-                    <div class="icon-box"><i class="fas fa-broom"></i></div>
-                    <h3>Housekeeping & Janitorial</h3>
-                    <p>Professional-grade cleaning equipment and chemical solutions for spotless environments.</p>
-                    <ul class="product-list">
-                        <li><i class="fas fa-caret-right"></i> Commercial Cleaning Carts</li>
-                        <li><i class="fas fa-caret-right"></i> Heavy-duty Vacuums & Machines</li>
-                        <li><i class="fas fa-caret-right"></i> Eco-friendly Detergents & Sanitizers</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Dynamic Hotel Products Section (JSON Integrated with Images) -->
-    <section class="section glass-section" id="products-catalog">
-        <div class="container">
-            <div class="section-header" data-aos="fade-up">
-                <h2>Our Supplies Catalog</h2>
-                <div class="header-line"></div>
-                <p class="mt-4">Click on any product to view details and request a customized quote for your property.</p>
-            </div>
-            
-            <!-- This grid will be populated from products/data/hotel-supplies.json -->
-            <div class="grid grid-3" id="dynamic-products-grid">
-                
-            </div>
-        </div>
-    </section>
-
-    <!-- Exclusive Partnerships Section -->
-    <section class="section">
-        <div class="container">
-            <div class="section-header" data-aos="fade-up">
-                <h2>Exclusive Partnerships</h2>
-                <div class="header-line"></div>
-                <p class="mt-4">Collaborating with global brands to bring world-class quality to your hospitality business.</p>
-            </div>
-            
-            <div class="grid grid-4">
-                <div class="tech-card text-center" data-aos="zoom-in" data-aos-delay="100">
-                    <div style="height: 80px; display: flex; align-items: center; justify-content: center; border: 1px dashed var(--primary); margin-bottom: 20px; font-weight: bold; color: var(--primary); background: rgba(23,67,136,0.05);">
-                        <i class="fas fa-crown fa-2x"></i>
+                <div class="hero-stats-row">
+                    <div class="stat-unit">
+                        <strong>150+ Hotels</strong>
+                        <span>Equipped Properties</span>
                     </div>
-                    <h3>Premium Linens Co.</h3>
-                    <p style="font-size: 0.9rem;">World-renowned manufacturer of luxury hotel bedding and towels.</p>
+                    <div class="stat-sep"></div>
+                    <div class="stat-unit">
+                        <strong>100% Egyptian Cotton</strong>
+                        <span>Luxury Linens</span>
+                    </div>
+                    <div class="stat-sep"></div>
+                    <div class="stat-unit">
+                        <strong>Turnkey OS&E</strong>
+                        <span>Full Pre-Opening Setup</span>
+                    </div>
                 </div>
-                
-                <div class="tech-card text-center" data-aos="zoom-in" data-aos-delay="200">
-                    <div style="height: 80px; display: flex; align-items: center; justify-content: center; border: 1px dashed var(--primary); margin-bottom: 20px; font-weight: bold; color: var(--primary);">BRAND LOGO</div>
-                    <h3>SOON</h3>
-                    <p style="font-size: 0.9rem;">Upcoming international partnership.</p>
+            </div>
+
+            <!-- Hero Showcase Card -->
+            <div class="showcase-card" data-aos="fade-left">
+                <div class="showcase-img-wrap">
+                    <span class="showcase-badge">Five-Star Standard</span>
+                    <img src="https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&w=800&q=80" alt="Luxury Hotel Suite" class="showcase-img">
+                </div>
+                <div class="showcase-caption">
+                    <h3>Curated In-Room Comfort & Elegance</h3>
+                    <p>Supplying world-renowned hotels with high-thread-count satin bed linens, plush velour bathrobes, and eco-certified organic toiletry collections.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Contact Form Section -->
-    <section id="contact" class="section glass-section">
+    <!-- Trust Strip -->
+    <section class="trust-bar">
         <div class="container">
-            <div class="section-header" data-aos="fade-up">
-                <h2>Inquire About Supplies</h2>
-                <div class="header-line"></div>
-            </div>
-            
-            <div class="grid grid-2">
-                <div data-aos="fade-right">
-                    <h3 style="color: var(--primary); margin-bottom: 20px;">Supply Request</h3>
-                    <p class="mb-4">Connect directly with our Hotel Supplies trade managers to request samples, compliance certificates, catalogs, or customized bulk pricing for your property.</p>
-                    <div class="info-item"><i class="fas fa-envelope"></i> info@egy-uae.com</div>
-                    <div class="info-item"><i class="fas fa-phone"></i> +20 101 176 6232</div>
+            <div class="trust-items-grid">
+                <div class="trust-item">
+                    <i class="fas fa-feather text-brand-blue"></i>
+                    <div>
+                        <strong>Pure Egyptian Cotton</strong>
+                        <p>300 to 600 TC satin & percale</p>
+                    </div>
                 </div>
-                
-                <div data-aos="fade-left">
-                    <form action="https://formspree.io/f/maqkrwoe" method="POST" class="tech-card">
-                        <div class="input-group">
-                            <i class="fas fa-hotel"></i>
-                            <input type="text" name="Name" placeholder="Full Name / Hotel Name" required>
+                <div class="trust-item">
+                    <i class="fas fa-leaf text-brand-blue"></i>
+                    <div>
+                        <strong>Eco-Certified Amenities</strong>
+                        <p>Biodegradable dispensers & liquids</p>
+                    </div>
+                </div>
+                <div class="trust-item">
+                    <i class="fas fa-warehouse text-brand-blue"></i>
+                    <div>
+                        <strong>Regional Warehouses</strong>
+                        <p>Buffer stock in Cairo & Dubai</p>
+                    </div>
+                </div>
+                <div class="trust-item">
+                    <i class="fas fa-hotel text-brand-blue"></i>
+                    <div>
+                        <strong>Pre-Opening Turnkey</strong>
+                        <p>Comprehensive OS&E packages</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Bento Hospitality Solutions -->
+    <section class="section-padding bg-subtle">
+        <div class="container">
+            <div class="section-head" data-aos="fade-up">
+                <span class="section-kicker">Operational Divisions</span>
+                <h2 class="section-title">Complete Hospitality Ecosystem</h2>
+                <p class="section-description">Dedicated procurement lines engineered to maintain high-turnover guest room rotation and luxury dining operations.</p>
+            </div>
+
+            <div class="bento-services-grid">
+                <!-- Bento Card 1 -->
+                <div class="bento-card col-span-2" data-aos="fade-up" data-aos-delay="100">
+                    <div class="bento-content">
+                        <span class="service-pill"><i class="fas fa-bed text-brand-red"></i> GUEST ROOMS</span>
+                        <h3>Luxury Linens, Towels & Bedding</h3>
+                        <p>Crafted exclusively from authentic Egyptian long-staple cotton. Offering high-durability 300-600 TC sateen bedsheets, cloud-feel duvets, hypoallergenic microfiber pillows, and heavyweight 650 GSM combed cotton bath towels engineered for heavy industrial laundering.</p>
+                        <div class="mt-3">
+                            <a href="#contact" class="system-link" onclick="prefillQuote('Hotel Bed Linens & Towels')">Inquire for Room Linens &rarr;</a>
                         </div>
-                        <div class="input-group">
-                            <i class="fas fa-envelope"></i>
-                            <input type="email" name="Email" placeholder="Business Email" required>
+                    </div>
+                    <div class="bento-image-container desktop-only">
+                        <img src="https://images.unsplash.com/photo-1590490360182-c33d57733427?auto=format&fit=crop&w=400&q=80" alt="Bed Linens" class="bento-thumb">
+                    </div>
+                </div>
+
+                <!-- Bento Card 2 -->
+                <div class="bento-card" data-aos="fade-up" data-aos-delay="200">
+                    <div>
+                        <div class="bento-icon-block text-brand-blue">
+                            <i class="fas fa-pump-soap"></i>
                         </div>
-                        <div class="input-group" style="margin-bottom: 20px;">
-                            <select name="Order-Type" id="contact-order-type" style="width: 100%; padding: 15px; border: 1px solid var(--border-color); background: var(--bg-main); font-family: inherit; font-size: 1rem; color: var(--text-main); outline: none;">
-                                <option value="Sourcing for Hotels">Sourcing for Hotels/Resorts</option>
-                                <option value="Supplying to Us">Supplying to us (Vendor)</option>
-                                <option value="Agency">Commercial Agency</option>
-                            </select>
+                        <span class="service-pill">PERSONAL CARE</span>
+                        <h3>Guest Amenities & Cosmetics</h3>
+                        <p>Custom-branded mini shampoo, conditioners, and lotions. Sustainable refillable wall dispenser systems with natural botanical formulations.</p>
+                    </div>
+                    <div class="mt-3">
+                        <a href="#contact" class="system-link" onclick="prefillQuote('Hotel Amenities & Dispensers')">Request Sample Kits &rarr;</a>
+                    </div>
+                </div>
+
+                <!-- Bento Card 3 -->
+                <div class="bento-card" data-aos="fade-up" data-aos-delay="100">
+                    <div>
+                        <div class="bento-icon-block text-brand-red">
+                            <i class="fas fa-utensils"></i>
                         </div>
-                        <div class="input-group">
-                            <i class="fas fa-comment-alt"></i>
-                            <textarea name="Message" id="contact-message" rows="5" placeholder="Required items, room count, delivery location..." required></textarea>
+                        <span class="service-pill">F&B & BANQUET</span>
+                        <h3>Tableware, Cutlery & Buffet</h3>
+                        <p>Heavy-duty porcelain chinaware, 18/10 stainless steel flatware, crystal glassware, roll-top induction chafing dishes, and display risers.</p>
+                    </div>
+                    <div class="mt-3">
+                        <a href="#contact" class="system-link" onclick="prefillQuote('Tableware & Buffetware')">Browse Buffet Solutions &rarr;</a>
+                    </div>
+                </div>
+
+                <!-- Bento Card 4 -->
+                <div class="bento-card col-span-2" data-aos="fade-up" data-aos-delay="200">
+                    <div class="bento-content">
+                        <span class="service-pill"><i class="fas fa-broom text-brand-blue"></i> OPERATIONS</span>
+                        <h3>Housekeeping Carts & Operational Equipment</h3>
+                        <p>High-grade aluminum housekeeping trolleys, silent-wheel linen carts, luggage trolleys, commercial extraction vacuums, and eco-certified sanitation chemicals compliant with international health standards.</p>
+                        <div class="mt-3">
+                            <a href="#contact" class="system-link" onclick="prefillQuote('Housekeeping & Janitorial Carts')">Explore Operations Equipment &rarr;</a>
                         </div>
-                        <button type="submit" class="btn btn-tech w-full">Submit Supply Request <i class="fas fa-paper-plane"></i></button>
+                    </div>
+                    <div class="bento-image-container desktop-only">
+                        <img src="https://images.unsplash.com/photo-1527515637462-cff94eecc1ac?auto=format&fit=crop&w=400&q=80" alt="Housekeeping" class="bento-thumb">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Dynamic Hotel Supplies Catalog -->
+    <section class="section-padding" id="products-catalog">
+        <div class="container">
+            <div class="section-head" data-aos="fade-up">
+                <span class="section-kicker">Procurement Inventory</span>
+                <h2 class="section-title">Hotel Supplies & Amenities Catalog</h2>
+                <p class="section-description">Filter by operational department and inspect materials, thread count, and case packaging specifications.</p>
+            </div>
+
+            <!-- Category Filter Tabs -->
+            <div class="catalog-filters" id="catalog-filters">
+                <button class="catalog-tab-btn active" data-category="all">All Supplies</button>
+                <button class="catalog-tab-btn" data-category="Bed & Bath Linens">Bed & Bath Linens</button>
+                <button class="catalog-tab-btn" data-category="Guest Amenities">Guest Amenities</button>
+                <button class="catalog-tab-btn" data-category="F&B & Tableware">F&B & Tableware</button>
+                <button class="catalog-tab-btn" data-category="Housekeeping & Equipment">Housekeeping & Equipment</button>
+            </div>
+
+            <!-- Dynamic Grid (Injected via JS) -->
+            <div class="catalog-grid-row" id="dynamic-products-grid">
+                <!-- Skeleton Loader -->
+                <div style="grid-column: 1/-1; text-align: center; padding: 3rem 0; color: var(--text-muted);">
+                    <i class="fas fa-circle-notch fa-spin fa-2x"></i>
+                    <p class="mt-2">Loading hotel supplies catalog...</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- RFQ & Procurement Inquiry Section -->
+    <section class="section-padding bg-subtle" id="contact">
+        <div class="container">
+            <div class="rfq-split-layout">
+                <!-- Info Column -->
+                <div data-aos="fade-right">
+                    <span class="section-kicker">Hospitality Procurement Desk</span>
+                    <h2 class="section-title">Request Quotation & Turnkey OS&E</h2>
+                    <p class="profile-paragraph">
+                        Provide your property specifications, room count, or replacement schedule. Our hospitality specialists will prepare a comprehensive bill of quantities (BOQ) with sample delivery.
+                    </p>
+
+                    <div class="contact-card-box">
+                        <div class="contact-line">
+                            <i class="fas fa-envelope text-brand-blue"></i>
+                            <div>
+                                <strong>Hospitality Trade Desk</strong>
+                                <a href="mailto:info@egy-uae.com">info@egy-uae.com</a>
+                            </div>
+                        </div>
+                        <div class="contact-line">
+                            <i class="fas fa-phone text-brand-blue"></i>
+                            <div>
+                                <strong>Direct Procurement Hotline</strong>
+                                <a href="tel:+201011766232">+20 101 176 6232</a>
+                            </div>
+                        </div>
+                        <div class="contact-line">
+                            <i class="fas fa-hotel text-brand-blue"></i>
+                            <div>
+                                <strong>Showroom & Fulfillment</strong>
+                                <span>Cairo, Egypt &middot; Dubai, UAE</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Clean Accordion FAQ -->
+                    <div class="clean-accordion mt-4">
+                        <div class="acc-row">
+                            <button class="acc-header" type="button">
+                                <span>Can we customize logos on linens and personal care items?</span>
+                                <i class="fas fa-chevron-down"></i>
+                            </button>
+                            <div class="acc-panel">
+                                Yes. We offer jacquard woven logos for towels, bespoke embroidery on bathrobes and bed linens, along with customized packaging, fragrances, and eco-bottles for guest cosmetics.
+                            </div>
+                        </div>
+                        <div class="acc-row">
+                            <button class="acc-header" type="button">
+                                <span>Do you support complete pre-opening turnkey hotel projects?</span>
+                                <i class="fas fa-chevron-down"></i>
+                            </button>
+                            <div class="acc-panel">
+                                Absolutely. We consolidate full OS&E procurement—from front office luggage carts to back-of-house laundry trolleys and restaurant service ware—delivered on a phased opening schedule.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Form Column -->
+                <div class="form-card-container" data-aos="fade-left">
+                    <div class="form-card-header">
+                        <h3><i class="fas fa-file-invoice text-brand-blue"></i> Hospitality Supply RFQ</h3>
+                        <span class="sla-badge"><i class="fas fa-bolt text-brand-red"></i> 24h Response</span>
+                    </div>
+
+                    <form action="https://formspree.io/f/maqkrwoe" method="POST" class="clean-rfq-form" id="rfq-form">
+                        <div class="form-row-grid">
+                            <div class="form-field">
+                                <label for="rfq-name">Hotel / Company Name *</label>
+                                <input type="text" id="rfq-name" name="Name" placeholder="e.g. Royal Mirage Hotel & Resort" required>
+                            </div>
+                            <div class="form-field">
+                                <label for="rfq-email">Procurement Email *</label>
+                                <input type="email" id="rfq-email" name="Email" placeholder="procurement@hotel.com" required>
+                            </div>
+                            <div class="form-field">
+                                <label for="rfq-phone">Contact Number / WhatsApp</label>
+                                <input type="tel" id="rfq-phone" name="Phone" placeholder="+971 50 000 0000">
+                            </div>
+                            <div class="form-field">
+                                <label for="rfq-type">Inquiry Type *</label>
+                                <input type="text" id="rfq-type" name="Order-Type" value="Hotel Supplies RFQ" readonly style="cursor: default;">
+                            </div>
+                            <div class="form-field full-width">
+                                <label for="contact-message">Required Items & Room Count *</label>
+                                <textarea id="contact-message" name="Message" rows="4" placeholder="Detail required supplies (e.g., 300 Thread Count Bedsets, 500 rooms, delivery to Dubai/Cairo)..." required></textarea>
+                            </div>
+                        </div>
+
+                        <div class="form-actions-bar">
+                            <span class="security-text"><i class="fas fa-lock"></i> Confidential B2B Inquiry</span>
+                            <button type="submit" class="btn-clean-primary">
+                                Submit Supply Request <i class="fas fa-paper-plane"></i>
+                            </button>
+                        </div>
                     </form>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Footer -->
-      <footer class="tech-footer">
-        <div class="container">
-            <div class="grid grid-4 footer-wrapper">
-                
-                <div class="footer-logo">
-                    <img src="Al_Masriya_Al_Emaratiya_icon.png" alt="Al Massriya Al Emaratiya Logo" class="brand-logo" onerror="this.onerror=null; this.src='https://via.placeholder.com/200x60/174388/ffffff?text=LOGO+HERE';">
-                    <p class="mt-4">Your Tech Gateway to Growth in Egypt & UAE.</p>
-                    <div class="social-links mt-4">
-                        <a href="https://www.facebook.com/AlMasriyaAlEmaratiya"><i class="fab fa-facebook-f"></i></a>
-                        <a href="https://www.linkedin.com/company/egy-uae"><i class="fab fa-linkedin-in"></i></a>
-                        <a href="https://www.youtube.com/@egy-uae.channel"><i class="fab fa-youtube"></i></a>
+    <!-- Product Details Modal -->
+    <div class="clean-modal-overlay" id="product-modal" aria-hidden="true">
+        <div class="clean-modal-card">
+            <button class="clean-close-btn" id="close-modal" aria-label="Close details modal">&times;</button>
+            <div class="clean-modal-img-wrap">
+                <img id="modal-img" src="" alt="Product Showcase">
+            </div>
+            <div class="clean-modal-body">
+                <div>
+                    <span class="meta-tag" id="modal-category">Hotel Supplies</span>
+                    <h3 id="modal-title" style="font-size: 1.4rem; font-weight: 800; margin-bottom: 0.5rem;"></h3>
+                    <p id="modal-desc" style="font-size: 0.88rem; color: var(--text-muted); line-height: 1.6; margin-bottom: 1rem;"></p>
+
+                    <div class="spec-table">
+                        <div class="spec-item" id="modal-origin-container">
+                            <span>Origin / Brand:</span> <strong id="modal-origin">--</strong>
+                        </div>
+                        <div class="spec-item" id="modal-types-container">
+                            <span>Material / Specs:</span> <strong id="modal-types">--</strong>
+                        </div>
+                        <div class="spec-item" id="modal-apps-container">
+                            <span>Usage / Sector:</span> <strong id="modal-applications">--</strong>
+                        </div>
+                        <div class="spec-item" id="modal-pkg-container">
+                            <span>Packaging / Case:</span> <strong id="modal-packaging">--</strong>
+                        </div>
                     </div>
                 </div>
 
-                <div class="footer-links">
-                    <h4>Index Directory</h4>
-                    <ul>
-                        <li><a href="../index.html#home">Home</a></li>
-                        <li><a href="../index.html#services">Services</a></li>
-                        <li><a href="../index.html#about">About Us</a></li>
-                        <li><a href="../news.html">News</a></li>
-                        <li><a href="../index.html#contact">Contact Us</a></li>
-                        <li><a href="../careers.html">Careers</a></li>
-                        <li><a href="../sectors.html">Our Sectors</a></li>
+                <div class="mt-3">
+                    <button class="btn-clean-primary w-full" id="request-quote-btn">
+                        Request Quote for this Product <i class="fas fa-arrow-right"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Master Footer -->
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div>
+                    <img src="Al_Masriya_Al_Emaratiya_icon.png" alt="Logo" class="footer-brand-logo">
+                    <p class="footer-bio">
+                        Al Masriya Al Emaratiya integrates international commerce, contract manufacturing, and cross-border distribution across core industrial, agricultural, and hospitality sectors.
+                    </p>
+                    <div class="footer-social-icons">
+                        <a href="https://www.facebook.com/AlMasriyaAlEmaratiya" target="_blank" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="https://www.linkedin.com/company/egy-uae" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="https://www.youtube.com/@egy-uae.channel" target="_blank" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+
+                <div>
+                    <h4 class="footer-heading">Corporate</h4>
+                    <ul class="footer-nav-list">
+                        <li><a href="../index.html#home">Home Page</a></li>
+                        <li><a href="../index.html#services">Services Matrix</a></li>
+                        <li><a href="../index.html#about">About the Group</a></li>
+                        <li><a href="../news.html">News & Crop Updates</a></li>
+                        <li><a href="../careers.html">Career Opportunities</a></li>
                     </ul>
                 </div>
 
-                
-                <div class="footer-divisions">
-                    <h4>Our Divisions</h4>
-                    <ul>
+                <div>
+                    <h4 class="footer-heading">Trade Divisions</h4>
+                    <ul class="footer-nav-list">
                         <li><a href="food-division.html">Food Division</a></li>
                         <li><a href="hotel-supplies.html">Hotel Supplies</a></li>
                         <li><a href="chemicals-cosmetics.html">Chemicals & Cosmetics</a></li>
                         <li><a href="ose-procurement.html">OS&E Procurement</a></li>
                         <li><a href="office-furniture.html">Office Furniture</a></li>
-                        <li><a href="banquet-furniture.html">Banquet Furniture</a></li>
-                        <li><a href="metal-beds-lockers.html">Metal Beds & Lockers</a></li>
-                        <li><a href="staff-furniture.html">Staff Furniture</a></li>
-                        <li><a href="staff-sofa-sets.html">Staff Sofa Sets & Accessories</a></li>
                     </ul>
                 </div>
 
-                <div class="footer-language custom-dropdown">
-                    <h4>Language Protocol</h4>
-                    <div class="dropdown-trigger" id="lang-trigger">
-                        <span><i class="fas fa-globe"></i> English</span>
-                        <i class="fas fa-chevron-down arrow-icon"></i>
+                <div>
+                    <h4 class="footer-heading">Regional Contact</h4>
+                    <div class="footer-address-block">
+                        <strong>Cairo Desk:</strong>
+                        <span>New Cairo, Financial District, Egypt</span>
+                        <div class="mt-2"></div>
+                        <strong>Dubai Desk:</strong>
+                        <span>Business Bay, UAE</span>
+                        <div class="mt-2"></div>
+                        <strong>Direct Trade:</strong>
+                        <span>info@egy-uae.com</span>
                     </div>
-                    <ul class="dropdown-menu tech-dropdown" id="lang-menu">
-                        <li><a href="hotel-supplies.html" class="active-lang">English</a></li>
-                        <li><a href="../ar/pages/hotel-supplies.html">العربية</a></li>
-                        <li><a href="../hotel-supplies-cn.html">中文</a></li>
-                    </ul>
                 </div>
-
             </div>
-            <div class="footer-bottom text-center">
-                <p>© <span id="current-year"></span> Al Massriya Al Emaratiya. All Rights Reserved. System Version 2.0</p>
+
+            <div class="footer-bottom-bar">
+                <span>&copy; <span id="current-year"></span> Al Masriya Al Emaratiya. Enterprise Trade Platform.</span>
+                <span>System Version 3.0 Clean</span>
             </div>
         </div>
     </footer>
 
-    <!-- Chat Widget (Tech Headset Icon) -->
-    <div id="chat-widget" class="chat-widget">
-        <button class="chat-btn glow-effect" id="chat-toggle">
-            <i class="fas fa-headset"></i> 
-        </button>
-        <div class="chat-container glass-panel" id="chat-box">
-            <div class="chat-header">
-                <h3><i class="fas fa-robot"></i> AI Support Node</h3>
-                <button class="chat-close" id="chat-close">&times;</button>
-            </div>
-            <div class="chat-body" id="chat-body">
-                <div class="message incoming">
-                    <p>Connection established. How can we assist your operations today?</p>
-                </div>
-            </div>
-            <div class="chat-footer">
-                <input type="text" placeholder="Type query..." id="chat-input">
-                <button id="chat-send"><i class="fas fa-paper-plane"></i></button>
-            </div>
-        </div>
-    </div>
-
-    <!-- PRODUCT DETAILS MODAL (Hidden by default) -->
-   <div class="tech-modal-overlay" id="product-modal">
-    <div class="tech-modal-content">
-        <button class="close-modal" id="close-modal" aria-label="Close Modal"><i class="fas fa-times"></i></button>
-        
-        <div class="tech-modal-img">
-            <img id="modal-img" src="" alt="Product Image">
-        </div>
-        
-        <div class="tech-modal-info">
-            <span class="tech-badge" id="modal-category" style="align-self: flex-start; margin-bottom: 10px;"></span>
-            <h2 id="modal-title" style="margin-bottom: 15px; font-size: 1.8rem;"></h2>
-            <p id="modal-desc" style="margin-bottom: 25px; line-height: 1.6; color: var(--text-muted);"></p>
-            
-            <div style="margin-bottom: 30px;" id="modal-origin-container">
-                <strong style="color: var(--primary);">Brand/Origin:</strong> <span id="modal-origin"></span>
-            </div>
-            <div style="margin-bottom: 30px;" id="modal-types-container">
-                <strong style="color: var(--primary);">Material/Types:</strong> <span id="modal-types"></span>
-            </div>
-            <div style="margin-bottom: 30px;" id="modal-apps-container">
-                <strong style="color: var(--primary);">Usage:</strong> <span id="modal-applications"></span>
-            </div>
-            <div style="margin-bottom: 30px;" id="modal-pkg-container">
-                <strong style="color: var(--primary);">Packaging:</strong> <span id="modal-packaging"></span>
-            </div>
-
-            <button class="btn btn-tech w-full" id="request-quote-btn">Request Quote for this Product <i class="fas fa-arrow-right"></i></button>
-        </div> </div>
-</div>
-
-    <!-- Scripts -->
+    <!-- AOS Script -->
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    <script src="js/main.js"></script>
-    
-    <!-- JSON Products Fetcher & Modal Logic -->
+
+    <!-- Page Specific Script for Hotel Supplies JSON Loading & Interactivity -->
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             const productsGrid = document.getElementById('dynamic-products-grid');
+            const searchInput = document.getElementById('catalog-search');
+            const mobileSearch = document.getElementById('mobile-search-input');
+            const clearSearchBtn = document.getElementById('clear-search-btn');
+            const filterButtons = document.querySelectorAll('.catalog-tab-btn');
 
-            // لاحظ تم تغيير مسار الملف إلى hotel-supplies.json
-            fetch('products/data/hotel-supplies.json')
-                .then(response => {
-                    if (!response.ok) throw new Error('Network response was not ok');
-                    return response.json();
-                })
-                .then(data => {
-                    if (data && data.length > 0) {
-                        data.forEach((product, index) => {
-                            const delay = (index % 3) * 100;
-                            
-                            const productImage = product.image || 'https://via.placeholder.com/400x300/174388/ffffff?text=Image+Not+Found';
-                            
-                            const cardHTML = `
-                                <div class="tech-card tech-card-clickable" data-aos="fade-up" data-aos-delay="${delay}" onclick="openProductModal('${product.name}', '${productImage}', '${product.description.replace(/'/g, "\\'")}', '${product.category}', '${product.origin || ''}')">
-                                    <div class="product-img-box">
-                                        <img src="${productImage}" alt="${product.name}" loading="lazy">
-                                    </div>
-                                    <h3 style="font-size: 1.2rem;">${product.name}</h3>
-                                    <p style="display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; font-size: 0.9rem;">${product.description}</p>
-                                    <div class="mt-4">
-                                        <span class="tech-badge" style="font-size:0.75rem;">${product.category}</span>
-                                    </div>
-                                    <button class="btn btn-outline-tech w-full mt-4" style="padding: 8px; font-size: 0.85rem;">View Details</button>
-                                </div>
-                            `;
-                            productsGrid.innerHTML += cardHTML;
-                        });
-                    } else {
-                        productsGrid.innerHTML = `<p style="grid-column: 1 / -1; text-align: center; color: var(--text-muted);">No products found in the database.</p>`;
-                    }
-                })
-                .catch(error => {
-                    console.error('Error fetching products:', error);
+            let allProducts = [];
+            let activeFilter = 'all';
+
+            const renderProducts = (productsToRender) => {
+                if (!productsGrid) return;
+
+                if (!productsToRender || productsToRender.length === 0) {
                     productsGrid.innerHTML = `
-                        <p style="grid-column: 1 / -1; text-align: center; color: var(--secondary);">
-                            <i class="fas fa-exclamation-triangle"></i> Unable to load products database at this time.
-                        </p>`;
-                });
-
-            // Modal Logic 
-            const modal = document.getElementById('product-modal');
-            const closeBtn = document.getElementById('close-modal');
-            const quoteBtn = document.getElementById('request-quote-btn');
-            const contactMessage = document.getElementById('contact-message');
-            let currentProductName = '';
-
-            window.openProductModal = function(name, img, desc, category, origin) {
-                currentProductName = name;
-                document.getElementById('modal-title').textContent = name;
-                document.getElementById('modal-img').src = img;
-                document.getElementById('modal-desc').textContent = desc;
-                document.getElementById('modal-category').textContent = category;
-                
-                if(origin) {
-                    document.getElementById('modal-origin-container').style.display = 'block';
-                    document.getElementById('modal-origin').textContent = origin;
-                } else {
-                    document.getElementById('modal-origin-container').style.display = 'none';
+                        <div style="grid-column: 1/-1; text-align: center; padding: 3rem 0; color: var(--text-muted);">
+                            <i class="fas fa-hotel fa-2x mb-2"></i>
+                            <p>No hospitality supplies match your criteria.</p>
+                        </div>
+                    `;
+                    return;
                 }
 
-                modal.classList.add('active');
+                productsGrid.innerHTML = productsToRender.map((product, index) => {
+                    const fallbackImg = 'https://images.unsplash.com/photo-1590490360182-c33d57733427?auto=format&fit=crop&w=600&q=80';
+                    const img = product.image || fallbackImg;
+
+                    return `
+                        <div class="catalog-card-item" data-aos="fade-up">
+                            <div class="card-img-shell">
+                                <span class="card-badge">${product.category || 'Hospitality'}</span>
+                                <img src="${img}" alt="${product.name}" class="card-img" loading="lazy" onerror="this.src='${fallbackImg}'">
+                            </div>
+                            <div class="card-info">
+                                <h3 class="card-title">${product.name}</h3>
+                                <p class="card-summary">${product.description || 'Commercial hotel specification engineered for luxury hospitality.'}</p>
+                                
+                                <div class="spec-table">
+                                    <div class="spec-item">
+                                        <span>Material / Origin:</span>
+                                        <strong>${product.origin || product.types || 'Egypt / UAE'}</strong>
+                                    </div>
+                                    <div class="spec-item">
+                                        <span>Packaging:</span>
+                                        <strong>${product.packaging || 'Bulk Master Cartons'}</strong>
+                                    </div>
+                                </div>
+
+                                <button class="btn-outline-card" onclick="openProductModalById(${product.id || index})">
+                                    <i class="fas fa-circle-info"></i> View Specifications
+                                </button>
+                            </div>
+                        </div>
+                    `;
+                }).join('');
             };
 
-            closeBtn.addEventListener('click', () => modal.classList.remove('active'));
-            modal.addEventListener('click', (e) => {
-                if(e.target === modal) modal.classList.remove('active');
+            const filterAndRender = () => {
+                const query = (searchInput ? searchInput.value : '').toLowerCase().trim();
+
+                let filtered = allProducts.filter(item => {
+                    const matchCategory = (activeFilter === 'all') || (item.category && item.category.toLowerCase() === activeFilter.toLowerCase());
+                    const matchQuery = !query || 
+                        (item.name && item.name.toLowerCase().includes(query)) ||
+                        (item.description && item.description.toLowerCase().includes(query)) ||
+                        (item.category && item.category.toLowerCase().includes(query));
+                    return matchCategory && matchQuery;
+                });
+
+                renderProducts(filtered);
+            };
+
+            // Fetch from hotel-supplies.json
+            fetch('products/data/hotel-supplies.json')
+                .then(res => {
+                    if (!res.ok) throw new Error('Data file unreachable');
+                    return res.json();
+                })
+                .then(data => {
+                    allProducts = data.map((item, idx) => ({ ...item, id: idx }));
+                    renderProducts(allProducts);
+                })
+                .catch(err => {
+                    console.warn('Using default fallback hotel supplies:', err);
+                    allProducts = [
+                        {
+                            id: 0,
+                            name: 'Egyptian Cotton Bed Linen Sets',
+                            category: 'Bed & Bath Linens',
+                            description: '100% combed Egyptian long-staple cotton bedsheets, duvet covers, and pillowcases with 400 TC satin stripes.',
+                            origin: 'Made in Egypt',
+                            types: '400 TC / 600 TC Sateen & Percale',
+                            applications: '5-Star Luxury Suites & Resorts',
+                            packaging: 'Individual Polybag / 20 Sets per Master Carton',
+                            image: 'https://images.unsplash.com/photo-1590490360182-c33d57733427?auto=format&fit=crop&w=600&q=80'
+                        },
+                        {
+                            id: 1,
+                            name: 'Organic Guest Amenity Collection',
+                            category: 'Guest Amenities',
+                            description: 'Refillable 300ml amber bottles with lock pumps containing paraben-free, vegan shampoo and hand wash.',
+                            origin: 'UAE / Egypt Formulation',
+                            types: '300ml Refillable Bottles & 5L Refill Drums',
+                            applications: 'Boutique Hotels, Resorts, Eco-Lodges',
+                            packaging: '48 bottles / Master Box',
+                            image: 'https://images.unsplash.com/photo-1556228720-195a672e8a03?auto=format&fit=crop&w=600&q=80'
+                        },
+                        {
+                            id: 2,
+                            name: 'Commercial Housekeeping Trolley',
+                            category: 'Housekeeping & Equipment',
+                            description: 'Heavy-duty lightweight aluminum trolley with locking doors, dual laundry bags, and silent non-marking casters.',
+                            origin: 'Imported / Heavy Duty',
+                            types: '3-Tier Adjustable Shelves',
+                            applications: 'Hotel Housekeeping & Corridors',
+                            packaging: 'Flat-packed in reinforced cartons',
+                            image: 'https://images.unsplash.com/photo-1527515637462-cff94eecc1ac?auto=format&fit=crop&w=600&q=80'
+                        }
+                    ];
+                    renderProducts(allProducts);
+                });
+
+            // Filter Tabs
+            filterButtons.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    filterButtons.forEach(b => b.classList.remove('active'));
+                    btn.classList.add('active');
+                    activeFilter = btn.getAttribute('data-category');
+                    filterAndRender();
+                });
             });
 
-            quoteBtn.addEventListener('click', () => {
-                modal.classList.remove('active');
-                
-                contactMessage.value = `Hello, I would like to request a quote for: [ ${currentProductName} ].\n\nPlease provide details regarding:\n- Required Quantity / Room Count:\n- Target Delivery Location:\n- Specific Preferences:\n`;
-                
-                document.getElementById('contact').scrollIntoView({ behavior: 'smooth' });
-                
-                setTimeout(() => { contactMessage.focus(); }, 800);
-            });
+            // Search Handlers
+            if (searchInput) {
+                searchInput.addEventListener('input', () => {
+                    if (clearSearchBtn) clearSearchBtn.classList.toggle('hidden', searchInput.value.trim() === '');
+                    filterAndRender();
+                });
+            }
+
+            if (clearSearchBtn) {
+                clearSearchBtn.addEventListener('click', () => {
+                    searchInput.value = '';
+                    clearSearchBtn.classList.add('hidden');
+                    filterAndRender();
+                    searchInput.focus();
+                });
+            }
+
+            if (mobileSearch) {
+                mobileSearch.addEventListener('input', () => {
+                    if (searchInput) searchInput.value = mobileSearch.value;
+                    filterAndRender();
+                });
+            }
+
+            // Modal Logic
+            const modal = document.getElementById('product-modal');
+            const closeModalBtn = document.getElementById('close-modal');
+            const quoteBtn = document.getElementById('request-quote-btn');
+            const contactMessage = document.getElementById('contact-message');
+            let selectedProductName = '';
+
+            window.openProductModalById = (id) => {
+                const product = allProducts.find(p => p.id === id);
+                if (!product || !modal) return;
+
+                selectedProductName = product.name;
+                document.getElementById('modal-title').textContent = product.name;
+                document.getElementById('modal-img').src = product.image || 'https://via.placeholder.com/600x400/174aa1/ffffff?text=Hotel+Product';
+                document.getElementById('modal-desc').textContent = product.description || '';
+                document.getElementById('modal-category').textContent = product.category || 'Hospitality';
+
+                const setField = (elemId, contId, val) => {
+                    const el = document.getElementById(elemId);
+                    const cont = document.getElementById(contId);
+                    if (cont && el) {
+                        if (val) {
+                            cont.style.display = 'flex';
+                            el.textContent = val;
+                        } else {
+                            cont.style.display = 'none';
+                        }
+                    }
+                };
+
+                setField('modal-origin', 'modal-origin-container', product.origin);
+                setField('modal-types', 'modal-types-container', product.types);
+                setField('modal-applications', 'modal-apps-container', product.applications);
+                setField('modal-packaging', 'modal-pkg-container', product.packaging);
+
+                modal.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            };
+
+            const hideModal = () => {
+                if (modal) {
+                    modal.classList.remove('active');
+                    document.body.style.overflow = '';
+                }
+            };
+
+            if (closeModalBtn) closeModalBtn.addEventListener('click', hideModal);
+            if (modal) {
+                modal.addEventListener('click', (e) => {
+                    if (e.target === modal) hideModal();
+                });
+            }
+
+            if (quoteBtn) {
+                quoteBtn.addEventListener('click', () => {
+                    hideModal();
+                    window.prefillQuote(selectedProductName);
+                });
+            }
+
+            window.prefillQuote = (productName) => {
+                const contactSection = document.getElementById('contact');
+                if (contactMessage) {
+                    contactMessage.value = `Hello Hospitality Desk,\n\nWe would like to request bulk pricing & specification sheets for: [ ${productName} ].\n- Property Name & Location:\n- Estimated Room / Unit Count:\n- Required Delivery Timeline:\n- Custom Branding / Logo Requirements:\n`;
+                }
+                if (contactSection) {
+                    contactSection.scrollIntoView({ behavior: 'smooth' });
+                    setTimeout(() => {
+                        if (contactMessage) contactMessage.focus();
+                    }, 600);
+                }
+            };
         });
     </script>
 
-    <!-- Google Translate Script -->
-    <script>
-        function googleTranslateElementInit() {
-            new google.translate.TranslateElement({
-                pageLanguage: 'en',
-                includedLanguages: 'en,ar',
-                layout: google.translate.TranslateElement.InlineLayout.SIMPLE,
-                autoDisplay: false
-            }, 'google_translate_element');
-        }
-    </script>
-    <script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
-
+    <!-- Main Clean JS -->
+    <script src="js/main.js"></script>
 </body>
 </html>
