@@ -1,808 +1,700 @@
 <!DOCTYPE html>
-<html lang="en" dir="ltr" data-theme="light">
+<html lang="en" dir="ltr">
 <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
-    <title>Almassriya Alemaratiya | Global B2B Trade & Commercial Agency</title>
-    
-    <!-- Meta SEO -->
-    <meta name="description" content="Accredited international commercial agency and worldwide B2B trade facilitator. Providing end-to-end global import, export, ocean/air logistics, and customs solutions." />
-    <meta name="keywords" content="Al Masriya Al Emaratiya, Global Commercial Agency, Worldwide Import Export, International Freight Forwarding, B2B Trade Facilitator, Customs Clearance, Cross Border Supply Chain" />
-    <meta name="author" content="Almassriya Alemaratiya" />
-    <meta name="theme-color" content="#ffffff" />
-    <link rel="canonical" href="https://egy-uae.com" />
-
-    <!-- Open Graph -->
-    <meta property="og:type" content="website" />
-    <meta property="og:title" content="Almassriya Alemaratiya | Global B2B Commercial Agency & Trade" />
-    <meta property="og:description" content="Accredited global commercial agency, worldwide logistics, and international cross-border trade facilitation." />
-    <meta property="og:url" content="https://egy-uae.com" />
-    <meta property="og:image" content="https://egy-uae.com/Al_Masriya_Al_Emaratiya_icon.png" />
-
-    <!-- Fonts & Vendor Icons -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Cairo:wght@600;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
-    <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css" />
-    
-    <!-- Master Stylesheet -->
-    <link rel="stylesheet" href="css/style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Almassriya Alemaratiya | Commercial Agencies, Import &amp; Export</title>
+  <meta name="description" content="AL Massriya AL Emaratiya For Commercial Agencies, Import & Export — Customized Furniture, Hotel Linens, OS&E & FF&E Procurement, Staff Housing, Food Division & Chemicals." />
+  <!-- Logo Icon (Favicon) — Put your icon file at assets/logo-icon.png -->
+  <link rel="icon" type="image/png" href="assets/logo-icon.png" />
+  <link rel="apple-touch-icon" href="assets/logo-icon.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&family=Lato:wght@300;400;700;900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
 </head>
 <body>
 
-    <!-- Precision Progress Bar -->
-    <div id="scroll-progress-line" aria-hidden="true"></div>
+  <!-- Arm.com Single-Bar Sticky Header + Mega Menus -->
+  <header class="site-header" id="siteHeader">
+    <div class="container header-inner">
+      <a href="#top" class="brand-logo" aria-label="Almassriya Alemaratiya Home">
+        <!-- Main Logo Image — Put your logo file at assets/logo.png -->
+        <img
+          src="assets/logo.png"
+          alt="Almassriya Alemaratiya Logo"
+          class="brand-logo__img"
+          onerror="this.style.display='none'; this.nextElementSibling.style.display='inline-flex';"
+        />
+        <span class="brand-logo__fallback" style="display: none;">
+          <span class="brand-logo__mark">
+            <img
+              src="assets/logo-icon.png"
+              alt=""
+              class="brand-logo__icon-img"
+              onerror="this.style.display='none'; this.nextElementSibling.style.display='block';"
+            />
+            <svg width="26" height="26" viewBox="0 0 32 32" fill="none" aria-hidden="true" style="display:none;">
+              <rect width="32" height="32" rx="4" fill="#0091bd" fill-opacity="0.22"/>
+              <path d="M6 23L14.5 8L19 16L22 11L27 23H6Z" stroke="#00c1de" stroke-width="2.2" stroke-linejoin="round"/>
+            </svg>
+          </span>
+          <span class="brand-logo__text">
+            <strong>almassriya</strong>
+            <small>alemaratiya</small>
+          </span>
+        </span>
+      </a>
 
-    <!-- Master Header -->
-    <header class="site-header" id="header">
+      <nav class="main-nav" aria-label="Primary Navigation">
+        <ul class="nav-list">
+          <li class="nav-item has-mega">
+            <button class="nav-link" type="button" aria-expanded="false" data-mega="mega-products">
+              <span data-i18n="nav_products">Products &amp; Divisions</span>
+              <svg class="chevron" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"></polyline></svg>
+            </button>
+          </li>
+          <li class="nav-item has-mega">
+            <button class="nav-link" type="button" aria-expanded="false" data-mega="mega-markets">
+              <span data-i18n="nav_markets">Markets &amp; Solutions</span>
+              <svg class="chevron" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"></polyline></svg>
+            </button>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#catalog" data-i18n="nav_catalog">Full Catalog</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#clients" data-i18n="nav_clients">Clients</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#about" data-i18n="nav_company">Company</a>
+          </li>
+        </ul>
+      </nav>
 
-        <!-- Main Navigation Bar -->
-        <div class="container main-nav-container">
-            <div class="brand-group">
-                <a href="index.html" class="brand-link" aria-label="Almassriya Alemaratiya Homepage">
-                    <img src="Al_Masriya_Al_Emaratiya_icon.png" alt="Al Masriya Al Emaratiya" class="brand-logo" onerror="this.onerror=null; this.src='https://via.placeholder.com/200x50/174aa1/ffffff?text=Al+Masriya';">
-                </a>
-            </div>
+      <div class="header-actions">
+        <button class="icon-btn" id="openSearchBtn" type="button" aria-label="Search Products and Services">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="11" cy="11" r="8"></circle>
+            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+          </svg>
+        </button>
+        <a href="#contact" class="btn btn--cyan btn--sm header-cta" data-i18n="nav_contact">Contact Us</a>
+        <button class="mobile-toggle" id="mobileMenuBtn" type="button" aria-label="Toggle Menu" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
 
-            <!-- Global Search Box -->
-            <div class="search-box-wrapper desktop-only">
-                <div class="search-input-shell">
-                    <i class="fas fa-search search-icon"></i>
-                    <input type="text" id="global-search-input" placeholder="Search commodities, global trade divisions, services..." autocomplete="off">
-                    <button type="button" id="clear-search-btn" class="clear-search-btn hidden" aria-label="Clear Search"><i class="fas fa-times"></i></button>
-                </div>
-                <div id="search-dropdown-menu" class="search-results-popover hidden" role="listbox"></div>
-            </div>
+    <!-- Mega Menu: Products & Divisions -->
+    <div class="mega-menu" id="mega-products" hidden>
+      <div class="container mega-menu__grid">
+        <div class="mega-menu__col">
+          <span class="mega-label" data-i18n="mega_mfg">MANUFACTURING</span>
+          <a href="#catalog" class="mega-item" data-filter-jump="furniture">
+            <strong data-i18n="mega_furn_t">Customized Furniture &amp; FF&amp;E</strong>
+            <span data-i18n="mega_furn_d">PLY, MDF, Veneer, Solid Wood, Beds, Wardrobes &amp; Drapery</span>
+          </a>
+          <a href="#catalog" class="mega-item" data-filter-jump="linens">
+            <strong data-i18n="mega_linens_t">Bed &amp; Bath Linens</strong>
+            <span data-i18n="mega_linens_d">Duvets, Sheets, Towels, Bathrobes &amp; Slippers</span>
+          </a>
+          <a href="#catalog" class="mega-item" data-filter-jump="office-banquet">
+            <strong data-i18n="mega_office_t">Office, Educational &amp; Banquet</strong>
+            <span data-i18n="mega_office_d">Workstations, Seating, Folding Tables &amp; School Desks</span>
+          </a>
+        </div>
+        <div class="mega-menu__col">
+          <span class="mega-label" data-i18n="mega_proc">PROCUREMENT &amp; SUPPLIES</span>
+          <a href="#catalog" class="mega-item" data-filter-jump="hospitality">
+            <strong data-i18n="mega_hosp_t">Hotel Supplies &amp; OS&amp;E</strong>
+            <span data-i18n="mega_hosp_d">4–5 Star F&amp;B, Kitchen, Glassware, Minibars &amp; Safes</span>
+          </a>
+          <a href="#catalog" class="mega-item" data-filter-jump="staff">
+            <strong data-i18n="mega_staff_t">Staff Housing &amp; Metal Lockers</strong>
+            <span data-i18n="mega_staff_d">Bunk Beds, Steel Lockers, Appliances &amp; Welcome Baskets</span>
+          </a>
+          <a href="#catalog" class="mega-item" data-filter-jump="food-chemicals">
+            <strong data-i18n="mega_food_t">Food Division, Chemicals &amp; Cosmetics</strong>
+            <span data-i18n="mega_food_d">Dairy/Chocolate Raw Materials, Produce, Cosmetics &amp; Perfumes</span>
+          </a>
+        </div>
+        <div class="mega-menu__highlight">
+          <img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=800&q=80" alt="Luxury Hospitality" class="mega-highlight-img" />
+          <div class="mega-highlight-body">
+            <span class="mega-label" data-i18n="mega_turnkey">TURNKEY SOURCING</span>
+            <h4 data-i18n="mega_turnkey_h">One-Stop Partner for Hospitality &amp; Commerce</h4>
+            <a href="#contact" class="text-link" data-i18n="mega_brochure">Request Product Brochure &rarr;</a>
+          </div>
+        </div>
+      </div>
+    </div>
 
-            <!-- Action Controls: Language, Theme Toggle, Primary CTAs -->
-            <div class="header-actions">
-                
-                <!-- Language Selector Dropdown -->
-                <div class="lang-dropdown">
-                    <button type="button" class="lang-trigger-btn" id="lang-btn" aria-haspopup="listbox" aria-expanded="false">
-                        <i class="fas fa-globe text-brand-blue"></i>
-                        <span id="current-lang-text">EN</span>
-                        <i class="fas fa-chevron-down arrow-indicator"></i>
-                    </button>
-                    <ul class="lang-menu hidden" id="lang-menu" role="listbox">
-                        <li>
-                            <a href="index.html" class="lang-option active">
-                                <span class="flag-icon">🌐</span>
-                                <div>
-                                    <strong>English</strong>
-                                    <small>International</small>
-                                </div>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="ar/index.html" class="lang-option">
-                                <span class="flag-icon">🇪🇬</span>
-                                <div>
-                                    <strong>العربية</strong>
-                                    <small>الشرق الأوسط والعالم</small>
-                                </div>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="cn/index.html" class="lang-option">
-                                <span class="flag-icon">🇨🇳</span>
-                                <div>
-                                    <strong>中文</strong>
-                                    <small>全球业务</small>
-                                </div>
-                            </a>
-                        </li>
-                    </ul>
-                </div>
+    <!-- Mega Menu: Markets & Solutions -->
+    <div class="mega-menu" id="mega-markets" hidden>
+      <div class="container mega-menu__grid">
+        <div class="mega-menu__col">
+          <span class="mega-label" data-i18n="mega_sectors">CORE SECTORS</span>
+          <a href="#services" class="mega-item">
+            <strong data-i18n="sec_hotels_t">4–5 Star Hotels &amp; Resorts</strong>
+            <span data-i18n="sec_hotels_d">Complete OS&amp;E, FF&amp;E, Housekeeping &amp; Guest Room Amenities</span>
+          </a>
+          <a href="#services" class="mega-item">
+            <strong data-i18n="sec_hosp_t">Hospitals &amp; Healthcare</strong>
+            <span data-i18n="sec_hosp_d">Bed Sheets, Bathrobes, Medical Supplies &amp; Laundry Equipment</span>
+          </a>
+          <a href="#services" class="mega-item">
+            <strong data-i18n="sec_corp_t">Corporate &amp; Educational Campuses</strong>
+            <span data-i18n="sec_corp_d">Turnkey Office Interior Decoration &amp; Classroom Furniture</span>
+          </a>
+        </div>
+        <div class="mega-menu__col">
+          <span class="mega-label" data-i18n="mega_trade">TRADE &amp; INDUSTRY</span>
+          <a href="#food-division" class="mega-item">
+            <strong data-i18n="sec_food_t">Food Processing &amp; Confectionery</strong>
+            <span data-i18n="sec_food_d">Cocoa, Milk Powder, Butter, Oils, Nuts &amp; Fresh/Frozen Produce</span>
+          </a>
+          <a href="#catalog" class="mega-item" data-filter-jump="staff">
+            <strong data-i18n="sec_staff_t">Staff Accommodation Projects</strong>
+            <span data-i18n="sec_staff_d">End-to-end furnishing, white goods &amp; Male/Female Welcome Baskets</span>
+          </a>
+          <a href="#clients" class="mega-item">
+            <strong data-i18n="sec_agency_t">Global Commercial Agencies</strong>
+            <span data-i18n="sec_agency_d">Strategic import/export facilitation across Egypt &amp; UAE</span>
+          </a>
+        </div>
+        <div class="mega-menu__highlight">
+          <img src="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=800&q=80" alt="Global Import Export Logistics" class="mega-highlight-img" />
+          <div class="mega-highlight-body">
+            <span class="mega-label" data-i18n="mega_region">REGIONAL PRESENCE</span>
+            <h4 data-i18n="mega_region_h">Egypt, Gulf Countries &amp; Worldwide</h4>
+            <a href="#clients" class="text-link" data-i18n="mega_clients_link">View Our Client List &rarr;</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
 
-                <!-- Light / Dark Theme Switcher -->
-                <button type="button" class="theme-switch-btn" id="theme-toggle" aria-label="Toggle visual theme">
-                    <i class="fas fa-moon moon-icon" title="Switch to Dark Theme"></i>
-                    <i class="fas fa-sun sun-icon" title="Switch to Light Theme"></i>
-                </button>
+  <!-- Mobile Drawer -->
+  <div class="mobile-drawer" id="mobileDrawer" hidden>
+    <div class="mobile-drawer__inner">
+      <a href="#services" class="mobile-link" data-i18n="nav_services">Our Services</a>
+      <a href="#catalog" class="mobile-link" data-i18n="nav_catalog">Full Catalog</a>
+      <a href="#food-division" class="mobile-link" data-i18n="nav_food">Food &amp; Welcome Baskets</a>
+      <a href="#about" class="mobile-link" data-i18n="nav_company">Company</a>
+      <a href="#clients" class="mobile-link" data-i18n="nav_clients">Clients</a>
+      <a href="#contact" class="btn btn--cyan mobile-cta" data-i18n="nav_contact">Contact Us</a>
+    </div>
+  </div>
 
-                <!-- Corporate Links -->
-                <a href="https://amae.egy-uae.com" target="_blank" rel="noopener noreferrer" class="btn-clean-secondary desktop-only">
-                    <i class="fas fa-store"></i> Marketplace
-                </a>
-                <a href="#contact" class="btn-clean-primary desktop-only">
-                    Submit RFQ
-                </a>
+  <main id="top">
 
-                <!-- Mobile Hamburger Button -->
-                <button type="button" class="mobile-toggle-btn mobile-only menu-trigger" aria-label="Open Navigation Menu">
-                    <i class="fas fa-bars"></i>
-                </button>
-            </div>
+    <!-- ARM-Style Full-Bleed Image Hero with Dynamic Overlay & 4-Tab Bar -->
+    <section class="hero">
+      <div class="hero__media" aria-hidden="true">
+        <img
+          id="heroBgImage"
+          src="https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=1800&q=80"
+          alt="Hospitality and Commercial Supply"
+          class="hero__bg-img"
+        />
+        <div class="hero__scrim"></div>
+        <!-- Arm-style technical cyan light arc -->
+        <svg class="hero__svg" viewBox="0 0 1440 700" preserveAspectRatio="xMidYMid slice" fill="none">
+          <defs>
+            <linearGradient id="armArc" x1="0" y1="0" x2="1440" y2="700" gradientUnits="userSpaceOnUse">
+              <stop offset="0%" stop-color="#0091bd" stop-opacity="0.1"/>
+              <stop offset="55%" stop-color="#00c1de" stop-opacity="0.65"/>
+              <stop offset="100%" stop-color="#38bdf8" stop-opacity="0.1"/>
+            </linearGradient>
+          </defs>
+          <path d="M-100 540 C 300 410, 620 650, 1020 420 C 1220 300, 1380 320, 1540 240" stroke="url(#armArc)" stroke-width="1.6"/>
+          <path d="M-100 580 C 340 460, 680 680, 1080 460 C 1280 350, 1400 370, 1540 300" stroke="url(#armArc)" stroke-width="1"/>
+        </svg>
+      </div>
+
+      <div class="container hero__content">
+        <div class="hero__text-col">
+          <span class="eyebrow eyebrow--cyan" data-i18n="hero_eyebrow">AL MASSRIYA AL EMARATIYA FOR COMMERCIAL AGENCIES, IMPORT &amp; EXPORT</span>
+          <h1 class="hero__title" id="heroDynamicTitle">
+            Where Global Supply Meets Manufacturing Excellence
+          </h1>
+          <p class="hero__subtitle" id="heroDynamicSubtitle">
+            Delivering highest quality Customized Furniture, Bed &amp; Bath Linens, 4–5 Star Hotel OS&amp;E &amp; FF&amp;E Procurement, Staff Housing, Food Products, Chemicals &amp; Cosmetics across Egypt, Gulf Countries, and Worldwide.
+          </p>
+          <div class="hero__actions">
+            <a href="#catalog" class="btn btn--cyan" data-i18n="hero_cta_1">Explore Our Divisions</a>
+            <a href="#contact" class="btn btn--outline-white" data-i18n="hero_cta_2">Request Commercial Quote</a>
+          </div>
         </div>
 
-        <!-- Navigation Menu Links -->
-        <nav class="desktop-menu-bar desktop-only" aria-label="Main Navigation">
-            <div class="container menu-bar-inner">
-                <ul class="nav-links">
-                    <li><a href="#home" class="nav-anchor active">Overview</a></li>
-                    <li><a href="#services" class="nav-anchor">Global Operations</a></li>
-                    <li><a href="#divisions" class="nav-anchor">Trade Divisions</a></li>
-                    <li><a href="#about" class="nav-anchor">Corporate Profile</a></li>
-                    <li><a href="#systems" class="nav-anchor">Client Desks</a></li>
-                    <li><a href="#contact" class="nav-anchor nav-highlight">RFQ Desk</a></li>
-                </ul>
+        <!-- Arm-style Right Featured Visual Card -->
+        <div class="hero__visual-col">
+          <div class="hero-card">
+            <div class="hero-card__img-wrap">
+              <img
+                id="heroCardImg"
+                src="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=900&q=80"
+                alt="Global Supply Hub"
+              />
+              <span class="hero-card__badge" data-i18n="hero_badge">ONE-STOP SOURCING HUB</span>
             </div>
-        </nav>
-    </header>
-
-    <!-- Mobile Drawer -->
-    <aside class="mobile-side-drawer" id="side-drawer" aria-hidden="true">
-        <div class="drawer-header">
-            <img src="Al_Masriya_Al_Emaratiya_icon.png" alt="Logo" class="drawer-logo" onerror="this.onerror=null; this.src='https://via.placeholder.com/150x40/174aa1/ffffff?text=Al+Masriya';">
-            <button type="button" class="drawer-close-btn menu-trigger" aria-label="Close menu"><i class="fas fa-times"></i></button>
+            <div class="hero-card__body">
+              <h3 id="heroCardHeading">End-to-End Turnkey Procurement</h3>
+              <p id="heroCardDesc">
+                From raw materials and bespoke woodwork manufactured in 10th of Ramadan City to international hospitality delivery.
+              </p>
+              <ul class="hero-card__metrics">
+                <li><strong>8+</strong><span data-i18n="metric_div">Core Divisions</span></li>
+                <li><strong>4–5★</strong><span data-i18n="metric_star">Hotel Standards</span></li>
+                <li><strong>GCC</strong><span data-i18n="metric_gcc">&amp; Global Export</span></li>
+              </ul>
+            </div>
+          </div>
         </div>
-        
-        <div class="drawer-search">
-            <input type="text" id="drawer-search-input" placeholder="Search commodity or service...">
+      </div>
+
+      <!-- Arm-Style Bottom Hero Feature Switcher -->
+      <div class="hero-tabs">
+        <div class="container hero-tabs__grid" role="tablist" aria-label="Featured Company Pillars">
+          <button class="hero-tab is-active" type="button" role="tab" aria-selected="true" data-hero-index="0">
+            <span class="hero-tab__kicker" data-i18n="tab1_k">01 / COMMERCIAL AGENCIES</span>
+            <span class="hero-tab__label" data-i18n="tab1_l">Import, Export &amp; Partnering</span>
+          </button>
+          <button class="hero-tab" type="button" role="tab" aria-selected="false" data-hero-index="1">
+            <span class="hero-tab__kicker" data-i18n="tab2_k">02 / MANUFACTURING</span>
+            <span class="hero-tab__label" data-i18n="tab2_l">Customized Furniture &amp; Linens</span>
+          </button>
+          <button class="hero-tab" type="button" role="tab" aria-selected="false" data-hero-index="2">
+            <span class="hero-tab__kicker" data-i18n="tab3_k">03 / HOSPITALITY</span>
+            <span class="hero-tab__label" data-i18n="tab3_l">OS&amp;E &amp; FF&amp;E for 4–5 Star Hotels</span>
+          </button>
+          <button class="hero-tab" type="button" role="tab" aria-selected="false" data-hero-index="3">
+            <span class="hero-tab__kicker" data-i18n="tab4_k">04 / FOOD &amp; COMMODITIES</span>
+            <span class="hero-tab__label" data-i18n="tab4_l">Raw Materials, Produce &amp; Cosmetics</span>
+          </button>
         </div>
+      </div>
+    </section>
 
-        <nav class="drawer-links-list">
-            <a href="#home" class="drawer-link"><i class="fas fa-compass text-brand-blue"></i> Overview</a>
-            <a href="#services" class="drawer-link"><i class="fas fa-globe text-brand-red"></i> Global Operations</a>
-            <a href="#divisions" class="drawer-link"><i class="fas fa-boxes-stacked text-brand-blue"></i> Trade Divisions</a>
-            <a href="#about" class="drawer-link"><i class="fas fa-building-shield text-brand-red"></i> Corporate Profile</a>
-            <a href="#systems" class="drawer-link"><i class="fas fa-desktop text-brand-blue"></i> Client Desks</a>
-            <a href="#contact" class="drawer-link highlight-red"><i class="fas fa-file-invoice"></i> Submit Sourcing RFQ</a>
-            
-            <a href="https://amae.egy-uae.com" target="_blank" rel="noopener noreferrer" class="btn-clean-primary text-center mt-3">
-                <i class="fas fa-store"></i> Open Marketplace
-            </a>
-        </nav>
-    </aside>
-    <div class="drawer-backdrop menu-trigger" aria-hidden="true"></div>
+    <!-- Impact Metrics Strip -->
+    <section class="stats-strip">
+      <div class="container stats-strip__grid">
+        <div class="stat-box">
+          <span class="stat-box__num">8</span>
+          <span class="stat-box__label" data-i18n="stat1">Specialized Manufacturing &amp; Trade Divisions</span>
+        </div>
+        <div class="stat-box">
+          <span class="stat-box__num">100+</span>
+          <span class="stat-box__label" data-i18n="stat2">Furniture, Linen, OS&amp;E &amp; Food Product Lines</span>
+        </div>
+        <div class="stat-box">
+          <span class="stat-box__num">18+</span>
+          <span class="stat-box__label" data-i18n="stat3">Major Hospitality, Club &amp; Trading Clients</span>
+        </div>
+        <div class="stat-box">
+          <span class="stat-box__num" data-i18n="stat4_num">Egypt &amp; GCC</span>
+          <span class="stat-box__label" data-i18n="stat4">HQ in 10th of Ramadan City, Sharqia</span>
+        </div>
+      </div>
+    </section>
 
-    <main id="main-content">
-        <!-- Hero: Refined Corporate Presentation -->
-        <section class="corporate-hero" id="home">
-            <div class="container hero-grid">
-                
-                <!-- Left: Headline & Corporate Scope -->
-                <div class="hero-text-block" data-aos="fade-right">
-                    <div class="hero-tag-pill">
-                        <span class="status-dot"></span>
-                        <span>Institutional Global Trade & Commercial Agency</span>
-                    </div>
-
-                    <h1 class="hero-title">
-                        Connecting Industrial Production with <span class="text-brand-blue">Global Markets</span>
-                    </h1>
-
-                    <p class="hero-lead">
-                        Almassriya Alemaratiya provides accredited commercial agency, worldwide ocean and air freight logistics, customs brokerage, and cross-border trade execution. We bridge verified manufacturers and international enterprise buyers across global trade corridors.
-                    </p>
-
-                    <div class="hero-actions-row">
-                        <a href="#divisions" class="btn-clean-primary btn-lg">
-                            <i class="fas fa-folder-open"></i> Browse Trade Matrix
-                        </a>
-                        <a href="#contact" class="btn-clean-secondary btn-lg">
-                            <i class="fas fa-file-pen"></i> Submit Sourcing RFQ
-                        </a>
-                    </div>
-
-                    <!-- Verified Milestone Metrics -->
-                    <div class="hero-stats-row">
-                        <div class="stat-unit">
-                            <strong>Global Reach</strong>
-                            <span>Import & Export Operations</span>
-                        </div>
-                        <div class="stat-sep"></div>
-                        <div class="stat-unit">
-                            <strong>Since 2010</strong>
-                            <span>Accredited Trade Agency</span>
-                        </div>
-                        <div class="stat-sep"></div>
-                        <div class="stat-unit">
-                            <strong>100%</strong>
-                            <span>Regulatory & Legal Compliance</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Right: Clean Bento Showcase with Real Imagery -->
-                <div class="hero-media-showcase" data-aos="fade-left">
-                    <div class="showcase-card primary-card">
-                        <div class="showcase-img-wrap">
-                            <img src="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=800&q=80" alt="Supply Chain Warehousing" class="showcase-img">
-                            <div class="showcase-badge"><i class="fas fa-shield-check text-brand-blue"></i> Global Commercial Network</div>
-                        </div>
-                        <div class="showcase-caption">
-                            <h3>International Trade Infrastructure</h3>
-                            <p>Direct supply contracts, factory audit inspections, multimodal shipping coordination, and bonded warehousing across strategic international corridors.</p>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-        </section>
-
-        <!-- Trust Badges Strip -->
-        <section class="trust-bar">
-            <div class="container trust-items-grid">
-                <div class="trust-item">
-                    <i class="fas fa-award text-brand-blue"></i>
-                    <div>
-                        <strong>Global Trade Agency</strong>
-                        <p>Certified Chambers of Commerce & Registry</p>
-                    </div>
-                </div>
-                <div class="trust-item">
-                    <i class="fas fa-file-shield text-brand-red"></i>
-                    <div>
-                        <strong>Customs Single Window</strong>
-                        <p>Nafeza ACI, Mirsal & Worldwide Clearance</p>
-                    </div>
-                </div>
-                <div class="trust-item">
-                    <i class="fas fa-warehouse text-brand-blue"></i>
-                    <div>
-                        <strong>Strategic Warehousing</strong>
-                        <p>Consolidation & Regional Staging Hubs</p>
-                    </div>
-                </div>
-                <div class="trust-item">
-                    <i class="fas fa-scale-balanced text-brand-red"></i>
-                    <div>
-                        <strong>Commercial Representation</strong>
-                        <p>Authorized Bilateral & Global Legal Proxy</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Services & Capacities (Bento Grid) -->
-        <section id="services" class="section-padding">
-            <div class="container">
-                <div class="section-head" data-aos="fade-up">
-                    <span class="section-kicker">Core Operations</span>
-                    <h2 class="section-title">Worldwide Trade <span class="text-brand-blue">Capacities</span></h2>
-                    <p class="section-description">End-to-end commercial solutions designed to manage international sourcing, logistics, and authorized legal representation worldwide.</p>
-                </div>
-
-                <div class="bento-services-grid">
-                    
-                    <!-- Card 1: Freight Forwarding -->
-                    <div class="bento-card col-span-2" data-aos="fade-up">
-                        <div class="bento-content">
-                            <span class="service-pill"><i class="fas fa-ship text-brand-blue"></i> Ocean & Air Forwarding</span>
-                            <h3>Worldwide Multimodal Freight Forwarding</h3>
-                            <p>Comprehensive ocean container booking (FCL & LCL) and priority air cargo forwarding across major global shipping lanes connecting industrial manufacturing hubs with worldwide markets. Guaranteed slot allocations and reliable international schedules.</p>
-                        </div>
-                        <div class="bento-image-container">
-                            <img src="https://images.unsplash.com/photo-1494412519320-aa613dfb7738?auto=format&fit=crop&w=700&q=80" alt="Freight Forwarding" class="bento-thumb">
-                        </div>
-                    </div>
-
-                    <!-- Card 2: Customs Brokerage -->
-                    <div class="bento-card" data-aos="fade-up" data-aos-delay="100">
-                        <div class="bento-icon-block"><i class="fas fa-file-invoice text-brand-red"></i></div>
-                        <h3>International Customs Brokerage</h3>
-                        <p>Complete pre-shipment documentation, ACID issuance under Egyptian single-window (Nafeza), UAE Mirsal II, and standard export/import customs procedures globally.</p>
-                    </div>
-
-                    <!-- Card 3: Commercial Agency -->
-                    <div class="bento-card" data-aos="fade-up" data-aos-delay="150">
-                        <div class="bento-icon-block"><i class="fas fa-handshake text-brand-blue"></i></div>
-                        <h3>Global Commercial Agency & Proxy</h3>
-                        <p>Acting as legal commercial agent, accredited distributor, and regional sales representative for industrial manufacturers expanding into foreign markets.</p>
-                    </div>
-
-                    <!-- Card 4: Warehousing -->
-                    <div class="bento-card col-span-2" data-aos="fade-up" data-aos-delay="200">
-                        <div class="bento-content">
-                            <span class="service-pill"><i class="fas fa-warehouse text-brand-red"></i> Logistics Staging</span>
-                            <h3>Bonded Warehousing & Cargo Consolidation</h3>
-                            <p>Strategically located storage, cargo consolidation, and cross-docking facilities supported by modern inventory control systems to expedite international distribution.</p>
-                        </div>
-                        <div class="bento-image-container">
-                            <img src="https://images.unsplash.com/photo-1553413077-190dd305871c?auto=format&fit=crop&w=700&q=80" alt="Logistics Warehousing" class="bento-thumb">
-                        </div>
-                    </div>
-
-                </div>
-            </div>
-        </section>
-
-        <!-- Product Matrix / Trade Divisions -->
-        <section id="divisions" class="section-padding bg-subtle">
-            <div class="container">
-                <div class="section-head" data-aos="fade-up">
-                    <span class="section-kicker">Trade Matrix</span>
-                    <h2 class="section-title">Commercial Trade <span class="text-brand-blue">Divisions</span></h2>
-                    <p class="section-description">High-demand commodities and industrial goods facilitated for international procurement, import, and export.</p>
-                </div>
-
-                <!-- Clean Filter Buttons -->
-                <div class="catalog-filters" data-aos="fade-up">
-                    <button type="button" class="catalog-tab-btn active" data-filter="all">All Divisions</button>
-                    <button type="button" class="catalog-tab-btn" data-filter="consumables">Food & Consumables</button>
-                    <button type="button" class="catalog-tab-btn" data-filter="furniture">Furniture & Hospitality</button>
-                    <button type="button" class="catalog-tab-btn" data-filter="industrial">Industrial & Materials</button>
-                </div>
-
-                <!-- Products Grid -->
-                <div class="catalog-grid-row" id="catalog-cards-container">
-                    
-                    <!-- Product 1: Food & Agriculture -->
-                    <div class="catalog-card-item" data-category="consumables" data-aos="fade-up">
-                        <div class="card-img-shell">
-                            <img src="https://images.unsplash.com/photo-1506084868230-bb9d95c24759?auto=format&fit=crop&w=600&q=80" alt="Fresh Agriculture" class="card-img">
-                            <span class="card-badge"><i class="fas fa-certificate text-brand-blue"></i> Global GAP / ISO 22000</span>
-                        </div>
-                        <div class="card-info">
-                            <h3 class="card-title">Food & Agricultural Produce</h3>
-                            <p class="card-summary">Export-grade fresh citrus, Grade-A frozen vegetables, organic herbs, and bulk agro commodities supplied to international supermarket and processing chains.</p>
-                            <div class="spec-table">
-                                <div class="spec-item"><span>Quality:</span> <strong>Phytosanitary Certified</strong></div>
-                                <div class="spec-item"><span>Shipment:</span> <strong>Global Reefer Fleet</strong></div>
-                            </div>
-                            <button type="button" class="btn-outline-card rfq-autofill-btn" data-target-subject="Food & Agricultural Division">
-                                Request Division Spec &rarr;
-                            </button>
-                        </div>
-                    </div>
-
-                    <!-- Product 2: Hotel Linen Supplies -->
-                    <div class="catalog-card-item" data-category="furniture" data-aos="fade-up" data-aos-delay="100">
-                        <div class="card-img-shell">
-                            <img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=600&q=80" alt="Hotel Linen" class="card-img">
-                            <span class="card-badge"><i class="fas fa-star text-brand-red"></i> 100% Egyptian Giza Cotton</span>
-                        </div>
-                        <div class="card-info">
-                            <h3 class="card-title">Hotel Linen & Operating Supplies</h3>
-                            <p class="card-summary">Luxury hotel bed sheets, combed bathrobes, high-durability towels, and institutional dining textiles built for heavy contract laundering worldwide.</p>
-                            <div class="spec-table">
-                                <div class="spec-item"><span>Thread Count:</span> <strong>300 to 600 TC Sateen</strong></div>
-                                <div class="spec-item"><span>Standard:</span> <strong>Hospitality Contract Grade</strong></div>
-                            </div>
-                            <button type="button" class="btn-outline-card rfq-autofill-btn" data-target-subject="Hotel Linen & Operating Supplies">
-                                Request Division Spec &rarr;
-                            </button>
-                        </div>
-                    </div>
-
-                    <!-- Product 3: Damietta Executive Furniture -->
-                    <div class="catalog-card-item" data-category="furniture" data-aos="fade-up" data-aos-delay="200">
-                        <div class="card-img-shell">
-                            <img src="https://images.unsplash.com/photo-1524758631624-e2822e304c36?auto=format&fit=crop&w=600&q=80" alt="Executive Office Furniture" class="card-img">
-                            <span class="card-badge"><i class="fas fa-tree text-brand-blue"></i> Natural Beechwood</span>
-                        </div>
-                        <div class="card-info">
-                            <h3 class="card-title">Damietta Office Furniture Systems</h3>
-                            <p class="card-summary">Executive mahogany and beechwood desks, boardroom conference tables, acoustic pods, and ergonomic executive seating ready for global export.</p>
-                            <div class="spec-table">
-                                <div class="spec-item"><span>Wood Type:</span> <strong>Kiln-Dried Hardwood</strong></div>
-                                <div class="spec-item"><span>Application:</span> <strong>Corporate & Commercial</strong></div>
-                            </div>
-                            <button type="button" class="btn-outline-card rfq-autofill-btn" data-target-subject="Damietta Office Furniture">
-                                Request Division Spec &rarr;
-                            </button>
-                        </div>
-                    </div>
-
-                    <!-- Product 4: Chemicals & Raw Materials -->
-                    <div class="catalog-card-item" data-category="industrial" data-aos="fade-up" data-aos-delay="100">
-                        <div class="card-img-shell">
-                            <img src="https://images.unsplash.com/photo-1601522244217-cd3c403695db?auto=format&fit=crop&w=600&q=80" alt="Industrial Chemicals" class="card-img">
-                            <span class="card-badge"><i class="fas fa-flask text-brand-blue"></i> REACH & SDS Compliant</span>
-                        </div>
-                        <div class="card-info">
-                            <h3 class="card-title">Chemicals & Detergents Raw Materials</h3>
-                            <p class="card-summary">Industrial detergents, surfactant bases, fragrance oils, and certified intermediate chemicals provided with international SDS/MSDS compliance.</p>
-                            <div class="spec-table">
-                                <div class="spec-item"><span>Purity:</span> <strong>Industrial & Cosmetic Grade</strong></div>
-                                <div class="spec-item"><span>Packaging:</span> <strong>ISO Tanks & 200L Drums</strong></div>
-                            </div>
-                            <button type="button" class="btn-outline-card rfq-autofill-btn" data-target-subject="Chemicals & Cosmetics Division">
-                                Request Division Spec &rarr;
-                            </button>
-                        </div>
-                    </div>
-
-                    <!-- Product 5: Banquet & Staging Furniture -->
-                    <div class="catalog-card-item" data-category="furniture" data-aos="fade-up" data-aos-delay="200">
-                        <div class="card-img-shell">
-                            <img src="https://images.unsplash.com/photo-1464366400600-7168b8af9bc3?auto=format&fit=crop&w=600&q=80" alt="Banquet Chairs" class="card-img">
-                            <span class="card-badge"><i class="fas fa-medal text-brand-red"></i> Heavy Contract Spec</span>
-                        </div>
-                        <div class="card-info">
-                            <h3 class="card-title">Banquet & Convention Installations</h3>
-                            <p class="card-summary">Stackable aluminum and steel ballroom chairs, heavy-duty folding event tables, and mobile staging systems for resorts and global conference centers.</p>
-                            <div class="spec-table">
-                                <div class="spec-item"><span>Fabric:</span> <strong>Fire-Retardant BS 7176</strong></div>
-                                <div class="spec-item"><span>Durability:</span> <strong>High Traffic Commercial</strong></div>
-                            </div>
-                            <button type="button" class="btn-outline-card rfq-autofill-btn" data-target-subject="Banquet & Convention Sets">
-                                Request Division Spec &rarr;
-                            </button>
-                        </div>
-                    </div>
-
-                    <!-- Product 6: Accommodation Metal Beds -->
-                    <div class="catalog-card-item" data-category="industrial" data-aos="fade-up" data-aos-delay="300">
-                        <div class="card-img-shell">
-                            <img src="https://images.unsplash.com/photo-1555041469-a586c61ea9bc?auto=format&fit=crop&w=600&q=80" alt="Accommodation Beds" class="card-img">
-                            <span class="card-badge"><i class="fas fa-shield text-brand-blue"></i> Powder Coated Steel</span>
-                        </div>
-                        <div class="card-info">
-                            <h3 class="card-title">Accommodation Metal Beds & Lockers</h3>
-                            <p class="card-summary">Heavy-gauge electrostatic bunk beds, secure double-door lockers, and institutional housing furniture designed for large-scale staff facilities.</p>
-                            <div class="spec-table">
-                                <div class="spec-item"><span>Material:</span> <strong>Heavy Gauge Tubular Steel</strong></div>
-                                <div class="spec-item"><span>Finish:</span> <strong>Thermoset Anti-Corrosive</strong></div>
-                            </div>
-                            <button type="button" class="btn-outline-card rfq-autofill-btn" data-target-subject="Accommodation Metal Beds & Lockers">
-                                Request Division Spec &rarr;
-                            </button>
-                        </div>
-                    </div>
-
-                </div>
-            </div>
-        </section>
-
-        <!-- Corporate Profile & Agency Architecture -->
-        <section id="about" class="section-padding">
-            <div class="container">
-                <div class="profile-two-columns" data-aos="fade-up">
-                    
-                    <div class="profile-text-col">
-                        <span class="section-kicker">Corporate Architecture</span>
-                        <h2 class="section-title">International Operations & <span class="text-brand-blue">Agency</span></h2>
-                        <p class="profile-paragraph">
-                            Established in <strong>2010</strong>, <strong>Almassriya Alemaratiya</strong> operates as an accredited commercial agency and multilateral trade gateway. While rooted with strong strategic corporate nodes in Egypt and the UAE, our operations facilitate global import, export, and cross-border trade worldwide.
-                        </p>
-                        
-                        <div class="features-checklist">
-                            <div class="check-item">
-                                <i class="fas fa-check-circle text-brand-blue"></i>
-                                <div>
-                                    <strong>Global Trade Capabilities:</strong>
-                                    <span>Direct import and export facilitation handling cargo flow across Europe, Asia, Africa, the GCC, and the Americas.</span>
-                                </div>
-                            </div>
-                            <div class="check-item">
-                                <i class="fas fa-check-circle text-brand-red"></i>
-                                <div>
-                                    <strong>Accredited Commercial Agency:</strong>
-                                    <span>Legally authorized representation, registered distributor contracts, and foreign commercial agency services for global manufacturers.</span>
-                                </div>
-                            </div>
-                            <div class="check-item">
-                                <i class="fas fa-check-circle text-brand-blue"></i>
-                                <div>
-                                    <strong>International Banking & LC Protocols:</strong>
-                                    <span>Comprehensive management of Letters of Credit (LC), CAD, EUR.1 legalization, and international trade finance standards.</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="profile-visual-col">
-                        <div class="corporate-card-frame">
-                            <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=700&q=80" alt="Corporate Agency Governance" class="corporate-img">
-                            <div class="frame-tag">
-                                <strong>Accredited Global Agency</strong>
-                                <span>Commercial Registry &bull; Certified Chambers of Commerce</span>
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
-            </div>
-        </section>
-
-        <!-- Digital Systems (Tracking, Calculations, Docs) -->
-        <section id="systems" class="section-padding bg-subtle">
-            <div class="container">
-                <div class="section-head" data-aos="fade-up">
-                    <span class="section-kicker">Digital Infrastructure</span>
-                    <h2 class="section-title">Client Operations <span class="text-brand-blue">Desks</span></h2>
-                    <p class="section-description">Dedicated tools to manage cargo status, calculate landed duties, and authenticate shipping documents.</p>
-                </div>
-
-                <div class="systems-grid-row">
-                    <div class="system-item" data-aos="fade-up">
-                        <div class="sys-icon"><i class="fas fa-satellite text-brand-blue"></i></div>
-                        <h3>Global Cargo Tracking</h3>
-                        <p>Track bills of lading (BL), container identifiers, and customs release milestones in direct coordination with our international desk.</p>
-                        <a href="tracking.html" class="system-link">Access Tracking Desk &rarr;</a>
-                    </div>
-
-                    <div class="system-item" data-aos="fade-up" data-aos-delay="100">
-                        <div class="sys-icon"><i class="fas fa-calculator text-brand-red"></i></div>
-                        <h3>Landed Cost Estimator</h3>
-                        <p>Evaluate freight tariffs, customs duties, terminal handling fees, and shipping expenses across global trade corridors.</p>
-                        <a href="dashboard.html" class="system-link">Open Calculator Desk &rarr;</a>
-                    </div>
-
-                    <div class="system-item" data-aos="fade-up" data-aos-delay="200">
-                        <div class="sys-icon"><i class="fas fa-folder-closed text-brand-blue"></i></div>
-                        <h3>Verified Documentation</h3>
-                        <p>Direct portal access to download verified certificates of origin, commercial invoices, and accredited packing manifests.</p>
-                        <a href="portal.html" class="system-link">Access Document Vault &rarr;</a>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Institutional Clients & Carriers -->
-        <section class="section-padding">
-            <div class="container">
-                <div class="section-head" data-aos="fade-up">
-                    <span class="section-kicker">Network Reach</span>
-                    <h2 class="section-title">Verified Corporate <span class="text-brand-blue">Ecosystem</span></h2>
-                    <p class="section-description">Leading enterprise groups and global logistics carriers operating through our worldwide trade corridor.</p>
-                </div>
-
-                <div class="logo-strip-wrap" data-aos="fade-up">
-                    <div class="logo-grid-flex">
-                        <div class="partner-logo"><img src="images/Lords Hotel - logo.jpg" alt="Lords Hotel" onerror="this.onerror=null; this.src='https://via.placeholder.com/140x50/ffffff/174aa1?text=Lords+Hotel';"></div>
-                        <div class="partner-logo"><img src="images/Oceanic Hotel - logo.png" alt="Oceanic Hotel" onerror="this.onerror=null; this.src='https://via.placeholder.com/140x50/ffffff/174aa1?text=Oceanic+Hotel';"></div>
-                        <div class="partner-logo"><img src="images/Rotana Hotel - logo.png" alt="Rotana Hotels" onerror="this.onerror=null; this.src='https://via.placeholder.com/140x50/ffffff/174aa1?text=Rotana+Hotels';"></div>
-                        <div class="partner-logo"><img src="images/Holiday International - logo.png" alt="Holiday International" onerror="this.onerror=null; this.src='https://via.placeholder.com/140x50/ffffff/174aa1?text=Holiday+Int';"></div>
-                        <div class="partner-logo"><img src="images/DHL-Logo.png" alt="DHL Express" onerror="this.onerror=null; this.src='https://via.placeholder.com/140x50/ffffff/ed1a24?text=DHL';"></div>
-                        <div class="partner-logo"><img src="images/nafeza-en.svg" alt="Nafeza Egypt" onerror="this.onerror=null; this.src='https://via.placeholder.com/140x50/ffffff/174aa1?text=Nafeza';"></div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Executive Reviews -->
-        <section class="section-padding bg-subtle">
-            <div class="container">
-                <div class="section-head" data-aos="fade-up">
-                    <span class="section-kicker">Client Feedback</span>
-                    <h2 class="section-title">Verified Corporate <span class="text-brand-blue">Testimonials</span></h2>
-                </div>
-
-                <div class="swiper testimonial-slider" data-aos="fade-up">
-                    <div class="swiper-wrapper">
-                        
-                        <div class="swiper-slide">
-                            <div class="testimonial-card">
-                                <div class="review-header">
-                                    <div class="avatar-letter">OA</div>
-                                    <div class="review-author">
-                                        <h4>Omar Al Fares</h4>
-                                        <span>Procurement Director &bull; Hospitality Group</span>
-                                    </div>
-                                    <span class="verified-pill"><i class="fas fa-check-circle text-brand-blue"></i> Verified Client</span>
-                                </div>
-                                <p class="review-body">
-                                    "Almassriya Alemaratiya managed international procurement and twenty 40ft HQ containers with meticulous customs clearance and delivered straight to our project destination on schedule."
-                                </p>
-                            </div>
-                        </div>
-
-                        <div class="swiper-slide">
-                            <div class="testimonial-card">
-                                <div class="review-header">
-                                    <div class="avatar-letter red">LH</div>
-                                    <div class="review-author">
-                                        <h4>Latifa Hassan</h4>
-                                        <span>Operations VP &bull; Regional Chemicals Producer</span>
-                                    </div>
-                                    <span class="verified-pill"><i class="fas fa-check-circle text-brand-blue"></i> Verified Client</span>
-                                </div>
-                                <p class="review-body">
-                                    "Their commercial agency representation gave our plant direct access to corporate buyers globally with complete banking, legal, and shipping compliance."
-                                </p>
-                            </div>
-                        </div>
-
-                    </div>
-                    <div class="swiper-pagination"></div>
-                </div>
-            </div>
-        </section>
-
-        <!-- RFQ Gateway & Operations Desk -->
-        <section id="contact" class="section-padding">
-            <div class="container">
-                <div class="rfq-split-layout">
-                    
-                    <!-- Left: Operational Information & Contact -->
-                    <div class="rfq-info-pane" data-aos="fade-right">
-                        <div class="section-head text-left mb-4">
-                            <span class="section-kicker">Direct Sourcing Desk</span>
-                            <h2 class="section-title">Global Trade <span class="text-brand-blue">Desk</span></h2>
-                            <p class="section-description">Reach our international freight officers and commercial agency directors directly.</p>
-                        </div>
-
-                        <div class="contact-card-box">
-                            <div class="contact-line">
-                                <i class="fas fa-location-dot text-brand-red"></i>
-                                <div>
-                                    <strong>Regional & Operational Hubs:</strong>
-                                    <span>Egypt (Cairo / 10th of Ramadan) &bull; UAE (Sharjah SAIF Zone) &bull; Global Logistics Partners</span>
-                                </div>
-                            </div>
-                            <div class="contact-line">
-                                <i class="fas fa-phone text-brand-blue"></i>
-                                <div>
-                                    <strong>Direct Phone & WhatsApp Line:</strong>
-                                    <a href="tel:+201011766232">+20 101 176 6232</a>
-                                </div>
-                            </div>
-                            <div class="contact-line">
-                                <i class="fas fa-envelope text-brand-red"></i>
-                                <div>
-                                    <strong>Procurement Desk Email:</strong>
-                                    <a href="mailto:info@egy-uae.com">info@egy-uae.com</a>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- FAQ Accordion -->
-                        <div class="clean-accordion mt-4">
-                            <div class="acc-row">
-                                <button type="button" class="acc-header" aria-expanded="false">
-                                    <span>Do you only trade between Egypt and the UAE?</span>
-                                    <i class="fas fa-chevron-down"></i>
-                                </button>
-                                <div class="acc-panel">
-                                    <p>No. While our operational headquarters and historic hubs are located in Egypt and the UAE, our commercial agency, import, and export operations are worldwide. We regularly handle cargo and supply contracts spanning Asia, Europe, Africa, the GCC, and the Americas.</p>
-                                </div>
-                            </div>
-
-                            <div class="acc-row">
-                                <button type="button" class="acc-header" aria-expanded="false">
-                                    <span>Do you handle ACI Nafeza and global customs filing?</span>
-                                    <i class="fas fa-chevron-down"></i>
-                                </button>
-                                <div class="acc-panel">
-                                    <p>Yes. We generate ACID numbers, verify commercial manifests, and process customs clearance directly with the Egyptian Single Window authority, UAE Mirsal II, and international port authorities.</p>
-                                </div>
-                            </div>
-
-                            <div class="acc-row">
-                                <button type="button" class="acc-header" aria-expanded="false">
-                                    <span>What Incoterms do you primarily support?</span>
-                                    <i class="fas fa-chevron-down"></i>
-                                </button>
-                                <div class="acc-panel">
-                                    <p>We execute standard CIF, FOB, CFR, and EXW agreements, managing the full chain from factory dispatch through to final international warehouse delivery.</p>
-                                </div>
-                            </div>
-
-                            <div class="acc-row">
-                                <button type="button" class="acc-header" aria-expanded="false">
-                                    <span>How does your Commercial Agency service operate?</span>
-                                    <i class="fas fa-chevron-down"></i>
-                                </button>
-                                <div class="acc-panel">
-                                    <p>We act as accredited commercial agents, legal representatives, and distributors, handling market penetration, contract legalization, and localized distribution for manufacturers across diverse jurisdictions.</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Right: RFQ Form -->
-                    <div class="rfq-form-pane" data-aos="fade-left">
-                        <div class="form-card-container">
-                            <div class="form-card-header">
-                                <h3>Launch Sourcing / Procurement RFQ</h3>
-                                <span class="sla-badge"><i class="fas fa-clock text-brand-blue"></i> Response within 2 business hours</span>
-                            </div>
-
-                            <div id="rfq-form-alert" class="form-alert-message hidden" role="alert"></div>
-
-                            <form class="clean-rfq-form" action="https://formspree.io/f/maqkrwoe" method="POST" id="rfq-main-form" novalidate>
-                                <div class="form-row-grid">
-                                    <div class="form-field">
-                                        <label for="full_name">Procurement Officer / Contact</label>
-                                        <input type="text" id="full_name" name="Full_Name" placeholder="e.g. Eng. Tarek Mansour" required>
-                                    </div>
-                                    <div class="form-field">
-                                        <label for="company_name">Company Name & Country</label>
-                                        <input type="text" id="company_name" name="Company_Name" placeholder="e.g. Apex Global Trade LLC" required>
-                                    </div>
-                                    <div class="form-field">
-                                        <label for="email">Corporate Email Address</label>
-                                        <input type="email" id="email" name="Email" placeholder="officer@company.com" required>
-                                    </div>
-                                    <div class="form-field">
-                                        <label for="phone">Phone / WhatsApp Line</label>
-                                        <input type="tel" id="phone" name="Phone_Number" placeholder="+971 50 123 4567" required>
-                                    </div>
-                                    <div class="form-field full-width">
-                                        <label for="rfq-division-subject">Sourcing Division / Commodity</label>
-                                        <input type="text" id="rfq-division-subject" name="Division_Subject" placeholder="e.g. Hotel Linen & Operating Supplies" required>
-                                    </div>
-                                    <div class="form-field full-width">
-                                        <label for="message_details">Cargo Specifications (Volume, Origin/Destination, Required Terms)</label>
-                                        <textarea id="message_details" name="Message_Details" rows="4" placeholder="Detail estimated container volume (20ft / 40ft HQ), destination port, Incoterms (CIF / FOB), and required delivery timeframe..." required></textarea>
-                                    </div>
-                                </div>
-
-                                <div class="form-actions-bar">
-                                    <span class="security-text"><i class="fas fa-lock text-brand-blue"></i> Encrypted Corporate Submission</span>
-                                    <button type="submit" class="btn-clean-primary" id="rfq-submit-btn">
-                                        <span class="btn-text">Submit Sourcing Inquiry &rarr;</span>
-                                        <span class="btn-loader hidden"><i class="fas fa-circle-notch fa-spin"></i> Processing...</span>
-                                    </button>
-                                </div>
-                            </form>
-                        </div>
-                    </div>
-
-                </div>
-            </div>
-        </section>
-    </main>
-
-    <!-- Master Corporate Footer -->
-    <footer class="site-footer">
-        <div class="container footer-grid">
-            <div class="footer-intro-col">
-                <img src="Al_Masriya_Al_Emaratiya_icon.png" alt="Logo" class="footer-brand-logo" onerror="this.onerror=null; this.src='https://via.placeholder.com/180x45/174aa1/ffffff?text=Al+Masriya';">
-                <p class="footer-bio">
-                    Almassriya Alemaratiya is an accredited international commercial agency and worldwide B2B trade facilitator connecting manufacturers and enterprise supply chains across global markets.
-                </p>
-                <div class="footer-social-icons">
-                    <a href="https://www.linkedin.com/company/egy-uae" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
-                    <a href="https://www.facebook.com/AlMasriyaAlEmaratiya" target="_blank" rel="noopener noreferrer" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
-                    <a href="https://www.youtube.com/@egy-uae.channel" target="_blank" rel="noopener noreferrer" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
-                </div>
-            </div>
-
-            <div class="footer-links-col">
-                <h4 class="footer-heading">Corridor Links</h4>
-                <ul class="footer-nav-list">
-                    <li><a href="#home">Overview</a></li>
-                    <li><a href="#services">Worldwide Logistics</a></li>
-                    <li><a href="#divisions">Trade Matrix</a></li>
-                    <li><a href="#about">Corporate Architecture</a></li>
-                    <li><a href="#contact">RFQ Desk</a></li>
-                </ul>
-            </div>
-
-            <div class="footer-links-col">
-                <h4 class="footer-heading">Sectors</h4>
-                <ul class="footer-nav-list">
-                    <li><a href="pages/food-division.html">Food & Consumables</a></li>
-                    <li><a href="pages/hotel-supplies.html">Hotel Supplies</a></li>
-                    <li><a href="pages/office-furniture.html">Office Furniture</a></li>
-                    <li><a href="#divisions">Banquet Furniture Sets</a></li>
-                    <li><a href="#divisions">Industrial Chemicals</a></li>
-                </ul>
-            </div>
-
-            <div class="footer-links-col">
-                <h4 class="footer-heading">Operating Hubs</h4>
-                <div class="footer-address-block">
-                    <strong>Egypt Node:</strong>
-                    <span>10th of Ramadan Industrial City, Cairo</span>
-                </div>
-                <div class="footer-address-block mt-2">
-                    <strong>UAE Node:</strong>
-                    <span>Sharjah Airport International Free Zone (SAIF)</span>
-                </div>
-                <div class="footer-address-block mt-2">
-                    <strong>Global Agency:</strong>
-                    <span>Worldwide Multi-modal Freight & Representation</span>
-                </div>
-            </div>
+    <!-- Band 1 (Light): Arm-Style Image-Backed Services Grid -->
+    <section class="section section--light" id="services">
+      <div class="container">
+        <div class="section-header">
+          <div>
+            <span class="eyebrow" data-i18n="serv_eyebrow">OUR SERVICES</span>
+            <h2 class="section-title" data-i18n="serv_title">Integrated Solutions Across Industries</h2>
+          </div>
+          <p class="section-lead" data-i18n="serv_lead">
+            Al Massriya Al Emaratiya provides tailored manufacturing, procurement, and import/export facilitation engineered to exceed client expectations.
+          </p>
         </div>
 
-        <div class="container footer-bottom-bar">
-            <span>&copy; <span id="current-year">2026</span> Almassriya Alemaratiya. All Rights Reserved.</span>
-            <span class="cert-note">Registered Commercial Agency &bull; Certified Chambers of Commerce</span>
-        </div>
-    </footer>
+        <div class="services-grid" id="servicesGrid"></div>
+      </div>
+    </section>
 
-    <!-- Scripts -->
-    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    <script src="js/main.js"></script>
+    <!-- Band 2 (Dark Arm Split Feature): Turnkey Hospitality & Manufacturing Showcase -->
+    <section class="section section--dark feature-split-band">
+      <div class="container feature-split">
+        <div class="feature-split__content">
+          <span class="eyebrow eyebrow--cyan" data-i18n="feat_eyebrow">ONE-STOP SOURCING COMPANY</span>
+          <h2 class="section-title" data-i18n="feat_title">Built for 4 &amp; 5 Star Hotels, Hospitals &amp; Commercial Projects</h2>
+          <p class="feature-split__text" data-i18n="feat_text">
+            We are specialized in supplying Housekeeping Operational Products, Hotel Beddings, Hotel Towels, Duvets, Pillows, Food &amp; Beverages, Guest Electronics, Cleaning &amp; Pool Equipment, Safes &amp; Minibars, Health Club &amp; Laundry Equipment, Drapery, Upholstery, and Engineering Tools.
+          </p>
+          <div class="feature-split__actions">
+            <a href="#catalog" class="btn btn--cyan" data-i18n="feat_btn1">Browse Full Catalog</a>
+            <a href="#contact" class="btn btn--outline-white" data-i18n="feat_btn2">Partner With Us</a>
+          </div>
+        </div>
+        <div class="feature-split__media">
+          <img
+            src="https://images.unsplash.com/photo-1616594039964-ae9021a400a0?auto=format&fit=crop&w=1100&q=80"
+            alt="Luxury Hotel Suite and Custom Interior Furnishing"
+            class="feature-split__img"
+          />
+          <div class="feature-split__caption" data-i18n="feat_caption">
+            4 &amp; 5 Star Hospitality Standards &bull; Competitive Pricing &amp; Turnkey Delivery
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Band 3 (Gray): Complete Product Catalog with Card Photography -->
+    <section class="section section--gray" id="catalog">
+      <div class="container">
+        <div class="section-header">
+          <div>
+            <span class="eyebrow" data-i18n="cat_eyebrow">PORTFOLIO &amp; SPECIFICATIONS</span>
+            <h2 class="section-title" data-i18n="cat_title">Explore Our Complete Product Catalog</h2>
+          </div>
+          <p class="section-lead" data-i18n="cat_lead">
+            Filter by business division and click any card to inspect the full technical item list from our corporate profile.
+          </p>
+        </div>
+
+        <div class="filter-bar" role="tablist" aria-label="Catalog Category Filters">
+          <button class="filter-pill is-active" type="button" data-filter="all" data-i18n="f_all">All Divisions</button>
+          <button class="filter-pill" type="button" data-filter="furniture" data-i18n="f_furn">Furniture &amp; FF&amp;E</button>
+          <button class="filter-pill" type="button" data-filter="linens" data-i18n="f_lin">Linens &amp; Housekeeping</button>
+          <button class="filter-pill" type="button" data-filter="hospitality" data-i18n="f_hosp">Hotel OS&amp;E &amp; Supplies</button>
+          <button class="filter-pill" type="button" data-filter="office-banquet" data-i18n="f_off">Office, Banquet &amp; Edu</button>
+          <button class="filter-pill" type="button" data-filter="staff" data-i18n="f_staff">Staff Housing &amp; Lockers</button>
+          <button class="filter-pill" type="button" data-filter="food-chemicals" data-i18n="f_food">Food, Basket &amp; Chemicals</button>
+        </div>
+
+        <div class="catalog-grid" id="catalogGrid"></div>
+      </div>
+    </section>
+
+    <!-- Band 4 (Dark): Food Division (No Taza Brand) & Branded Welcome Baskets with Photos -->
+    <section class="section section--dark" id="food-division">
+      <div class="container">
+        <div class="section-header section-header--dark">
+          <div>
+            <span class="eyebrow eyebrow--cyan" data-i18n="spot_eyebrow">SPECIALIZED COMMERCIAL DIVISIONS</span>
+            <h2 class="section-title" data-i18n="spot_title">Food Division Raw Materials &amp; Branded Welcome Baskets</h2>
+          </div>
+          <p class="section-lead" data-i18n="spot_lead">
+            Dedicated industrial food supply lines for dairy &amp; chocolate factories alongside ready-to-deploy Male &amp; Female personal care welcome packs.
+          </p>
+        </div>
+
+        <div class="spotlight-grid">
+          <!-- Food Division Card -->
+          <div class="spotlight-card">
+            <div class="spotlight-card__media">
+              <img
+                src="https://images.unsplash.com/photo-1543353071-087092ec393a?auto=format&fit=crop&w=1000&q=80"
+                alt="Fresh Produce and Food Manufacturing Raw Materials"
+              />
+            </div>
+            <div class="spotlight-card__body">
+              <span class="tag tag--cyan" data-i18n="food_tag">FOOD DIVISION &bull; IMPORT &amp; SUPPLY</span>
+              <h3 data-i18n="food_h">Dairy &amp; Chocolate Factory Ingredients &amp; Produce</h3>
+              <p data-i18n="food_p">Bulk sourcing of certified factory raw materials and import of fresh &amp; frozen vegetables and fruits.</p>
+              <div class="spotlight-chips" id="foodChips"></div>
+            </div>
+          </div>
+
+          <!-- Welcome Basket Card -->
+          <div class="spotlight-card">
+            <div class="spotlight-card__media">
+              <img
+                src="https://images.unsplash.com/photo-1696497327672-2bdce2e033dd?auto=format&fit=crop&w=1000&q=80"
+                alt="Branded Cosmetics and Welcome Basket Essentials"
+              />
+            </div>
+            <div class="spotlight-card__body">
+              <span class="tag tag--cyan" data-i18n="bask_tag">WE PROVIDE ALL BRANDED PRODUCTS</span>
+              <h3 data-i18n="bask_h">Customized Welcome Baskets (Male &amp; Female)</h3>
+              <p data-i18n="bask_p">Complete personal hygiene, cosmetics, and refreshment kits tailored for staff housing and hotel guests.</p>
+              <div class="basket-columns">
+                <div>
+                  <h4 data-i18n="bask_male_h">Male Welcome Basket</h4>
+                  <ul class="check-list check-list--compact" id="maleBasketList"></ul>
+                </div>
+                <div>
+                  <h4 data-i18n="bask_female_h">Female Welcome Basket</h4>
+                  <ul class="check-list check-list--compact" id="femaleBasketList"></ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Band 5 (Light): About Us, Mission & Photography Collage -->
+    <section class="section section--light" id="about">
+      <div class="container about-split">
+        <div class="about-split__left">
+          <span class="eyebrow" data-i18n="about_eyebrow">ABOUT US &amp; MISSION</span>
+          <h2 class="section-title" data-i18n="about_title">Facilitating Partnerships That Exceed Expectations</h2>
+          <blockquote class="mission-quote" data-i18n="about_quote">
+            &ldquo;Our mission is to provide the highest quality products, management and facilitate to the partnering of other companies, to ensure the needs of our clients are delivered in a manner that exceeds the expectations of our clients and their customers.&rdquo;
+          </blockquote>
+          <p class="about-text" data-i18n="about_p1">
+            Al Massriya Al Emaratiya is privileged to provide quality Customized Furniture, Linens, Staff Housing Furnishing, Office Furnishing, Interior Decoration, Hospitality, Commercial Industry, Chemicals, Cosmetics, Perfumes, and Food Division services.
+          </p>
+          <p class="about-text" data-i18n="about_p2">
+            Headquartered in 10th of Ramadan City, Sharqia, Egypt, our operations proudly serve clients across Egypt, Gulf Countries, and global international markets.
+          </p>
+        </div>
+
+        <div class="about-split__right">
+          <div class="about-photo-frame">
+            <img
+              src="https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=1000&q=80"
+              alt="Industrial Manufacturing and Supply Operations"
+              class="about-photo-frame__img"
+            />
+          </div>
+          <div class="architecture-panel">
+            <div class="architecture-panel__row">
+              <span class="arch-node" data-i18n="hq_tag">MAIN OFFICE &amp; PRODUCTION</span>
+              <div>
+                <strong data-i18n="hq_title">10th of Ramadan City, Sharqia, Egypt</strong>
+                <p data-i18n="hq_desc">Manufacturing, carpentry, linen production, and central logistics hub.</p>
+              </div>
+            </div>
+            <div class="architecture-panel__row">
+              <span class="arch-node" data-i18n="gcc_tag">REGIONAL REACH</span>
+              <div>
+                <strong data-i18n="gcc_title">Egypt, Gulf Countries (UAE &amp; GCC) &amp; Worldwide</strong>
+                <p data-i18n="gcc_desc">Trusted partner for hotels, universities, clubs, and general trading companies.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Band 6 (Gray): Client Ecosystem -->
+    <section class="section section--gray" id="clients">
+      <div class="container">
+        <div class="section-header">
+          <div>
+            <span class="eyebrow" data-i18n="cli_eyebrow">OUR CLIENT LIST</span>
+            <h2 class="section-title" data-i18n="cli_title">Trusted by Leading Hospitality, Institutions &amp; Trading Partners</h2>
+          </div>
+          <p class="section-lead" data-i18n="cli_lead">
+            A growing ecosystem of hotels, universities, sports clubs, and general trading companies across Egypt and the UAE.
+          </p>
+        </div>
+
+        <div class="filter-bar filter-bar--sm" role="tablist" aria-label="Client Sector Filters">
+          <button class="filter-pill is-active" type="button" data-client-filter="all" data-i18n="cf_all">All Clients (18)</button>
+          <button class="filter-pill" type="button" data-client-filter="hospitality" data-i18n="cf_hosp">Hotels &amp; Hospitality</button>
+          <button class="filter-pill" type="button" data-client-filter="trading" data-i18n="cf_trade">Trading &amp; Supply</button>
+          <button class="filter-pill" type="button" data-client-filter="institutions" data-i18n="cf_inst">Universities, Clubs &amp; Leisure</button>
+        </div>
+
+        <div class="clients-grid" id="clientsGrid"></div>
+      </div>
+    </section>
+
+    <!-- Band 7 (Dark): Contact & Commercial Enquiry -->
+    <section class="section section--dark contact-section" id="contact">
+      <div class="container contact-grid">
+        <div class="contact-info">
+          <span class="eyebrow eyebrow--cyan" data-i18n="con_eyebrow">FURTHER INFORMATION &amp; ENQUIRIES</span>
+          <h2 class="section-title" data-i18n="con_title">Connect With Almassriya Alemaratiya</h2>
+          <p class="contact-lead" data-i18n="con_lead">
+            Further information about our services and for enquiries, please contact our commercial team at our main office or submit your project requirements below.
+          </p>
+
+          <div class="contact-details">
+            <div class="contact-detail-item">
+              <span class="detail-label" data-i18n="con_lbl1">COMPANY NAME</span>
+              <strong data-i18n="con_val1">AL Massriya AL Emaratiya For Commercial Agencies, Import &amp; Export</strong>
+            </div>
+            <div class="contact-detail-item">
+              <span class="detail-label" data-i18n="con_lbl2">MAIN OFFICE</span>
+              <strong data-i18n="con_val2">10th of Ramadan City, Sharqia, Egypt</strong>
+            </div>
+            <div class="contact-detail-item">
+              <span class="detail-label" data-i18n="con_lbl3">SERVICE TERRITORY</span>
+              <strong data-i18n="con_val3">Egypt, Gulf Countries (UAE / GCC) &amp; Worldwide</strong>
+            </div>
+          </div>
+        </div>
+
+        <div class="contact-form-wrap">
+          <form id="inquiryForm" class="arm-form" novalidate>
+            <h3 data-i18n="form_h">Request a Proposal or Product Catalog</h3>
+            <div class="form-row">
+              <div class="form-group">
+                <label for="fullName" data-i18n="form_name">Full Name *</label>
+                <input type="text" id="fullName" name="fullName" placeholder="e.g., Ahmed Hassan" required />
+              </div>
+              <div class="form-group">
+                <label for="companyName" data-i18n="form_comp">Company / Hotel / Organization *</label>
+                <input type="text" id="companyName" name="companyName" placeholder="Organization name" required />
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label for="email" data-i18n="form_email">Business Email *</label>
+                <input type="email" id="email" name="email" placeholder="name@company.com" required />
+              </div>
+              <div class="form-group">
+                <label for="division" data-i18n="form_div">Division of Interest *</label>
+                <select id="division" name="division" required>
+                  <option value="" data-i18n="opt_select">Select a division...</option>
+                  <option value="Customized Furniture & FF&E" data-i18n="opt_furn">Customized Furniture &amp; FF&amp;E</option>
+                  <option value="Bed & Bath Linens & Housekeeping" data-i18n="opt_lin">Bed &amp; Bath Linens &amp; Housekeeping</option>
+                  <option value="Hotel OS&E & Supplies" data-i18n="opt_hosp">4–5 Star Hotel OS&amp;E &amp; Supplies</option>
+                  <option value="Staff Housing & Lockers" data-i18n="opt_staff">Staff Housing &amp; Metal Lockers</option>
+                  <option value="Office, Educational & Banquet" data-i18n="opt_off">Office, Educational &amp; Banquet Furniture</option>
+                  <option value="Food Division" data-i18n="opt_food">Food Division (Raw Materials &amp; Produce)</option>
+                  <option value="Cosmetics, Chemicals & Welcome Baskets" data-i18n="opt_chem">Cosmetics, Chemicals &amp; Welcome Baskets</option>
+                  <option value="Commercial Agency / Import & Export" data-i18n="opt_ag">Commercial Agency / Import &amp; Export</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="message" data-i18n="form_msg">Project Details / Quantities *</label>
+              <textarea id="message" name="message" rows="4" placeholder="Describe the products, specifications, or delivery destination..." required></textarea>
+            </div>
+
+            <button type="submit" class="btn btn--cyan btn--full" data-i18n="form_submit">Submit Commercial Enquiry</button>
+            <div id="formFeedback" class="form-feedback" aria-live="polite"></div>
+          </form>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Arm.com Style Multi-Column Footer + Bottom Language Switcher -->
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <div class="footer-brand">
+        <a href="#top" class="brand-logo">
+          <img
+            src="assets/logo.png"
+            alt="Almassriya Alemaratiya Logo"
+            class="brand-logo__img"
+            onerror="this.style.display='none'; this.nextElementSibling.style.display='inline-flex';"
+          />
+          <span class="brand-logo__fallback" style="display: none;">
+            <span class="brand-logo__mark">
+              <img
+                src="assets/logo-icon.png"
+                alt=""
+                class="brand-logo__icon-img"
+                onerror="this.style.display='none'; this.nextElementSibling.style.display='block';"
+              />
+              <svg width="26" height="26" viewBox="0 0 32 32" fill="none" aria-hidden="true" style="display:none;">
+                <rect width="32" height="32" rx="4" fill="#0091bd" fill-opacity="0.22"/>
+                <path d="M6 23L14.5 8L19 16L22 11L27 23H6Z" stroke="#00c1de" stroke-width="2.2" stroke-linejoin="round"/>
+              </svg>
+            </span>
+            <span class="brand-logo__text">
+              <strong>almassriya</strong>
+              <small>alemaratiya</small>
+            </span>
+          </span>
+        </a>
+        <p data-i18n="foot_desc">
+          AL Massriya AL Emaratiya For Commercial Agencies, Import &amp; Export. Competitive prices, quality manufacturing, and reliable service.
+        </p>
+      </div>
+
+      <div class="footer-col">
+        <h4 data-i18n="foot_c1">Divisions</h4>
+        <ul>
+          <li><a href="#catalog" data-filter-jump="furniture" data-i18n="foot_l1">Customized Furniture &amp; FF&amp;E</a></li>
+          <li><a href="#catalog" data-filter-jump="linens" data-i18n="foot_l2">Linens &amp; Housekeeping</a></li>
+          <li><a href="#catalog" data-filter-jump="hospitality" data-i18n="foot_l3">Hotel OS&amp;E &amp; Supplies</a></li>
+          <li><a href="#catalog" data-filter-jump="staff" data-i18n="foot_l4">Staff Housing &amp; Lockers</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4 data-i18n="foot_c2">Commercial Trade</h4>
+        <ul>
+          <li><a href="#food-division" data-i18n="foot_l5">Food Division &amp; Raw Materials</a></li>
+          <li><a href="#food-division" data-i18n="foot_l6">Male &amp; Female Welcome Baskets</a></li>
+          <li><a href="#catalog" data-filter-jump="food-chemicals" data-i18n="foot_l7">Chemicals, Cosmetics &amp; Perfumes</a></li>
+          <li><a href="#catalog" data-filter-jump="office-banquet" data-i18n="foot_l8">Office, Banquet &amp; Educational</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4 data-i18n="foot_c3">Company</h4>
+        <ul>
+          <li><a href="#about" data-i18n="foot_l9">About Us &amp; Mission</a></li>
+          <li><a href="#services" data-i18n="foot_l10">Our Services</a></li>
+          <li><a href="#clients" data-i18n="foot_l11">Client Ecosystem</a></li>
+          <li><a href="#contact" data-i18n="foot_l12">Contact HQ (10th of Ramadan)</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Arm.com Exact Bottom Language Selector + Legal Bar -->
+    <div class="footer-bottom">
+      <div class="container footer-bottom__inner">
+        <div class="footer-lang" role="group" aria-label="Language Switcher">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+            <circle cx="12" cy="12" r="10"></circle>
+            <line x1="2" y1="12" x2="22" y2="12"></line>
+            <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
+          </svg>
+          <button type="button" class="lang-btn is-active" data-lang="en">English</button>
+          <span class="lang-sep">&middot;</span>
+          <button type="button" class="lang-btn" data-lang="ar">العربية</button>
+        </div>
+
+        <div class="footer-legal">
+          <span data-i18n="foot_copy">Copyright &copy; <span id="currentYear"></span> Almassriya Alemaratiya For Commercial Agencies, Import &amp; Export. All rights reserved.</span>
+          <span class="legal-dot">&bull;</span>
+          <span data-i18n="foot_hq">10th of Ramadan City, Sharqia, Egypt</span>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Product Detail Modal (with Image) -->
+  <div class="modal" id="productModal" hidden role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+    <div class="modal__backdrop" data-close-modal></div>
+    <div class="modal__panel">
+      <button class="modal__close" type="button" aria-label="Close details" data-close-modal>&times;</button>
+      <div class="modal__hero-img-wrap">
+        <img id="modalImage" src="" alt="" class="modal__hero-img" />
+      </div>
+      <span class="eyebrow" id="modalCategory">DIVISION</span>
+      <h2 id="modalTitle">Product Title</h2>
+      <p class="modal__desc" id="modalDescription"></p>
+      <div class="modal__list-wrap">
+        <h4 data-i18n="modal_specs">Included Specifications &amp; Items</h4>
+        <ul class="check-list" id="modalItems"></ul>
+      </div>
+      <div class="modal__footer">
+        <a href="#contact" class="btn btn--cyan" id="modalQuoteBtn" data-i18n="modal_cta">Request Quote for This Division</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Global Search Overlay -->
+  <div class="modal modal--search" id="searchModal" hidden role="dialog" aria-modal="true" aria-labelledby="searchTitle">
+    <div class="modal__backdrop" data-close-search></div>
+    <div class="modal__panel modal__panel--search">
+      <div class="search-header">
+        <h3 id="searchTitle" data-i18n="search_title">Search Almassriya Alemaratiya Catalog</h3>
+        <button class="modal__close" type="button" aria-label="Close search" data-close-search>&times;</button>
+      </div>
+      <input type="search" id="globalSearchInput" class="search-input" placeholder="Search furniture, linens, OS&E, food, lockers, Sharjah..." autocomplete="off" />
+      <div class="search-results" id="searchResults"></div>
+    </div>
+  </div>
+
+  <script src="js/main.js"></script>
 </body>
 </html>
