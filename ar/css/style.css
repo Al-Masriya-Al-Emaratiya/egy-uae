@@ -1629,3 +1629,85 @@ ul {
     grid-template-columns: 1fr;
   }
 }
+/* ==========================================================================
+   RTL Support for Arabic Page (ar/index.html)
+   ========================================================================== */
+html[dir="rtl"] body {
+  font-family: 'Cairo', 'Plus Jakarta Sans', sans-serif;
+}
+
+html[dir="rtl"] h1,
+html[dir="rtl"] h2,
+html[dir="rtl"] h3,
+html[dir="rtl"] h4,
+html[dir="rtl"] .eyebrow,
+html[dir="rtl"] .tag {
+  letter-spacing: 0;
+}
+
+html[dir="rtl"] .hero__scrim {
+  background: linear-gradient(265deg, rgba(8, 2, 37, 0.96) 0%, rgba(8, 2, 37, 0.82) 55%, rgba(0, 88, 128, 0.55) 100%);
+}
+
+html[dir="rtl"] .hero-arrow--prev {
+  left: auto;
+  right: 16px;
+}
+
+html[dir="rtl"] .hero-arrow--next {
+  right: auto;
+  left: 16px;
+}
+
+html[dir="rtl"] .hero-tab {
+  text-align: right;
+}
+
+html[dir="rtl"] .hero-tab__progress {
+  left: auto;
+  right: 0;
+}
+
+html[dir="rtl"] .hero-card__badge {
+  left: auto;
+  right: 16px;
+  letter-spacing: 0;
+}
+
+html[dir="rtl"] .stat-box {
+  padding-left: 0;
+  padding-right: 16px;
+  border-left: none;
+  border-right: 3px solid var(--arm-cyan);
+}
+
+html[dir="rtl"] .service-card__index {
+  left: auto;
+  right: 12px;
+}
+
+html[dir="rtl"] .check-list li {
+  padding-left: 0;
+  padding-right: 22px;
+}
+
+html[dir="rtl"] .check-list li::before {
+  left: auto;
+  right: 0;
+}
+
+html[dir="rtl"] .mission-quote {
+  border-left: none;
+  border-right: 4px solid var(--arm-cyan);
+  border-radius: 4px 0 0 4px;
+}
+
+html[dir="rtl"] .lang-menu {
+  left: auto;
+  right: 0;
+}
+
+html[dir="rtl"] .modal__close {
+  right: auto;
+  left: 16px;
+}
