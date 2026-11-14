@@ -1,860 +1,743 @@
 <!DOCTYPE html>
-<html lang="ar" dir="rtl" data-theme="light">
+<html lang="ar" dir="rtl">
 <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
-    <title>المصرية الإماراتية | وكالة تجارية وخدمات الاستيراد والتصدير الدولي (B2B)</title>
-    
-    <!-- Meta SEO -->
-    <meta name="description" content="وكالة تجارية معتمدة ووسيط دولي للتجارة بين الشركات (B2B). نقدم خدمات متكاملة للاستيراد والتصدير، الشحن البحري والجوي الدولي، والتخليص الجمركي وربط المصانع بالأسواق العالمية." />
-    <meta name="keywords" content="المصرية الإماراتية, استيراد وتصدير عالمي, وكالة تجارية دولية, شحن بحري وجوي, تخليص جمركي نافذة, أثاث دمياط, مفروشات فندقية, تجارة دولية B2B" />
-    <meta name="author" content="المصرية الإماراتية" />
-    <meta name="theme-color" content="#ffffff" />
-    <link rel="canonical" href="https://egy-uae.com/ar" />
-
-    <!-- Open Graph -->
-    <meta property="og:type" content="website" />
-    <meta property="og:title" content="المصرية الإماراتية | وكالة تجارية دولية وخدمات التجارة العالمية" />
-    <meta property="og:description" content="تمثيل تجاري معتمد، خدمات لوجستية عالمية، وتسهيل عقود الاستيراد والتصدير بين الشركات." />
-    <meta property="og:url" content="https://egy-uae.com" />
-    <meta property="og:image" content="https://egy-uae.com/Al_Masriya_Al_Emaratiya_icon.png" />
-
-    <!-- Fonts & Vendor Icons -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
-    <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css" />
-    
-    <!-- Master Stylesheet -->
-    <link rel="stylesheet" href="css/style.css">
-
-   
-    <style>
-        :root {
-            --font-main: 'Cairo', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-        }
-        body {
-            font-family: var(--font-main);
-            text-align: right;
-            direction: rtl;
-        }
-        h1, h2, h3, h4, h5, h6, strong, button, input, textarea {
-            font-family: var(--font-main);
-        }
-        .hero-title {
-            line-height: 1.35;
-            letter-spacing: normal;
-        }
-        .showcase-badge {
-            left: auto;
-            right: 1rem;
-        }
-        .card-badge {
-            left: auto;
-            right: 0.75rem;
-        }
-        .verified-pill {
-            margin-left: 0;
-            margin-right: auto;
-        }
-        .acc-header {
-            text-align: right;
-        }
-        .mobile-side-drawer {
-            right: auto;
-            left: -300px;
-            border-left: none;
-            border-right: 1px solid var(--border-color);
-            transition: left 0.28s cubic-bezier(0.16, 1, 0.3, 1);
-        }
-        .mobile-side-drawer.open {
-            left: 0;
-            right: auto;
-        }
-        .lang-menu {
-            right: auto;
-            left: 0;
-        }
-        .search-results-popover {
-            text-align: right;
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>المصرية الإماراتية | للوكالات التجارية والاستيراد والتصدير</title>
+  <meta name="description" content="المصرية الإماراتية للوكالات التجارية والاستيراد والتصدير — الأثاث المخصص، مفروشات الفنادق، تجهيزات OS&E و FF&E، سكن العاملين، قطاع المواد الغذائية والكيماويات." />
+  <!-- Logo Icon (Favicon) -->
+  <link rel="icon" type="image/png" href="../assets/logo-icon.png" />
+  <link rel="apple-touch-icon" href="../assets/logo-icon.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&family=Lato:wght@300;400;700;900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
 </head>
 <body>
 
-    <!-- Precision Progress Bar -->
-    <div id="scroll-progress-line" aria-hidden="true"></div>
+  <!-- Arm.com Style Sticky Header + Mega Menus -->
+  <header class="site-header" id="siteHeader">
+    <div class="container header-inner">
+      <a href="#top" class="brand-logo" aria-label="الرئيسية - المصرية الإماراتية">
+        <img
+          src="../assets/logo.png"
+          alt="شعار المصرية الإماراتية"
+          class="brand-logo__img"
+          onerror="this.style.display='none'; this.nextElementSibling.style.display='inline-flex';"
+        />
+        <span class="brand-logo__fallback" style="display: none;">
+          <span class="brand-logo__mark">
+            <img
+              src="../assets/logo-icon.png"
+              alt=""
+              class="brand-logo__icon-img"
+              onerror="this.style.display='none'; this.nextElementSibling.style.display='block';"
+            />
+            <svg width="26" height="26" viewBox="0 0 32 32" fill="none" aria-hidden="true" style="display:none;">
+              <rect width="32" height="32" rx="4" fill="#0091bd" fill-opacity="0.22"/>
+              <path d="M6 23L14.5 8L19 16L22 11L27 23H6Z" stroke="#00c1de" stroke-width="2.2" stroke-linejoin="round"/>
+            </svg>
+          </span>
+          <span class="brand-logo__text">
+            <strong>almassriya</strong>
+            <small>alemaratiya</small>
+          </span>
+        </span>
+      </a>
 
-    <!-- Master Header -->
-    <header class="site-header" id="header">
+      <nav class="main-nav" aria-label="التنقل الرئيسي">
+        <ul class="nav-list">
+          <li class="nav-item has-mega">
+            <button class="nav-link" type="button" aria-expanded="false" data-mega="mega-products">
+              المنتجات والأقسام
+              <svg class="chevron" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"></polyline></svg>
+            </button>
+          </li>
+          <li class="nav-item has-mega">
+            <button class="nav-link" type="button" aria-expanded="false" data-mega="mega-markets">
+              الأسواق والحلول
+              <svg class="chevron" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"></polyline></svg>
+            </button>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#catalog">الكتالوج الكامل</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#clients">العملاء</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#about">عن الشركة</a>
+          </li>
+        </ul>
+      </nav>
 
-        <!-- Main Navigation Bar -->
-        <div class="container main-nav-container">
-            <div class="brand-group">
-                <a href="index.html" class="brand-link" aria-label="الصفحة الرئيسية للشركة المصرية الإماراتية">
-                    <img src="../Al_Masriya_Al_Emaratiya_icon.png" alt="المصرية الإماراتية" class="brand-logo" onerror="this.onerror=null; this.src='https://via.placeholder.com/200x50/174aa1/ffffff?text=Al+Masriya';">
-                </a>
-            </div>
+      <div class="header-actions">
+        <button class="icon-btn" id="openSearchBtn" type="button" aria-label="البحث في المنتجات والخدمات">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="11" cy="11" r="8"></circle>
+            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+          </svg>
+        </button>
+        <a href="#contact" class="btn btn--cyan btn--sm header-cta">تواصل معنا</a>
+        <button class="mobile-toggle" id="mobileMenuBtn" type="button" aria-label="فتح القائمة" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
 
-            <!-- Global Search Box -->
-            <div class="search-box-wrapper desktop-only">
-                <div class="search-input-shell">
-                    <i class="fas fa-search search-icon"></i>
-                    <input type="text" id="global-search-input" placeholder="ابحث عن المنتجات، القطاعات التجارية، أو الخدمات..." autocomplete="off">
-                    <button type="button" id="clear-search-btn" class="clear-search-btn hidden" aria-label="مسح البحث"><i class="fas fa-times"></i></button>
-                </div>
-                <div id="search-dropdown-menu" class="search-results-popover hidden" role="listbox"></div>
-            </div>
+    <!-- Mega Menu: Products & Divisions -->
+    <div class="mega-menu" id="mega-products" hidden>
+      <div class="container mega-menu__grid">
+        <div class="mega-menu__col">
+          <span class="mega-label">التصنيع والإنتاج</span>
+          <a href="#catalog" class="mega-item" data-filter-jump="furniture">
+            <strong>الأثاث المخصص وتجهيزات FF&amp;E</strong>
+            <span>خشب كونتر، MDF، قشرة، زان طبيعي، أسرة، دواليب وستائر</span>
+          </a>
+          <a href="#catalog" class="mega-item" data-filter-jump="linens">
+            <strong>مفروشات السرير والحمام</strong>
+            <span>ألحفة، ملايات، مناشف، أرواب حمام وشباشب فندقية</span>
+          </a>
+          <a href="#catalog" class="mega-item" data-filter-jump="office-banquet">
+            <strong>الأثاث المكتبي والتعليمي والولائم</strong>
+            <span>محطات عمل، كراسي، طاولات قابلة للطي ومقاعد دراسية</span>
+          </a>
+        </div>
+        <div class="mega-menu__col">
+          <span class="mega-label">المشتريات والتوريدات</span>
+          <a href="#catalog" class="mega-item" data-filter-jump="hospitality">
+            <strong>مستلزمات الفنادق و OS&amp;E</strong>
+            <span>تجهيزات 4–5 نجوم، مطابخ، زجاجيات، ميني بار وخزائن</span>
+          </a>
+          <a href="#catalog" class="mega-item" data-filter-jump="staff">
+            <strong>سكن العاملين والخزائن المعدنية</strong>
+            <span>أسرة بطابقين، خزائن فولاذية، أجهزة منزلية وسلال ترحيب</span>
+          </a>
+          <a href="#catalog" class="mega-item" data-filter-jump="food-chemicals">
+            <strong>قطاع الأغذية والكيماويات والتجميل</strong>
+            <span>خامات مصانع الألبان والشوكولاتة، خضروات، عطور وتجميل</span>
+          </a>
+        </div>
+        <div class="mega-menu__highlight">
+          <img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=800&q=80" alt="ضيافة فاخرة" class="mega-highlight-img" />
+          <div class="mega-highlight-body">
+            <span class="mega-label">توريد متكامل</span>
+            <h4>شريك واحد لقطاعات الضيافة والتجارة</h4>
+            <a href="#contact" class="text-link">اطلب كتالوج المنتجات &larr;</a>
+          </div>
+        </div>
+      </div>
+    </div>
 
-            <!-- Action Controls: Language, Theme Toggle, Primary CTAs -->
-            <div class="header-actions">
-                
-                <!-- Language Selector Dropdown -->
-                <div class="lang-dropdown">
-                    <button type="button" class="lang-trigger-btn" id="lang-btn" aria-haspopup="listbox" aria-expanded="false">
-                        <i class="fas fa-globe text-brand-blue"></i>
-                        <span id="current-lang-text">AR</span>
-                        <i class="fas fa-chevron-down arrow-indicator"></i>
-                    </button>
-                    <ul class="lang-menu hidden" id="lang-menu" role="listbox">
-                        <li>
-                            <a href="../index.html" class="lang-option">
-                                <span class="flag-icon">🌐</span>
-                                <div>
-                                    <strong>English</strong>
-                                    <small>International</small>
-                                </div>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="index.html" class="lang-option active">
-                                <span class="flag-icon">🇪🇬</span>
-                                <div>
-                                    <strong>العربية</strong>
-                                    <small>الشرق الأوسط والعالم</small>
-                                </div>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="../cn/index.html" class="lang-option">
-                                <span class="flag-icon">🇨🇳</span>
-                                <div>
-                                    <strong>中文</strong>
-                                    <small>全球业务</small>
-                                </div>
-                            </a>
-                        </li>
-                    </ul>
-                </div>
+    <!-- Mega Menu: Markets & Solutions -->
+    <div class="mega-menu" id="mega-markets" hidden>
+      <div class="container mega-menu__grid">
+        <div class="mega-menu__col">
+          <span class="mega-label">القطاعات الرئيسية</span>
+          <a href="#services" class="mega-item">
+            <strong>فنادق ومنتجعات 4 و 5 نجوم</strong>
+            <span>توريد كامل لـ OS&amp;E و FF&amp;E والتدبير الفندقي ومستلزمات الغرف</span>
+          </a>
+          <a href="#services" class="mega-item">
+            <strong>المستشفيات والرعاية الصحية</strong>
+            <span>ملايات سرير، أرواب، مستلزمات طبية ومعدات مغاسل</span>
+          </a>
+          <a href="#services" class="mega-item">
+            <strong>المقرات الإدارية والجامعات</strong>
+            <span>تأثيث المكاتب والديكور الداخلي والمقاعد الدراسية</span>
+          </a>
+        </div>
+        <div class="mega-menu__col">
+          <span class="mega-label">التجارة والصناعة</span>
+          <a href="#food-division" class="mega-item">
+            <strong>مصانع الأغذية والحلويات</strong>
+            <span>كاكاو، حليب مجفف، زبدة، زيوت، مكسرات وخضروات طازجة ومجمدة</span>
+          </a>
+          <a href="#catalog" class="mega-item" data-filter-jump="staff">
+            <strong>مشاريع سكن العاملين</strong>
+            <span>تأثيث شامل وأجهزة بيضاء وسلال ترحيب للرجال والسيدات</span>
+          </a>
+          <a href="#clients" class="mega-item">
+            <strong>الوكالات التجارية العالمية</strong>
+            <span>تسهيل الاستيراد والتصدير بين مصر والإمارات والعالم</span>
+          </a>
+        </div>
+        <div class="mega-menu__highlight">
+          <img src="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=800&q=80" alt="لوجستيات الاستيراد والتصدير" class="mega-highlight-img" />
+          <div class="mega-highlight-body">
+            <span class="mega-label">الانتشار الإقليمي</span>
+            <h4>مصر ودول الخليج العربي والعالم</h4>
+            <a href="#clients" class="text-link">عرض قائمة عملائنا &larr;</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
 
-                <!-- Light / Dark Theme Switcher -->
-                <button type="button" class="theme-switch-btn" id="theme-toggle" aria-label="تبديل المظهر">
-                    <i class="fas fa-moon moon-icon" title="تفعيل الوضع الليلي"></i>
-                    <i class="fas fa-sun sun-icon" title="تفعيل الوضع الفاتح"></i>
-                </button>
+  <!-- Mobile Drawer -->
+  <div class="mobile-drawer" id="mobileDrawer" hidden>
+    <div class="mobile-drawer__inner">
+      <a href="#services" class="mobile-link">خدماتنا</a>
+      <a href="#catalog" class="mobile-link">الكتالوج الكامل</a>
+      <a href="#food-division" class="mobile-link">المواد الغذائية وسلال الترحيب</a>
+      <a href="#about" class="mobile-link">عن الشركة</a>
+      <a href="#clients" class="mobile-link">العملاء</a>
+      <a href="#contact" class="btn btn--cyan mobile-cta">تواصل معنا</a>
+    </div>
+  </div>
 
-                <!-- Corporate Links -->
-                <a href="https://amae.egy-uae.com" target="_blank" rel="noopener noreferrer" class="btn-clean-secondary desktop-only">
-                    <i class="fas fa-store"></i> المتجر الإلكتروني
-                </a>
-                <a href="#contact" class="btn-clean-primary desktop-only">
-                    طلب تسعير توريد
-                </a>
+  <main id="top">
 
-                <!-- Mobile Hamburger Button -->
-                <button type="button" class="mobile-toggle-btn mobile-only menu-trigger" aria-label="فتح القائمة الرئيسية">
-                    <i class="fas fa-bars"></i>
-                </button>
-            </div>
+    <!-- ARM-Style Auto-Rotating Multi-Banner Hero -->
+    <section class="hero" id="heroSection">
+      <div class="hero__media" aria-hidden="true">
+        <img
+          id="heroBgImage"
+          src="https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=1800&q=80"
+          alt="التوريدات الفندقية والتجارية"
+          class="hero__bg-img"
+        />
+        <div class="hero__scrim"></div>
+        <svg class="hero__svg" viewBox="0 0 1440 700" preserveAspectRatio="xMidYMid slice" fill="none">
+          <defs>
+            <linearGradient id="armArc" x1="0" y1="0" x2="1440" y2="700" gradientUnits="userSpaceOnUse">
+              <stop offset="0%" stop-color="#0091bd" stop-opacity="0.1"/>
+              <stop offset="55%" stop-color="#00c1de" stop-opacity="0.65"/>
+              <stop offset="100%" stop-color="#38bdf8" stop-opacity="0.1"/>
+            </linearGradient>
+          </defs>
+          <path d="M-100 540 C 300 410, 620 650, 1020 420 C 1220 300, 1380 320, 1540 240" stroke="url(#armArc)" stroke-width="1.6"/>
+          <path d="M-100 580 C 340 460, 680 680, 1080 460 C 1280 350, 1400 370, 1540 300" stroke="url(#armArc)" stroke-width="1"/>
+        </svg>
+      </div>
+
+      <!-- Prev/Next Banner Controls -->
+      <button class="hero-arrow hero-arrow--prev" id="heroPrevBtn" type="button" aria-label="البانر السابق">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><polyline points="9 18 15 12 9 6"></polyline></svg>
+      </button>
+      <button class="hero-arrow hero-arrow--next" id="heroNextBtn" type="button" aria-label="البانر التالي">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><polyline points="15 18 9 12 15 6"></polyline></svg>
+      </button>
+
+      <div class="container hero__content" id="heroSlideStage">
+        <div class="hero__text-col">
+          <span class="eyebrow eyebrow--cyan" id="heroEyebrow">المصرية الإماراتية للوكالات التجارية والاستيراد والتصدير</span>
+          <h1 class="hero__title" id="heroDynamicTitle">
+            حيث تلتقي التوريدات العالمية بتميز التصنيع
+          </h1>
+          <p class="hero__subtitle" id="heroDynamicSubtitle">
+            نقدم أعلى مستويات الجودة في الأثاث المخصص، ومفروشات السرير والحمام، وتجهيزات فنادق 4 و 5 نجوم (OS&amp;E و FF&amp;E)، وتأثيث سكن العاملين، والمواد الغذائية، والكيماويات ومستحضرات التجميل في مصر ودول الخليج والعالم.
+          </p>
+          <div class="hero__actions">
+            <a href="#catalog" class="btn btn--cyan">استكشف أقسام الشركة</a>
+            <a href="#contact" class="btn btn--outline-white">اطلب عرض سعر تجاري</a>
+          </div>
         </div>
 
-        <!-- Navigation Menu Links -->
-        <nav class="desktop-menu-bar desktop-only" aria-label="شريط التصفح الرئيسي">
-            <div class="container menu-bar-inner">
-                <ul class="nav-links">
-                    <li><a href="#home" class="nav-anchor active">نظرة عامة</a></li>
-                    <li><a href="#services" class="nav-anchor">العمليات واللوجستيات</a></li>
-                    <li><a href="#divisions" class="nav-anchor">القطاعات التجارية</a></li>
-                    <li><a href="#about" class="nav-anchor">الملف التعريفي</a></li>
-                    <li><a href="#systems" class="nav-anchor">بوابات العملاء</a></li>
-                    <li><a href="#contact" class="nav-anchor nav-highlight">مكتب التوريد (RFQ)</a></li>
-                </ul>
+        <div class="hero__visual-col">
+          <div class="hero-card">
+            <div class="hero-card__img-wrap">
+              <img
+                id="heroCardImg"
+                src="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=900&q=80"
+                alt="مركز التوريد العالمي"
+              />
+              <span class="hero-card__badge" id="heroCardBadge">مركز توريد متكامل</span>
             </div>
-        </nav>
-    </header>
-
-    <!-- Mobile Drawer -->
-    <aside class="mobile-side-drawer" id="side-drawer" aria-hidden="true">
-        <div class="drawer-header">
-            <img src="Al_Masriya_Al_Emaratiya_icon.png" alt="شعار الشركة" class="drawer-logo" onerror="this.onerror=null; this.src='https://via.placeholder.com/150x40/174aa1/ffffff?text=Al+Masriya';">
-            <button type="button" class="drawer-close-btn menu-trigger" aria-label="إغلاق القائمة"><i class="fas fa-times"></i></button>
+            <div class="hero-card__body">
+              <h3 id="heroCardHeading">توريد متكامل من المصنع إلى الموقع</h3>
+              <p id="heroCardDesc">
+                من الخامات الأساسية والأخشاب المصنعة في مدينة العاشر من رمضان إلى التسليم الفوري للمشاريع الفندقية والتجارية.
+              </p>
+              <ul class="hero-card__metrics">
+                <li><strong>+8</strong><span>أقسام رئيسية</span></li>
+                <li><strong>4–5★</strong><span>معايير فندقية</span></li>
+                <li><strong>الخليج</strong><span>والعالم أجمع</span></li>
+              </ul>
+            </div>
+          </div>
         </div>
-        
-        <div class="drawer-search">
-            <input type="text" id="drawer-search-input" placeholder="ابحث عن منتج أو خدمة...">
+      </div>
+
+      <!-- Arm-Style Bottom Hero Feature Switcher with Animated Progress -->
+      <div class="hero-tabs">
+        <div class="container hero-tabs__grid" role="tablist" aria-label="ركائز الشركة الرئيسية">
+          <button class="hero-tab is-active" type="button" role="tab" aria-selected="true" data-hero-index="0">
+            <span class="hero-tab__progress"></span>
+            <span class="hero-tab__kicker">01 / الوكالات التجارية</span>
+            <span class="hero-tab__label">الاستيراد والتصدير والشراكات</span>
+          </button>
+          <button class="hero-tab" type="button" role="tab" aria-selected="false" data-hero-index="1">
+            <span class="hero-tab__progress"></span>
+            <span class="hero-tab__kicker">02 / التصنيع والإنتاج</span>
+            <span class="hero-tab__label">الأثاث المخصص والمفروشات</span>
+          </button>
+          <button class="hero-tab" type="button" role="tab" aria-selected="false" data-hero-index="2">
+            <span class="hero-tab__progress"></span>
+            <span class="hero-tab__kicker">03 / الضيافة الفندقية</span>
+            <span class="hero-tab__label">تجهيزات OS&amp;E و FF&amp;E للفنادق</span>
+          </button>
+          <button class="hero-tab" type="button" role="tab" aria-selected="false" data-hero-index="3">
+            <span class="hero-tab__progress"></span>
+            <span class="hero-tab__kicker">04 / الأغذية والتجارة</span>
+            <span class="hero-tab__label">خامات غذائية، تجميل وكيماويات</span>
+          </button>
         </div>
+      </div>
+    </section>
 
-        <nav class="drawer-links-list">
-            <a href="#home" class="drawer-link"><i class="fas fa-compass text-brand-blue"></i> نظرة عامة</a>
-            <a href="#services" class="drawer-link"><i class="fas fa-globe text-brand-red"></i> العمليات واللوجستيات</a>
-            <a href="#divisions" class="drawer-link"><i class="fas fa-boxes-stacked text-brand-blue"></i> القطاعات التجارية</a>
-            <a href="#about" class="drawer-link"><i class="fas fa-building-shield text-brand-red"></i> الملف التعريفي</a>
-            <a href="#systems" class="drawer-link"><i class="fas fa-desktop text-brand-blue"></i> بوابات العملاء</a>
-            <a href="#contact" class="drawer-link highlight-red"><i class="fas fa-file-invoice"></i> إرسال طلب توريد (RFQ)</a>
-            
-            <a href="https://amae.egy-uae.com" target="_blank" rel="noopener noreferrer" class="btn-clean-primary text-center mt-3">
-                <i class="fas fa-store"></i> فتح المتجر التجاري
-            </a>
-        </nav>
-    </aside>
-    <div class="drawer-backdrop menu-trigger" aria-hidden="true"></div>
+    <!-- Impact Metrics Strip -->
+    <section class="stats-strip">
+      <div class="container stats-strip__grid">
+        <div class="stat-box">
+          <span class="stat-box__num">8</span>
+          <span class="stat-box__label">أقسام متخصصة في التصنيع والتوريد والتجارة</span>
+        </div>
+        <div class="stat-box">
+          <span class="stat-box__num">+100</span>
+          <span class="stat-box__label">خط إنتاج وتوريد للأثاث والمفروشات والأغذية</span>
+        </div>
+        <div class="stat-box">
+          <span class="stat-box__num">+18</span>
+          <span class="stat-box__label">عملاء رئيسيون من الفنادق والأندية وشركات التجارة</span>
+        </div>
+        <div class="stat-box">
+          <span class="stat-box__num">مصر والخليج</span>
+          <span class="stat-box__label">المقر الرئيسي: العاشر من رمضان، الشرقية</span>
+        </div>
+      </div>
+    </section>
 
-    <main id="main-content">
-        <!-- Hero: Refined Corporate Presentation -->
-        <section class="corporate-hero" id="home">
-            <div class="container hero-grid">
-                
-                <!-- Right: Headline & Corporate Scope -->
-                <div class="hero-text-block" data-aos="fade-left">
-                    <div class="hero-tag-pill">
-                        <span class="status-dot"></span>
-                        <span>بوابة استيراد وتصدير ووكالة تجارية دولية معتمدة</span>
-                    </div>
-
-                    <h1 class="hero-title">
-                        ربط قطاعات التصنيع بسلاسل التوريد <span class="text-brand-blue">والأسواق العالمية</span>
-                    </h1>
-
-                    <p class="hero-lead">
-                        تقدم المصرية الإماراتية خدمات الوكالة التجارية المعتمدة، وإدارة الشحن البحري والجوي الدولي، والتخليص الجمركي، وحلول التخزين واللوجستيات المتطورة. نيسّر إبرام وتنفيذ عقود التوريد الموثوقة بين المصانع والشركات الكبرى عبر الممرات التجارية حول العالم.
-                    </p>
-
-                    <div class="hero-actions-row">
-                        <a href="#divisions" class="btn-clean-primary btn-lg">
-                            <i class="fas fa-folder-open"></i> استعراض القطاعات التجارية
-                        </a>
-                        <a href="#contact" class="btn-clean-secondary btn-lg">
-                            <i class="fas fa-file-pen"></i> تقديم طلب تسعير (RFQ)
-                        </a>
-                    </div>
-
-                    <!-- Verified Milestone Metrics -->
-                    <div class="hero-stats-row">
-                        <div class="stat-unit">
-                            <strong>تغطية دولية</strong>
-                            <span>عمليات استيراد وتصدير عالمية</span>
-                        </div>
-                        <div class="stat-sep"></div>
-                        <div class="stat-unit">
-                            <strong>منذ 2010</strong>
-                            <span>وكالة تجارية معتمدة رسمياً</span>
-                        </div>
-                        <div class="stat-sep"></div>
-                        <div class="stat-unit">
-                            <strong>100%</strong>
-                            <span>امتثال قانوني ومصرفي تام</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Left: Clean Bento Showcase with Real Imagery -->
-                <div class="hero-media-showcase" data-aos="fade-right">
-                    <div class="showcase-card primary-card">
-                        <div class="showcase-img-wrap">
-                            <img src="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=800&q=80" alt="سلاسل التوريد والتخزين الدولي" class="showcase-img">
-                            <div class="showcase-badge"><i class="fas fa-shield-check text-brand-blue"></i> شبكة تجارية دولية موثقة</div>
-                        </div>
-                        <div class="showcase-caption">
-                            <h3>بنية تحتية متطورة للتجارة الدولية</h3>
-                            <p>عقود توريد مباشرة، رقابة صارمة على جودة التصنيع، وحلول شحن متعدد الوسائط وتخزين جمركي عبر أبرز المراكز اللوجستية الإقليمية والعالمية.</p>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-        </section>
-
-        <!-- Trust Badges Strip -->
-        <section class="trust-bar">
-            <div class="container trust-items-grid">
-                <div class="trust-item">
-                    <i class="fas fa-award text-brand-blue"></i>
-                    <div>
-                        <strong>وكالة تجارية معتمدة</strong>
-                        <p>مقيدة رسمياً بالغرف التجارية والسجلات الرسمية</p>
-                    </div>
-                </div>
-                <div class="trust-item">
-                    <i class="fas fa-file-shield text-brand-red"></i>
-                    <div>
-                        <strong>نافذة جمركية موحدة</strong>
-                        <p>إصدار ACID بمنظومة نافذة، ونظام مرسال الدولي</p>
-                    </div>
-                </div>
-                <div class="trust-item">
-                    <i class="fas fa-warehouse text-brand-blue"></i>
-                    <div>
-                        <strong>مستودعات استراتيجية</strong>
-                        <p>مراكز لوجستية في مصر والإمارات والموانئ الرئيسية</p>
-                    </div>
-                </div>
-                <div class="trust-item">
-                    <i class="fas fa-scale-balanced text-brand-red"></i>
-                    <div>
-                        <strong>تمثيل قانوني وتجاري</strong>
-                        <p>وكيل وموزع رسمي مفوض للعلامات والمصانع دولياً</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Services & Capacities (Bento Grid) -->
-        <section id="services" class="section-padding">
-            <div class="container">
-                <div class="section-head" data-aos="fade-up">
-                    <span class="section-kicker">العمليات الأساسية</span>
-                    <h2 class="section-title">القدرات اللوجستية <span class="text-brand-blue">والتجارية العالمية</span></h2>
-                    <p class="section-description">حلول مؤسسية متكاملة مصممة لإدارة التوريد الدولي، الشحن متعدد الوسائط، والتمثيل التجاري القانوني.</p>
-                </div>
-
-                <div class="bento-services-grid">
-                    
-                    <!-- Card 1: Freight Forwarding -->
-                    <div class="bento-card col-span-2" data-aos="fade-up">
-                        <div class="bento-content">
-                            <span class="service-pill"><i class="fas fa-ship text-brand-blue"></i> الشحن البحري والجوي الدولي</span>
-                            <h3>خدمات الشحن الدولي متعدد الوسائط</h3>
-                            <p>حجوزات حاويات كاملة ومجزأة (FCL & LCL) وشحن جوي سريع يربط مجمعات التصنيع الصناعية بمختلف الأسواق والوجهات العالمية. جداول إبحار منتظمة وتخصيص مضمون للحاويات مع كبرى الخطوط الملاحية.</p>
-                        </div>
-                        <div class="bento-image-container">
-                            <img src="https://images.unsplash.com/photo-1494412519320-aa613dfb7738?auto=format&fit=crop&w=700&q=80" alt="الشحن الدولي" class="bento-thumb">
-                        </div>
-                    </div>
-
-                    <!-- Card 2: Customs Brokerage -->
-                    <div class="bento-card" data-aos="fade-up" data-aos-delay="100">
-                        <div class="bento-icon-block"><i class="fas fa-file-invoice text-brand-red"></i></div>
-                        <h3>التخليص الجمركي المعتمد</h3>
-                        <p>إتمام إجراءات ما قبل الشحن، واستخراج أرقام التسجيل المسبق للشحنات (ACID) عبر منظومة نافذة، ونظام مرسال II بالإمارات، وإنهاء الإجراءات الجمركية عالمياً بدقة تامة.</p>
-                    </div>
-
-                    <!-- Card 3: Commercial Agency -->
-                    <div class="bento-card" data-aos="fade-up" data-aos-delay="150">
-                        <div class="bento-icon-block"><i class="fas fa-handshake text-brand-blue"></i></div>
-                        <h3>الوكالة التجارية والتمثيل الدولي</h3>
-                        <p>العمل كوكيل تجاري نظامي، وموزع معتمد، وممثل قانوني للمصانع والكيانات الصناعية الراغبة في دخول وتوسيع مبيعاتها في الأسواق الإقليمية والدولية.</p>
-                    </div>
-
-                    <!-- Card 4: Warehousing -->
-                    <div class="bento-card col-span-2" data-aos="fade-up" data-aos-delay="200">
-                        <div class="bento-content">
-                            <span class="service-pill"><i class="fas fa-warehouse text-brand-red"></i> التخزين والدعم اللوجستي</span>
-                            <h3>المستودعات الجمركية وتجميع البضائع</h3>
-                            <p>مستودعات مؤمنة ومجهزة في العاشر من رمضان (مصر) والمنطقة الحرة بمطار الشارقة (الإمارات)، مع أنظمة جرد وإدارة مخزون متطورة وإمكانية التوزيع السريع لكافة الوجهات.</p>
-                        </div>
-                        <div class="bento-image-container">
-                            <img src="https://images.unsplash.com/photo-1553413077-190dd305871c?auto=format&fit=crop&w=700&q=80" alt="المستودعات اللوجستية" class="bento-thumb">
-                        </div>
-                    </div>
-
-                </div>
-            </div>
-        </section>
-
-        <!-- Product Matrix / Trade Divisions -->
-        <section id="divisions" class="section-padding bg-subtle">
-            <div class="container">
-                <div class="section-head" data-aos="fade-up">
-                    <span class="section-kicker">مصفوفة التوريد</span>
-                    <h2 class="section-title">القطاعات والمنتجات <span class="text-brand-blue">التجارية</span></h2>
-                    <p class="section-description">منتجات صناعية وحاصلات زراعية عالية الجودة جاهزة للتصدير، الاستيراد، والتعاقد المؤسسي الدولي.</p>
-                </div>
-
-                <!-- Clean Filter Buttons -->
-                <div class="catalog-filters" data-aos="fade-up">
-                    <button type="button" class="catalog-tab-btn active" data-filter="all">كافة القطاعات</button>
-                    <button type="button" class="catalog-tab-btn" data-filter="consumables">الأغذية والحاصلات</button>
-                    <button type="button" class="catalog-tab-btn" data-filter="furniture">الأثاث والضيافة</button>
-                    <button type="button" class="catalog-tab-btn" data-filter="industrial">الصناعة والخامات</button>
-                </div>
-
-                <!-- Products Grid -->
-                <div class="catalog-grid-row" id="catalog-cards-container">
-                    
-                    <!-- Product 1: Food & Agriculture -->
-                    <div class="catalog-card-item" data-category="consumables" data-aos="fade-up">
-                        <div class="card-img-shell">
-                            <img src="https://images.unsplash.com/photo-1506084868230-bb9d95c24759?auto=format&fit=crop&w=600&q=80" alt="حاصلات زراعية ومنتجات غذائية" class="card-img">
-                            <span class="card-badge"><i class="fas fa-certificate text-brand-blue"></i> معتمد Global GAP / ISO 22000</span>
-                        </div>
-                        <div class="card-info">
-                            <h3 class="card-title">الحاصلات الزراعية والمواد الغذائية</h3>
-                            <p class="card-summary">موالح وخضروات مجمدة عالية الجودة، أعشاب طبية وعطرية، ومحاصيل زراعية مطابقة للمعايير التصديرية الدولية مخصصة لسلاسل التوزيع الكبرى.</p>
-                            <div class="spec-table">
-                                <div class="spec-item"><span>المطابقة:</span> <strong>شهادات صحة نباتية معتمدة</strong></div>
-                                <div class="spec-item"><span>الشحن:</span> <strong>حاويات مبردة جاهزة للتصدير</strong></div>
-                            </div>
-                            <button type="button" class="btn-outline-card rfq-autofill-btn" data-target-subject="قطاع الحاصلات الزراعية والمواد الغذائية">
-                                طلب مواصفات القطاع &larr;
-                            </button>
-                        </div>
-                    </div>
-
-                    <!-- Product 2: Hotel Linen Supplies -->
-                    <div class="catalog-card-item" data-category="furniture" data-aos="fade-up" data-aos-delay="100">
-                        <div class="card-img-shell">
-                            <img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=600&q=80" alt="مفروشات فندقية فاخرة" class="card-img">
-                            <span class="card-badge"><i class="fas fa-star text-brand-red"></i> قطن مصري جيزة 100%</span>
-                        </div>
-                        <div class="card-info">
-                            <h3 class="card-title">المفروشات وتجهيزات الفنادق الفاخرة</h3>
-                            <p class="card-summary">أغطية أسرّة فندقية راقية، مناشف ومستلزمات حمام معالجة للغسيل المتكرر، ومفروشات قاعات طعام ومطاعم مطابقة للمواصفات العالمية.</p>
-                            <div class="spec-table">
-                                <div class="spec-item"><span>كثافة الخيوط:</span> <strong>300 إلى 600 خيط قطني</strong></div>
-                                <div class="spec-item"><span>المعيار:</span> <strong>درجة ضيافة فندقية شاقة</strong></div>
-                            </div>
-                            <button type="button" class="btn-outline-card rfq-autofill-btn" data-target-subject="قطاع المفروشات والتجهيزات الفندقية">
-                                طلب مواصفات القطاع &larr;
-                            </button>
-                        </div>
-                    </div>
-
-                    <!-- Product 3: Damietta Executive Furniture -->
-                    <div class="catalog-card-item" data-category="furniture" data-aos="fade-up" data-aos-delay="200">
-                        <div class="card-img-shell">
-                            <img src="https://images.unsplash.com/photo-1524758631624-e2822e304c36?auto=format&fit=crop&w=600&q=80" alt="أثاث مكتبي ومشاريع من دمياط" class="card-img">
-                            <span class="card-badge"><i class="fas fa-tree text-brand-blue"></i> خشب زان طبيعي مجفف</span>
-                        </div>
-                        <div class="card-info">
-                            <h3 class="card-title">منظومات الأثاث المكتبي من دمياط</h3>
-                            <p class="card-summary">مكاتب مدراء فاخرة، طاولات اجتماعات تنفيذية، مقصورات عازلة للصوت، وكراسي طبية بتصاميم عصرية وتنفيذ حرفي للتصدير الخارجي.</p>
-                            <div class="spec-table">
-                                <div class="spec-item"><span>الخامات:</span> <strong>أخشاب طبيعية معالجة حرارياً</strong></div>
-                                <div class="spec-item"><span>الاستخدام:</span> <strong>المقرات الإدارية والشركات</strong></div>
-                            </div>
-                            <button type="button" class="btn-outline-card rfq-autofill-btn" data-target-subject="قطاع الأثاث المكتبي والمشاريع">
-                                طلب مواصفات القطاع &larr;
-                            </button>
-                        </div>
-                    </div>
-
-                    <!-- Product 4: Chemicals & Raw Materials -->
-                    <div class="catalog-card-item" data-category="industrial" data-aos="fade-up" data-aos-delay="100">
-                        <div class="card-img-shell">
-                            <img src="https://images.unsplash.com/photo-1601522244217-cd3c403695db?auto=format&fit=crop&w=600&q=80" alt="مواد خام ومنظفات صناعية" class="card-img">
-                            <span class="card-badge"><i class="fas fa-flask text-brand-blue"></i> معايير REACH & SDS</span>
-                        </div>
-                        <div class="card-info">
-                            <h3 class="card-title">الكيماويات وخامات المنظفات الصناعية</h3>
-                            <p class="card-summary">مواد فاعلة سطحياً (Surfactants)، خامات تصنيع المنظفات، زيوت عطرية، ومركبات كيماوية وسيطة مرفقة بكافة صحائف بيانات السلامة المعتمدة.</p>
-                            <div class="spec-table">
-                                <div class="spec-item"><span>النقاء:</span> <strong>درجات صناعية وتجميلية معتمدة</strong></div>
-                                <div class="spec-item"><span>التعبئة:</span> <strong>خزانات ISO Tanks وبراميل 200 لتر</strong></div>
-                            </div>
-                            <button type="button" class="btn-outline-card rfq-autofill-btn" data-target-subject="قطاع الكيماويات والمواد الخام">
-                                طلب مواصفات القطاع &larr;
-                            </button>
-                        </div>
-                    </div>
-
-                    <!-- Product 5: Banquet & Staging Furniture -->
-                    <div class="catalog-card-item" data-category="furniture" data-aos="fade-up" data-aos-delay="200">
-                        <div class="card-img-shell">
-                            <img src="https://images.unsplash.com/photo-1464366400600-7168b8af9bc3?auto=format&fit=crop&w=600&q=80" alt="أثاث قاعات ومؤتمرات" class="card-img">
-                            <span class="card-badge"><i class="fas fa-medal text-brand-red"></i> مواصفات مشروعات ثقيلة</span>
-                        </div>
-                        <div class="card-info">
-                            <h3 class="card-title">تجهيزات قاعات الحفلات والمؤتمرات</h3>
-                            <p class="card-summary">كراسي قاعات ألومنيوم وحديد قابلة للتكديس، طاولات اجتماعات وفعاليات قابلة للطي، ومنصات مسرحية متنقلة للمنتجعات والمراكز العالمية.</p>
-                            <div class="spec-table">
-                                <div class="spec-item"><span>الأقمشة:</span> <strong>مقاومة للاشتعال BS 7176</strong></div>
-                                <div class="spec-item"><span>التحمل:</span> <strong>أداء شاق للاستخدام الكثيف</strong></div>
-                            </div>
-                            <button type="button" class="btn-outline-card rfq-autofill-btn" data-target-subject="قطاع تجهيزات القاعات والمؤتمرات">
-                                طلب مواصفات القطاع &larr;
-                            </button>
-                        </div>
-                    </div>
-
-                    <!-- Product 6: Accommodation Metal Beds -->
-                    <div class="catalog-card-item" data-category="industrial" data-aos="fade-up" data-aos-delay="300">
-                        <div class="card-img-shell">
-                            <img src="https://images.unsplash.com/photo-1555041469-a586c61ea9bc?auto=format&fit=crop&w=600&q=80" alt="أسرّة معدنية لسكن العاملين" class="card-img">
-                            <span class="card-badge"><i class="fas fa-shield text-brand-blue"></i> طلاء كهروستاتيكي حراري</span>
-                        </div>
-                        <div class="card-info">
-                            <h3 class="card-title">الأسرة المعدنية وخزائن سكن العمال</h3>
-                            <p class="card-summary">أسرّة حديد مزدوجة وفردية فائقة المتانة، خزانات معدنية آمنة مزدوجة، وتجهيزات متكاملة لسكن العمال والمشروعات الإنشائية الكبرى.</p>
-                            <div class="spec-table">
-                                <div class="spec-item"><span>الخامة:</span> <strong>أنابيب فولاذية عالية السمك</strong></div>
-                                <div class="spec-item"><span>المعالجة:</span> <strong>مقاومة كاملة للصدأ والتآكل</strong></div>
-                            </div>
-                            <button type="button" class="btn-outline-card rfq-autofill-btn" data-target-subject="قطاع الأسرّة المعدنية وخزائن الإقامة">
-                                طلب مواصفات القطاع &larr;
-                            </button>
-                        </div>
-                    </div>
-
-                </div>
-            </div>
-        </section>
-
-        <!-- Corporate Profile & Agency Architecture -->
-        <section id="about" class="section-padding">
-            <div class="container">
-                <div class="profile-two-columns" data-aos="fade-up">
-                    
-                    <div class="profile-text-col">
-                        <span class="section-kicker">الهيكل المؤسسي</span>
-                        <h2 class="section-title">حضور إقليمي فاعل <span class="text-brand-blue">وانتشار دولي</span></h2>
-                        <p class="profile-paragraph">
-                            تأسست <strong>المصرية الإماراتية</strong> في عام <strong>2010</strong> كوكالة تجارية معتمدة وبوابة تيسير تجاري دولية. وعلى الرغم من ارتكاز مقراتنا الإدارية والتاريخية في مصر والإمارات العربية المتحدة، إلا أن نشاطنا يمتد ليشمل الاستيراد والتصدير وعقود التوريد عبر مختلف الأسواق والموانئ العالمية.
-                        </p>
-                        
-                        <div class="features-checklist">
-                            <div class="check-item">
-                                <i class="fas fa-check-circle text-brand-blue"></i>
-                                <div>
-                                    <strong>عمليات تجارية عابرة للحدود:</strong>
-                                    <span>إدارة وتسهيل تدفق البضائع والشحنات المباشرة بين الأسواق العالمية في آسيا، أوروبا، إفريقيا، دول الخليج، والأمريكتين.</span>
-                                </div>
-                            </div>
-                            <div class="check-item">
-                                <i class="fas fa-check-circle text-brand-red"></i>
-                                <div>
-                                    <strong>تمثيل تجاري وقانوني رسمي:</strong>
-                                    <span>إبرام اتفاقيات الوكالة التجارية المسجلة، التمثيل القانوني، وتوزيع المنتجات لحساب الشركات والمصانع المصدرة.</span>
-                                </div>
-                            </div>
-                            <div class="check-item">
-                                <i class="fas fa-check-circle text-brand-blue"></i>
-                                <div>
-                                    <strong>الاعتمادات المستندية والمعاملات المصرفية:</strong>
-                                    <span>إدارة خطابات الاعتماد (LC)، مستندات التحصيل (CAD)، وتوثيق شهادات المنشأ والـ EUR.1 وفق القواعد الدولية.</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="profile-visual-col">
-                        <div class="corporate-card-frame">
-                            <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=700&q=80" alt="حوكمة الوكالة التجارية" class="corporate-img">
-                            <div class="frame-tag">
-                                <strong>وكالة تجارية دولية معتمدة</strong>
-                                <span>سجل تجاري نظامي &bull; عضوية الغرف التجارية المعنية</span>
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
-            </div>
-        </section>
-
-        <!-- Digital Systems (Tracking, Calculations, Docs) -->
-        <section id="systems" class="section-padding bg-subtle">
-            <div class="container">
-                <div class="section-head" data-aos="fade-up">
-                    <span class="section-kicker">البنية الرقمية</span>
-                    <h2 class="section-title">بوابات العمليات <span class="text-brand-blue">للعملاء</span></h2>
-                    <p class="section-description">أدوات مخصصة لمتابعة حالة الشحنات، تقدير الرسوم والتكاليف الجمركية، والتحقق من المستندات.</p>
-                </div>
-
-                <div class="systems-grid-row">
-                    <div class="system-item" data-aos="fade-up">
-                        <div class="sys-icon"><i class="fas fa-satellite text-brand-blue"></i></div>
-                        <h3>تتبع الشحنات والمسارات</h3>
-                        <p>متابعة بوالص الشحن (BL)، أرقام الحاويات، ومراحل الإفراج الجمركي بالتنسيق المباشر مع مكتب المتابعة اللوجستية.</p>
-                        <a href="tracking.html" class="system-link">الدخول إلى منصة التتبع &larr;</a>
-                    </div>
-
-                    <div class="system-item" data-aos="fade-up" data-aos-delay="100">
-                        <div class="sys-icon"><i class="fas fa-calculator text-brand-red"></i></div>
-                        <h3>حاسبة تكاليف الشحن والجمارك</h3>
-                        <p>تقدير تعرفة النولون البحري والجوي، الرسوم الجمركية، ورسوم المناولة في الموانئ لمختلف الممرات التجارية.</p>
-                        <a href="dashboard.html" class="system-link">فتح حاسبة التكاليف &larr;</a>
-                    </div>
-
-                    <div class="system-item" data-aos="fade-up" data-aos-delay="200">
-                        <div class="sys-icon"><i class="fas fa-folder-closed text-brand-blue"></i></div>
-                        <h3>المستندات وشهادات المنشأ</h3>
-                        <p>بوابة مباشرة للتحقق وتحميل الفواتير التجارية المعتمدة، قوائم التعبئة، وشهادات المنشأ المصادق عليها رسمياً.</p>
-                        <a href="portal.html" class="system-link">الدخول لخزينة الوثائق &larr;</a>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Institutional Clients & Carriers -->
-        <section class="section-padding">
-            <div class="container">
-                <div class="section-head" data-aos="fade-up">
-                    <span class="section-kicker">نطاق التعاون</span>
-                    <h2 class="section-title">منظومة الشركاء <span class="text-brand-blue">والناقلين المعتمدين</span></h2>
-                    <p class="section-description">مجموعات فندقية كبرى وخطوط ملاحية ولوجستية دولية تعمل عبر قنواتنا التجارية.</p>
-                </div>
-
-                <div class="logo-strip-wrap" data-aos="fade-up">
-                    <div class="logo-grid-flex">
-                        <div class="partner-logo"><img src="../images/Lords Hotel - logo.jpg" alt="Lords Hotel" onerror="this.onerror=null; this.src='https://via.placeholder.com/140x50/ffffff/174aa1?text=Lords+Hotel';"></div>
-                        <div class="partner-logo"><img src="../images/Oceanic Hotel - logo.png" alt="Oceanic Hotel" onerror="this.onerror=null; this.src='https://via.placeholder.com/140x50/ffffff/174aa1?text=Oceanic+Hotel';"></div>
-                        <div class="partner-logo"><img src="../images/Rotana Hotel - logo.png" alt="Rotana Hotels" onerror="this.onerror=null; this.src='https://via.placeholder.com/140x50/ffffff/174aa1?text=Rotana+Hotels';"></div>
-                        <div class="partner-logo"><img src="../images/Holiday International - logo.png" alt="Holiday International" onerror="this.onerror=null; this.src='https://via.placeholder.com/140x50/ffffff/174aa1?text=Holiday+Int';"></div>
-                        <div class="partner-logo"><img src="../images/DHL-Logo.png" alt="DHL Express" onerror="this.onerror=null; this.src='https://via.placeholder.com/140x50/ffffff/ed1a24?text=DHL';"></div>
-                        <div class="partner-logo"><img src="../images/nafeza-en.svg" alt="Nafeza Egypt" onerror="this.onerror=null; this.src='https://via.placeholder.com/140x50/ffffff/174aa1?text=Nafeza';"></div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Executive Reviews -->
-        <section class="section-padding bg-subtle">
-            <div class="container">
-                <div class="section-head" data-aos="fade-up">
-                    <span class="section-kicker">آراء العملاء</span>
-                    <h2 class="section-title">شهادات الشركاء <span class="text-brand-blue">والمؤسسات</span></h2>
-                </div>
-
-                <div class="swiper testimonial-slider" data-aos="fade-up">
-                    <div class="swiper-wrapper">
-                        
-                        <div class="swiper-slide">
-                            <div class="testimonial-card">
-                                <div class="review-header">
-                                    <div class="avatar-letter">ع.ف</div>
-                                    <div class="review-author">
-                                        <h4>عمر الفارس</h4>
-                                        <span>مدير المشتريات والتوريد &bull; مجموعة فندقية كبرى</span>
-                                    </div>
-                                    <span class="verified-pill"><i class="fas fa-check-circle text-brand-blue"></i> عميل موثق</span>
-                                </div>
-                                <p class="review-body">
-                                    "أدارت المصرية الإماراتية شحن وتوريد 20 حاوية 40 قدماً من الأثاث والمفروشات الفندقية مع إنهاء إجراءات الإفراج الجمركي والتخليص المسبق بدقة متناهية والتسليم مباشرة لموقع المشروع دون غرامات أرضيات."
-                                </p>
-                            </div>
-                        </div>
-
-                        <div class="swiper-slide">
-                            <div class="testimonial-card">
-                                <div class="review-header">
-                                    <div class="avatar-letter red">ل.ح</div>
-                                    <div class="review-author">
-                                        <h4>لطيفة حسان</h4>
-                                        <span>نائب رئيس العمليات &bull; شركة إنتاج كيماويات</span>
-                                    </div>
-                                    <span class="verified-pill"><i class="fas fa-check-circle text-brand-blue"></i> عميل موثق</span>
-                                </div>
-                                <p class="review-body">
-                                    "خدمات الوكالة التجارية فتحت لمصنعنا قنوات تصديرية مباشرة وتوزيعاً مؤسسياً واسعاً مع ضمانات مصرفية وقانونية كاملة لكافة شحناتنا المصدرة."
-                                </p>
-                            </div>
-                        </div>
-
-                    </div>
-                    <div class="swiper-pagination"></div>
-                </div>
-            </div>
-        </section>
-
-        <!-- RFQ Gateway & Operations Desk -->
-        <section id="contact" class="section-padding">
-            <div class="container">
-                <div class="rfq-split-layout">
-                    
-                    <!-- Right: Operational Information & Contact -->
-                    <div class="rfq-info-pane" data-aos="fade-left">
-                        <div class="section-head text-right mb-4">
-                            <span class="section-kicker">مكتب التوريد المباشر</span>
-                            <h2 class="section-title">إدارة العمليات <span class="text-brand-blue">والتجارة الدولية</span></h2>
-                            <p class="section-description">تواصل مباشرة مع مسؤولي اللوجستيات ومديري قطاع الوكالات التجارية والتوريد.</p>
-                        </div>
-
-                        <div class="contact-card-box">
-                            <div class="contact-line">
-                                <i class="fas fa-location-dot text-brand-red"></i>
-                                <div>
-                                    <strong>المراكز والمقرات الإقليمية:</strong>
-                                    <span>العاشر من رمضان (القاهرة، مصر) &bull; المنطقة الحرة بمطار الشارقة (SAIF Zone، الإمارات) &bull; شبكة وكلاء دولية</span>
-                                </div>
-                            </div>
-                            <div class="contact-line">
-                                <i class="fas fa-phone text-brand-blue"></i>
-                                <div>
-                                    <strong>الهاتف والواتساب المباشر:</strong>
-                                    <a href="tel:+201011766232" dir="ltr">+20 101 176 6232</a>
-                                </div>
-                            </div>
-                            <div class="contact-line">
-                                <i class="fas fa-envelope text-brand-red"></i>
-                                <div>
-                                    <strong>البريد الإلكتروني للطلبات:</strong>
-                                    <a href="mailto:info@egy-uae.com">info@egy-uae.com</a>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- FAQ Accordion -->
-                        <div class="clean-accordion mt-4">
-                            <div class="acc-row">
-                                <button type="button" class="acc-header" aria-expanded="false">
-                                    <span>هل تقتصر أعمالكم على التبادل التجاري بين مصر والإمارات فقط؟</span>
-                                    <i class="fas fa-chevron-down"></i>
-                                </button>
-                                <div class="acc-panel">
-                                    <p>إطلاقاً؛ بالرغم من أن مقراتنا التشغيلية والتاريخية تقع في مصر والإمارات، إلا أن نشاطنا في الاستيراد والتصدير والوكالات التجارية هو نشاط دولي عالمي. ندير تدفقات البضائع والشحن وعقود التوريد عبر الأسواق الآسيوية، الأوروبية، الإفريقية، ودول الخليج والأمريكتين.</p>
-                                </div>
-                            </div>
-
-                            <div class="acc-row">
-                                <button type="button" class="acc-header" aria-expanded="false">
-                                    <span>هل تتولون إصدار رقم التسجيل المسبق للشحنات (ACID)؟</span>
-                                    <i class="fas fa-chevron-down"></i>
-                                </button>
-                                <div class="acc-panel">
-                                    <p>نعم، نقوم بإصدار رقم الـ ACID ومراجعة الفواتير وشهادات التحليل عبر منظومة نافذة المصرية، ونظام مرسال II الجمركي في الإمارات، مع التنسيق مع الجمارك في مختلف موانئ الشحن والوصول.</p>
-                                </div>
-                            </div>
-
-                            <div class="acc-row">
-                                <button type="button" class="acc-header" aria-expanded="false">
-                                    <span>ما هي شروط التجارة الدولية (Incoterms) المعتمدة لديكم؟</span>
-                                    <i class="fas fa-chevron-down"></i>
-                                </button>
-                                <div class="acc-panel">
-                                    <p>ندعم وندير عقود التوريد وفقاً لشروط CIF و FOB و CFR و EXW وغيرها، متولين النقل من باب المصنع وحتى التسليم النهائي في مستودعات المشتري.</p>
-                                </div>
-                            </div>
-
-                            <div class="acc-row">
-                                <button type="button" class="acc-header" aria-expanded="false">
-                                    <span>كيف تعمل خدمة الوكالة التجارية وتوزيع المنتجات؟</span>
-                                    <i class="fas fa-chevron-down"></i>
-                                </button>
-                                <div class="acc-panel">
-                                    <p>نعمل كوكلاء تجاريين وموزعين رسميين بموجب عقود قانونية معتمدة، نمثل المصانع ونفتح لها أسواقاً جديدة مع تقديم الدعم القانوني والتعامل مع البنوك وإصدار خطابات الاعتماد والتخليص.</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Left: RFQ Form -->
-                    <div class="rfq-form-pane" data-aos="fade-right">
-                        <div class="form-card-container">
-                            <div class="form-card-header">
-                                <h3>إرسال طلب تسعير وتوريد (RFQ)</h3>
-                                <span class="sla-badge"><i class="fas fa-clock text-brand-blue"></i> الرد خلال ساعتي عمل رسمية</span>
-                            </div>
-
-                            <div id="rfq-form-alert" class="form-alert-message hidden" role="alert"></div>
-
-                            <form class="clean-rfq-form" action="https://formspree.io/f/maqkrwoe" method="POST" id="rfq-main-form" novalidate>
-                                <div class="form-row-grid">
-                                    <div class="form-field">
-                                        <label for="full_name">اسم المسؤول / مسؤول المشتريات</label>
-                                        <input type="text" id="full_name" name="Full_Name" placeholder="مثال: م. طارق منصور" required>
-                                    </div>
-                                    <div class="form-field">
-                                        <label for="company_name">اسم الشركة والدولة</label>
-                                        <input type="text" id="company_name" name="Company_Name" placeholder="مثال: شركة النجوم للتجارة الدولية" required>
-                                    </div>
-                                    <div class="form-field">
-                                        <label for="email">البريد الإلكتروني للعمل</label>
-                                        <input type="email" id="email" name="Email" placeholder="officer@company.com" required>
-                                    </div>
-                                    <div class="form-field">
-                                        <label for="phone">رقم الهاتف / الواتساب</label>
-                                        <input type="tel" id="phone" name="Phone_Number" placeholder="+971 50 123 4567" required dir="ltr" style="text-align: right;">
-                                    </div>
-                                    <div class="form-field full-width">
-                                        <label for="rfq-division-subject">القطاع التجاري / السلعة المطلوبة</label>
-                                        <input type="text" id="rfq-division-subject" name="Division_Subject" placeholder="مثال: قطاع المفروشات والتجهيزات الفندقية" required>
-                                    </div>
-                                    <div class="form-field full-width">
-                                        <label for="message_details">تفاصيل الشحنة (الكمية التقديرية، بلد المنشأ/الوصول، والشروط المطلوبة)</label>
-                                        <textarea id="message_details" name="Message_Details" rows="4" placeholder="حدد عدد الحاويات (20 قدم / 40 قدم)، ميناء الوصول، شرط التوريد (CIF / FOB)، وموعد التسليم المطلوب..." required></textarea>
-                                    </div>
-                                </div>
-
-                                <div class="form-actions-bar">
-                                    <span class="security-text"><i class="fas fa-lock text-brand-blue"></i> إرسال مشفر ومحمي للبيانات</span>
-                                    <button type="submit" class="btn-clean-primary" id="rfq-submit-btn">
-                                        <span class="btn-text">إرسال طلب التوريد &larr;</span>
-                                        <span class="btn-loader hidden"><i class="fas fa-circle-notch fa-spin"></i> جاري الإرسال...</span>
-                                    </button>
-                                </div>
-                            </form>
-                        </div>
-                    </div>
-
-                </div>
-            </div>
-        </section>
-    </main>
-
-    <!-- Master Corporate Footer -->
-    <footer class="site-footer">
-        <div class="container footer-grid">
-            <div class="footer-intro-col">
-                <img src="../Al_Masriya_Al_Emaratiya_icon.png" alt="شعار الشركة" class="footer-brand-logo" onerror="this.onerror=null; this.src='https://via.placeholder.com/180x45/174aa1/ffffff?text=Al+Masriya';">
-                <p class="footer-bio">
-                    المصرية الإماراتية هي وكالة تجارية دولية معتمدة ووسيط لوجستي يربط المنشآت الصناعية والمصانع بسلاسل الإمداد والتوريد للشركات في كافة الأسواق الإقليمية والدولية.
-                </p>
-                <div class="footer-social-icons">
-                    <a href="https://www.linkedin.com/company/egy-uae" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
-                    <a href="https://www.facebook.com/AlMasriyaAlEmaratiya" target="_blank" rel="noopener noreferrer" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
-                    <a href="https://www.youtube.com/@egy-uae.channel" target="_blank" rel="noopener noreferrer" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
-                </div>
-            </div>
-
-            <div class="footer-links-col">
-                <h4 class="footer-heading">روابط رئيسية</h4>
-                <ul class="footer-nav-list">
-                    <li><a href="#home">نظرة عامة</a></li>
-                    <li><a href="#services">الخدمات اللوجستية</a></li>
-                    <li><a href="#divisions">القطاعات التجارية</a></li>
-                    <li><a href="#about">الهيكل المؤسسي</a></li>
-                    <li><a href="#contact">مكتب التوريد (RFQ)</a></li>
-                </ul>
-            </div>
-
-            <div class="footer-links-col">
-                <h4 class="footer-heading">أبرز القطاعات</h4>
-                <ul class="footer-nav-list">
-                    <li><a href="#divisions">الحاصلات الزراعية والأغذية</a></li>
-                    <li><a href="#divisions">المفروشات الفندقية والقطن</a></li>
-                    <li><a href="#divisions">أثاث دمياط المكتبي</a></li>
-                    <li><a href="#divisions">تجهيزات القاعات والمؤتمرات</a></li>
-                    <li><a href="#divisions">الكيماويات وخامات المنظفات</a></li>
-                </ul>
-            </div>
-
-            <div class="footer-links-col">
-                <h4 class="footer-heading">المراكز التشغيلية</h4>
-                <div class="footer-address-block">
-                    <strong>مركز مصر:</strong>
-                    <span>مدينة العاشر من رمضان الصناعية، القاهرة</span>
-                </div>
-                <div class="footer-address-block mt-2">
-                    <strong>مركز الإمارات:</strong>
-                    <span>المنطقة الحرة بمطار الشارقة الدولي (SAIF Zone)</span>
-                </div>
-                <div class="footer-address-block mt-2">
-                    <strong>العمليات الدولية:</strong>
-                    <span>شبكة شحن وتمثيل تجاري عالمية</span>
-                </div>
-            </div>
+    <!-- Band 1 (Light): Arm-Style Image-Backed Services Grid -->
+    <section class="section section--light" id="services">
+      <div class="container">
+        <div class="section-header">
+          <div>
+            <span class="eyebrow">خدماتنا</span>
+            <h2 class="section-title">حلول متكاملة عبر مختلف القطاعات</h2>
+          </div>
+          <p class="section-lead">
+            تقدم المصرية الإماراتية خدمات التصنيع المخصص، والمشتريات الفندقية، وتسهيل الاستيراد والتصدير بأعلى معايير الجودة التي تفوق التوقعات.
+          </p>
         </div>
 
-        <div class="container footer-bottom-bar">
-            <span>جميع الحقوق محفوظة &copy; <span id="current-year">2026</span> المصرية الإماراتية.</span>
-            <span class="cert-note">وكالة تجارية مقيدة رسمياً &bull; معتمدة لدى الغرف التجارية المعنية</span>
-        </div>
-    </footer>
+        <div class="services-grid" id="servicesGrid"></div>
+      </div>
+    </section>
 
-    <!-- Scripts -->
-    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    <script src="js/main.js"></script>
+    <!-- Band 2 (Dark Arm Split Feature): Turnkey Hospitality & Manufacturing Showcase -->
+    <section class="section section--dark feature-split-band">
+      <div class="container feature-split">
+        <div class="feature-split__content">
+          <span class="eyebrow eyebrow--cyan">شركة توريد شاملة (ONE-STOP SOURCING)</span>
+          <h2 class="section-title">تجهيز متكامل لفنادق 4 و 5 نجوم والمستشفيات والمشاريع</h2>
+          <p class="feature-split__text">
+            متخصصون في توريد منتجات التدبير الفندقي، ومفروشات ومناشف الفنادق، والألحفة والوسائد، والأغذية والمشروبات، وإلكترونيات النزلاء، ومعدات النظافة وحمامات السباحة، والخزائن والميني بار، وأجهزة النوادي الصحية والمغاسل، والستائر والتنجيد والأدوات الهندسية.
+          </p>
+          <div class="feature-split__actions">
+            <a href="#catalog" class="btn btn--cyan">تصفح الكتالوج الكامل</a>
+            <a href="#contact" class="btn btn--outline-white">تعاون معنا</a>
+          </div>
+        </div>
+        <div class="feature-split__media">
+          <img
+            src="https://images.unsplash.com/photo-1616594039964-ae9021a400a0?auto=format&fit=crop&w=1100&q=80"
+            alt="أجنحة فندقية وتأثيث داخلي مخصص"
+            class="feature-split__img"
+          />
+          <div class="feature-split__caption">
+            معايير ضيافة 4 و 5 نجوم &bull; أسعار تنافسية وتسليم متكامل
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Band 3 (Gray): Complete Product Catalog with Card Photography -->
+    <section class="section section--gray" id="catalog">
+      <div class="container">
+        <div class="section-header">
+          <div>
+            <span class="eyebrow">المنتجات والمواصفات</span>
+            <h2 class="section-title">استكشف كتالوج منتجاتنا الكامل</h2>
+          </div>
+          <p class="section-lead">
+            قم بالتصفية حسب القسم واضغط على أي بطاقة لاستعراض القائمة التفصيلية للمواصفات والبنود من ملف الشركة.
+          </p>
+        </div>
+
+        <div class="filter-bar" role="tablist" aria-label="تصفية أقسام الكتالوج">
+          <button class="filter-pill is-active" type="button" data-filter="all">جميع الأقسام</button>
+          <button class="filter-pill" type="button" data-filter="furniture">الأثاث و FF&amp;E</button>
+          <button class="filter-pill" type="button" data-filter="linens">المفروشات والتدبير الفندقي</button>
+          <button class="filter-pill" type="button" data-filter="hospitality">تجهيزات الفنادق و OS&amp;E</button>
+          <button class="filter-pill" type="button" data-filter="office-banquet">المكاتب والولائم والتعليم</button>
+          <button class="filter-pill" type="button" data-filter="staff">سكن العاملين والخزائن</button>
+          <button class="filter-pill" type="button" data-filter="food-chemicals">الأغذية، السلال والكيماويات</button>
+        </div>
+
+        <div class="catalog-grid" id="catalogGrid"></div>
+      </div>
+    </section>
+
+    <!-- Band 4 (Dark): Food Division & Branded Welcome Baskets with Photos -->
+    <section class="section section--dark" id="food-division">
+      <div class="container">
+        <div class="section-header section-header--dark">
+          <div>
+            <span class="eyebrow eyebrow--cyan">أقسام تجارية متخصصة</span>
+            <h2 class="section-title">قطاع المواد الغذائية وسلال الترحيب ذات العلامات التجارية</h2>
+          </div>
+          <p class="section-lead">
+            خطوط توريد متخصصة لخامات مصانع الألبان والشوكولاتة، إلى جانب حقائب الترحيب والعناية الشخصية الجاهزة للرجال والسيدات.
+          </p>
+        </div>
+
+        <div class="spotlight-grid">
+          <div class="spotlight-card">
+            <div class="spotlight-card__media">
+              <img
+                src="https://images.unsplash.com/photo-1543353071-087092ec393a?auto=format&fit=crop&w=1000&q=80"
+                alt="خضروات وفاكهة وخامات التصنيع الغذائي"
+              />
+            </div>
+            <div class="spotlight-card__body">
+              <span class="tag tag--cyan">قطاع الأغذية &bull; استيراد وتوريد</span>
+              <h3>خامات مصانع الألبان والشوكولاتة والخضروات والفاكهة</h3>
+              <p>توريد كميات الجملة من المواد الخام المعتمدة للمصانع واستيراد الخضروات والفاكهة الطازجة والمجمدة.</p>
+              <div class="spotlight-chips" id="foodChips"></div>
+            </div>
+          </div>
+
+          <div class="spotlight-card">
+            <div class="spotlight-card__media">
+              <img
+                src="https://images.unsplash.com/photo-1696497327672-2bdce2e033dd?auto=format&fit=crop&w=1000&q=80"
+                alt="مستلزمات العناية الشخصية وسلال الترحيب"
+              />
+            </div>
+            <div class="spotlight-card__body">
+              <span class="tag tag--cyan">نوفر جميع المنتجات ذات العلامات التجارية</span>
+              <h3>سلال الترحيب المخصصة (للرجال والسيدات)</h3>
+              <p>عبوات متكاملة للعناية الشخصية والمنظفات والمشروبات والوجبات الخفيفة لسكن العاملين ونزلاء الفنادق.</p>
+              <div class="basket-columns">
+                <div>
+                  <h4>سلة الترحيب (للرجال)</h4>
+                  <ul class="check-list check-list--compact" id="maleBasketList"></ul>
+                </div>
+                <div>
+                  <h4>سلة الترحيب (للسيدات)</h4>
+                  <ul class="check-list check-list--compact" id="femaleBasketList"></ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Band 5 (Light): About Us, Mission & Photography -->
+    <section class="section section--light" id="about">
+      <div class="container about-split">
+        <div class="about-split__left">
+          <span class="eyebrow">من نحن ورسالتنا</span>
+          <h2 class="section-title">بناء شراكات استراتيجية تفوق التوقعات</h2>
+          <blockquote class="mission-quote">
+            &laquo;رسالتنا هي تقديم أعلى جودة من المنتجات والإدارة وتسهيل الشراكة مع الشركات الأخرى، لضمان تلبية احتياجات عملائنا بطريقة تفوق توقعاتهم وتوقعات عملائهم.&raquo;
+          </blockquote>
+          <p class="about-text">
+            تتشرف شركة المصرية الإماراتية بتقديم الأثاث المخصص، والمفروشات، وتأثيث سكن العاملين، والأثاث المكتبي، والديكور الداخلي، وتجهيزات الضيافة، والصناعات التجارية، والكيماويات، ومستحضرات التجميل، والعطور، وقطاع المواد الغذائية.
+          </p>
+          <p class="about-text">
+            يقع مقرنا الرئيسي في <strong>مدينة العاشر من رمضان، الشرقية، مصر</strong>، ونفخر بخدمة عملائنا في مصر ودول الخليج العربي وجميع أنحاء العالم.
+          </p>
+        </div>
+
+        <div class="about-split__right">
+          <div class="about-photo-frame">
+            <img
+              src="https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=1000&q=80"
+              alt="عمليات التصنيع والتوريد الصناعي"
+              class="about-photo-frame__img"
+            />
+          </div>
+          <div class="architecture-panel">
+            <div class="architecture-panel__row">
+              <span class="arch-node">المقر الرئيسي ومراكز الإنتاج</span>
+              <div>
+                <strong>مدينة العاشر من رمضان، الشرقية، مصر</strong>
+                <p>تصنيع الأثاث والنجارة وإنتاج المفروشات ومركز اللوجستيات الرئيسي.</p>
+              </div>
+            </div>
+            <div class="architecture-panel__row">
+              <span class="arch-node">النطاق الإقليمي والعالمي</span>
+              <div>
+                <strong>مصر ودول الخليج العربي (الإمارات) وجميع أنحاء العالم</strong>
+                <p>شريك موثوق للفنادق الكبرى والجامعات والأندية الرياضية وشركات التجارة العامة.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Band 6 (Gray): Client Ecosystem -->
+    <section class="section section--gray" id="clients">
+      <div class="container">
+        <div class="section-header">
+          <div>
+            <span class="eyebrow">قائمة عملائنا</span>
+            <h2 class="section-title">ثقة كبرى الفنادق والمؤسسات وشركات التجارة</h2>
+          </div>
+          <p class="section-lead">
+            شبكة متنامية من الفنادق والجامعات والأندية الرياضية وشركات التوريد والتجارة العامة في مصر والإمارات.
+          </p>
+        </div>
+
+        <div class="filter-bar filter-bar--sm" role="tablist" aria-label="تصفية قطاعات العملاء">
+          <button class="filter-pill is-active" type="button" data-client-filter="all">جميع العملاء (18)</button>
+          <button class="filter-pill" type="button" data-client-filter="hospitality">الفنادق والضيافة</button>
+          <button class="filter-pill" type="button" data-client-filter="trading">التجارة والتوريدات</button>
+          <button class="filter-pill" type="button" data-client-filter="institutions">الجامعات والأندية والترفيه</button>
+        </div>
+
+        <div class="clients-grid" id="clientsGrid"></div>
+      </div>
+    </section>
+
+    <!-- Band 7 (Dark): Contact & Formspree Commercial Enquiry -->
+    <section class="section section--dark contact-section" id="contact">
+      <div class="container contact-grid">
+        <div class="contact-info">
+          <span class="eyebrow eyebrow--cyan">للمزيد من المعلومات والاستفسارات</span>
+          <h2 class="section-title">تواصل مع المصرية الإماراتية</h2>
+          <p class="contact-lead">
+            للمزيد من المعلومات حول خدماتنا وللاستفسارات التجارية، يرجى التواصل مع فريقنا مباشرة أو إرسال متطلبات مشروعك أدناه.
+          </p>
+
+          <div class="contact-details">
+            <div class="contact-detail-item">
+              <span class="detail-label">الشركة والمقر الرئيسي</span>
+              <strong>المصرية الإماراتية للوكالات التجارية والاستيراد والتصدير</strong>
+              <span class="detail-sub">مدينة العاشر من رمضان، الشرقية، مصر &bull; نخدم مصر والخليج والعالم</span>
+            </div>
+
+            <div class="contact-detail-row">
+              <div class="contact-detail-item">
+                <span class="detail-label">الهاتف والواتساب</span>
+                <a href="tel:+201104526673" class="detail-link" dir="ltr">+20 11 04526673</a>
+              </div>
+              <div class="contact-detail-item">
+                <span class="detail-label">الاستفسارات التجارية والمبيعات</span>
+                <a href="mailto:info@egy-uae.com" class="detail-link" dir="ltr">info@egy-uae.com</a>
+              </div>
+            </div>
+
+            <div class="contact-detail-item">
+              <span class="detail-label">الدعم الفني</span>
+              <a href="mailto:digital@egy-uae.com" class="detail-link" dir="ltr">digital@egy-uae.com</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="contact-form-wrap">
+          <form
+            id="inquiryForm"
+            class="arm-form"
+            action="https://formspree.io/f/maqkrwoe"
+            method="POST"
+            novalidate
+          >
+            <h3>اطلب عرض سعر أو كتالوج المنتجات</h3>
+            <input type="hidden" name="_subject" value="استفسار تجاري جديد (النسخة العربية) — المصرية الإماراتية" />
+
+            <div class="form-row">
+              <div class="form-group">
+                <label for="fullName">الاسم الكامل *</label>
+                <input type="text" id="fullName" name="fullName" placeholder="مثال: أحمد حسن" required />
+              </div>
+              <div class="form-group">
+                <label for="companyName">اسم الشركة / الفندق / المؤسسة *</label>
+                <input type="text" id="companyName" name="companyName" placeholder="اسم الجهة" required />
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label for="email">البريد الإلكتروني الرسمي *</label>
+                <input type="email" id="email" name="email" placeholder="name@company.com" dir="ltr" required />
+              </div>
+              <div class="form-group">
+                <label for="phone">رقم الهاتف</label>
+                <input type="tel" id="phone" name="phone" placeholder="+20 11 ..." dir="ltr" />
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="division">القسم المطلوب *</label>
+              <select id="division" name="division" required>
+                <option value="">اختر القسم...</option>
+                <option value="Customized Furniture & FF&E">الأثاث المخصص وتجهيزات FF&amp;E</option>
+                <option value="Bed & Bath Linens & Housekeeping">المفروشات والتدبير الفندقي</option>
+                <option value="Hotel OS&E & Supplies">تجهيزات فنادق 4 و 5 نجوم (OS&amp;E)</option>
+                <option value="Staff Housing & Lockers">تأثيث سكن العاملين والخزائن المعدنية</option>
+                <option value="Office, Educational & Banquet">الأثاث المكتبي والتعليمي والولائم</option>
+                <option value="Food Division (Raw Materials & Produce)">قطاع المواد الغذائية وخامات المصانع</option>
+                <option value="Cosmetics, Chemicals & Welcome Baskets">مستحضرات التجميل والكيماويات وسلال الترحيب</option>
+                <option value="Commercial Agency / Import & Export">الوكالات التجارية والاستيراد والتصدير</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="message">تفاصيل المشروع / الكميات المطلوبة *</label>
+              <textarea id="message" name="message" rows="4" placeholder="اكتب تفاصيل المنتجات أو المواصفات أو وجهة التسليم..." required></textarea>
+            </div>
+
+            <button type="submit" class="btn btn--cyan btn--full" id="submitBtn">إرسال الاستفسار التجاري</button>
+            <div id="formFeedback" class="form-feedback" aria-live="polite"></div>
+          </form>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Arm.com Style Multi-Column Footer + Language Button -->
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <div class="footer-brand">
+        <a href="#top" class="brand-logo">
+          <img
+            src="../assets/logo.png"
+            alt="شعار المصرية الإماراتية"
+            class="brand-logo__img"
+            onerror="this.style.display='none'; this.nextElementSibling.style.display='inline-flex';"
+          />
+          <span class="brand-logo__fallback" style="display: none;">
+            <span class="brand-logo__mark">
+              <img
+                src="../assets/logo-icon.png"
+                alt=""
+                class="brand-logo__icon-img"
+                onerror="this.style.display='none'; this.nextElementSibling.style.display='block';"
+              />
+              <svg width="26" height="26" viewBox="0 0 32 32" fill="none" aria-hidden="true" style="display:none;">
+                <rect width="32" height="32" rx="4" fill="#0091bd" fill-opacity="0.22"/>
+                <path d="M6 23L14.5 8L19 16L22 11L27 23H6Z" stroke="#00c1de" stroke-width="2.2" stroke-linejoin="round"/>
+              </svg>
+            </span>
+            <span class="brand-logo__text">
+              <strong>almassriya</strong>
+              <small>alemaratiya</small>
+            </span>
+          </span>
+        </a>
+        <p>
+          المصرية الإماراتية للوكالات التجارية والاستيراد والتصدير. أسعار تنافسية وجودة تصنيع عالية وخدمة موثوقة.
+        </p>
+      </div>
+
+      <div class="footer-col">
+        <h4>الأقسام</h4>
+        <ul>
+          <li><a href="#catalog" data-filter-jump="furniture">الأثاث المخصص و FF&amp;E</a></li>
+          <li><a href="#catalog" data-filter-jump="linens">المفروشات والتدبير الفندقي</a></li>
+          <li><a href="#catalog" data-filter-jump="hospitality">مستلزمات الفنادق و OS&amp;E</a></li>
+          <li><a href="#catalog" data-filter-jump="staff">سكن العاملين والخزائن</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>التجارة والتوريد</h4>
+        <ul>
+          <li><a href="#food-division">المواد الغذائية وخامات التصنيع</a></li>
+          <li><a href="#food-division">سلال الترحيب (رجال وسيدات)</a></li>
+          <li><a href="#catalog" data-filter-jump="food-chemicals">الكيماويات والتجميل والعطور</a></li>
+          <li><a href="#catalog" data-filter-jump="office-banquet">الأثاث المكتبي والولائم والتعليم</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>التواصل والدعم الفني</h4>
+        <ul>
+          <li><a href="tel:+201104526673" dir="ltr">+20 11 04526673</a></li>
+          <li><a href="mailto:info@egy-uae.com" dir="ltr">info@egy-uae.com</a></li>
+          <li><a href="mailto:digital@egy-uae.com">الدعم الفني: <span dir="ltr">digital@egy-uae.com</span></a></li>
+          <li><a href="#contact">المقر: العاشر من رمضان، مصر</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Arm.com Exact Bottom Language Button + Legal Bar -->
+    <div class="footer-bottom">
+      <div class="container footer-bottom__inner">
+        <div class="lang-switcher" id="langSwitcher">
+          <button
+            type="button"
+            class="lang-dropdown-btn"
+            id="langDropdownBtn"
+            aria-expanded="false"
+            aria-haspopup="true"
+          >
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+              <circle cx="12" cy="12" r="10"></circle>
+              <line x1="2" y1="12" x2="22" y2="12"></line>
+              <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
+            </svg>
+            <span>العربية</span>
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true">
+              <polyline points="18 15 12 9 6 15"></polyline>
+            </svg>
+          </button>
+
+          <div class="lang-menu" id="langMenu" hidden>
+            <a href="../index.html" class="lang-menu__item" lang="en" dir="ltr">English</a>
+            <a href="index.html" class="lang-menu__item is-current">العربية</a>
+          </div>
+        </div>
+
+        <div class="footer-legal">
+          <span>جميع الحقوق محفوظة &copy; <span id="currentYear"></span> المصرية الإماراتية للوكالات التجارية والاستيراد والتصدير.</span>
+          <span class="legal-dot">&bull;</span>
+          <span>مدينة العاشر من رمضان، الشرقية، مصر</span>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Product Detail Modal (with Image) -->
+  <div class="modal" id="productModal" hidden role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+    <div class="modal__backdrop" data-close-modal></div>
+    <div class="modal__panel">
+      <button class="modal__close" type="button" aria-label="إغلاق التفاصيل" data-close-modal>&times;</button>
+      <div class="modal__hero-img-wrap">
+        <img id="modalImage" src="" alt="" class="modal__hero-img" />
+      </div>
+      <span class="eyebrow" id="modalCategory">القسم</span>
+      <h2 id="modalTitle">اسم المنتج</h2>
+      <p class="modal__desc" id="modalDescription"></p>
+      <div class="modal__list-wrap">
+        <h4>المواصفات والبنود المشمولة</h4>
+        <ul class="check-list" id="modalItems"></ul>
+      </div>
+      <div class="modal__footer">
+        <a href="#contact" class="btn btn--cyan" id="modalQuoteBtn">اطلب عرض سعر لهذا القسم</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Global Search Overlay -->
+  <div class="modal modal--search" id="searchModal" hidden role="dialog" aria-modal="true" aria-labelledby="searchTitle">
+    <div class="modal__backdrop" data-close-search></div>
+    <div class="modal__panel modal__panel--search">
+      <div class="search-header">
+        <h3 id="searchTitle">البحث في كتالوج المصرية الإماراتية</h3>
+        <button class="modal__close" type="button" aria-label="إغلاق البحث" data-close-search>&times;</button>
+      </div>
+      <input type="search" id="globalSearchInput" class="search-input" placeholder="ابحث عن الأثاث، المفروشات، معدات الفنادق، الغذاء، الخزائن، الشارقة..." autocomplete="off" />
+      <div class="search-results" id="searchResults"></div>
+    </div>
+  </div>
+
+  <script src="js/main.js"></script>
 </body>
 </html>
