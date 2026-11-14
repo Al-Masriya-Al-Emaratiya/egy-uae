@@ -1,5 +1,5 @@
 /* ==========================================================================
-   Almassriya Alemaratiya — Arm.com Inspired Design System (LTR + RTL Support)
+   Almassriya Alemaratiya — Arm.com Inspired Design System
    ========================================================================== */
 
 :root {
@@ -16,13 +16,14 @@
   --text-muted: #4a5568;
   --text-light: #e2e8f0;
   --text-light-muted: #94a3b8;
-  --font-heading: 'Plus Jakarta Sans', 'Cairo', 'Lato', sans-serif;
-  --font-body: 'Lato', 'Cairo', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-heading: 'Plus Jakarta Sans', 'Lato', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-body: 'Lato', -apple-system, BlinkMacSystemFont, sans-serif;
   --radius-sm: 4px;
   --radius-md: 8px;
   --shadow-card: 0 10px 30px rgba(8, 2, 37, 0.07);
   --shadow-mega: 0 24px 48px rgba(8, 2, 37, 0.18);
   --transition: 0.24s cubic-bezier(0.22, 1, 0.36, 1);
+  --slide-duration: 5500ms;
 }
 
 *,
@@ -45,22 +46,11 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
-html[dir="rtl"] body {
-  font-family: 'Cairo', 'Plus Jakarta Sans', sans-serif;
-}
-
 h1, h2, h3, h4, h5 {
   font-family: var(--font-heading);
   margin-top: 0;
   line-height: 1.22;
   letter-spacing: -0.02em;
-}
-
-html[dir="rtl"] h1,
-html[dir="rtl"] h2,
-html[dir="rtl"] h3,
-html[dir="rtl"] h4 {
-  letter-spacing: 0;
 }
 
 a {
@@ -390,7 +380,7 @@ ul {
   margin-top: 10px;
 }
 
-/* Hero Section with Full-Bleed Image + Arm Scrim */
+/* Hero Section — Animated Auto-Rotating Multi-Banner */
 .hero {
   position: relative;
   background-color: var(--arm-ink);
@@ -409,8 +399,12 @@ ul {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  opacity: 0.34;
-  transition: opacity 0.4s ease;
+  opacity: 0.36;
+  transition: opacity 0.55s ease, transform 6s ease;
+}
+
+.hero__bg-img.is-fading {
+  opacity: 0.14;
 }
 
 .hero__scrim {
@@ -419,15 +413,41 @@ ul {
   background: linear-gradient(95deg, rgba(8, 2, 37, 0.96) 0%, rgba(8, 2, 37, 0.82) 55%, rgba(0, 88, 128, 0.55) 100%);
 }
 
-html[dir="rtl"] .hero__scrim {
-  background: linear-gradient(265deg, rgba(8, 2, 37, 0.96) 0%, rgba(8, 2, 37, 0.82) 55%, rgba(0, 88, 128, 0.55) 100%);
-}
-
 .hero__svg {
   position: absolute;
   inset: 0;
   width: 100%;
   height: 100%;
+}
+
+.hero-arrow {
+  position: absolute;
+  top: 42%;
+  transform: translateY(-50%);
+  z-index: 3;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  background: rgba(8, 2, 37, 0.55);
+  color: #ffffff;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: all var(--transition);
+}
+
+.hero-arrow:hover {
+  border-color: var(--arm-cyan);
+  background: rgba(0, 193, 222, 0.2);
+}
+
+.hero-arrow--prev {
+  left: 16px;
+}
+
+.hero-arrow--next {
+  right: 16px;
 }
 
 .hero__content {
@@ -438,6 +458,12 @@ html[dir="rtl"] .hero__scrim {
   gap: 44px;
   align-items: center;
   padding-bottom: 58px;
+  transition: opacity 0.32s ease, transform 0.32s ease;
+}
+
+.hero__content.is-transitioning {
+  opacity: 0.18;
+  transform: translateY(6px);
 }
 
 .eyebrow {
@@ -449,10 +475,6 @@ html[dir="rtl"] .hero__scrim {
   text-transform: uppercase;
   color: var(--arm-blue);
   margin-bottom: 12px;
-}
-
-html[dir="rtl"] .eyebrow {
-  letter-spacing: 0;
 }
 
 .eyebrow--cyan {
@@ -480,7 +502,7 @@ html[dir="rtl"] .eyebrow {
 }
 
 .hero-card {
-  background: rgba(8, 2, 37, 0.82);
+  background: rgba(8, 2, 37, 0.84);
   border: 1px solid rgba(0, 193, 222, 0.38);
   backdrop-filter: blur(10px);
   border-radius: var(--radius-md);
@@ -511,12 +533,6 @@ html[dir="rtl"] .eyebrow {
   background: var(--arm-cyan);
   padding: 4px 10px;
   border-radius: 2px;
-}
-
-html[dir="rtl"] .hero-card__badge {
-  left: auto;
-  right: 16px;
-  letter-spacing: 0;
 }
 
 .hero-card__body {
@@ -554,11 +570,11 @@ html[dir="rtl"] .hero-card__badge {
   color: var(--text-light-muted);
 }
 
-/* Hero Switcher Tabs */
+/* Hero Switcher Tabs with Auto-Slide Progress Bar */
 .hero-tabs {
   position: relative;
   z-index: 2;
-  background: rgba(5, 1, 24, 0.8);
+  background: rgba(5, 1, 24, 0.82);
   border-top: 1px solid rgba(255, 255, 255, 0.12);
 }
 
@@ -568,13 +584,14 @@ html[dir="rtl"] .hero-card__badge {
 }
 
 .hero-tab {
+  position: relative;
   background: transparent;
   border: none;
-  border-top: 3px solid transparent;
   padding: 18px 16px;
-  text-align: start;
+  text-align: left;
   color: var(--text-light-muted);
-  transition: all var(--transition);
+  transition: color var(--transition), background var(--transition);
+  overflow: hidden;
 }
 
 .hero-tab:hover {
@@ -584,8 +601,29 @@ html[dir="rtl"] .hero-card__badge {
 
 .hero-tab.is-active {
   color: #ffffff;
-  border-top-color: var(--arm-cyan);
   background: rgba(0, 193, 222, 0.1);
+}
+
+.hero-tab__progress {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 3px;
+  width: 0%;
+  background: var(--arm-cyan);
+}
+
+.hero-tab.is-active .hero-tab__progress {
+  animation: heroProgress var(--slide-duration) linear forwards;
+}
+
+.hero.is-paused .hero-tab.is-active .hero-tab__progress {
+  animation-play-state: paused;
+}
+
+@keyframes heroProgress {
+  from { width: 0%; }
+  to { width: 100%; }
 }
 
 .hero-tab__kicker {
@@ -618,8 +656,8 @@ html[dir="rtl"] .hero-card__badge {
 }
 
 .stat-box {
-  padding-inline-start: 16px;
-  border-inline-start: 3px solid var(--arm-cyan);
+  padding-left: 16px;
+  border-left: 3px solid var(--arm-cyan);
 }
 
 .stat-box__num {
@@ -677,7 +715,7 @@ html[dir="rtl"] .hero-card__badge {
   color: var(--text-light);
 }
 
-/* Services Grid (With Photography Cards) */
+/* Services Grid */
 .services-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -722,7 +760,7 @@ html[dir="rtl"] .hero-card__badge {
 .service-card__index {
   position: absolute;
   top: 10px;
-  inset-inline-start: 12px;
+  left: 12px;
   background: rgba(8, 2, 37, 0.82);
   color: var(--arm-cyan);
   font-family: var(--font-heading);
@@ -836,7 +874,7 @@ html[dir="rtl"] .hero-card__badge {
   border-color: var(--arm-ink);
 }
 
-/* Catalog Grid (With Real Card Photos) */
+/* Catalog Grid */
 .catalog-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -902,10 +940,6 @@ html[dir="rtl"] .hero-card__badge {
   border-radius: 3px;
   background-color: rgba(0, 145, 189, 0.12);
   color: var(--arm-blue);
-}
-
-html[dir="rtl"] .tag {
-  letter-spacing: 0;
 }
 
 .tag--cyan {
@@ -1035,7 +1069,7 @@ html[dir="rtl"] .tag {
 
 .check-list li {
   position: relative;
-  padding-inline-start: 22px;
+  padding-left: 22px;
   margin-bottom: 8px;
   font-size: 0.92rem;
 }
@@ -1043,7 +1077,7 @@ html[dir="rtl"] .tag {
 .check-list li::before {
   content: "✓";
   position: absolute;
-  inset-inline-start: 0;
+  left: 0;
   color: var(--arm-cyan);
   font-weight: 800;
 }
@@ -1065,12 +1099,12 @@ html[dir="rtl"] .tag {
 .mission-quote {
   margin: 22px 0;
   padding: 20px 24px;
-  border-inline-start: 4px solid var(--arm-cyan);
+  border-left: 4px solid var(--arm-cyan);
   background: var(--surface-gray);
   font-size: 1.04rem;
   font-style: italic;
   color: var(--arm-ink);
-  border-radius: 4px;
+  border-radius: 0 4px 4px 0;
 }
 
 .about-text {
@@ -1184,13 +1218,19 @@ html[dir="rtl"] .tag {
 .contact-details {
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: 14px;
+}
+
+.contact-detail-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
 }
 
 .contact-detail-item {
   padding: 16px 20px;
   background: rgba(255, 255, 255, 0.04);
-  border: 1px solid rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.14);
   border-radius: var(--radius-sm);
 }
 
@@ -1200,7 +1240,26 @@ html[dir="rtl"] .tag {
   font-weight: 800;
   letter-spacing: 0.12em;
   color: var(--arm-cyan);
-  margin-bottom: 4px;
+  margin-bottom: 5px;
+}
+
+.detail-sub {
+  display: block;
+  font-size: 0.85rem;
+  color: var(--text-light-muted);
+  margin-top: 4px;
+}
+
+.detail-link {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: 1rem;
+  color: #ffffff;
+  transition: color var(--transition);
+}
+
+.detail-link:hover {
+  color: var(--arm-cyan);
 }
 
 .arm-form {
@@ -1268,7 +1327,7 @@ html[dir="rtl"] .tag {
   color: #b91c1c;
 }
 
-/* Footer & Arm-Style Bottom Language Bar */
+/* Footer & Arm-Style Language Button Dropdown */
 .site-footer {
   background-color: #050118;
   color: var(--text-light-muted);
@@ -1324,31 +1383,64 @@ html[dir="rtl"] .tag {
   gap: 16px;
 }
 
-.footer-lang {
+/* Arm.com Bottom Language Button */
+.lang-switcher {
+  position: relative;
+}
+
+.lang-dropdown-btn {
   display: inline-flex;
   align-items: center;
-  gap: 8px;
-  color: #e2e8f0;
-}
-
-.lang-btn {
-  background: transparent;
-  border: none;
-  padding: 4px 8px;
-  border-radius: 3px;
-  color: var(--text-light-muted);
+  gap: 10px;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.24);
+  color: #ffffff;
+  padding: 9px 16px;
+  border-radius: var(--radius-sm);
   font-size: 0.88rem;
   font-weight: 700;
-  transition: color var(--transition), background var(--transition);
+  transition: border-color var(--transition), background var(--transition);
 }
 
-.lang-btn:hover {
-  color: #ffffff;
-}
-
-.lang-btn.is-active {
-  color: var(--arm-cyan);
+.lang-dropdown-btn:hover {
+  border-color: var(--arm-cyan);
   background: rgba(0, 193, 222, 0.12);
+}
+
+.lang-menu {
+  position: absolute;
+  bottom: calc(100% + 8px);
+  left: 0;
+  min-width: 170px;
+  background: #ffffff;
+  color: var(--arm-ink);
+  border-radius: var(--radius-sm);
+  box-shadow: var(--shadow-mega);
+  border: 1px solid var(--surface-border);
+  overflow: hidden;
+  z-index: 30;
+}
+
+.lang-menu[hidden] {
+  display: none;
+}
+
+.lang-menu__item {
+  display: block;
+  padding: 10px 16px;
+  font-size: 0.9rem;
+  font-weight: 700;
+  transition: background var(--transition);
+}
+
+.lang-menu__item:hover {
+  background: var(--surface-gray);
+  color: var(--arm-blue);
+}
+
+.lang-menu__item.is-current {
+  background: rgba(0, 145, 189, 0.1);
+  color: var(--arm-blue);
 }
 
 .footer-legal {
@@ -1410,7 +1502,7 @@ html[dir="rtl"] .tag {
 .modal__close {
   position: absolute;
   top: 14px;
-  inset-inline-end: 16px;
+  right: 16px;
   z-index: 4;
   background: rgba(255, 255, 255, 0.92);
   border: none;
@@ -1500,6 +1592,10 @@ html[dir="rtl"] .tag {
     grid-template-columns: 1fr;
   }
 
+  .hero-arrow {
+    display: none;
+  }
+
   .mega-menu__grid {
     grid-template-columns: 1fr 1fr;
   }
@@ -1529,6 +1625,7 @@ html[dir="rtl"] .tag {
   .stats-strip__grid,
   .footer-grid,
   .form-row,
+  .contact-detail-row,
   .basket-columns,
   .modal__list-wrap .check-list {
     grid-template-columns: 1fr;
