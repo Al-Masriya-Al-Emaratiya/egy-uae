@@ -1,6 +1,4 @@
-/* ==========================================================================
-   Almassriya Alemaratiya — Auto-Rotating Banners, Catalog, Search & Formspree
-   ========================================================================== */
+
 
 (function () {
   "use strict";
