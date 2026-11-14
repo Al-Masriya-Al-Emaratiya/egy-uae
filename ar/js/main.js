@@ -7,347 +7,347 @@
   let currentHeroIndex = 0;
   let heroTimer = null;
 
-  // 1. Auto-Rotating Hero Banners
+  // 1. Auto-Rotating Hero Banners (Arabic)
   const heroPillars = [
     {
-      eyebrow: "AL MASSRIYA AL EMARATIYA FOR COMMERCIAL AGENCIES, IMPORT & EXPORT",
-      badge: "ONE-STOP SOURCING HUB",
+      eyebrow: "المصرية الإماراتية للوكالات التجارية والاستيراد والتصدير",
+      badge: "مركز توريد متكامل",
       bgImg: "https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=1800&q=80",
       cardImg: "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=900&q=80",
-      title: "Where Global Supply Meets Manufacturing Excellence",
+      title: "حيث تلتقي التوريدات العالمية بتميز التصنيع",
       subtitle:
-        "Delivering highest quality Customized Furniture, Bed & Bath Linens, 4–5 Star Hotel OS&E & FF&E Procurement, Staff Housing, Food Products, Chemicals & Cosmetics across Egypt, Gulf Countries, and Worldwide.",
-      cardHeading: "End-to-End Turnkey Procurement",
+        "نقدم أعلى مستويات الجودة في الأثاث المخصص، ومفروشات السرير والحمام، وتجهيزات فنادق 4 و 5 نجوم (OS&E و FF&E)، وتأثيث سكن العاملين، والمواد الغذائية، والكيماويات ومستحضرات التجميل في مصر ودول الخليج والعالم.",
+      cardHeading: "توريد متكامل من المصنع إلى الموقع",
       cardDesc:
-        "From raw materials and bespoke woodwork manufactured in 10th of Ramadan City to international hospitality delivery."
+        "من الخامات الأساسية والأخشاب المصنعة في مدينة العاشر من رمضان إلى التسليم الفوري للمشاريع الفندقية والتجارية."
     },
     {
-      eyebrow: "10TH OF RAMADAN MANUFACTURING FACILITIES",
-      badge: "BESPOKE WOOD & TEXTILES",
+      eyebrow: "مصانع مدينة العاشر من رمضان",
+      badge: "أخشاب ومفروشات مخصصة",
       bgImg: "https://images.unsplash.com/photo-1586023492125-27b2c045efd7?auto=format&fit=crop&w=1800&q=80",
       cardImg: "https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&w=900&q=80",
-      title: "Precision Furniture & Luxury Linen Manufacturing",
+      title: "دقة تصنيع الأثاث والمفروشات الفندقية الفاخرة",
       subtitle:
-        "In-house fabrication in PLY, MDF, Veneer & Solid Wood paired with 4–5 Star hotel and hospital grade bed sheets, duvets, towels, and bathrobes.",
-      cardHeading: "10th of Ramadan Production",
+        "تصنيع داخلي بأخشاب الكونتر و MDF والقشرة والزان الطبيعي، إلى جانب إنتاج ملايات السرير والألحفة والمناشف والأرواب بمعايير فنادق 4 و 5 نجوم والمستشفيات.",
+      cardHeading: "إنتاج العاشر من رمضان",
       cardDesc:
-        "Full customization across bedroom suites, wardrobes (1–4 doors), reception desks, gypsum/wooden partitions, and textile linens."
+        "تخصيص كامل لغرف النوم والدواليب (1 إلى 4 أبواب) ومكاتب الاستقبال والقواطع الجبسية والخشبية والمفروشات."
     },
     {
-      eyebrow: "HOSPITALITY & STAFF ACCOMMODATION",
-      badge: "4–5 STAR HOSPITALITY",
+      eyebrow: "الضيافة الفندقية وسكن العاملين",
+      badge: "فنادق 4 و 5 نجوم",
       bgImg: "https://images.unsplash.com/photo-1616594039964-ae9021a400a0?auto=format&fit=crop&w=1800&q=80",
       cardImg: "https://images.unsplash.com/photo-1555396273-367ea4eb4db5?auto=format&fit=crop&w=900&q=80",
-      title: "4–5 Star Hotel OS&E, FF&E & Staff Housing",
+      title: "تجهيزات فنادق 4 و 5 نجوم وسكن العاملين",
       subtitle:
-        "A true one-stop sourcing partner covering guestroom electronics, kitchenware, glassware, banquet seating, bunk beds, and housekeeping trolleys.",
-      cardHeading: "Hospitality & Accommodation Ready",
+        "شريك توريد شامل يغطي إلكترونيات الغرف، معدات المطابخ، الزجاجيات، أثاث الولائم، الأسرة المعدنية بطابقين وعربات التدبير الفندقي.",
+      cardHeading: "جاهزية كاملة للضيافة والإقامة",
       cardDesc:
-        "Supplying complete hotel openings, hospital expansions, and large-scale workforce staff housing projects."
+        "تجهيز افتتاحات الفنادق الكبرى وتوسعات المستشفيات ومشاريع سكن العاملين بأفضل الأسعار."
     },
     {
-      eyebrow: "FOOD DIVISION, CHEMICALS & COSMETICS",
-      badge: "IMPORT & EXPORT TRADE",
+      eyebrow: "الأغذية، الكيماويات ومستحضرات التجميل",
+      badge: "الاستيراد والتصدير",
       bgImg: "https://images.unsplash.com/photo-1543353071-087092ec393a?auto=format&fit=crop&w=1800&q=80",
       cardImg: "https://images.unsplash.com/photo-1696497327672-2bdce2e033dd?auto=format&fit=crop&w=900&q=80",
-      title: "Food Raw Materials, Chemicals & Cosmetics Trade",
+      title: "تجارة الخامات الغذائية والكيماويات ومستحضرات التجميل",
       subtitle:
-        "Supplying dairy and chocolate factories with cocoa powder, milk powder, oils, butter, starch, and nuts alongside fresh/frozen produce and branded welcome kits.",
-      cardHeading: "Global Commercial Agencies",
+        "توريد خامات مصانع الألبان والشوكولاتة من الكاكاو والحليب المجفف والزيوت والزبدة والنشا والمكسرات، واستيراد الخضروات والفاكهة الطازجة والمجمدة وسلال الترحيب.",
+      cardHeading: "وكالات تجارية عالمية",
       cardDesc:
-        "Connecting manufacturers and hospitality operators across Egypt, Sharjah, the GCC, and global markets."
+        "ربط المصانع ومشغلي الضيافة في مصر والشارقة ودول الخليج العربي والأسواق العالمية."
     }
   ];
 
-  // 2. Services Data (8 Divisions with Real Photos)
+  // 2. Services Data (8 Divisions in Arabic)
   const servicesData = [
     {
       index: "01",
       cat: "furniture",
       img: "https://images.unsplash.com/photo-1586023492125-27b2c045efd7?auto=format&fit=crop&w=800&q=80",
-      title: "Customized Furniture Manufacturer",
-      desc: "Bespoke production in PLY, MDF, Veneer, and Solid Wood for bedrooms, reception desks, partitions, and carpentry."
+      title: "تصنيع الأثاث المخصص",
+      desc: "إنتاج حسب الطلب بأخشاب الكونتر و MDF والقشرة والزان الطبيعي لغرف النوم والاستقبال وأعمال النجارة."
     },
     {
       index: "02",
       cat: "linens",
       img: "https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&w=800&q=80",
-      title: "Bed & Bath Linens Manufacturer",
-      desc: "Premium bed sheets, duvets, pillow covers, towels, bathrobes, and table linens for 4–5 star hotels & hospitals."
+      title: "تصنيع مفروشات السرير والحمام",
+      desc: "ملايات فندقية، ألحفة، وسائد، مناشف، أرواب حمام ومفارش طاولات لفنادق 4 و 5 نجوم والمستشفيات."
     },
     {
       index: "03",
       cat: "staff",
       img: "https://images.unsplash.com/photo-1618773928121-c32242e63f39?auto=format&fit=crop&w=800&q=80",
-      title: "Staff Housing Furnishing",
-      desc: "Turnkey accommodation packages: metal & wooden bunk beds, lockers, mattresses, appliances & welcome baskets."
+      title: "متخصصون في تأثيث سكن العاملين",
+      desc: "باقات تجهيز متكاملة: أسرة بطابقين حديدية وخشبية، خزائن، مراتب، أجهزة كهربائية وسلال ترحيب."
     },
     {
       index: "04",
       cat: "office-banquet",
       img: "https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=800&q=80",
-      title: "Office Furnishing & Decoration",
-      desc: "Complete supply and installation of executive desks, ergonomic chairs, workstations, and interior partitions."
+      title: "تأثيث المكاتب والديكور الداخلي",
+      desc: "توريد وتركيب مكاتب المديرين، الكراسي الطبية، محطات العمل، وخزائن الملفات والقواطع الداخلية."
     },
     {
       index: "05",
       cat: "hospitality",
       img: "https://images.unsplash.com/photo-1555396273-367ea4eb4db5?auto=format&fit=crop&w=800&q=80",
-      title: "OS&E & FF&E for 4–5 Star Hotels",
-      desc: "One-stop sourcing of F&B equipment, kitchenware, glassware, chinaware, minibars, safes, and spa supplies."
+      title: "توريد OS&E و FF&E لفنادق 4 و 5 نجوم",
+      desc: "توريد شامل لمعدات المطاعم والمطابخ، الزجاجيات، الخزائن، الميني بار، وأجهزة السبا والنوادي الصحية."
     },
     {
       index: "06",
       cat: "food-chemicals",
       img: "https://images.unsplash.com/photo-1696497327672-2bdce2e033dd?auto=format&fit=crop&w=800&q=80",
-      title: "Cosmetics, Perfumes & Chemicals",
-      desc: "Commercial distribution and sourcing of industrial chemicals, cosmetics, fragrances, and branded hygiene kits."
+      title: "الكيماويات ومستحضرات التجميل والعطور",
+      desc: "تجارة وتوزيع الكيماويات الصناعية، مستحضرات التجميل، العطور، ومجموعات النظافة ذات العلامات التجارية."
     },
     {
       index: "07",
       cat: "office-banquet",
       img: "https://images.unsplash.com/photo-1580582932707-520aed937b7b?auto=format&fit=crop&w=800&q=80",
-      title: "Educational Furniture",
-      desc: "Ergonomic student desks and classroom seating systems (SC4101, SC4001, SC4001 X, SC4001D) for institutions."
+      title: "الأثاث التعليمي والمدرسي",
+      desc: "مقاعد وطاولات دراسية مريحة للفصول والجامعات (موديلات SC4101، SC4001، SC4001 X، SC4001D)."
     },
     {
       index: "08",
       cat: "food-chemicals",
       img: "https://images.unsplash.com/photo-1543353071-087092ec393a?auto=format&fit=crop&w=800&q=80",
-      title: "Food Division & Raw Materials",
-      desc: "Raw materials for dairy and chocolate factories (cocoa, milk powder, butter, oils, nuts) plus fresh & frozen produce."
+      title: "قطاع المواد الغذائية وخامات التصنيع",
+      desc: "خامات مصانع الألبان والشوكولاتة (الكاكاو، الحليب المجفف، الزبدة، الزيوت، المكسرات) والخضروات والفاكهة."
     }
   ];
 
-  // 3. Complete Product Catalog (9 Categories with Real Photos)
+  // 3. Complete Product Catalog (9 Categories in Arabic)
   const catalogData = [
     {
       id: "custom-furniture",
       category: "furniture",
       img: "https://images.unsplash.com/photo-1586023492125-27b2c045efd7?auto=format&fit=crop&w=900&q=80",
-      tag: "Customized Furniture",
-      title: "Custom Woodwork & Room Suites",
+      tag: "الأثاث المخصص",
+      title: "أعمال النجارة وغرف النوم الكاملة",
       description:
-        "Furniture manufactured in PLY, MDF, Veneer & Solid Wood, tailored for hotels, staff quarters, and commercial interiors.",
+        "أثاث مصنع من الكونتر (PLY) و MDF والقشرة والزان الطبيعي، مصمم خصيصاً للفنادق وسكن العاملين والمشاريع التجارية.",
       items: [
-        "Furniture made in PLY, MDF, Veneer & Solid Wood",
-        "Beds (Single, Queen & King)",
-        "Night Stands & Dressing Tables",
-        "Writing Tables & Dining Tables",
-        "Wardrobes (1, 2, 3 & 4 Doors)",
-        "Headboards (Plain & Custom Design)",
-        "TV Stands, Shelves, Tables & Desks",
-        "Bookcases & Reception Desks",
-        "Partitions (Gypsum & Wooden)",
-        "Other Carpentry Jobs on Site"
+        "أثاث مصنع من PLY و MDF والقشرة والخشب الطبيعي",
+        "أسرة (مفرد، كوين، كينج)",
+        "كومودينو وتسريحات",
+        "مكاتب كتابة وطاولات طعام",
+        "دواليب ملابس (1، 2، 3، 4 أبواب)",
+        "خلفيات سرير (سادة ومصممة)",
+        "وحدات تليفزيون، أرفف، طاولات ومكاتب",
+        "مكتبات ومكاتب استقبال",
+        "قواطع وفواصل (جبس وخشب)",
+        "كافة أعمال النجارة في الموقع"
       ]
     },
     {
       id: "ffe-procurement",
       category: "furniture",
       img: "https://images.unsplash.com/photo-1616594039964-ae9021a400a0?auto=format&fit=crop&w=900&q=80",
-      tag: "FF&E Procurement",
-      title: "Soft Furnishings, Mattresses & Drapery",
+      tag: "تجهيزات FF&E",
+      title: "الستائر والمفروشات والمراتب الطبية",
       description:
-        "Complete FF&E installation packages including blackout curtains, commercial upholstery, and orthopedic bedding.",
+        "توريد وتركيب متكامل يشمل الستائر المعتمة والتنجيد التجاري والمراتب الطبية والعادية.",
       items: [
-        "Complete Supply & Installation of Office Furniture",
-        "Blackout – Lined Drapery & Sheer Curtains",
-        "Upholstery (Fabric, PVC & Leather)",
-        "Roll-Away Beds",
-        "Bunk Beds (Wooden, Metal & Iron)",
-        "Mattresses (Medicated & Orthopedic)",
-        "Carpets and Area Rugs"
+        "توريد وتركيب شامل لأثاث المكاتب",
+        "ستائر بلاك أوت مبطنة وشيفون (Sheer)",
+        "تنجيد احترافي (قماش، PVC وجلد)",
+        "أسرة قابلة للطي (Roll-Away Bed)",
+        "أسرة بطابقين (خشب، معدن وحديد)",
+        "مراتب طبية وعادية (Medicated & Orthopedic)",
+        "سجاد وموكيت فندقي"
       ]
     },
     {
       id: "linens-mfg",
       category: "linens",
       img: "https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&w=900&q=80",
-      tag: "Linen Manufacturer",
-      title: "Hotel & Hospital Bed & Bath Linens",
+      tag: "تصنيع المفروشات",
+      title: "مفروشات السرير والحمام للفنادق والمستشفيات",
       description:
-        "Durable, high-thread-count bed and bath linens supplied to 4 and 5 star hotels and healthcare institutions.",
+        "مفروشات عالية المتانة والجودة موردة لفنادق 4 و 5 نجوم ومؤسسات الرعاية الصحية.",
       items: [
-        "Bed Sheets (Spread / Flat / Fitted)",
-        "Duvets & Duvet Covers",
-        "Pillows & Pillow Covers",
-        "Table Covers & Placemats",
-        "Mattress Protectors, Bed Skirts & Bed Runners",
-        "Decorative Throws & Blankets",
-        "Towels (Face, Hand & Bath)",
-        "Bathrobes & Guest Slippers"
+        "ملايات سرير (مسطحة وبأستك)",
+        "ألحفة وأكياس ألحفة",
+        "وسائد وأكياس وسائد",
+        "مفارش طاولات ومفارش فردية",
+        "واقي مراتب، تنانير سرير ورانر سرير",
+        "بطاطين وأغطية ديكور",
+        "مناشف (وجه، يد واستحمام)",
+        "أرواب حمام وشباشب فندقية"
       ]
     },
     {
       id: "housekeeping-ops",
       category: "linens",
       img: "https://images.unsplash.com/photo-1552321554-5fefe8c9ef14?auto=format&fit=crop&w=900&q=80",
-      tag: "Housekeeping",
-      title: "Housekeeping & Operational Equipment",
+      tag: "التدبير الفندقي",
+      title: "معدات التدبير الفندقي والتشغيل",
       description:
-        "Operational equipment engineered to streamline room turnover, laundry logistics, and guest convenience.",
+        "معدات تشغيلية لتسهيل خدمة الغرف والمغاسل وتوفير أقصى راحة للنزلاء.",
       items: [
-        "Hangers & Non-Woven Bags",
-        "Laundry Bags & Shower Curtains",
-        "Room Amenities & Amenity Trays",
-        "Luggage Racks & Luggage Carts",
-        "Maids Carts & Linen Carts / Trolleys",
-        "Pedal Bins & Room Bins",
-        "Weighing Scales & Mirrors",
-        "Iron Boards, Hair Dryers & Bath Rugs"
+        "شماعات ملابس وحقائب قماش غير منسوج",
+        "أكياس غسيل وستائر حمام",
+        "مستلزمات الغرف وصواني الضيافة",
+        "حوامل حقائب وعربات نقل الأمتعة",
+        "عربات خدمة الغرف وعربات الكتان والمغاسل",
+        "سلال مهملات بدواسة وسلال غرف",
+        "موازين ومرايا حمام",
+        "طاولات مكواة، مجففات شعر ودواسات حمام"
       ]
     },
     {
       id: "ose-procurement",
       category: "hospitality",
       img: "https://images.unsplash.com/photo-1555396273-367ea4eb4db5?auto=format&fit=crop&w=900&q=80",
-      tag: "OS&E Procurement",
-      title: "Multi-Brand Hotel & Institutional OS&E",
+      tag: "مشتريات OS&E",
+      title: "تجهيزات تشغيلية من كبرى العلامات التجارية",
       description:
-        "Comprehensive sourcing across all major brands for hospitality, medical, kitchen, spa, and AV departments.",
+        "توريد شامل لكافة العلامات التجارية لقطاعات الأغذية والمشروبات والمطابخ والطب والسبا والإلكترونيات.",
       items: [
-        "F&B Equipment & Kitchen Equipment",
-        "Housekeeping & Laundry Equipment",
-        "Medical Items (All Brands)",
-        "AV and Electronics Equipment (All Brands)",
-        "Spa Equipment & Supplies (All Brands)",
-        "Shelving & Storage Systems",
-        "Pool Equipment & Health Club Equipment",
-        "Engineering Tools & Cleaning Equipment"
+        "معدات المطاعم والمطابخ التجارية",
+        "معدات التدبير الفندقي والمغاسل المركزية",
+        "مستلزمات وأجهزة طبية (جميع الماركات)",
+        "أجهزة الصوتيات والمرئيات والإلكترونيات (جميع الماركات)",
+        "معدات ومستلزمات السبا (جميع الماركات)",
+        "أنظمة الأرفف والتخزين",
+        "معدات حمامات السباحة والنوادي الصحية",
+        "الأدوات الهندسية ومعدات النظافة"
       ]
     },
     {
       id: "hotel-supplies",
       category: "hospitality",
       img: "https://images.unsplash.com/photo-1578749556568-bc2c40e68b61?auto=format&fit=crop&w=900&q=80",
-      tag: "Hotel Supplies",
-      title: "Tableware, Guest Electronics & Security",
+      tag: "مستلزمات الفنادق",
+      title: "أدوات المائدة وإلكترونيات وخزائن الغرف",
       description:
-        "Front-of-house dining collections and in-room guest security & refreshment hardware.",
+        "تشكيلات المطاعم والبوفيهات وأجهزة الأمان والمشروبات داخل غرف النزلاء.",
       items: [
-        "Glassware (Wine, Water, Cocktail & Tumblers)",
-        "Flatware & Stainless Cutlery",
-        "Hollowware & Buffet Serving Sets",
-        "Chinaware (Plates, Bowls & Cups)",
-        "In-Room Digital Electronic Safes",
-        "Silent Minibars & Guest Refrigerators",
-        "Employee & Guest Lockers",
-        "Janitorial Housekeeping Carts"
+        "الزجاجيات والأكواب الفندقية",
+        "أدوات المائدة الفضية والاستانلس ستيل",
+        "أطقم التقديم والبوفيهات (Hollowware)",
+        "أطقم البورسلين الصيني (Chinaware)",
+        "خزائن إلكترونية رقمية للغرف",
+        "ثلاجات ميني بار صامتة للنزلاء",
+        "خزائن الموظفين والنزلاء",
+        "عربات النظافة والصيانة"
       ]
     },
     {
       id: "office-edu-banquet",
       category: "office-banquet",
       img: "https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=900&q=80",
-      tag: "Office, Edu & Banquet",
-      title: "Workstations, Classrooms & Events",
+      tag: "المكاتب والولائم والتعليم",
+      title: "تجهيز الشركات والجامعات وقاعات المؤتمرات",
       description:
-        "Ergonomic office seating, modular desks, banquet event furniture, and school desk systems (SC4101–SC4001D).",
+        "كراسي مكتبية طبية، مكاتب مديرين، أثاث الحفلات والولائم، ومقاعد المدارس والجامعات (SC4101–SC4001D).",
       items: [
-        "Executive Leather & Mesh Ergonomic Chairs",
-        "Modular Workstations, Cubicles & Executive Desks",
-        "Banquet Stackable Chairs & Folding Tables",
-        "Round Cocktail Tables, Table Trolleys & Portable Stages",
-        "Lecterns & Portable Dance Floors",
-        "Educational Desk & Chair Sets (SC4101, SC4001, SC4001 X, SC4001D)",
-        "Multi-Door Colored & Steel Office Lockers"
+        "كراسي تنفيذية جلد وشبك مريحة",
+        "محطات عمل مكتبية ومكاتب مديرين",
+        "كراسي ولائم قابلة للتكديس وطاولات قابلة للطي",
+        "طاولات كوكتيل، عربات طاولات ومنصات متحركة",
+        "منصات خطابة وأرضيات احتفالات متنقلة",
+        "مقاعد وطاولات دراسية (SC4101، SC4001، SC4001 X، SC4001D)",
+        "خزائن مكتبية حديدية وملونة متعددة الأبواب"
       ]
     },
     {
       id: "staff-housing",
       category: "staff",
       img: "https://images.unsplash.com/photo-1618773928121-c32242e63f39?auto=format&fit=crop&w=900&q=80",
-      tag: "Staff Housing",
-      title: "Workforce Quarters, Metal Beds & Appliances",
+      tag: "سكن العاملين",
+      title: "غرف الإقامة، الأسرة المعدنية والأجهزة المنزلية",
       description:
-        "Complete residential furnishing packages with metal bunk beds, steel cupboards, sofa sets, and white goods.",
+        "تجهيز سكني متكامل يشمل الأسرة المعدنية والدواليب الحديدية والأنتريهات والأجهزة الكهربائية.",
       items: [
-        "Wooden-Iron Beds & Wooden-Iron Bunk Beds",
-        "Heavy-Duty Metal Single & Bunk Beds",
-        "MDF Beds with Storage Drawers & Divan Beds",
-        "MDF Wardrobes & Steel Cupboards / Multi-Door Lockers",
-        "Sofa Sets, Reclining Chairs & Coffee/TV Units",
-        "Home Appliances, White Goods & Kitchen Utensils",
-        "Youth & Single Study Desk Room Sets"
+        "أسرة خشب مع حديد وأسرة بطابقين",
+        "أسرة معدنية مفردة وبطابقين شديدة التحمل",
+        "أسرة MDF بأدراج تخزين وأسرة ديفان",
+        "دواليب MDF وخزائن فولاذية متعددة الأبواب",
+        "أطقم كنب وأنتريهات ووحدات تليفزيون",
+        "أجهزة منزلية كهربائية وأدوات مطبخ",
+        "غرف مفردة مجهزة بمكاتب دراسة"
       ]
     },
     {
       id: "food-chemicals-baskets",
       category: "food-chemicals",
       img: "https://images.unsplash.com/photo-1543353071-087092ec393a?auto=format&fit=crop&w=900&q=80",
-      tag: "Food & Cosmetics",
-      title: "Food Raw Materials, Chemicals & Baskets",
+      tag: "الأغذية والتجميل",
+      title: "خامات التصنيع الغذائي، الكيماويات وسلال الترحيب",
       description:
-        "Dairy & chocolate factory raw materials, imported fresh/frozen produce, industrial chemicals, and branded welcome kits.",
+        "مواد خام لمصانع الألبان والشوكولاتة، خضروات وفاكهة طازجة ومجمدة، كيماويات ومستحضرات تجميل.",
       items: [
-        "Cocoa Powder & Milk Powder for Factories",
-        "Industrial Oils, Butter, Starch (Cherch) & All Kinds of Nuts",
-        "Fresh & Frozen Imported Vegetables and Fruits",
-        "Cosmetics, Perfumes & Commercial Chemicals",
-        "Male Branded Welcome Basket (15-item personal & snack kit)",
-        "Female Branded Welcome Basket (13-item personal & snack kit)"
+        "مسحوق الكاكاو والحليب المجفف للمصانع",
+        "زيوت، زبدة، نشا (شرش) وجميع أنواع المكسرات",
+        "استيراد الخضروات والفاكهة الطازجة والمجمدة",
+        "مستحضرات التجميل والعطور والكيماويات التجارية",
+        "سلة ترحيب للرجال (15 منتجاً من الماركات العالمية)",
+        "سلة ترحيب للسيدات (13 منتجاً من الماركات العالمية)"
       ]
     }
   ];
 
   const foodChipsData = [
-    "Cocoa Powder",
-    "Milk Powder",
-    "Industrial & Vegetable Oils",
-    "Butter",
-    "Starch (Cherch)",
-    "All Kinds of Nuts",
-    "Fresh Vegetables & Fruits",
-    "Frozen Vegetables & Fruits"
+    "مسحوق الكاكاو",
+    "حليب مجفف",
+    "الزيوت النباتية والصناعية",
+    "الزبدة",
+    "النشا",
+    "جميع أنواع المكسرات",
+    "خضروات وفاكهة طازجة",
+    "خضروات وفاكهة مجمدة"
   ];
 
   const basketItemsData = {
     male: [
-      "Small Detergent & Small Soap",
-      "Small Moisturizing Cream & Shampoo",
-      "Body Spray & Cosmetics",
-      "Toothpaste with Toothbrush",
-      "Razor & Shaving Cream",
-      "Mineral Water, Juice, Biscuits, Chocolate & Chips",
-      "Small Toilet Roll"
+      "مسحوق غسيل صغير وصابون صغير",
+      "كريم مرطب صغير وشامبو",
+      "سبراي للجسم ومستحضرات عناية",
+      "معجون أسنان مع فرشاة",
+      "شفرة حلاقة وكريم حلاقة",
+      "مياه معدنية، عصير، بسكويت، شوكولاتة وشيبسي",
+      "رول مناديل صغير"
     ],
     female: [
-      "Small Detergent & Small Soap",
-      "Small Moisturizing Cream & Shampoo",
-      "Body Spray",
-      "Toothpaste & Toothbrush",
-      "Mineral Water & Juice",
-      "Biscuits, Chocolate & Chips",
-      "Small Toilet Roll"
+      "مسحوق غسيل صغير وصابون صغير",
+      "كريم مرطب صغير وشامبو",
+      "سبراي للجسم",
+      "معجون أسنان وفرشاة أسنان",
+      "مياه معدنية وعصير",
+      "بسكويت، شوكولاتة وشيبسي",
+      "رول مناديل صغير"
     ]
   };
 
   const clientsData = [
-    { name: "Al Maha Hotel Sharjah", sector: "hospitality" },
-    { name: "Radisson Blu Hotels", sector: "hospitality" },
-    { name: "Grand Hotels", sector: "hospitality" },
-    { name: "Oceanic Hotel", sector: "hospitality" },
-    { name: "Rotana Hotel", sector: "hospitality" },
-    { name: "Alhaiat Hotel Group Sharjah", sector: "hospitality" },
-    { name: "Lords Hotel", sector: "hospitality" },
-    { name: "Hotel Holiday International Sharjah", sector: "hospitality" },
-    { name: "Arzaq Company", sector: "trading" },
-    { name: "Arzaq General Trading", sector: "trading" },
-    { name: "Excellence Hotel Supply", sector: "trading" },
-    { name: "Middle East Hotel Supplies", sector: "trading" },
-    { name: "Luxurious General Trading", sector: "trading" },
-    { name: "Blessing General Trading", sector: "trading" },
-    { name: "El Massriya El Emaratiya Partner Network", sector: "trading" },
-    { name: "Sharjah University", sector: "institutions" },
-    { name: "Sky Dive", sector: "institutions" },
-    { name: "Al Ahly Club", sector: "institutions" }
+    { name: "فندق المها الشارقة", sector: "hospitality" },
+    { name: "فنادق راديسون بلو", sector: "hospitality" },
+    { name: "فنادق جراند", sector: "hospitality" },
+    { name: "فندق أوشيانيك", sector: "hospitality" },
+    { name: "فندق روتانا", sector: "hospitality" },
+    { name: "مجموعة فنادق الحياة الشارقة", sector: "hospitality" },
+    { name: "فندق لوردز", sector: "hospitality" },
+    { name: "فندق هوليداي إنترناشونال الشارقة", sector: "hospitality" },
+    { name: "شركة أرزاق", sector: "trading" },
+    { name: "أرزاق للتجارة العامة", sector: "trading" },
+    { name: "إكسلنس لتوريدات الفنادق", sector: "trading" },
+    { name: "الشرق الأوسط لتوريدات الفنادق", sector: "trading" },
+    { name: "لكجريوس للتجارة العامة", sector: "trading" },
+    { name: "بليسينج للتجارة العامة", sector: "trading" },
+    { name: "شبكة شركاء المصرية الإماراتية", sector: "trading" },
+    { name: "جامعة الشارقة", sector: "institutions" },
+    { name: "سكاي دايف", sector: "institutions" },
+    { name: "النادي الأهلي", sector: "institutions" }
   ];
 
   const sectorLabels = {
-    hospitality: "Hotels & Hospitality",
-    trading: "General Trading & Supply",
-    institutions: "University, Sports & Leisure"
+    hospitality: "الفنادق والضيافة",
+    trading: "التجارة العامة والتوريدات",
+    institutions: "الجامعات والأندية والترفيه"
   };
 
   // DOM Elements
@@ -370,7 +370,6 @@
     heroTabs.forEach((t, i) => {
       const active = i === currentHeroIndex;
       t.classList.remove("is-active");
-      // Force reflow so the progress bar restarts cleanly
       void t.offsetWidth;
       if (active) t.classList.add("is-active");
       t.setAttribute("aria-selected", String(active));
@@ -445,7 +444,7 @@
         <div class="service-card__body">
           <div class="service-card__head">
             <h3>${s.title}</h3>
-            <span class="service-card__arrow">&nearr;</span>
+            <span class="service-card__arrow">&nwarr;</span>
           </div>
           <p>${s.desc}</p>
         </div>
@@ -473,7 +472,7 @@
           <div>
             <div class="catalog-card__meta">
               <span class="tag">${item.tag}</span>
-              <span class="catalog-card__count">${item.items.length} Specifications</span>
+              <span class="catalog-card__count">${item.items.length} بنود ومواصفات</span>
             </div>
             <h3>${item.title}</h3>
             <p>${item.description}</p>
@@ -485,7 +484,7 @@
             </div>
           </div>
           <button class="catalog-card__btn" type="button" data-open-product="${item.id}">
-            Inspect Full Specifications &rarr;
+            استعراض المواصفات الكاملة &larr;
           </button>
         </div>
       </article>
@@ -588,7 +587,7 @@
     });
   });
 
-  // Bottom Language Button Dropdown (Links to Static EN / AR Pages)
+  // Bottom Language Button Dropdown
   const langDropdownBtn = document.getElementById("langDropdownBtn");
   const langMenu = document.getElementById("langMenu");
 
@@ -669,7 +668,7 @@
     const q = query.trim().toLowerCase();
     if (!q) {
       searchResults.innerHTML =
-        "<p style='color:#64748b;font-size:0.9rem;'>Type a keyword such as <strong>Mattress</strong>, <strong>Lockers</strong>, <strong>Cocoa</strong>, <strong>Towels</strong>, or <strong>Sharjah</strong>.</p>";
+        "<p style='color:#64748b;font-size:0.9rem;'>اكتب كلمة للبحث مثل: <strong>مراتب</strong>، <strong>خزائن</strong>، <strong>كاكاو</strong>، <strong>مناشف</strong>، أو <strong>الشارقة</strong>.</p>";
       return;
     }
 
@@ -699,7 +698,7 @@
     matchedClients.forEach((c) => {
       html += `
         <div class="search-result-item" data-search-client>
-          <span class="tag">Client</span>
+          <span class="tag">عميل</span>
           <strong style="display:block;margin-top:6px;">${c.name}</strong>
           <small style="color:#4a5568;">${sectorLabels[c.sector]}</small>
         </div>
@@ -707,7 +706,7 @@
     });
 
     if (!html) {
-      html = "<p style='color:#64748b;'>No matching products or clients found.</p>";
+      html = "<p style='color:#64748b;'>لم يتم العثور على منتجات أو عملاء مطابقين.</p>";
     }
 
     searchResults.innerHTML = html;
@@ -768,12 +767,12 @@
     if (!fullName || !companyName || !emailValid || !division || !message) {
       formFeedback.className = "form-feedback is-error";
       formFeedback.textContent =
-        "Please complete all required fields with a valid business email address.";
+        "يرجى استكمال جميع الحقول المطلوبة وإدخال بريد إلكتروني صحيح.";
       return;
     }
 
     submitBtn.disabled = true;
-    submitBtn.textContent = "Sending Enquiry...";
+    submitBtn.textContent = "جاري إرسال الطلب...";
     formFeedback.textContent = "";
 
     try {
@@ -787,23 +786,20 @@
 
       if (response.ok) {
         formFeedback.className = "form-feedback is-success";
-        formFeedback.textContent = `Thank you, ${fullName}. Your enquiry has been sent to our commercial team at info@egy-uae.com.`;
+        formFeedback.textContent = `شكراً لك ${fullName}. تم إرسال استفسارك بنجاح إلى فريق المبيعات على info@egy-uae.com.`;
         inquiryForm.reset();
       } else {
-        const data = await response.json().catch(() => ({}));
         formFeedback.className = "form-feedback is-error";
         formFeedback.textContent =
-          data.errors && data.errors.length
-            ? data.errors.map((err) => err.message).join(", ")
-            : "Unable to send right now. Please email us directly at info@egy-uae.com.";
+          "تعذر الإرسال حالياً. يرجى مراسلتنا مباشرة على info@egy-uae.com.";
       }
     } catch (error) {
       formFeedback.className = "form-feedback is-error";
       formFeedback.textContent =
-        "Network error. Please email us directly at info@egy-uae.com or call +20 11 04526673.";
+        "حدث خطأ في الاتصال. يرجى مراسلتنا على info@egy-uae.com أو الاتصال على +20 11 04526673.";
     } finally {
       submitBtn.disabled = false;
-      submitBtn.textContent = "Submit Commercial Enquiry";
+      submitBtn.textContent = "إرسال الاستفسار التجاري";
     }
   });
 
